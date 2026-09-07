@@ -128,6 +128,36 @@ tr.sum td{font-weight:600;border-top:2px solid var(--ink);border-bottom:0}
 .rel .rf{font-size:12px;color:var(--ink2)}
 .rel .rd{font-size:12px;color:var(--ink3);margin-top:6px;line-height:1.55}
 .rel .rd i{font-style:normal;color:var(--blue2)}
+.plots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.plot{border:1px solid var(--line);border-radius:3px;padding:10px 12px;background:#fff}
+.plot .ph{font-size:14px;margin-bottom:4px}
+.plot .ph b{font-weight:700}
+.plot .pm{font-size:12px;color:var(--ink2);margin-bottom:8px}
+.plot .pb{display:flex;flex-wrap:wrap;gap:6px}
+.plot .pb button{font-size:12px;padding:5px 9px}
+.leads{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.lead{border:1px solid var(--line);border-radius:3px;padding:10px 12px;background:#fff}
+.lead .lh{font-size:14px;margin-bottom:4px}
+.lead .lh b{font-weight:700}
+.lead .lm{font-size:12px;color:var(--ink2);margin-bottom:4px}
+.lead .lm b{color:var(--ink)}
+.lead .lw{font-size:12px;color:var(--red2);margin:4px 0}
+.lead .pb{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.lead .pb button{font-size:12px;padding:5px 9px}
+.row button.sm.on{border-color:var(--red);color:var(--red);background:rgba(180,35,28,.05);font-weight:700}
+
+
+.tag.hot{color:var(--red);border-color:var(--red)}
+.tag.cool{color:var(--blue2)}
+.tag.cold{color:var(--ink3)}
+table.dist td{vertical-align:top}
+table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
+.tiers{display:flex;flex-wrap:nowrap;gap:3px}
+.tiers.fo{flex-wrap:wrap}
+.tiers button{font-size:12px;padding:3px 6px;min-width:0;white-space:nowrap}
+.tiers button.on{border-color:var(--red);color:var(--red);background:rgba(180,35,28,.06);font-weight:700}
+
+
 
 
 
@@ -297,7 +327,15 @@ tr.sum td{font-weight:600;border-top:2px solid var(--ink);border-bottom:0}
   .doc .body{padding:14px 16px;font-size:15px;line-height:1.8}
   .doc .opts{padding:0 16px 18px;gap:9px}
   .opt{padding:12px 13px;min-height:48px}
-  .agenda,.rels{grid-template-columns:1fr;gap:7px}
+  .agenda,.rels,.plots,.leads{grid-template-columns:1fr;gap:7px}
+  table.dist,table.dist tbody,table.dist tr,table.dist td{display:block;width:auto}
+  table.dist tr:first-child{display:none}
+  table.dist tr{border:1px solid var(--line);border-radius:3px;padding:9px 11px;margin-bottom:8px;background:#fff}
+  table.dist td{border:0;padding:3px 0;text-align:left}
+  table.dist td[data-l]{display:inline-block;margin-right:16px;font-size:14px;font-weight:600}
+  table.dist td[data-l]:before{content:attr(data-l) " ";color:var(--ink3);font-size:12px;font-weight:400}
+  table.dist td[data-w]:before{content:attr(data-w);display:block;color:var(--ink3);font-size:12px;margin:4px 0 3px}
+  .tiers{flex-wrap:wrap}
   .ag{padding:10px 12px;min-height:44px}
   .doc .body.hasp{grid-template-columns:82px 1fr;gap:6px 12px}
   .grade{font-size:38px}
@@ -1161,7 +1199,7 @@ const AG={
   f:()=>{nAdd('dev',2);nAdd('lgfv',2);let n=0;for(const b of S.build){if(b.left>1){b.left--;n++;}b.stalled=false;}S.unity-=0.3;
    return n?n+' 个在建项目工期各压缩一个月，月度支付随之加重。':'工地都跑到了，没有能再压的工期。';}},
  invest:{n:'外出招商',cat:'经济',cd:3,mo:[4,11],d:'带队去沿海跑一周，见十几家企业。',
-  f:()=>{nAdd('dev',3);const c=LV[S.lvl].transfer*0.15;S.cash-=c;S.pros+=0.6;
+  f:()=>{nAdd('dev',3);if(S.lvl>=2)S.leads=(S.leads||[]).concat(genLeads(1));const c=LV[S.lvl].transfer*0.15;S.cash-=c;S.pros+=0.6;
    const cand=['factory','bid_war','fake_sign','talent_war','ecom','port_bonded'].filter(id=>{const e=EV.find(x=>x.id===id);return e&&S.lvl>=e.lv[0]&&S.lvl<=e.lv[1];});
    if(cand.length&&Math.random()<0.5){S.sched.push({id:pick(cand),m:0});return '招商团出去一周，接待费'+fmt(c)+'。有一家已经在谈落地了。';}
    return '招商团出去一周，接待费'+fmt(c)+'。名片收了两百张，能不能落地再说。';}},
@@ -1178,7 +1216,7 @@ const AG={
  budget:{n:'财政专题会',cat:'财政',cd:4,mo:[6,12],d:'一个部门一个部门过预算，压非急需支出。',
   f:()=>{nAdd('lgfv',-2);S.agFlag.ops=0.85;S.unity-=1;return '本月行政运转支出压下一成半。各部门都不高兴。';}},
  landwork:{n:'征地拆迁攻坚',cat:'经济',cd:6,mo:[3],w:s=>s.land<s.landTotal*0.12?3.5:0.9,d:'成立指挥部，限期完成一片区的签约。',
-  f:()=>{nAdd('dev',4);nAdd('pet',-6);const mu=60*S.lsc;S.land+=mu;S.landTotal+=mu*0.4;S.sat-=2;S.rep-=0.3;
+  f:()=>{nAdd('dev',4);nAdd('pet',-6);if(S.lvl>=1)S.plots=(S.plots||[]).concat(genPlots(1));const mu=60*S.lsc;S.land+=mu;S.landTotal+=mu*0.4;S.sat-=2;S.rep-=0.3;
    return '一个片区签约完成，新增储备土地'+Math.round(mu)+'亩。有几户还堵在现场。';}},
  selfcheck:{n:'廉政自查',cat:'自身',cd:6,w:s=>s.file.some(f=>!f.exp)?3.5:0.6,d:'自己先把账翻一遍，能补的手续补上。',
   f:()=>{nAdd('insp',4);S.expMult=Math.max(0.6,S.expMult*0.7);S.unity-=2;return '自查自纠一个月，几笔手续补齐了。有人觉得你在自己人身上下刀。';}},
@@ -1306,6 +1344,274 @@ function npcUnityMid(){return 48+nf('zhou')*0.24;}
 function npcNeedMul(){return 1.15-nf('boss')/400;}
 function reqOk(o){return !o.req||nf(o.req.k)>=o.req.v;}
 
+
+/* ===== 分级机制：每升一级解锁一个新的决策维度 ===== */
+const MECH={
+ land:{lv:1,tab:'土地'},
+ ind:{lv:2,tab:'产业'},
+ region:{lv:3,tab:'区域'},
+ district:{lv:4,tab:'区县'}
+};
+function mechOn(k){return S&&S.lvl>=MECH[k].lv&&S.phase!=='retired';}
+function mechTabs(){return Object.keys(MECH).filter(mechOn);}
+
+
+
+
+
+/* ===== 时代：走到第十年、十八年、二十五年，脚下的地基自己会变 ===== */
+const ERA=[
+ {y:10,id:'land_end',n:'土地财政退潮',
+  d:'全国土地出让金连续两年两位数下滑。房企拿地的名单上，剩下的多半是各地的城投。省里开会不再提"土地是最大的财源"，改提"过紧日子"。',
+  note:'从今往后地价打七折，市场热度普遍走冷。靠卖地过日子的那套，到头了。',
+  f:()=>{S.eraLand=0.72;if(S.plots)for(const p of S.plots)p.heat=clamp(p.heat-0.22,0.15,1.4);}},
+ {y:18,id:'pop_down',n:'人口负增长',
+  d:'全国人口连续第三年负增长。新生儿数量比你刚工作那年少了一半多。省里的通报里第一次出现"收缩型城市"这个词。',
+  note:'人口自然增长转负。学位在空出来，养老床位在排队。抢人从加分项变成了必答题。',
+  f:()=>{S.eraPop=-0.0013;}},
+ {y:25,id:'debt_hard',n:'化债硬约束',
+  d:'新一轮化债方案下发：地方新增隐性债务一律终身问责，融资平台限期退出，存量只能压不能增。',
+  note:'城投债额度砍掉三分之一，新发利率上浮一个点。以后想干事，先想清楚钱从哪来。',
+  f:()=>{S.eraDebt=1.5;}}
+];
+function eraStep(){S.era=S.era||{};
+ for(const e of ERA){if(S.year>=e.y&&!S.era[e.id]){S.era[e.id]=1;e.f();S.sched.push({id:'era_'+e.id,m:0});}}}
+function eraOn(){return ERA.filter(e=>S.era&&S.era[e.id]);}
+/* ===== 你走过的地方，在你走之后还在往前走 ===== */
+function histStep(){for(const h of (S.hist||[])){
+ const legacy=(h.debt>=80?-1.15:h.debt<=40?0.6:0)+(h.sat>=60?0.35:h.sat<=40?-0.45:0);
+ h.pros=clamp((h.pros||50)+rnd(-0.9,1.1)+legacy,10,100);
+ h.liv=clamp((h.liv||50)+rnd(-0.7,0.9)+legacy*0.6,10,100);
+ h.debt=clamp((h.debt||0)+rnd(-2.2,2.6)-(h.debt>90?1.6:0),0,190);
+ h.after=(h.after||0)+1;}}
+function histLine(h){
+ const dp=h.pros-(h.pros0||h.pros),dd=h.debt-(h.debt0||h.debt);
+ const t=h.pros>=70?'比你在的时候更热闹了':h.pros>=55?'不好不坏地过着':h.pros>=40?'慢慢冷下来了':'冷清得厉害';
+ const d=h.debt>=100?'债还在滚':h.debt>=70?'化债化到现在还没完':h.debt<=35?'账是干净的':'债不算轻也不算重';
+ return t+'，'+d+'。';}
+
+/* ===== 区县：直辖市。你不再自己盯设施，你决定给谁多少 ===== */
+const DTYPE={
+ core:{n:'中心城区',d:'人多、地少、老房子多，要的是民生。'},
+ new: {n:'新区',    d:'摊子铺得开，钱来得快，债也来得快。'},
+ ind: {n:'工业区',  d:'税收支柱，环境和信访的老大难。'},
+ far: {n:'远郊区',  d:'底子薄，给多少花多少，出成绩慢。'},
+ port:{n:'口岸区',  d:'看外贸吃饭，行情好的时候很好看。'}
+};
+const DSEED=[
+ ['城关区','core'],['和平区','core'],['新城区','new'],['临江新区','new'],
+ ['开发区','ind'],['双桥区','ind'],['云岭区','far'],['港北区','port']
+];
+const DFOCUS={eco:'拼经济',people:'保民生',debt:'控债务'};
+const DTIERMAX=16;
+function initDist(){S.dist=[];S.alloc={};
+ for(const [n,t] of DSEED){
+  const base=t==='core'?{p:62,l:58}:t==='new'?{p:56,l:50}:t==='ind'?{p:64,l:42}:t==='port'?{p:58,l:50}:{p:40,l:40};
+  const d={id:n,n,t,pop:S.pop*(t==='core'?0.19:t==='new'?0.13:t==='ind'?0.11:t==='far'?0.07:0.09)*rnd(0.8,1.2),
+   pros:clamp(base.p+rnd(-6,6),15,95),liv:clamp(base.l+rnd(-6,6),15,95),
+   debt:clamp((t==='new'?70:t==='ind'?52:38)+rnd(-12,14),5,140),
+   honest:+rnd(0.25,0.95).toFixed(2),lazy:Math.random()<0.22,hide:0};
+  S.dist.push(d);S.alloc[n]={fund:2,focus:t==='core'?'people':t==='new'?'debt':'eco'};}
+}
+function distTierCost(){return annualIncome()*0.022;}
+function distTiers(){return Object.values(S.alloc||{}).reduce((a,x)=>a+(x.fund||0),0);}
+function distSpend(){return distTierCost()*distTiers();}
+function distAvg(){const ds=S.dist||[];if(!ds.length)return {pros:S.pros,liv:S.liv,debt:0};
+ let tp=0,tl=0,td=0,w=0;
+ for(const d of ds){tp+=d.pros*d.pop;tl+=d.liv*d.pop;td+=d.debt*d.pop;w+=d.pop;}
+ return {pros:tp/w,liv:tl/w,debt:td/w};}
+function distSet(id,k,v){const a=S.alloc[id];if(!a)return '没有这个区';
+ if(k==='fund'){const t=distTiers()-a.fund+v;if(v<0||v>5)return null;
+  if(t>DTIERMAX)return '全市建设资金只有 '+DTIERMAX+' 档，已排满';a.fund=v;}
+ else a.focus=v;
+ return null;}
+function distStep(){if(!S.dist)return;const cost=distTierCost();
+ for(const d of S.dist){const a=S.alloc[d.id]||{fund:0,focus:'eco'};
+  const money=cost*a.fund;S.cash-=money;
+  const g=a.fund*0.95*(d.lazy?0.42:1)*(1-d.pros/130);
+  if(a.focus==='eco'){d.pros=clamp(d.pros+g*1.15,10,100);d.liv=clamp(d.liv-0.35,5,100);d.debt+=g*0.9;}
+  else if(a.focus==='people'){d.liv=clamp(d.liv+g*1.25,10,100);d.pros=clamp(d.pros+g*0.22,10,100);d.debt+=g*0.35;}
+  else {d.debt=Math.max(0,d.debt-g*1.8-3);d.pros=clamp(d.pros-0.45,10,100);}
+  /* 自然漂移 */
+  d.pros=clamp(d.pros+rnd(-0.7,0.8),10,100);d.liv=clamp(d.liv+rnd(-0.5,0.5),5,100);
+  d.debt=clamp(d.debt+rnd(-0.4,1.4),0,200);d.pop*=1+rnd(-0.004,0.012)+(d.liv-50)/9000;
+  /* 老实程度低的区，钱给多了就瞒 */
+  if(d.honest<0.55&&a.fund>=2&&Math.random()<0.45){d.hide+=money*rnd(0.25,0.8);}
+  /* 早晚会查出来 */
+  if(d.hide>annualIncome()*0.03&&Math.random()<0.3){
+   S.cq.push({amt:d.hide,rate:7.5,left:36,term:36});
+   S.file.push({y:S.year,t:d.n+'瞒报隐性债务，市里失察',sev:0,exp:false,mild:true});
+   logIt(d.n+'瞒报的隐性债务被审计查出，'+fmt(d.hide)+'并入市级债务。','bad');
+   d.hide=0;d.honest=clamp(d.honest+0.32,0,1);d.debt+=8;}
+ }
+}
+
+/* ===== 区域：副省级以上，招商是零和的 ===== */
+const RCITY=['岐阳市','临海市','沅州市','白泉市','桐城市','常宁市','南屿市','瑞和市','庆云市','洛泾市'];
+const COOP=[
+ {id:'park',n:'共建产业园',d:'两市各出一块地，税收五五分成。',k:1.2,
+  f:r=>{S.ind.push({id:'fzone',age:0,cut:0,nm:'跨市共建园区'});S.f.fzone=(S.f.fzone||0)+1;S.pros+=2;r.pros+=2;}},
+ {id:'rail',n:'跨市轨道',d:'一小时通勤圈，两头都受益，钱主要是你出。',k:2.4,
+  f:r=>{S.liv+=3;S.pros+=2.5;r.pros+=1.2;S.f.station=(S.f.station||0)+1;}},
+ {id:'env',n:'流域生态共治',d:'上下游一起治，督察的板子才打不到你一个人身上。',k:0.9,
+  f:r=>{S.env=clamp(S.env+4,0,100);r.pros+=0.5;S.rep+=2;}}
+];
+const BIGP=[['tech','省级科创走廊节点'],['port','省级物流枢纽'],['fin','区域金融后台基地'],['fzone','先进制造业基地'],['tour','省级文旅度假区']];
+function initRivals(){S.rivals=[];const used=[];
+ for(let i=0;i<2;i++){let n;do{n=pick(RCITY);}while(used.indexOf(n)>=0);used.push(n);
+  S.rivals.push({n,pros:clamp(S.pros+rnd(-6,12),25,95),pop:S.pop*rnd(0.7,1.3),aggr:+rnd(0.7,1.25).toFixed(2),done:[]});}
+ S.talent=0;newBigP();}
+function newBigP(){const [fac,n]=pick(BIGP);const F=FAC[fac];
+ S.bigp={n,fac,base:Math.round(F.cost*S.sc*0.16),y:S.year,
+  r:[+rnd(0.55,1.5).toFixed(2),+rnd(0.55,1.5).toFixed(2)]};}
+function rivalStep(){if(!S.rivals)return;
+ for(const r of S.rivals){r.pros=clamp(r.pros+rnd(0.1,2.3)*r.aggr-(S.talent||0)*0.22,20,100);
+  r.pop*=1+rnd(-0.003,0.013)-(S.talent||0)*0.0022;}}
+function myRank(){if(!S.rivals||!S.rivals.length)return 1;
+ return 1+S.rivals.filter(r=>r.pros>S.pros).length;}
+function talentCost(){return LV[S.lvl].transfer*0.018*(S.talent||0);}
+function coopDo(ri,cid){const r=(S.rivals||[])[ri];const C=COOP.find(c=>c.id===cid);if(!r||!C)return '没有这个项目';
+ if((r.done||[]).indexOf(cid)>=0)return '和这座城市已经做过了';
+ const cost=LV[S.lvl].transfer*C.k;if(S.cash<cost)return '拿不出 '+fmt(cost);
+ S.cash-=cost;r.done=(r.done||[]).concat([cid]);C.f(r);
+ logIt('与'+r.n+'启动'+C.n+'，投入'+fmt(cost)+'。','good');return null;}
+function bidBig(tier){const B=S.bigp;if(!B)return '眼下没有在争的项目';
+ if(tier===0){S.bigp=null;logIt('放弃了'+B.n+'的争取。');return null;}
+ const cost=Math.round(B.base*[0,0.6,1.0,1.7][tier]);
+ if(S.cash<cost)return '拿不出 '+fmt(cost);
+ S.cash-=cost;
+ const mine=[0,1.35,1.8,2.5][tier]*(1+S.pros/200)*(1+nf('boss')/300)*rnd(0.85,1.15);
+ let bestI=-1,best=0;
+ S.rivals.forEach((r,i)=>{const v=B.r[i]*r.aggr*(1+r.pros/200)*1.6*rnd(0.85,1.15);if(v>best){best=v;bestI=i;}});
+ S.bigp=null;
+ if(mine>=best){const F=FAC[B.fac];S.ind.push({id:B.fac,age:0,cut:0,nm:B.n});S.f[B.fac]=(S.f[B.fac]||0)+1;
+  S.pros+=3;S.rep+=2;nAdd('boss',5);
+  logIt(B.n+'落到我们这里，投入'+fmt(cost)+'。','good');return null;}
+ const r=S.rivals[bestI];r.pros+=3.2;S.rep-=1;nAdd('boss',-3);
+ logIt(B.n+'被'+r.n+'拿走了，我们投的'+fmt(cost)+'打了水漂。','bad');return null;}
+
+/* ===== 产业：市级以上，招商从「建园区」变成「一条线索一条线索地谈」 ===== */
+const INDCAT={agri:'mfg',fzone:'mfg',logi:'trade',mall:'trade',port:'trade',tour:'trade',tech:'tech',fin:'tech',aero:'tech'};
+const CATN={mfg:'制造',trade:'商贸物流',tech:'科创'};
+const CN1=['华','鑫','恒','瑞','宏','金','正','诚','兴','裕','中','远','安','德','昌','捷'];
+const CN2=['新材料','精密制造','智能装备','食品','医药','供应链','商贸','数据','半导体','光电','生物','软件','环保科技','汽车零部件','家居','纺织'];
+const CN3=['科技','股份','集团','实业','产业'];
+function coName(){return pick(CN1)+pick(CN1)+pick(CN2)+pick(CN3);}
+/* 同一类企业堆太多，边际税收递减——产能过剩 */
+function overCap(id){const c=S.ind.filter(x=>x.id===id).length;return 1/(1+0.13*Math.max(0,c-3));}
+function indMix(){const m={mfg:0,trade:0,tech:0};let t=0;
+ for(const x of S.ind){const c=INDCAT[x.id]||'mfg';const w=FAC[x.id].tax;m[c]+=w;t+=w;}
+ if(S.f.factory){m.mfg+=S.f.factory*45;t+=S.f.factory*45;}
+ return t>0?{mfg:m.mfg/t,trade:m.trade/t,tech:m.tech/t,tot:t}:{mfg:0,trade:0,tech:0,tot:0};}
+function genLeads(n){const out=[];
+ const pool=['agri','logi','fzone','mall','tour','tech','port','fin','aero'].filter(k=>{const F=FAC[k];
+   return (F.lvl===undefined||S.lvl>=F.lvl)&&(!F.needLiv||S.liv>=F.needLiv-10);});
+ if(!pool.length)return out;
+ for(let i=0;i<n;i++){const fac=pick(pool);const F=FAC[fac];const sc=rnd(0.7,1.35);
+  const inv=F.cost*S.sc*sc;
+  const ask={land:Math.round(F.land*S.lsc*0.35*rnd(0.8,1.5)),
+   cash:Math.round(inv*rnd(0.04,0.18)),
+   cut:Math.random()<0.55?pick([12,24,36]):0};
+  out.push({id:'L'+(S.leadSeq=(S.leadSeq||0)+1),n:coName(),fac,sc:+sc.toFixed(2),inv:Math.round(inv),ask,
+   rival:S.lvl>=3&&Math.random()<0.45,y:S.year});}
+ return out;}
+function leadOK(l){const F=FAC[l.fac];
+ if(F.lvl!==undefined&&S.lvl<F.lvl)return '等级不够';
+ if(F.needLiv&&S.liv<F.needLiv)return '宜居度不足'+F.needLiv;
+ if(cov('power')<0.5)return '电厂覆盖不足，先建电厂';
+ if(S.land<l.ask.land)return '储备土地不足 '+l.ask.land+' 亩';
+ if(S.cash<l.ask.cash)return '拿不出配套资金 '+fmt(l.ask.cash);
+ return null;}
+function bargainP(l){return clamp(0.34+S.pros/300+nf('dev')/500+(l.rival?-0.14:0.08),0.12,0.86);}
+function leadAct(i,how){
+ const l=(S.leads||[])[i];if(!l)return '没有这条线索';
+ const drop=(txt,cls)=>{S.leads.splice(i,1);logIt(txt,cls||'');return null;};
+ if(how==='drop'){nAdd('dev',-2);if(l.rival&&S.rivals&&S.rivals.length)pick(S.rivals).pros+=1.6;
+   return drop('放弃了'+l.n+'的项目。'+(l.rival?'邻市那边接着谈。':''),'');}
+ if(how==='bargain'){
+   if(Math.random()<bargainP(l)){l.ask={land:Math.round(l.ask.land*0.55),cash:Math.round(l.ask.cash*0.55),cut:l.ask.cut?12:0};
+     l.cut=1;nAdd('dev',-3);logIt('和'+l.n+'谈下来了：用地和配套都压掉近一半。','good');return null;}
+   nAdd('dev',-4);if(l.rival&&S.rivals&&S.rivals.length)pick(S.rivals).pros+=1.6;
+   return drop(l.n+'谈崩了，'+(l.rival?'转头签了邻市。':'项目搁置。'),'bad');}
+ if(how==='take'){
+   const e=leadOK(l);if(e)return e;
+   S.land-=l.ask.land;S.cash-=l.ask.cash;
+   S.ind.push({id:l.fac,age:0,cut:l.ask.cut||0,nm:l.n});S.f[l.fac]=(S.f[l.fac]||0)+1;
+   S.pros+=1.5;nAdd('dev',4);
+   if(l.ask.cut>=36&&Math.random()<0.35)S.file.push({y:S.year,t:'超权限承诺税收返还',sev:0,exp:false,mild:true});
+   return drop(l.n+'签约落地，投资'+fmt(l.inv)+'，'+(l.ask.cut?'税收返还'+l.ask.cut+'个月，':'')+'配套'+fmt(l.ask.cash)+'、供地'+l.ask.land+'亩。','good');}
+ return null;}
+
+/* ===== 土地：县级以上，出让改成一宗一宗地办 ===== */
+const PUSE={
+ res:{n:'住宅',k:1.00,d:'商品住宅用地'},
+ com:{n:'商服',k:0.80,d:'商业服务业用地'},
+ ind:{n:'工业',k:0.28,d:'工业用地'}
+};
+const PLOC=['城东新区','老城片区','城南片区','城北组团','高铁片区','沿河地块','开发区西侧','旧厂区'];
+/* 地块按「值多少钱」定大小：三宗地合计约当年一般公共预算收入的三分之一，各级同构 */
+function genPlots(n){const out=[];const inc=annualIncome();
+ for(let i=0;i<n;i++){const r=Math.random();const u=r<0.42?'res':r<0.70?'com':'ind';
+  const heat=clamp(0.6+(S.pros-50)/130+(S.housing-40)/260+rnd(-0.16,0.16),0.2,1.4);
+  const per=Math.max(0.01,landPrice()*PUSE[u].k*heat);
+  let mu=Math.round(inc*rnd(0.05,0.14)/per);
+  mu=Math.max(6,Math.min(mu,Math.round(S.landTotal*rnd(0.022,0.062)),Math.round(inc*0.15/per)));
+  out.push({id:'P'+(S.plotSeq=(S.plotSeq||0)+1),use:u,mu,loc:pick(PLOC),heat,y:S.year});}
+ return out;}
+function plotPrice(p){return landPrice()*p.mu*PUSE[p.use].k*p.heat;}
+function plotFailP(p){return clamp((0.52-p.heat)*1.5+(50-nf('dev'))/420,0,0.85);}
+/* 限价配建：开发商出钱建，政府少收这笔地价。能建什么由地块值多少钱决定 */
+const PBUILD={res:['nursery','park','clinic','greenway','market','school','house','culture','elder','social'],
+ com:['greenway','park','market','culture','busdepot','gym','station'],
+ ind:['road','busdepot','bridge','greenway','gas']};
+function facCost(k){return FAC[k].cost*S.sc*(1+0.02*S.year);}
+function plotBuild(p){const budget=plotPrice(p)*0.85;let best=null;
+ for(const k of PBUILD[p.use]){const F=FAC[k];if(F.lvl!==undefined&&S.lvl<F.lvl)continue;
+   const c=facCost(k);if(c<=budget&&(!best||c>facCost(best)))best=k;}
+ return best;}
+function plotAct(i,how){
+ const p=(S.plots||[])[i];if(!p)return '没有这宗地';
+ if(S.nosell>0)return '限购期内暂停供地';
+ if(S.land<p.mu)return '储备土地不足，先做征地';
+ const U=PUSE[p.use];const base=plotPrice(p);
+ const done=(rev,txt,cls)=>{S.land-=p.mu;S.landSold+=p.mu;S.cash+=rev;
+   S.landRev=(S.landRev||0)+rev;S.plots.splice(i,1);logIt(txt,cls||'');return null;};
+ if(how==='auction'){
+   if(Math.random()<plotFailP(p)){p.heat=clamp(p.heat-0.18,0.15,1.4);p.failed=(p.failed||0)+1;
+     S.rep-=1;nAdd('dev',-2);logIt(p.loc+'那宗'+U.n+'地流拍，无人举牌。','bad');return null;}
+   if(p.use==='res')S.housing=clamp(S.housing+p.mu/S.landTotal*150,0,100);
+   if(p.use==='com')S.pros+=1.2;
+   if(p.use==='ind')S.f.factory+=1;
+   nAdd('dev',2);
+   return done(base,'招拍挂成交：'+p.loc+' '+p.mu+' 亩'+U.n+'地，'+fmt(base)+'。','good');
+ }
+ if(how==='limit'){
+   const k=plotBuild(p);if(!k)return '这宗地的价值撑不起任何配建';
+   const rev=Math.max(base*0.15,base-facCost(k));
+   if(Math.random()<plotFailP(p)+0.10){p.heat=clamp(p.heat-0.12,0.15,1.4);p.failed=(p.failed||0)+1;
+     logIt(p.loc+'那宗地带着配建条件挂出去，没人接。','bad');return null;}
+   S.f[k]=(S.f[k]||0)+1;
+   if(p.use==='res')S.housing=clamp(S.housing+p.mu/S.landTotal*95,0,100);
+   if(p.use==='com')S.pros+=0.8;
+   S.sat+=1.2;nAdd('dev',-3);
+   return done(rev,'限价配建出让：'+p.loc+' '+p.mu+' 亩，地价'+fmt(rev)+'，开发商配建'+FAC[k].n+'一处，当场交付。','good');
+ }
+ if(how==='deal'){
+   if(p.use!=='ind')return '只有工业用地能协议出让';
+   const rev=base*0.45;S.f.factory+=1;S.pros+=1.5;nAdd('dev',9);
+   if(Math.random()<0.42)S.file.push({y:S.year,t:'工业用地协议出让程序不规范',sev:0,exp:false,mild:true});
+   return done(rev,'协议出让：'+p.loc+' '+p.mu+' 亩工业地给了本地企业，'+fmt(rev)+'。');
+ }
+ if(how==='hold'){p.held=(p.held||0)+1;p.heat=clamp(p.heat+rnd(-0.2,0.22),0.15,1.4);
+   logIt(p.loc+'那宗地暂缓出让，等市场。');return null;}
+ return null;
+}
+/* 土地财政依赖度：近三年土地收入占一般公共预算的比重 */
+function landDep(){const h=S.landHist||[];if(!h.length)return 0;
+ const n=Math.min(3,h.length);let rev=0,inc=0;
+ for(let i=h.length-n;i<h.length;i++){rev+=h[i].rev;inc+=h[i].inc;}
+ return inc>0?clamp(rev/inc*100,0,200):0;}
+
 /* ========== 引擎 ========== */
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const rnd=(a,b)=>a+Math.random()*(b-a);
@@ -1320,12 +1626,13 @@ function newGame(){
      staff:0,quota:0,recruitThisYear:0,reformDone:false,
      file:[],sanctions:0,accRisk:0,flags:{},taxcut:0,nosell:0,collect:0,
      sched:[],once:{},merit:0,ratings:[],dRun:0,gaps:{wage:0,ops:0,live:0},sanbaoYr:0,accidentsYr:0,
-     interestMiss:0,log:[],resume:[],monthly:null,expMult:1,over:null,tab:'over',grantYr:0,hist:[],built:0,phase:'work',retY:0,ppp:0,ag:'routine',agPool:[],agCd:{},agFlag:{},agUse:{},agN:0,wind:'growth',windLeft:2,windHist:[],npc:null};
+     interestMiss:0,log:[],resume:[],monthly:null,expMult:1,over:null,tab:'over',grantYr:0,hist:[],built:0,phase:'work',retY:0,ppp:0,ag:'routine',agPool:[],agCd:{},agFlag:{},agUse:{},agN:0,wind:'growth',windLeft:2,windHist:[],npc:null,plots:[],plotSeq:0,landRev:0,landHist:[],spotYr:0,leads:[],leadSeq:0,rivals:null,talent:0,bigp:null,dist:null,alloc:{},era:{},eraLand:1,eraPop:0,eraDebt:0};
   initLevel(0,0);
   logIt('到任。青石镇，三万四千人，一个资源枯竭的老矿镇。','sys');
   S.resume.push({y:1,t:'任青石镇镇长'});
 }
-function closeLevel(){if(S.lvl===undefined)return;S.hist.push({lvl:S.lvl,city:LV[S.lvl].city,years:S.tenure,built:S.built,hdr:Math.round(hdr()),grades:S.ratings.slice(-S.tenure).join(''),sat:Math.round(S.sat)});}
+function closeLevel(){if(S.lvl===undefined)return;S.hist.push({lvl:S.lvl,city:LV[S.lvl].city,years:S.tenure,built:S.built,hdr:Math.round(hdr()),grades:S.ratings.slice(-S.tenure).join(''),sat:Math.round(S.sat),
+  pros:Math.round(S.pros),liv:Math.round(S.liv),debt:Math.round(hdr()),pros0:Math.round(S.pros),debt0:Math.round(hdr()),leftY:S.year,after:0});}
 function initLevel(lvl,carryMerit){
   if(lvl>0)closeLevel();
   const L=LV[lvl];S.lvl=lvl;S.sc=L.sc;S.lsc=L.land/600;S.tenure=0;S.merit=carryMerit;
@@ -1346,6 +1653,8 @@ function initLevel(lvl,carryMerit){
   S.taxcut=0;S.nosell=0;S.collect=0;S.accRisk=0;S.gaps={wage:0,ops:0,live:0};S.sanbaoYr=0;S.accidentsYr=0;S.interestMiss=0;S.dRun=0;S.grantYr=0;
   S.sched=S.sched.filter(x=>x.id.startsWith('p_')===false);
   S.monthly=null;
+  S.plots=S.lvl>=1?genPlots(3):[];S.landRev=0;S.landHist=[];S.spotYr=0;S.leads=S.lvl>=2?genLeads(2):[];if(S.lvl>=3)initRivals();else{S.rivals=null;S.talent=0;S.bigp=null;}
+  if(S.lvl>=4)initDist();else{S.dist=null;S.alloc={};}
   npcInit(false);
   S.agCd={};S.agFlag={};S.ag='routine';agRefresh();
 }
@@ -1359,19 +1668,23 @@ function wageBill(){return S.staff*LV[S.lvl].wage*(1+0.015*S.year);}
 function opsBill(){let m=S.ppp||0;for(const k of FACORDER){if(S.f[k])m+=S.f[k]*FAC[k].maint*S.sc;}m+=S.f.factory*0;const admin=LV[S.lvl].transfer*0.12*(S.reformDone?0.9:1);return (m+admin)*(0.9+0.2*eff());}
 function liveBill(){return S.pop*8.5*(1+0.01*S.year)*(1+0.2*S.lvl);}
 function taxCommerce(){return S.pop*12*(0.4+S.pros/100)*eff();}
-function taxIndustry(){let t=S.f.factory*45*S.sc;for(const x of S.ind){t+=FAC[x.id].tax*S.sc*Math.min(1,x.age/FAC[x.id].ramp);}return t*(S.taxcut>0?0.6:1);}
+function taxIndustry(){let t=S.f.factory*45*S.sc;
+  for(const x of S.ind){let v=FAC[x.id].tax*S.sc*Math.min(1,x.age/FAC[x.id].ramp)*overCap(x.id);if(x.cut>0)v*=0.5;t+=v;}
+  return t*(S.taxcut>0?0.6:1);}
 function transferPay(){return LV[S.lvl].transfer*(1+(S.lvl>=2?0.005:0.012)*S.year);}
 function monthIncome(){return taxCommerce()+taxIndustry()+transferPay();}
 function annualIncome(){return monthIncome()*12;}
 function cqOut(){return S.cq.reduce((a,b)=>a+b.amt,0);}
 function sbOut(){return S.sb.reduce((a,b)=>a+b.amt,0);}
-function hdr(){return cqOut()/annualIncome()*100;}
+function hdr(){let h=cqOut()/annualIncome()*100;
+  if(S.lvl>=4&&S.dist&&S.dist.length)h=h*0.5+distAvg().debt*0.5;
+  return h;}
 function debtRatio(){return (cqOut()+sbOut()+S.platform)/annualIncome()*100;}
-function cqQuota(){return Math.max(0,annualIncome()*LV[S.lvl].cq*npcCqMul()-cqOut());}
+function cqQuota(){return Math.max(0,annualIncome()*LV[S.lvl].cq*npcCqMul()/(S.eraDebt||1)-cqOut());}
 function sbQuota(){return S.lvl<1?0:Math.max(0,gdp()*10000*0.03-S.sbYear);}
 function wlCostLeft(){return S.build.filter(b=>b.wl).reduce((a,b)=>a+(b.cost-b.paid),0);}
 function tension(){const exp=wageBill()+opsBill()+liveBill();const r=exp/monthIncome()*100;return clamp(0.45*hdr()+0.25*debtRatio()+15*Math.min(2,S.sanbaoYr)+0.2*Math.max(0,r-100),0,100);}
-function landPrice(){return LV[S.lvl].landPrice*(0.7+S.pros/100)*(1+0.25*S.housing/100)*npcLandMul();}
+function landPrice(){return LV[S.lvl].landPrice*(0.7+S.pros/100)*(1+0.25*S.housing/100)*npcLandMul()*(S.eraLand||1);}
 Object.defineProperties(S||{},{});
 function getters(){S.hdr=hdr();S.indCount=S.ind.length+S.f.factory;S.landPct=S.land/S.landTotal;}
 function fmt(v){const a=Math.abs(v);if(a>=1e4)return (v/1e4).toFixed(a>=1e5?0:1)+'亿';return Math.round(v)+'万';}
@@ -1386,11 +1699,14 @@ function queueBuild(id){const F=FAC[id];if(F.lvl!==undefined&&S.lvl<F.lvl)return
   S.land-=land;S.build.push({id,paid:0,cost:F.cost*S.sc*(1+0.02*S.year),months:F.months,left:F.months,wl:F.wl});
   logIt('立项：'+F.n+'，总投资'+fmt(F.cost*S.sc*(1+0.02*S.year))+'，工期'+F.months+'个月。');return null;}
 function cancelBuild(i){const b=S.build[i];if(!b)return;S.land+=FAC[b.id].land*S.lsc*0.35*0.5;S.build.splice(i,1);logIt('取消项目：'+FAC[b.id].n+'，已付资金不退。','bad');}
-function sellLand(mu){if(S.nosell>0)return '限购期内暂停供地';mu=Math.min(mu,S.land);if(mu<=0)return '没有可供地块';
-  const p=landPrice()*mu;S.cash+=p;S.land-=mu;S.landSold+=mu;S.housing=clamp(S.housing+mu/S.landTotal*120,0,100);
+function spotCap(){return S.lvl>=1?Math.max(0,40*S.lsc-(S.spotYr||0)):1e9;}
+function sellLand(mu){if(S.nosell>0)return '限购期内暂停供地';mu=Math.min(mu,S.land);
+  if(S.lvl>=1){const c=spotCap();if(c<=0)return '本年度零星供地额度已用完，请到土地页按宗出让';mu=Math.min(mu,c);}
+  if(mu<=0)return '没有可供地块';S.spotYr=(S.spotYr||0)+mu;
+  const p=landPrice()*mu;S.cash+=p;S.landRev=(S.landRev||0)+p;S.land-=mu;S.landSold+=mu;S.housing=clamp(S.housing+mu/S.landTotal*120,0,100);
   logIt('出让土地'+Math.round(mu)+'亩，收入'+fmt(p)+'。');return null;}
 function issueCQ(amt,term){if(S.frozen)return '新增融资已冻结';if(amt<=0||amt>cqQuota())return '超出额度';
-  S.cq.push({amt,rate:7,left:term,term});S.cash+=amt;logIt('发行城投债'+fmt(amt)+'，'+term/12+'年期，年利率7%。','sys');return null;}
+  const rt=S.eraDebt?8:7;S.cq.push({amt,rate:rt,left:term,term});S.cash+=amt;logIt('发行城投债'+fmt(amt)+'，'+term/12+'年期，年利率'+rt+'%。','sys');return null;}
 function issueSB(amt,term){if(S.frozen)return '新增融资已冻结';if(S.lvl<1)return '县级以上才能申报';if(wlCostLeft()<=0)return '没有在建的白名单项目';
   amt=Math.min(amt,sbQuota(),wlCostLeft()-S.sbUnspent);if(amt<=0)return '额度不足或项目资金已覆盖';
   S.sb.push({amt,rate:2.8,left:term,term});S.cash+=amt;S.sbUnspent+=amt;S.sbYear+=amt;logIt('专项债获批'+fmt(amt)+'，'+term/12+'年期，年利率2.8%。','sys');return null;}
@@ -1465,22 +1781,25 @@ function tick(){
     if(S.sbIdle>=12){const x=S.sbUnspent;S.cash-=x;S.sb.sort((a,b)=>b.amt-a.amt);let left=x;for(const b of S.sb){const y=Math.min(b.amt,left);b.amt-=y;left-=y;if(left<=0)break;}S.sb=S.sb.filter(b=>b.amt>1);S.sbUnspent=0;S.sbIdle=0;S.rep-=3;logIt('专项债资金长期闲置，额度被扣回'+fmt(x)+'。','bad');}}
   else S.sbIdle=0;
   /* 指标 */
-  for(const x of S.ind)x.age++;
+  for(const x of S.ind){x.age++;if(x.cut>0)x.cut--;}
   const J=jobs(),E=eff();
   const m1=v=>Math.min(1,v);
   /* 按设施权重通用计算：lw 宜居 pw 繁荣 ew 环境 hw 房价 sw 满意度 */
   let pw=0,lw=0,ew=0,hw=0,sw=0;
   for(const k of FACORDER){const F=FAC[k];if(F.ind)continue;const c=m1(cov(k));if(F.pw)pw+=F.pw*c;if(F.lw)lw+=F.lw*c;if(F.ew)ew+=F.ew*c;if(F.hw)hw+=F.hw*c;if(F.sw)sw+=F.sw*c;}
-  const prosT=26+40*m1(J)+pw+6*(E-0.6)+(S.flags.push?3:0);
+  const _mx=indMix();const prosT=26+40*m1(J)+pw+6*(E-0.6)+(S.flags.push?3:0)+10*_mx.tech-3*_mx.mfg;
   const livT=18+lw+(S.env-50)/5-S.housing/8;
-  S.pros+= (prosT-S.pros)*0.07;S.liv+=(livT-S.liv)*0.08;
+  let _pT=prosT,_lT=livT;
+  if(S.lvl>=4&&S.dist&&S.dist.length){const _da=distAvg();_pT=prosT*0.45+_da.pros*0.55;_lT=livT*0.45+_da.liv*0.55;}
+  S.pros+= (_pT-S.pros)*0.07;S.liv+=(_lT-S.liv)*0.08;
   const satT=0.55*S.liv+0.25*(100-S.housing)+0.2*m1(J)*100+sw;S.sat+=(satT-S.sat)*0.06;
   let dens=(S.f.factory*1.6+S.ind.reduce((a,x)=>a+FAC[x.id].pol,0))/S.sc;
   S.env+=(66-S.env)*0.03-0.7*dens/(S.pop/LV[S.lvl].pop)+ew;
   if(hw)S.housing=clamp(S.housing-hw,0,100);
   S.pros=clamp(S.pros,0,100);S.liv=clamp(S.liv,0,100);S.sat=clamp(S.sat,0,100);S.env=clamp(S.env,0,100);
-  S.pop*=1+0.0015*(S.liv-50)/10+0.002*(Math.min(J,1.2)-0.6)-(S.housing>70?0.001:0);
+  S.pop*=1+0.0015*(S.liv-50)/10+0.002*(Math.min(J,1.2)-0.6)-(S.housing>70?0.001:0)+(S.eraPop||0);
   S.housing=clamp(S.housing-0.5,0,100);S.rep+=(50-S.rep)*0.01;S.unity+=(npcUnityMid()-S.unity)*0.02;
+  if(S.lvl>=3&&S.talent){S.cash-=talentCost();S.pop*=1+0.0007*S.talent;S.pros+=0.04*S.talent;}
   if(S.taxcut>0)S.taxcut--;if(S.nosell>0)S.nosell--;
   /* 事故 */
   if(S.accRisk>0&&Math.random()<0.03*S.accRisk){S.accRisk=0;S.sched.push({id:'accident',m:0});}
@@ -1509,7 +1828,8 @@ function annual(){
   const sanctionsYr=S.file.filter(f=>f.mild&&f.exp&&f.expY===R.year).length;
   const W=windOf();R.W=W;R.wind=W.id;
   R.debtPen=Math.max(0,hdr()-60)/4*(W.debt||1);R.accPen=S.accidentsYr*10;R.cleanPen=sanctionsYr*8*(W.clean||1);
-  R.raw=W.w[0]*S.pros+W.w[1]*S.liv+W.w[2]*S.sat+(W.env||0)*S.env-R.debtPen-R.accPen-R.cleanPen;
+  R.rank=S.lvl>=3?myRank():0;R.rankBonus=R.rank?[0,3,0,-3][R.rank]:0;
+  R.raw=W.w[0]*S.pros+W.w[1]*S.liv+W.w[2]*S.sat+(W.env||0)*S.env-R.debtPen-R.accPen-R.cleanPen+R.rankBonus;
   let g=R.raw>=76?'A':R.raw>=60?'B':R.raw>=45?'C':'D';
   R.sanbao=S.sanbaoYr>0;if(R.sanbao){const stp=W.sanbao||1;for(let i=0;i<stp;i++)g=g==='A'?'B':g==='B'?'C':'D';}
   R.grade=g;R.tension=tension();const gain={A:30,B:18,C:8,D:-12}[g];S.merit+=gain;R.gain=gain;
@@ -1529,6 +1849,13 @@ function annual(){
   if(S.frozen&&hdr()<60&&!S.task){S.frozen=false;logIt('隐性债务率回落，融资冻结解除。','good');}
   for(const k in S.npc)S.npc[k].f=clamp(S.npc[k].f+(50-S.npc[k].f)*0.03,0,100);
   S.windLeft=(S.windLeft||0)-1;if(S.windLeft<=0)windShift();
+  S.spotYr=0;
+  S.landHist=(S.landHist||[]).concat([{y:R.year,rev:S.landRev||0,inc:annualIncome()}]).slice(-6);S.landRev=0;
+  if(S.lvl>=1){const keep=(S.plots||[]).filter(p=>(p.held||0)<2);S.plots=keep.concat(genPlots(Math.max(1,3-keep.length)));}
+  if(S.lvl>=2){const kp=(S.leads||[]).filter(l=>S.year-l.y<2);S.leads=kp.concat(genLeads(Math.max(1,3-kp.length)));}
+  if(S.lvl>=3){rivalStep();if(!S.bigp||S.year-S.bigp.y>=1)newBigP();}
+  if(S.lvl>=4)distStep();
+  eraStep();histStep();
   S.sanbaoYr=0;S.accidentsYr=0;S.flags.push=0;
   S.resume.push({y:R.year,t:LV[S.lvl].city+'第'+S.tenure+'年，年度考核'+g+'，政绩'+Math.round(S.merit)});
   /* 仕途判定 */
@@ -1571,6 +1898,8 @@ const IMG2NPC={p_zhou:'zhou',p_boss:'boss',p_lgfv:'lgfv',p_developer:'dev',p_old
 function evNpc(ev){return ev.npc||(typeof PORTRAIT!=='undefined'?IMG2NPC[PORTRAIT[ev.id]]:null)||null;}
 function relLabel(f){return f>=70?'关系很近':f>=55?'还算融洽':f>=40?'公事公办':f>=25?'有些生分':'很僵';}
 function findEvent(id){
+  if(id&&id.indexOf('era_')===0){const e=ERA.find(x=>'era_'+x.id===id);
+    if(e)return {id,kind:'时代',title:e.n,text:e.d+'\n\n'+e.note,opts:[{t:'知道了',n:'',fx:{}}]};}
   if(id==='wind_notice'){const W=windOf();
     return {id:'wind_notice',kind:'通知',title:'省里的风向：'+W.n,text:W.d+'\n\n'+W.note,opts:[{t:'收到',n:'',fx:{}}]};}
   return EV.find(e=>e.id===id)||PET.find(p=>p.id===id)||(SYSEV[id]?Object.assign({id},SYSEV[id]):null);}
@@ -1581,7 +1910,9 @@ function retiredStep(){S.retY++;const i=S.retY-1;if(i>=RET.length)return null;co
     if(bad.length){return {id:'r2',title:'退休第二年',text:'纪委的人来了。终身追责，档案里那几笔终究被翻了出来。你以为过去的事，其实一直在那里。',opts:[{t:'……',n:'',fx:{},end:'post_audit'}]};}
     return {id:'r2',title:'回头看',text:'纪委对你任上的一个项目做了例行回头看。来的人客客气气，翻了三天档案，走的时候说"没什么问题"。你送到门口，站了很久。',opts:[{t:'知道了',n:'',fx:{}}]};}
   if(r.id==='r5'){const h=S.hist;const town=h[0];let t='退休第五年，你回了一趟青石镇。';
-    if(town){t+=town.built>=6?'当年修的路还在，学校翻新过一次，镇上的人换了一茬。':town.built>=2?'当年修的那几样东西还在用，没人记得是谁修的。':'镇上和你走的时候差不多，年轻人还是在往外走。';}
+    if(town){t+=town.built>=6?'当年修的路还在，学校翻新过一次，镇上的人换了一茬。':town.built>=2?'当年修的那几样东西还在用，没人记得是谁修的。':'镇上和你走的时候差不多，年轻人还是在往外走。';
+      t+='你离开'+(town.after||0)+'年了，'+histLine(town);}
+    if(h.length>1){t+='\n\n后面几任待过的地方：'+h.slice(1).map(x=>x.city.replace(/（.*/,'')+'（离任'+(x.after||0)+'年，繁荣'+Math.round(x.pros)+'、债务率'+Math.round(x.debt)+'%）').join('；')+'。';}
     t+='\n\n你一共主政了 '+h.reduce((a,x)=>a+x.years,0)+' 年，'+h.length+' 个地方，建成 '+h.reduce((a,x)=>a+x.built,0)+' 个项目。';
     const last=h[h.length-1];if(last&&last.hdr>=70)t+='最后一任留下的债，下一任还在化。';else if(last&&last.hdr<=30)t+='最后一任的账交得干净。';
     return {id:'r5',title:'回镇上看看',text:t,opts:[{t:'……',n:'',fx:{},end:retireEnding()}]};}
@@ -1640,8 +1971,14 @@ function renderAll(){if(!S)return;getters();const L=LV[S.lvl];
    ['满意度',Math.round(S.sat),'房价压力 '+Math.round(S.housing),S.sat,S.sat<35],
    ['隐性债务率',h.toFixed(0)+'%',S.task?'化债任务书执行中':S.frozen?'融资已冻结':'总债务率 '+debtRatio().toFixed(0)+'%',Math.min(100,h),h>=70]];
   $('#stats').innerHTML=st.map(([l,v,d,bar,warn])=>`<div class="stat${warn?' warn':''}"><div class="l">${l}</div><div class="v num">${v}</div><div class="d muted">${d}</div>${bar!==null?`<div class="bar"><i style="width:${bar}%"></i></div>`:''}</div>`).join('');
-  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===S.tab));
-  $('#panel').innerHTML=({over:vOver,build:vBuild,fin:vFin,debt:vDebt,hr:vHR,file:vFile})[S.tab]();
+  const TABN={over:'总览',build:'建设',fin:'财政',debt:'债务',hr:'人事',file:'档案'};
+  const tabs=['over','build'].concat(mechTabs()).concat(['fin','debt','hr','file']);
+  const VIEW={over:vOver,build:vBuild,fin:vFin,debt:vDebt,hr:vHR,file:vFile,
+    land:vLand,ind:vInd,region:vRegion,district:vDistrict};
+  if(tabs.indexOf(S.tab)<0)S.tab='over';
+  $('#tabs').innerHTML=tabs.map(t=>`<button data-t="${t}"${t===S.tab?' class="on"':''}>${MECH[t]?MECH[t].tab:TABN[t]}</button>`).join('');
+  document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{S.tab=b.dataset.t;renderAll();});
+  $('#panel').innerHTML=(VIEW[S.tab]||vOver)();
   bindPanel();
   const m=S.monthly;$('#monthly').innerHTML=m?`<table><tr><td>税收</td><td class="r pos">+${fmt(m.tax)}</td></tr><tr><td>转移支付</td><td class="r pos">+${fmt(m.transfer)}</td></tr><tr><td>工资</td><td class="r neg">−${fmt(m.wage)}</td></tr><tr><td>运转</td><td class="r neg">−${fmt(m.ops)}</td></tr><tr><td>基本民生</td><td class="r neg">−${fmt(m.live)}</td></tr><tr><td>债务利息</td><td class="r neg">−${fmt(m.interest)}</td></tr>${m.principal>0?`<tr><td>偿还本金</td><td class="r neg">−${fmt(m.principal)}</td></tr>`:''}<tr><td>建设投入</td><td class="r neg">−${fmt(m.build)}</td></tr><tr><td>偿债准备金</td><td class="r neg">−${fmt(m.reserve)}</td></tr></table>`:'<div class="muted" style="font-size:13px">推进到下月后显示本月结算。</div>';
   $('#log').innerHTML=S.log.slice(0,60).map(x=>`<div class="${x.c==='bad'?'bad':x.c==='good'?'good':x.c==='sys'?'sys':''}"><span class="t">${x.y}年${x.m}月</span>${esc(x.t)}</div>`).join('');
@@ -1664,6 +2001,86 @@ function vWind(){if(S.phase==='retired')return '';
   <div class="hint">${esc(W.note)}</div>
   <div class="winds">${bars.map(([l,v])=>`<div class="wb"><i style="width:${v*100}%"></i><span>${l} ${pct(v)}</span></div>`).join('')}
   <div class="wx">${W.debt!==1?`债务扣分 ×${W.debt}　`:''}${W.clean!==1?`廉政扣分 ×${W.clean}　`:''}${W.expose!==1?`倒查概率 ×${W.expose}　`:''}${W.sanbao?`三保缺口压 ${W.sanbao} 档`:''}</div></div></div>`;}
+function vInd(){
+ const mix=indMix();const leads=S.leads||[];
+ const cnt={};for(const x of S.ind)cnt[x.id]=(cnt[x.id]||0)+1;
+ const rows=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]).map(k=>{const o=overCap(k);
+   return `<tr><td>${FAC[k].n}<span class="tag">${CATN[INDCAT[k]||'mfg']}</span></td><td class="r">${cnt[k]} 个</td><td class="r">${fmt(FAC[k].tax*S.sc*cnt[k]*o)}</td><td class="r ${o<0.95?'neg':''}">${o<0.995?'×'+o.toFixed(2)+' 过剩':'—'}</td></tr>`;}).join('')
+   ||'<tr><td class="muted" colspan="4">还没有落地的产业项目。</td></tr>';
+ const bar=[['mfg',mix.mfg],['trade',mix.trade],['tech',mix.tech]].map(([k,v])=>
+   `<div class="wb"><i style="width:${v*100}%"></i><span>${CATN[k]} ${Math.round(v*100)}%</span></div>`).join('');
+ const cards=leads.length?leads.map((l,i)=>{const F=FAC[l.fac];const e=leadOK(l);
+   return `<div class="lead"><div class="lh"><b>${esc(l.n)}</b><span class="tag">${CATN[INDCAT[l.fac]||'mfg']}</span><span class="tag">${F.n}</span>${l.rival?'<span class="tag red">邻市在争</span>':''}${l.cut?'<span class="tag blue">已谈过</span>':''}</div>
+   <div class="lm">投资 ${fmt(l.inv)}　达产月税 ${fmt(F.tax*S.sc)}　就业系数 ${F.jobs}　污染 ${F.pol}${F.ramp?'　达产期 '+F.ramp+' 个月':''}</div>
+   <div class="lm">对方要：供地 <b>${l.ask.land}</b> 亩　配套 <b>${fmt(l.ask.cash)}</b>${l.ask.cut?'　税收返还 <b>'+l.ask.cut+'</b> 个月':'　不要税收返还'}</div>
+   ${e?`<div class="lw">${esc(e)}</div>`:''}
+   <div class="pb"><button class="sm" data-lead="${i}" data-how="take"${e?' disabled':''}>按条件签约</button>
+   ${l.cut?'':`<button class="sm" data-lead="${i}" data-how="bargain">压价再谈（${Math.round(bargainP(l)*100)}% 成）</button>`}
+   <button class="sm danger" data-lead="${i}" data-how="drop">放弃</button></div></div>`;}).join('')
+   :'<div class="hint">手上没有在谈的线索。年初会有新的，「外出招商」也能带回来。</div>';
+ return `<div class="sec"><h2>在谈的招商线索</h2>
+ <div class="hint">项目是企业投的，政府出的是地、配套和税收返还。压价谈成能省一半，谈崩了对方就走——有邻市在争的时候尤其。</div>
+ <div class="leads">${cards}</div></div>
+ <div class="sec"><h2>产业结构</h2><div class="winds">${bar}</div>
+ <div class="hint">科创占比推高繁荣度上限，制造占比压环境。同一类企业超过三家开始产能过剩，边际税收递减——堆同一种是走不远的。</div></div>
+ <div class="sec"><h2>已落地企业</h2><table><tr><th>类型</th><th class="r">数量</th><th class="r">月税收</th><th class="r">产能</th></tr>${rows}</table>
+ <div class="hint">工业用地上的老厂 ${S.f.factory} 家，另计月税 ${fmt(S.f.factory*45*S.sc)}。</div></div>`;}
+function vRegion(){
+ const rs=S.rivals||[];const rank=myRank();const B=S.bigp;
+ const all=[{n:LV[S.lvl].city.replace(/（.*/,''),pros:S.pros,pop:S.pop,me:1}].concat(rs).sort((a,b)=>b.pros-a.pros);
+ const tbl=all.map((c,i)=>`<tr class="${c.me?'sum':''}"><td>${i+1}</td><td>${esc(c.n)}${c.me?'<span class="tag blue">本市</span>':''}</td><td class="r">${c.pros.toFixed(0)}</td><td class="r">${fmtPop(c.pop)}</td><td class="r">${c.me?'—':'进取度 '+c.aggr}</td></tr>`).join('');
+ const tal=[0,1,2,3].map(t=>`<button class="sm${(S.talent||0)===t?' on':''}" data-talent="${t}">${['不搞','一档','二档','三档'][t]}</button>`).join('');
+ const coops=rs.map((r,i)=>`<div class="lead"><div class="lh"><b>${esc(r.n)}</b><span class="tag">繁荣 ${r.pros.toFixed(0)}</span></div>
+  <div class="pb">${COOP.map(c=>{const done=(r.done||[]).indexOf(c.id)>=0;
+   return `<button class="sm" data-coop="${i}" data-cid="${c.id}"${done?' disabled':''}>${c.n} ${done?'（已建）':fmt(LV[S.lvl].transfer*c.k)}</button>`;}).join('')}</div>
+  <div class="lm">${COOP.map(c=>c.n+'：'+c.d).join('<br>')}</div></div>`).join('');
+ const big=B?`<div class="lead"><div class="lh"><b>${esc(B.n)}</b><span class="tag">${FAC[B.fac].n}</span><span class="tag red">两市在争</span></div>
+  <div class="lm">达产月税 ${fmt(FAC[B.fac].tax*S.sc)}　落到谁家，谁的繁荣度就多三个点。对手的报价意愿：${S.rivals.map((r,i)=>r.n+' '+B.r[i]).join('　')}</div>
+  <div class="pb"><button class="sm" data-bid="1">保守报价 ${fmt(B.base*0.6)}</button><button class="sm" data-bid="2">跟到底 ${fmt(B.base)}</button><button class="sm" data-bid="3">志在必得 ${fmt(B.base*1.7)}</button><button class="sm danger" data-bid="0">不争</button></div></div>`
+  :'<div class="hint">今年没有在争的省级项目。年初会有新的。</div>';
+ return `<div class="sec"><h2>省内位次</h2><table><tr><th>名次</th><th>城市</th><th class="r">繁荣度</th><th class="r">人口</th><th class="r">备注</th></tr>${tbl}</table>
+ <div class="hint">你排第 <b>${rank}</b>。年度考核按位次加减：第一 +3 分，第二 0 分，第三 −3 分。邻市每年自己也在长，进取度越高长得越快。</div></div>
+ <div class="sec"><h2>省级重大项目争夺</h2>${big}</div>
+ <div class="sec"><h2>人才与落户政策</h2><div class="row" style="gap:6px">${tal}</div>
+ <div class="hint">每档每月 ${fmt(LV[S.lvl].transfer*0.018)}，当前月支出 ${fmt(talentCost())}。补贴强度直接从邻市抽人——人口是零和的，你多一个他就少一个。</div></div>
+ <div class="sec"><h2>都市圈协作</h2><div class="hint">合作不是慈善：共建园区你分一半税，跨市轨道钱主要你出但宜居度是你的，生态共治能把督察的板子分掉一半。同一个项目和同一座城市只能做一次。</div>
+ <div class="leads">${coops}</div></div>`;}
+function vHist(){const hs=S.hist||[];if(!hs.length)return '';
+ return `<div class="sec"><h2>你走过的地方</h2><div class="hint">离任之后，它们还在往前走。你留下的债和民意，接手的人要用很多年消化。</div>
+ <table><tr><th>城市</th><th class="r">在任</th><th class="r">离任已 </th><th class="r">现在繁荣</th><th class="r">现在债务率</th><th>近况</th></tr>
+ ${hs.map(h=>`<tr><td>${esc(h.city.replace(/（.*/,''))}</td><td class="r">${h.years} 年</td><td class="r">${h.after||0} 年</td><td class="r">${Math.round(h.pros||0)}</td><td class="r ${(h.debt||0)>=80?'neg':''}">${Math.round(h.debt||0)}%</td><td style="font-size:13px">${esc(histLine(h))}</td></tr>`).join('')}</table></div>`;}
+function vDist(){
+ const ds=S.dist||[];const av=distAvg();const used=distTiers();
+ const rows=ds.map(d=>{const a=S.alloc[d.id]||{fund:0,focus:'eco'};
+  const tips=[];if(d.lazy)tips.push('<span class="tag">干劲一般</span>');
+  if(d.honest<0.45)tips.push('<span class="tag red">报表存疑</span>');
+  if(d.debt>=90)tips.push('<span class="tag red">债务偏高</span>');
+  return `<tr><td><b>${esc(d.n)}</b><span class="tag">${DTYPE[d.t].n}</span>${tips.join('')}<div class="rd">${fmtPop(d.pop)}　${esc(DTYPE[d.t].d)}</div></td>
+  <td class="r" data-l="繁荣">${d.pros.toFixed(0)}</td><td class="r" data-l="宜居">${d.liv.toFixed(0)}</td><td class="r ${d.debt>=90?'neg':''}" data-l="债务">${d.debt.toFixed(0)}%</td>
+  <td data-w="资金档"><div class="tiers">${[0,1,2,3,4,5].map(v=>`<button class="sm${a.fund===v?' on':''}" data-dist="${esc(d.id)}" data-k="fund" data-v="${v}">${v}</button>`).join('')}</div></td>
+  <td data-w="侧重"><div class="tiers fo">${Object.keys(DFOCUS).map(f=>`<button class="sm${a.focus===f?' on':''}" data-dist="${esc(d.id)}" data-k="focus" data-v="${f}">${DFOCUS[f]}</button>`).join('')}</div></td></tr>`;}).join('');
+ return `<div class="sec"><h2>建设资金分配</h2>
+ <div class="hint">到了这一级，你不再一件一件盯设施。全市建设资金切成 <b>${DTIERMAX}</b> 档，每档每年 ${fmt(distTierCost())}，你决定哪个区拿几档、往哪个方向使。<b>市级考核里，区县的表现占五成五，你自己这一摊只占四成五。</b></div>
+ <div class="hint">已分配 <b>${used}</b> / ${DTIERMAX} 档，全年支出 ${fmt(distSpend())}。区县加权平均：繁荣 <b>${av.pros.toFixed(0)}</b>、宜居 <b>${av.liv.toFixed(0)}</b>、债务率 <b>${av.debt.toFixed(0)}%</b>。</div>
+ <table class="dist"><tr><th>区</th><th class="r">繁荣</th><th class="r">宜居</th><th class="r">债务</th><th>资金档</th><th>考核侧重</th></tr>${rows}</table>
+ <div class="hint">「拼经济」出繁荣但压宜居、抬债务；「保民生」出宜居，慢；「控债务」压债务但繁荣掉。<b>区县的债务率一半算进市级隐性债务率</b>，压不住就是你的化债任务书。给「报表存疑」的区太多钱，它会把一部分变成瞒报的隐性债务——查出来那天并进市级账上，还带一条责任档案。</div></div>`;}
+function vDistrict(){return vDist();}
+function vLand(){
+ const plots=S.plots||[];const dep=landDep();
+ const cards=plots.length?plots.map((p,i)=>{const U=PUSE[p.use];const base=plotPrice(p);
+   const heat=p.heat>=1.05?['热','hot']:p.heat>=0.75?['平','mid']:p.heat>=0.5?['冷','cool']:['很冷','cold'];
+   const bk=plotBuild(p);const lrev=bk?Math.max(base*0.15,base-facCost(bk)):0;
+   return `<div class="plot"><div class="ph"><b>${esc(p.loc)}</b><span class="tag">${U.n}</span><span class="tag ${heat[1]}">市场${heat[0]}</span>${p.failed?'<span class="tag red">流拍 '+p.failed+' 次</span>':''}${p.held?'<span class="tag">已暂缓 '+p.held+' 年</span>':''}</div>
+   <div class="pm">${p.mu} 亩　评估价 ${fmt(base)}　流拍概率 ${Math.round(plotFailP(p)*100)}%${bk?'　配建可换 '+FAC[bk].n+'（省去 '+FAC[bk].months+' 个月工期）':''}</div>
+   <div class="pb"><button class="sm" data-plot="${i}" data-how="auction">招拍挂 ${fmt(base)}</button>
+   ${bk?`<button class="sm" data-plot="${i}" data-how="limit">限价配建 ${fmt(lrev)} + ${FAC[bk].n}</button>`:''}
+   ${p.use==='ind'?`<button class="sm" data-plot="${i}" data-how="deal">协议出让 ${fmt(base*0.45)}</button>`:''}
+   <button class="sm" data-plot="${i}" data-how="hold">暂缓</button></div></div>`;}).join(''):'<div class="hint">今年没有可供地块。年初会重新梳理一批，「征地拆迁攻坚」也能补充储备。</div>';
+ return `<div class="sec"><h2>今年的供地计划</h2>
+ <div class="hint">土地是县级以上最主要的自主财力。一宗一宗地办：招拍挂拿钱最多但会推高房价，限价配建少拿两成换一处实物，工业地协议出让最便宜、最快落地、也最容易留下记录。配建的实物当场交付，不占工期也不占财政现金流。暂缓的地明年市场未必更好。储备土地 ${Math.round(S.land)} 亩，基准地价 ${landPrice().toFixed(1)} 万/亩${S.nosell>0?'　<span class="tag red">限购期还有 '+S.nosell+' 月</span>':''}</div>
+ <div class="plots">${cards}</div></div>
+ <div class="sec"><h2>土地财政依赖度</h2>${gauge(Math.min(100,dep),dep>=55,55)}
+ <div class="hint">近三年土地出让收入占一般公共预算收入的 <b>${dep.toFixed(0)}%</b>。${dep>=70?'过半的日子靠卖地过，市场一冷，三保就悬。':dep>=45?'依赖已经不轻，房价压力和满意度都在为它买单。':'依赖度还在可控范围。'}累计出让 ${Math.round(S.landSold)} 亩，房价压力 ${Math.round(S.housing)}。</div></div>`;}
 function vOver(){const L=LV[S.lvl];const J=jobs();
   const warns=[];if(S.cash<0)warns.push('财政赤字，三保随时出缺口。');if(S.hdr>=70)warns.push('隐性债务率超过70%，化债任务书压顶。');else if(S.hdr>=55)warns.push('隐性债务率接近红线。');
   if(S.sat<40)warns.push('满意度偏低，信访件会变多。');if(S.env<40)warns.push('环境指标差，环保督察随时会来。');if(cov('school')<0.6)warns.push('学位缺口大。');if(cov('hosp')<0.5)warns.push('医疗资源不足。');
@@ -1674,6 +2091,7 @@ function vOver(){const L=LV[S.lvl];const J=jobs();
   <div><table><tr><td>政绩进度</td><td class="r">${Math.round(S.merit)} / ${L.need>9999?'—':L.need}</td></tr><tr><td>财政紧张度</td><td class="r">${tension().toFixed(0)}</td></tr><tr><td>核定编制 / 在编</td><td class="r">${S.quota} / ${S.staff}</td></tr><tr><td>本任年限</td><td class="r">${S.tenure+1} / ${L.maxY}</td></tr><tr><td>历年考核</td><td class="r">${S.ratings.join(' ')||'—'}</td></tr></table></div></div></div>
   <div class="sec"><h2>需要注意</h2>${warns.length?'<ul style="padding-left:18px;font-size:14px">'+warns.map(w=>'<li>'+w+'</li>').join('')+'</ul>':'<div class="hint">眼下没有明显问题。</div>'}</div>
   <div class="sec"><h2>在建项目</h2><table>${bs}</table></div>
+  ${eraOn().length?`<div class="sec"><h2>这个时代</h2>${eraOn().map(e=>`<div class="hint" style="margin:4px 0"><b>${esc(e.n)}</b>　${esc(e.note)}</div>`).join('')}</div>`:''}
   <div class="sec"><h2>晋升条件</h2><div class="hint">政绩达到 ${L.need>9999?'—':Math.round(L.need*npcNeedMul())}${L.need>9999?'':'（基准 '+L.need+'，'+npcName('boss')+'的态度上下浮动一成半）'}、财政紧张度不超过 60、没有未完成的化债任务书、班子团结不低于 35、当年考核 A 或 B。任期满 ${L.maxY} 年未晋升即转任二线。六十岁退休。</div></div>`;}
 function vBuild(){
   S.buildCat=S.buildCat||'traffic';
@@ -1693,8 +2111,9 @@ function vFin(){const inc=monthIncome();const M=S.monthly;
   <table style="margin-top:12px"><tr><th>三保优先序</th><th class="r">金额</th></tr><tr><td>保工资　在编 ${S.staff} 人</td><td class="r">${fmt(wageBill())}</td></tr><tr><td>保运转　设施运维与机关经费</td><td class="r">${fmt(opsBill())}</td></tr><tr><td>保基本民生　教育医疗社保</td><td class="r">${fmt(liveBill())}</td></tr><tr><td>债务利息</td><td class="r">${fmt(S.cq.reduce((a,b)=>a+b.amt*b.rate/1200,0)+S.sb.reduce((a,b)=>a+b.amt*b.rate/1200,0)+S.platform*0.005)}</td></tr><tr><td>建设投入（在建按期）</td><td class="r">${fmt(S.build.reduce((a,b)=>a+(b.cost-b.paid)/b.left,0))}</td></tr><tr class="sum"><td>支出合计</td><td class="r">${fmt(wageBill()+opsBill()+liveBill()+S.cq.reduce((a,b)=>a+b.amt*b.rate/1200,0)+S.sb.reduce((a,b)=>a+b.amt*b.rate/1200,0)+S.platform*0.005+S.build.reduce((a,b)=>a+(b.cost-b.paid)/b.left,0))}</td></tr></table>
   <div class="hint">结算顺序：工资 → 运转 → 基本民生 → 利息本金 → 建设。前三项出缺口就是三保缺口，年度考核压档一档。</div></div>
   <div class="sec"><h2>偿债准备金率</h2><div class="row"><input type="range" id="resRate" min="0" max="8" step="0.5" value="${S.reserveRate}" style="max-width:300px"><span id="resRateV" class="num">${S.reserveRate}%</span></div><div class="hint">每月按收入比例上缴准备金池，只能用于化债。当前池内 ${fmt(S.reserve)}。</div></div>
-  <div class="sec"><h2>土地出让</h2><div class="hint">储备土地 ${Math.round(S.land)} 亩，当前地价 ${landPrice().toFixed(1)} 万/亩。累计出让 ${Math.round(S.landSold)} 亩，房价压力 ${Math.round(S.housing)}。卖得越多，房价压力越高，满意度越低。${S.nosell>0?'<span class="tag red">限购期还有 '+S.nosell+' 月</span>':''}</div>
-  <div class="row"><input type="number" id="landN" value="${Math.round(Math.min(S.land,50*S.lsc))}" min="0" step="10" style="width:120px"> 亩<button class="sm" id="btnSell">挂牌出让</button></div></div>`;}
+  ${mechOn('land')?`<div class="sec"><h2>土地出让</h2><div class="hint">县级以上按宗办理，请到<b>土地</b>页。这里只保留零星供地，全年限额 ${Math.round(40*S.lsc)} 亩，已用 ${Math.round(S.spotYr||0)} 亩。储备 ${Math.round(S.land)} 亩，基准地价 ${landPrice().toFixed(1)} 万/亩。</div>
+  <div class="row"><input type="number" id="landN" value="${Math.round(Math.min(S.land,12*S.lsc))}" min="0" step="5" style="width:120px"> 亩<button class="sm" id="btnSell">零星出让</button></div></div>`:`<div class="sec"><h2>土地出让</h2><div class="hint">储备土地 ${Math.round(S.land)} 亩，当前地价 ${landPrice().toFixed(1)} 万/亩。累计出让 ${Math.round(S.landSold)} 亩，房价压力 ${Math.round(S.housing)}。卖得越多，房价压力越高，满意度越低。${S.nosell>0?'<span class="tag red">限购期还有 '+S.nosell+' 月</span>':''}</div>
+  <div class="row"><input type="number" id="landN" value="${Math.round(Math.min(S.land,50*S.lsc))}" min="0" step="10" style="width:120px"> 亩<button class="sm" id="btnSell">挂牌出让</button></div></div>`}`;}
 function vDebt(){const h=hdr();
   const cqRows=S.cq.map(b=>`<tr><td>城投债</td><td class="r">${fmt(b.amt)}</td><td class="r">${b.rate.toFixed(1)}%</td><td class="r">${b.left} 月</td></tr>`).join('');
   const sbRows=S.sb.map(b=>`<tr><td>专项债</td><td class="r">${fmt(b.amt)}</td><td class="r">${b.rate}%</td><td class="r">${b.left} 月</td></tr>`).join('');
@@ -1725,10 +2144,16 @@ function vHR(){const need=staffNeed();const r=S.staff/need;
   <div class="sec"><h2>机构改革</h2><div class="hint">一次性投入 ${fmt(LV[S.lvl].transfer*1.5)}，机关运转成本下降一成。每级一次。</div><button class="sm" id="btnReform" ${S.reformDone?'disabled':''}>${S.reformDone?'已完成':'启动改革'}</button></div>`;}
 function vFile(){
   const files=S.file.length?S.file.map(f=>`<li>${f.y}年　${esc(f.t)}${f.mild?'<span class="sev">违规</span>':'<span class="sev">违纪·'+['','一般','较重','严重'][f.sev]+'</span>'}${f.exp?'<span class="exp">'+(f.mild?'已处分':'已查处')+'</span>':''}</li>`).join(''):'<li class="muted">档案干净。</li>';
-  return `<div class="sec"><h2>履历</h2><ul class="resume" style="list-style:none">${S.resume.map(r=>`<li><span class="y">${r.y}年</span>${esc(r.t)}</li>`).join('')}</ul></div>
+  return vHist()+`<div class="sec"><h2>履历</h2><ul class="resume" style="list-style:none">${S.resume.map(r=>`<li><span class="y">${r.y}年</span>${esc(r.t)}</li>`).join('')}</ul></div>
   <div class="sec"><h2>历任小结</h2><table>${S.hist.length?S.hist.map(h=>`<tr><td>${esc(h.city)}</td><td class="r">${h.years} 年</td><td class="r">建成 ${h.built} 项</td><td class="r">离任隐债率 ${h.hdr}%</td><td class="r">${h.grades}</td></tr>`).join(''):'<tr><td class="muted">还在第一任。</td></tr>'}</table></div>
   <div class="sec"><h2>责任档案</h2><div class="hint">终身留存。违纪记录随时可能被倒查，退休也不例外。违规记录两年内可能被通报处分，累计四次免职。</div><ul class="file" style="list-style:none">${files}</ul></div>`;}
 function bindPanel(){
+  document.querySelectorAll('[data-dist]').forEach(b=>b.onclick=()=>{const e=distSet(b.dataset.dist,b.dataset.k,b.dataset.k==='fund'?+b.dataset.v:b.dataset.v);if(e)toast(e);renderAll();});
+  document.querySelectorAll('[data-talent]').forEach(b=>b.onclick=()=>{S.talent=+b.dataset.talent;renderAll();});
+  document.querySelectorAll('[data-coop]').forEach(b=>b.onclick=()=>{const e=coopDo(+b.dataset.coop,b.dataset.cid);if(e)toast(e);renderAll();});
+  document.querySelectorAll('[data-bid]').forEach(b=>b.onclick=()=>{const e=bidBig(+b.dataset.bid);if(e)toast(e);renderAll();});
+  document.querySelectorAll('[data-lead]').forEach(b=>b.onclick=()=>{const e=leadAct(+b.dataset.lead,b.dataset.how);if(e)toast(e);renderAll();});
+  document.querySelectorAll('[data-plot]').forEach(b=>b.onclick=()=>{const e=plotAct(+b.dataset.plot,b.dataset.how);if(e)toast(e);renderAll();});
   document.querySelectorAll('[data-ag]').forEach(b=>b.onclick=()=>{S.ag=b.dataset.ag;renderAll();});
   document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{S.buildCat=b.dataset.cat;renderAll();});
   document.querySelectorAll('[data-build]').forEach(b=>b.onclick=()=>{const e=queueBuild(b.dataset.build);if(e)toast(e);renderAll();});
@@ -1752,7 +2177,7 @@ function showEvent(ev,done){const kind=ev.kind||(ev.id.startsWith('p_')?'信访�
   document.querySelectorAll('#doc .opt').forEach(b=>b.onclick=()=>{const o=ev.opts[+b.dataset.i];if(!reqOk(o))return;applyFx(o.fx);if(ev.once)S.once[ev.id]=1;logIt('【'+ev.title+'】'+o.t+(o.grey?'（进入责任档案）':''),o.grey?'bad':'');hideDoc();if(o.end){busy=false;endGame(o.end);renderAll();showEnding();return;}done();});}
 function showReview(R,done){const L=LV[S.lvl];
   showDoc(`<div class="dh"><div class="kind">年度考核通报</div><h2>关于第 ${R.year} 年度${esc(L.city)}综合考核结果的通报</h2></div><div class="body"><div class="row" style="align-items:flex-end"><span class="grade">${R.grade}</span><span class="muted" style="padding-bottom:6px">${{A:'优秀',B:'良好',C:'合格',D:'不合格'}[R.grade]}${R.sanbao?'（三保出现缺口，压 '+(R.W.sanbao||1)+' 档）':''}</span></div>
-  <table style="margin:10px 0"><tr><td>综合得分</td><td class="r">${R.raw.toFixed(1)}</td></tr><tr><td>考核风向</td><td class="r">${esc(R.W.n)}</td></tr><tr><td>繁荣 ×${R.W.w[0]} / 宜居 ×${R.W.w[1]} / 满意 ×${R.W.w[2]}${R.W.env?' / 环境 ×'+R.W.env:''}</td><td class="r">${(R.W.w[0]*S.pros).toFixed(0)} / ${(R.W.w[1]*S.liv).toFixed(0)} / ${(R.W.w[2]*S.sat).toFixed(0)}${R.W.env?' / '+(R.W.env*S.env).toFixed(0):''}</td></tr><tr><td>债务扣分${R.W.debt!==1?'（×'+R.W.debt+'）':''}</td><td class="r">−${R.debtPen.toFixed(1)}</td></tr><tr><td>事故扣分</td><td class="r">−${R.accPen}</td></tr><tr><td>廉政扣分${R.W.clean!==1?'（×'+R.W.clean+'）':''}</td><td class="r">−${R.cleanPen.toFixed(1)}</td></tr><tr><td>政绩变动</td><td class="r">${R.gain>0?'+':''}${R.gain}　累计 ${Math.round(S.merit)}</td></tr><tr><td>财政紧张度</td><td class="r">${R.tension.toFixed(0)}</td></tr></table>
+  <table style="margin:10px 0"><tr><td>综合得分</td><td class="r">${R.raw.toFixed(1)}</td></tr><tr><td>考核风向</td><td class="r">${esc(R.W.n)}</td></tr><tr><td>繁荣 ×${R.W.w[0]} / 宜居 ×${R.W.w[1]} / 满意 ×${R.W.w[2]}${R.W.env?' / 环境 ×'+R.W.env:''}</td><td class="r">${(R.W.w[0]*S.pros).toFixed(0)} / ${(R.W.w[1]*S.liv).toFixed(0)} / ${(R.W.w[2]*S.sat).toFixed(0)}${R.W.env?' / '+(R.W.env*S.env).toFixed(0):''}</td></tr><tr><td>债务扣分${R.W.debt!==1?'（×'+R.W.debt+'）':''}</td><td class="r">−${R.debtPen.toFixed(1)}</td></tr><tr><td>事故扣分</td><td class="r">−${R.accPen}</td></tr><tr><td>廉政扣分${R.W.clean!==1?'（×'+R.W.clean+'）':''}</td><td class="r">−${R.cleanPen.toFixed(1)}</td></tr><tr><td>政绩变动</td><td class="r">${R.gain>0?'+':''}${R.gain}　累计 ${Math.round(S.merit)}</td></tr>${R.rank?`<tr><td>省内位次</td><td class="r">第 ${R.rank} 名　${R.rankBonus>0?'+':''}${R.rankBonus}</td></tr>`:''}<tr><td>财政紧张度</td><td class="r">${R.tension.toFixed(0)}</td></tr></table>
   ${R.next==='promote'?'<p><b>组织部门已启动考察程序。</b></p>':R.next==='fall'?'<p style="color:var(--red)"><b>纪委监委在考察中发现线索。</b></p>':R.next==='sidelined'?'<p>本任年限已满。</p>':''}<span class="seal">考核办</span></div><div class="opts"><button class="opt" id="rvOk"><span class="ot">知道了</span></button></div>`,'notice');
   $('#rvOk').onclick=()=>{hideDoc();done();};}
 function showPromo(lvl,done){showDoc(`<div class="dh"><div class="kind">任职通知</div><h2>关于${esc(LV[lvl].city.replace(/（.*/,''))}主要领导任职的通知</h2></div><div class="body">${esc(PROMO_TEXT[lvl])}\n\n上一任的政绩按四分之一带入新任期。新城市有存量债务，先看账。<span class="seal">组织部</span></div><div class="opts"><button class="opt" id="prOk"><span class="ot">到任</span></button></div>`,'notice');
@@ -1799,10 +2224,9 @@ let _mt=null;
 function mtoast(t){let el=$('#mtoast');if(!el){el=document.createElement('div');el.id='mtoast';document.body.appendChild(el);}el.textContent=t;el.classList.add('on');clearTimeout(_mt);_mt=setTimeout(()=>el.classList.remove('on'),2600);}
 const LS={get:k=>{try{return localStorage.getItem(k);}catch(e){return null;}},set:(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}},del:k=>{try{localStorage.removeItem(k);}catch(e){}}};
 function save(){LS.set('yifang_save',JSON.stringify(S));}
-function migrate(){if(!S)return;S.f=S.f||{};for(const k of FACORDER)if(S.f[k]===undefined)S.f[k]=0;if(S.f.factory===undefined)S.f.factory=0;S.seen=S.seen||{};S.brief=S.brief||0;S.buildCat=S.buildCat||'traffic';S.logSeq=S.logSeq||S.log.length;S.build=(S.build||[]).filter(b=>FAC[b.id]);S.ind=(S.ind||[]).filter(x=>FAC[x.id]);S.agCd=S.agCd||{};S.agFlag={};S.agUse=S.agUse||{};S.agN=S.agN||0;S.ag='routine';if(!S.wind||!WIND.find(w=>w.id===S.wind)){S.wind='growth';S.windLeft=3;}S.windHist=S.windHist||[];if(!S.npc)npcInit(true);else for(const k of NPCORDER)if(!S.npc[k])S.npc[k]={n:NPCS[k].fixed||newName(),f:50};if(!S.agPool||!S.agPool.length||S.agPool.some(k=>!AG[k]))agRefresh();}
+function migrate(){if(!S)return;S.f=S.f||{};for(const k of FACORDER)if(S.f[k]===undefined)S.f[k]=0;if(S.f.factory===undefined)S.f.factory=0;S.seen=S.seen||{};S.brief=S.brief||0;S.buildCat=S.buildCat||'traffic';S.logSeq=S.logSeq||S.log.length;S.build=(S.build||[]).filter(b=>FAC[b.id]);S.ind=(S.ind||[]).filter(x=>FAC[x.id]);S.agCd=S.agCd||{};S.agFlag={};S.agUse=S.agUse||{};S.agN=S.agN||0;S.ag='routine';if(!S.wind||!WIND.find(w=>w.id===S.wind)){S.wind='growth';S.windLeft=3;}S.windHist=S.windHist||[];S.plotSeq=S.plotSeq||0;S.landRev=S.landRev||0;S.landHist=S.landHist||[];S.spotYr=S.spotYr||0;S.leadSeq=S.leadSeq||0;if(!S.leads)S.leads=S.lvl>=2?genLeads(2):[];S.talent=S.talent||0;S.alloc=S.alloc||{};S.era=S.era||{};S.hist=(S.hist||[]).map(h=>(h.pros===undefined&&(h.pros=55,h.liv=52,h.debt=h.hdr||40,h.after=0),h));if(S.lvl>=3&&!S.rivals)initRivals();if(S.lvl>=4&&!S.dist)initDist();S.ind=(S.ind||[]).map(x=>(x.cut===undefined&&(x.cut=0),x));if(!S.plots)S.plots=S.lvl>=1?genPlots(3):[];if(!S.npc)npcInit(true);else for(const k of NPCORDER)if(!S.npc[k])S.npc[k]={n:NPCS[k].fixed||newName(),f:50};if(!S.agPool||!S.agPool.length||S.agPool.some(k=>!AG[k]))agRefresh();}
 function load(){try{const s=LS.get('yifang_save');if(!s)return false;S=JSON.parse(s);migrate();return true;}catch(e){return false;}}
 document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{S.tab=b.dataset.t;renderAll();});
   $('#nextbtn').onclick=next;
   $('#btnNew').onclick=()=>{newGame();$('#cover').style.display='none';renderAll();preloadArt();};
   $('#btnLoad').onclick=()=>{if(load()){$('#cover').style.display='none';renderAll();preloadArt();}else alert('没有找到存档。');};
