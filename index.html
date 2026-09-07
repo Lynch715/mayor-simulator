@@ -98,6 +98,39 @@ tr.sum td{font-weight:600;border-top:2px solid var(--ink);border-bottom:0}
 .fac .i{font-size:12px;color:var(--ink2)}
 .fac .cov{font-size:12px}
 .tag{display:inline-block;font-size:11px;padding:1px 6px;border:1px solid var(--line);border-radius:2px;color:var(--ink2);margin-left:6px;vertical-align:1px}
+/* ===== 本月安排 ===== */
+.motag{display:inline-block;font-size:11px;font-weight:400;color:var(--ink2);border:1px solid var(--line);border-radius:2px;padding:1px 7px;margin-left:8px;vertical-align:2px;font-family:var(--sans)}
+.agenda{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.ag{text-align:left;background:#fff;border:1px solid var(--line);border-radius:3px;padding:9px 11px;display:block;width:100%;line-height:1.5}
+.ag:hover{border-color:var(--ink2)}
+.ag.on{border-color:var(--red);box-shadow:inset 0 0 0 1px var(--red);background:rgba(180,35,28,.045)}
+.ag .an{display:block;font-weight:700;font-size:14px;color:var(--ink);margin-bottom:2px}
+.ag .an i{font-style:normal;font-weight:400;font-size:11px;color:var(--ink3);border:1px solid var(--line2);border-radius:2px;padding:0 4px;margin-left:6px;vertical-align:1px}
+.ag .ad{display:block;font-size:12px;color:var(--ink3)}
+.ag.on .ad{color:var(--ink2)}
+.winds{margin-top:8px}
+.wb{position:relative;height:22px;background:var(--paper2);border-radius:2px;margin-bottom:5px;overflow:hidden}
+.wb i{position:absolute;left:0;top:0;bottom:0;background:rgba(35,76,134,.22);display:block}
+.wb span{position:relative;display:block;padding:2px 8px;font-size:12px;color:var(--ink2);line-height:18px}
+.wx{font-size:12px;color:var(--red2);margin-top:6px}
+.dh .by{display:flex;align-items:center;gap:8px;margin-top:7px;font-size:12px;color:var(--ink2);font-family:var(--sans)}
+.dh .by b{font-weight:700;color:var(--ink)}
+.dh .by em{font-style:normal;color:var(--ink3)}
+.fbar{display:inline-block;width:64px;height:5px;background:var(--line2);border-radius:3px;overflow:hidden;vertical-align:middle}
+.fbar i{display:block;height:100%;background:var(--blue)}
+.fbar.wide{display:block;width:100%;height:6px;margin:7px 0 3px}
+.opt.dis{opacity:.5;cursor:not-allowed;background:var(--paper2)}
+.opt.dis:hover{border-color:var(--line)}
+.rels{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.rel{border:1px solid var(--line);border-radius:3px;padding:9px 11px;background:#fff}
+.rel .rn{font-size:14px}
+.rel .rn b{font-weight:700}
+.rel .rf{font-size:12px;color:var(--ink2)}
+.rel .rd{font-size:12px;color:var(--ink3);margin-top:6px;line-height:1.55}
+.rel .rd i{font-style:normal;color:var(--blue2)}
+
+
+
 .tag.red{color:var(--red);border-color:var(--red)}
 .tag.blue{color:var(--blue);border-color:var(--blue)}
 .tag.green{color:var(--green);border-color:var(--green)}
@@ -126,7 +159,10 @@ tr.sum td{font-weight:600;border-top:2px solid var(--ink);border-bottom:0}
 .path .pa{display:flex;align-items:center;gap:6px;flex:0 0 auto}
 .path .pa input[type=number]{width:110px}
 @media (max-width:640px){
-  .act{flex-wrap:nowrap}
+  .act{flex-wrap:wrap}
+  .act select{flex:0 1 auto;min-width:0}
+  .act button{flex:0 0 auto}
+  #main>div,#panel,#tabs{min-width:0}
   .act input[type=number]{max-width:none}
   .act select{padding:7px 4px}
   .paths .path{flex-direction:column;align-items:stretch;gap:8px}
@@ -261,6 +297,8 @@ tr.sum td{font-weight:600;border-top:2px solid var(--ink);border-bottom:0}
   .doc .body{padding:14px 16px;font-size:15px;line-height:1.8}
   .doc .opts{padding:0 16px 18px;gap:9px}
   .opt{padding:12px 13px;min-height:48px}
+  .agenda,.rels{grid-template-columns:1fr;gap:7px}
+  .ag{padding:10px 12px;min-height:44px}
   .doc .body.hasp{grid-template-columns:82px 1fr;gap:6px 12px}
   .grade{font-size:38px}
   .art.banner{margin-bottom:12px}
@@ -393,6 +431,7 @@ const FAC={
  fin:{cat:'ind',n:'金融商务区',cost:5000,months:16,maint:60,land:60,ind:true,tax:140,jobs:0.6,pol:0,ramp:30,lvl:3,needLiv:60,d:'税高、不冒烟，但得先有人愿意来。'},
  aero:{cat:'ind',n:'航天科创城',cost:30000,months:30,maint:320,land:300,ind:true,tax:520,jobs:2.5,pol:0.3,ramp:48,lvl:3,d:'高负债、高产出，冲满分政绩用。'}
 };
+
 const FACORDER=Object.keys(FAC);
 const CAT=[['traffic','交通','路桥场站，直接顶繁荣度。'],['people','民生','教育、医疗、社保、住房，宜居度和满意度的大头。'],['infra','市政','水电气与管网，缺一样就出事。'],['eco','生态','花钱不多，占地不少，环境靠它回升。'],['ind','产业','税收和就业。工业类需要电厂覆盖，污染要算账。']];
 const _st='fill="none" stroke="currentColor" stroke-width="2"';
@@ -436,153 +475,324 @@ const ICON={
 /* 事件：lv=[min,max]，w 权重，once 只触发一次，cond(S) 条件；
    fx：cash(×sc) sat env pros liv rep unity pop(%) land(×lsc) file{sev,t} mild{t} fac{id,n} q{id} sched{id,m} flag acc(事故隐患) */
 const EV=[
-{id:'land_cheap',lv:[0,3],w:5,title:'企业申请低价出让工业用地',text:'一家做建材的企业递了申请，想以基准地价三成的价格拿走一块工业地，承诺两年内投产、解决两百人就业。招商办说这家企业在邻县也谈着，条件比我们松。',opts:[
- {t:'同意低价出让',n:'土地收入少一截，但企业落地、繁荣度上来',fx:{land:-40,cashLand:0.3,pros:4,rep:0}},
- {t:'按基准价挂牌',n:'企业大概率去邻县，繁荣度小幅下跌',fx:{pros:-2,rep:1}}]},
-{id:'school_petition',lv:[0,4],w:5,title:'群众联名要求增设学校',text:'新区几个小区的家长凑了三百多个签名，说孩子上学要跨半个城，早上六点就得出门。教育局核了，学位缺口确实有。',opts:[
+{id:'land_cheap',mo:[3,4],lv:[0,3],w:5,title:'企业申请低价出让工业用地',text:'一家做建材的企业递了申请，想以基准地价三成的价格拿走一块工业地，承诺两年内投产、解决两百人就业。招商办说这家企业在邻县也谈着，条件比我们松。',opts:[
+ {t:'同意低价出让',n:'土地收入少一截，但企业落地、繁荣度上来',fx:{land:-40,cashLand:0.3,pros:4,npc:{k:'dev',v:9},sched:{id:'land_cheap2',m:26}}},
+ {t:'按基准价挂牌',n:'企业大概率去邻县，繁荣度小幅下跌',fx:{pros:-2,rep:1,npc:{k:'dev',v:-6}}},
+ {t:'让〔名〕带话：地可以给，配建一所学校',n:'他卖你面子',req:{k:'dev',v:62},fx:{land:-40,cashLand:0.3,pros:3,fac:{id:'school',n:1},liv:2,npc:{k:'dev',v:-3}}}]},
+{id:'school_petition',mo:[8,9],lv:[0,4],w:5,title:'群众联名要求增设学校',text:'新区几个小区的家长凑了三百多个签名，说孩子上学要跨半个城，早上六点就得出门。教育局核了，学位缺口确实有。',opts:[
  {t:'拨款新建一所学校',n:'立项开工，财政要掏钱',fx:{q:'school',sat:3}},
  {t:'先答复，纳入明年规划',n:'满意度持续走低',fx:{sat:-4}}]},
-{id:'factory',lv:[0,3],w:5,cond:S=>S.f.factory<1+S.lvl,title:'大型工厂选址洽谈',text:'一家化工企业想落一个年产值不小的项目，税收预估很可观，用工也多。环保局私下说，它在上一个地方是被督察赶走的。',opts:[
+{id:'factory',mo:[3,4],lv:[0,3],w:5,cond:S=>S.f.factory<1+S.lvl,title:'大型工厂选址洽谈',text:'一家化工企业想落一个年产值不小的项目，税收预估很可观，用工也多。环保局私下说，它在上一个地方是被督察赶走的。',opts:[
  {t:'引进',n:'税收明显增长，环境持续下降',fx:{fac:{id:'factory',n:1},pros:5,env:-6}},
  {t:'婉拒',n:'保住环境，错过一波增长',fx:{pros:-3,env:0,rep:1}}]},
-{id:'audit_routine',lv:[0,4],w:4,title:'审计局例行检查',text:'审计组进驻两周，发现几笔项目资金拨付程序不规范、一批专项资金结转超期。问题不算大，但要整改。',opts:[
+{id:'audit_routine',mo:[6,10],lv:[0,4],w:4,title:'审计局例行检查',text:'审计组进驻两周，发现几笔项目资金拨付程序不规范、一批专项资金结转超期。问题不算大，但要整改。',opts:[
  {t:'自查整改，规范流程',n:'花一笔钱把账理清',fx:{cash:-60,rep:2}},
  {t:'补几份说明应付过去',n:'留下一笔违规记录',fx:{mild:{t:'审计整改敷衍应付'}}}]},
-{id:'boss_square',lv:[0,3],w:3,title:'老板提出"捐建"广场',text:'本地一个做地产的老板来办公室，说愿意出钱给镇上修一个文化广场，不用财政花一分钱。条件是市场那块地"以后协议出让给他，价格好商量"。他把话说得很轻。',opts:[
- {t:'接受，把地按他的意思办',n:'广场白得一个，但这笔地款和程序进了责任档案',fx:{fac:{id:'park',n:1},file:{sev:3,t:'以协议出让土地换取企业"捐建"，涉嫌利益输送'},sat:3},grey:true},
- {t:'广场可以捐，地必须走招拍挂',n:'老板大概率不捐了',fx:{rep:1}},
- {t:'不接触',n:'',fx:{}}]},
-{id:'leader_nephew',lv:[0,4],w:3,title:'老领导打了个电话',text:'你上一任的分管领导打电话过来，寒暄了一会儿，说他外甥今年考事业编差两分，"能不能想想办法，都是自己人"。',opts:[
- {t:'让人事口"研究一下"',n:'招录名单被改动，进责任档案',fx:{file:{sev:2,t:'干预事业编制招录，违规安排人员'},unity:2},grey:true},
- {t:'实话实说，走不了',n:'关系冷下来',fx:{unity:-2,rep:1}}]},
-{id:'flood',lv:[0,4],w:3,title:'连续强降雨',text:'三天下了半年的雨量，河堤有两处险情，低洼片区进水。应急局要钱抢险，物资、机械、人工都得现结。',opts:[
+{id:'boss_square',mo:[2,3],lv:[0,3],w:3,title:'老板提出"捐建"广场',text:'本地一个做地产的老板来办公室，说愿意出钱给镇上修一个文化广场，不用财政花一分钱。条件是市场那块地"以后协议出让给他，价格好商量"。他把话说得很轻。',opts:[
+ {t:'接受，把地按他的意思办',n:'广场白得一个，但这笔地款和程序进了责任档案',fx:{fac:{id:'park',n:1},file:{sev:3,t:'以协议出让土地换取企业"捐建"，涉嫌利益输送'},sat:3,npc:{k:'dev',v:12},sched:{id:'boss_square2',m:26}},grey:true},
+ {t:'广场可以捐，地必须走招拍挂',n:'老板大概率不捐了',fx:{rep:1,npc:{k:'dev',v:-7}}},
+ {t:'不接触',n:'',fx:{npc:{k:'dev',v:-3}}}]},
+{id:'leader_nephew',mo:[1,2],lv:[0,4],w:3,title:'老领导打了个电话',text:'你上一任的分管领导打电话过来，寒暄了一会儿，说他外甥今年考事业编差两分，"能不能想想办法，都是自己人"。',opts:[
+ {t:'让人事口"研究一下"',n:'招录名单被改动，进责任档案',fx:{file:{sev:2,t:'干预事业编制招录，违规安排人员'},unity:2,npc:{k:'old',v:14}},grey:true},
+ {t:'实话实说，走不了',n:'关系冷下来',fx:{unity:-2,rep:1,npc:{k:'old',v:-14}}}]},
+{id:'flood',mo:[7,8],lv:[0,4],w:3,title:'连续强降雨',text:'三天下了半年的雨量，河堤有两处险情，低洼片区进水。应急局要钱抢险，物资、机械、人工都得现结。',opts:[
  {t:'财政先垫，全力抢险',n:'立即支出，稳住民心',fx:{cash:-150,sat:2,rep:2}},
  {t:'申请上级救灾资金，等批下来再动',n:'钱慢，群众等不起',fx:{sat:-6,rep:-2,cash:40}}]},
-{id:'inspection',lv:[0,4],w:4,title:'上级检查组下周到',text:'省里的综合考核组下周到，办公室拟了方案：主干道两侧突击刷墙、临时清退占道经营、准备汇报材料。预算不小。',opts:[
+{id:'inspection',mo:[5,6,10],lv:[0,4],w:4,title:'上级检查组下周到',text:'省里的综合考核组下周到，办公室拟了方案：主干道两侧突击刷墙、临时清退占道经营、准备汇报材料。预算不小。',opts:[
  {t:'照方案办',n:'检查顺利，但属于形式主义支出，留一笔违规记录',fx:{cash:-80,rep:3,mild:{t:'迎检突击整治，铺张浪费'}}},
  {t:'实事求是，该什么样什么样',n:'检查结果一般',fx:{rep:-1}}]},
-{id:'yearend_spend',lv:[0,4],w:3,cond:S=>S.month===11&&S.cash>200*S.sc,title:'年底预算执行率不够',text:'财政局提醒，今年预算执行率只有七成多，上面会问。局里建议年底前把钱花出去，采购一批设备和办公用品。',opts:[
+{id:'yearend_spend',mo:[11,12],lv:[0,4],w:3,cond:S=>S.month===11&&S.cash>200*S.sc,title:'年底预算执行率不够',text:'财政局提醒，今年预算执行率只有七成多，上面会问。局里建议年底前把钱花出去，采购一批设备和办公用品。',opts:[
  {t:'突击花钱把执行率做上去',n:'钱花在没用的地方',fx:{cash:-150,mild:{t:'年底突击花钱'}}},
  {t:'结转下年，如实说明',n:'考核可能被问',fx:{rep:-1}}]},
-{id:'oldcommunity',lv:[1,4],w:4,title:'老旧小区改造申请',text:'住建局报了一批老旧小区，管网老化、没有电梯、停车乱。居民反映了好几年。改造费用不低，但符合专项债投向。',opts:[
+{id:'oldcommunity',mo:[3,4],lv:[1,4],w:4,title:'老旧小区改造申请',text:'住建局报了一批老旧小区，管网老化、没有电梯、停车乱。居民反映了好几年。改造费用不低，但符合专项债投向。',opts:[
  {t:'立项改造',n:'宜居度上升，可以申报专项债',fx:{cash:-200,liv:4,sat:3}},
  {t:'缓一缓',n:'',fx:{sat:-2}}]},
-{id:'canteen',lv:[0,4],w:3,title:'学校食堂出了问题',text:'网上传出一所学校食堂食材过期的视频，家长在校门口围了一上午。教育局说承包商是几年前招标定的。',opts:[
+{id:'canteen',mo:[9,10],lv:[0,4],w:3,title:'学校食堂出了问题',text:'网上传出一所学校食堂食材过期的视频，家长在校门口围了一上午。教育局说承包商是几年前招标定的。',opts:[
  {t:'公开处理，解除承包，追责到人',n:'',fx:{sat:1,rep:2}},
  {t:'低调处理，删帖压舆情',n:'舆情可能反弹',fx:{sat:-3,mild:{t:'压制舆情'},sched:{id:'canteen2',m:2}}}]},
 {id:'canteen2',lv:[0,4],w:0,title:'食堂事件发酵',text:'删帖没压住，媒体做了跟进报道，把"删帖"本身也写进去了。上级要求说明情况。',opts:[
  {t:'公开道歉，重新处理',n:'',fx:{sat:-4,rep:-4}}]},
-{id:'env_inspect',lv:[0,4],w:4,cond:S=>S.env<45,title:'环保督察组进驻',text:'中央环保督察组下沉到你这里。空气和水的数据摆在那儿，几家企业排放明显超标。',opts:[
+{id:'env_inspect',mo:[10],lv:[0,4],w:4,cond:S=>S.env<45,title:'环保督察组进驻',text:'中央环保督察组下沉到你这里。空气和水的数据摆在那儿，几家企业排放明显超标。',opts:[
  {t:'依法关停整改',n:'繁荣度下降，环境回升',fx:{pros:-5,env:8,rep:2}},
  {t:'让企业"错峰生产"应付',n:'留一笔违规记录，环境不变',fx:{mild:{t:'应付环保督察，企业弄虚作假'},sched:{id:'env_inspect2',m:4}}}]},
 {id:'env_inspect2',lv:[0,4],w:0,title:'督察回头看',text:'督察组回头看，发现企业排放数据造假。通报点名，责令限期整改。',opts:[
  {t:'接受通报，全面整改',n:'',fx:{pros:-6,env:6,rep:-5,mild:{t:'被环保督察通报'}}}]},
 {id:'drunk',lv:[0,4],w:2,title:'一位局长酒驾被查',text:'交警夜查查到了自己人。视频已经在本地群里传开。',opts:[
- {t:'按规定处理，免职',n:'班子里有人不高兴',fx:{unity:-3,rep:2}},
- {t:'内部处理，不对外',n:'',fx:{mild:{t:'包庇干部违纪'},unity:2}}]},
-{id:'fake_sign',lv:[0,4],w:3,title:'招商签约仪式',text:'招商办准备了一场集中签约，十二个项目，总投资额写得很大。你翻了一下，有四个是意向书，一个去年就签过。',opts:[
- {t:'照数字宣传',n:'繁荣度短期上涨',fx:{pros:3,mild:{t:'招商数据注水'}}},
+ {t:'按规定处理，免职',n:'班子里有人不高兴',fx:{unity:-3,rep:2,npc:{k:'insp',v:6},npc2:{k:'zhou',v:-4}}},
+ {t:'内部处理，不对外',n:'',fx:{mild:{t:'包庇干部违纪'},unity:2,npc:{k:'insp',v:-7},npc2:{k:'zhou',v:4}}}]},
+{id:'fake_sign',mo:[4,11],lv:[0,4],w:3,title:'招商签约仪式',text:'招商办准备了一场集中签约，十二个项目，总投资额写得很大。你翻了一下，有四个是意向书，一个去年就签过。',opts:[
+ {t:'照数字宣传',n:'繁荣度短期上涨',fx:{pros:3,mild:{t:'招商数据注水'},sched:{id:'fake_sign2',m:13}}},
  {t:'只公布落地项目',n:'',fx:{rep:1}}]},
-{id:'wage_migrant',lv:[0,4],w:3,cond:S=>S.month>=10,title:'农民工集体讨薪',text:'一个在建工程的施工方拖了工人半年工资，几十个人堵在政府门口。总包说是财政欠了他们的进度款。',opts:[
+{id:'wage_migrant',mo:[12,1],lv:[0,4],w:3,cond:S=>S.month>=10,title:'农民工集体讨薪',text:'一个在建工程的施工方拖了工人半年工资，几十个人堵在政府门口。总包说是财政欠了他们的进度款。',opts:[
  {t:'财政先垫付工资',n:'',fx:{cash:-90,sat:2}},
  {t:'责令施工方自行解决',n:'人不散，满意度下跌',fx:{sat:-5}}]},
-{id:'bid_war',lv:[1,3],w:3,title:'邻市抢一个项目',text:'一家上市公司要建区域总部，你和邻市都在争。对方开出了税收返还和免费厂房。',opts:[
- {t:'加码，给厂房免租三年',n:'财政投入大，产业升级',fx:{cash:-300,pros:6}},
+{id:'bid_war',mo:[4,11],lv:[1,3],w:3,title:'邻市抢一个项目',text:'一家上市公司要建区域总部，你和邻市都在争。对方开出了税收返还和免费厂房。',opts:[
+ {t:'加码，给厂房免租三年',n:'财政投入大，产业升级',fx:{cash:-300,pros:6,sched:{id:'bid_war2',m:36}}},
  {t:'不跟',n:'',fx:{pros:-2}}]},
-{id:'viral',lv:[0,4],w:2,cond:S=>S.f.tour>0,title:'一条短视频把你这里带火了',text:'一个博主在文旅园拍的视频突然火了，周末涌进来的游客是平时的十倍，停车和厕所都不够用。',opts:[
+{id:'viral',mo:[5,10],lv:[0,4],w:2,cond:S=>S.f.tour>0,title:'一条短视频把你这里带火了',text:'一个博主在文旅园拍的视频突然火了，周末涌进来的游客是平时的十倍，停车和厕所都不够用。',opts:[
  {t:'紧急增加配套，趁热打铁',n:'',fx:{cash:-100,pros:6,sat:2}},
  {t:'顺其自然',n:'口碑掉下去',fx:{pros:2,sat:-2}}]},
-{id:'plant_risk',lv:[0,4],w:3,cond:S=>S.f.power>0||S.f.factory>0,title:'电厂设备隐患报告',text:'安监局报上来，电厂一台机组的锅炉超期服役，检测发现管壁减薄。停机检修要两个月，这两个月工业园要限电。',opts:[
- {t:'停机检修',n:'繁荣度短期下降',fx:{pros:-4,cash:-80}},
+{id:'plant_risk',mo:[5,7],lv:[0,4],w:3,cond:S=>S.f.power>0||S.f.factory>0,title:'电厂设备隐患报告',text:'安监局报上来，电厂一台机组的锅炉超期服役，检测发现管壁减薄。停机检修要两个月，这两个月工业园要限电。',opts:[
+ {t:'停机检修',n:'繁荣度短期下降',fx:{pros:-4,cash:-80,sched:{id:'plant_risk2',m:3}}},
  {t:'先带病运行，年底再说',n:'埋下事故隐患',fx:{acc:1,mild:{t:'安全隐患未整改'}}}]},
-{id:'gdp_target',lv:[1,4],w:3,title:'上级下达增速目标',text:'年初经济工作会上，上级给你这里定的增速目标比全省平均高两个点。发改局说，按现有项目不可能完成。',opts:[
- {t:'上马几个大项目硬冲',n:'举债压力上来',fx:{pros:4,flag:'push'}},
- {t:'如实汇报，争取调低',n:'上级不满意',fx:{rep:-3}}]},
-{id:'retired_leader_bid',lv:[1,4],w:2,title:'退休老领导的"关照"',text:'一位退休的老领导托人带话，说他儿子的公司想承接明年的市政绿化工程，"程序你们走，评标的时候关照一下"。',opts:[
+{id:'gdp_target',mo:[1,11],lv:[1,4],w:3,title:'上级下达增速目标',text:'年初经济工作会上，上级给你这里定的增速目标比全省平均高两个点。发改局说，按现有项目不可能完成。',opts:[
+ {t:'上马几个大项目硬冲',n:'举债压力上来',fx:{pros:4,flag:'push',npc:{k:'boss',v:4},sched:{id:'gdp_target2',m:26}}},
+ {t:'如实汇报，争取调低',n:'上级不满意',fx:{rep:-3,npc:{k:'boss',v:-5}}},
+ {t:'请〔名〕帮着把目标压回全省平均',n:'他答应了，人情记在账上',req:{k:'boss',v:64},fx:{npc:{k:'boss',v:-8}}}]},
+{id:'retired_leader_bid',mo:[4],lv:[1,4],w:2,title:'退休老领导的"关照"',text:'一位退休的老领导托人带话，说他儿子的公司想承接明年的市政绿化工程，"程序你们走，评标的时候关照一下"。',opts:[
  {t:'跟招标办打招呼',n:'严重违纪，进责任档案',fx:{file:{sev:3,t:'干预工程招投标，为特定关系人谋利'}},grey:true},
  {t:'不接这个话',n:'',fx:{unity:-1}}]},
-{id:'epidemic',lv:[0,4],w:2,title:'季节性流感大面积爆发',text:'医院门诊量翻了三倍，急诊排队排到楼下。医院说床位和人手都到极限了。',opts:[
+{id:'epidemic',mo:[12,1,2],lv:[0,4],w:2,title:'季节性流感大面积爆发',text:'医院门诊量翻了三倍，急诊排队排到楼下。医院说床位和人手都到极限了。',opts:[
  {t:'紧急拨款，增设临时床位',n:'',fx:{cash:-120,sat:1}},
  {t:'让医院自行克服',n:'满意度下跌',fx:{sat:-5}}]},
-{id:'drought',lv:[0,4],w:2,title:'旱情',text:'三个月没下透雨，水库水位到了死水位。水厂说要么限时供水，要么从外地调水。',opts:[
+{id:'drought',mo:[7,8],lv:[0,4],w:2,title:'旱情',text:'三个月没下透雨，水库水位到了死水位。水厂说要么限时供水，要么从外地调水。',opts:[
  {t:'外地调水',n:'',fx:{cash:-100}},
  {t:'分时段限水',n:'满意度下降',fx:{sat:-5}}]},
-{id:'housing',lv:[0,4],w:3,cond:S=>S.housing>60,title:'房价涨得太快',text:'这两年卖地卖得多，开发商拿地积极，房价跟着一路上去。年轻人开始往外走，本地群里全是骂声。',opts:[
+{id:'housing',mo:[3,4],lv:[0,4],w:3,cond:S=>S.housing>60,title:'房价涨得太快',text:'这两年卖地卖得多，开发商拿地积极，房价跟着一路上去。年轻人开始往外走，本地群里全是骂声。',opts:[
  {t:'暂停供地，出台限购',n:'土地收入受影响',fx:{flag:'nosell',sat:3}},
  {t:'市场的事让市场解决',n:'满意度继续下跌',fx:{sat:-4}}]},
 {id:'tax_cut',lv:[0,4],w:3,cond:S=>S.indCount>1,title:'企业联名申请减税',text:'园区几家龙头企业联合提交了报告，说经营困难，申请三年税收减半，否则考虑搬迁。',opts:[
- {t:'同意阶段性减免',n:'税收减少，企业留下',fx:{flag:'taxcut',pros:2}},
+ {t:'同意阶段性减免',n:'税收减少，企业留下',fx:{flag:'taxcut',pros:2,sched:{id:'tax_cut2',m:37}}},
  {t:'不同意',n:'部分企业可能撤离',fx:{pros:-4}}]},
-{id:'exam_leak',lv:[0,4],w:2,cond:S=>S.recruitThisYear>0,title:'事业编考试疑似泄题',text:'考试结束当天，网上出现了和真题高度一致的"押题"截图。考生在人社局门口聚集。',opts:[
+{id:'exam_leak',mo:[6,7],lv:[0,4],w:2,cond:S=>S.recruitThisYear>0,title:'事业编考试疑似泄题',text:'考试结束当天，网上出现了和真题高度一致的"押题"截图。考生在人社局门口聚集。',opts:[
  {t:'成绩作废，重新组织考试',n:'',fx:{cash:-40,rep:2,sat:-1}},
  {t:'认定截图为伪造',n:'舆情可能扩大',fx:{sat:-4,mild:{t:'考试舆情处置不当'}}}]},
-{id:'bus',lv:[0,4],w:3,title:'群众反映公交线路',text:'新区到老城的公交一小时一班，晚上七点收车。上班的、上学的、看病的都在抱怨。公交公司说线路亏损，加班次就要补贴。',opts:[
+{id:'bus',mo:[5,9],lv:[0,4],w:3,title:'群众反映公交线路',text:'新区到老城的公交一小时一班，晚上七点收车。上班的、上学的、看病的都在抱怨。公交公司说线路亏损，加班次就要补贴。',opts:[
  {t:'财政补贴，加密班次',n:'',fx:{cash:-50,liv:2,sat:2}},
  {t:'维持现状',n:'',fx:{sat:-2}}]},
 {id:'metro',lv:[2,4],w:2,once:true,title:'地铁申报窗口',text:'发改委开了一次申报窗口，你这里的人口和财政刚够门槛。地铁一条线的投资，够修二十所学校。但没有地铁，城市能级就卡在这一档。',opts:[
- {t:'申报建设',n:'巨额投入，符合专项债交通投向',fx:{q:'road',q2:'road',cash:-1500,pros:8,liv:3}},
+ {t:'申报建设',n:'巨额投入，符合专项债交通投向',fx:{q:'road',q2:'road',cash:-1500,pros:8,liv:3,sched:{id:'metro2',m:44}}},
  {t:'暂不申报',n:'',fx:{pros:-2}}]},
 {id:'hsr',lv:[3,4],w:2,once:true,title:'高铁站选址争议',text:'高铁新站两个方案：设在市中心，拆迁量大、成本高；设在郊区，便宜，但群众说"高铁站修到了外地"。',opts:[
  {t:'市中心方案',n:'',fx:{cash:-2000,sat:4,pros:5,land:-300}},
  {t:'郊区方案',n:'',fx:{cash:-600,sat:-3,pros:3}}]},
-{id:'media_debt',lv:[1,4],w:2,cond:S=>S.hdr>60,title:'媒体报道你这里的债务',text:'一篇财经报道把你这里的城投债余额和财政收入放在一起算了一遍，标题很吓人。上级打电话来问情况。',opts:[
- {t:'公开回应，说明化债安排',n:'',fx:{rep:-2}},
- {t:'不回应',n:'声誉持续受损',fx:{rep:-5}}]},
-{id:'whistle',lv:[0,4],w:3,cond:S=>S.file.some(f=>!f.exp),title:'有人写了举报信',text:'纪委收到一封实名举报信，内容和你之前处理的一件事有关。信写得很细。',opts:[
- {t:'配合调查',n:'',fx:{expose:1.6}},
- {t:'找人把信压下来',n:'',fx:{file:{sev:2,t:'干预举报处理'},expose:0.8},grey:true}]},
-{id:'pension',lv:[0,4],w:2,title:'退休职工反映养老金',text:'几十位原国企退休职工来反映企业改制时的社保欠缴问题，他们的养老金比同龄人低一大截。这笔历史欠账法律上不该财政兜，但人就在门口。',opts:[
+{id:'media_debt',mo:[6,12],lv:[1,4],w:2,cond:S=>S.hdr>60,title:'媒体报道你这里的债务',text:'一篇财经报道把你这里的城投债余额和财政收入放在一起算了一遍，标题很吓人。上级打电话来问情况。',opts:[
+ {t:'公开回应，说明化债安排',n:'',fx:{rep:-2,npc:{k:'lgfv',v:-2}}},
+ {t:'不回应',n:'声誉持续受损',fx:{rep:-5}}, 
+ {t:'让老周去开这个发布会',n:'他站到了台前',req:{k:'zhou',v:60},fx:{rep:-1,npc:{k:'zhou',v:-5}}}]},
+{id:'whistle',mo:[6,10],lv:[0,4],w:3,cond:S=>S.file.some(f=>!f.exp),title:'有人写了举报信',text:'纪委收到一封实名举报信，内容和你之前处理的一件事有关。信写得很细。',opts:[
+ {t:'配合调查',n:'',fx:{expose:1.6,npc:{k:'insp',v:8}}},
+ {t:'找人把信压下来',n:'',fx:{file:{sev:2,t:'干预举报处理'},expose:0.8,npc:{k:'insp',v:-12}},grey:true},
+ {t:'先问问〔名〕那边是什么口径',n:'不违规，但欠他一个人情',req:{k:'insp',v:65},fx:{expose:0.75,npc:{k:'insp',v:-4}}}]},
+{id:'pension',mo:[12,1],lv:[0,4],w:2,title:'退休职工反映养老金',text:'几十位原国企退休职工来反映企业改制时的社保欠缴问题，他们的养老金比同龄人低一大截。这笔历史欠账法律上不该财政兜，但人就在门口。',opts:[
  {t:'财政一次性补缴',n:'',fx:{cash:-120,sat:3,rep:1}},
  {t:'按政策解释，不承担',n:'',fx:{sat:-3}}]},
-{id:'drown',lv:[0,4],w:2,title:'学生溺水事故',text:'暑假第一周，两名学生在河道游泳溺亡。家长认为河道没有护栏和警示标识。',opts:[
+{id:'drown',mo:[7,8],lv:[0,4],w:2,title:'学生溺水事故',text:'暑假第一周，两名学生在河道游泳溺亡。家长认为河道没有护栏和警示标识。',opts:[
  {t:'承担责任，全面排查隐患',n:'',fx:{cash:-60,rep:1,sat:-2}},
  {t:'认定为家长监护责任',n:'',fx:{sat:-5,rep:-2}}]},
-{id:'golf',lv:[0,4],w:3,title:'企业家的邀请',text:'园区一位企业家邀请你周末去邻市打高尔夫，"就是放松放松，什么都不谈"。费用他出。',opts:[
- {t:'去',n:'违反规定，进责任档案',fx:{file:{sev:1,t:'接受管理服务对象安排的高消费娱乐'},unity:1},grey:true},
- {t:'推掉',n:'',fx:{}}]},
-{id:'relative_canteen',lv:[0,4],w:2,title:'亲戚想承包机关食堂',text:'你爱人的弟弟打电话来，说机关食堂承包到期了，他想接，"反正总要有人做，肥水不流外人田"。',opts:[
- {t:'让办公室"考虑一下"',n:'',fx:{file:{sev:2,t:'为亲属承揽经营活动提供便利'}},grey:true},
- {t:'公开招标，他要投就投',n:'',fx:{}}]},
+{id:'golf',mo:[4,10],lv:[0,4],w:3,title:'企业家的邀请',text:'园区一位企业家邀请你周末去邻市打高尔夫，"就是放松放松，什么都不谈"。费用他出。',opts:[
+ {t:'去',n:'违反规定，进责任档案',fx:{file:{sev:1,t:'接受管理服务对象安排的高消费娱乐'},unity:1,npc:{k:'dev',v:9},npc2:{k:'insp',v:-6}},grey:true},
+ {t:'推掉',n:'',fx:{npc:{k:'dev',v:-5}}}]},
+{id:'relative_canteen',mo:[1,2],lv:[0,4],w:2,title:'亲戚想承包机关食堂',text:'你爱人的弟弟打电话来，说机关食堂承包到期了，他想接，"反正总要有人做，肥水不流外人田"。',opts:[
+ {t:'让办公室"考虑一下"',n:'',fx:{file:{sev:2,t:'为亲属承揽经营活动提供便利'},npc:{k:'insp',v:-5}},grey:true},
+ {t:'公开招标，他要投就投',n:'',fx:{npc:{k:'insp',v:3}}}]},
 {id:'commend',lv:[0,4],w:0,title:'上级通报表扬',text:'省里的年度通报里点名表扬了你这里的工作。电话一下多了起来。',opts:[{t:'知道了',n:'',fx:{rep:3,unity:2}}]},
-{id:'lgfv_push',lv:[0,4],w:3,cond:S=>S.hdr<50,title:'城投公司总经理来汇报',text:'城投总经理带了一份融资方案：再发一期债，"利率还行，额度用不完也是浪费，别的地方都在发"。他说手里有三个项目等着钱。',opts:[
- {t:'让他去财政那里走流程',n:'去债务页面决定',fx:{}},
- {t:'今年不发了',n:'',fx:{unity:-1}}]},
-{id:'aging',lv:[1,4],w:3,cond:S=>S.year>=5,title:'老龄化数据',text:'统计局的年报显示，六十岁以上人口占比过了两成。养老院排队要等一年。',opts:[
+{id:'lgfv_push',mo:[3,11],lv:[0,4],w:3,cond:S=>S.hdr<50,title:'城投公司总经理来汇报',text:'城投总经理带了一份融资方案：再发一期债，"利率还行，额度用不完也是浪费，别的地方都在发"。他说手里有三个项目等着钱。',opts:[
+ {t:'让他去财政那里走流程',n:'去债务页面决定',fx:{npc:{k:'lgfv',v:3}}},
+ {t:'今年不发了',n:'',fx:{unity:-1,npc:{k:'lgfv',v:-6}}},
+ {t:'让城投自己去谈，三个项目的钱公司先垫',n:'他认这个账',req:{k:'lgfv',v:62},fx:{cash:200,mild:{t:'平台公司垫资建设政府项目'},npc:{k:'lgfv',v:-4}}}]},
+{id:'aging',mo:[12],lv:[1,4],w:3,cond:S=>S.year>=5,title:'老龄化数据',text:'统计局的年报显示，六十岁以上人口占比过了两成。养老院排队要等一年。',opts:[
  {t:'新建养老院',n:'',fx:{q:'elder'}},
  {t:'鼓励社会办养老',n:'',fx:{sat:-2}}]},
 {id:'ai_wave',lv:[2,4],w:2,cond:S=>S.year>=8,title:'自动化冲击',text:'园区两家大厂上了自动化产线，一次性裁了几千人。失业的人在人社局门口排队，税收倒是没少。',opts:[
  {t:'财政出钱搞转岗培训',n:'',fx:{cash:-300,sat:2}},
  {t:'让市场消化',n:'',fx:{sat:-5,pros:1}}]},
-{id:'land_expro',lv:[0,3],w:3,cond:S=>S.landPct<0.25,title:'储备土地不够了',text:'国土局说，储备地块快见底了，再要供地就得征地。北边有一片村集体用地，征地要补偿，村民也不一定同意。',opts:[
+{id:'land_expro',mo:[3,11],lv:[0,3],w:3,cond:S=>S.landPct<0.25,title:'储备土地不够了',text:'国土局说，储备地块快见底了，再要供地就得征地。北边有一片村集体用地，征地要补偿，村民也不一定同意。',opts:[
  {t:'启动征地',n:'补偿支出，满意度下降',fx:{cash:-250,land:250,sat:-4}},
  {t:'暂不征地',n:'',fx:{}}]},
-{id:'hospital_dispute',lv:[0,4],w:2,title:'医患纠纷',text:'一起手术失败，家属在医院门口摆了花圈。医院说手术没有过错，家属说不给说法就不走。',opts:[
+{id:'hospital_dispute',mo:[5,11],lv:[0,4],w:2,title:'医患纠纷',text:'一起手术失败，家属在医院门口摆了花圈。医院说手术没有过错，家属说不给说法就不走。',opts:[
  {t:'走医疗鉴定，依法处理',n:'',fx:{sat:-1,rep:1}},
  {t:'政府出面赔钱息事',n:'',fx:{cash:-40,sat:1,mild:{t:'花钱买平安，处置不当'}}}]}
 ];
 /* 信访件 */
+/* ===== 事件链第二幕：只由第一幕的选择排期触发（w:0） ===== */
+const CHAIN2=[
+{id:'land_cheap2',lv:[0,4],w:0,npc:'dev',title:'两年前那块地',
+ text:'两年前按三成地价出让的那块工业地，约定两年内投产。现在厂房盖了一半，围墙倒是齐整。企业说市场变了，请求再宽限两年。\n\n自然资源局的意见：可以按闲置土地处置，也可以延期。卷宗上有你的签字。',
+ opts:[{t:'认定闲置，无偿收回',n:'官司要打两年，招商圈里传得开',fx:{land:40,pros:-3,rep:2,npc:{k:'dev',v:-12}}},
+  {t:'再给两年',n:'两年后未必不一样',fx:{sched:{id:'land_cheap3',m:26},npc:{k:'dev',v:5}}},
+  {t:'引进新东家接盘，地随项目走',n:'',fx:{cash:-90,pros:2,npc:{k:'dev',v:-3}}}]},
+{id:'land_cheap3',lv:[0,4],w:0,npc:'dev',title:'那块地还是那样',
+ text:'又两年。厂房还是那半栋，草长到窗台。审计把这块地列进了低效用地清单，问了三次处置意见。',
+ opts:[{t:'依法收回，该赔就赔',n:'',fx:{land:40,cash:-120,rep:2}},
+  {t:'转成标准厂房园区，政府自己接',n:'',fx:{q:'fzone',cash:-60,pros:2}},
+  {t:'继续挂着',n:'挂到下一任',fx:{mild:{t:'低效用地长期未处置'},rep:-2}}]},
+{id:'fake_sign2',lv:[0,4],w:0,npc:'boss',title:'签约落地率核查',
+ text:'省里核查去年各地集中签约项目的落地率。你这里报了十二个，实际开工三个。\n\n发改委的同志说，材料还可以再"完善完善"。',
+ opts:[{t:'如实上报三个',n:'排名难看，但这一页翻过去了',fx:{rep:-3,npc:{k:'boss',v:-3}}},
+  {t:'把在谈的也算进去，报八个',n:'又一层',fx:{file:{sev:2,t:'虚报招商项目落地情况'},npc:{k:'boss',v:2}},grey:true},
+  {t:'如实上报，同时报一份整改方案',n:'',fx:{rep:-1,npc:{k:'boss',v:5},cash:-40}}]},
+{id:'gdp_target2',lv:[1,4],w:0,npc:'boss',title:'当年硬冲的那几个项目',
+ text:'两年前为了完成增速目标上的几个项目，陆续到了还本付息的节点。财政局把表拉出来：三个项目的现金流没有一个达到可研里的一半。',
+ opts:[{t:'压缩其他支出，先把利息付了',n:'',fx:{cash:-260,unity:-2}},
+  {t:'展期，把压力推到后面',n:'',fx:{addcq:0.04,rep:-2}},
+  {t:'把其中两个停下来，认沉没成本',n:'',fx:{pros:-4,rep:2,cash:-60}}]},
+{id:'bid_war2',lv:[1,4],w:0,npc:'dev',title:'免租三年到期了',
+ text:'当年抢来的那家区域总部，免租三年到期。对方发来函件：希望再免三年，否则"评估搬迁至周边城市的可行性"。邻市这两年条件开得更松。',
+ opts:[{t:'再免三年',n:'留住税源，也留下先例',fx:{cash:-260,pros:2,mild:{t:'超期减免企业租金'}}},
+  {t:'按合同收租，谈也可以谈',n:'',fx:{cash:120,pros:-2}},
+  {t:'让它走',n:'',fx:{pros:-5,sat:-2,rep:1}}]},
+{id:'plant_risk2',lv:[0,4],w:0,title:'限电的两个月',
+ text:'机组停下来检修的两个月，工业园按用电量分档限产。三家企业发了联名信，说订单交不出去，要求赔偿停产损失。其中一家已经在跟邻市谈搬迁。',
+ opts:[{t:'按停产天数给一次性补贴',n:'',fx:{cash:-160,pros:1,npc:{k:'dev',v:4}}},
+  {t:'不补，解释安全第一',n:'',fx:{pros:-3,npc:{k:'dev',v:-6},rep:1}},
+  {t:'协调外购电，成本财政兜',n:'',fx:{cash:-240,pros:2,sat:1}}]},
+{id:'tax_cut2',lv:[0,4],w:0,npc:'dev',title:'减免到期',
+ text:'三年税收减半到期。同一批企业又递了报告，措辞和三年前几乎一样。税务局说，这三年他们的营收其实涨了四成。',
+ opts:[{t:'到期就恢复',n:'',fx:{pros:-3,npc:{k:'dev',v:-8}}},
+  {t:'再延三年',n:'税基就这么让出去了',fx:{flag:'taxcut',pros:2,npc:{k:'dev',v:8},mild:{t:'超权限延长税收优惠'}}},
+  {t:'分档：投产达标的续，没达标的恢复',n:'',fx:{pros:-1,cash:60,npc:{k:'dev',v:-2},rep:2}}]},
+{id:'boss_square2',lv:[0,3],w:0,npc:'dev',title:'老板来要地了',
+ text:'广场修好两年，市民很满意，牌子上刻着企业的名字。今天那位老板来了，带着当年的会议纪要复印件，说该办市场那块地了。\n\n纪要上有你的名字。',
+ opts:[{t:'按当年说的办',n:'那件事补上了最后一块',fx:{file:{sev:3,t:'兑现协议出让承诺，完成利益输送闭环'},cashLand:0.4,npc:{k:'dev',v:10}},grey:true},
+  {t:'走招拍挂，他要就来举牌',n:'翻脸',fx:{npc:{k:'dev',v:-18},rep:2,pros:-1}},
+  {t:'拖着，说要研究',n:'拖不了太久',fx:{sched:{id:'boss_square2',m:14},npc:{k:'dev',v:-6}}}]},
+{id:'talent_war2',lv:[2,4],w:0,title:'安家补贴的账单',
+ text:'安家补贴发了一年半，申领人数是测算的两倍多。人社局说，有中介在教人"落户领钱再走"，去年领了钱的人里，两成社保已经断缴。',
+ opts:[{t:'收紧条件，补缴社保满两年才发',n:'',fx:{cash:-60,pop:-0.4,rep:1}},
+  {t:'照发，人口数字要紧',n:'',fx:{cash:-320,pop:0.8,mild:{t:'人才补贴审核不严'}}},
+  {t:'暂停政策，重新评估',n:'',fx:{pop:-1,pros:-2,cash:60}}]},
+{id:'big_conf2',lv:[2,4],w:0,title:'会展中心的第二年',
+ text:'博览会办完了，牌子还挂在门口。今年会展中心一共排了十一天展期，其余时间空着，一年运维一千多万。招商局提议再申办一场。',
+ opts:[{t:'再办一场，把牌子立住',n:'',fx:{cash:-380,pros:3,rep:2}},
+  {t:'改成综合体，租出去',n:'',fx:{cash:-120,pros:2,liv:1,npc:{k:'dev',v:5}}},
+  {t:'就这么放着',n:'每年一千多万',fx:{cash:-100,rep:-2,sat:-1}}]},
+{id:'university2',lv:[1,4],w:0,title:'分校区第一年',
+ text:'大学分校区开学了，计划招四千人，实际报到一千一百人。教学楼建了三栋，用了一栋。学校提出追加实训基地投入，"不然明年更招不满"。',
+ opts:[{t:'追加投入',n:'',fx:{cash:-320,pop:0.5,liv:1}},
+  {t:'不追加，让学校自己想办法',n:'',fx:{pros:-1,npc:{k:'boss',v:-3}}},
+  {t:'把空楼改成人才公寓和孵化器',n:'',fx:{cash:-90,pros:2,liv:1,rep:1}}]},
+{id:'shanty2',lv:[1,4],w:0,title:'回迁房',
+ text:'城中村拆完两年半，土地卖得不错。回迁房的开发商资金链断了，工地上只剩一个看门的。八百多户在外面租房，过渡费发到第三年。',
+ opts:[{t:'财政接盘，保交楼',n:'',fx:{cash:-560,sat:4,rep:2}},
+  {t:'让城投代建，走公司账',n:'',fx:{addcq:0.05,sat:3,mild:{t:'平台公司代建保交楼项目'},npc:{k:'lgfv',v:-5}}},
+  {t:'继续发过渡费，等市场回暖',n:'',fx:{cash:-140,sat:-5,sched:{id:'shanty3',m:18}}}]},
+{id:'shanty3',lv:[1,4],w:0,npc:'pet',title:'回迁户到市里来了',
+ text:'过渡费又发了一年半，楼还是那样。八百户里推了十几个代表，在政府门口坐了一上午。带头的是当年第一个签字搬走的。',
+ opts:[{t:'当场表态，年内开工',n:'话说出去就得做到',fx:{cash:-500,sat:3,npc:{k:'pet',v:8}}},
+  {t:'再解释一次，请他们回去',n:'',fx:{sat:-6,rep:-3,npc:{k:'pet',v:-10}}}]},
+{id:'tender_ring2',lv:[0,4],w:0,npc:'insp',title:'那条路裂了',
+ text:'两年前废标重招、没有追究的那个工程，路面出现纵向裂缝。第三方检测报告：基层厚度不足设计值的七成。中标单位还是当年那几家里的一家。',
+ opts:[{t:'全面复核当年所有中标项目',n:'掀盖子，也把自己掀进去',fx:{cash:-180,rep:3,npc:{k:'insp',v:10},expose:1.3,unity:-3}},
+  {t:'责令返工，就这一个项目',n:'',fx:{cash:-90,rep:1,npc:{k:'dev',v:-5}}},
+  {t:'维修一下，不提当年',n:'',fx:{cash:-40,file:{sev:2,t:'工程质量问题未追溯招标环节'}},grey:true}]},
+{id:'ppp2',lv:[2,4],w:0,title:'政府付费进入高峰',
+ text:'当年签的合作项目进入付费期。财政局把二十年的付费表贴在墙上：从今年起，每年要从一般公共预算里切出一块，二十年不能断。\n\n这一块，正好是全年新增财力的大半。',
+ opts:[{t:'照付，压缩建设支出',n:'',fx:{cash:-300,pros:-2}},
+  {t:'跟社会资本重新谈条件',n:'对方手里有合同',fx:{cash:-120,rep:-2,mild:{t:'单方面调整已签约合作条件'}}},
+  {t:'提前回购，一次性了结',n:'',fx:{addcq:0.07,cash:-200,rep:1}}]},
+{id:'stock_fraud2',lv:[2,4],w:0,title:'重组的窟窿',
+ text:'政府牵头重组半年，接盘方进场后发现表外担保还有一大笔，要求财政再补一道。三千多名员工的工资由园区先垫着，已经垫了四个月。',
+ opts:[{t:'再补一笔，把重组做完',n:'',fx:{cash:-420,pros:2,sat:2}},
+  {t:'停止输血，走破产重整',n:'',fx:{pros:-5,sat:-4,cash:-80,rep:1}},
+  {t:'让城投先接过来，慢慢消化',n:'',fx:{addcq:0.06,pros:1,mild:{t:'平台公司承接问题企业债务'},npc:{k:'lgfv',v:-6}}}]},
+{id:'metro2',lv:[2,4],w:0,title:'一号线开通之后',
+ text:'地铁开通一年。日均客流是可研预测的四成，票款收入付不起电费。运营公司报上来的年度补贴申请，比当初测算的多了一倍。\n\n站厅很干净，人不多。',
+ opts:[{t:'足额补贴，线网要成网才有客流',n:'',fx:{cash:-380,liv:2,sched:{id:'metro_cost',m:24}}},
+  {t:'压缩班次，降低运营成本',n:'',fx:{cash:-160,sat:-3,liv:-1}},
+  {t:'启动TOD，用沿线土地反哺',n:'',fx:{cashLand:1.2,housing:5,pros:2,npc:{k:'dev',v:6}}}]},
+{id:'house_alloc2',lv:[0,4],w:0,npc:'insp',title:'保障房的事又被翻出来',
+ text:'当年认定"程序合规"的那批保障房，被列入本轮巡视的抽查样本。抽了三十户，有七户的收入证明是同一个单位开的。',
+ opts:[{t:'全部清退并倒查经办人',n:'',fx:{rep:3,unity:-5,sat:3,npc:{k:'insp',v:10}}},
+  {t:'清退七户，不倒查',n:'',fx:{sat:1,npc:{k:'insp',v:-3},mild:{t:'保障房问题整改不彻底'}}},
+  {t:'解释历史原因，请求理解',n:'',fx:{file:{sev:2,t:'保障房分配问题应付整改'},npc:{k:'insp',v:-10}},grey:true}]}
+];
+EV.push(...CHAIN2);
+/* ===== 关系事件：好感到了两头才会找上门 ===== */
+const NPCEV=[
+{id:'n_zhou_hi',lv:[0,4],w:12,npc:'zhou',cond:S=>nf('zhou')>=68,title:'老周把一件事顶下来了',
+ text:'一个项目的手续有瑕疵，被人捅到上面去了。核查组来的时候，〔人〕说那是他分管期间签的字，跟你没关系。\n\n档案上确实是他的名字。他签字那天，你在场。',
+ opts:[{t:'认下来，跟核查组讲清楚是自己拍的板',n:'档案落到自己头上',fx:{mild:{t:'项目手续瑕疵'},npc:{k:'zhou',v:10},unity:3,rep:1}},
+       {t:'不作声',n:'他没再提这件事，也没再多说别的',fx:{npc:{k:'zhou',v:-16},unity:-4}}]},
+{id:'n_zhou_lo',lv:[0,4],w:12,npc:'zhou',cond:S=>nf('zhou')<=32,title:'常务副手的态度',
+ text:'连着三次调度会，〔人〕都说"按你的意思办"。分管的几件事都停在他那儿，问就是在走程序。\n\n办公室主任私下说，老周在等你先开口。',
+ opts:[{t:'当面把话说开',n:'放低姿态，班子会好一点',fx:{npc:{k:'zhou',v:12},unity:4,rep:-1}},
+       {t:'绕开他，直接调度到局里',n:'事情能推动，班子更僵',fx:{unity:-5,npc:{k:'zhou',v:-6},pros:1}},
+       {t:'向省里打报告调整分工',n:'伤筋动骨',fx:{unity:-8,npc:{k:'zhou',v:-20},npc2:{k:'boss',v:-4},rep:-2}}]},
+{id:'n_boss_hi',lv:[0,4],w:12,npc:'boss',cond:S=>nf('boss')>=68,title:'省里的一次会上',
+ text:'半年经济形势分析会，〔人〕在讲评时点了你的名，说你这里"路子是对的"。散会后他让秘书叫住你，问你还缺什么。',
+ opts:[{t:'要资金',n:'',fx:{cash:260,npc:{k:'boss',v:-2}}},
+       {t:'要一个专项债的盘子',n:'额度而不是现钱',fx:{npc:{k:'boss',v:3},flag:'push'}},
+       {t:'什么都不要，说班子还能扛',n:'他记住了这句话',fx:{npc:{k:'boss',v:9},rep:2}}]},
+{id:'n_boss_lo',lv:[0,4],w:12,npc:'boss',cond:S=>nf('boss')<=32,title:'不点名的批评',
+ text:'全省调度会上，〔人〕讲了一段"有的地方报上来的数字自己都不信"。没点名，但会后好几个人给你发消息。',
+ opts:[{t:'当天写份情况说明送上去',n:'姿态放低',fx:{npc:{k:'boss',v:8},rep:-1}},
+       {t:'带着数据去当面汇报',n:'有理但顶了他',fx:{npc:{k:'boss',v:-5},rep:2,merit:0}},
+       {t:'装作不知道',n:'',fx:{npc:{k:'boss',v:-6},rep:-2}}]},
+{id:'n_old_hi',lv:[0,4],w:12,npc:'old',cond:S=>nf('old')>=68,title:'老领导牵的线',
+ text:'〔人〕打电话来，说有个做产业园的老朋友想找地方落一个项目，他推荐了你这里。"人我担保，条件你们自己谈。"',
+ opts:[{t:'按正常招商流程谈',n:'',fx:{pros:3,cash:-60,npc:{k:'old',v:2}}},
+       {t:'给足优惠，把项目按住',n:'欠了两份人情',fx:{pros:6,cash:-220,npc:{k:'old',v:8},npc2:{k:'dev',v:5},mild:{t:'超权限给予招商优惠'}}},
+       {t:'婉拒，说眼下接不住',n:'老领导没说什么',fx:{npc:{k:'old',v:-12}}}]},
+{id:'n_old_lo',lv:[0,4],w:12,npc:'old',cond:S=>nf('old')<=32,title:'一通迟到的电话',
+ text:'〔人〕住院了，你是从别人嘴里知道的。他带过的几个人都去了，名单里没有你。\n\n第二天他让人捎话："都忙，都忙。"',
+ opts:[{t:'当天赶过去',n:'',fx:{npc:{k:'old',v:14},cash:-10}},
+       {t:'让办公室送个花篮',n:'',fx:{npc:{k:'old',v:-4}}},
+       {t:'不去',n:'这条线基本断了',fx:{npc:{k:'old',v:-10},rep:-1}}]},
+{id:'n_lgfv_hi',lv:[1,4],w:12,npc:'lgfv',cond:S=>nf('lgfv')>=68,title:'城投愿意先垫',
+ text:'几个在建工程的进度款压着。〔人〕说城投可以先垫，走公司账，年底再挂账。"程序上过得去。"',
+ opts:[{t:'同意，先把工程赶出来',n:'表外挂账，审计会看见',fx:{cash:280,npc:{k:'lgfv',v:5},mild:{t:'工程款表外挂账'}}},
+       {t:'不垫，工程该停就停',n:'',fx:{npc:{k:'lgfv',v:-5},pros:-2,sat:-2}}],},
+{id:'n_lgfv_lo',lv:[1,4],w:12,npc:'lgfv',cond:S=>nf('lgfv')<=32,title:'城投董事长要走',
+ text:'〔人〕递了辞呈，理由是"身体原因"。财务总监私下讲，公司账上有几笔往来款，董事长不想再签字了。',
+ opts:[{t:'挽留，把话说透',n:'他要一个书面的说法',fx:{npc:{k:'lgfv',v:14},mild:{t:'向平台公司出具承诺函'}}},
+       {t:'批准辞职，换自己的人',n:'交接期融资停摆',fx:{npc:{k:'lgfv',v:-8},cash:-80,rep:-2}},
+       {t:'先压着不批',n:'拖着，谁都难受',fx:{npc:{k:'lgfv',v:-6},unity:-2}}]},
+{id:'n_dev_hi',lv:[0,4],w:12,npc:'dev',cond:S=>nf('dev')>=68,title:'开发商主动来的',
+ text:'〔人〕拿了城东那块地，主动提出配建一所小学和一个社区卫生中心，不要补偿。"跟着政府干，图个长远。"',
+ opts:[{t:'接受，签进出让条件',n:'',fx:{fac:{id:'school',n:1},liv:2,npc:{k:'dev',v:4}}},
+       {t:'接受，另外让他把绿地也做了',n:'把话说得太满',fx:{fac:{id:'school',n:1},fac2:{id:'park',n:1},liv:3,npc:{k:'dev',v:-8}}},
+       {t:'不接受，配建要走招标',n:'规矩，但冷了他',fx:{npc:{k:'dev',v:-10},rep:2}}]},
+{id:'n_dev_lo',lv:[0,4],w:12,npc:'dev',cond:S=>nf('dev')<=32,title:'一场没人举牌的拍卖',
+ text:'城南三宗地挂出去，到场的只有两家，都没举牌。土地市场就这么大，〔人〕这两年跟你不对付，别人也在看风向。',
+ opts:[{t:'降底价重挂',n:'钱少拿，面子也难看',fx:{cashLand:0.5,housing:4,rep:-2}},
+       {t:'让城投托底摘牌',n:'左手倒右手，债务上去',fx:{addcq:0.05,mild:{t:'平台公司托底拿地'}}},
+       {t:'撤牌，等市场回暖',n:'今年的土地收入没了',fx:{cash:-40,pros:-2}},
+       {t:'找他谈一次',n:'姿态要放下来',fx:{npc:{k:'dev',v:12},cashLand:0.8,mild:{t:'与特定企业单独议价'}}}]},
+{id:'n_pet_hi',lv:[0,4],w:12,npc:'pet',cond:S=>nf('pet')>=68,title:'他把人劝回去了',
+ text:'一批老职工要去省里，〔人〕在车站把人劝住了。"这个书记不糊弄人，你们再等三个月。"\n\n他给你留了话：三个月。',
+ opts:[{t:'当面承诺，限期办结',n:'压力给到自己',fx:{sat:4,npc:{k:'pet',v:6},cash:-120}},
+       {t:'感谢，但不承诺时限',n:'',fx:{sat:1,npc:{k:'pet',v:-10}}}]},
+{id:'n_pet_lo',lv:[0,4],w:12,npc:'pet',cond:S=>nf('pet')<=32,title:'他进京了',
+ text:'〔人〕带着十几个人去了北京。信访局的人凌晨从接济站把他接回来，材料已经登记在册。\n\n这条记录会跟着你的年度考核走。',
+ opts:[{t:'亲自接谈，能解决的当场解决',n:'',fx:{sat:2,cash:-140,npc:{k:'pet',v:16},rep:-1}},
+       {t:'交给信访局按程序办',n:'',fx:{sat:-4,rep:-3,npc:{k:'pet',v:-6}}},
+       {t:'把人稳住，压下记录',n:'压得住一次，压不住第二次',fx:{sat:-2,file:{t:'干预信访登记',sev:2},npc:{k:'pet',v:-10}}}]},
+{id:'n_insp_hi',lv:[0,4],w:12,npc:'insp',cond:S=>nf('insp')>=68,title:'巡视组的一句提醒',
+ text:'反馈会前一天，〔人〕在走廊里跟你说了半句话："你们那个园区的账，自己先看看。"说完就走了。',
+ opts:[{t:'连夜自查，主动上报',n:'档案上多一条，但主动权在自己',fx:{mild:{t:'园区账目主动上报'},expose:0.7,npc:{k:'insp',v:6},rep:1}},
+       {t:'先把手续补齐',n:'',fx:{cash:-90,expose:0.85,npc:{k:'insp',v:2}}},
+       {t:'当没听见',n:'他不会说第二次',fx:{npc:{k:'insp',v:-12}}}]},
+{id:'n_insp_lo',lv:[0,4],w:12,npc:'insp',cond:S=>nf('insp')<=32,title:'延长的巡视',
+ text:'原定两周的巡视延到了六周。〔人〕调阅了近五年的常委会纪要和土地出让全套材料，谈话名单排到了乡镇。',
+ opts:[{t:'全力配合，要什么给什么',n:'',fx:{expose:1.2,npc:{k:'insp',v:10},unity:-2}},
+       {t:'该给的给，敏感的先放一放',n:'',fx:{expose:1.5,npc:{k:'insp',v:-6}}},
+       {t:'托老领导递话',n:'这个动作本身就是记录',fx:{expose:1.35,npc:{k:'old',v:-6},file:{t:'干预巡视工作',sev:2}}}]}
+];
+EV.push(...NPCEV);
 const PET=[
-{id:'p_demolition',title:'拆迁户上访',text:'一户拆迁户拿着十年前的安置协议来了第七次。协议上写的安置房一直没建，货币补偿又按十年前的价。',opts:[
- {t:'按现价重新核算补偿',n:'',fx:{cash:-60,sat:2}},
- {t:'按原协议办',n:'他会继续来',fx:{sat:-2,sched:{id:'p_demolition2',m:3}}},
- {t:'让派出所"劝返"',n:'',fx:{mild:{t:'非法限制上访人员'},sat:-2}}]},
+{id:'p_demolition',mo:[3,11],title:'拆迁户上访',text:'一户拆迁户拿着十年前的安置协议来了第七次。协议上写的安置房一直没建，货币补偿又按十年前的价。',opts:[
+ {t:'按现价重新核算补偿',n:'',fx:{cash:-60,sat:2,npc:{k:'pet',v:7}}},
+ {t:'按原协议办',n:'他会继续来',fx:{sat:-2,sched:{id:'p_demolition2',m:3},npc:{k:'pet',v:-8}}},
+ {t:'让派出所"劝返"',n:'',fx:{mild:{t:'非法限制上访人员'},sat:-2,npc:{k:'pet',v:-14}}},
+ {t:'请〔名〕陪着一起谈',n:'他在这条街上说话管用',req:{k:'pet',v:62},fx:{cash:-25,sat:2,npc:{k:'pet',v:-3}}}]},
 {id:'p_demolition2',title:'拆迁户越级上访',text:'那位拆迁户去了省里。省信访局把件转回来，要求限期办结并书面报告。',opts:[{t:'重新核算补偿，书面报告',n:'',fx:{cash:-70,rep:-2}}]},
-{id:'p_noise',title:'噪音投诉',text:'工业园夜班卸货的噪音，让隔壁小区连续投诉了三个月。企业说合同就是二十四小时作业。',opts:[
+{id:'p_noise',mo:[5,6,7,8],title:'噪音投诉',text:'工业园夜班卸货的噪音，让隔壁小区连续投诉了三个月。企业说合同就是二十四小时作业。',opts:[
  {t:'责令企业夜间停止作业',n:'',fx:{pros:-1,sat:2}},
  {t:'不处理',n:'',fx:{sat:-3}}]},
-{id:'p_wage',title:'企业欠薪',text:'一家小服装厂老板跑了，四十多个工人三个月没拿到工资，来政府要说法。',opts:[
+{id:'p_wage',mo:[12,1],title:'企业欠薪',text:'一家小服装厂老板跑了，四十多个工人三个月没拿到工资，来政府要说法。',opts:[
  {t:'启动欠薪保障金先垫付',n:'',fx:{cash:-30,sat:2}},
  {t:'告知走法律途径',n:'',fx:{sat:-3}}]},
-{id:'p_pollution',title:'村民反映地下水',text:'工业园下游的村子，井水发黄有味，村民抬了几桶水来。',opts:[
+{id:'p_pollution',mo:[10],title:'村民反映地下水',text:'工业园下游的村子，井水发黄有味，村民抬了几桶水来。',opts:[
  {t:'请第三方检测，公开结果',n:'',fx:{cash:-20,env:1,rep:1}},
  {t:'派人劝回去',n:'',fx:{sat:-3,mild:{t:'信访件敷衍处置'}}}]},
-{id:'p_school_fee',title:'学校乱收费',text:'家长反映一所学校以"资料费"名义每学期收几百块，多年如此。',opts:[
+{id:'p_school_fee',mo:[9],title:'学校乱收费',text:'家长反映一所学校以"资料费"名义每学期收几百块，多年如此。',opts:[
  {t:'责令退费，校长免职',n:'',fx:{sat:2,unity:-1}},
  {t:'通报批评，不退费',n:'',fx:{sat:-1}}]},
-{id:'p_road',title:'村里的路',text:'一个偏远村的村民代表来了，说进村的路二十年没修，下雨天救护车进不去。',opts:[
+{id:'p_road',mo:[3,7],title:'村里的路',text:'一个偏远村的村民代表来了，说进村的路二十年没修，下雨天救护车进不去。',opts:[
  {t:'纳入今年道路建设',n:'',fx:{cash:-40,sat:2}},
  {t:'列入规划，暂无资金',n:'',fx:{sat:-2}}]},
-{id:'p_market',title:'摊贩被清理',text:'创城期间城管清理了老城区的早市，几十户摊贩没了生计，集体来反映。',opts:[
+{id:'p_market',mo:[2,12],title:'摊贩被清理',text:'创城期间城管清理了老城区的早市，几十户摊贩没了生计，集体来反映。',opts:[
  {t:'划定区域，允许规范经营',n:'',fx:{sat:2}},
  {t:'维持清理',n:'',fx:{sat:-3}}]},
 {id:'p_land',title:'村集体土地纠纷',text:'两个村为一块几十亩的地界吵了十几年，这次动了手。',opts:[
@@ -612,17 +822,17 @@ EV.push(
 {id:'zhou3b',lv:[0,4],w:0,title:'老周退居二线',text:'没提上去的老周被安排去了人大。走之前他来你办公室，说了句"当年那份材料，我留了底"。',opts:[
  {t:'知道了',n:'',fx:{expose:1.5,unity:-2}}]},
 /* 家庭线 */
-{id:'fam_school',lv:[0,4],w:2,once:true,cond:S=>S.year>=3,title:'孩子上学',text:'孩子到了上学的年纪。爱人想让孩子去市里最好的那所小学，按片区去不了。校长在饭局上主动说过"书记的孩子，这点事算什么"。',opts:[
+{id:'fam_school',mo:[2,8],lv:[0,4],w:2,once:true,cond:S=>S.year>=3,title:'孩子上学',text:'孩子到了上学的年纪。爱人想让孩子去市里最好的那所小学，按片区去不了。校长在饭局上主动说过"书记的孩子，这点事算什么"。',opts:[
  {t:'让校长办',n:'',fx:{file:{sev:1,t:'利用职务影响为子女择校'}},grey:true},
  {t:'按片区上',n:'爱人不高兴',fx:{}}]},
 {id:'fam_biz',lv:[1,4],w:2,once:true,cond:S=>S.year>=6,title:'爱人想做生意',text:'爱人辞了职，想开一家建材公司。她说"跟你的单位没关系，我自己做"。你清楚，这个城市里做建材的，没有一家跟政府项目没关系。',opts:[
  {t:'让她做',n:'档案里会多一条，早晚有人拿来说事',fx:{file:{sev:2,t:'配偶在本地从事与职权相关的经营活动'}},grey:true},
  {t:'让她去外地做，或者不做',n:'家里闹了一阵',fx:{unity:-1}}]},
-{id:'fam_father',lv:[0,4],w:2,once:true,cond:S=>S.year>=8,title:'父亲住院',text:'父亲脑梗住进了医院。院长听说了，说要安排最好的病房和专家，"不用走流程"。',opts:[
+{id:'fam_father',mo:[2,12],lv:[0,4],w:2,once:true,cond:S=>S.year>=8,title:'父亲住院',text:'父亲脑梗住进了医院。院长听说了，说要安排最好的病房和专家，"不用走流程"。',opts:[
  {t:'接受安排',n:'',fx:{file:{sev:1,t:'接受管理服务对象提供的特殊医疗便利'}},grey:true},
  {t:'按正常程序排队',n:'',fx:{}}]},
 /* 大项目线 */
-{id:'newcity1',lv:[1,3],w:2,once:true,cond:S=>S.year>=4,title:'产业新城方案',text:'规划院拿来一个"产业新城"方案：在城东征地一万亩，建产业园、住宅、学校、商业，五年成形。测算的总投资是你现在年财政收入的十几倍，主要靠卖地和城投融资滚动。邻市去年就干了。',opts:[
+{id:'newcity1',mo:[3],lv:[1,3],w:2,once:true,cond:S=>S.year>=4,title:'产业新城方案',text:'规划院拿来一个"产业新城"方案：在城东征地一万亩，建产业园、住宅、学校、商业，五年成形。测算的总投资是你现在年财政收入的十几倍，主要靠卖地和城投融资滚动。邻市去年就干了。',opts:[
  {t:'上',n:'先期投入巨大，大幅拉高债务；成了是政绩，砸了是烂尾',fx:{cash:-800,land:600,pros:6,flag:'newcity',sched:{id:'newcity2',m:24}}},
  {t:'不上',n:'',fx:{pros:-2}}]},
 {id:'newcity2',lv:[1,4],w:0,title:'新城的地卖不动',text:'新城的一期地块挂了三次，两次流拍。开发商说"你们的配套还没起来，房子卖给谁"。前期的路和管网已经花出去了，城投那边的利息每个月都在滚。',opts:[
@@ -636,65 +846,66 @@ EV.push(
  {t:'表态：增速优先',n:'',fx:{flag:'push',rep:2}},
  {t:'表态：先把债务控住',n:'',fx:{rep:-1,unity:1}}]},
 {id:'boss_call',lv:[1,4],w:2,cond:S=>S.hdr>=60,title:'上级的电话',text:'分管领导打电话来，语气不太好："你那里的隐债率我看到了。别人都在压，你在涨。年底考核我不好说话。"',opts:[
- {t:'汇报化债安排',n:'',fx:{rep:-1}},
- {t:'解释是项目周期，明年就好',n:'',fx:{rep:-3}}]},
+ {t:'汇报化债安排',n:'',fx:{rep:-1,npc:{k:'boss',v:2}}},
+ {t:'解释是项目周期，明年就好',n:'',fx:{rep:-3,npc:{k:'boss',v:-6}}},
+ {t:'把账全摊开，请他给两年时间',n:'他沉默了一会儿，说"两年"',req:{k:'boss',v:60},fx:{rep:2,npc:{k:'boss',v:5}}}]},
 /* 高层级专属 */
-{id:'big_conf',lv:[2,4],w:2,cond:S=>S.year>=6,title:'申办一场全国性会展',text:'会展中心建好了，招商局想申办一场全国性的行业博览会，办下来对城市知名度是好事。承办费用不小，安保交通都要动。',opts:[
- {t:'申办',n:'',fx:{cash:-400,pros:5,rep:3}},
+{id:'big_conf',mo:[4,5],lv:[2,4],w:2,cond:S=>S.year>=6,title:'申办一场全国性会展',text:'会展中心建好了，招商局想申办一场全国性的行业博览会，办下来对城市知名度是好事。承办费用不小，安保交通都要动。',opts:[
+ {t:'申办',n:'',fx:{cash:-400,pros:5,rep:3,sched:{id:'big_conf2',m:30}}},
  {t:'不办',n:'',fx:{}}]},
 {id:'stock_fraud',lv:[2,4],w:2,title:'本地上市公司爆雷',text:'本地一家上市公司财务造假被查，股价跌停。它是园区的纳税大户，几千人上班，还有一堆配套企业。',opts:[
- {t:'政府牵头重组，保就业',n:'',fx:{cash:-500,pros:-2,sat:2}},
+ {t:'政府牵头重组，保就业',n:'',fx:{cash:-500,pros:-2,sat:2,sched:{id:'stock_fraud2',m:9}}},
  {t:'让它市场出清',n:'',fx:{pros:-6,sat:-4}}]},
-{id:'talent_war',lv:[2,4],w:2,title:'人才政策',text:'周边几个城市都在给大学毕业生发补贴、送户口、打折卖房。人事局说，今年本地高校毕业生留下来的不到三成。',opts:[
- {t:'跟进，出台安家补贴',n:'',fx:{cash:-300,pop:1.5,pros:2}},
+{id:'talent_war',mo:[4,9],lv:[2,4],w:2,title:'人才政策',text:'周边几个城市都在给大学毕业生发补贴、送户口、打折卖房。人事局说，今年本地高校毕业生留下来的不到三成。',opts:[
+ {t:'跟进，出台安家补贴',n:'',fx:{cash:-300,pop:1.5,pros:2,sched:{id:'talent_war2',m:20}}},
  {t:'不跟',n:'',fx:{pop:-0.8}}]},
 {id:'old_factory_land',lv:[2,4],w:2,title:'老厂区改造',text:'城中心的老钢厂搬走了，留下两千亩地。方案一：出让给开发商建住宅，土地收入可观；方案二：改成公园和创意园区，不挣钱。',opts:[
  {t:'出让建住宅',n:'',fx:{cashLand:2.5,housing:8,sat:-3}},
  {t:'公园和创意园',n:'',fx:{cash:-300,liv:5,sat:3,env:3}}]},
 {id:'ppp',lv:[2,4],w:2,title:'社会资本合作项目',text:'一家央企提出以合作模式承建一批道路和管网，政府不用一次性掏钱，分二十年付费。财政局算了一下，二十年总付费是直接建的两倍多，但账面上今年不算债务。',opts:[
- {t:'签',n:'今年不算债，长期挤财力',fx:{fac:{id:'road',n:2},flag:'ppp',mild:{t:'通过政企合作项目变相举债'}}},
+ {t:'签',n:'今年不算债，长期挤财力',fx:{fac:{id:'road',n:2},flag:'ppp',mild:{t:'通过政企合作项目变相举债'},sched:{id:'ppp2',m:30}}},
  {t:'不签',n:'',fx:{}}]},
-{id:'metro_cost',lv:[2,4],w:2,cond:S=>S.once.metro,title:'地铁运营亏损',text:'地铁开通两年，每年运营亏损相当于年财政收入的一个零头，票价不能涨。这是当年申报的时候就知道的。',opts:[
+{id:'metro_cost',mo:[10],lv:[2,4],w:2,cond:S=>S.once.metro,title:'地铁运营亏损',text:'地铁开通两年，每年运营亏损相当于年财政收入的一个零头，票价不能涨。这是当年申报的时候就知道的。',opts:[
  {t:'财政补贴',n:'',fx:{cash:-400,liv:1}},
  {t:'减少班次',n:'',fx:{sat:-4}}]},
 {id:'zhixia_pop',lv:[4,4],w:3,title:'人口疏解',text:'上面给了明确要求：中心城区人口要往外疏解，非核心功能要往外迁。搬的是批发市场、工厂和低端产业，走的是在那里谋生的人。',opts:[
  {t:'按要求疏解',n:'',fx:{pop:-2,sat:-4,env:4,rep:3}},
  {t:'放慢节奏',n:'',fx:{rep:-4}}]},
-{id:'zhixia_rank',lv:[3,4],w:2,title:'城市排名',text:'一份民间的城市营商环境排名出来了，你的城市比去年掉了七位。上面看到了，媒体也在写。',opts:[
+{id:'zhixia_rank',mo:[10,12],lv:[3,4],w:2,title:'城市排名',text:'一份民间的城市营商环境排名出来了，你的城市比去年掉了七位。上面看到了，媒体也在写。',opts:[
  {t:'成立专班，一条条改',n:'',fx:{cash:-200,pros:3,rep:1}},
  {t:'不理会排名',n:'',fx:{rep:-2}}]},
-{id:'zhixia_inspect',lv:[3,4],w:2,title:'巡视组进驻',text:'中央巡视组进驻两个月。谈话名单里有你的班子成员，也有你的前任。',opts:[
+{id:'zhixia_inspect',mo:[10],lv:[3,4],w:2,title:'巡视组进驻',text:'中央巡视组进驻两个月。谈话名单里有你的班子成员，也有你的前任。',opts:[
  {t:'如实配合',n:'',fx:{expose:1.5,unity:-2}}]},
 {id:'sub_city',lv:[3,4],w:2,title:'下面的区县想报项目',text:'下辖一个区的区长来汇报，想上一个大项目，要市里出一半的钱。他说得很诚恳，你看了一眼他们的隐债率，比你的还高。',opts:[
  {t:'批',n:'',fx:{cash:-500,pros:3,unity:2}},
  {t:'让他先化债',n:'',fx:{unity:-2}}]},
 /* 通用补充 */
-{id:'landslide',lv:[0,3],w:2,title:'山体滑坡',text:'暴雨引发山体滑坡，一条通村公路断了，三个村成了孤岛。抢通要一周，重建要几个月。',opts:[
+{id:'landslide',mo:[5,7,8],lv:[0,3],w:2,title:'山体滑坡',text:'暴雨引发山体滑坡，一条通村公路断了，三个村成了孤岛。抢通要一周，重建要几个月。',opts:[
  {t:'先抢通，再重建',n:'',fx:{cash:-120,sat:1}},
  {t:'抢通就行，重建以后再说',n:'',fx:{cash:-40,sat:-2,acc:0.5}}]},
-{id:'water_pollute',lv:[0,3],w:2,cond:S=>S.f.factory>0,title:'工厂偷排',text:'工厂夜里偷排，河水变了颜色，下游村民拍了视频。厂长打电话来"解释"，说是设备故障。',opts:[
+{id:'water_pollute',mo:[10],lv:[0,3],w:2,cond:S=>S.f.factory>0,title:'工厂偷排',text:'工厂夜里偷排，河水变了颜色，下游村民拍了视频。厂长打电话来"解释"，说是设备故障。',opts:[
  {t:'依法处罚，责令停产整改',n:'',fx:{pros:-3,env:4,rep:2}},
  {t:'罚款了事',n:'',fx:{env:-3,sat:-3,mild:{t:'环境违法处置偏轻'}}}]},
-{id:'nursery',lv:[0,4],w:2,title:'幼儿园学位',text:'公办幼儿园学位比小学还紧张，民办的一学期收费抵得上半年工资。年轻家长的意见很大。',opts:[
+{id:'nursery',mo:[8,9],lv:[0,4],w:2,title:'幼儿园学位',text:'公办幼儿园学位比小学还紧张，民办的一学期收费抵得上半年工资。年轻家长的意见很大。',opts:[
  {t:'新建公办园',n:'立项开工',fx:{q:'nursery',sat:2}},
  {t:'补贴民办园',n:'',fx:{cash:-40,sat:1}},
  {t:'暂不处理',n:'',fx:{sat:-2}}]},
-{id:'hot_summer',lv:[0,4],w:2,cond:S=>S.month>=6&&S.month<=8,title:'高温限电',text:'连续高温，用电负荷创了新高，电网要求错峰。要么限工业，要么限居民。',opts:[
+{id:'hot_summer',mo:[7,8],lv:[0,4],w:2,cond:S=>S.month>=6&&S.month<=8,title:'高温限电',text:'连续高温，用电负荷创了新高，电网要求错峰。要么限工业，要么限居民。',opts:[
  {t:'限工业',n:'',fx:{pros:-3,sat:1}},
  {t:'限居民',n:'',fx:{sat:-5}}]},
-{id:'bridge',lv:[0,3],w:2,title:'危桥',text:'交通局排查出一座八十年代的桥是危桥，每天有校车经过。封桥绕行要多走四十分钟，重建要一年。',opts:[
+{id:'bridge',mo:[5],lv:[0,3],w:2,title:'危桥',text:'交通局排查出一座八十年代的桥是危桥，每天有校车经过。封桥绕行要多走四十分钟，重建要一年。',opts:[
  {t:'封桥重建',n:'',fx:{cash:-150,sat:-1,rep:1}},
  {t:'限载通行，观察',n:'',fx:{acc:0.8}}]},
-{id:'vendor_debt',lv:[0,4],w:2,cond:S=>S.cash<0,title:'供应商讨要工程款',text:'几家本地建筑公司联名来要工程款，最长的拖了两年。有一家老板说再不给就要去省里。',opts:[
+{id:'vendor_debt',mo:[12,1],lv:[0,4],w:2,cond:S=>S.cash<0,title:'供应商讨要工程款',text:'几家本地建筑公司联名来要工程款，最长的拖了两年。有一家老板说再不给就要去省里。',opts:[
  {t:'排计划分批还',n:'',fx:{cash:-100,rep:1}},
  {t:'继续拖',n:'',fx:{sat:-2,rep:-3}}]},
-{id:'sports',lv:[1,4],w:2,title:'承办省运会',text:'省里问你要不要承办下一届省运会。场馆要新建，投入大，办完之后场馆的利用率是老问题。',opts:[
+{id:'sports',mo:[5,9],lv:[1,4],w:2,title:'承办省运会',text:'省里问你要不要承办下一届省运会。场馆要新建，投入大，办完之后场馆的利用率是老问题。',opts:[
  {t:'承办',n:'',fx:{cash:-600,pros:4,rep:4,liv:2}},
  {t:'不承办',n:'',fx:{}}]},
 {id:'village_bank',lv:[0,2],w:2,title:'村镇银行出问题',text:'本地一家村镇银行取不出钱了，储户在门口聚集。金融办说是股东挪用资金，和政府没有直接关系，但储户不听这个。',opts:[
  {t:'协调垫付，稳住局面',n:'',fx:{cash:-200,sat:2}},
  {t:'等上级金融监管部门处理',n:'',fx:{sat:-5}}]},
-{id:'idle_park',lv:[1,4],w:2,cond:S=>S.ind.length>=3,title:'园区空置',text:'前几年建的园区，有一半厂房空着。招商局的人跑了一年，签来的都是小企业，还都要求免租。',opts:[
+{id:'idle_park',mo:[11],lv:[1,4],w:2,cond:S=>S.ind.length>=3,title:'园区空置',text:'前几年建的园区，有一半厂房空着。招商局的人跑了一年，签来的都是小企业，还都要求免租。',opts:[
  {t:'免租三年，先填满',n:'',fx:{pros:2,cash:-60}},
  {t:'降标准，引进低端制造',n:'',fx:{pros:4,env:-4}},
  {t:'空着',n:'',fx:{pros:-2}}]},
@@ -705,38 +916,38 @@ EV.push(
  {t:'纳入统计，主动上报',n:'隐债率上升，声誉小幅受损',fx:{addcq:0.12,rep:-2}},
  {t:'继续放在表外',n:'',fx:{mild:{t:'隐匿债务'},sched:{id:'lgfv_ceo3',m:12}}}]},
 {id:'lgfv_ceo3',lv:[1,4],w:0,title:'表外债务被审计发现',text:'审计发现了那两笔信托融资。通报里的措辞是"隐匿债务"。',opts:[{t:'接受处理',n:'',fx:{addcq:0.12,rep:-6,unity:-3}}]},
-{id:'succ_plan',lv:[0,4],w:1,cond:S=>S.tenure>=4,title:'接班人',text:'组织部来征求意见，问你觉得班子里谁能接你的班。你心里有数，但每个人都有一段不太好说的事。',opts:[
+{id:'succ_plan',mo:[1,12],lv:[0,4],w:1,cond:S=>S.tenure>=4,title:'接班人',text:'组织部来征求意见，问你觉得班子里谁能接你的班。你心里有数，但每个人都有一段不太好说的事。',opts:[
  {t:'推荐最能干的',n:'',fx:{unity:2}},
  {t:'推荐最稳的',n:'',fx:{rep:1}}]}
 );
 PET.push(
-{id:'p_hukou',title:'外来务工人员子女入学',text:'一群在园区打工的外地人来反映，孩子没有本地户口，进不了公办学校。他们在这里交了七八年税。',opts:[
+{id:'p_hukou',mo:[8,9],title:'外来务工人员子女入学',text:'一群在园区打工的外地人来反映，孩子没有本地户口，进不了公办学校。他们在这里交了七八年税。',opts:[
  {t:'放开积分入学',n:'',fx:{sat:2,liv:1}},
  {t:'维持户籍限制',n:'',fx:{sat:-2,pop:-0.3}}]},
-{id:'p_elder',title:'独居老人',text:'居委会报上来，一位独居老人在家去世一周才被发现。街道说人手不够，管不过来。',opts:[
+{id:'p_elder',mo:[1,2,12],title:'独居老人',text:'居委会报上来，一位独居老人在家去世一周才被发现。街道说人手不够，管不过来。',opts:[
  {t:'建立独居老人探访制度',n:'',fx:{cash:-20,sat:1}},
  {t:'表示哀悼',n:'',fx:{sat:-1}}]},
-{id:'p_taxi',title:'出租车司机罢运',text:'网约车抢了出租车的活，出租车司机集体停运，几十辆车停在政府门口。',opts:[
+{id:'p_taxi',mo:[1,5,11],title:'出租车司机罢运',text:'网约车抢了出租车的活，出租车司机集体停运，几十辆车停在政府门口。',opts:[
  {t:'召集两边坐下来谈',n:'',fx:{sat:1}},
  {t:'不干预',n:'',fx:{sat:-3}}]},
-{id:'p_dog',title:'流浪狗咬人',text:'一个月里三起流浪狗伤人，其中一个是孩子。市民要求处理，动保组织反对扑杀。',opts:[
+{id:'p_dog',mo:[5,7,8],title:'流浪狗咬人',text:'一个月里三起流浪狗伤人，其中一个是孩子。市民要求处理，动保组织反对扑杀。',opts:[
  {t:'集中收容',n:'',fx:{cash:-15,sat:1}},
  {t:'不管',n:'',fx:{sat:-2}}]}
 );
 /* ===== 事件第三批：与新设施挂钩 + 各类补充 ===== */
 EV.push(
 /* —— 民生 —— */
-{id:'garbage_full',lv:[0,4],w:3,cond:S=>cov('garbage')<0.4,title:'填埋场满了',text:'环卫处报上来，填埋场再有半年就到库容极限。周边村子已经在堵门，说风一吹整个村都是味。邻县愿意接收，按吨收费，价格不低。',opts:[
+{id:'garbage_full',mo:[7,10],lv:[0,4],w:3,cond:S=>cov('garbage')<0.4,title:'填埋场满了',text:'环卫处报上来，填埋场再有半年就到库容极限。周边村子已经在堵门，说风一吹整个村都是味。邻县愿意接收，按吨收费，价格不低。',opts:[
  {t:'立项建垃圾处理厂',n:'开工，工期半年',fx:{q:'garbage'}},
  {t:'运到邻县处理',n:'每月花钱，先应付',fx:{cash:-40,rep:-1}},
  {t:'扩容填埋，继续堆',n:'环境和满意度下降',fx:{env:-4,sat:-3}}]},
-{id:'gas_leak',lv:[0,4],w:3,cond:S=>cov('gas')<0.5,title:'老旧燃气管道泄漏',text:'老城区一处燃气管道泄漏，好在发现得早。住建局说这批管道是九十年代埋的，已经超期服役，全城类似的还有几十公里。',opts:[
+{id:'gas_leak',mo:[11,12,1],lv:[0,4],w:3,cond:S=>cov('gas')<0.5,title:'老旧燃气管道泄漏',text:'老城区一处燃气管道泄漏，好在发现得早。住建局说这批管道是九十年代埋的，已经超期服役，全城类似的还有几十公里。',opts:[
  {t:'全面改造燃气管网',n:'立项，投入不小',fx:{q:'gas',sat:-1}},
  {t:'哪里漏修哪里',n:'埋下隐患',fx:{cash:-30,acc:0.5}}]},
-{id:'waterlog',lv:[0,4],w:3,cond:S=>cov('pipe')<0.5&&S.month>=6&&S.month<=8,title:'一场暴雨淹了半个城',text:'两小时的暴雨，主干道积水没过膝盖，地下车库进水，一位老人被困车里。市民拍的视频里，一位路人说了句"年年淹、年年修"。',opts:[
+{id:'waterlog',mo:[7,8],lv:[0,4],w:3,cond:S=>cov('pipe')<0.5&&S.month>=6&&S.month<=8,title:'一场暴雨淹了半个城',text:'两小时的暴雨，主干道积水没过膝盖，地下车库进水，一位老人被困车里。市民拍的视频里，一位路人说了句"年年淹、年年修"。',opts:[
  {t:'上马地下管廊和排涝工程',n:'立项，见效要等工期',fx:{q:'pipe',sat:-1}},
  {t:'应急抽排，先过这一季',n:'明年还会淹',fx:{cash:-60,sat:-3}}]},
-{id:'stadium_idle',lv:[1,4],w:2,cond:S=>S.f.gym>0,title:'体育中心运营亏损',text:'体育中心建成两年，一年只办了三场活动，电费和保安费每个月都在贴。文体局提出交给专业公司运营，对方要求政府每年补贴。',opts:[
+{id:'stadium_idle',mo:[10,12],lv:[1,4],w:2,cond:S=>S.f.gym>0,title:'体育中心运营亏损',text:'体育中心建成两年，一年只办了三场活动，电费和保安费每个月都在贴。文体局提出交给专业公司运营，对方要求政府每年补贴。',opts:[
  {t:'交给市场，签运营协议',n:'',fx:{cash:-40,liv:1,pros:1}},
  {t:'财政继续养着',n:'',fx:{cash:-60}},
  {t:'关掉大半场馆',n:'满意度受影响',fx:{sat:-2}}]},
@@ -748,160 +959,160 @@ EV.push(
  {t:'保留，原地改造',n:'',fx:{cash:-30,sat:2}}]},
 {id:'house_alloc',lv:[0,4],w:2,cond:S=>S.f.house>0,title:'保障房分配被举报',text:'有人在网上贴了一张表：一批保障房的承租人里，有机关干部的亲属。住建局说程序上"都符合条件"。',opts:[
  {t:'全部清退，重新公示分配',n:'',fx:{rep:2,unity:-2,sat:2}},
- {t:'认定程序合规，不追究',n:'',fx:{mild:{t:'保障房分配把关不严'},sat:-3}}]},
+ {t:'认定程序合规，不追究',n:'',fx:{mild:{t:'保障房分配把关不严'},sat:-3,sched:{id:'house_alloc2',m:16}}}]},
 {id:'elevator',lv:[1,4],w:2,title:'老楼加装电梯',text:'老旧小区业主联名申请加装电梯，六楼的老人下不来楼。一楼二楼反对，说挡光。住建局测算，财政若补贴一半，一年能装几十部。',opts:[
  {t:'财政补贴一半',n:'',fx:{cash:-60,sat:2,liv:1}},
  {t:'业主自筹，政府不补',n:'',fx:{sat:-1}}]},
-{id:'parking',lv:[1,4],w:2,title:'停车难',text:'老城区停车位缺口过半，晚上车停在消防通道上。城管建停车楼要钱，物价局提出涨停车费。',opts:[
+{id:'parking',mo:[5,10],lv:[1,4],w:2,title:'停车难',text:'老城区停车位缺口过半，晚上车停在消防通道上。城管建停车楼要钱，物价局提出涨停车费。',opts:[
  {t:'建几座立体停车楼',n:'',fx:{cash:-80,liv:1,sat:1}},
  {t:'涨停车费，价格调节',n:'',fx:{cash:20,sat:-2}}]},
-{id:'school_merge',lv:[0,1],w:2,title:'撤点并校',text:'教育局提出把六所村小合并成两所中心校，能省下一批编制和经费。村民说孩子六七岁就要住校，路又远。',opts:[
+{id:'school_merge',mo:[9],lv:[0,1],w:2,title:'撤点并校',text:'教育局提出把六所村小合并成两所中心校，能省下一批编制和经费。村民说孩子六七岁就要住校，路又远。',opts:[
  {t:'合并',n:'省钱，满意度下降',fx:{cash:40,sat:-3}},
  {t:'保留村小，补教师',n:'',fx:{cash:-25,sat:1}}]},
-{id:'teacher_wage',lv:[0,4],w:3,title:'教师工资督查',text:'上级督查组来查"教师平均工资不低于公务员"落实情况。财政局算了一下，差距还有一截，补上要一大笔。',opts:[
+{id:'teacher_wage',mo:[9,12],lv:[0,4],w:3,title:'教师工资督查',text:'上级督查组来查"教师平均工资不低于公务员"落实情况。财政局算了一下，差距还有一截，补上要一大笔。',opts:[
  {t:'补齐',n:'',fx:{cash:-100,rep:1,sat:1}},
  {t:'先做个方案，分三年',n:'留一笔违规记录',fx:{mild:{t:'教师工资待遇未按要求落实'},sat:-2}}]},
-{id:'clinic_doc',lv:[0,4],w:2,cond:S=>S.f.clinic>0,title:'社区医生留不住',text:'社区卫生服务中心一年走了三分之一的医生，都是编外，待遇比大医院差一半。中心主任说，再走就得关门。',opts:[
+{id:'clinic_doc',mo:[9],lv:[0,4],w:2,cond:S=>S.f.clinic>0,title:'社区医生留不住',text:'社区卫生服务中心一年走了三分之一的医生，都是编外，待遇比大医院差一半。中心主任说，再走就得关门。',opts:[
  {t:'提高编外待遇',n:'',fx:{cash:-30,liv:1}},
  {t:'走了再招',n:'',fx:{liv:-2}}]},
-{id:'nursery_video',lv:[0,4],w:2,cond:S=>S.f.nursery>0,title:'幼儿园出了视频',text:'一段幼儿园老师推搡孩子的视频在家长群里炸了。园长说是个别情况，教育局的人还没到现场，已经有家长在园门口拉横幅。',opts:[
+{id:'nursery_video',mo:[9],lv:[0,4],w:2,cond:S=>S.f.nursery>0,title:'幼儿园出了视频',text:'一段幼儿园老师推搡孩子的视频在家长群里炸了。园长说是个别情况，教育局的人还没到现场，已经有家长在园门口拉横幅。',opts:[
  {t:'公开处理，园长停职，全市排查',n:'',fx:{sat:1,rep:1,cash:-10}},
  {t:'内部处理，让家长群冷下来',n:'',fx:{sat:-4,mild:{t:'压制舆情'}}}]},
 {id:'hosp_grade',lv:[1,3],w:2,cond:S=>S.f.hosp>=3,title:'医院申报三甲',text:'人民医院想申报三甲，硬件要补一批设备，人才要引进。评上了，本地人看病不用往省城跑；评不上，钱也花了。',opts:[
  {t:'支持申报',n:'',fx:{cash:-150,liv:3,rep:1}},
  {t:'条件不成熟',n:'',fx:{}}]},
-{id:'university',lv:[1,4],w:2,once:true,cond:S=>S.year>=3,title:'争取一所大学分校',text:'省里一所大学想设分校区，几个城市在争。要给地、给楼、给配套，前期投入大，好处是人才和人气。',opts:[
- {t:'争取，给足条件',n:'',fx:{cash:-500,land:-100,pop:1,pros:3,liv:2}},
+{id:'university',mo:[9],lv:[1,4],w:2,once:true,cond:S=>S.year>=3,title:'争取一所大学分校',text:'省里一所大学想设分校区，几个城市在争。要给地、给楼、给配套，前期投入大，好处是人才和人气。',opts:[
+ {t:'争取，给足条件',n:'',fx:{cash:-500,land:-100,pop:1,pros:3,liv:2,sched:{id:'university2',m:40}}},
  {t:'不参与',n:'',fx:{}}]},
-{id:'egov',lv:[1,4],w:2,once:true,title:'政务服务一网通办',text:'省里推"一网通办"，要求群众办事不超过一次跑腿。数据要打通，系统要重建，各个部门都说自己的系统不能动。',opts:[
+{id:'egov',mo:[6],lv:[1,4],w:2,once:true,title:'政务服务一网通办',text:'省里推"一网通办"，要求群众办事不超过一次跑腿。数据要打通，系统要重建，各个部门都说自己的系统不能动。',opts:[
  {t:'投钱建，书记亲自抓',n:'',fx:{cash:-120,rep:2,liv:1,unity:-1}},
  {t:'先做几个窗口应付验收',n:'',fx:{mild:{t:'政务改革走过场'}}}]},
-{id:'streetlight',lv:[0,1],w:2,title:'黑灯的街',text:'城郊几条路的路灯坏了大半年，电费欠着，维修公司不来。晚上下班的人摸黑走，已经出过两起交通事故。',opts:[
+{id:'streetlight',mo:[9,10],lv:[0,1],w:2,title:'黑灯的街',text:'城郊几条路的路灯坏了大半年，电费欠着，维修公司不来。晚上下班的人摸黑走，已经出过两起交通事故。',opts:[
  {t:'结清电费，修好',n:'',fx:{cash:-20,sat:1}},
  {t:'列入明年计划',n:'',fx:{sat:-2}}]},
-{id:'bikes',lv:[1,4],w:2,title:'共享单车堆成山',text:'四家单车公司抢市场，车停满了人行道。城管拖走了几千辆，堆在郊区一块空地上，被拍成了"单车坟场"。',opts:[
+{id:'bikes',mo:[5,9],lv:[1,4],w:2,title:'共享单车堆成山',text:'四家单车公司抢市场，车停满了人行道。城管拖走了几千辆，堆在郊区一块空地上，被拍成了"单车坟场"。',opts:[
  {t:'限总量，划停车点',n:'',fx:{cash:-10,liv:1}},
  {t:'全部清退',n:'',fx:{sat:-2}}]},
 /* —— 市政 —— */
-{id:'river_black',lv:[0,4],w:3,cond:S=>cov('river')<0.4&&S.env<55,title:'黑臭水体挂牌督办',text:'省里把穿城那条河列入黑臭水体挂牌督办名单，限期一年销号。河两岸的排污口，有一半查不到主人。',opts:[
+{id:'river_black',mo:[10],lv:[0,4],w:3,cond:S=>cov('river')<0.4&&S.env<55,title:'黑臭水体挂牌督办',text:'省里把穿城那条河列入黑臭水体挂牌督办名单，限期一年销号。河两岸的排污口，有一半查不到主人。',opts:[
  {t:'河道整治立项',n:'',fx:{q:'river'}},
  {t:'撒药盖味，先过检查',n:'',fx:{cash:-15,env:-2,mild:{t:'环境治理弄虚作假'}}}]},
-{id:'dc_power',lv:[1,4],w:2,cond:S=>S.f.datacenter>0,title:'数据中心的电费',text:'数据中心投用后，用电量占了全城工业用电的两成。企业说电价太高要搬到西部去，那边有绿电补贴。',opts:[
+{id:'dc_power',mo:[7,8],lv:[1,4],w:2,cond:S=>S.f.datacenter>0,title:'数据中心的电费',text:'数据中心投用后，用电量占了全城工业用电的两成。企业说电价太高要搬到西部去，那边有绿电补贴。',opts:[
  {t:'给电价补贴',n:'',fx:{cash:-60,pros:2}},
  {t:'不补',n:'',fx:{pros:-2}}]},
-{id:'wetland_bird',lv:[0,4],w:2,cond:S=>S.f.wetland>0,title:'湿地来了候鸟',text:'湿地公园建成后，观鸟的人拍到了一种一级保护鸟类。省林业厅要求划保护区，周边一块工业用地要调整。',opts:[
+{id:'wetland_bird',mo:[10,11],lv:[0,4],w:2,cond:S=>S.f.wetland>0,title:'湿地来了候鸟',text:'湿地公园建成后，观鸟的人拍到了一种一级保护鸟类。省林业厅要求划保护区，周边一块工业用地要调整。',opts:[
  {t:'划保护区',n:'',fx:{env:3,rep:2,land:-30,pros:-1}},
  {t:'保护区划小一点',n:'',fx:{env:-1,mild:{t:'生态保护不到位'}}}]},
 {id:'bus_ev',lv:[0,4],w:2,cond:S=>S.f.busdepot>0,title:'公交电动化',text:'省里要求三年内公交全部换成新能源。公交公司说换车的钱没有，充电桩也没有。',opts:[
  {t:'财政出钱换',n:'',fx:{cash:-80,env:2,liv:1}},
  {t:'申请延期',n:'',fx:{rep:-1}}]},
-{id:'mine_sink',lv:[0,1],w:2,once:true,title:'老矿塌陷区',text:'老矿的采空区开始塌陷，一个村的房子裂了缝。矿早关了，企业注销了，账算不到任何人头上。',opts:[
+{id:'mine_sink',mo:[3],lv:[0,1],w:2,once:true,title:'老矿塌陷区',text:'老矿的采空区开始塌陷，一个村的房子裂了缝。矿早关了，企业注销了，账算不到任何人头上。',opts:[
  {t:'综合治理，复垦造地',n:'',fx:{cash:-200,liv:2,env:3,land:60}},
  {t:'整村搬迁',n:'',fx:{cash:-80,sat:-2}},
  {t:'监测观察',n:'',fx:{acc:0.5}}]},
-{id:'shanty',lv:[1,4],w:2,title:'城中村改造',text:'城中心的城中村，握手楼、私拉电线、外来人口密集。方案一：整体拆迁，土地能卖个好价；方案二：微改造，花钱不见地。',opts:[
- {t:'整体拆迁',n:'土地收入，房价压力上升，满意度下降',fx:{cashLand:1.5,housing:6,sat:-3}},
+{id:'shanty',mo:[3],lv:[1,4],w:2,title:'城中村改造',text:'城中心的城中村，握手楼、私拉电线、外来人口密集。方案一：整体拆迁，土地能卖个好价；方案二：微改造，花钱不见地。',opts:[
+ {t:'整体拆迁',n:'土地收入，房价压力上升，满意度下降',fx:{cashLand:1.5,housing:6,sat:-3,sched:{id:'shanty2',m:28}}},
  {t:'微改造',n:'',fx:{cash:-150,liv:3,sat:2}}]},
 /* —— 产业 —— */
-{id:'port_bonded',lv:[2,4],w:2,cond:S=>S.f.port>0,title:'申报综合保税区',text:'港口起来了，海关提出可以申报综合保税区。要建围网、卡口、监管仓，一次性投入不小，批下来招商就好谈了。',opts:[
+{id:'port_bonded',mo:[4],lv:[2,4],w:2,cond:S=>S.f.port>0,title:'申报综合保税区',text:'港口起来了，海关提出可以申报综合保税区。要建围网、卡口、监管仓，一次性投入不小，批下来招商就好谈了。',opts:[
  {t:'申报',n:'',fx:{cash:-300,pros:5,rep:2}},
  {t:'不申报',n:'',fx:{}}]},
-{id:'agri_brand',lv:[0,2],w:2,cond:S=>S.f.agri>0,title:'地理标志申报',text:'农业局想给本地的一样农产品申报地理标志。要做检测、做标准、做宣传，前后一年。',opts:[
+{id:'agri_brand',mo:[4,9],lv:[0,2],w:2,cond:S=>S.f.agri>0,title:'地理标志申报',text:'农业局想给本地的一样农产品申报地理标志。要做检测、做标准、做宣传，前后一年。',opts:[
  {t:'做',n:'',fx:{cash:-30,pros:3}},
  {t:'不做',n:'',fx:{}}]},
 {id:'mall_empty',lv:[1,4],w:2,cond:S=>S.f.mall>0&&S.pros<50,title:'综合体空了一半',text:'商贸综合体开业不到两年，商户走了一半。开发商找上门，说当初是政府招商来的，要求政府回购或补贴。',opts:[
  {t:'回购一部分做公共设施',n:'',fx:{cash:-200,liv:1}},
  {t:'不管，让它自己扛',n:'',fx:{pros:-3,sat:-1}}]},
-{id:'fin_bank',lv:[3,4],w:2,cond:S=>S.f.fin>0,title:'引进银行区域总部',text:'一家股份制银行有意把区域总部放到金融商务区，条件是落户奖励和高管个税返还。',opts:[
+{id:'fin_bank',mo:[4],lv:[3,4],w:2,cond:S=>S.f.fin>0,title:'引进银行区域总部',text:'一家股份制银行有意把区域总部放到金融商务区，条件是落户奖励和高管个税返还。',opts:[
  {t:'给',n:'',fx:{cash:-200,pros:5}},
  {t:'不给',n:'',fx:{pros:-1}}]},
-{id:'ecom',lv:[0,2],w:2,title:'直播电商基地',text:'几个年轻人在镇上直播卖货，一年卖了几千万。他们想要一块场地做基地，还想让政府帮着培训主播。',opts:[
+{id:'ecom',mo:[4,11],lv:[0,2],w:2,title:'直播电商基地',text:'几个年轻人在镇上直播卖货，一年卖了几千万。他们想要一块场地做基地，还想让政府帮着培训主播。',opts:[
  {t:'给场地、给培训',n:'',fx:{cash:-60,pros:3,pop:0.3}},
  {t:'不搞',n:'',fx:{}}]},
-{id:'night_market',lv:[0,4],w:2,title:'夜经济',text:'年轻人想在河边搞夜市，商务局说能拉动消费，城管说影响市容，环卫说垃圾多，居民说吵。',opts:[
+{id:'night_market',mo:[6,7,8],lv:[0,4],w:2,title:'夜经济',text:'年轻人想在河边搞夜市，商务局说能拉动消费，城管说影响市容，环卫说垃圾多，居民说吵。',opts:[
  {t:'放开，划定区域',n:'',fx:{pros:2,sat:1,env:-1}},
  {t:'不放',n:'',fx:{sat:-1}}]},
-{id:'stats',lv:[1,4],w:2,title:'统计局的一个电话',text:'统计局长打电话来，说按实际数据今年增速是负的。"其他地方也都调，咱们不调，排名就垫底。"',opts:[
+{id:'stats',mo:[1,6,12],lv:[1,4],w:2,title:'统计局的一个电话',text:'统计局长打电话来，说按实际数据今年增速是负的。"其他地方也都调，咱们不调，排名就垫底。"',opts:[
  {t:'如实上报',n:'',fx:{rep:-3}},
  {t:'让他"技术处理"',n:'统计造假，留一笔记录',fx:{rep:1,mild:{t:'统计数据造假'}}}]},
-{id:'apportion',lv:[0,4],w:2,title:'"自愿"捐款',text:'办公室提议，让园区企业为一个民生项目"自愿捐款"，按纳税额分摊。企业不会说不，但会记住。',opts:[
+{id:'apportion',mo:[1,2,12],lv:[0,4],w:2,title:'"自愿"捐款',text:'办公室提议，让园区企业为一个民生项目"自愿捐款"，按纳税额分摊。企业不会说不，但会记住。',opts:[
  {t:'搞',n:'钱进来了，企业不满',fx:{cash:80,pros:-1,mild:{t:'向企业摊派'}}},
  {t:'不搞',n:'',fx:{}}]},
-{id:'pig_flu',lv:[0,1],w:2,title:'猪瘟',text:'周边县出现猪瘟，本地养殖户开始恐慌抛售。农业局要求扑杀补贴、封锁道路。',opts:[
+{id:'pig_flu',mo:[4,5],lv:[0,1],w:2,title:'猪瘟',text:'周边县出现猪瘟，本地养殖户开始恐慌抛售。农业局要求扑杀补贴、封锁道路。',opts:[
  {t:'足额补贴，严格封锁',n:'',fx:{cash:-50,sat:1}},
  {t:'补贴按标准的一半',n:'',fx:{cash:-20,sat:-3,pros:-1}}]},
 /* —— 灾害与安全 —— */
-{id:'cold_wave',lv:[0,4],w:2,cond:S=>S.month===12||S.month<=2,title:'寒潮',text:'零下十几度，老城区的供暖管网压力上不去，学校和医院先冷了。热力公司说燃料价格翻了倍，财政补贴不到位就停。',opts:[
+{id:'cold_wave',mo:[12,1,2],lv:[0,4],w:2,cond:S=>S.month===12||S.month<=2,title:'寒潮',text:'零下十几度，老城区的供暖管网压力上不去，学校和医院先冷了。热力公司说燃料价格翻了倍，财政补贴不到位就停。',opts:[
  {t:'补贴到位，保供暖',n:'',fx:{cash:-80,sat:1}},
  {t:'让热力公司先扛着',n:'',fx:{sat:-4}}]},
-{id:'quake',lv:[0,4],w:1,title:'一次小地震',text:'凌晨一次四级多的地震，没有伤亡，但排查发现十几栋校舍和老楼有裂缝。加固要钱，不加固睡不着。',opts:[
+{id:'quake',mo:[5],lv:[0,4],w:1,title:'一次小地震',text:'凌晨一次四级多的地震，没有伤亡，但排查发现十几栋校舍和老楼有裂缝。加固要钱，不加固睡不着。',opts:[
  {t:'全部加固',n:'',fx:{cash:-150,rep:2}},
  {t:'先贴封条，观察',n:'',fx:{acc:0.6,sat:-1}}]},
-{id:'wildfire',lv:[0,2],w:2,cond:S=>S.month>=3&&S.month<=4,title:'清明山火',text:'上坟烧纸引发山火，烧了两天。林业局的扑火队人手不够，要调邻县的。',opts:[
+{id:'wildfire',mo:[3,4],lv:[0,2],w:2,cond:S=>S.month>=3&&S.month<=4,title:'清明山火',text:'上坟烧纸引发山火，烧了两天。林业局的扑火队人手不够，要调邻县的。',opts:[
  {t:'全力扑救，出钱出人',n:'',fx:{cash:-60,env:-1}},
  {t:'等雨',n:'',fx:{env:-4,sat:-2}}]},
 {id:'scam_den',lv:[0,4],w:2,title:'电诈窝点',text:'公安打掉一个电诈窝点，就在园区一栋写字楼里，租了两年没人发现。上级要求专项整治。',opts:[
  {t:'专项整治，全城排查',n:'',fx:{cash:-30,sat:2,rep:1}},
  {t:'案子结了就算了',n:'',fx:{rep:-1}}]},
-{id:'fireworks',lv:[0,4],w:1,cond:S=>S.month===1,title:'烟花禁不禁',text:'过年要不要禁放烟花，年年吵。禁了，空气好，群众骂没年味；不禁，环保数据难看。',opts:[
+{id:'fireworks',mo:[1,2],lv:[0,4],w:1,cond:S=>S.month===1,title:'烟花禁不禁',text:'过年要不要禁放烟花，年年吵。禁了，空气好，群众骂没年味；不禁，环保数据难看。',opts:[
  {t:'禁',n:'',fx:{env:1,sat:-2}},
  {t:'限时限区域放开',n:'',fx:{sat:2,env:-1}}]},
 /* —— 廉政与人事 —— */
-{id:'tender_ring',lv:[0,4],w:3,title:'围标串标',text:'一个工程的招标，五家投标单位报价只差几万块。纪委的人说，这几家背后是同一个老板，本地不少工程都是这么中的。',opts:[
- {t:'查到底',n:'',fx:{rep:2,unity:-2,pros:-1}},
- {t:'废标重招，不追究',n:'',fx:{mild:{t:'招投标监管失职'}}}]},
-{id:'gift_card',lv:[0,4],w:2,title:'节前的购物卡',text:'节前，一家企业的老板来"看望"你，走了之后办公室在沙发上发现一个信封，里面是几张购物卡。',opts:[
- {t:'收下',n:'进责任档案',fx:{file:{sev:1,t:'收受管理服务对象礼品礼金'}},grey:true},
- {t:'登记上交，退回',n:'',fx:{rep:1}}]},
-{id:'secretary',lv:[1,4],w:2,title:'秘书的事',text:'有人反映你的秘书在外面"帮人办事"，打着你的旗号收好处。你查了一下，是真的。',opts:[
+{id:'tender_ring',mo:[3,11],lv:[0,4],w:3,title:'围标串标',text:'一个工程的招标，五家投标单位报价只差几万块。纪委的人说，这几家背后是同一个老板，本地不少工程都是这么中的。',opts:[
+ {t:'查到底',n:'',fx:{rep:2,unity:-2,pros:-1,npc:{k:'insp',v:9},npc2:{k:'dev',v:-9}}},
+ {t:'废标重招，不追究',n:'',fx:{mild:{t:'招投标监管失职'},npc:{k:'insp',v:-7},npc2:{k:'dev',v:4},sched:{id:'tender_ring2',m:22}}}]},
+{id:'gift_card',mo:[1,2],lv:[0,4],w:2,title:'节前的购物卡',text:'节前，一家企业的老板来"看望"你，走了之后办公室在沙发上发现一个信封，里面是几张购物卡。',opts:[
+ {t:'收下',n:'进责任档案',fx:{file:{sev:1,t:'收受管理服务对象礼品礼金'},npc:{k:'dev',v:6},npc2:{k:'insp',v:-8}},grey:true},
+ {t:'登记上交，退回',n:'',fx:{rep:1,npc:{k:'dev',v:-4},npc2:{k:'insp',v:4}}}]},
+{id:'secretary',mo:[2,7],lv:[1,4],w:2,title:'秘书的事',text:'有人反映你的秘书在外面"帮人办事"，打着你的旗号收好处。你查了一下，是真的。',opts:[
  {t:'调离，移交纪委',n:'',fx:{unity:-1,rep:1}},
  {t:'批评一顿，留在身边',n:'',fx:{mild:{t:'对身边工作人员管理不严'}}}]},
-{id:'leader_visit',lv:[0,4],w:2,title:'省领导来调研',text:'省领导下周来调研，办公室已经在选点、排路线、写材料。有人提议把路线上几个"不好看"的地方临时遮一遮。',opts:[
+{id:'leader_visit',mo:[6,11],lv:[0,4],w:2,title:'省领导来调研',text:'省领导下周来调研，办公室已经在选点、排路线、写材料。有人提议把路线上几个"不好看"的地方临时遮一遮。',opts:[
  {t:'照实走，不遮',n:'',fx:{rep:1}},
  {t:'遮一下',n:'',fx:{cash:-20,rep:2,mild:{t:'迎检弄虚作假'}}}]},
 /* —— 财政与债务 —— */
-{id:'debt_swap',lv:[1,4],w:2,once:true,cond:S=>S.hdr>=50&&S.rep>=45,title:'置换债额度',text:'省里分下来一批置换债额度，可以把一部分城投债换成利率低得多的法定债务。条件是签承诺书：三年内不新增隐性债务，接受季度核查。',opts:[
+{id:'debt_swap',mo:[12,1],lv:[1,4],w:2,once:true,cond:S=>S.hdr>=50&&S.rep>=45,title:'置换债额度',text:'省里分下来一批置换债额度，可以把一部分城投债换成利率低得多的法定债务。条件是签承诺书：三年内不新增隐性债务，接受季度核查。',opts:[
  {t:'申报置换',n:'三成城投债转为专项债',fx:{swap:0.3,rep:1}},
  {t:'不申报',n:'',fx:{}}]},
-{id:'legacy_debt',lv:[1,4],w:2,once:true,cond:S=>S.tenure<=1,title:'前任留下的账',text:'审计在交接审计里发现前任通过一家融资租赁公司借的一笔钱，没入过账。上报，隐债率要涨一截；不上报，账就成了你的。',opts:[
+{id:'legacy_debt',mo:[12,1],lv:[1,4],w:2,once:true,cond:S=>S.tenure<=1,title:'前任留下的账',text:'审计在交接审计里发现前任通过一家融资租赁公司借的一笔钱，没入过账。上报，隐债率要涨一截；不上报，账就成了你的。',opts:[
  {t:'上报，纳入统计',n:'',fx:{addcq:0.1,rep:-1}},
  {t:'压着',n:'',fx:{mild:{t:'隐匿债务'}}}]},
-{id:'land_king',lv:[1,4],w:2,cond:S=>S.housing>50,title:'地王',text:'一块地拍出了历史最高价，媒体叫"地王"。土地收入是好事，但周边的房价一夜之间涨了两成。',opts:[
+{id:'land_king',mo:[4,11],lv:[1,4],w:2,cond:S=>S.housing>50,title:'地王',text:'一块地拍出了历史最高价，媒体叫"地王"。土地收入是好事，但周边的房价一夜之间涨了两成。',opts:[
  {t:'成交',n:'',fx:{cashLand:1.2,housing:5,sat:-2}},
  {t:'中止出让',n:'',fx:{rep:-1}}]},
-{id:'wage_delay_rumor',lv:[0,4],w:2,cond:S=>S.cash<50*S.sc,title:'"要发不出工资了"',text:'财政紧张的消息传出去了，本地群里在传下个月发不出工资。有几个单位已经在打听消息。',opts:[
+{id:'wage_delay_rumor',mo:[1,12],lv:[0,4],w:2,cond:S=>S.cash<50*S.sc,title:'"要发不出工资了"',text:'财政紧张的消息传出去了，本地群里在传下个月发不出工资。有几个单位已经在打听消息。',opts:[
  {t:'公开说明财政情况',n:'',fx:{rep:1,unity:1}},
  {t:'不回应',n:'',fx:{unity:-3,sat:-1}}]}
 );
 PET.push(
-{id:'p_heating',title:'供暖不热',text:'一个老小区的居民来反映，屋里温度只有十来度，热力公司说管网老化，小区物业说不归他们管。',opts:[
+{id:'p_heating',mo:[11,12,1,2],title:'供暖不热',text:'一个老小区的居民来反映，屋里温度只有十来度，热力公司说管网老化，小区物业说不归他们管。',opts:[
  {t:'责令热力公司限期整改',n:'',fx:{sat:2,cash:-10}},
  {t:'让他们找物业',n:'',fx:{sat:-2}}]},
-{id:'p_landfill',title:'填埋场的味道',text:'填埋场周边三个村的村民联名来反映，夏天窗户都不敢开。他们带了一瓶井水。',opts:[
+{id:'p_landfill',mo:[7,8],title:'填埋场的味道',text:'填埋场周边三个村的村民联名来反映，夏天窗户都不敢开。他们带了一瓶井水。',opts:[
  {t:'加盖覆膜、上除臭设备',n:'',fx:{cash:-25,env:1,sat:1}},
  {t:'答复"已列入规划"',n:'',fx:{sat:-2}}]},
-{id:'p_scam_elder',title:'老人被骗',text:'几十位老人来反映，一家"保健品公司"办讲座卖产品，卷走了他们的养老钱，人已经跑了。',opts:[
+{id:'p_scam_elder',mo:[1,2],title:'老人被骗',text:'几十位老人来反映，一家"保健品公司"办讲座卖产品，卷走了他们的养老钱，人已经跑了。',opts:[
  {t:'公安立案，民政介入帮扶',n:'',fx:{cash:-10,sat:1}},
  {t:'告知走法律途径',n:'',fx:{sat:-2}}]},
-{id:'p_cemetery',title:'公墓涨价',text:'公墓一个墓位涨到了十几万，比房价还贵。市民说"死不起"。民政局说公墓是企业经营的。',opts:[
+{id:'p_cemetery',mo:[3,4],title:'公墓涨价',text:'公墓一个墓位涨到了十几万，比房价还贵。市民说"死不起"。民政局说公墓是企业经营的。',opts:[
  {t:'规划一处公益性公墓',n:'',fx:{cash:-40,sat:2}},
  {t:'不干预市场价格',n:'',fx:{sat:-2}}]},
-{id:'p_teacher',title:'代课教师',text:'一批在村小代课二十年的教师来反映，工资只有正式教师的三分之一，没社保，快退休了什么都没有。',opts:[
+{id:'p_teacher',mo:[9,12],title:'代课教师',text:'一批在村小代课二十年的教师来反映，工资只有正式教师的三分之一，没社保，快退休了什么都没有。',opts:[
  {t:'按规定补缴社保，纳入编外管理',n:'',fx:{cash:-30,sat:2}},
  {t:'按合同办',n:'',fx:{sat:-2}}]},
-{id:'p_water_fee',title:'水费涨了',text:'水厂调价，水费一下涨了四成。居民来反映，说通知贴出来第二天就执行了，听证会没人知道。',opts:[
+{id:'p_water_fee',mo:[7,8],title:'水费涨了',text:'水厂调价，水费一下涨了四成。居民来反映，说通知贴出来第二天就执行了，听证会没人知道。',opts:[
  {t:'暂停调价，重开听证',n:'',fx:{cash:-15,sat:2}},
  {t:'维持',n:'',fx:{sat:-3}}]},
-{id:'p_night_work',title:'工地夜间施工',text:'一个市政工地为赶工期夜里打桩，周边居民投诉了一个月，环保局罚了三次，工地照干。',opts:[
+{id:'p_night_work',mo:[6,7,8],title:'工地夜间施工',text:'一个市政工地为赶工期夜里打桩，周边居民投诉了一个月，环保局罚了三次，工地照干。',opts:[
  {t:'责令夜间停工',n:'工期延误',fx:{sat:2,cash:-10}},
  {t:'赶工要紧',n:'',fx:{sat:-3}}]},
-{id:'p_queue',title:'挂号难',text:'家属反映在人民医院看个专家号要排一周，黄牛卖到几百块。医院说专家就那几个。',opts:[
+{id:'p_queue',mo:[12,1],title:'挂号难',text:'家属反映在人民医院看个专家号要排一周，黄牛卖到几百块。医院说专家就那几个。',opts:[
  {t:'打击黄牛，推分级诊疗',n:'',fx:{cash:-10,liv:1,sat:1}},
  {t:'不管',n:'',fx:{sat:-2}}]},
-{id:'p_schoolbus',title:'校车',text:'一位家长来反映，村里的孩子坐的是农用三轮改的"校车"，一车挤二十个孩子。',opts:[
+{id:'p_schoolbus',mo:[9],title:'校车',text:'一位家长来反映，村里的孩子坐的是农用三轮改的"校车"，一车挤二十个孩子。',opts:[
  {t:'财政购置校车，纳入监管',n:'',fx:{cash:-30,sat:2,rep:1}},
  {t:'取缔黑校车',n:'孩子没车坐',fx:{sat:-2}}]},
-{id:'p_signboard',title:'统一门头',text:'一条街的商户来反映，创城要求"统一门头"，每家自费几千块换成一模一样的黑底白字，"像开灵堂的"。',opts:[
+{id:'p_signboard',mo:[2,3],title:'统一门头',text:'一条街的商户来反映，创城要求"统一门头"，每家自费几千块换成一模一样的黑底白字，"像开灵堂的"。',opts:[
  {t:'叫停，允许各自设计',n:'',fx:{sat:2}},
  {t:'整齐好看，继续推',n:'',fx:{sat:-2,mild:{t:'整治工作简单粗暴'}}}]}
 );
@@ -917,6 +1128,184 @@ const RET=[
  {t:'也没什么好说的',n:'',fx:{}}]},
 {id:'r5',title:'回镇上看看',sys:true}
 ];
+
+/* ===== 年度节奏：十二个月各有各的性质 ===== */
+const MON=[null,
+ {k:'两会',d:'人代会开幕，政府工作报告要把全年的数报出去。'},
+ {k:'春节',d:'走访慰问，机关的事大都压到节后。'},
+ {k:'开工',d:'开春，压了一冬的项目集中开工。'},
+ {k:'招商',d:'招商季，几个地方在抢同一批企业。'},
+ {k:'汛前',d:'汛前检查，隐患台账要挂号销号。'},
+ {k:'半年',d:'半年考核，上级要看进度条。'},
+ {k:'主汛',d:'主汛期，值班室二十四小时不能空。'},
+ {k:'主汛',d:'高温和主汛期叠在一起，电和水都紧。'},
+ {k:'开学',d:'开学季，学位、校车、食堂都是眼前的事。'},
+ {k:'督察',d:'各路督察集中下沉的月份。'},
+ {k:'冲刺',d:'年末冲刺，指标差多少全摆在桌上。'},
+ {k:'清算',d:'年终清算，欠的账都要在这个月见面。'}];
+function mon(){return MON[S.month]||MON[1];}
+
+/* ===== 本月安排：一个月只能亲自抓一件事 =====
+   cd 冷却月数；mo 本月性质匹配时权重×4；only 仅在这些月份出现；
+   w(S) 状态相关权重；cond(S) 出现条件；f() 返回写进日志的一句话 */
+const AG={
+ routine:{n:'常规办公',cat:'',d:'批文件、开会、签字，一个月很快过去。',f:()=>''},
+ survey:{n:'下乡调研',cat:'民生',cd:3,mo:[2,3,9],d:'去几个村和社区走一走，听基层怎么说。',
+  f:()=>{nAdd('pet',2);S.sat+=1.2;S.rep+=0.5;S.unity-=0.4;return '在下面走了半个月，记了三本笔记。班子有人觉得你不常在家。';}},
+ petition:{n:'公开接访日',cat:'民生',cd:5,w:s=>s.sat<48?3.5:0.8,d:'在信访大厅坐一整天，谁都可以进来。',
+  f:()=>{nAdd('pet',5);S.sat+=3;S.unity-=1.5;S.agFlag.nopet=1;return '接访一天，签批十九件。有几件确实是干部拖出来的，当场点了名。';}},
+ province:{n:'跑省厅',cat:'财政',cd:4,mo:[1,6,12],d:'带着材料在省城住几天，见几个处长。',
+  f:()=>{S.rep-=0.6;nAdd('boss',2);if(Math.random()<0.40+nf('old')/250){const g=transferPay()*rnd(0.3,0.7);S.cash+=g;return '在省城跑了三个厅，争取到追加转移支付'+fmt(g)+'。';}
+   S.rep-=0.6;return '在省城跑了三个厅，材料都留下了，钱没说死。回来的路上你一句话没说。';}},
+ site:{n:'督在建工程',cat:'经济',cd:2,cond:s=>s.build.length>0,mo:[3,11],d:'挨个工地跑一遍，把停工的原因找出来。',
+  f:()=>{nAdd('dev',2);nAdd('lgfv',2);let n=0;for(const b of S.build){if(b.left>1){b.left--;n++;}b.stalled=false;}S.unity-=0.3;
+   return n?n+' 个在建项目工期各压缩一个月，月度支付随之加重。':'工地都跑到了，没有能再压的工期。';}},
+ invest:{n:'外出招商',cat:'经济',cd:3,mo:[4,11],d:'带队去沿海跑一周，见十几家企业。',
+  f:()=>{nAdd('dev',3);const c=LV[S.lvl].transfer*0.15;S.cash-=c;S.pros+=0.6;
+   const cand=['factory','bid_war','fake_sign','talent_war','ecom','port_bonded'].filter(id=>{const e=EV.find(x=>x.id===id);return e&&S.lvl>=e.lv[0]&&S.lvl<=e.lv[1];});
+   if(cand.length&&Math.random()<0.5){S.sched.push({id:pick(cand),m:0});return '招商团出去一周，接待费'+fmt(c)+'。有一家已经在谈落地了。';}
+   return '招商团出去一周，接待费'+fmt(c)+'。名片收了两百张，能不能落地再说。';}},
+ team:{n:'班子谈心',cat:'班子',cd:4,w:s=>s.unity<50?3.5:0.8,d:'一个一个谈，把话摆到桌面上。',
+  f:()=>{nAdd('zhou',5);S.unity+=4;return '谈了两周，有几个人的心结解开了，有几个只是不说了。';}},
+ cadre:{n:'干部调整',cat:'班子',cd:8,d:'动几个关键岗位，用自己看得准的人。',
+  f:()=>{nAdd('zhou',-7);S.unity-=3;S.rep+=0.5;S.flags.cadre=(S.flags.cadre||0)+1;
+   const e=Math.random()<0.6;if(e){S.staff=Math.round(S.staff*1.005);return '调整了七个岗位。用顺手的人多了，被动的人也多了。';}
+   S.sat-=1;return '调整了七个岗位。有人写了信，说程序不合规。';}},
+ safety:{n:'安全生产大检查',cat:'安全',cd:4,mo:[5,7,8],w:s=>s.accRisk>0?4:0.9,d:'停产排查，该封的封，该罚的罚。',
+  f:()=>{nAdd('dev',-3);const had=S.accRisk>0;S.accRisk*=0.3;S.pros-=0.3;return had?'排查出的隐患点大部分销号了，事故风险降下来。':'查了一个月，没查出大问题。企业有意见，说影响生产。';}},
+ envfix:{n:'环境整治月',cat:'安全',cd:5,mo:[10],w:s=>s.env<50?3.5:0.9,d:'关停一批小散乱污，河道清一遍。',
+  f:()=>{nAdd('dev',-4);S.env+=2.2;S.pros-=0.5;S.sat+=0.5;return '关停整治一个月，空气和水肉眼可见地好了一点，几家小厂关了门。';}},
+ budget:{n:'财政专题会',cat:'财政',cd:4,mo:[6,12],d:'一个部门一个部门过预算，压非急需支出。',
+  f:()=>{nAdd('lgfv',-2);S.agFlag.ops=0.85;S.unity-=1;return '本月行政运转支出压下一成半。各部门都不高兴。';}},
+ landwork:{n:'征地拆迁攻坚',cat:'经济',cd:6,mo:[3],w:s=>s.land<s.landTotal*0.12?3.5:0.9,d:'成立指挥部，限期完成一片区的签约。',
+  f:()=>{nAdd('dev',4);nAdd('pet',-6);const mu=60*S.lsc;S.land+=mu;S.landTotal+=mu*0.4;S.sat-=2;S.rep-=0.3;
+   return '一个片区签约完成，新增储备土地'+Math.round(mu)+'亩。有几户还堵在现场。';}},
+ selfcheck:{n:'廉政自查',cat:'自身',cd:6,w:s=>s.file.some(f=>!f.exp)?3.5:0.6,d:'自己先把账翻一遍，能补的手续补上。',
+  f:()=>{nAdd('insp',4);S.expMult=Math.max(0.6,S.expMult*0.7);S.unity-=2;return '自查自纠一个月，几笔手续补齐了。有人觉得你在自己人身上下刀。';}},
+ study:{n:'专题学习班',cat:'自身',cd:6,mo:[1,2],d:'关起门来务虚一周，也把姿态做出来。',
+  f:()=>{nAdd('insp',2);S.rep+=1.2;S.merit+=1.5;S.unity+=1;return '学习班办了一周。上面看得见，下面也松了一口气。';}},
+ media:{n:'接受媒体专访',cat:'自身',cd:6,d:'省台要做一期专题，讲你这几年干的事。',
+  f:()=>{nAdd('boss',1);nAdd('insp',-4);S.rep+=1.6;S.sat+=0.6;const risk=S.file.some(f=>!f.exp);if(risk){S.expMult*=1.18;return '专访播出，反响不错。你在镜头前讲得很好，讲得越好，看的人越多。';}
+   return '专访播出，反响不错。';}},
+ guest:{n:'接待上级调研',cat:'班子',cd:5,mo:[6,11],d:'省领导要来看一条线路，全程陪同。',
+  f:()=>{nAdd('boss',3);const c=LV[S.lvl].transfer*0.05;S.cash-=c;S.rep+=1.5;S.unity+=0.5;
+   return '陪了三天，路线安排得很顺。接待支出'+fmt(c)+'。';}},
+ flood:{n:'防汛值守',cat:'安全',cd:2,only:[5,6,7,8,9],mo:[7,8],w:()=>1.8,d:'指挥部前置，你自己在值班室待着。',
+  f:()=>{nAdd('zhou',2);S.agFlag.soft=0.5;S.accRisk*=0.6;S.sat+=0.5;S.unity-=0.5;
+   return '汛期值守。本月的突发事件冲击减半——不出事最好，出了事也兜得住。';}},
+ edu:{n:'教育专项督导',cat:'民生',cd:6,only:[8,9,10],mo:[9],w:()=>1.6,d:'开学前把学位、校车、食堂过一遍。',
+  f:()=>{nAdd('pet',2);S.liv+=1.5;S.sat+=1;return '开学前把学位缺口摸清了，两所学校的食堂换了承包方。';}},
+ debtwork:{n:'化债专班',cat:'财政',cd:6,mo:[12],w:s=>hdr()>50?3.5:0.7,cond:s=>s.cq.length>0,d:'一笔一笔和金融机构谈，能降息的降息。',
+  f:()=>{nAdd('lgfv',5);let n=0;for(const b of S.cq){if(b.rate>5.5){b.rate-=0.5;n++;}}S.rep+=0.5;S.unity-=0.5;
+   return n?n+' 笔城投债利率各降半个点。谈了一个月，脸都谈熟了。':'跑了一个月，利率一分没降。';}},
+ report:{n:'作政府工作报告',cat:'自身',cd:12,only:[1],mo:[1],w:()=>3,d:'全年的数字，报高了压自己，报低了上面不满意。',
+  f:()=>{nAdd('boss',2);S.merit+=2;S.rep+=1;return '报告念完，掌声照例很齐。全年的数就这么定下来了。';}}
+};
+function agWeight(k){const a=AG[k];let w=a.w?a.w(S):1;if(a.mo&&a.mo.indexOf(S.month)>=0)w*=4;return Math.max(0.02,w);}
+function agRefresh(){
+  if(!S||S.phase==='retired'){S.agPool=[];S.ag='routine';return;}
+  const now=S.year*12+S.month;S.agCd=S.agCd||{};
+  let avail=Object.keys(AG).filter(k=>{if(k==='routine')return false;const a=AG[k];
+    if(S.agCd[k]&&S.agCd[k]>now)return false;
+    if(a.only&&a.only.indexOf(S.month)<0)return false;
+    if(a.cond&&!a.cond(S))return false;return true;});
+  const pool=[];let rest=avail.slice();const used={};
+  const take=arr=>{const tot=arr.reduce((s,k)=>s+agWeight(k),0);let r=Math.random()*tot,got=arr[arr.length-1];
+    for(const k of arr){r-=agWeight(k);if(r<=0){got=k;break;}}return got;};
+  while(pool.length<3&&rest.length){const g=take(rest);pool.push(g);used[AG[g].cat]=1;
+    rest=rest.filter(k=>k!==g&&!used[AG[k].cat]);}
+  if(pool.length<3){let more=avail.filter(k=>pool.indexOf(k)<0);
+    while(pool.length<3&&more.length){const g=take(more);pool.push(g);more=more.filter(k=>k!==g);}}
+  S.agPool=pool;S.ag='routine';
+}
+function runAgenda(){
+  S.agFlag={};const k=S.ag||'routine';const a=AG[k];if(!a)return;
+  if(k!=='routine'){const now=S.year*12+S.month;if(a.cd)S.agCd[k]=now+a.cd;S.agN=(S.agN||0)+1;
+    S.agUse=S.agUse||{};S.agUse[k]=(S.agUse[k]||0)+1;}
+  const t=a.f?a.f():'';
+  if(t)logIt('【'+a.n+'】'+t,'sys');
+  S.pros=clamp(S.pros,0,100);S.liv=clamp(S.liv,0,100);S.sat=clamp(S.sat,0,100);
+  S.env=clamp(S.env,0,100);S.rep=clamp(S.rep,0,100);S.unity=clamp(S.unity,0,100);
+}
+
+
+/* ===== 省里的风向：每两三年换一次，考核的秤跟着换 =====
+   w[繁荣,宜居,满意] + env 权重合计为 1；debt/clean 为扣分系数；expose 为倒查倍率；
+   sanbao 为三保出缺口时的压档级数；wd 为该风向下更容易出现的事件 */
+const WIND=[
+ {id:'growth',n:'拼经济',w:[0.66,0.20,0.14],debt:0.5,clean:0.8,expose:0.85,
+  d:'全省经济工作会议开了两天，结论是一句话：发展是第一要务。增速排名从这个季度起每季通报。',
+  note:'考核向繁荣度倾斜（六成六），债务扣分打对折。上面这两年不问钱从哪来，只问项目在哪。',
+  wd:['factory','bid_war','gdp_target','fake_sign','land_cheap','talent_war','big_conf','ecom','port_bonded','land_king','newcity1','ppp']},
+ {id:'debt',n:'严控债务',w:[0.38,0.34,0.28],debt:2.2,clean:1.0,expose:1.0,
+  d:'化解隐性债务的文件转下来，措辞比往年硬：新增隐性债务终身问责，谁家的孩子谁抱走。',
+  note:'债务扣分加到两倍二，繁荣度权重压到三成八。这两年不适合上大项目。',
+  wd:['media_debt','legacy_debt','debt_swap','lgfv_push','lgfv_ceo','vendor_debt','stats','yearend_spend','idle_park','mall_empty']},
+ {id:'people',n:'保民生',w:[0.28,0.44,0.28],debt:1.0,clean:1.0,expose:1.0,sanbao:2,
+  d:'省里下发通知，"三保"支出排在所有支出之前，民生实事项目挂图作战，一月一调度。',
+  note:'宜居度成了最大的一项（四成四），三保出缺口直接压两档。',
+  wd:['school_petition','teacher_wage','pension','oldcommunity','nursery','clinic_doc','wage_migrant','house_alloc','elevator','p_hukou','p_elder','p_queue','p_heating']},
+ {id:'green',n:'强环保',w:[0.36,0.26,0.16],env:0.22,debt:1.0,clean:1.2,expose:1.0,
+  d:'中央生态环保督察进驻本省。两高项目一律从严，问题清单直接挂省政府网站。',
+  note:'环境指标破天荒计入考核，占两成二。前几年冒的烟，这两年要付账。',
+  wd:['env_inspect','water_pollute','river_black','garbage_full','wetland_bird','plant_risk','hot_summer','p_pollution','p_landfill','p_noise']},
+ {id:'clean',n:'正风肃纪',w:[0.44,0.30,0.26],debt:1.0,clean:2.0,expose:1.7,
+  d:'省委巡视组对全省市县全覆盖。问题线索一律核查到底，不设时限。',
+  note:'责任档案曝光概率上升七成，廉政扣分翻倍。手上有事的人，这两年最难熬。',
+  wd:['whistle','audit_routine','drunk','tender_ring','gift_card','golf','relative_canteen','exam_leak','zhixia_inspect','apportion','secretary','leader_nephew']}
+];
+function windOf(){return WIND.find(w=>w.id===S.wind)||WIND[0];}
+function windShift(){
+  const cur=S.wind;const pool=WIND.filter(w=>w.id!==cur);
+  S.wind=pick(pool).id;S.windLeft=2+Math.floor(Math.random()*2);
+  S.windHist=S.windHist||[];S.windHist.push({y:S.year,id:S.wind});
+  S.sched.push({id:'wind_notice',m:0});
+}
+
+
+/* ===== 人物与关系 ===== */
+const XINGS=['陈','李','王','张','刘','赵','孙','马','贺','程','宋','韩','许','郑','谢','罗','邱','方','丁','姜'];
+const MINGS=['志远','建国','文秀','永康','明远','兆丰','守成','庆生','淑英','克明','维民','望山','锦程','有德','少华','成栋','卫东','秉正','怀安','敬平','德昌','正阳','宗年','桂芳'];
+function newName(used){for(let i=0;i<40;i++){const x=pick(XINGS),m=pick(MINGS);
+  if(!used||(used.indexOf(x)<0&&used.indexOf(m)<0)){if(used)used.push(x,m);return x+m;}}
+ return pick(XINGS)+pick(MINGS);}
+/* follow:true 的人跨级跟着你走；其余每到一地换一批 */
+const NPCS={
+ zhou:{r:'常务副手',img:'p_zhou',follow:true,fixed:'周立山',
+  d:'跟了你两任的老搭档。能力强，脾气也硬。',eff:'班子团结的中枢跟着他的态度走。'},
+ boss:{r:'分管副省长',img:'p_boss',follow:true,
+  d:'你在省里的直接上级。你的材料先过他的手。',eff:'他对你的看法折算进晋升的政绩门槛。'},
+ old:{r:'老领导',img:'p_oldleader',follow:true,
+  d:'把你从科员一步步带上来的人。现在退了，话还管用。',eff:'跑省厅时他的人脉帮得上忙。'},
+ lgfv:{r:'城投董事长',img:'p_lgfv',
+  d:'表外的账都在他手上。你签的字，他兜的底。',eff:'他配不配合，决定城投债的实际额度。'},
+ dev:{r:'本地开发商',img:'p_developer',
+  d:'地是他拿的，楼是他盖的。土地财政有一半系在他身上。',eff:'他捧不捧场，直接反映在土地出让价上。'},
+ pet:{r:'老上访户',img:'p_petitioner',
+  d:'告了十年。别人躲他，他偏找一把手。',eff:'他服不服，决定信访件的多少。'},
+ insp:{r:'巡视组组长',img:'p_inspector',
+  d:'这一轮巡视的带队人。客客气气，什么都记。',eff:'他对你的印象，影响责任档案被翻出来的概率。'}
+};
+const NPCORDER=['zhou','boss','old','lgfv','dev','pet','insp'];
+function npcInit(all){S.npc=S.npc||{};
+  const used=[];for(const k of NPCORDER){const o=S.npc[k];if(o&&o.n)used.push(o.n[0],o.n.slice(1));}
+  for(const k of NPCORDER){const D=NPCS[k];
+    if(!all&&D.follow&&S.npc[k])continue;
+    S.npc[k]={n:D.fixed||newName(used),f:44+Math.floor(Math.random()*13)};}}
+function nf(k){return (S.npc&&S.npc[k])?S.npc[k].f:50;}
+function nn(k){return (S.npc&&S.npc[k])?S.npc[k].n:'';}
+function npcName(k){return NPCS[k]?NPCS[k].r+' '+nn(k):'';}
+function nAdd(k,v){if(!S||!S.npc||!S.npc[k]||!v)return;const o=S.npc[k];const b=o.f;o.f=clamp(o.f+v,0,100);
+  const d=o.f-b;if(Math.abs(d)>=4)logIt(npcName(k)+(d>0?' 那边近了一步。':' 那边冷了下来。'),d>0?'good':'bad');}
+/* 关系的六个杠杆 */
+function npcLandMul(){return 0.88+nf('dev')/417;}
+function npcCqMul(){return 0.80+nf('lgfv')/250;}
+function npcPetMul(){return 1.45-nf('pet')/111;}
+function npcExpMul(){return 1.30-nf('insp')/167;}
+function npcUnityMid(){return 48+nf('zhou')*0.24;}
+function npcNeedMul(){return 1.15-nf('boss')/400;}
+function reqOk(o){return !o.req||nf(o.req.k)>=o.req.v;}
+
 /* ========== 引擎 ========== */
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const rnd=(a,b)=>a+Math.random()*(b-a);
@@ -931,7 +1320,7 @@ function newGame(){
      staff:0,quota:0,recruitThisYear:0,reformDone:false,
      file:[],sanctions:0,accRisk:0,flags:{},taxcut:0,nosell:0,collect:0,
      sched:[],once:{},merit:0,ratings:[],dRun:0,gaps:{wage:0,ops:0,live:0},sanbaoYr:0,accidentsYr:0,
-     interestMiss:0,log:[],resume:[],monthly:null,expMult:1,over:null,tab:'over',grantYr:0,hist:[],built:0,phase:'work',retY:0,ppp:0};
+     interestMiss:0,log:[],resume:[],monthly:null,expMult:1,over:null,tab:'over',grantYr:0,hist:[],built:0,phase:'work',retY:0,ppp:0,ag:'routine',agPool:[],agCd:{},agFlag:{},agUse:{},agN:0,wind:'growth',windLeft:2,windHist:[],npc:null};
   initLevel(0,0);
   logIt('到任。青石镇，三万四千人，一个资源枯竭的老矿镇。','sys');
   S.resume.push({y:1,t:'任青石镇镇长'});
@@ -957,6 +1346,8 @@ function initLevel(lvl,carryMerit){
   S.taxcut=0;S.nosell=0;S.collect=0;S.accRisk=0;S.gaps={wage:0,ops:0,live:0};S.sanbaoYr=0;S.accidentsYr=0;S.interestMiss=0;S.dRun=0;S.grantYr=0;
   S.sched=S.sched.filter(x=>x.id.startsWith('p_')===false);
   S.monthly=null;
+  npcInit(false);
+  S.agCd={};S.agFlag={};S.ag='routine';agRefresh();
 }
 /* ---- 计算 ---- */
 function cov(id){return clamp((S.f[id]||0)*FAC[id].cap*S.sc/S.pop,0,1.4);}
@@ -976,11 +1367,11 @@ function cqOut(){return S.cq.reduce((a,b)=>a+b.amt,0);}
 function sbOut(){return S.sb.reduce((a,b)=>a+b.amt,0);}
 function hdr(){return cqOut()/annualIncome()*100;}
 function debtRatio(){return (cqOut()+sbOut()+S.platform)/annualIncome()*100;}
-function cqQuota(){return Math.max(0,annualIncome()*LV[S.lvl].cq-cqOut());}
+function cqQuota(){return Math.max(0,annualIncome()*LV[S.lvl].cq*npcCqMul()-cqOut());}
 function sbQuota(){return S.lvl<1?0:Math.max(0,gdp()*10000*0.03-S.sbYear);}
 function wlCostLeft(){return S.build.filter(b=>b.wl).reduce((a,b)=>a+(b.cost-b.paid),0);}
 function tension(){const exp=wageBill()+opsBill()+liveBill();const r=exp/monthIncome()*100;return clamp(0.45*hdr()+0.25*debtRatio()+15*Math.min(2,S.sanbaoYr)+0.2*Math.max(0,r-100),0,100);}
-function landPrice(){return LV[S.lvl].landPrice*(0.7+S.pros/100)*(1+0.25*S.housing/100);}
+function landPrice(){return LV[S.lvl].landPrice*(0.7+S.pros/100)*(1+0.25*S.housing/100)*npcLandMul();}
 Object.defineProperties(S||{},{});
 function getters(){S.hdr=hdr();S.indCount=S.ind.length+S.f.factory;S.landPct=S.land/S.landTotal;}
 function fmt(v){const a=Math.abs(v);if(a>=1e4)return (v/1e4).toFixed(a>=1e5?0:1)+'亿';return Math.round(v)+'万';}
@@ -1025,7 +1416,7 @@ function reform(){if(S.reformDone)return '本级已完成机构改革';const c=L
 /* ---- 效果应用 ---- */
 function applyFx(fx){if(!fx)return;
   if(fx.cash)S.cash+=fx.cash*S.sc;if(fx.cashLand)S.cash+=40*S.lsc*landPrice()*fx.cashLand;
-  if(fx.sat)S.sat=clamp(S.sat+fx.sat,0,100);if(fx.env)S.env=clamp(S.env+fx.env,0,100);if(fx.pros)S.pros=clamp(S.pros+fx.pros,0,100);
+  const _sf=(S.agFlag&&S.agFlag.soft)||1;if(fx.sat)S.sat=clamp(S.sat+(fx.sat<0?fx.sat*_sf:fx.sat),0,100);if(fx.env)S.env=clamp(S.env+fx.env,0,100);if(fx.pros)S.pros=clamp(S.pros+fx.pros,0,100);
   if(fx.liv)S.liv=clamp(S.liv+fx.liv,0,100);if(fx.rep)S.rep=clamp(S.rep+fx.rep,0,100);if(fx.unity)S.unity=clamp(S.unity+fx.unity,0,100);
   if(fx.pop)S.pop*=1+fx.pop/100;if(fx.land){S.land=Math.max(0,S.land+fx.land*S.lsc);if(fx.land>0)S.landTotal+=fx.land*S.lsc;}
   if(fx.fac){if(fx.fac.id==='factory')S.f.factory+=fx.fac.n;else S.f[fx.fac.id]=Math.max(0,(S.f[fx.fac.id]||0)+fx.fac.n);}
@@ -1034,7 +1425,8 @@ function applyFx(fx){if(!fx)return;
   if(fx.mild){S.file.push({y:S.year,t:fx.mild.t,sev:0,exp:false,mild:true});}
   if(fx.sched)S.sched.push({id:fx.sched.id,m:fx.sched.m});
   if(fx.flag==='push')S.flags.push=1;if(fx.flag==='nosell')S.nosell=18;if(fx.flag==='taxcut')S.taxcut=36;
-  if(fx.acc)S.accRisk+=fx.acc;if(fx.expose)S.expMult*=fx.expose;
+  if(fx.acc)S.accRisk+=fx.acc*_sf;if(fx.npc)nAdd(fx.npc.k,fx.npc.v);if(fx.npc2)nAdd(fx.npc2.k,fx.npc2.v);
+  if(fx.fac2)S.f[fx.fac2.id]=Math.max(0,(S.f[fx.fac2.id]||0)+fx.fac2.n);if(fx.expose)S.expMult*=fx.expose;
   if(fx.housing)S.housing=clamp(S.housing+fx.housing,0,100);
   if(fx.addcq){const x=annualIncome()*fx.addcq;S.cq.push({amt:x,rate:10,left:24,term:24});}
   if(fx.swap){const sw=cqOut()*fx.swap;let x=sw;S.cq.sort((a,b)=>b.rate-a.rate);for(const b of S.cq){const y=Math.min(b.amt,x);b.amt-=y;x-=y;}S.cq=S.cq.filter(b=>b.amt>1);if(sw>1){S.sb.push({amt:sw,rate:2.8,left:120,term:120});logIt('置换债到位：'+fmt(sw)+'城投债转为法定债务。','good');}}
@@ -1047,7 +1439,7 @@ function tick(){
   const res=inc*S.reserveRate/100;S.cash-=res;S.reserve+=res;M.reserve=res;
   /* 三保 */
   const pay=(x)=>{const p=Math.min(x,Math.max(0,S.cash));S.cash-=p;return x-p;};
-  M.wage=wageBill();M.ops=opsBill();M.live=liveBill();
+  M.wage=wageBill();M.ops=opsBill()*((S.agFlag&&S.agFlag.ops)||1);M.live=liveBill();
   const gw=pay(M.wage),go=pay(M.ops),gl=pay(M.live);
   S.gaps.wage=gw>1?S.gaps.wage+1:0;S.gaps.ops=go>1?S.gaps.ops+1:0;S.gaps.live=gl>1?S.gaps.live+1:0;
   if(gw>1){S.sat-=2.5;S.rep-=1.5;S.unity-=2;S.sanbaoYr++;logIt('工资缓发'+fmt(gw)+'。','bad');if(S.gaps.wage===3)S.sched.push({id:'sanbao_risk',m:0});}
@@ -1088,7 +1480,7 @@ function tick(){
   if(hw)S.housing=clamp(S.housing-hw,0,100);
   S.pros=clamp(S.pros,0,100);S.liv=clamp(S.liv,0,100);S.sat=clamp(S.sat,0,100);S.env=clamp(S.env,0,100);
   S.pop*=1+0.0015*(S.liv-50)/10+0.002*(Math.min(J,1.2)-0.6)-(S.housing>70?0.001:0);
-  S.housing=clamp(S.housing-0.5,0,100);S.rep+=(50-S.rep)*0.01;S.unity+=(60-S.unity)*0.02;
+  S.housing=clamp(S.housing-0.5,0,100);S.rep+=(50-S.rep)*0.01;S.unity+=(npcUnityMid()-S.unity)*0.02;
   if(S.taxcut>0)S.taxcut--;if(S.nosell>0)S.nosell--;
   /* 事故 */
   if(S.accRisk>0&&Math.random()<0.03*S.accRisk){S.accRisk=0;S.sched.push({id:'accident',m:0});}
@@ -1098,12 +1490,13 @@ function tick(){
   let evQueue=due.map(x=>x.id);
   /* 冷却：同一事件一年内几乎不重复，两年内低概率，四年后恢复 */
   const now=S.year*12+S.month;S.seen=S.seen||{};
+  const _wd=windOf().wd||[];
   const cool=id=>{const t=S.seen[id];if(t===undefined)return 1;const a=now-t;return a<12?0.03:a<24?0.2:a<48?0.6:1;};
   const draw=(list,base)=>{const pool=list.map(e=>[e,base(e)*cool(e.id)]).filter(x=>x[1]>0);if(!pool.length)return null;const tot=pool.reduce((a,x)=>a+x[1],0);let r=Math.random()*tot;for(const [e,w] of pool){r-=w;if(r<=0)return e.id;}return pool[pool.length-1][0].id;};
   if(!evQueue.length){
-    const pPet=S.month%3===0?0.5:(S.sat<40?0.15:0.08);
-    if(Math.random()<pPet){const id=draw(PET.filter(p=>!p.id.endsWith('2')&&(!p.cond||p.cond(S))),()=>1);if(id)evQueue.push(id);}
-    else if(Math.random()<0.6){const id=draw(EV.filter(e=>e.w>0&&S.lvl>=e.lv[0]&&S.lvl<=e.lv[1]&&!(e.once&&S.once[e.id])&&(!e.cond||e.cond(S))),e=>e.w);if(id)evQueue.push(id);}}
+    const pPet=(S.agFlag&&S.agFlag.nopet)?0:(S.month%3===0?0.5:(S.sat<40?0.15:0.08))*npcPetMul();
+    if(Math.random()<pPet){const id=draw(PET.filter(p=>!p.id.endsWith('2')&&(!p.cond||p.cond(S))),p=>(p.mo&&p.mo.indexOf(S.month)>=0?3.5:1)*(_wd.indexOf(p.id)>=0?2.2:1));if(id)evQueue.push(id);}
+    else if(Math.random()<0.6){const id=draw(EV.filter(e=>e.w>0&&S.lvl>=e.lv[0]&&S.lvl<=e.lv[1]&&!(e.once&&S.once[e.id])&&(!e.cond||e.cond(S))),e=>e.w*(e.mo&&e.mo.indexOf(S.month)>=0?3.5:1)*(_wd.indexOf(e.id)>=0?2.2:1));if(id)evQueue.push(id);}}
   for(const id of evQueue)S.seen[id]=now;
   S.month++;let annualDue=false;if(S.month>12){S.month=1;annualDue=true;}
   return {evQueue,annualDue};
@@ -1114,24 +1507,28 @@ function annual(){
   S.year++;S.age++;S.tenure++;S.recruitThisYear=0;S.sbYear=0;S.staff=Math.round(S.staff*0.985);S.quota=Math.round(staffNeed()*1.06);
   const R={};R.year=S.year-1;
   const sanctionsYr=S.file.filter(f=>f.mild&&f.exp&&f.expY===R.year).length;
-  R.debtPen=Math.max(0,hdr()-60)/4;R.accPen=S.accidentsYr*10;R.cleanPen=sanctionsYr*8;
-  R.raw=0.5*S.pros+0.3*S.liv+0.2*S.sat-R.debtPen-R.accPen-R.cleanPen;
+  const W=windOf();R.W=W;R.wind=W.id;
+  R.debtPen=Math.max(0,hdr()-60)/4*(W.debt||1);R.accPen=S.accidentsYr*10;R.cleanPen=sanctionsYr*8*(W.clean||1);
+  R.raw=W.w[0]*S.pros+W.w[1]*S.liv+W.w[2]*S.sat+(W.env||0)*S.env-R.debtPen-R.accPen-R.cleanPen;
   let g=R.raw>=76?'A':R.raw>=60?'B':R.raw>=45?'C':'D';
-  R.sanbao=S.sanbaoYr>0;if(R.sanbao)g=g==='A'?'B':g==='B'?'C':'D';
+  R.sanbao=S.sanbaoYr>0;if(R.sanbao){const stp=W.sanbao||1;for(let i=0;i<stp;i++)g=g==='A'?'B':g==='B'?'C':'D';}
   R.grade=g;R.tension=tension();const gain={A:30,B:18,C:8,D:-12}[g];S.merit+=gain;R.gain=gain;
   S.dRun=g==='D'?S.dRun+1:0;S.ratings.push(g);R.rep=S.rep;
+  nAdd('boss',{A:4,B:0,C:-5,D:-10}[g]);if(S.file.some(f=>!f.exp&&!f.mild))nAdd('insp',-3);
   if(g==='A'){S.rep+=3;if(Math.random()<0.5)S.sched.push({id:'commend',m:1});}
   /* 倒查 */
   R.exposed=null;
   for(const f of S.file){if(f.exp)continue;
-    if(f.mild){if(S.year-f.y<=2&&Math.random()<0.15){f.exp=true;f.expY=S.year;S.sanctions++;S.rep-=4;S.merit-=6;logIt('通报处分：'+f.t+'。','bad');}}
-    else{const p=(0.05*f.sev+0.03*(S.year-f.y))*S.expMult;if(Math.random()<p){f.exp=true;f.expY=S.year;R.exposed=f;}}}
+    if(f.mild){if(S.year-f.y<=2&&Math.random()<0.15*(W.expose||1)*npcExpMul()){f.exp=true;f.expY=S.year;S.sanctions++;S.rep-=4;S.merit-=6;logIt('通报处分：'+f.t+'。','bad');}}
+    else{const p=(0.05*f.sev+0.03*(S.year-f.y))*S.expMult*(W.expose||1)*npcExpMul();if(Math.random()<p){f.exp=true;f.expY=S.year;R.exposed=f;}}}
   S.expMult=Math.max(1,S.expMult*0.8);
   /* 化债任务书 */
   if(S.task){if(hdr()<=S.task.target){logIt('化债任务书按期完成。','good');S.task=null;S.frozen=false;}
     else if(S.year>=S.task.deadline){S.frozen=true;S.rep-=5;logIt('化债任务书到期未完成，新增融资冻结。','bad');S.task={deadline:S.year+1,target:hdr()*0.8};}}
   else if(hdr()>=70){S.task={deadline:S.year+1,target:hdr()*0.8};S.sched.push({id:'task_notice',m:0});}
   if(S.frozen&&hdr()<60&&!S.task){S.frozen=false;logIt('隐性债务率回落，融资冻结解除。','good');}
+  for(const k in S.npc)S.npc[k].f=clamp(S.npc[k].f+(50-S.npc[k].f)*0.03,0,100);
+  S.windLeft=(S.windLeft||0)-1;if(S.windLeft<=0)windShift();
   S.sanbaoYr=0;S.accidentsYr=0;S.flags.push=0;
   S.resume.push({y:R.year,t:LV[S.lvl].city+'第'+S.tenure+'年，年度考核'+g+'，政绩'+Math.round(S.merit)});
   /* 仕途判定 */
@@ -1139,7 +1536,7 @@ function annual(){
   if(R.exposed)R.next='fall';
   else if(S.sanctions>=4||S.dRun>=2)R.next='fired';
   else if(S.age>=60)R.next='retire';
-  else if(S.lvl<4&&S.merit>=LV[S.lvl].need&&R.tension<=60&&!S.task&&S.unity>=35&&(g==='A'||g==='B')){
+  else if(S.lvl<4&&S.merit>=LV[S.lvl].need*npcNeedMul()&&R.tension<=60&&!S.task&&S.unity>=35&&(g==='A'||g==='B')){
     const risk=S.file.filter(f=>!f.exp&&!f.mild);let caught=null;for(const f of risk){if(Math.random()<(0.05*f.sev+0.03*(S.year-f.y))*2){f.exp=true;f.expY=S.year;caught=f;break;}}
     R.next=caught?'fall':'promote';if(caught)R.exposed=caught;}
   else if(S.tenure>=LV[S.lvl].maxY&&S.lvl<4)R.next='sidelined';
@@ -1170,7 +1567,13 @@ const SYSEV={
  sanbao_risk:{title:'工资连续三个月缓发',text:'教师和医护人员已经在酝酿集体停工。上级来电话问你打算怎么办。',opts:[{t:'优先保工资，暂停所有建设',n:'',fx:{}}]},
  task_notice:{title:'化债任务书',text:'上级财政部门下达化债任务书：隐性债务率已超过70%，要求一年内压降20%。到期未完成，冻结新增融资。',opts:[{t:'收到',n:'',fx:{}}]}
 };
-function findEvent(id){return EV.find(e=>e.id===id)||PET.find(p=>p.id===id)||(SYSEV[id]?Object.assign({id},SYSEV[id]):null);}
+const IMG2NPC={p_zhou:'zhou',p_boss:'boss',p_lgfv:'lgfv',p_developer:'dev',p_oldleader:'old',p_petitioner:'pet',p_inspector:'insp'};
+function evNpc(ev){return ev.npc||(typeof PORTRAIT!=='undefined'?IMG2NPC[PORTRAIT[ev.id]]:null)||null;}
+function relLabel(f){return f>=70?'关系很近':f>=55?'还算融洽':f>=40?'公事公办':f>=25?'有些生分':'很僵';}
+function findEvent(id){
+  if(id==='wind_notice'){const W=windOf();
+    return {id:'wind_notice',kind:'通知',title:'省里的风向：'+W.n,text:W.d+'\n\n'+W.note,opts:[{t:'收到',n:'',fx:{}}]};}
+  return EV.find(e=>e.id===id)||PET.find(p=>p.id===id)||(SYSEV[id]?Object.assign({id},SYSEV[id]):null);}
 
 /* ---- 退休篇 ---- */
 function retiredStep(){S.retY++;const i=S.retY-1;if(i>=RET.length)return null;const r=RET[i];
@@ -1227,7 +1630,7 @@ const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[
 function renderAll(){if(!S)return;getters();const L=LV[S.lvl];
   $('#unitName').innerHTML=esc(L.unit)+'<small>主政者工作台</small>';
   if(S.phase==='retired'){$('#unitName').innerHTML='退休生活<small>第'+S.retY+'年</small>';}
-  const M=S.month;$('#meta').innerHTML=`<span>第<b>${S.year}</b>年 <b>${M}</b>月　年龄 <b>${S.age}</b></span><span>职务 <b>${L.t}</b>　本任第 <b>${S.tenure+1}</b> 年</span><span>政绩 <b>${Math.round(S.merit)}</b> / ${L.need>9999?'—':L.need}　声誉 <b>${Math.round(S.rep)}</b>　班子团结 <b>${Math.round(S.unity)}</b></span>`;
+  const M=S.month;$('#meta').innerHTML=`<span>第<b>${S.year}</b>年 <b>${M}</b>月${S.phase==='retired'?'':' · '+mon().k}　年龄 <b>${S.age}</b></span><span>职务 <b>${L.t}</b>　本任第 <b>${S.tenure+1}</b> 年</span><span>风向 <b>${windOf().n}</b>${S.windLeft>0?'（还有 '+S.windLeft+' 年）':'（今年到期）'}</span><span>政绩 <b>${Math.round(S.merit)}</b> / ${L.need>9999?'—':L.need}　声誉 <b>${Math.round(S.rep)}</b>　班子团结 <b>${Math.round(S.unity)}</b></span>`;
   const h=S.hdr;
   const st=[
    ['财政结余',fmt(S.cash),S.cash<0?'赤字':'储备金 '+fmt(S.reserve),null,S.cash<0],
@@ -1243,21 +1646,35 @@ function renderAll(){if(!S)return;getters();const L=LV[S.lvl];
   const m=S.monthly;$('#monthly').innerHTML=m?`<table><tr><td>税收</td><td class="r pos">+${fmt(m.tax)}</td></tr><tr><td>转移支付</td><td class="r pos">+${fmt(m.transfer)}</td></tr><tr><td>工资</td><td class="r neg">−${fmt(m.wage)}</td></tr><tr><td>运转</td><td class="r neg">−${fmt(m.ops)}</td></tr><tr><td>基本民生</td><td class="r neg">−${fmt(m.live)}</td></tr><tr><td>债务利息</td><td class="r neg">−${fmt(m.interest)}</td></tr>${m.principal>0?`<tr><td>偿还本金</td><td class="r neg">−${fmt(m.principal)}</td></tr>`:''}<tr><td>建设投入</td><td class="r neg">−${fmt(m.build)}</td></tr><tr><td>偿债准备金</td><td class="r neg">−${fmt(m.reserve)}</td></tr></table>`:'<div class="muted" style="font-size:13px">推进到下月后显示本月结算。</div>';
   $('#log').innerHTML=S.log.slice(0,60).map(x=>`<div class="${x.c==='bad'?'bad':x.c==='good'?'good':x.c==='sys'?'sys':''}"><span class="t">${x.y}年${x.m}月</span>${esc(x.t)}</div>`).join('');
   const exp=wageBill()+opsBill()+liveBill();const inc=monthIncome();
-  $('#nexthint').textContent=`预计下月：收入 ${fmt(inc)}，三保支出 ${fmt(exp)}，${inc-exp>=0?'结余':'缺口'} ${fmt(Math.abs(inc-exp))}`;
+  const _agn=(AG[S.ag||'routine']||AG.routine).n;
+  $('#nexthint').textContent=(S.phase==='retired'?'':'本月安排：'+_agn+'　')+`预计下月：收入 ${fmt(inc)}，三保支出 ${fmt(exp)}，${inc-exp>=0?'结余':'缺口'} ${fmt(Math.abs(inc-exp))}`;
   $('#nextbtn').disabled=!!S.over;$('#nextbtn').textContent=S.phase==='retired'?'下 年':'下 月';
 }
 function gauge(v,warn,mark){return `<div class="gauge"><i class="${warn?'warn':''}" style="width:${clamp(v,0,100)}%"></i>${mark!==undefined?`<span class="mk" style="left:${mark}%"></span>`:''}</div>`;}
+function vAgenda(){if(S.phase==='retired')return '';
+  const m=mon();const opts=['routine'].concat(S.agPool||[]);
+  return `<div class="sec"><h2>本月安排<span class="motag">${S.month}月 · ${m.k}</span></h2>
+  <div class="hint">${esc(m.d)}一个月只能亲自抓一件事，其余的交给下面。</div>
+  <div class="agenda">${opts.map(k=>{const a=AG[k];if(!a)return '';
+    return `<button class="ag${(S.ag||'routine')===k?' on':''}" data-ag="${k}"><span class="an">${esc(a.n)}${a.cat?`<i>${a.cat}</i>`:''}</span><span class="ad">${esc(a.d)}</span></button>`;}).join('')}</div></div>`;}
+function vWind(){if(S.phase==='retired')return '';
+  const W=windOf();const pct=v=>Math.round(v*100)+'%';
+  const bars=[['繁荣',W.w[0]],['宜居',W.w[1]],['满意',W.w[2]]].concat(W.env?[['环境',W.env]]:[]);
+  return `<div class="sec"><h2>省里的风向<span class="motag">${esc(W.n)} · ${S.windLeft>0?'还有 '+S.windLeft+' 年':'今年到期'}</span></h2>
+  <div class="hint">${esc(W.note)}</div>
+  <div class="winds">${bars.map(([l,v])=>`<div class="wb"><i style="width:${v*100}%"></i><span>${l} ${pct(v)}</span></div>`).join('')}
+  <div class="wx">${W.debt!==1?`债务扣分 ×${W.debt}　`:''}${W.clean!==1?`廉政扣分 ×${W.clean}　`:''}${W.expose!==1?`倒查概率 ×${W.expose}　`:''}${W.sanbao?`三保缺口压 ${W.sanbao} 档`:''}</div></div></div>`;}
 function vOver(){const L=LV[S.lvl];const J=jobs();
   const warns=[];if(S.cash<0)warns.push('财政赤字，三保随时出缺口。');if(S.hdr>=70)warns.push('隐性债务率超过70%，化债任务书压顶。');else if(S.hdr>=55)warns.push('隐性债务率接近红线。');
   if(S.sat<40)warns.push('满意度偏低，信访件会变多。');if(S.env<40)warns.push('环境指标差，环保督察随时会来。');if(cov('school')<0.6)warns.push('学位缺口大。');if(cov('hosp')<0.5)warns.push('医疗资源不足。');
   if(eff()<0.85)warns.push('编制缺口，机关运转效率下降。');if(S.file.some(f=>!f.exp&&!f.mild))warns.push('责任档案里有未处理的越界记录。');
   const bs=S.build.length?S.build.map(b=>`<tr><td>${FAC[b.id].n}${b.wl?'<span class="tag blue">'+b.wl+'</span>':''}${b.stalled?'<span class="tag red">资金不足停工</span>':''}</td><td class="r">${fmt(b.paid)} / ${fmt(b.cost)}</td><td class="r">剩 ${b.left} 月</td></tr>`).join(''):'<tr><td class="muted" colspan="3">没有在建项目。</td></tr>';
-  return `${artBox(S.phase==='retired'?'r_hometown':'city_'+S.lvl,'banner')}<div class="sec"><h2>${esc(L.city)}</h2><div class="hint">${S.lvl===0?'资源枯竭的老矿镇，年轻人在往外走。':S.lvl===1?'农业县，一个像样的物流园撑着税收。':S.lvl===2?'区域中心城市，工业基础尚可，城投规模不小。':S.lvl===3?'副省级城市，增速和债务两个数字都有人盯。':'直辖市。'}</div>
+  return `${artBox(S.phase==='retired'?'r_hometown':'city_'+S.lvl,'banner')}${vAgenda()}${vWind()}<div class="sec"><h2>${esc(L.city)}</h2><div class="hint">${S.lvl===0?'资源枯竭的老矿镇，年轻人在往外走。':S.lvl===1?'农业县，一个像样的物流园撑着税收。':S.lvl===2?'区域中心城市，工业基础尚可，城投规模不小。':S.lvl===3?'副省级城市，增速和债务两个数字都有人盯。':'直辖市。'}</div>
   <div class="grid2"><div><table><tr><td>就业岗位覆盖</td><td class="r">${Math.round(J*100)}%</td></tr><tr><td>学位覆盖</td><td class="r">${Math.round(cov('school')*100)}%</td></tr><tr><td>医疗覆盖</td><td class="r">${Math.round(cov('hosp')*100)}%</td></tr><tr><td>道路通达</td><td class="r">${Math.round(cov('road')*100)}%</td></tr><tr><td>储备土地</td><td class="r">${Math.round(S.land)} 亩</td></tr></table></div>
   <div><table><tr><td>政绩进度</td><td class="r">${Math.round(S.merit)} / ${L.need>9999?'—':L.need}</td></tr><tr><td>财政紧张度</td><td class="r">${tension().toFixed(0)}</td></tr><tr><td>核定编制 / 在编</td><td class="r">${S.quota} / ${S.staff}</td></tr><tr><td>本任年限</td><td class="r">${S.tenure+1} / ${L.maxY}</td></tr><tr><td>历年考核</td><td class="r">${S.ratings.join(' ')||'—'}</td></tr></table></div></div></div>
   <div class="sec"><h2>需要注意</h2>${warns.length?'<ul style="padding-left:18px;font-size:14px">'+warns.map(w=>'<li>'+w+'</li>').join('')+'</ul>':'<div class="hint">眼下没有明显问题。</div>'}</div>
   <div class="sec"><h2>在建项目</h2><table>${bs}</table></div>
-  <div class="sec"><h2>晋升条件</h2><div class="hint">政绩达到 ${L.need>9999?'—':L.need}、财政紧张度不超过 60、没有未完成的化债任务书、班子团结不低于 35、当年考核 A 或 B。任期满 ${L.maxY} 年未晋升即转任二线。六十岁退休。</div></div>`;}
+  <div class="sec"><h2>晋升条件</h2><div class="hint">政绩达到 ${L.need>9999?'—':Math.round(L.need*npcNeedMul())}${L.need>9999?'':'（基准 '+L.need+'，'+npcName('boss')+'的态度上下浮动一成半）'}、财政紧张度不超过 60、没有未完成的化债任务书、班子团结不低于 35、当年考核 A 或 B。任期满 ${L.maxY} 年未晋升即转任二线。六十岁退休。</div></div>`;}
 function vBuild(){
   S.buildCat=S.buildCat||'traffic';
   const LVN=['','县级','地级市','副省级','直辖市'];
@@ -1294,8 +1711,14 @@ function vDebt(){const h=hdr();
   ${path('展期重组','全部城投债延长两年，利率上调一个点，声誉下降。治标不治本','<button class="sm danger" id="btnExt">展期</button>')}
   ${path('平台转型','两成城投债转为经营性债务，不计隐债率。县级以上，每级一次',`<button class="sm" id="btnPlat" ${S.lvl<1||S.flags['plat'+S.lvl]?'disabled':''}>转型</button>`)}
   </div></div>`;}
+function vRel(){
+  return `<div class="sec"><h2>班子与关系</h2><div class="hint">关系跟工作一样，是一个月一个月攒起来的。标「跟随」的人换了地方还在，其余的到一地换一批。</div>
+  <div class="rels">${NPCORDER.map(k=>{const D=NPCS[k],f=nf(k);
+    return `<div class="rel"><div class="rn">${esc(D.r)} <b>${esc(nn(k))}</b>${D.follow?'<span class="tag">跟随</span>':''}</div>
+    <div class="fbar wide"><i style="width:${f}%"></i></div><div class="rf">${Math.round(f)} · ${relLabel(f)}</div>
+    <div class="rd">${esc(D.d)}<br><i>${esc(D.eff)}</i></div></div>`;}).join('')}</div></div>`;}
 function vHR(){const need=staffNeed();const r=S.staff/need;
-  return `<div class="sec"><h2>编制</h2><table><tr><td>核定编制</td><td class="r">${S.quota}</td></tr><tr><td>在编人数</td><td class="r">${S.staff}</td></tr><tr><td>按人口测算需求</td><td class="r">${Math.round(need)}</td></tr><tr><td>运转效率</td><td class="r">${Math.round(eff()*100)}%</td></tr><tr><td>月工资总额</td><td class="r">${fmt(wageBill())}</td></tr></table>
+  return vRel()+`<div class="sec"><h2>编制</h2><table><tr><td>核定编制</td><td class="r">${S.quota}</td></tr><tr><td>在编人数</td><td class="r">${S.staff}</td></tr><tr><td>按人口测算需求</td><td class="r">${Math.round(need)}</td></tr><tr><td>运转效率</td><td class="r">${Math.round(eff()*100)}%</td></tr><tr><td>月工资总额</td><td class="r">${fmt(wageBill())}</td></tr></table>
   <div class="hint">${r<0.85?'人手不够，效率打折，税收和运维都受影响。':r>1.08?'超编，工资吃掉财力。':'编制基本匹配。'}每年自然减员约 1.5%。</div></div>
   <div class="sec"><h2>招录</h2><div class="hint">每年一次。单次招录超过在编 8% 会招不满并引发舆情。今年${S.recruitThisYear>0?'已招录 '+S.recruitThisYear+' 人':'尚未招录'}。</div><div class="row"><input type="number" id="recN" value="${Math.max(0,Math.min(S.quota-S.staff,Math.round(S.staff*0.06)))}" min="0" style="width:120px"> 人<button class="sm" id="btnRec" ${S.recruitThisYear>0?'disabled':''}>招录</button></div></div>
   <div class="sec"><h2>缩编</h2><div class="row"><input type="number" id="cutN" value="0" min="0" style="width:120px"> 人<button class="sm danger" id="btnCut">缩减</button></div><div class="hint">一次最多一成，班子会有意见。</div></div>
@@ -1306,6 +1729,7 @@ function vFile(){
   <div class="sec"><h2>历任小结</h2><table>${S.hist.length?S.hist.map(h=>`<tr><td>${esc(h.city)}</td><td class="r">${h.years} 年</td><td class="r">建成 ${h.built} 项</td><td class="r">离任隐债率 ${h.hdr}%</td><td class="r">${h.grades}</td></tr>`).join(''):'<tr><td class="muted">还在第一任。</td></tr>'}</table></div>
   <div class="sec"><h2>责任档案</h2><div class="hint">终身留存。违纪记录随时可能被倒查，退休也不例外。违规记录两年内可能被通报处分，累计四次免职。</div><ul class="file" style="list-style:none">${files}</ul></div>`;}
 function bindPanel(){
+  document.querySelectorAll('[data-ag]').forEach(b=>b.onclick=()=>{S.ag=b.dataset.ag;renderAll();});
   document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{S.buildCat=b.dataset.cat;renderAll();});
   document.querySelectorAll('[data-build]').forEach(b=>b.onclick=()=>{const e=queueBuild(b.dataset.build);if(e)toast(e);renderAll();});
   document.querySelectorAll('[data-cancel]').forEach(b=>b.onclick=()=>{cancelBuild(+b.dataset.cancel);renderAll();});
@@ -1319,13 +1743,16 @@ function toast(msg){logIt(msg,'bad');}
 /* ---- 弹窗 ---- */
 function showDoc(html,cls){$('#doc').className='doc '+(cls||'');$('#doc').innerHTML=html;$('#modal').classList.add('on');}
 function hideDoc(){$('#modal').classList.remove('on');}
-function showEvent(ev,done){const kind=ev.id.startsWith('p_')?'信访件':SYSEV[ev.id]?'通知':/^r\d$/.test(ev.id)?'退休第'+S.retY+'年':'呈批件';
-  const A=evArt(ev);
-  showDoc(`${A.wide?artBox(A.wide,'wide'):artBox(A.scene)}<div class="dh"><div class="kind">${kind}</div><h2>${esc(ev.title)}</h2></div><div class="body${A.portrait?' hasp':''}">${artPortrait(A.portrait)}<div>${esc(ev.text)}</div></div><div class="opts">${ev.opts.map((o,i)=>`<button class="opt${o.grey?' grey':''}" data-i="${i}"><span class="ot">${esc(o.t)}</span>${o.n?'<span class="on">'+esc(o.n)+'</span>':''}</button>`).join('')}</div>`);
-  document.querySelectorAll('#doc .opt').forEach(b=>b.onclick=()=>{const o=ev.opts[+b.dataset.i];applyFx(o.fx);if(ev.once)S.once[ev.id]=1;logIt('【'+ev.title+'】'+o.t+(o.grey?'（进入责任档案）':''),o.grey?'bad':'');hideDoc();if(o.end){busy=false;endGame(o.end);renderAll();showEnding();return;}done();});}
+function showEvent(ev,done){const kind=ev.kind||(ev.id.startsWith('p_')?'信访件':SYSEV[ev.id]?'通知':/^r\d$/.test(ev.id)?'退休第'+S.retY+'年':'呈批件');
+  const A=evArt(ev);const nk=evNpc(ev);
+  const sub=t=>nk?String(t).replace(/〔人〕/g,npcName(nk)).replace(/〔名〕/g,nn(nk)):String(t);
+  const by=nk?`<div class="by"><b>${esc(npcName(nk))}</b><span class="fbar"><i style="width:${nf(nk)}%"></i></span><em>${relLabel(nf(nk))}</em></div>`:'';
+  showDoc(`${A.wide?artBox(A.wide,'wide'):artBox(A.scene)}<div class="dh"><div class="kind">${kind}</div><h2>${esc(sub(ev.title))}</h2>${by}</div><div class="body${A.portrait?' hasp':''}">${artPortrait(A.portrait)}<div>${esc(sub(ev.text))}</div></div><div class="opts">${ev.opts.map((o,i)=>{const ok=reqOk(o);const note=ok?o.n:'需要'+npcName(o.req.k)+'的信任（'+o.req.v+'，当前 '+nf(o.req.k)+'）';
+    return `<button class="opt${o.grey?' grey':''}${ok?'':' dis'}" data-i="${i}"${ok?'':' disabled'}><span class="ot">${esc(sub(o.t))}</span>${note?'<span class="on">'+esc(sub(note))+'</span>':''}</button>`;}).join('')}</div>`);
+  document.querySelectorAll('#doc .opt').forEach(b=>b.onclick=()=>{const o=ev.opts[+b.dataset.i];if(!reqOk(o))return;applyFx(o.fx);if(ev.once)S.once[ev.id]=1;logIt('【'+ev.title+'】'+o.t+(o.grey?'（进入责任档案）':''),o.grey?'bad':'');hideDoc();if(o.end){busy=false;endGame(o.end);renderAll();showEnding();return;}done();});}
 function showReview(R,done){const L=LV[S.lvl];
-  showDoc(`<div class="dh"><div class="kind">年度考核通报</div><h2>关于第 ${R.year} 年度${esc(L.city)}综合考核结果的通报</h2></div><div class="body"><div class="row" style="align-items:flex-end"><span class="grade">${R.grade}</span><span class="muted" style="padding-bottom:6px">${{A:'优秀',B:'良好',C:'合格',D:'不合格'}[R.grade]}${R.sanbao?'（三保出现缺口，压档一档）':''}</span></div>
-  <table style="margin:10px 0"><tr><td>综合得分</td><td class="r">${R.raw.toFixed(1)}</td></tr><tr><td>繁荣 ×0.5 / 宜居 ×0.3 / 满意 ×0.2</td><td class="r">${(0.5*S.pros).toFixed(0)} / ${(0.3*S.liv).toFixed(0)} / ${(0.2*S.sat).toFixed(0)}</td></tr><tr><td>债务扣分</td><td class="r">−${R.debtPen.toFixed(1)}</td></tr><tr><td>事故扣分</td><td class="r">−${R.accPen}</td></tr><tr><td>廉政扣分</td><td class="r">−${R.cleanPen}</td></tr><tr><td>政绩变动</td><td class="r">${R.gain>0?'+':''}${R.gain}　累计 ${Math.round(S.merit)}</td></tr><tr><td>财政紧张度</td><td class="r">${R.tension.toFixed(0)}</td></tr></table>
+  showDoc(`<div class="dh"><div class="kind">年度考核通报</div><h2>关于第 ${R.year} 年度${esc(L.city)}综合考核结果的通报</h2></div><div class="body"><div class="row" style="align-items:flex-end"><span class="grade">${R.grade}</span><span class="muted" style="padding-bottom:6px">${{A:'优秀',B:'良好',C:'合格',D:'不合格'}[R.grade]}${R.sanbao?'（三保出现缺口，压 '+(R.W.sanbao||1)+' 档）':''}</span></div>
+  <table style="margin:10px 0"><tr><td>综合得分</td><td class="r">${R.raw.toFixed(1)}</td></tr><tr><td>考核风向</td><td class="r">${esc(R.W.n)}</td></tr><tr><td>繁荣 ×${R.W.w[0]} / 宜居 ×${R.W.w[1]} / 满意 ×${R.W.w[2]}${R.W.env?' / 环境 ×'+R.W.env:''}</td><td class="r">${(R.W.w[0]*S.pros).toFixed(0)} / ${(R.W.w[1]*S.liv).toFixed(0)} / ${(R.W.w[2]*S.sat).toFixed(0)}${R.W.env?' / '+(R.W.env*S.env).toFixed(0):''}</td></tr><tr><td>债务扣分${R.W.debt!==1?'（×'+R.W.debt+'）':''}</td><td class="r">−${R.debtPen.toFixed(1)}</td></tr><tr><td>事故扣分</td><td class="r">−${R.accPen}</td></tr><tr><td>廉政扣分${R.W.clean!==1?'（×'+R.W.clean+'）':''}</td><td class="r">−${R.cleanPen.toFixed(1)}</td></tr><tr><td>政绩变动</td><td class="r">${R.gain>0?'+':''}${R.gain}　累计 ${Math.round(S.merit)}</td></tr><tr><td>财政紧张度</td><td class="r">${R.tension.toFixed(0)}</td></tr></table>
   ${R.next==='promote'?'<p><b>组织部门已启动考察程序。</b></p>':R.next==='fall'?'<p style="color:var(--red)"><b>纪委监委在考察中发现线索。</b></p>':R.next==='sidelined'?'<p>本任年限已满。</p>':''}<span class="seal">考核办</span></div><div class="opts"><button class="opt" id="rvOk"><span class="ot">知道了</span></button></div>`,'notice');
   $('#rvOk').onclick=()=>{hideDoc();done();};}
 function showPromo(lvl,done){showDoc(`<div class="dh"><div class="kind">任职通知</div><h2>关于${esc(LV[lvl].city.replace(/（.*/,''))}主要领导任职的通知</h2></div><div class="body">${esc(PROMO_TEXT[lvl])}\n\n上一任的政绩按四分之一带入新任期。新城市有存量债务，先看账。<span class="seal">组织部</span></div><div class="opts"><button class="opt" id="prOk"><span class="ot">到任</span></button></div>`,'notice');
@@ -1339,7 +1766,8 @@ let busy=false;
 function next(){if(busy||!S||S.over)return;busy=true;
   if(S.phase==='retired'){const ev=retiredStep();if(!ev){busy=false;return;}showEvent(ev,()=>{busy=false;save();renderAll();});return;}
   const before={y:S.year,m:S.month,cash:S.cash,pros:S.pros,liv:S.liv,sat:S.sat,env:S.env,hdr:hdr(),pop:S.pop,rep:S.rep,unity:S.unity,seq:S.logSeq||0,building:S.build.length};
-  const {evQueue,annualDue}=tick();renderAll();
+  runAgenda();
+  const {evQueue,annualDue}=tick();agRefresh();renderAll();
   const inst=checkInstant();if(inst){endGame(inst);renderAll();showEnding();busy=false;return;}
   const runEvents=(i,after)=>{if(i>=evQueue.length){after();return;}const ev=findEvent(evQueue[i]);if(!ev){runEvents(i+1,after);return;}showEvent(ev,()=>{renderAll();if(S.over)return;runEvents(i+1,after);});};
   showMonthly(before,()=>runEvents(0,()=>{if(!annualDue){busy=false;save();renderAll();return;}
@@ -1371,7 +1799,7 @@ let _mt=null;
 function mtoast(t){let el=$('#mtoast');if(!el){el=document.createElement('div');el.id='mtoast';document.body.appendChild(el);}el.textContent=t;el.classList.add('on');clearTimeout(_mt);_mt=setTimeout(()=>el.classList.remove('on'),2600);}
 const LS={get:k=>{try{return localStorage.getItem(k);}catch(e){return null;}},set:(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}},del:k=>{try{localStorage.removeItem(k);}catch(e){}}};
 function save(){LS.set('yifang_save',JSON.stringify(S));}
-function migrate(){if(!S)return;S.f=S.f||{};for(const k of FACORDER)if(S.f[k]===undefined)S.f[k]=0;if(S.f.factory===undefined)S.f.factory=0;S.seen=S.seen||{};S.brief=S.brief||0;S.buildCat=S.buildCat||'traffic';S.logSeq=S.logSeq||S.log.length;S.build=(S.build||[]).filter(b=>FAC[b.id]);S.ind=(S.ind||[]).filter(x=>FAC[x.id]);}
+function migrate(){if(!S)return;S.f=S.f||{};for(const k of FACORDER)if(S.f[k]===undefined)S.f[k]=0;if(S.f.factory===undefined)S.f.factory=0;S.seen=S.seen||{};S.brief=S.brief||0;S.buildCat=S.buildCat||'traffic';S.logSeq=S.logSeq||S.log.length;S.build=(S.build||[]).filter(b=>FAC[b.id]);S.ind=(S.ind||[]).filter(x=>FAC[x.id]);S.agCd=S.agCd||{};S.agFlag={};S.agUse=S.agUse||{};S.agN=S.agN||0;S.ag='routine';if(!S.wind||!WIND.find(w=>w.id===S.wind)){S.wind='growth';S.windLeft=3;}S.windHist=S.windHist||[];if(!S.npc)npcInit(true);else for(const k of NPCORDER)if(!S.npc[k])S.npc[k]={n:NPCS[k].fixed||newName(),f:50};if(!S.agPool||!S.agPool.length||S.agPool.some(k=>!AG[k]))agRefresh();}
 function load(){try{const s=LS.get('yifang_save');if(!s)return false;S=JSON.parse(s);migrate();return true;}catch(e){return false;}}
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{S.tab=b.dataset.t;renderAll();});
