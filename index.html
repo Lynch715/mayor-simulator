@@ -103,6 +103,7 @@ tr.sum td{font-weight:600;border-top:2px solid var(--ink);border-bottom:0}
 .fac .kvline{margin:4px 0 2px}
 .tag{display:inline-block;font-size:11px;padding:1px 6px;border:1px solid var(--line);border-radius:2px;color:var(--ink2);margin-left:6px;vertical-align:1px}
 /* ===== 本月安排 ===== */
+.rk{display:inline-block;font-size:11px;color:var(--ink3);border:1px solid var(--line);border-radius:2px;padding:0 5px;margin-left:6px;vertical-align:1px}
 .motag{display:inline-block;font-size:11px;font-weight:400;color:var(--ink2);border:1px solid var(--line);border-radius:2px;padding:1px 7px;margin-left:8px;vertical-align:2px;font-family:var(--sans)}
 .agenda{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .ag{text-align:left;background:#fff;border:1px solid var(--line);border-radius:3px;padding:9px 11px;display:block;width:100%;line-height:1.5}
@@ -367,7 +368,7 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
   .tal{gap:6px}
   .tal button{padding:10px 0;min-height:42px}
   /* 小字号在手机上抬到 12px */
-  .tag,.motag,.ag .an i,.subtabs button .c,.file .sev,.file .exp{font-size:12px}
+  .tag,.motag,.rk,.ag .an i,.subtabs button .c,.file .sev,.file .exp{font-size:12px}
   .tag{padding:2px 7px}
   /* 建设页分类：等宽三列，不再 4+1 掉队 */
   .subtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
@@ -476,11 +477,11 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 <script>
 /* ========== 数据 ========== */
 const LV=[
- {t:'镇长',unit:'青石镇人民政府',city:'青石镇',pop:3.4,sc:1,transfer:120,land:600,landPrice:6,staff:90,need:100,maxY:8,cq:0.9,wage:0.6},
- {t:'县长',unit:'沂川县人民政府',city:'沂川县',pop:38,sc:10,transfer:1300,land:5000,landPrice:14,staff:1100,need:140,maxY:9,cq:1.1,wage:0.66},
- {t:'市委书记',unit:'临渡市人民政府',city:'临渡市',pop:320,sc:60,transfer:8000,land:22000,landPrice:40,staff:7000,need:180,maxY:9,cq:1.3,wage:0.72},
- {t:'市委书记',unit:'江岚市人民政府',city:'江岚市（副省级）',pop:900,sc:150,transfer:15000,land:50000,landPrice:90,staff:19000,need:220,maxY:9,cq:1.5,wage:0.8},
- {t:'市委书记',unit:'海屿市人民政府',city:'海屿市（直辖市）',pop:2400,sc:400,transfer:32000,land:110000,landPrice:160,staff:52000,need:99999,maxY:12,cq:1.8,wage:0.9}
+ {t:'镇长',rank:'乡科级正职',ret:60,retMax:63,unit:'青石镇人民政府',city:'青石镇',pop:3.4,sc:1,transfer:120,land:600,landPrice:6,staff:90,need:100,maxY:8,cq:0.9,wage:0.6},
+ {t:'县长',rank:'县处级正职',ret:60,retMax:63,unit:'沂川县人民政府',city:'沂川县',pop:38,sc:10,transfer:1300,land:5000,landPrice:14,staff:1100,need:140,maxY:9,cq:1.1,wage:0.66},
+ {t:'市委书记',rank:'厅局级正职',ret:60,retMax:63,unit:'临渡市人民政府',city:'临渡市',pop:320,sc:60,transfer:8000,land:22000,landPrice:40,staff:7000,need:180,maxY:9,cq:1.3,wage:0.72},
+ {t:'市委书记',rank:'副省部级',ret:63,retMax:65,unit:'江岚市人民政府',city:'江岚市（副省级）',pop:900,sc:150,transfer:15000,land:50000,landPrice:90,staff:19000,need:220,maxY:9,cq:1.5,wage:0.8},
+ {t:'市委书记',rank:'正省部级',ret:65,retMax:68,unit:'海屿市人民政府',city:'海屿市（直辖市）',pop:2400,sc:400,transfer:32000,land:110000,landPrice:160,staff:52000,need:99999,maxY:12,cq:1.8,wage:0.9}
 ];
 /* 设施：cat 分类；cap 每单位覆盖人口(万×sc)；wl 专项债白名单投向；
    lw 宜居权重 pw 繁荣权重 ew 每月环境增益 hw 每月房价压力压降 sw 满意度权重（按覆盖率乘） */
@@ -1421,6 +1422,10 @@ const ERA=[
   d:'全国土地出让金连续两年两位数下滑。房企拿地的名单上，剩下的多半是各地的城投。省里开会不再提"土地是最大的财源"，改提"过紧日子"。',
   note:'从今往后地价打七折，市场热度普遍走冷。靠卖地过日子的那套，到头了。',
   f:()=>{S.eraLand=0.72;if(S.plots)for(const p of S.plots)p.heat=clamp(p.heat-0.22,0.15,1.4);}},
+ {y:14,id:'ret_delay',n:'渐进式延迟退休',
+  d:'全国人大常委会通过了延迟法定退休年龄的决定：男干部每四个月延一个月，用十五年把法定退休年龄从六十周岁推到六十三周岁。各级领导职务的任职年龄界限跟着往后挪。',
+  note:'到龄退休年龄整体后移：厅局级及以下 60→63，副省部级 63→65，正省部级 65→68。公务员只能到龄退休或弹性提前，没有弹性延迟这一说——想多干几年，只能往上走。',
+  f:()=>{S.eraRet=1;}},
  {y:18,id:'pop_down',n:'人口负增长',
   d:'全国人口连续第三年负增长。新生儿数量比你刚工作那年少了一半多。省里的通报里第一次出现"收缩型城市"这个词。',
   note:'人口自然增长转负。学位在空出来，养老床位在排队。抢人从加分项变成了必答题。',
@@ -1670,6 +1675,9 @@ function landDep(){const h=S.landHist||[];if(!h.length)return 0;
 
 /* ========== 引擎 ========== */
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+/* 到龄退休年龄按级别走：级别越高，任职年龄界限越靠后 */
+function retAge(lv){const L=LV[lv===undefined?S.lvl:lv];return S.eraRet?L.retMax:L.ret;}
+function retLeft(){return Math.max(0,retAge()-S.age);}
 const rnd=(a,b)=>a+Math.random()*(b-a);
 const pick=arr=>arr[Math.floor(Math.random()*arr.length)];
 let S=null;
@@ -1682,7 +1690,7 @@ function newGame(){
      staff:0,quota:0,recruitThisYear:0,reformDone:false,
      file:[],sanctions:0,accRisk:0,flags:{},taxcut:0,nosell:0,collect:0,
      sched:[],once:{},merit:0,ratings:[],dRun:0,gaps:{wage:0,ops:0,live:0},sanbaoYr:0,accidentsYr:0,
-     interestMiss:0,log:[],resume:[],monthly:null,expMult:1,over:null,tab:'over',grantYr:0,hist:[],built:0,phase:'work',retY:0,ppp:0,ag:'routine',agPool:[],agCd:{},agFlag:{},agUse:{},agN:0,wind:'growth',windLeft:2,windHist:[],npc:null,plots:[],plotSeq:0,landRev:0,landHist:[],spotYr:0,leads:[],leadSeq:0,rivals:null,talent:0,bigp:null,dist:null,alloc:{},era:{},eraLand:1,eraPop:0,eraDebt:0};
+     interestMiss:0,log:[],resume:[],monthly:null,expMult:1,over:null,tab:'over',grantYr:0,hist:[],built:0,phase:'work',retY:0,ppp:0,ag:'routine',agPool:[],agCd:{},agFlag:{},agUse:{},agN:0,wind:'growth',windLeft:2,windHist:[],npc:null,plots:[],plotSeq:0,landRev:0,landHist:[],spotYr:0,leads:[],leadSeq:0,rivals:null,talent:0,bigp:null,dist:null,alloc:{},era:{},eraLand:1,eraPop:0,eraDebt:0,eraRet:0};
   initLevel(0,0);
   logIt('到任。青石镇，三万四千人，一个资源枯竭的老矿镇。','sys');
   S.resume.push({y:1,t:'任青石镇镇长'});
@@ -1918,7 +1926,7 @@ function annual(){
   R.next=null;
   if(R.exposed)R.next='fall';
   else if(S.sanctions>=4||S.dRun>=2)R.next='fired';
-  else if(S.age>=60)R.next='retire';
+  else if(S.age>=retAge())R.next='retire';
   else if(S.lvl<4&&S.merit>=LV[S.lvl].need*npcNeedMul()&&R.tension<=60&&!S.task&&S.unity>=35&&(g==='A'||g==='B')){
     const risk=S.file.filter(f=>!f.exp&&!f.mild);let caught=null;for(const f of risk){if(Math.random()<(0.05*f.sev+0.03*(S.year-f.y))*2){f.exp=true;f.expY=S.year;caught=f;break;}}
     R.next=caught?'fall':'promote';if(caught)R.exposed=caught;}
@@ -1937,9 +1945,9 @@ const ENDINGS={
  sanbao:{t:'三保断裂',d:'工资连续半年发不出来，教师和医生先停了工，然后是环卫。人聚在政府门口，事情演变成了群体事件。上级问责，你被免职。'},
  accident:{t:'重大事故',d:'带病运行的机组在一个凌晨爆炸。伤亡数字出来的那天，你签了引咎辞职报告。安监局的那份隐患报告，被反复引用。'},
  sidelined:{t:'转任二线',d:'在这个岗位干满了年限，晋升的窗口没有打开。你被安排到人大或政协，工作清闲，会议很多。这一任的城市，交给下一个人。'},
- retire_top:{t:'功成身退',d:'六十岁，你从直辖市市委书记的岗位上退下来。财政稳，民生稳，档案干净。退休那天，办公室的人送到楼下，没什么话，握了握手。'},
- retire_good:{t:'平稳退休',d:'六十岁到点退休。没有走到最高一级，但每一任都交得出账。城市里有几条路、几所学校是你任上修的，没人记得是谁修的，用着就行。'},
- retire_plain:{t:'到龄退休',d:'六十岁退休。仕途走得不远，但没有翻车。后来你偶尔回镇上走走，当年那条路还在。'},
+ retire_top:{t:'功成身退',d:'〔年龄〕，你从直辖市市委书记的岗位上退下来。财政稳，民生稳，档案干净。退休那天，办公室的人送到楼下，没什么话，握了握手。'},
+ retire_good:{t:'平稳退休',d:'〔年龄〕到点退休。没有走到最高一级，但每一任都交得出账。城市里有几条路、几所学校是你任上修的，没人记得是谁修的，用着就行。'},
+ retire_plain:{t:'到龄退休',d:'〔年龄〕退休。仕途走得不远，但没有翻车。后来你偶尔回镇上走走，当年那条路还在。'},
  post_audit:{t:'退休后倒查',d:'退休第二年，你被带走了。终身追责，档案里那几笔终究被翻了出来。你以为过去的事，其实一直在那里。'}
 };
 function endGame(id){S.over=id;logIt('结局：'+ENDINGS[id].t,'bad');}
@@ -2017,7 +2025,7 @@ const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[
 function renderAll(){if(!S)return;getters();const L=LV[S.lvl];
   $('#unitName').innerHTML=esc(L.unit)+'<small>主政者工作台</small>';
   if(S.phase==='retired'){$('#unitName').innerHTML='退休生活<small>第'+S.retY+'年</small>';}
-  const M=S.month;$('#meta').innerHTML=`<span>第<b>${S.year}</b>年 <b>${M}</b>月${S.phase==='retired'?'':' · '+mon().k}　年龄 <b>${S.age}</b></span><span>职务 <b>${L.t}</b>　本任第 <b>${S.tenure+1}</b> 年</span><span>风向 <b>${windOf().n}</b>${S.windLeft>0?'（还有 '+S.windLeft+' 年）':'（今年到期）'}</span><span>政绩 <b>${Math.round(S.merit)}</b> / ${L.need>9999?'—':L.need}　声誉 <b>${Math.round(S.rep)}</b>　班子团结 <b>${Math.round(S.unity)}</b></span>`;
+  const M=S.month;$('#meta').innerHTML=`<span>第<b>${S.year}</b>年 <b>${M}</b>月${S.phase==='retired'?'':' · '+mon().k}　年龄 <b>${S.age}</b></span><span>职务 <b>${L.t}</b><span class="rk">${esc(L.rank)}</span>　本任第 <b>${S.tenure+1}</b> 年</span><span>风向 <b>${windOf().n}</b>${S.windLeft>0?'（还有 '+S.windLeft+' 年）':'（今年到期）'}</span><span>政绩 <b>${Math.round(S.merit)}</b> / ${L.need>9999?'—':L.need}　声誉 <b>${Math.round(S.rep)}</b>　班子团结 <b>${Math.round(S.unity)}</b></span>`;
   const h=S.hdr;
   const st=[
    ['财政结余',fmt(S.cash),S.cash<0?'赤字':'储备金 '+fmt(S.reserve),null,S.cash<0],
@@ -2152,15 +2160,15 @@ function vLand(){
 function vOver(){const L=LV[S.lvl];const J=jobs();
   const warns=[];if(S.cash<0)warns.push('财政赤字，三保随时出缺口。');if(S.hdr>=70)warns.push('隐性债务率超过70%，化债任务书压顶。');else if(S.hdr>=55)warns.push('隐性债务率接近红线。');
   if(S.sat<40)warns.push('满意度偏低，信访件会变多。');if(S.env<40)warns.push('环境指标差，环保督察随时会来。');if(cov('school')<0.6)warns.push('学位缺口大。');if(cov('hosp')<0.5)warns.push('医疗资源不足。');
-  if(eff()<0.85)warns.push('编制缺口，机关运转效率下降。');if(S.file.some(f=>!f.exp&&!f.mild))warns.push('责任档案里有未处理的越界记录。');
+  if(eff()<0.85)warns.push('编制缺口，机关运转效率下降。');if(retLeft()<=2)warns.push(retLeft()<=0?'今年到龄退休。':'还有 '+retLeft()+' 年到龄退休，再往上走一步就多几年。');if(S.file.some(f=>!f.exp&&!f.mild))warns.push('责任档案里有未处理的越界记录。');
   const bs=S.build.length?S.build.map(b=>`<tr><td>${FAC[b.id].n}${b.wl?'<span class="tag blue">'+b.wl+'</span>':''}${b.stalled?'<span class="tag red">资金不足停工</span>':''}</td><td class="r">${fmt(b.paid)} / ${fmt(b.cost)}</td><td class="r">剩 ${b.left} 月</td></tr>`).join(''):'<tr><td class="muted" colspan="3">没有在建项目。</td></tr>';
   return `${artBox(S.phase==='retired'?'r_hometown':'city_'+S.lvl,'banner')}${vAgenda()}${vWind()}<div class="sec"><h2>${esc(L.city)}</h2><div class="hint">${S.lvl===0?'资源枯竭的老矿镇，年轻人在往外走。':S.lvl===1?'农业县，一个像样的物流园撑着税收。':S.lvl===2?'区域中心城市，工业基础尚可，城投规模不小。':S.lvl===3?'副省级城市，增速和债务两个数字都有人盯。':'直辖市。'}</div>
   <div class="grid2"><div><table><tr><td>就业岗位覆盖</td><td class="r">${Math.round(J*100)}%</td></tr><tr><td>学位覆盖</td><td class="r">${Math.round(cov('school')*100)}%</td></tr><tr><td>医疗覆盖</td><td class="r">${Math.round(cov('hosp')*100)}%</td></tr><tr><td>道路通达</td><td class="r">${Math.round(cov('road')*100)}%</td></tr><tr><td>储备土地</td><td class="r">${Math.round(S.land)} 亩</td></tr></table></div>
-  <div><table><tr><td>政绩进度</td><td class="r">${Math.round(S.merit)} / ${L.need>9999?'—':L.need}</td></tr><tr><td>财政紧张度</td><td class="r">${tension().toFixed(0)}</td></tr><tr><td>核定编制 / 在编</td><td class="r">${S.quota} / ${S.staff}</td></tr><tr><td>本任年限</td><td class="r">${S.tenure+1} / ${L.maxY}</td></tr><tr><td>历年考核</td><td class="r">${S.ratings.join(' ')||'—'}</td></tr></table></div></div></div>
+  <div><table><tr><td>政绩进度</td><td class="r">${Math.round(S.merit)} / ${L.need>9999?'—':L.need}</td></tr><tr><td>财政紧张度</td><td class="r">${tension().toFixed(0)}</td></tr><tr><td>核定编制 / 在编</td><td class="r">${S.quota} / ${S.staff}</td></tr><tr><td>本任年限</td><td class="r">${S.tenure+1} / ${L.maxY}</td></tr><tr><td>到龄退休</td><td class="r">${retAge()} 岁　${retLeft()>0?'还有 '+retLeft()+' 年':'今年到点'}</td></tr><tr><td>历年考核</td><td class="r">${S.ratings.join(' ')||'—'}</td></tr></table></div></div></div>
   <div class="sec"><h2>需要注意</h2>${warns.length?'<ul style="padding-left:18px;font-size:14px">'+warns.map(w=>'<li>'+w+'</li>').join('')+'</ul>':'<div class="hint">眼下没有明显问题。</div>'}</div>
   <div class="sec"><h2>在建项目</h2><table>${bs}</table></div>
   ${eraOn().length?`<div class="sec"><h2>这个时代</h2>${eraOn().map(e=>`<div class="hint" style="margin:4px 0"><b>${esc(e.n)}</b>　${esc(e.note)}</div>`).join('')}</div>`:''}
-  <div class="sec"><h2>晋升条件</h2><div class="hint">政绩达到 ${L.need>9999?'—':Math.round(L.need*npcNeedMul())}${L.need>9999?'':'（基准 '+L.need+'，'+npcName('boss')+'的态度上下浮动一成半）'}、财政紧张度不超过 60、没有未完成的化债任务书、班子团结不低于 35、当年考核 A 或 B。任期满 ${L.maxY} 年未晋升即转任二线。六十岁退休。</div></div>`;}
+  <div class="sec"><h2>晋升条件</h2><div class="hint">政绩达到 ${L.need>9999?'—':Math.round(L.need*npcNeedMul())}${L.need>9999?'':'（基准 '+L.need+'，'+npcName('boss')+'的态度上下浮动一成半）'}、财政紧张度不超过 60、没有未完成的化债任务书、班子团结不低于 35、当年考核 A 或 B。任期满 ${L.maxY} 年未晋升即转任二线。<b>${esc(L.rank)}</b>的到龄退休年龄是 <b>${retAge()}</b> 岁——级别越高，能干的年头越长。</div></div>`;}
 function vBuild(){
   S.buildCat=S.buildCat||'traffic';
   const LVN=['','县级','地级市','副省级','直辖市'];
@@ -2251,7 +2259,7 @@ function showReview(R,done){const L=LV[S.lvl];
 function showPromo(lvl,done){showDoc(`<div class="dh"><div class="kind">任职通知</div><h2>关于${esc(LV[lvl].city.replace(/（.*/,''))}主要领导任职的通知</h2></div><div class="body">${esc(PROMO_TEXT[lvl])}\n\n上一任的政绩按四分之一带入新任期。新城市有存量债务，先看账。<span class="seal">组织部</span></div><div class="opts"><button class="opt" id="prOk"><span class="ot">到任</span></button></div>`,'notice');
   $('#prOk').onclick=()=>{hideDoc();done();};}
 function showEnding(){busy=false;const E=ENDINGS[S.over];
-  showDoc(`${artBox('e_'+S.over,'wide')}<div class="dh"><div class="kind">结局</div><h2>${esc(E.t)}</h2></div><div class="body">${esc(E.d)}\n\n仕途 ${S.year-1} 年，终于 ${LV[S.lvl].t}（${esc(LV[S.lvl].city)}），${S.age} 岁。${S.hist.length?'\n\n'+S.hist.map(h=>h.city.replace(/（.*/,'')+' '+h.years+'年，建成'+h.built+'项，离任隐债率'+h.hdr+'%').join('；')+'。':''}历年考核：${S.ratings.join(' ')||'—'}。责任档案 ${S.file.length} 条。</div><div class="opts"><button class="opt" id="edFile"><span class="ot">查看履历与档案</span></button><button class="opt" id="edNew"><span class="ot">重新开局</span></button></div>`,'notice');
+  showDoc(`${artBox('e_'+S.over,'wide')}<div class="dh"><div class="kind">结局</div><h2>${esc(E.t)}</h2></div><div class="body">${esc(E.d.replace(/〔年龄〕/g,S.age+' 岁'))}\n\n仕途 ${S.year-1} 年，终于 ${LV[S.lvl].t}（${esc(LV[S.lvl].city)}），${S.age} 岁。${S.hist.length?'\n\n'+S.hist.map(h=>h.city.replace(/（.*/,'')+' '+h.years+'年，建成'+h.built+'项，离任隐债率'+h.hdr+'%').join('；')+'。':''}历年考核：${S.ratings.join(' ')||'—'}。责任档案 ${S.file.length} 条。</div><div class="opts"><button class="opt" id="edFile"><span class="ot">查看履历与档案</span></button><button class="opt" id="edNew"><span class="ot">重新开局</span></button></div>`,'notice');
   $('#edFile').onclick=()=>{hideDoc();S.tab='file';renderAll();};$('#edNew').onclick=()=>{hideDoc();LS.del('yifang_save');newGame();renderAll();};
   LS.del('yifang_save');}
 /* ---- 推进 ---- */
@@ -2268,7 +2276,7 @@ function next(){if(busy||!S||S.over)return;busy=true;
       if(R.next==='fall'){closeLevel();endGame('fall');renderAll();showEnding();busy=false;return;}
       if(R.next==='fired'){closeLevel();endGame('fired');renderAll();showEnding();busy=false;return;}
       if(R.next==='sidelined'){closeLevel();endGame('sidelined');renderAll();showEnding();busy=false;return;}
-      if(R.next==='retire'){closeLevel();S.phase='retired';S.retY=0;logIt('到龄退休。','sys');showDoc(`<div class="dh"><div class="kind">通知</div><h2>关于退休的通知</h2></div><div class="body">六十岁。组织谈话很短，感谢了你的工作。办公室的人帮你收拾东西，一个纸箱就装完了。\n\n往后几年，每次推进是一年。</div><div class="opts"><button class="opt" id="rtOk"><span class="ot">离开办公室</span></button></div>`,'notice');$('#rtOk').onclick=()=>{hideDoc();busy=false;save();renderAll();};return;}
+      if(R.next==='retire'){closeLevel();S.phase='retired';S.retY=0;logIt('到龄退休。','sys');showDoc(`<div class="dh"><div class="kind">通知</div><h2>关于退休的通知</h2></div><div class="body">${S.age} 岁，到点了。${LV[S.lvl].rank}的年龄界限就在这里，组织谈话很短，感谢了你的工作。办公室的人帮你收拾东西，一个纸箱就装完了。\n\n往后几年，每次推进是一年。</div><div class="opts"><button class="opt" id="rtOk"><span class="ot">离开办公室</span></button></div>`,'notice');$('#rtOk').onclick=()=>{hideDoc();busy=false;save();renderAll();};return;}
       if(R.next==='promote'){const nl=S.lvl+1;showPromo(nl,()=>{initLevel(nl,S.merit*0.25);S.resume.push({y:S.year,t:'任'+LV[nl].city.replace(/（.*/,'')+LV[nl].t});logIt('到任'+LV[nl].city+'。','sys');busy=false;save();renderAll();preloadArt();});return;}
       busy=false;save();renderAll();});}));
 }
