@@ -1,0 +1,190 @@
+{
+  "housing": [
+    {
+      "level": "镇长",
+      "city": "青石镇",
+      "opening": 180,
+      "types": [
+        {
+          "type": "basic",
+          "cost": 428,
+          "land": 12,
+          "landPayment": 80,
+          "fullNormalSales": 547.84,
+          "developerMargin": 39.84000000000003
+        },
+        {
+          "type": "better",
+          "cost": 612,
+          "land": 12,
+          "landPayment": 80,
+          "fullNormalSales": 856.8,
+          "developerMargin": 164.79999999999995
+        },
+        {
+          "type": "luxury",
+          "cost": 857,
+          "land": 12,
+          "landPayment": 80,
+          "fullNormalSales": 1371.2,
+          "developerMargin": 434.20000000000005
+        }
+      ]
+    },
+    {
+      "level": "县长",
+      "city": "沂川县",
+      "opening": 3250,
+      "types": [
+        {
+          "type": "basic",
+          "cost": 4641,
+          "land": 100,
+          "landPayment": 1826,
+          "fullNormalSales": 5940.4800000000005,
+          "developerMargin": -526.5199999999995
+        },
+        {
+          "type": "better",
+          "cost": 6630,
+          "land": 100,
+          "landPayment": 1826,
+          "fullNormalSales": 9282,
+          "developerMargin": 826
+        },
+        {
+          "type": "luxury",
+          "cost": 9282,
+          "land": 100,
+          "landPayment": 1826,
+          "fullNormalSales": 14851.2,
+          "developerMargin": 3743.2000000000007
+        }
+      ]
+    },
+    {
+      "level": "市委书记",
+      "city": "临渡市",
+      "opening": 20000,
+      "types": [
+        {
+          "type": "basic",
+          "cost": 28560,
+          "land": 440,
+          "landPayment": 23381,
+          "fullNormalSales": 36556.8,
+          "developerMargin": -15384.199999999997
+        },
+        {
+          "type": "better",
+          "cost": 40800,
+          "land": 440,
+          "landPayment": 23381,
+          "fullNormalSales": 57120.00000000001,
+          "developerMargin": -7060.999999999993
+        },
+        {
+          "type": "luxury",
+          "cost": 57120,
+          "land": 440,
+          "landPayment": 23381,
+          "fullNormalSales": 91392,
+          "developerMargin": 10891
+        }
+      ]
+    },
+    {
+      "level": "市委书记",
+      "city": "江岚市（副省级）",
+      "opening": 37500,
+      "types": [
+        {
+          "type": "basic",
+          "cost": 53550,
+          "land": 1000,
+          "landPayment": 121961,
+          "fullNormalSales": 68544,
+          "developerMargin": -106967
+        },
+        {
+          "type": "better",
+          "cost": 76500,
+          "land": 1000,
+          "landPayment": 121961,
+          "fullNormalSales": 107100,
+          "developerMargin": -91361
+        },
+        {
+          "type": "luxury",
+          "cost": 107100,
+          "land": 1000,
+          "landPayment": 121961,
+          "fullNormalSales": 171360,
+          "developerMargin": -57701
+        }
+      ]
+    },
+    {
+      "level": "市委书记",
+      "city": "海屿市（直辖市）",
+      "opening": 80000,
+      "types": [
+        {
+          "type": "basic",
+          "cost": 114240,
+          "land": 2200,
+          "landPayment": 489819,
+          "fullNormalSales": 146227.2,
+          "developerMargin": -457831.8
+        },
+        {
+          "type": "better",
+          "cost": 163200,
+          "land": 2200,
+          "landPayment": 489819,
+          "fullNormalSales": 228480.00000000003,
+          "developerMargin": -424539
+        },
+        {
+          "type": "luxury",
+          "cost": 228480,
+          "land": 2200,
+          "landPayment": 489819,
+          "fullNormalSales": 365568,
+          "developerMargin": -352731
+        }
+      ]
+    }
+  ],
+  "negativeFacilityEvents": [
+    {
+      "id": "market_move",
+      "title": "老农贸市场的地被看上了",
+      "option": "出让，摊贩另行安置",
+      "fac": {
+        "id": "market",
+        "n": -1
+      }
+    }
+  ],
+  "newNoticeArt": {
+    "newPetition": {
+      "scene": "s_meeting",
+      "portrait": null
+    },
+    "newInspection": {
+      "scene": "s_meeting",
+      "portrait": null
+    }
+  },
+  "artUsage": {
+    "p_developer": 21,
+    "p_petitioner": 37,
+    "p_inspector": 15,
+    "p_oldleader": 3,
+    "p_boss": 9,
+    "p_lgfv": 7,
+    "p_zhou": 18,
+    "p_wife": 3
+  }
+}

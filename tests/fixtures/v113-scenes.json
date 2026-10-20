@@ -1,0 +1,5439 @@
+[
+  {
+    "lvl": 0,
+    "year": 4,
+    "month": 6,
+    "age": 35,
+    "tenure": 0,
+    "cash": 9999589.077631999,
+    "reserve": 0,
+    "reserveRate": 2,
+    "seen": {},
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 3.4,
+    "pros": 37,
+    "liv": 43.5,
+    "sat": 45,
+    "env": 85,
+    "rep": 50,
+    "unity": 57,
+    "landTotal": 600,
+    "land": 576,
+    "landSold": 12,
+    "housing": 25.70528,
+    "f": {
+      "road": 11,
+      "bridge": 0,
+      "busdepot": 0,
+      "station": 0,
+      "nursery": 0,
+      "school": 1,
+      "clinic": 0,
+      "hosp": 1,
+      "social": 1,
+      "elder": 1,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 0,
+      "power": 1,
+      "water": 11,
+      "sewage": 10,
+      "garbage": 0,
+      "gas": 0,
+      "pipe": 10,
+      "datacenter": 0,
+      "park": 11,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 0,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 1,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 1,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "renewal": 0,
+      "factory": 0
+    },
+    "ind": [
+      {
+        "id": "grain",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收粮油企业"
+      },
+      {
+        "id": "coal",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收退出煤矿"
+      },
+      {
+        "id": "paper",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收造纸企业"
+      }
+    ],
+    "build": [],
+    "cq": [],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 90,
+    "quota": 95,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [
+      {
+        "id": "p3_fixture_pet",
+        "m": 0
+      }
+    ],
+    "once": {},
+    "merit": 2,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 4,
+        "m": 6,
+        "t": "已安排帮扶企业稳产，使用本月唯一亲自抓的工作机会。",
+        "c": "",
+        "q": 10
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企资金链断裂停工，需决定是否投入保交付。",
+        "c": "bad",
+        "q": 9
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "分管副省长 贺桂芳 那边冷了下来。",
+        "c": "bad",
+        "q": 8
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企出现资金链预警，可安排资金监管。",
+        "c": "bad",
+        "q": 7
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企开工，住宅用地12亩，土地款76万已到账；房企承担建设资金。",
+        "c": "sys",
+        "q": 6
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "刚需住宅·平台自主开发完工验收，开始按行情去化；尚未售出的房屋不会计作财政回款。",
+        "c": "good",
+        "q": 5
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "刚需住宅·平台自主开发开工，住宅用地12亩，一次投入454万。",
+        "c": "sys",
+        "q": 4
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "验收退出煤矿退出矿区修复立项，6个月逐月支付，总投入840万。",
+        "c": "",
+        "q": 3
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "验收退出煤矿有序退出，停止生产，既有责任不清除。",
+        "c": "bad",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": null,
+    "expMult": 1,
+    "over": null,
+    "tab": "business",
+    "grantYr": 0,
+    "hist": [],
+    "built": 0,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "p3_aid",
+    "agPool": [
+      "study",
+      "cadre",
+      "province"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "贺桂芳",
+        "f": 89
+      },
+      "old": {
+        "n": "刘卫东",
+        "f": 51
+      },
+      "lgfv": {
+        "n": "宋淑英",
+        "f": 50
+      },
+      "dev": {
+        "n": "谢怀安",
+        "f": 49
+      },
+      "pet": {
+        "n": "马建国",
+        "f": 45
+      },
+      "insp": {
+        "n": "孙德昌",
+        "f": 56
+      }
+    },
+    "plots": [],
+    "plotSeq": 0,
+    "landRev": 76,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [],
+    "leadSeq": 0,
+    "rivals": null,
+    "talent": 0,
+    "bigp": null,
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 1,
+    "lsc": 1,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 270,
+          "res": 186,
+          "com": 120
+        },
+        "leased": 0,
+        "used": 12,
+        "sold": 12,
+        "protectedFarm": 180,
+        "protectedEco": 90
+      },
+      "leases": [],
+      "permits": {},
+      "tech": {},
+      "resources": [
+        "煤炭"
+      ],
+      "finance": {
+        "opening": 10000000,
+        "entries": [
+          {
+            "kind": "policy",
+            "amount": -21.599999999999998,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "policy",
+            "amount": -21.599999999999998,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "restore",
+            "amount": -140,
+            "note": "验收退出煤矿退出矿区修复进度款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeCost",
+            "amount": -454,
+            "note": "平台自主开发刚需住宅",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 69.73440000000001,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "land",
+            "amount": 76,
+            "note": "住宅出让给房企：高端商品房",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 26.847744,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 26.847744,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 26.847744,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          }
+        ],
+        "history": []
+      },
+      "environment": {
+        "opening": 85,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 4,
+    "planZone": "mixed",
+    "projectClock": 42,
+    "careerProjects": [
+      {
+        "uid": "P1",
+        "site": "site-1",
+        "city": "青石镇",
+        "level": 0,
+        "fac": "grain",
+        "n": "验收粮油企业",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 1,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 460,
+        "completed": 42
+      },
+      {
+        "uid": "P2",
+        "site": "site-1",
+        "city": "青石镇",
+        "level": 0,
+        "fac": "coal",
+        "n": "验收退出煤矿",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 1,
+        "risk": {
+          "quality": 0,
+          "environment": 0.13200000000000003,
+          "safety": 0.06
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 2400,
+        "completed": 42
+      },
+      {
+        "uid": "P3",
+        "site": "site-1",
+        "city": "青石镇",
+        "level": 0,
+        "fac": "park",
+        "n": "验收退出煤矿退出矿区生态修复",
+        "kind": "restoration",
+        "status": "restoring",
+        "started": 42,
+        "cost": 840,
+        "paid": 140,
+        "sc": 1,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 48
+      },
+      {
+        "uid": "P4",
+        "site": "site-1",
+        "city": "青石镇",
+        "level": 0,
+        "fac": "paper",
+        "n": "验收造纸企业",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 1,
+        "risk": {
+          "quality": 0,
+          "environment": 0.09900000000000002,
+          "safety": 0.045
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 1600,
+        "completed": 42
+      },
+      {
+        "uid": "P5",
+        "site": "site-1",
+        "city": "青石镇",
+        "level": 0,
+        "fac": "house",
+        "n": "刚需住宅·平台自主开发",
+        "kind": "estate",
+        "status": "operating",
+        "started": 42,
+        "cost": 454,
+        "paid": 454,
+        "sc": 1,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 454,
+        "completed": 42
+      },
+      {
+        "uid": "P6",
+        "site": "site-1",
+        "city": "青石镇",
+        "level": 0,
+        "fac": "house",
+        "n": "高端商品房·外来房企",
+        "kind": "estate",
+        "status": "estate_stalled",
+        "started": 42,
+        "cost": 0,
+        "paid": 0,
+        "sc": 1,
+        "risk": {
+          "quality": 0.6,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": 42,
+        "reviewAt": 48,
+        "referenceCost": 907
+      }
+    ],
+    "projectSeq": 6,
+    "policyStats": {},
+    "policyNotices": {},
+    "siteSeq": 1,
+    "phase2": {
+      "version": 1,
+      "site": "site-1",
+      "level": 0,
+      "team": [
+        {
+          "id": "C1",
+          "n": "顾建宁",
+          "skill": "urban",
+          "ability": 75,
+          "post": "urban"
+        },
+        {
+          "id": "C2",
+          "n": "林慧",
+          "skill": "health",
+          "ability": 72,
+          "post": "health"
+        },
+        {
+          "id": "C3",
+          "n": "沈明远",
+          "skill": "finance",
+          "ability": 74,
+          "post": "finance"
+        },
+        {
+          "id": "C4",
+          "n": "陆启明",
+          "skill": "commerce",
+          "ability": 70,
+          "post": "commerce"
+        },
+        {
+          "id": "C5",
+          "n": "许清和",
+          "skill": "eco",
+          "ability": 70,
+          "post": "eco"
+        }
+      ],
+      "cadreSeq": 5,
+      "equipment": {
+        "power": {
+          "wear": 0,
+          "offline": 0,
+          "units": 1
+        },
+        "water": {
+          "wear": 0,
+          "offline": 0,
+          "units": 1
+        },
+        "sewage": {
+          "wear": 0,
+          "offline": 0,
+          "units": 0
+        }
+      },
+      "offers": [],
+      "offerSeq": 0,
+      "action": null,
+      "bidType": "road",
+      "inspections": {},
+      "monthNotes": []
+    },
+    "phase3": {
+      "version": 1,
+      "site": "site-1",
+      "seq": 6,
+      "firms": [
+        {
+          "uid": "F1",
+          "fac": "grain",
+          "index": 0,
+          "generic": false,
+          "name": "验收粮油企业",
+          "stage": "reduced",
+          "capacity": 1,
+          "health": 30,
+          "bad": 10,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P1",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": null
+        },
+        {
+          "uid": "F2",
+          "fac": "coal",
+          "index": 1,
+          "generic": false,
+          "name": "验收退出煤矿",
+          "stage": "closed",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P2",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": 42
+        },
+        {
+          "uid": "F4",
+          "fac": "paper",
+          "index": 2,
+          "generic": false,
+          "name": "验收造纸企业",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P4",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": null
+        }
+      ],
+      "homes": [
+        {
+          "type": "basic",
+          "mode": "self",
+          "land": 12,
+          "cost": 454,
+          "price": 5.8112,
+          "months": 6,
+          "landPrice": 80,
+          "uid": "H5",
+          "n": "刚需住宅·平台自主开发",
+          "project": "P5",
+          "stage": "selling",
+          "left": 0,
+          "remaining": 68.20000000000002,
+          "sold": 31.800000000000004,
+          "received": 150.277632,
+          "tax": 0,
+          "developerFunds": 80,
+          "riskMonths": 0,
+          "stallMonths": 0,
+          "regulatedUntil": 0,
+          "started": 42,
+          "finished": 42
+        },
+        {
+          "type": "luxury",
+          "mode": "private",
+          "land": 12,
+          "cost": 907,
+          "price": 14.512,
+          "months": 12,
+          "landPrice": 76,
+          "uid": "H6",
+          "n": "高端商品房·外来房企",
+          "project": "P6",
+          "stage": "stalled",
+          "left": 10,
+          "remaining": 100,
+          "sold": 0,
+          "received": 0,
+          "tax": 0,
+          "developerFunds": 11,
+          "riskMonths": 3,
+          "stallMonths": 0,
+          "regulatedUntil": 0,
+          "started": 42
+        }
+      ],
+      "mines": [
+        {
+          "uid": "M3",
+          "firm": "F2",
+          "n": "验收退出煤矿退出矿区",
+          "stage": "restoring",
+          "left": 5,
+          "cost": 840,
+          "paid": 140,
+          "project": "P3",
+          "restoredAt": null
+        }
+      ],
+      "rivals": [],
+      "action": {
+        "kind": "p3_aid",
+        "target": "F1"
+      },
+      "market": {
+        "index": 0.55,
+        "next": 48
+      },
+      "notices": {
+        "p3_fixture_pet": {
+          "id": "p3_fixture_pet",
+          "firm": "F4",
+          "title": "工业片区群众联名来信",
+          "handled": false,
+          "at": 42
+        }
+      },
+      "lastPetition": 0,
+      "notes": [],
+      "grace": 0
+    },
+    "logSeq": 10
+  },
+  {
+    "lvl": 1,
+    "year": 4,
+    "month": 6,
+    "age": 35,
+    "tenure": 0,
+    "cash": 9996598.573311998,
+    "reserve": 0,
+    "reserveRate": 2,
+    "seen": {},
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 38,
+    "pros": 48,
+    "liv": 51.5,
+    "sat": 45,
+    "env": 85,
+    "rep": 50,
+    "unity": 57,
+    "landTotal": 5000,
+    "land": 2550,
+    "landSold": 1600,
+    "housing": 50.705280000000016,
+    "f": {
+      "road": 11,
+      "bridge": 0,
+      "busdepot": 0,
+      "station": 0,
+      "nursery": 0,
+      "school": 2,
+      "clinic": 0,
+      "hosp": 1,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 0,
+      "power": 1,
+      "water": 11,
+      "sewage": 10,
+      "garbage": 0,
+      "gas": 0,
+      "pipe": 10,
+      "datacenter": 0,
+      "park": 11,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 1,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 1,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "renewal": 0,
+      "factory": 2
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 60,
+        "cut": 0
+      },
+      {
+        "id": "grain",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收粮油企业"
+      },
+      {
+        "id": "coal",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收退出煤矿"
+      },
+      {
+        "id": "paper",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收造纸企业"
+      }
+    ],
+    "build": [],
+    "cq": [
+      {
+        "amt": 9033.751670679609,
+        "rate": 7,
+        "left": 30,
+        "term": 36
+      },
+      {
+        "amt": 6022.501113786407,
+        "rate": 7,
+        "left": 54,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 1100,
+    "quota": 1155,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [
+      {
+        "id": "p3_fixture_pet",
+        "m": 0
+      }
+    ],
+    "once": {},
+    "merit": 52,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 4,
+        "m": 6,
+        "t": "已安排帮扶企业稳产，使用本月唯一亲自抓的工作机会。",
+        "c": "",
+        "q": 10
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企资金链断裂停工，需决定是否投入保交付。",
+        "c": "bad",
+        "q": 9
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "分管副省长 贺桂芳 那边冷了下来。",
+        "c": "bad",
+        "q": 8
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企出现资金链预警，可安排资金监管。",
+        "c": "bad",
+        "q": 7
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企开工，住宅用地100亩，土地款1754万已到账；房企承担建设资金。",
+        "c": "sys",
+        "q": 6
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "刚需住宅·平台自主开发完工验收，开始按行情去化；尚未售出的房屋不会计作财政回款。",
+        "c": "good",
+        "q": 5
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "刚需住宅·平台自主开发开工，住宅用地100亩，一次投入4914万。",
+        "c": "sys",
+        "q": 4
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "验收退出煤矿退出矿区修复立项，6个月逐月支付，总投入8400万。",
+        "c": "",
+        "q": 3
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "验收退出煤矿有序退出，停止生产，既有责任不清除。",
+        "c": "bad",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": null,
+    "expMult": 1,
+    "over": null,
+    "tab": "business",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        },
+        "phase2": {
+          "site": "site-1",
+          "team": [
+            {
+              "id": "C1",
+              "n": "顾建宁",
+              "skill": "urban",
+              "ability": 75,
+              "post": "urban"
+            },
+            {
+              "id": "C2",
+              "n": "林慧",
+              "skill": "health",
+              "ability": 72,
+              "post": "health"
+            },
+            {
+              "id": "C3",
+              "n": "沈明远",
+              "skill": "finance",
+              "ability": 74,
+              "post": "finance"
+            }
+          ],
+          "equipment": {
+            "power": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "water": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "sewage": {
+              "wear": 0,
+              "offline": 0,
+              "units": 0
+            }
+          }
+        },
+        "phase3": {
+          "version": 1,
+          "site": "site-1",
+          "seq": 0,
+          "firms": [],
+          "homes": [],
+          "mines": [],
+          "rivals": [],
+          "action": null,
+          "market": {
+            "index": 1,
+            "next": 7
+          },
+          "notices": {},
+          "lastPetition": 0,
+          "notes": [],
+          "grace": 0
+        }
+      }
+    ],
+    "built": 0,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "p3_aid",
+    "agPool": [
+      "report",
+      "petition",
+      "province"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "贺桂芳",
+        "f": 89
+      },
+      "old": {
+        "n": "刘卫东",
+        "f": 51
+      },
+      "lgfv": {
+        "n": "许锦程",
+        "f": 51
+      },
+      "dev": {
+        "n": "郑守成",
+        "f": 56
+      },
+      "pet": {
+        "n": "邱敬平",
+        "f": 45
+      },
+      "insp": {
+        "n": "王永康",
+        "f": 44
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "ind",
+        "mu": 141,
+        "loc": "沿河地块",
+        "heat": 0.6953671784641651,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "res",
+        "mu": 245,
+        "loc": "城南片区",
+        "heat": 0.636343608567348,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "res",
+        "mu": 185,
+        "loc": "老城片区",
+        "heat": 0.567791104012957,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 1754,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [],
+    "leadSeq": 0,
+    "rivals": null,
+    "talent": 0,
+    "bigp": null,
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 10,
+    "lsc": 8.333333333333334,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 1237.5,
+          "res": 762.4999999999999,
+          "com": 550.0000000000001
+        },
+        "leased": 0,
+        "used": 100,
+        "sold": 100,
+        "protectedFarm": 1500,
+        "protectedEco": 750
+      },
+      "leases": [],
+      "permits": {},
+      "tech": {},
+      "resources": [
+        "煤炭"
+      ],
+      "finance": {
+        "opening": 10000000,
+        "entries": [
+          {
+            "kind": "policy",
+            "amount": -234,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "policy",
+            "amount": -234,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "restore",
+            "amount": -1400,
+            "note": "验收退出煤矿退出矿区修复进度款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeCost",
+            "amount": -4914,
+            "note": "平台自主开发刚需住宅",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 754.7904,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "land",
+            "amount": 1754,
+            "note": "住宅出让给房企：高端商品房",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 290.59430399999997,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 290.59430399999997,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 290.59430399999997,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          }
+        ],
+        "history": []
+      },
+      "environment": {
+        "opening": 85,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 4,
+    "planZone": "mixed",
+    "projectClock": 42,
+    "careerProjects": [
+      {
+        "uid": "P1",
+        "site": "site-2",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "grain",
+        "n": "验收粮油企业",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 10,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 4600,
+        "completed": 42
+      },
+      {
+        "uid": "P2",
+        "site": "site-2",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "coal",
+        "n": "验收退出煤矿",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 10,
+        "risk": {
+          "quality": 0,
+          "environment": 0.13200000000000003,
+          "safety": 0.06
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 24000,
+        "completed": 42
+      },
+      {
+        "uid": "P3",
+        "site": "site-2",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "park",
+        "n": "验收退出煤矿退出矿区生态修复",
+        "kind": "restoration",
+        "status": "restoring",
+        "started": 42,
+        "cost": 8400,
+        "paid": 1400,
+        "sc": 10,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 48
+      },
+      {
+        "uid": "P4",
+        "site": "site-2",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "paper",
+        "n": "验收造纸企业",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 10,
+        "risk": {
+          "quality": 0,
+          "environment": 0.09900000000000002,
+          "safety": 0.045
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 16000,
+        "completed": 42
+      },
+      {
+        "uid": "P5",
+        "site": "site-2",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "house",
+        "n": "刚需住宅·平台自主开发",
+        "kind": "estate",
+        "status": "operating",
+        "started": 42,
+        "cost": 4914,
+        "paid": 4914,
+        "sc": 10,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 4914,
+        "completed": 42
+      },
+      {
+        "uid": "P6",
+        "site": "site-2",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "house",
+        "n": "高端商品房·外来房企",
+        "kind": "estate",
+        "status": "estate_stalled",
+        "started": 42,
+        "cost": 0,
+        "paid": 0,
+        "sc": 10,
+        "risk": {
+          "quality": 0.6,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": 42,
+        "reviewAt": 48,
+        "referenceCost": 9828
+      }
+    ],
+    "projectSeq": 6,
+    "policyStats": {},
+    "policyNotices": {},
+    "siteSeq": 2,
+    "phase2": {
+      "version": 1,
+      "site": "site-2",
+      "level": 1,
+      "team": [
+        {
+          "id": "C1",
+          "n": "顾建宁",
+          "skill": "urban",
+          "ability": 75,
+          "post": "urban"
+        },
+        {
+          "id": "C2",
+          "n": "林慧",
+          "skill": "health",
+          "ability": 72,
+          "post": "health"
+        },
+        {
+          "id": "C3",
+          "n": "沈明远",
+          "skill": "finance",
+          "ability": 74,
+          "post": "finance"
+        },
+        {
+          "id": "C4",
+          "n": "陆启明",
+          "skill": "commerce",
+          "ability": 70,
+          "post": "commerce"
+        },
+        {
+          "id": "C5",
+          "n": "许清和",
+          "skill": "eco",
+          "ability": 70,
+          "post": "eco"
+        }
+      ],
+      "cadreSeq": 5,
+      "equipment": {
+        "power": {
+          "wear": 0,
+          "offline": 0,
+          "units": 1
+        },
+        "water": {
+          "wear": 0,
+          "offline": 0,
+          "units": 1
+        },
+        "sewage": {
+          "wear": 0,
+          "offline": 0,
+          "units": 0
+        }
+      },
+      "offers": [],
+      "offerSeq": 0,
+      "action": null,
+      "bidType": "road",
+      "inspections": {},
+      "monthNotes": []
+    },
+    "phase3": {
+      "version": 1,
+      "site": "site-2",
+      "seq": 9,
+      "firms": [
+        {
+          "uid": "F1",
+          "fac": "logi",
+          "index": 0,
+          "generic": false,
+          "name": "物流园",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F2",
+          "fac": "factory",
+          "index": 1,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F3",
+          "fac": "factory",
+          "index": 2,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F4",
+          "fac": "grain",
+          "index": 1,
+          "generic": false,
+          "name": "验收粮油企业",
+          "stage": "reduced",
+          "capacity": 1,
+          "health": 30,
+          "bad": 10,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P1",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": null
+        },
+        {
+          "uid": "F5",
+          "fac": "coal",
+          "index": 2,
+          "generic": false,
+          "name": "验收退出煤矿",
+          "stage": "closed",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P2",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": 42
+        },
+        {
+          "uid": "F7",
+          "fac": "paper",
+          "index": 3,
+          "generic": false,
+          "name": "验收造纸企业",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P4",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": null
+        }
+      ],
+      "homes": [
+        {
+          "type": "basic",
+          "mode": "self",
+          "land": 100,
+          "cost": 4914,
+          "price": 62.8992,
+          "months": 6,
+          "landPrice": 1848,
+          "uid": "H8",
+          "n": "刚需住宅·平台自主开发",
+          "project": "P5",
+          "stage": "selling",
+          "left": 0,
+          "remaining": 68.20000000000002,
+          "sold": 31.800000000000004,
+          "received": 1626.573312,
+          "tax": 0,
+          "developerFunds": 80,
+          "riskMonths": 0,
+          "stallMonths": 0,
+          "regulatedUntil": 0,
+          "started": 42,
+          "finished": 42
+        },
+        {
+          "type": "luxury",
+          "mode": "private",
+          "land": 100,
+          "cost": 9828,
+          "price": 157.24800000000002,
+          "months": 12,
+          "landPrice": 1754,
+          "uid": "H9",
+          "n": "高端商品房·外来房企",
+          "project": "P6",
+          "stage": "stalled",
+          "left": 10,
+          "remaining": 100,
+          "sold": 0,
+          "received": 0,
+          "tax": 0,
+          "developerFunds": 11,
+          "riskMonths": 3,
+          "stallMonths": 0,
+          "regulatedUntil": 0,
+          "started": 42
+        }
+      ],
+      "mines": [
+        {
+          "uid": "M6",
+          "firm": "F5",
+          "n": "验收退出煤矿退出矿区",
+          "stage": "restoring",
+          "left": 5,
+          "cost": 8400,
+          "paid": 1400,
+          "project": "P3",
+          "restoredAt": null
+        }
+      ],
+      "rivals": [],
+      "action": {
+        "kind": "p3_aid",
+        "target": "F4"
+      },
+      "market": {
+        "index": 0.55,
+        "next": 48
+      },
+      "notices": {
+        "p3_fixture_pet": {
+          "id": "p3_fixture_pet",
+          "firm": "F7",
+          "title": "工业片区群众联名来信",
+          "handled": false,
+          "at": 42
+        }
+      },
+      "lastPetition": 0,
+      "notes": [],
+      "grace": 0
+    },
+    "logSeq": 10
+  },
+  {
+    "lvl": 2,
+    "year": 4,
+    "month": 6,
+    "age": 35,
+    "tenure": 0,
+    "cash": 9990892.681919998,
+    "reserve": 0,
+    "reserveRate": 2,
+    "seen": {},
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 320,
+    "pros": 51,
+    "liv": 51.5,
+    "sat": 45,
+    "env": 85,
+    "rep": 50,
+    "unity": 57,
+    "landTotal": 22000,
+    "land": 11220,
+    "landSold": 7040,
+    "housing": 50.705280000000016,
+    "f": {
+      "road": 11,
+      "bridge": 1,
+      "busdepot": 1,
+      "station": 0,
+      "nursery": 1,
+      "school": 2,
+      "clinic": 1,
+      "hosp": 2,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 1,
+      "power": 1,
+      "water": 11,
+      "sewage": 10,
+      "garbage": 0,
+      "gas": 0,
+      "pipe": 10,
+      "datacenter": 0,
+      "park": 11,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 1,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 1,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "renewal": 0,
+      "factory": 3
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 60,
+        "cut": 0
+      },
+      {
+        "id": "grain",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收粮油企业"
+      },
+      {
+        "id": "coal",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收退出煤矿"
+      },
+      {
+        "id": "paper",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收造纸企业"
+      }
+    ],
+    "build": [],
+    "cq": [
+      {
+        "amt": 67430.6208,
+        "rate": 7,
+        "left": 30,
+        "term": 36
+      },
+      {
+        "amt": 44953.747200000005,
+        "rate": 7,
+        "left": 54,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 7000,
+    "quota": 7350,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [
+      {
+        "id": "p3_fixture_pet",
+        "m": 0
+      }
+    ],
+    "once": {},
+    "merit": 52,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 4,
+        "m": 6,
+        "t": "已安排帮扶企业稳产，使用本月唯一亲自抓的工作机会。",
+        "c": "",
+        "q": 10
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企资金链断裂停工，需决定是否投入保交付。",
+        "c": "bad",
+        "q": 9
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "分管副省长 贺桂芳 那边冷了下来。",
+        "c": "bad",
+        "q": 8
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企出现资金链预警，可安排资金监管。",
+        "c": "bad",
+        "q": 7
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企开工，住宅用地440亩，土地款2.2亿已到账；房企承担建设资金。",
+        "c": "sys",
+        "q": 6
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "刚需住宅·平台自主开发完工验收，开始按行情去化；尚未售出的房屋不会计作财政回款。",
+        "c": "good",
+        "q": 5
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "刚需住宅·平台自主开发开工，住宅用地440亩，一次投入3.0亿。",
+        "c": "sys",
+        "q": 4
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "验收退出煤矿退出矿区修复立项，6个月逐月支付，总投入5.0亿。",
+        "c": "",
+        "q": 3
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "验收退出煤矿有序退出，停止生产，既有责任不清除。",
+        "c": "bad",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": null,
+    "expMult": 1,
+    "over": null,
+    "tab": "business",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        },
+        "phase2": {
+          "site": "site-1",
+          "team": [
+            {
+              "id": "C1",
+              "n": "顾建宁",
+              "skill": "urban",
+              "ability": 75,
+              "post": "urban"
+            },
+            {
+              "id": "C2",
+              "n": "林慧",
+              "skill": "health",
+              "ability": 72,
+              "post": "health"
+            },
+            {
+              "id": "C3",
+              "n": "沈明远",
+              "skill": "finance",
+              "ability": 74,
+              "post": "finance"
+            }
+          ],
+          "equipment": {
+            "power": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "water": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "sewage": {
+              "wear": 0,
+              "offline": 0,
+              "units": 0
+            }
+          }
+        },
+        "phase3": {
+          "version": 1,
+          "site": "site-1",
+          "seq": 0,
+          "firms": [],
+          "homes": [],
+          "mines": [],
+          "rivals": [],
+          "action": null,
+          "market": {
+            "index": 1,
+            "next": 7
+          },
+          "notices": {},
+          "lastPetition": 0,
+          "notes": [],
+          "grace": 0
+        }
+      }
+    ],
+    "built": 0,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "p3_aid",
+    "agPool": [
+      "province",
+      "cadre",
+      "report"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "贺桂芳",
+        "f": 89
+      },
+      "old": {
+        "n": "刘卫东",
+        "f": 51
+      },
+      "lgfv": {
+        "n": "王敬平",
+        "f": 53
+      },
+      "dev": {
+        "n": "李永康",
+        "f": 52
+      },
+      "pet": {
+        "n": "韩文秀",
+        "f": 53
+      },
+      "insp": {
+        "n": "郑锦程",
+        "f": 49
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "ind",
+        "mu": 620,
+        "loc": "沿河地块",
+        "heat": 0.7184441015410882,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "res",
+        "mu": 577,
+        "loc": "城南片区",
+        "heat": 0.659420531644271,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "res",
+        "mu": 815,
+        "loc": "老城片区",
+        "heat": 0.5908680270898801,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 22403,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [
+      {
+        "id": "L1",
+        "n": "宏诚生物股份",
+        "fac": "tour",
+        "sc": 1.05,
+        "inv": 100431,
+        "ask": {
+          "land": 1830,
+          "cash": 8920,
+          "cut": 24
+        },
+        "rival": false,
+        "y": 1
+      },
+      {
+        "id": "L2",
+        "n": "华安环保科技产业",
+        "fac": "port",
+        "sc": 1.14,
+        "inv": 272678,
+        "ask": {
+          "land": 2525,
+          "cash": 47095,
+          "cut": 12
+        },
+        "rival": false,
+        "y": 1
+      }
+    ],
+    "leadSeq": 2,
+    "rivals": null,
+    "talent": 0,
+    "bigp": null,
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 60,
+    "lsc": 36.666666666666664,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 5445.000000000001,
+          "res": 3355,
+          "com": 2420.000000000001
+        },
+        "leased": 0,
+        "used": 440,
+        "sold": 440,
+        "protectedFarm": 6600,
+        "protectedEco": 3300
+      },
+      "leases": [],
+      "permits": {},
+      "tech": {},
+      "resources": [
+        "煤炭",
+        "油气"
+      ],
+      "finance": {
+        "opening": 10000000,
+        "entries": [
+          {
+            "kind": "policy",
+            "amount": -1440,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "policy",
+            "amount": -1440,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "restore",
+            "amount": -8400,
+            "note": "验收退出煤矿退出矿区修复进度款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeCost",
+            "amount": -30240,
+            "note": "平台自主开发刚需住宅",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 4644.8640000000005,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "land",
+            "amount": 22403,
+            "note": "住宅出让给房企：高端商品房",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 1788.2726400000004,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 1788.2726400000004,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 1788.2726400000004,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          }
+        ],
+        "history": []
+      },
+      "environment": {
+        "opening": 85,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 4,
+    "planZone": "mixed",
+    "projectClock": 42,
+    "careerProjects": [
+      {
+        "uid": "P1",
+        "site": "site-2",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "grain",
+        "n": "验收粮油企业",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 60,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 27600,
+        "completed": 42
+      },
+      {
+        "uid": "P2",
+        "site": "site-2",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "coal",
+        "n": "验收退出煤矿",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 60,
+        "risk": {
+          "quality": 0,
+          "environment": 0.13200000000000003,
+          "safety": 0.06
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 144000,
+        "completed": 42
+      },
+      {
+        "uid": "P3",
+        "site": "site-2",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "park",
+        "n": "验收退出煤矿退出矿区生态修复",
+        "kind": "restoration",
+        "status": "restoring",
+        "started": 42,
+        "cost": 50400,
+        "paid": 8400,
+        "sc": 60,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 48
+      },
+      {
+        "uid": "P4",
+        "site": "site-2",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "paper",
+        "n": "验收造纸企业",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 60,
+        "risk": {
+          "quality": 0,
+          "environment": 0.09900000000000002,
+          "safety": 0.045
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 96000,
+        "completed": 42
+      },
+      {
+        "uid": "P5",
+        "site": "site-2",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "house",
+        "n": "刚需住宅·平台自主开发",
+        "kind": "estate",
+        "status": "operating",
+        "started": 42,
+        "cost": 30240,
+        "paid": 30240,
+        "sc": 60,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 30240,
+        "completed": 42
+      },
+      {
+        "uid": "P6",
+        "site": "site-2",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "house",
+        "n": "高端商品房·外来房企",
+        "kind": "estate",
+        "status": "estate_stalled",
+        "started": 42,
+        "cost": 0,
+        "paid": 0,
+        "sc": 60,
+        "risk": {
+          "quality": 0.6,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": 42,
+        "reviewAt": 48,
+        "referenceCost": 60480
+      }
+    ],
+    "projectSeq": 6,
+    "policyStats": {},
+    "policyNotices": {},
+    "siteSeq": 2,
+    "phase2": {
+      "version": 1,
+      "site": "site-2",
+      "level": 2,
+      "team": [
+        {
+          "id": "C1",
+          "n": "顾建宁",
+          "skill": "urban",
+          "ability": 75,
+          "post": "urban"
+        },
+        {
+          "id": "C2",
+          "n": "林慧",
+          "skill": "health",
+          "ability": 72,
+          "post": "health"
+        },
+        {
+          "id": "C3",
+          "n": "沈明远",
+          "skill": "finance",
+          "ability": 74,
+          "post": "finance"
+        },
+        {
+          "id": "C4",
+          "n": "陆启明",
+          "skill": "commerce",
+          "ability": 70,
+          "post": "commerce"
+        },
+        {
+          "id": "C5",
+          "n": "许清和",
+          "skill": "eco",
+          "ability": 70,
+          "post": "eco"
+        }
+      ],
+      "cadreSeq": 5,
+      "equipment": {
+        "power": {
+          "wear": 0,
+          "offline": 0,
+          "units": 1
+        },
+        "water": {
+          "wear": 0,
+          "offline": 0,
+          "units": 1
+        },
+        "sewage": {
+          "wear": 0,
+          "offline": 0,
+          "units": 0
+        }
+      },
+      "offers": [],
+      "offerSeq": 0,
+      "action": null,
+      "bidType": "road",
+      "inspections": {},
+      "monthNotes": []
+    },
+    "phase3": {
+      "version": 1,
+      "site": "site-2",
+      "seq": 10,
+      "firms": [
+        {
+          "uid": "F1",
+          "fac": "logi",
+          "index": 0,
+          "generic": false,
+          "name": "物流园",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F2",
+          "fac": "factory",
+          "index": 1,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F3",
+          "fac": "factory",
+          "index": 2,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F4",
+          "fac": "factory",
+          "index": 3,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F5",
+          "fac": "grain",
+          "index": 1,
+          "generic": false,
+          "name": "验收粮油企业",
+          "stage": "reduced",
+          "capacity": 1,
+          "health": 30,
+          "bad": 10,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P1",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": null
+        },
+        {
+          "uid": "F6",
+          "fac": "coal",
+          "index": 2,
+          "generic": false,
+          "name": "验收退出煤矿",
+          "stage": "closed",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P2",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": 42
+        },
+        {
+          "uid": "F8",
+          "fac": "paper",
+          "index": 3,
+          "generic": false,
+          "name": "验收造纸企业",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P4",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": null
+        }
+      ],
+      "homes": [
+        {
+          "type": "basic",
+          "mode": "self",
+          "land": 440,
+          "cost": 30240,
+          "price": 387.07200000000006,
+          "months": 6,
+          "landPrice": 23606,
+          "uid": "H9",
+          "n": "刚需住宅·平台自主开发",
+          "project": "P5",
+          "stage": "selling",
+          "left": 0,
+          "remaining": 68.20000000000002,
+          "sold": 31.800000000000004,
+          "received": 10009.681920000003,
+          "tax": 0,
+          "developerFunds": 80,
+          "riskMonths": 0,
+          "stallMonths": 0,
+          "regulatedUntil": 0,
+          "started": 42,
+          "finished": 42
+        },
+        {
+          "type": "luxury",
+          "mode": "private",
+          "land": 440,
+          "cost": 60480,
+          "price": 967.68,
+          "months": 12,
+          "landPrice": 22403,
+          "uid": "H10",
+          "n": "高端商品房·外来房企",
+          "project": "P6",
+          "stage": "stalled",
+          "left": 10,
+          "remaining": 100,
+          "sold": 0,
+          "received": 0,
+          "tax": 0,
+          "developerFunds": 11,
+          "riskMonths": 3,
+          "stallMonths": 0,
+          "regulatedUntil": 0,
+          "started": 42
+        }
+      ],
+      "mines": [
+        {
+          "uid": "M7",
+          "firm": "F6",
+          "n": "验收退出煤矿退出矿区",
+          "stage": "restoring",
+          "left": 5,
+          "cost": 50400,
+          "paid": 8400,
+          "project": "P3",
+          "restoredAt": null
+        }
+      ],
+      "rivals": [],
+      "action": {
+        "kind": "p3_aid",
+        "target": "F5"
+      },
+      "market": {
+        "index": 0.55,
+        "next": 48
+      },
+      "notices": {
+        "p3_fixture_pet": {
+          "id": "p3_fixture_pet",
+          "firm": "F8",
+          "title": "工业片区群众联名来信",
+          "handled": false,
+          "at": 42
+        }
+      },
+      "lastPetition": 0,
+      "notes": [],
+      "grace": 0
+    },
+    "logSeq": 10
+  },
+  {
+    "lvl": 3,
+    "year": 4,
+    "month": 6,
+    "age": 35,
+    "tenure": 0,
+    "cash": 10054189.153599998,
+    "reserve": 0,
+    "reserveRate": 2,
+    "seen": {},
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 900,
+    "pros": 54,
+    "liv": 51.5,
+    "sat": 45,
+    "env": 85,
+    "rep": 50,
+    "unity": 57,
+    "landTotal": 50000,
+    "land": 25500,
+    "landSold": 16000,
+    "housing": 50.705280000000016,
+    "f": {
+      "road": 11,
+      "bridge": 1,
+      "busdepot": 1,
+      "station": 0,
+      "nursery": 1,
+      "school": 3,
+      "clinic": 1,
+      "hosp": 2,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 1,
+      "power": 1,
+      "water": 11,
+      "sewage": 10,
+      "garbage": 0,
+      "gas": 1,
+      "pipe": 10,
+      "datacenter": 0,
+      "park": 11,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 1,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 1,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "renewal": 0,
+      "factory": 5
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 60,
+        "cut": 0
+      },
+      {
+        "id": "grain",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收粮油企业"
+      },
+      {
+        "id": "coal",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收退出煤矿"
+      },
+      {
+        "id": "paper",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收造纸企业"
+      }
+    ],
+    "build": [],
+    "cq": [
+      {
+        "amt": 192836.544,
+        "rate": 7,
+        "left": 30,
+        "term": 36
+      },
+      {
+        "amt": 128557.696,
+        "rate": 7,
+        "left": 54,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 19000,
+    "quota": 19950,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [
+      {
+        "id": "p3_fixture_pet",
+        "m": 0
+      }
+    ],
+    "once": {},
+    "merit": 52,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 4,
+        "m": 6,
+        "t": "已安排帮扶企业稳产，使用本月唯一亲自抓的工作机会。",
+        "c": "",
+        "q": 10
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企资金链断裂停工，需决定是否投入保交付。",
+        "c": "bad",
+        "q": 9
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "分管副省长 贺桂芳 那边冷了下来。",
+        "c": "bad",
+        "q": 8
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企出现资金链预警，可安排资金监管。",
+        "c": "bad",
+        "q": 7
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企开工，住宅用地1000亩，土地款12亿已到账；房企承担建设资金。",
+        "c": "sys",
+        "q": 6
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "刚需住宅·平台自主开发完工验收，开始按行情去化；尚未售出的房屋不会计作财政回款。",
+        "c": "good",
+        "q": 5
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "刚需住宅·平台自主开发开工，住宅用地1000亩，一次投入5.7亿。",
+        "c": "sys",
+        "q": 4
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "验收退出煤矿退出矿区修复立项，6个月逐月支付，总投入13亿。",
+        "c": "",
+        "q": 3
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "验收退出煤矿有序退出，停止生产，既有责任不清除。",
+        "c": "bad",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": null,
+    "expMult": 1,
+    "over": null,
+    "tab": "business",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        },
+        "phase2": {
+          "site": "site-1",
+          "team": [
+            {
+              "id": "C1",
+              "n": "顾建宁",
+              "skill": "urban",
+              "ability": 75,
+              "post": "urban"
+            },
+            {
+              "id": "C2",
+              "n": "林慧",
+              "skill": "health",
+              "ability": 72,
+              "post": "health"
+            },
+            {
+              "id": "C3",
+              "n": "沈明远",
+              "skill": "finance",
+              "ability": 74,
+              "post": "finance"
+            }
+          ],
+          "equipment": {
+            "power": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "water": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "sewage": {
+              "wear": 0,
+              "offline": 0,
+              "units": 0
+            }
+          }
+        },
+        "phase3": {
+          "version": 1,
+          "site": "site-1",
+          "seq": 0,
+          "firms": [],
+          "homes": [],
+          "mines": [],
+          "rivals": [],
+          "action": null,
+          "market": {
+            "index": 1,
+            "next": 7
+          },
+          "notices": {},
+          "lastPetition": 0,
+          "notes": [],
+          "grace": 0
+        }
+      }
+    ],
+    "built": 0,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "p3_aid",
+    "agPool": [
+      "debtwork",
+      "cadre",
+      "landwork"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "贺桂芳",
+        "f": 89
+      },
+      "old": {
+        "n": "刘卫东",
+        "f": 51
+      },
+      "lgfv": {
+        "n": "罗少华",
+        "f": 45
+      },
+      "dev": {
+        "n": "李永康",
+        "f": 56
+      },
+      "pet": {
+        "n": "韩成栋",
+        "f": 49
+      },
+      "insp": {
+        "n": "邱志远",
+        "f": 45
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "ind",
+        "mu": 1408,
+        "loc": "沿河地块",
+        "heat": 0.7415210246180113,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "res",
+        "mu": 604,
+        "loc": "城南片区",
+        "heat": 0.6824974547211942,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "res",
+        "mu": 1014,
+        "loc": "老城片区",
+        "heat": 0.6139449501668032,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 118521,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [
+      {
+        "id": "L1",
+        "n": "宏诚生物股份",
+        "fac": "tech",
+        "sc": 1.05,
+        "inv": 1098463,
+        "ask": {
+          "land": 5198,
+          "cash": 97563,
+          "cut": 24
+        },
+        "rival": false,
+        "y": 1
+      },
+      {
+        "id": "L2",
+        "n": "安安汽车零部件科技",
+        "fac": "port",
+        "sc": 0.87,
+        "inv": 522485,
+        "ask": {
+          "land": 8537,
+          "cash": 45757,
+          "cut": 12
+        },
+        "rival": false,
+        "y": 1
+      }
+    ],
+    "leadSeq": 2,
+    "rivals": [
+      {
+        "n": "南屿市",
+        "pros": 48.88566121645272,
+        "pop": 704.5661841379479,
+        "aggr": 0.73,
+        "done": []
+      },
+      {
+        "n": "洛泾市",
+        "pros": 48.59668157622218,
+        "pop": 709.4965421268715,
+        "aggr": 1.06,
+        "done": []
+      }
+    ],
+    "talent": 0,
+    "bigp": {
+      "n": "省级物流枢纽",
+      "fac": "port",
+      "base": 96000,
+      "y": 1,
+      "r": [
+        0.71,
+        0.85
+      ]
+    },
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 150,
+    "lsc": 83.33333333333333,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 12375.000000000002,
+          "res": 7625,
+          "com": 5500.000000000002
+        },
+        "leased": 0,
+        "used": 1000,
+        "sold": 1000,
+        "protectedFarm": 15000,
+        "protectedEco": 7500
+      },
+      "leases": [],
+      "permits": {},
+      "tech": {},
+      "resources": [
+        "煤炭",
+        "油气"
+      ],
+      "finance": {
+        "opening": 10000000,
+        "entries": [
+          {
+            "kind": "policy",
+            "amount": -2700,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "policy",
+            "amount": -2700,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "restore",
+            "amount": -21000,
+            "note": "验收退出煤矿退出矿区修复进度款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeCost",
+            "amount": -56700,
+            "note": "平台自主开发刚需住宅",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 8709.119999999999,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "land",
+            "amount": 118521,
+            "note": "住宅出让给房企：高端商品房",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 3353.0112000000004,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 3353.0112000000004,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 3353.0112000000004,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          }
+        ],
+        "history": []
+      },
+      "environment": {
+        "opening": 85,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 4,
+    "planZone": "mixed",
+    "projectClock": 42,
+    "careerProjects": [
+      {
+        "uid": "P1",
+        "site": "site-2",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "grain",
+        "n": "验收粮油企业",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 150,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 69000,
+        "completed": 42
+      },
+      {
+        "uid": "P2",
+        "site": "site-2",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "coal",
+        "n": "验收退出煤矿",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 150,
+        "risk": {
+          "quality": 0,
+          "environment": 0.13200000000000003,
+          "safety": 0.06
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 360000,
+        "completed": 42
+      },
+      {
+        "uid": "P3",
+        "site": "site-2",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "park",
+        "n": "验收退出煤矿退出矿区生态修复",
+        "kind": "restoration",
+        "status": "restoring",
+        "started": 42,
+        "cost": 126000,
+        "paid": 21000,
+        "sc": 150,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 48
+      },
+      {
+        "uid": "P4",
+        "site": "site-2",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "paper",
+        "n": "验收造纸企业",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 150,
+        "risk": {
+          "quality": 0,
+          "environment": 0.09900000000000002,
+          "safety": 0.045
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 240000,
+        "completed": 42
+      },
+      {
+        "uid": "P5",
+        "site": "site-2",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "house",
+        "n": "刚需住宅·平台自主开发",
+        "kind": "estate",
+        "status": "operating",
+        "started": 42,
+        "cost": 56700,
+        "paid": 56700,
+        "sc": 150,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 56700,
+        "completed": 42
+      },
+      {
+        "uid": "P6",
+        "site": "site-2",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "house",
+        "n": "高端商品房·外来房企",
+        "kind": "estate",
+        "status": "estate_stalled",
+        "started": 42,
+        "cost": 0,
+        "paid": 0,
+        "sc": 150,
+        "risk": {
+          "quality": 0.6,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": 42,
+        "reviewAt": 48,
+        "referenceCost": 113400
+      }
+    ],
+    "projectSeq": 6,
+    "policyStats": {},
+    "policyNotices": {},
+    "siteSeq": 2,
+    "phase2": {
+      "version": 1,
+      "site": "site-2",
+      "level": 3,
+      "team": [
+        {
+          "id": "C1",
+          "n": "顾建宁",
+          "skill": "urban",
+          "ability": 75,
+          "post": "urban"
+        },
+        {
+          "id": "C2",
+          "n": "林慧",
+          "skill": "health",
+          "ability": 72,
+          "post": "health"
+        },
+        {
+          "id": "C3",
+          "n": "沈明远",
+          "skill": "finance",
+          "ability": 74,
+          "post": "finance"
+        },
+        {
+          "id": "C4",
+          "n": "陆启明",
+          "skill": "commerce",
+          "ability": 70,
+          "post": "commerce"
+        },
+        {
+          "id": "C5",
+          "n": "许清和",
+          "skill": "eco",
+          "ability": 70,
+          "post": "eco"
+        }
+      ],
+      "cadreSeq": 5,
+      "equipment": {
+        "power": {
+          "wear": 0,
+          "offline": 0,
+          "units": 1
+        },
+        "water": {
+          "wear": 0,
+          "offline": 0,
+          "units": 1
+        },
+        "sewage": {
+          "wear": 0,
+          "offline": 0,
+          "units": 0
+        }
+      },
+      "offers": [],
+      "offerSeq": 0,
+      "action": null,
+      "bidType": "road",
+      "inspections": {},
+      "monthNotes": []
+    },
+    "phase3": {
+      "version": 1,
+      "site": "site-2",
+      "seq": 12,
+      "firms": [
+        {
+          "uid": "F1",
+          "fac": "logi",
+          "index": 0,
+          "generic": false,
+          "name": "物流园",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F2",
+          "fac": "factory",
+          "index": 1,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F3",
+          "fac": "factory",
+          "index": 2,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F4",
+          "fac": "factory",
+          "index": 3,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F5",
+          "fac": "factory",
+          "index": 4,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F6",
+          "fac": "factory",
+          "index": 5,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F7",
+          "fac": "grain",
+          "index": 1,
+          "generic": false,
+          "name": "验收粮油企业",
+          "stage": "reduced",
+          "capacity": 1,
+          "health": 30,
+          "bad": 10,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P1",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": null
+        },
+        {
+          "uid": "F8",
+          "fac": "coal",
+          "index": 2,
+          "generic": false,
+          "name": "验收退出煤矿",
+          "stage": "closed",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P2",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": 42
+        },
+        {
+          "uid": "F10",
+          "fac": "paper",
+          "index": 3,
+          "generic": false,
+          "name": "验收造纸企业",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P4",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": null
+        }
+      ],
+      "homes": [
+        {
+          "type": "basic",
+          "mode": "self",
+          "land": 1000,
+          "cost": 56700,
+          "price": 725.76,
+          "months": 6,
+          "landPrice": 124914,
+          "uid": "H11",
+          "n": "刚需住宅·平台自主开发",
+          "project": "P5",
+          "stage": "selling",
+          "left": 0,
+          "remaining": 68.20000000000002,
+          "sold": 31.800000000000004,
+          "received": 18768.1536,
+          "tax": 0,
+          "developerFunds": 80,
+          "riskMonths": 0,
+          "stallMonths": 0,
+          "regulatedUntil": 0,
+          "started": 42,
+          "finished": 42
+        },
+        {
+          "type": "luxury",
+          "mode": "private",
+          "land": 1000,
+          "cost": 113400,
+          "price": 1814.4,
+          "months": 12,
+          "landPrice": 118521,
+          "uid": "H12",
+          "n": "高端商品房·外来房企",
+          "project": "P6",
+          "stage": "stalled",
+          "left": 10,
+          "remaining": 100,
+          "sold": 0,
+          "received": 0,
+          "tax": 0,
+          "developerFunds": 11,
+          "riskMonths": 3,
+          "stallMonths": 0,
+          "regulatedUntil": 0,
+          "started": 42
+        }
+      ],
+      "mines": [
+        {
+          "uid": "M9",
+          "firm": "F8",
+          "n": "验收退出煤矿退出矿区",
+          "stage": "restoring",
+          "left": 5,
+          "cost": 126000,
+          "paid": 21000,
+          "project": "P3",
+          "restoredAt": null
+        }
+      ],
+      "rivals": [
+        {
+          "personality": "aggressive",
+          "environment": 90,
+          "safety": 80,
+          "clean": 80,
+          "liv": 50,
+          "debt": 35,
+          "risk": 0,
+          "projects": 0,
+          "land": 0,
+          "accidents": 0,
+          "last": "接续原邻市经济数据"
+        },
+        {
+          "personality": "steady",
+          "environment": 90,
+          "safety": 80,
+          "clean": 80,
+          "liv": 50,
+          "debt": 35,
+          "risk": 0,
+          "projects": 0,
+          "land": 0,
+          "accidents": 0,
+          "last": "接续原邻市经济数据"
+        }
+      ],
+      "action": {
+        "kind": "p3_aid",
+        "target": "F7"
+      },
+      "market": {
+        "index": 0.55,
+        "next": 48
+      },
+      "notices": {
+        "p3_fixture_pet": {
+          "id": "p3_fixture_pet",
+          "firm": "F10",
+          "title": "工业片区群众联名来信",
+          "handled": false,
+          "at": 42
+        }
+      },
+      "lastPetition": 0,
+      "notes": [],
+      "grace": 0
+    },
+    "logSeq": 10
+  },
+  {
+    "lvl": 4,
+    "year": 4,
+    "month": 6,
+    "age": 35,
+    "tenure": 0,
+    "cash": 10324079.727680001,
+    "reserve": 0,
+    "reserveRate": 2,
+    "seen": {},
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 2400,
+    "pros": 57,
+    "liv": 51.5,
+    "sat": 45,
+    "env": 85,
+    "rep": 50,
+    "unity": 57,
+    "landTotal": 110000,
+    "land": 56100,
+    "landSold": 35200,
+    "housing": 50.705280000000016,
+    "f": {
+      "road": 11,
+      "bridge": 1,
+      "busdepot": 1,
+      "station": 0,
+      "nursery": 1,
+      "school": 3,
+      "clinic": 1,
+      "hosp": 2,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 1,
+      "power": 1,
+      "water": 11,
+      "sewage": 10,
+      "garbage": 0,
+      "gas": 1,
+      "pipe": 10,
+      "datacenter": 0,
+      "park": 11,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 1,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 1,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "renewal": 0,
+      "factory": 6
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 60,
+        "cut": 0
+      },
+      {
+        "id": "grain",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收粮油企业"
+      },
+      {
+        "id": "coal",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收退出煤矿"
+      },
+      {
+        "id": "paper",
+        "age": 60,
+        "cut": 0,
+        "nm": "验收造纸企业"
+      }
+    ],
+    "build": [],
+    "cq": [
+      {
+        "amt": 569980.1868387095,
+        "rate": 7,
+        "left": 30,
+        "term": 36
+      },
+      {
+        "amt": 379986.7912258064,
+        "rate": 7,
+        "left": 54,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 52000,
+    "quota": 54600,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [
+      {
+        "id": "p3_fixture_pet",
+        "m": 0
+      }
+    ],
+    "once": {},
+    "merit": 52,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 4,
+        "m": 6,
+        "t": "已安排帮扶企业稳产，使用本月唯一亲自抓的工作机会。",
+        "c": "",
+        "q": 10
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企资金链断裂停工，需决定是否投入保交付。",
+        "c": "bad",
+        "q": 9
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "分管副省长 贺桂芳 那边冷了下来。",
+        "c": "bad",
+        "q": 8
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企出现资金链预警，可安排资金监管。",
+        "c": "bad",
+        "q": 7
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "高端商品房·外来房企开工，住宅用地2200亩，土地款47亿已到账；房企承担建设资金。",
+        "c": "sys",
+        "q": 6
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "刚需住宅·平台自主开发完工验收，开始按行情去化；尚未售出的房屋不会计作财政回款。",
+        "c": "good",
+        "q": 5
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "刚需住宅·平台自主开发开工，住宅用地2200亩，一次投入12亿。",
+        "c": "sys",
+        "q": 4
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "验收退出煤矿退出矿区修复立项，6个月逐月支付，总投入34亿。",
+        "c": "",
+        "q": 3
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "验收退出煤矿有序退出，停止生产，既有责任不清除。",
+        "c": "bad",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": null,
+    "expMult": 1,
+    "over": null,
+    "tab": "business",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        },
+        "phase2": {
+          "site": "site-1",
+          "team": [
+            {
+              "id": "C1",
+              "n": "顾建宁",
+              "skill": "urban",
+              "ability": 75,
+              "post": "urban"
+            },
+            {
+              "id": "C2",
+              "n": "林慧",
+              "skill": "health",
+              "ability": 72,
+              "post": "health"
+            },
+            {
+              "id": "C3",
+              "n": "沈明远",
+              "skill": "finance",
+              "ability": 74,
+              "post": "finance"
+            }
+          ],
+          "equipment": {
+            "power": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "water": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "sewage": {
+              "wear": 0,
+              "offline": 0,
+              "units": 0
+            }
+          }
+        },
+        "phase3": {
+          "version": 1,
+          "site": "site-1",
+          "seq": 0,
+          "firms": [],
+          "homes": [],
+          "mines": [],
+          "rivals": [],
+          "action": null,
+          "market": {
+            "index": 1,
+            "next": 7
+          },
+          "notices": {},
+          "lastPetition": 0,
+          "notes": [],
+          "grace": 0
+        }
+      }
+    ],
+    "built": 0,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "p3_aid",
+    "agPool": [
+      "report",
+      "landwork",
+      "budget"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "贺桂芳",
+        "f": 89
+      },
+      "old": {
+        "n": "刘卫东",
+        "f": 51
+      },
+      "lgfv": {
+        "n": "王庆生",
+        "f": 48
+      },
+      "dev": {
+        "n": "赵兆丰",
+        "f": 54
+      },
+      "pet": {
+        "n": "郑秉正",
+        "f": 55
+      },
+      "insp": {
+        "n": "许克明",
+        "f": 53
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "ind",
+        "mu": 3098,
+        "loc": "沿河地块",
+        "heat": 0.7645979476949343,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "res",
+        "mu": 841,
+        "loc": "城南片区",
+        "heat": 0.7055743777981172,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "res",
+        "mu": 1408,
+        "loc": "老城片区",
+        "heat": 0.6370218732437262,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 472521,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [
+      {
+        "id": "L1",
+        "n": "宏诚生物股份",
+        "fac": "tech",
+        "sc": 1.05,
+        "inv": 2929235,
+        "ask": {
+          "land": 11435,
+          "cash": 260168,
+          "cut": 24
+        },
+        "rival": false,
+        "y": 1
+      },
+      {
+        "id": "L2",
+        "n": "安安汽车零部件科技",
+        "fac": "port",
+        "sc": 0.87,
+        "inv": 1393294,
+        "ask": {
+          "land": 18782,
+          "cash": 122019,
+          "cut": 12
+        },
+        "rival": false,
+        "y": 1
+      }
+    ],
+    "leadSeq": 2,
+    "rivals": [
+      {
+        "n": "南屿市",
+        "pros": 51.88566121645272,
+        "pop": 1878.8431577011943,
+        "aggr": 0.73,
+        "done": []
+      },
+      {
+        "n": "洛泾市",
+        "pros": 51.59668157622218,
+        "pop": 1891.9907790049908,
+        "aggr": 1.06,
+        "done": []
+      }
+    ],
+    "talent": 0,
+    "bigp": {
+      "n": "省级物流枢纽",
+      "fac": "port",
+      "base": 256000,
+      "y": 1,
+      "r": [
+        0.71,
+        0.85
+      ]
+    },
+    "dist": [
+      {
+        "id": "城关区",
+        "n": "城关区",
+        "t": "core",
+        "pop": 501.68948505967853,
+        "pros": 63.182747348211706,
+        "liv": 53.36259776353836,
+        "debt": 45.22953362157568,
+        "honest": 0.72,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "和平区",
+        "n": "和平区",
+        "t": "core",
+        "pop": 444.19270597994324,
+        "pros": 57.03816206101328,
+        "liv": 53.537423806265,
+        "debt": 50.25353432120755,
+        "honest": 0.37,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "新城区",
+        "n": "新城区",
+        "t": "new",
+        "pop": 321.99403900355105,
+        "pros": 57.580160456709564,
+        "liv": 49.41702016070485,
+        "debt": 67.35092798573896,
+        "honest": 0.56,
+        "lazy": true,
+        "hide": 0
+      },
+      {
+        "id": "临江新区",
+        "n": "临江新区",
+        "t": "new",
+        "pop": 333.0343727946281,
+        "pros": 56.31127513665706,
+        "liv": 54.07965976558626,
+        "debt": 59.0922776334919,
+        "honest": 0.29,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "开发区",
+        "n": "开发区",
+        "t": "ind",
+        "pop": 216.82152153700594,
+        "pros": 66.82558666821569,
+        "liv": 36.48172739893198,
+        "debt": 61.95163301145658,
+        "honest": 0.25,
+        "lazy": true,
+        "hide": 0
+      },
+      {
+        "id": "双桥区",
+        "n": "双桥区",
+        "t": "ind",
+        "pop": 280.06989134252075,
+        "pros": 59.91087354812771,
+        "liv": 39.625512951985,
+        "debt": 56.85497343586758,
+        "honest": 0.86,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "云岭区",
+        "n": "云岭区",
+        "t": "far",
+        "pop": 183.90027808696036,
+        "pros": 35.544011677615345,
+        "liv": 42.87049835547805,
+        "debt": 45.73393017379567,
+        "honest": 0.42,
+        "lazy": true,
+        "hide": 0
+      },
+      {
+        "id": "港北区",
+        "n": "港北区",
+        "t": "port",
+        "pop": 209.31905953288077,
+        "pros": 54.10628350544721,
+        "liv": 52.384720189496875,
+        "debt": 32.94684891263023,
+        "honest": 0.84,
+        "lazy": false,
+        "hide": 0
+      }
+    ],
+    "alloc": {
+      "城关区": {
+        "fund": 2,
+        "focus": "people"
+      },
+      "和平区": {
+        "fund": 2,
+        "focus": "people"
+      },
+      "新城区": {
+        "fund": 2,
+        "focus": "debt"
+      },
+      "临江新区": {
+        "fund": 2,
+        "focus": "debt"
+      },
+      "开发区": {
+        "fund": 2,
+        "focus": "eco"
+      },
+      "双桥区": {
+        "fund": 2,
+        "focus": "eco"
+      },
+      "云岭区": {
+        "fund": 2,
+        "focus": "eco"
+      },
+      "港北区": {
+        "fund": 2,
+        "focus": "eco"
+      }
+    },
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 400,
+    "lsc": 183.33333333333334,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 27225.000000000004,
+          "res": 16775,
+          "com": 12100
+        },
+        "leased": 0,
+        "used": 2200,
+        "sold": 2200,
+        "protectedFarm": 33000,
+        "protectedEco": 16500
+      },
+      "leases": [],
+      "permits": {},
+      "tech": {},
+      "resources": [
+        "煤炭",
+        "油气"
+      ],
+      "finance": {
+        "opening": 10000000,
+        "entries": [
+          {
+            "kind": "policy",
+            "amount": -5760,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "policy",
+            "amount": -5760,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "restore",
+            "amount": -56000,
+            "note": "验收退出煤矿退出矿区修复进度款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeCost",
+            "amount": -120960,
+            "note": "平台自主开发刚需住宅",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 18579.456000000002,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "land",
+            "amount": 472521,
+            "note": "住宅出让给房企：高端商品房",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 7153.0905600000015,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 7153.0905600000015,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          },
+          {
+            "kind": "homeSales",
+            "amount": 7153.0905600000015,
+            "note": "刚需住宅·平台自主开发实际售房回款",
+            "y": 4,
+            "m": 6
+          }
+        ],
+        "history": []
+      },
+      "environment": {
+        "opening": 85,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 4,
+    "planZone": "mixed",
+    "projectClock": 42,
+    "careerProjects": [
+      {
+        "uid": "P1",
+        "site": "site-2",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "grain",
+        "n": "验收粮油企业",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 400,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 184000,
+        "completed": 42
+      },
+      {
+        "uid": "P2",
+        "site": "site-2",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "coal",
+        "n": "验收退出煤矿",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 400,
+        "risk": {
+          "quality": 0,
+          "environment": 0.13200000000000003,
+          "safety": 0.06
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 960000,
+        "completed": 42
+      },
+      {
+        "uid": "P3",
+        "site": "site-2",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "park",
+        "n": "验收退出煤矿退出矿区生态修复",
+        "kind": "restoration",
+        "status": "restoring",
+        "started": 42,
+        "cost": 336000,
+        "paid": 56000,
+        "sc": 400,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 48
+      },
+      {
+        "uid": "P4",
+        "site": "site-2",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "paper",
+        "n": "验收造纸企业",
+        "kind": "investment",
+        "status": "operating",
+        "started": 42,
+        "cost": 100,
+        "paid": 100,
+        "sc": 400,
+        "risk": {
+          "quality": 0,
+          "environment": 0.09900000000000002,
+          "safety": 0.045
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 640000,
+        "completed": 42
+      },
+      {
+        "uid": "P5",
+        "site": "site-2",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "house",
+        "n": "刚需住宅·平台自主开发",
+        "kind": "estate",
+        "status": "operating",
+        "started": 42,
+        "cost": 120960,
+        "paid": 120960,
+        "sc": 400,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 48,
+        "referenceCost": 120960,
+        "completed": 42
+      },
+      {
+        "uid": "P6",
+        "site": "site-2",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "house",
+        "n": "高端商品房·外来房企",
+        "kind": "estate",
+        "status": "estate_stalled",
+        "started": 42,
+        "cost": 0,
+        "paid": 0,
+        "sc": 400,
+        "risk": {
+          "quality": 0.6,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": 42,
+        "reviewAt": 48,
+        "referenceCost": 241920
+      }
+    ],
+    "projectSeq": 6,
+    "policyStats": {},
+    "policyNotices": {},
+    "siteSeq": 2,
+    "phase2": {
+      "version": 1,
+      "site": "site-2",
+      "level": 4,
+      "team": [
+        {
+          "id": "C1",
+          "n": "顾建宁",
+          "skill": "urban",
+          "ability": 75,
+          "post": "urban"
+        },
+        {
+          "id": "C2",
+          "n": "林慧",
+          "skill": "health",
+          "ability": 72,
+          "post": "health"
+        },
+        {
+          "id": "C3",
+          "n": "沈明远",
+          "skill": "finance",
+          "ability": 74,
+          "post": "finance"
+        },
+        {
+          "id": "C4",
+          "n": "陆启明",
+          "skill": "commerce",
+          "ability": 70,
+          "post": "commerce"
+        },
+        {
+          "id": "C5",
+          "n": "许清和",
+          "skill": "eco",
+          "ability": 70,
+          "post": "eco"
+        }
+      ],
+      "cadreSeq": 5,
+      "equipment": {
+        "power": {
+          "wear": 0,
+          "offline": 0,
+          "units": 1
+        },
+        "water": {
+          "wear": 0,
+          "offline": 0,
+          "units": 1
+        },
+        "sewage": {
+          "wear": 0,
+          "offline": 0,
+          "units": 0
+        }
+      },
+      "offers": [],
+      "offerSeq": 0,
+      "action": null,
+      "bidType": "road",
+      "inspections": {},
+      "monthNotes": []
+    },
+    "phase3": {
+      "version": 1,
+      "site": "site-2",
+      "seq": 13,
+      "firms": [
+        {
+          "uid": "F1",
+          "fac": "logi",
+          "index": 0,
+          "generic": false,
+          "name": "物流园",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F2",
+          "fac": "factory",
+          "index": 1,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F3",
+          "fac": "factory",
+          "index": 2,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F4",
+          "fac": "factory",
+          "index": 3,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F5",
+          "fac": "factory",
+          "index": 4,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F6",
+          "fac": "factory",
+          "index": 5,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F7",
+          "fac": "factory",
+          "index": 6,
+          "generic": true,
+          "name": "招商工厂",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": null,
+          "joined": 42,
+          "legacy": true,
+          "exitAt": null
+        },
+        {
+          "uid": "F8",
+          "fac": "grain",
+          "index": 1,
+          "generic": false,
+          "name": "验收粮油企业",
+          "stage": "reduced",
+          "capacity": 1,
+          "health": 30,
+          "bad": 10,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P1",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": null
+        },
+        {
+          "uid": "F9",
+          "fac": "coal",
+          "index": 2,
+          "generic": false,
+          "name": "验收退出煤矿",
+          "stage": "closed",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P2",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": 42
+        },
+        {
+          "uid": "F11",
+          "fac": "paper",
+          "index": 3,
+          "generic": false,
+          "name": "验收造纸企业",
+          "stage": "stable",
+          "capacity": 1,
+          "health": 80,
+          "bad": 0,
+          "protectedUntil": 0,
+          "aid": [],
+          "expansion": null,
+          "move": null,
+          "project": "P4",
+          "joined": 42,
+          "legacy": false,
+          "exitAt": null
+        }
+      ],
+      "homes": [
+        {
+          "type": "basic",
+          "mode": "self",
+          "land": 2200,
+          "cost": 120960,
+          "price": 1548.2880000000002,
+          "months": 6,
+          "landPrice": 498102,
+          "uid": "H12",
+          "n": "刚需住宅·平台自主开发",
+          "project": "P5",
+          "stage": "selling",
+          "left": 0,
+          "remaining": 68.20000000000002,
+          "sold": 31.800000000000004,
+          "received": 40038.72768000001,
+          "tax": 0,
+          "developerFunds": 80,
+          "riskMonths": 0,
+          "stallMonths": 0,
+          "regulatedUntil": 0,
+          "started": 42,
+          "finished": 42
+        },
+        {
+          "type": "luxury",
+          "mode": "private",
+          "land": 2200,
+          "cost": 241920,
+          "price": 3870.72,
+          "months": 12,
+          "landPrice": 472521,
+          "uid": "H13",
+          "n": "高端商品房·外来房企",
+          "project": "P6",
+          "stage": "stalled",
+          "left": 10,
+          "remaining": 100,
+          "sold": 0,
+          "received": 0,
+          "tax": 0,
+          "developerFunds": 11,
+          "riskMonths": 3,
+          "stallMonths": 0,
+          "regulatedUntil": 0,
+          "started": 42
+        }
+      ],
+      "mines": [
+        {
+          "uid": "M10",
+          "firm": "F9",
+          "n": "验收退出煤矿退出矿区",
+          "stage": "restoring",
+          "left": 5,
+          "cost": 336000,
+          "paid": 56000,
+          "project": "P3",
+          "restoredAt": null
+        }
+      ],
+      "rivals": [
+        {
+          "personality": "aggressive",
+          "environment": 90,
+          "safety": 80,
+          "clean": 80,
+          "liv": 50,
+          "debt": 35,
+          "risk": 0,
+          "projects": 0,
+          "land": 0,
+          "accidents": 0,
+          "last": "接续原邻市经济数据"
+        },
+        {
+          "personality": "steady",
+          "environment": 90,
+          "safety": 80,
+          "clean": 80,
+          "liv": 50,
+          "debt": 35,
+          "risk": 0,
+          "projects": 0,
+          "land": 0,
+          "accidents": 0,
+          "last": "接续原邻市经济数据"
+        }
+      ],
+      "action": {
+        "kind": "p3_aid",
+        "target": "F8"
+      },
+      "market": {
+        "index": 0.55,
+        "next": 48
+      },
+      "notices": {
+        "p3_fixture_pet": {
+          "id": "p3_fixture_pet",
+          "firm": "F11",
+          "title": "工业片区群众联名来信",
+          "handled": false,
+          "at": 42
+        }
+      },
+      "lastPetition": 0,
+      "notes": [],
+      "grace": 0
+    },
+    "logSeq": 10
+  }
+]

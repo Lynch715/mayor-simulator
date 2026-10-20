@@ -1,0 +1,25 @@
+{
+  "before": {
+    "p_developer": 21,
+    "p_petitioner": 37,
+    "p_inspector": 15,
+    "p_oldleader": 3,
+    "p_boss": 9,
+    "p_lgfv": 7,
+    "p_zhou": 18,
+    "p_wife": 3
+  },
+  "after": {
+    "p_oldleader": 4,
+    "p_developer": 7,
+    "p_boss": 6,
+    "p_petitioner": 3,
+    "p_inspector": 4,
+    "p_zhou": 7,
+    "p_lgfv": 5,
+    "p_wife": 2
+  },
+  "totalPortraitEvents": 38,
+  "anonymousPetitions": "scene only; explicit NPCs retain their own portrait",
+  "imageFilesChanged": false
+}

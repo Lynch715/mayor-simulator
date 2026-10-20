@@ -1,0 +1,39 @@
+{
+  "release": "v1.14",
+  "sourceSha256": "f7fac7d2178a45f3be29a3117629cb3de87e1bf923d23338a4780e1085d870fc",
+  "backupV113Sha256": "8f075a14f9d2545d4c457881b0c797c470d1636fca0d4de66f2daa96ca0e04c5",
+  "scope": "前三批审计修复；不做第四批",
+  "tests": {
+    "phase1": 38,
+    "phase2": 50,
+    "phase3": 47,
+    "fixes": 49,
+    "total": 184
+  },
+  "browser": {
+    "pages": 490,
+    "pageIssues": 0,
+    "dialogs": 1456,
+    "dialogIssues": 0,
+    "legacyRoundtrips": 30,
+    "legacyFailures": 0,
+    "artDelta": 14,
+    "artDeltaFailures": 0,
+    "engineConsoleErrors": [],
+    "helperConsoleEarlierObservation": "曾记录无来源 MutationObserver.observe 非 Node 错误；不可归因于游戏；源码无此调用"
+  },
+  "actualOpeningCampaigns": {
+    "runs": 60,
+    "months": 2656,
+    "cashbookErrors": 0
+  },
+  "viewportSimulationOnly": true,
+  "originalProgressPortsUntouched": [
+    8904,
+    8905,
+    8906
+  ],
+  "qaPortRestoredToNormalOpening": 8907,
+  "onlinePublished": false,
+  "artFilesRewritten": false
+}

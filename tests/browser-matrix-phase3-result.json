@@ -1,0 +1,27 @@
+{
+  "checks": 1120,
+  "failed": 0,
+  "errors": [],
+  "saveFamilies": [
+    "v110",
+    "v111",
+    "v112",
+    "v113"
+  ],
+  "levels": 5,
+  "widths": [
+    320,
+    390,
+    768,
+    1280
+  ],
+  "browser": "Codex In-app Browser",
+  "sourceSha256": "8f075a14f9d2545d4c457881b0c797c470d1636fca0d4de66f2daa96ca0e04c5",
+  "mainGameConsoleErrors": 0,
+  "qaObserverErrors": 2,
+  "qaObserverTimes": [
+    "2026-10-20T14:30:21.056Z",
+    "2026-10-20T14:47:33.902Z"
+  ],
+  "notes": "Checks cover overflow, empty panels, NaN/undefined. QA observer exception source unlocated; main game interactive checks passed. Mobile is viewport simulation."
+}

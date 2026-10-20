@@ -1,0 +1,36 @@
+{
+  "hold": {
+    "runs": 20,
+    "months": 528,
+    "survive72": 0,
+    "promoted": 0,
+    "endings": {
+      "fired": 20
+    },
+    "cashbookErrors": 0
+  },
+  "legacy": {
+    "runs": 20,
+    "months": 986,
+    "survive72": 5,
+    "promoted": 0,
+    "endings": {
+      "debt": 3,
+      "active": 5,
+      "fired": 12
+    },
+    "cashbookErrors": 0
+  },
+  "mixed": {
+    "runs": 20,
+    "months": 1142,
+    "survive72": 12,
+    "promoted": 1,
+    "endings": {
+      "debt": 6,
+      "active": 12,
+      "fired": 2
+    },
+    "cashbookErrors": 0
+  }
+}

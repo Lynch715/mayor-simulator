@@ -1,0 +1,71 @@
+{
+  "portraits": [
+    {
+      "file": "assets/p_boss.webp",
+      "size": [
+        768,
+        1024
+      ],
+      "sha256": "eef35d1a73fbd0964cf35aab01fcc7f9010d78261b6a16fabd28810fbf654602"
+    },
+    {
+      "file": "assets/p_developer.webp",
+      "size": [
+        768,
+        1024
+      ],
+      "sha256": "27ec3d61754de16d242a3b15f98f2225bb050374046d57e03ab56dd3001c4c56"
+    },
+    {
+      "file": "assets/p_inspector.webp",
+      "size": [
+        768,
+        1024
+      ],
+      "sha256": "785f53593611df969f614c7cd59b8a0d861bc70af907f2b79b9c5b9e075c9b29"
+    },
+    {
+      "file": "assets/p_lgfv.webp",
+      "size": [
+        768,
+        1024
+      ],
+      "sha256": "880c32366b37e662fed416a9d71546fd05ac9234eec051e34af2a960f787bae5"
+    },
+    {
+      "file": "assets/p_oldleader.webp",
+      "size": [
+        768,
+        1024
+      ],
+      "sha256": "9ca51136dffe375e5957e59ee27f3014e6c5c118a3f0d260dbb402b885cc91e6"
+    },
+    {
+      "file": "assets/p_petitioner.webp",
+      "size": [
+        768,
+        1024
+      ],
+      "sha256": "b1a5977c51c4e96b35ba4a3db4eab4a3e2a70e2b9a466770b397b17dd5139613"
+    },
+    {
+      "file": "assets/p_wife.webp",
+      "size": [
+        768,
+        1024
+      ],
+      "sha256": "31ba6f09307f42273be4f2ef5f2510b5832ee8e40e1d6b79a07cd6ec843be3f7"
+    },
+    {
+      "file": "assets/p_zhou.webp",
+      "size": [
+        768,
+        1024
+      ],
+      "sha256": "8eff2e2e21e60225c2aac8aa98c2fcbaf9d296954a4fead991b65de67dab4092"
+    }
+  ],
+  "webpCount": 35,
+  "identicalFileGroups": [],
+  "identicalDecodedPixelGroups": []
+}

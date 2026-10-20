@@ -1,0 +1,239 @@
+{
+  "pages": {
+    "checks": 490,
+    "issuePages": 0,
+    "issues": []
+  },
+  "dialogs": {
+    "checks": 1274,
+    "issueDialogs": 0,
+    "issues": []
+  },
+  "specials": {
+    "checks": 182,
+    "issueDialogs": 0,
+    "issues": []
+  },
+  "compat": {
+    "checks": 30,
+    "failures": [],
+    "rows": [
+      {
+        "family": "pre-v111-levels",
+        "lv": 0,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v111-levels",
+        "lv": 1,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v111-levels",
+        "lv": 2,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v111-levels",
+        "lv": 3,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v111-levels",
+        "lv": 4,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v112-levels",
+        "lv": 0,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v112-levels",
+        "lv": 1,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v112-levels",
+        "lv": 2,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v112-levels",
+        "lv": 3,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v112-levels",
+        "lv": 4,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v113-levels",
+        "lv": 0,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v113-levels",
+        "lv": 1,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v113-levels",
+        "lv": 2,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v113-levels",
+        "lv": 3,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v113-levels",
+        "lv": 4,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v114-levels",
+        "lv": 0,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v114-levels",
+        "lv": 1,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v114-levels",
+        "lv": 2,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v114-levels",
+        "lv": 3,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "pre-v114-levels",
+        "lv": 4,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "v113-scenes",
+        "lv": 0,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "v113-scenes",
+        "lv": 1,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "v113-scenes",
+        "lv": 2,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "v113-scenes",
+        "lv": 3,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "v113-scenes",
+        "lv": 4,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "v114-scenes",
+        "lv": 0,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "v114-scenes",
+        "lv": 1,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "v114-scenes",
+        "lv": 2,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "v114-scenes",
+        "lv": 3,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      },
+      {
+        "family": "v114-scenes",
+        "lv": 4,
+        "diff": [],
+        "roundtripDiff": [],
+        "revision": 114
+      }
+    ]
+  },
+  "storageRestoration": {
+    "byteEqual": true,
+    "backupFound": true,
+    "keysBefore": 5,
+    "keysAfter": 5
+  }
+}

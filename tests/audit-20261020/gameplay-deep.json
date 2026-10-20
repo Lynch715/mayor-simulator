@@ -1,0 +1,97 @@
+{
+  "cityEnvironmentClawback": {
+    "before": {
+      "cash": 752.8494605773847,
+      "sanctions": 0,
+      "projects": [
+        {
+          "id": "P1",
+          "name": "公园绿地",
+          "paid": 50,
+          "environmentRisk": 0
+        },
+        {
+          "id": "P2",
+          "name": "公园绿地",
+          "paid": 50,
+          "environmentRisk": 0
+        },
+        {
+          "id": "P3",
+          "name": "公园绿地",
+          "paid": 50,
+          "environmentRisk": 0
+        },
+        {
+          "id": "P4",
+          "name": "公园绿地",
+          "paid": 50,
+          "environmentRisk": 0
+        }
+      ]
+    },
+    "after": {
+      "cash": 552.8494605773847,
+      "sanctions": 4,
+      "incidents": [
+        "环保运行不达标，专项补助被追回",
+        "环保运行不达标，专项补助被追回",
+        "环保运行不达标，专项补助被追回",
+        "环保运行不达标，专项补助被追回"
+      ],
+      "annualNext": "fired"
+    }
+  },
+  "redundantClinicMerit": {
+    "coverage0": 0.46875,
+    "result": {
+      "built": 13,
+      "coverage": 1.4,
+      "gained": 24,
+      "projects": 12,
+      "cashbookError": 0
+    }
+  },
+  "rationingPollution": {
+    "highTax": 105,
+    "lowTax": 26.25,
+    "highPol": -0.44799999999999995,
+    "lowPol": -0.44799999999999995
+  },
+  "actualPrivateLandSaleInColdMarket": {
+    "before": {
+      "cash": 80000,
+      "res": 21175
+    },
+    "after": {
+      "response": null,
+      "cash": 403766,
+      "res": 18975,
+      "landPrice": 323766,
+      "construction": 114240,
+      "fullSales": 102359.04000000001,
+      "developerFunds": 80,
+      "stage": "construction"
+    }
+  },
+  "hearingDoesNotLimitExpansion": {
+    "during": {
+      "stage": "expanding",
+      "factor": 0.9,
+      "expansion": {
+        "left": 6,
+        "land": 7,
+        "cost": 360
+      }
+    },
+    "next": {
+      "stage": "expanding",
+      "factor": 0.9,
+      "expansion": {
+        "left": 5,
+        "land": 7,
+        "cost": 360
+      }
+    }
+  }
+}

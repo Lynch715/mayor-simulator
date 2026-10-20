@@ -1,0 +1,146 @@
+{
+  "checks": 14,
+  "failures": [],
+  "rows": [
+    {
+      "label": "relative_canteen",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "fam_father",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "relative_canteen",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "fam_father",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "relative_canteen",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "fam_father",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "relative_canteen",
+      "screen": [
+        768,
+        900
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "fam_father",
+      "screen": [
+        768,
+        900
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "relative_canteen",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "fam_father",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "relative_canteen",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "fam_father",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "relative_canteen",
+      "screen": [
+        812,
+        375
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    },
+    {
+      "label": "fam_father",
+      "screen": [
+        812,
+        375
+      ],
+      "issues": [],
+      "scrolls": [],
+      "images": []
+    }
+  ]
+}

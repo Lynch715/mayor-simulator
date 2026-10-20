@@ -1,0 +1,16 @@
+{
+  "checks": 240,
+  "failed": 0,
+  "widths": [
+    320,
+    390,
+    768,
+    1280
+  ],
+  "levels": 5,
+  "buildCategories": 5,
+  "sourceSha256": "f126a5c2e1208b9dfefa25a894487efb823ae5b4b601128216e0a93c5be28015",
+  "browser": "Codex In-app Browser",
+  "mode": "same-origin iframe viewport simulation",
+  "observedConsoleNote": "One MutationObserver.observe error in embedded QA tab; source unlocated. Main game tab has no console errors."
+}

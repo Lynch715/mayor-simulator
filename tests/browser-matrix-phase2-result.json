@@ -1,0 +1,22 @@
+{
+  "checks": 780,
+  "failed": 0,
+  "errors": [],
+  "saveFamilies": [
+    "v1.10",
+    "v1.11",
+    "v1.12 synthetic scenarios"
+  ],
+  "levels": 5,
+  "widths": [
+    320,
+    390,
+    768,
+    1280
+  ],
+  "sourceSha256": "a8a0f2a581e74cf4ff9cf2e6b5768a0e357d9a5dc65fe92e3306b490206b137a",
+  "browser": "Codex In-app Browser",
+  "mode": "same-origin iframe viewport simulation",
+  "mainGameConsoleErrors": 0,
+  "qaObserverErrors": 3
+}

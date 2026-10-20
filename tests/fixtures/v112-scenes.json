@@ -1,0 +1,6313 @@
+[
+  {
+    "lvl": 0,
+    "year": 4,
+    "month": 9,
+    "age": 35,
+    "tenure": 0,
+    "cash": 9999806.164652316,
+    "reserve": 10.106865476992171,
+    "reserveRate": 2,
+    "seen": {
+      "p_taxi": 54,
+      "lgfv_push": 55,
+      "golf": 56
+    },
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 3.3805404551345903,
+    "pros": 38.20212341742558,
+    "liv": 46.91907268661877,
+    "sat": 50.824004493866354,
+    "env": 83.59612142316762,
+    "rep": 50,
+    "unity": 60,
+    "landTotal": 600,
+    "land": 575.5,
+    "landSold": 0,
+    "housing": 18.5,
+    "f": {
+      "road": 1,
+      "bridge": 0,
+      "busdepot": 0,
+      "station": 0,
+      "nursery": 0,
+      "school": 1,
+      "clinic": 0,
+      "hosp": 1,
+      "social": 1,
+      "elder": 1,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 0,
+      "power": 1,
+      "water": 1,
+      "sewage": 0,
+      "garbage": 0,
+      "gas": 0,
+      "pipe": 0,
+      "datacenter": 0,
+      "park": 2,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 0,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 0,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 0,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "renewal": 0,
+      "factory": 0
+    },
+    "ind": [],
+    "build": [
+      {
+        "id": "hosp",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 561.6,
+        "months": 8,
+        "left": 8,
+        "wl": "公共卫生",
+        "p2Id": "P2",
+        "p2BondLeft": 0
+      },
+      {
+        "id": "clinic",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 162,
+        "months": 4,
+        "left": 4,
+        "wl": "公共卫生",
+        "p2Id": "P3",
+        "p2BondLeft": 0
+      },
+      {
+        "id": "road",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 230,
+        "months": 4,
+        "left": 4,
+        "wl": null,
+        "p2Id": "P4",
+        "p2BondLeft": 0
+      }
+    ],
+    "cq": [],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 90,
+    "quota": 95,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [],
+    "once": {},
+    "merit": 0,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 4,
+        "m": 9,
+        "t": "本月专项工作：设备专项检修；替换原安排，推进时执行。",
+        "c": "",
+        "q": 9
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "承接城市主干道新建/改造，按工期垫资，验收后补助281万，预计收支差额51万。",
+        "c": "",
+        "q": 8
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：道路，总投资238万，工期4个月。",
+        "c": "",
+        "q": 7
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：社区卫生服务中心，总投资162万，工期4个月。",
+        "c": "",
+        "q": 6
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：医院，总投资562万，工期8个月。",
+        "c": "",
+        "q": 5
+      },
+      {
+        "y": 4,
+        "m": 8,
+        "t": "公园绿地验收补助到账53万。",
+        "c": "good",
+        "q": 4
+      },
+      {
+        "y": 4,
+        "m": 8,
+        "t": "公园绿地建成投用。",
+        "c": "good",
+        "q": 3
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "立项：公园绿地，总投资151万，工期3个月。",
+        "c": "",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": {
+      "tax": 31.627562455351924,
+      "transfer": 125.76,
+      "utility": 11.343665274256582,
+      "rent": 0,
+      "reserve": 3.3746245545921703,
+      "wage": 57.24,
+      "ops": 89.90592005263599,
+      "live": 29.933731649083043,
+      "wagePaid": 57.24,
+      "opsPaid": 89.90592005263599,
+      "livePaid": 29.933731649083043,
+      "interestPaid": 0,
+      "interest": 0,
+      "principal": 0,
+      "build": 50.400000000000006,
+      "p2Completed": [
+        "P1"
+      ],
+      "environment": {
+        "opening": 83.9296274340369,
+        "natural": -0.5378888230211071,
+        "ecology": 0.35438281215182055,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": -0.15,
+        "clipping": 0,
+        "closing": 83.59612142316762,
+        "grade": "合格"
+      },
+      "phase2": {
+        "completed": [
+          "P1"
+        ],
+        "notice": "p2_notice_4_8_site-2",
+        "agingCost": 0.44926971745556415
+      },
+      "cashbook": {
+        "year": 4,
+        "month": 8,
+        "opening": 9999875.287700843,
+        "closing": 9999866.164652316,
+        "entries": [
+          {
+            "kind": "tax",
+            "amount": 31.627562455351924,
+            "note": "月度税收",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "transfer",
+            "amount": 125.76,
+            "note": "常规转移支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "utility",
+            "amount": 11.343665274256582,
+            "note": "公共事业经营收入",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "reserve",
+            "amount": -3.3746245545921703,
+            "note": "划入偿债准备金",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "wage",
+            "amount": -57.24,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "ops",
+            "amount": -89.90592005263599,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "live",
+            "amount": -29.933731649083043,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "build",
+            "amount": -50.400000000000006,
+            "note": "建设进度款",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "grant",
+            "amount": 53,
+            "note": "公园绿地项目专项补贴",
+            "y": 4,
+            "m": 8
+          }
+        ],
+        "totals": {
+          "tax": 31.627562455351924,
+          "transfer": 125.76,
+          "utility": 11.343665274256582,
+          "reserve": -3.3746245545921703,
+          "wage": -57.24,
+          "ops": -89.90592005263599,
+          "live": -29.933731649083043,
+          "build": -50.400000000000006,
+          "grant": 53
+        },
+        "recurring": 168.73122772960852,
+        "oneoff": 53,
+        "financing": 0,
+        "delta": -9.123048526702703,
+        "error": 0
+      }
+    },
+    "expMult": 1,
+    "over": null,
+    "tab": "over",
+    "grantYr": 0,
+    "hist": [],
+    "built": 1,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "p2_maintain",
+    "agPool": [
+      "team",
+      "study",
+      "province"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "罗成栋",
+        "f": 99
+      },
+      "old": {
+        "n": "刘兆丰",
+        "f": 54
+      },
+      "lgfv": {
+        "n": "陈明远",
+        "f": 49
+      },
+      "dev": {
+        "n": "孙正阳",
+        "f": 51
+      },
+      "pet": {
+        "n": "王卫东",
+        "f": 45
+      },
+      "insp": {
+        "n": "方秉正",
+        "f": 56
+      }
+    },
+    "plots": [],
+    "plotSeq": 0,
+    "landRev": 0,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [],
+    "leadSeq": 0,
+    "rivals": null,
+    "talent": 0,
+    "bigp": null,
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 1,
+    "lsc": 1,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 270,
+          "res": 210,
+          "com": 95.5
+        },
+        "leased": 0,
+        "used": 24.5,
+        "sold": 0,
+        "protectedFarm": 180,
+        "protectedEco": 90
+      },
+      "leases": [],
+      "permits": {},
+      "tech": {},
+      "resources": [
+        "煤炭"
+      ],
+      "finance": {
+        "opening": 9999866.164652316,
+        "entries": [
+          {
+            "kind": "policy",
+            "amount": -21.599999999999998,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -21.599999999999998,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -12,
+            "note": "干部专项培训",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -2.4,
+            "note": "争取市政合同前期工作",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -2.4,
+            "note": "争取市政合同前期工作",
+            "y": 4,
+            "m": 9
+          }
+        ],
+        "history": [
+          {
+            "year": 4,
+            "month": 6,
+            "opening": 10000000,
+            "closing": 9999937.558840001,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 31.008,
+                "note": "月度税收",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "transfer",
+                "amount": 125.76,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "utility",
+                "amount": 11.39,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "reserve",
+                "amount": -3.36316,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "wage",
+                "amount": -57.24,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "ops",
+                "amount": -89.54000000000002,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "live",
+                "amount": -30.056,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "build",
+                "amount": -50.400000000000006,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 6
+              }
+            ],
+            "totals": {
+              "tax": 31.008,
+              "transfer": 125.76,
+              "utility": 11.39,
+              "reserve": -3.36316,
+              "wage": -57.24,
+              "ops": -89.54000000000002,
+              "live": -30.056,
+              "build": -50.400000000000006
+            },
+            "recurring": 168.15800000000002,
+            "oneoff": 0,
+            "financing": 0,
+            "delta": -62.44116000000001,
+            "error": 0
+          },
+          {
+            "year": 4,
+            "month": 7,
+            "opening": 9999937.558840001,
+            "closing": 9999875.287700843,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 31.328544,
+                "note": "月度税收",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "transfer",
+                "amount": 125.76,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "utility",
+                "amount": 11.36550212,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "reserve",
+                "amount": -3.3690809224000002,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "wage",
+                "amount": -57.24,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "ops",
+                "amount": -89.72474950985166,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "live",
+                "amount": -29.991354848,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "build",
+                "amount": -50.400000000000006,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 7
+              }
+            ],
+            "totals": {
+              "tax": 31.328544,
+              "transfer": 125.76,
+              "utility": 11.36550212,
+              "reserve": -3.3690809224000002,
+              "wage": -57.24,
+              "ops": -89.72474950985166,
+              "live": -29.991354848,
+              "build": -50.400000000000006
+            },
+            "recurring": 168.45404612000002,
+            "oneoff": 0,
+            "financing": 0,
+            "delta": -62.271139160251664,
+            "error": 0
+          },
+          {
+            "year": 4,
+            "month": 8,
+            "opening": 9999875.287700843,
+            "closing": 9999866.164652316,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 31.627562455351924,
+                "note": "月度税收",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "transfer",
+                "amount": 125.76,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "utility",
+                "amount": 11.343665274256582,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "reserve",
+                "amount": -3.3746245545921703,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "wage",
+                "amount": -57.24,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "ops",
+                "amount": -89.90592005263599,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "live",
+                "amount": -29.933731649083043,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "build",
+                "amount": -50.400000000000006,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "grant",
+                "amount": 53,
+                "note": "公园绿地项目专项补贴",
+                "y": 4,
+                "m": 8
+              }
+            ],
+            "totals": {
+              "tax": 31.627562455351924,
+              "transfer": 125.76,
+              "utility": 11.343665274256582,
+              "reserve": -3.3746245545921703,
+              "wage": -57.24,
+              "ops": -89.90592005263599,
+              "live": -29.933731649083043,
+              "build": -50.400000000000006,
+              "grant": 53
+            },
+            "recurring": 168.73122772960852,
+            "oneoff": 53,
+            "financing": 0,
+            "delta": -9.123048526702703,
+            "error": 0
+          }
+        ]
+      },
+      "environment": {
+        "opening": 83.59612142316762,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 3,
+    "planZone": "mixed",
+    "projectClock": 45,
+    "careerProjects": [
+      {
+        "uid": "P1",
+        "site": "site-2",
+        "city": "青石镇",
+        "level": 0,
+        "fac": "park",
+        "n": "公园绿地",
+        "kind": "ordinary",
+        "status": "operating",
+        "started": 42,
+        "cost": 151.20000000000002,
+        "paid": 151.20000000000002,
+        "sc": 1,
+        "risk": {
+          "quality": 0,
+          "environment": 0.6,
+          "safety": 0
+        },
+        "grant": {
+          "status": "paid",
+          "amount": 53,
+          "paid": 53,
+          "recovered": 0,
+          "attempts": 1,
+          "approvedYear": 4,
+          "minEnv": 40,
+          "paidAt": 44
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": 45,
+        "reviewAt": 51,
+        "completed": 44
+      },
+      {
+        "uid": "P2",
+        "site": "site-2",
+        "city": "青石镇",
+        "level": 0,
+        "fac": "hosp",
+        "n": "医院",
+        "kind": "ordinary",
+        "status": "construction",
+        "started": 45,
+        "cost": 561.6,
+        "paid": 0,
+        "sc": 1,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "approved",
+          "amount": 124,
+          "paid": 0,
+          "recovered": 0,
+          "attempts": 1,
+          "approvedYear": 4,
+          "minEnv": 50
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51
+      },
+      {
+        "uid": "P3",
+        "site": "site-2",
+        "city": "青石镇",
+        "level": 0,
+        "fac": "clinic",
+        "n": "社区卫生服务中心",
+        "kind": "ordinary",
+        "status": "construction",
+        "started": 45,
+        "cost": 162,
+        "paid": 0,
+        "sc": 1,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51
+      },
+      {
+        "uid": "P4",
+        "site": "site-2",
+        "city": "青石镇",
+        "level": 0,
+        "fac": "road",
+        "n": "城市主干道新建/改造",
+        "kind": "municipal",
+        "status": "construction",
+        "started": 45,
+        "cost": 230,
+        "paid": 0,
+        "sc": 1,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "municipal",
+          "amount": 281,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51,
+        "contract": "O1"
+      }
+    ],
+    "projectSeq": 4,
+    "policyStats": {
+      "4": {
+        "attempts": 2,
+        "projects": [
+          "P1",
+          "P2"
+        ],
+        "reserved": 177,
+        "paid": 53,
+        "wins": 2,
+        "municipalPaid": 0
+      }
+    },
+    "policyNotices": {
+      "p2_notice_4_7_site-2": {
+        "id": "p2_notice_4_7_site-2",
+        "name": "汛期工程与排水检查",
+        "city": "青石镇",
+        "month": 7,
+        "year": 4,
+        "checked": 0,
+        "findings": [],
+        "handled": false
+      },
+      "p2_notice_4_8_site-2": {
+        "id": "p2_notice_4_8_site-2",
+        "name": "汛期工程与排水检查",
+        "city": "青石镇",
+        "month": 8,
+        "year": 4,
+        "checked": 0,
+        "findings": [],
+        "handled": false
+      }
+    },
+    "siteSeq": 2,
+    "phase2": {
+      "version": 1,
+      "site": "site-2",
+      "level": 0,
+      "team": [
+        {
+          "id": "C1",
+          "n": "顾建宁",
+          "skill": "urban",
+          "ability": 85,
+          "post": "urban"
+        },
+        {
+          "id": "C2",
+          "n": "林慧",
+          "skill": "health",
+          "ability": 72,
+          "post": "health"
+        },
+        {
+          "id": "C3",
+          "n": "沈明远",
+          "skill": "finance",
+          "ability": 74,
+          "post": "finance"
+        },
+        {
+          "id": "C4",
+          "n": "许清和",
+          "skill": "eco",
+          "ability": 70,
+          "post": "eco"
+        },
+        {
+          "id": "C5",
+          "n": "陆启明",
+          "skill": "commerce",
+          "ability": 70,
+          "post": "commerce"
+        }
+      ],
+      "cadreSeq": 5,
+      "equipment": {
+        "power": {
+          "wear": 76,
+          "offline": 1,
+          "units": 1,
+          "warned": false
+        },
+        "water": {
+          "wear": 3,
+          "offline": 0,
+          "units": 1,
+          "warned": false
+        },
+        "sewage": {
+          "wear": 0,
+          "offline": 0,
+          "units": 0
+        }
+      },
+      "offers": [
+        {
+          "type": "road",
+          "fac": "road",
+          "n": "城市主干道新建/改造",
+          "cost": 230,
+          "award": 281,
+          "months": 4,
+          "uid": "O1",
+          "state": "started",
+          "expires": 51
+        },
+        {
+          "type": "water",
+          "fac": "water",
+          "n": "乡镇供水提质工程",
+          "cost": 438,
+          "award": 508,
+          "months": 6,
+          "uid": "O2",
+          "state": "offered",
+          "expires": 51
+        }
+      ],
+      "offerSeq": 2,
+      "action": {
+        "kind": "p2_maintain",
+        "target": "power"
+      },
+      "bidType": "road",
+      "inspections": {
+        "4-7": true,
+        "4-8": true
+      },
+      "monthNotes": []
+    },
+    "logSeq": 9,
+    "hdr": 0,
+    "indCount": 0,
+    "landPct": 0.9825
+  },
+  {
+    "lvl": 1,
+    "year": 4,
+    "month": 9,
+    "age": 35,
+    "tenure": 0,
+    "cash": 10001696.416489767,
+    "reserve": 192.61395914913993,
+    "reserveRate": 2,
+    "seen": {
+      "p_taxi": 54,
+      "n_boss_hi": 55,
+      "lgfv_push": 56
+    },
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 38.165628798253415,
+    "pros": 54.27117278441781,
+    "liv": 52.573446437441724,
+    "sat": 53.748265473046274,
+    "env": 82.66597261410986,
+    "rep": 50,
+    "unity": 60,
+    "landTotal": 5000,
+    "land": 2379.1666666666665,
+    "landSold": 1500,
+    "housing": 43.5,
+    "f": {
+      "road": 1,
+      "bridge": 0,
+      "busdepot": 0,
+      "station": 0,
+      "nursery": 0,
+      "school": 2,
+      "clinic": 0,
+      "hosp": 1,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 0,
+      "power": 1,
+      "water": 1,
+      "sewage": 0,
+      "garbage": 0,
+      "gas": 0,
+      "pipe": 0,
+      "datacenter": 0,
+      "park": 2,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 0,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 0,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "renewal": 0,
+      "factory": 3
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 63
+      }
+    ],
+    "build": [
+      {
+        "id": "hosp",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 5616,
+        "months": 8,
+        "left": 8,
+        "wl": "公共卫生",
+        "p2Id": "P3",
+        "p2BondLeft": 0
+      },
+      {
+        "id": "clinic",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 1620,
+        "months": 4,
+        "left": 4,
+        "wl": "公共卫生",
+        "p2Id": "P4",
+        "p2BondLeft": 800
+      },
+      {
+        "id": "road",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 2295,
+        "months": 4,
+        "left": 4,
+        "wl": null,
+        "p2Id": "P5",
+        "p2BondLeft": 0
+      }
+    ],
+    "cq": [
+      {
+        "amt": 9033.751670679609,
+        "rate": 7,
+        "left": 27,
+        "term": 36
+      },
+      {
+        "amt": 6022.501113786407,
+        "rate": 7,
+        "left": 51,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [
+      {
+        "amt": 800,
+        "rate": 2.8,
+        "left": 60,
+        "term": 60
+      }
+    ],
+    "sbUnspent": 800,
+    "sbIdle": 0,
+    "sbYear": 800,
+    "task": null,
+    "frozen": false,
+    "staff": 1100,
+    "quota": 1155,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [],
+    "once": {},
+    "merit": 40,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 4,
+        "m": 9,
+        "t": "本月专项工作：设备专项检修；替换原安排，推进时执行。",
+        "c": "",
+        "q": 10
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "承接城市主干道新建/改造，按工期垫资，验收后补助2808万，预计收支差额513万。",
+        "c": "",
+        "q": 9
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：道路，总投资2376万，工期4个月。",
+        "c": "",
+        "q": 8
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "专项债获批800万，5年期，年利率2.8%。",
+        "c": "sys",
+        "q": 7
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：社区卫生服务中心，总投资1620万，工期4个月。",
+        "c": "",
+        "q": 6
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：医院，总投资5616万，工期8个月。",
+        "c": "",
+        "q": 5
+      },
+      {
+        "y": 4,
+        "m": 8,
+        "t": "公园绿地验收补助到账529万。",
+        "c": "good",
+        "q": 4
+      },
+      {
+        "y": 4,
+        "m": 8,
+        "t": "公园绿地建成投用。",
+        "c": "good",
+        "q": 3
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "立项：公园绿地，总投资1512万，工期3个月。",
+        "c": "",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": {
+      "tax": 1656.5240748070826,
+      "transfer": 1362.4,
+      "utility": 199.3962066165933,
+      "rent": 0,
+      "reserve": 64.36640562847352,
+      "wage": 769.5600000000001,
+      "ops": 1043.0868094549037,
+      "live": 404.21989068740237,
+      "wagePaid": 769.5600000000001,
+      "opsPaid": 1043.0868094549037,
+      "livePaid": 404.21989068740237,
+      "interestPaid": 87.82814124271843,
+      "interest": 87.82814124271843,
+      "principal": 0,
+      "build": 504,
+      "p2Completed": [
+        "P1"
+      ],
+      "environment": {
+        "opening": 83.3136528788809,
+        "natural": -0.519409586366427,
+        "ecology": 0.314917704281016,
+        "action": 0,
+        "event": 0,
+        "pollution": -0.29318838268562586,
+        "overflow": -0.15,
+        "clipping": 0,
+        "closing": 82.66597261410986,
+        "grade": "合格"
+      },
+      "phase2": {
+        "completed": [
+          "P1"
+        ],
+        "notice": "p2_notice_4_8_site-3",
+        "agingCost": 4.514078366816732
+      },
+      "cashbook": {
+        "year": 4,
+        "month": 8,
+        "opening": 10000672.157455357,
+        "closing": 10001546.416489767,
+        "entries": [
+          {
+            "kind": "tax",
+            "amount": 1656.5240748070826,
+            "note": "月度税收",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "transfer",
+            "amount": 1362.4,
+            "note": "常规转移支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "utility",
+            "amount": 199.3962066165933,
+            "note": "公共事业经营收入",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "reserve",
+            "amount": -64.36640562847352,
+            "note": "划入偿债准备金",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "wage",
+            "amount": -769.5600000000001,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "ops",
+            "amount": -1043.0868094549037,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "live",
+            "amount": -404.21989068740237,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "interest",
+            "amount": -87.82814124271843,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "build",
+            "amount": -504,
+            "note": "建设进度款",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "grant",
+            "amount": 529,
+            "note": "公园绿地项目专项补贴",
+            "y": 4,
+            "m": 8
+          }
+        ],
+        "totals": {
+          "tax": 1656.5240748070826,
+          "transfer": 1362.4,
+          "utility": 199.3962066165933,
+          "reserve": -64.36640562847352,
+          "wage": -769.5600000000001,
+          "ops": -1043.0868094549037,
+          "live": -404.21989068740237,
+          "interest": -87.82814124271843,
+          "build": -504,
+          "grant": 529
+        },
+        "recurring": 3218.3202814236756,
+        "oneoff": 529,
+        "financing": 0,
+        "delta": 874.259034410178,
+        "error": 0
+      }
+    },
+    "expMult": 1,
+    "over": null,
+    "tab": "over",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        },
+        "phase2": {
+          "site": "site-1",
+          "team": [
+            {
+              "id": "C1",
+              "n": "顾建宁",
+              "skill": "urban",
+              "ability": 75,
+              "post": "urban"
+            },
+            {
+              "id": "C2",
+              "n": "林慧",
+              "skill": "health",
+              "ability": 72,
+              "post": "health"
+            },
+            {
+              "id": "C3",
+              "n": "沈明远",
+              "skill": "finance",
+              "ability": 74,
+              "post": "finance"
+            }
+          ],
+          "equipment": {
+            "power": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "water": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "sewage": {
+              "wear": 0,
+              "offline": 0,
+              "units": 0
+            }
+          }
+        }
+      }
+    ],
+    "built": 1,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "p2_maintain",
+    "agPool": [
+      "report",
+      "province",
+      "petition"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "罗成栋",
+        "f": 99
+      },
+      "old": {
+        "n": "刘兆丰",
+        "f": 54
+      },
+      "lgfv": {
+        "n": "许望山",
+        "f": 50
+      },
+      "dev": {
+        "n": "程锦程",
+        "f": 48
+      },
+      "pet": {
+        "n": "姜建国",
+        "f": 47
+      },
+      "insp": {
+        "n": "郑宗年",
+        "f": 52
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "res",
+        "mu": 119,
+        "loc": "老城片区",
+        "heat": 0.4370141559781936,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "res",
+        "mu": 215,
+        "loc": "沿河地块",
+        "heat": 0.5276640676649718,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "com",
+        "mu": 258,
+        "loc": "城东新区",
+        "heat": 0.6330629773380665,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 0,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [],
+    "leadSeq": 0,
+    "rivals": null,
+    "talent": 0,
+    "bigp": null,
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 10,
+    "lsc": 8.333333333333334,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 1070.8333333333333,
+          "res": 962.4999999999999,
+          "com": 345.8333333333335
+        },
+        "leased": 0,
+        "used": 370.8333333333333,
+        "sold": 0,
+        "protectedFarm": 1500,
+        "protectedEco": 750
+      },
+      "leases": [],
+      "permits": {},
+      "tech": {},
+      "resources": [
+        "煤炭"
+      ],
+      "finance": {
+        "opening": 10001546.416489767,
+        "entries": [
+          {
+            "kind": "policy",
+            "amount": -234,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -234,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -130,
+            "note": "干部专项培训",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "financing",
+            "amount": 800,
+            "note": "专项债融资",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -26,
+            "note": "争取市政合同前期工作",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -26,
+            "note": "争取市政合同前期工作",
+            "y": 4,
+            "m": 9
+          }
+        ],
+        "history": [
+          {
+            "year": 4,
+            "month": 6,
+            "opening": 10000000,
+            "closing": 10000332.709536428,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 1639.4384466019417,
+                "note": "月度税收",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "transfer",
+                "amount": 1362.4,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "utility",
+                "amount": 200,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "reserve",
+                "amount": -64.03676893203883,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "wage",
+                "amount": -769.5600000000001,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "ops",
+                "amount": -1040.6000000000001,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "live",
+                "amount": -403.104,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "interest",
+                "amount": -87.82814124271843,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "build",
+                "amount": -504,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 6
+              }
+            ],
+            "totals": {
+              "tax": 1639.4384466019417,
+              "transfer": 1362.4,
+              "utility": 200,
+              "reserve": -64.03676893203883,
+              "wage": -769.5600000000001,
+              "ops": -1040.6000000000001,
+              "live": -403.104,
+              "interest": -87.82814124271843,
+              "build": -504
+            },
+            "recurring": 3201.8384466019415,
+            "oneoff": 0,
+            "financing": 0,
+            "delta": 332.7095364271843,
+            "error": 0
+          },
+          {
+            "year": 4,
+            "month": 7,
+            "opening": 10000332.709536428,
+            "closing": 10000672.157455357,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 1648.4410153958129,
+                "note": "月度税收",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "transfer",
+                "amount": 1362.4,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "utility",
+                "amount": 199.6982140355675,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "reserve",
+                "amount": -64.21078458862762,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "wage",
+                "amount": -769.5600000000001,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "ops",
+                "amount": -1041.8538369445062,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "live",
+                "amount": -403.63854772800005,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "interest",
+                "amount": -87.82814124271843,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "build",
+                "amount": -504,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 7
+              }
+            ],
+            "totals": {
+              "tax": 1648.4410153958129,
+              "transfer": 1362.4,
+              "utility": 199.6982140355675,
+              "reserve": -64.21078458862762,
+              "wage": -769.5600000000001,
+              "ops": -1041.8538369445062,
+              "live": -403.63854772800005,
+              "interest": -87.82814124271843,
+              "build": -504
+            },
+            "recurring": 3210.5392294313806,
+            "oneoff": 0,
+            "financing": 0,
+            "delta": 339.44791892752846,
+            "error": 0
+          },
+          {
+            "year": 4,
+            "month": 8,
+            "opening": 10000672.157455357,
+            "closing": 10001546.416489767,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 1656.5240748070826,
+                "note": "月度税收",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "transfer",
+                "amount": 1362.4,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "utility",
+                "amount": 199.3962066165933,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "reserve",
+                "amount": -64.36640562847352,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "wage",
+                "amount": -769.5600000000001,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "ops",
+                "amount": -1043.0868094549037,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "live",
+                "amount": -404.21989068740237,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "interest",
+                "amount": -87.82814124271843,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "build",
+                "amount": -504,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "grant",
+                "amount": 529,
+                "note": "公园绿地项目专项补贴",
+                "y": 4,
+                "m": 8
+              }
+            ],
+            "totals": {
+              "tax": 1656.5240748070826,
+              "transfer": 1362.4,
+              "utility": 199.3962066165933,
+              "reserve": -64.36640562847352,
+              "wage": -769.5600000000001,
+              "ops": -1043.0868094549037,
+              "live": -404.21989068740237,
+              "interest": -87.82814124271843,
+              "build": -504,
+              "grant": 529
+            },
+            "recurring": 3218.3202814236756,
+            "oneoff": 529,
+            "financing": 0,
+            "delta": 874.259034410178,
+            "error": 0
+          }
+        ]
+      },
+      "environment": {
+        "opening": 82.66597261410986,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 3,
+    "planZone": "mixed",
+    "projectClock": 45,
+    "careerProjects": [
+      {
+        "uid": "P1",
+        "site": "site-3",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "park",
+        "n": "公园绿地",
+        "kind": "ordinary",
+        "status": "operating",
+        "started": 42,
+        "cost": 1512,
+        "paid": 1512,
+        "sc": 10,
+        "risk": {
+          "quality": 0,
+          "environment": 0.6,
+          "safety": 0
+        },
+        "grant": {
+          "status": "paid",
+          "amount": 529,
+          "paid": 529,
+          "recovered": 0,
+          "attempts": 1,
+          "approvedYear": 4,
+          "minEnv": 40,
+          "paidAt": 44
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": 45,
+        "reviewAt": 51,
+        "completed": 44
+      },
+      {
+        "uid": "P2",
+        "site": "site-3",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "factory",
+        "n": "事件引进工厂",
+        "kind": "investment",
+        "status": "operating",
+        "started": 45,
+        "cost": 0,
+        "paid": 0,
+        "sc": 10,
+        "risk": {
+          "quality": 0,
+          "environment": 0.09900000000000002,
+          "safety": 0.027000000000000003
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 51,
+        "referenceCost": 12000,
+        "completed": 45
+      },
+      {
+        "uid": "P3",
+        "site": "site-3",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "hosp",
+        "n": "医院",
+        "kind": "ordinary",
+        "status": "construction",
+        "started": 45,
+        "cost": 5616,
+        "paid": 0,
+        "sc": 10,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "approved",
+          "amount": 1236,
+          "paid": 0,
+          "recovered": 0,
+          "attempts": 1,
+          "approvedYear": 4,
+          "minEnv": 50
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51
+      },
+      {
+        "uid": "P4",
+        "site": "site-3",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "clinic",
+        "n": "社区卫生服务中心",
+        "kind": "ordinary",
+        "status": "construction",
+        "started": 45,
+        "cost": 1620,
+        "paid": 0,
+        "sc": 10,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 800,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51
+      },
+      {
+        "uid": "P5",
+        "site": "site-3",
+        "city": "沂川县",
+        "level": 1,
+        "fac": "road",
+        "n": "城市主干道新建/改造",
+        "kind": "municipal",
+        "status": "construction",
+        "started": 45,
+        "cost": 2295,
+        "paid": 0,
+        "sc": 10,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "municipal",
+          "amount": 2808,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51,
+        "contract": "O1"
+      }
+    ],
+    "projectSeq": 5,
+    "policyStats": {
+      "4": {
+        "attempts": 2,
+        "projects": [
+          "P1",
+          "P3"
+        ],
+        "reserved": 1765,
+        "paid": 529,
+        "wins": 2,
+        "municipalPaid": 0
+      }
+    },
+    "policyNotices": {
+      "p2_notice_4_7_site-3": {
+        "id": "p2_notice_4_7_site-3",
+        "name": "汛期工程与排水检查",
+        "city": "沂川县",
+        "month": 7,
+        "year": 4,
+        "checked": 0,
+        "findings": [],
+        "handled": false
+      },
+      "p2_notice_4_8_site-3": {
+        "id": "p2_notice_4_8_site-3",
+        "name": "汛期工程与排水检查",
+        "city": "沂川县",
+        "month": 8,
+        "year": 4,
+        "checked": 0,
+        "findings": [],
+        "handled": false
+      }
+    },
+    "siteSeq": 3,
+    "phase2": {
+      "version": 1,
+      "site": "site-3",
+      "level": 1,
+      "team": [
+        {
+          "id": "C1",
+          "n": "顾建宁",
+          "skill": "urban",
+          "ability": 85,
+          "post": "urban"
+        },
+        {
+          "id": "C2",
+          "n": "林慧",
+          "skill": "health",
+          "ability": 72,
+          "post": "health"
+        },
+        {
+          "id": "C3",
+          "n": "沈明远",
+          "skill": "finance",
+          "ability": 74,
+          "post": "finance"
+        },
+        {
+          "id": "C4",
+          "n": "许清和",
+          "skill": "eco",
+          "ability": 70,
+          "post": "eco"
+        },
+        {
+          "id": "C5",
+          "n": "陆启明",
+          "skill": "commerce",
+          "ability": 70,
+          "post": "commerce"
+        }
+      ],
+      "cadreSeq": 5,
+      "equipment": {
+        "power": {
+          "wear": 76,
+          "offline": 1,
+          "units": 1,
+          "warned": false
+        },
+        "water": {
+          "wear": 3.0052983032459424,
+          "offline": 0,
+          "units": 1,
+          "warned": false
+        },
+        "sewage": {
+          "wear": 0,
+          "offline": 0,
+          "units": 0
+        }
+      },
+      "offers": [
+        {
+          "type": "road",
+          "fac": "road",
+          "n": "城市主干道新建/改造",
+          "cost": 2295,
+          "award": 2808,
+          "months": 4,
+          "uid": "O1",
+          "state": "started",
+          "expires": 51
+        },
+        {
+          "type": "water",
+          "fac": "water",
+          "n": "乡镇供水提质工程",
+          "cost": 4382,
+          "award": 5076,
+          "months": 6,
+          "uid": "O2",
+          "state": "offered",
+          "expires": 51
+        }
+      ],
+      "offerSeq": 2,
+      "action": {
+        "kind": "p2_maintain",
+        "target": "power"
+      },
+      "bidType": "road",
+      "inspections": {
+        "4-7": true,
+        "4-8": true
+      },
+      "monthNotes": []
+    },
+    "logSeq": 10,
+    "hdr": 41.35628502193237,
+    "indCount": 3,
+    "landPct": 0.5325
+  },
+  {
+    "lvl": 2,
+    "year": 4,
+    "month": 9,
+    "age": 35,
+    "tenure": 0,
+    "cash": 9998510.163781365,
+    "reserve": 1211.365645328822,
+    "reserveRate": 2,
+    "seen": {
+      "p_taxi": 54,
+      "n_boss_hi": 55,
+      "zhou1": 56
+    },
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 320.71719268124247,
+    "pros": 56.22919390130301,
+    "liv": 53.053280335881105,
+    "sat": 53.525148165015565,
+    "env": 83.14691996092392,
+    "rep": 50,
+    "unity": 60,
+    "landTotal": 22000,
+    "land": 11181.666666666668,
+    "landSold": 6600,
+    "housing": 43.5,
+    "f": {
+      "road": 1,
+      "bridge": 1,
+      "busdepot": 1,
+      "station": 0,
+      "nursery": 1,
+      "school": 2,
+      "clinic": 1,
+      "hosp": 2,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 1,
+      "power": 1,
+      "water": 1,
+      "sewage": 0,
+      "garbage": 0,
+      "gas": 0,
+      "pipe": 0,
+      "datacenter": 0,
+      "park": 2,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 1,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 0,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 0,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "renewal": 0,
+      "factory": 3
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 63
+      },
+      {
+        "id": "agri",
+        "age": 0,
+        "cut": 0,
+        "nm": "验收招商样本"
+      }
+    ],
+    "build": [
+      {
+        "id": "hosp",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 33696,
+        "months": 8,
+        "left": 8,
+        "wl": "公共卫生",
+        "p2Id": "P3",
+        "p2BondLeft": 0
+      },
+      {
+        "id": "clinic",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 9720,
+        "months": 4,
+        "left": 4,
+        "wl": "公共卫生",
+        "p2Id": "P4",
+        "p2BondLeft": 4800
+      },
+      {
+        "id": "road",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 13771,
+        "months": 4,
+        "left": 4,
+        "wl": null,
+        "p2Id": "P5",
+        "p2BondLeft": 0
+      }
+    ],
+    "cq": [
+      {
+        "amt": 67430.6208,
+        "rate": 7,
+        "left": 27,
+        "term": 36
+      },
+      {
+        "amt": 44953.747200000005,
+        "rate": 7,
+        "left": 51,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [
+      {
+        "amt": 4800,
+        "rate": 2.8,
+        "left": 60,
+        "term": 60
+      }
+    ],
+    "sbUnspent": 4800,
+    "sbIdle": 0,
+    "sbYear": 4800,
+    "task": null,
+    "frozen": false,
+    "staff": 7000,
+    "quota": 7350,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [],
+    "once": {},
+    "merit": 40,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 4,
+        "m": 9,
+        "t": "本月专项工作：设备专项检修；替换原安排，推进时执行。",
+        "c": "",
+        "q": 12
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "承接城市主干道新建/改造，按工期垫资，验收后补助1.7亿，预计收支差额3077万。",
+        "c": "",
+        "q": 11
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：道路，总投资1.4亿，工期4个月。",
+        "c": "",
+        "q": 10
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "专项债获批4800万，5年期，年利率2.8%。",
+        "c": "sys",
+        "q": 9
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：社区卫生服务中心，总投资9720万，工期4个月。",
+        "c": "",
+        "q": 8
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：医院，总投资3.4亿，工期8个月。",
+        "c": "",
+        "q": 7
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "验收招商样本签约落地，投资1000万，配套100万、供地20亩。",
+        "c": "good",
+        "q": 6
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "本地开发商 丁守成 那边近了一步。",
+        "c": "good",
+        "q": 5
+      },
+      {
+        "y": 4,
+        "m": 8,
+        "t": "公园绿地验收补助到账3175万。",
+        "c": "good",
+        "q": 4
+      },
+      {
+        "y": 4,
+        "m": 8,
+        "t": "公园绿地建成投用。",
+        "c": "good",
+        "q": 3
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "立项：公园绿地，总投资9072万，工期3个月。",
+        "c": "",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": {
+      "tax": 10878.015240567736,
+      "transfer": 8160,
+      "utility": 1195.9621830423396,
+      "rent": 0,
+      "reserve": 404.6795484722015,
+      "wage": 5342.400000000001,
+      "ops": 8598.03426671057,
+      "live": 3965.643002986074,
+      "wagePaid": 5342.400000000001,
+      "opsPaid": 8598.03426671057,
+      "livePaid": 3965.643002986074,
+      "interestPaid": 655.57548,
+      "interest": 655.57548,
+      "principal": 0,
+      "build": 3024,
+      "p2Completed": [
+        "P1"
+      ],
+      "environment": {
+        "opening": 83.66989465254144,
+        "natural": -0.5300968395762433,
+        "ecology": 0.22469798701724666,
+        "action": 0,
+        "event": 0,
+        "pollution": -0.0675758390585201,
+        "overflow": -0.15,
+        "clipping": 0,
+        "closing": 83.14691996092392,
+        "grade": "合格"
+      },
+      "phase2": {
+        "completed": [
+          "P1"
+        ],
+        "notice": "p2_notice_4_8_site-3",
+        "agingCost": 30.200061487211965
+      },
+      "cashbook": {
+        "year": 4,
+        "month": 8,
+        "opening": 9996391.518655924,
+        "closing": 9997810.163781365,
+        "entries": [
+          {
+            "kind": "tax",
+            "amount": 10878.015240567736,
+            "note": "月度税收",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "transfer",
+            "amount": 8160,
+            "note": "常规转移支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "utility",
+            "amount": 1195.9621830423396,
+            "note": "公共事业经营收入",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "reserve",
+            "amount": -404.6795484722015,
+            "note": "划入偿债准备金",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "wage",
+            "amount": -5342.400000000001,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "ops",
+            "amount": -8598.03426671057,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "live",
+            "amount": -3965.643002986074,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "interest",
+            "amount": -655.57548,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "build",
+            "amount": -3024,
+            "note": "建设进度款",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "grant",
+            "amount": 3175,
+            "note": "公园绿地项目专项补贴",
+            "y": 4,
+            "m": 8
+          }
+        ],
+        "totals": {
+          "tax": 10878.015240567736,
+          "transfer": 8160,
+          "utility": 1195.9621830423396,
+          "reserve": -404.6795484722015,
+          "wage": -5342.400000000001,
+          "ops": -8598.03426671057,
+          "live": -3965.643002986074,
+          "interest": -655.57548,
+          "build": -3024,
+          "grant": 3175
+        },
+        "recurring": 20233.977423610075,
+        "oneoff": 3175,
+        "financing": 0,
+        "delta": 1418.6451254412264,
+        "error": 0
+      }
+    },
+    "expMult": 1,
+    "over": null,
+    "tab": "over",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        },
+        "phase2": {
+          "site": "site-1",
+          "team": [
+            {
+              "id": "C1",
+              "n": "顾建宁",
+              "skill": "urban",
+              "ability": 75,
+              "post": "urban"
+            },
+            {
+              "id": "C2",
+              "n": "林慧",
+              "skill": "health",
+              "ability": 72,
+              "post": "health"
+            },
+            {
+              "id": "C3",
+              "n": "沈明远",
+              "skill": "finance",
+              "ability": 74,
+              "post": "finance"
+            }
+          ],
+          "equipment": {
+            "power": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "water": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "sewage": {
+              "wear": 0,
+              "offline": 0,
+              "units": 0
+            }
+          }
+        }
+      }
+    ],
+    "built": 1,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "p2_maintain",
+    "agPool": [
+      "report",
+      "province",
+      "guest"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "罗成栋",
+        "f": 99
+      },
+      "old": {
+        "n": "刘兆丰",
+        "f": 54
+      },
+      "lgfv": {
+        "n": "张建国",
+        "f": 54
+      },
+      "dev": {
+        "n": "丁守成",
+        "f": 51
+      },
+      "pet": {
+        "n": "姜德昌",
+        "f": 46
+      },
+      "insp": {
+        "n": "李锦程",
+        "f": 45
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "res",
+        "mu": 521,
+        "loc": "老城片区",
+        "heat": 0.4600910790551167,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "res",
+        "mu": 746,
+        "loc": "沿河地块",
+        "heat": 0.5507409907418948,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "com",
+        "mu": 965,
+        "loc": "城东新区",
+        "heat": 0.6561399004149896,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 0,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [],
+    "leadSeq": 2,
+    "rivals": null,
+    "talent": 0,
+    "bigp": null,
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 60,
+    "lsc": 36.666666666666664,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 5425.000000000001,
+          "res": 4235,
+          "com": 1521.6666666666674
+        },
+        "leased": 0,
+        "used": 918.3333333333333,
+        "sold": 0,
+        "protectedFarm": 6600,
+        "protectedEco": 3300
+      },
+      "leases": [],
+      "permits": {},
+      "tech": {},
+      "resources": [
+        "煤炭",
+        "油气"
+      ],
+      "finance": {
+        "opening": 9997810.163781365,
+        "entries": [
+          {
+            "kind": "policy",
+            "amount": -1440,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -1440,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -800,
+            "note": "干部专项培训",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -100,
+            "note": "招商配套",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "financing",
+            "amount": 4800,
+            "note": "专项债融资",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -160,
+            "note": "争取市政合同前期工作",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -160,
+            "note": "争取市政合同前期工作",
+            "y": 4,
+            "m": 9
+          }
+        ],
+        "history": [
+          {
+            "year": 4,
+            "month": 6,
+            "opening": 10000000,
+            "closing": 9998177.90216706,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 10783.058823529413,
+                "note": "月度税收",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "transfer",
+                "amount": 8160,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "utility",
+                "amount": 1200,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "reserve",
+                "amount": -402.86117647058825,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "wage",
+                "amount": -5342.400000000001,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "ops",
+                "amount": -8580,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "live",
+                "amount": -3960.32,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "interest",
+                "amount": -655.57548,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "build",
+                "amount": -3024,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 6
+              }
+            ],
+            "totals": {
+              "tax": 10783.058823529413,
+              "transfer": 8160,
+              "utility": 1200,
+              "reserve": -402.86117647058825,
+              "wage": -5342.400000000001,
+              "ops": -8580,
+              "live": -3960.32,
+              "interest": -655.57548,
+              "build": -3024
+            },
+            "recurring": 20143.058823529413,
+            "oneoff": 0,
+            "financing": 0,
+            "delta": -1822.0978329411782,
+            "error": 0
+          },
+          {
+            "year": 4,
+            "month": 7,
+            "opening": 9998177.90216706,
+            "closing": 9996391.518655924,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 10833.264110144828,
+                "note": "月度税收",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "transfer",
+                "amount": 8160,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "utility",
+                "amount": 1197.9819091567833,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "reserve",
+                "amount": -403.82492038603226,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "wage",
+                "amount": -5342.400000000001,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "ops",
+                "amount": -8589.121418180108,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "live",
+                "amount": -3962.707711872,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "interest",
+                "amount": -655.57548,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "build",
+                "amount": -3024,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 7
+              }
+            ],
+            "totals": {
+              "tax": 10833.264110144828,
+              "transfer": 8160,
+              "utility": 1197.9819091567833,
+              "reserve": -403.82492038603226,
+              "wage": -5342.400000000001,
+              "ops": -8589.121418180108,
+              "live": -3962.707711872,
+              "interest": -655.57548,
+              "build": -3024
+            },
+            "recurring": 20191.246019301612,
+            "oneoff": 0,
+            "financing": 0,
+            "delta": -1786.3835111365293,
+            "error": 0
+          },
+          {
+            "year": 4,
+            "month": 8,
+            "opening": 9996391.518655924,
+            "closing": 9997810.163781365,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 10878.015240567736,
+                "note": "月度税收",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "transfer",
+                "amount": 8160,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "utility",
+                "amount": 1195.9621830423396,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "reserve",
+                "amount": -404.6795484722015,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "wage",
+                "amount": -5342.400000000001,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "ops",
+                "amount": -8598.03426671057,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "live",
+                "amount": -3965.643002986074,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "interest",
+                "amount": -655.57548,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "build",
+                "amount": -3024,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "grant",
+                "amount": 3175,
+                "note": "公园绿地项目专项补贴",
+                "y": 4,
+                "m": 8
+              }
+            ],
+            "totals": {
+              "tax": 10878.015240567736,
+              "transfer": 8160,
+              "utility": 1195.9621830423396,
+              "reserve": -404.6795484722015,
+              "wage": -5342.400000000001,
+              "ops": -8598.03426671057,
+              "live": -3965.643002986074,
+              "interest": -655.57548,
+              "build": -3024,
+              "grant": 3175
+            },
+            "recurring": 20233.977423610075,
+            "oneoff": 3175,
+            "financing": 0,
+            "delta": 1418.6451254412264,
+            "error": 0
+          }
+        ]
+      },
+      "environment": {
+        "opening": 83.14691996092392,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 3,
+    "planZone": "mixed",
+    "projectClock": 45,
+    "careerProjects": [
+      {
+        "uid": "P1",
+        "site": "site-3",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "park",
+        "n": "公园绿地",
+        "kind": "ordinary",
+        "status": "operating",
+        "started": 42,
+        "cost": 9072,
+        "paid": 9072,
+        "sc": 60,
+        "risk": {
+          "quality": 0,
+          "environment": 0.6,
+          "safety": 0
+        },
+        "grant": {
+          "status": "paid",
+          "amount": 3175,
+          "paid": 3175,
+          "recovered": 0,
+          "attempts": 1,
+          "approvedYear": 4,
+          "minEnv": 40,
+          "paidAt": 44
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": 45,
+        "reviewAt": 51,
+        "completed": 44
+      },
+      {
+        "uid": "P2",
+        "site": "site-3",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "agri",
+        "n": "验收招商样本",
+        "kind": "investment",
+        "status": "operating",
+        "started": 45,
+        "cost": 100,
+        "paid": 100,
+        "sc": 60,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 51,
+        "referenceCost": 30000,
+        "completed": 45
+      },
+      {
+        "uid": "P3",
+        "site": "site-3",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "hosp",
+        "n": "医院",
+        "kind": "ordinary",
+        "status": "construction",
+        "started": 45,
+        "cost": 33696,
+        "paid": 0,
+        "sc": 60,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "approved",
+          "amount": 7413,
+          "paid": 0,
+          "recovered": 0,
+          "attempts": 1,
+          "approvedYear": 4,
+          "minEnv": 50
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51
+      },
+      {
+        "uid": "P4",
+        "site": "site-3",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "clinic",
+        "n": "社区卫生服务中心",
+        "kind": "ordinary",
+        "status": "construction",
+        "started": 45,
+        "cost": 9720,
+        "paid": 0,
+        "sc": 60,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 4800,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51
+      },
+      {
+        "uid": "P5",
+        "site": "site-3",
+        "city": "临渡市",
+        "level": 2,
+        "fac": "road",
+        "n": "城市主干道新建/改造",
+        "kind": "municipal",
+        "status": "construction",
+        "started": 45,
+        "cost": 13771,
+        "paid": 0,
+        "sc": 60,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "municipal",
+          "amount": 16848,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51,
+        "contract": "O1"
+      }
+    ],
+    "projectSeq": 5,
+    "policyStats": {
+      "4": {
+        "attempts": 2,
+        "projects": [
+          "P1",
+          "P3"
+        ],
+        "reserved": 10588,
+        "paid": 3175,
+        "wins": 2,
+        "municipalPaid": 0
+      }
+    },
+    "policyNotices": {
+      "p2_notice_4_7_site-3": {
+        "id": "p2_notice_4_7_site-3",
+        "name": "汛期工程与排水检查",
+        "city": "临渡市",
+        "month": 7,
+        "year": 4,
+        "checked": 0,
+        "findings": [],
+        "handled": false
+      },
+      "p2_notice_4_8_site-3": {
+        "id": "p2_notice_4_8_site-3",
+        "name": "汛期工程与排水检查",
+        "city": "临渡市",
+        "month": 8,
+        "year": 4,
+        "checked": 0,
+        "findings": [],
+        "handled": false
+      }
+    },
+    "siteSeq": 3,
+    "phase2": {
+      "version": 1,
+      "site": "site-3",
+      "level": 2,
+      "team": [
+        {
+          "id": "C1",
+          "n": "顾建宁",
+          "skill": "urban",
+          "ability": 85,
+          "post": "urban"
+        },
+        {
+          "id": "C2",
+          "n": "林慧",
+          "skill": "health",
+          "ability": 72,
+          "post": "health"
+        },
+        {
+          "id": "C3",
+          "n": "沈明远",
+          "skill": "finance",
+          "ability": 74,
+          "post": "finance"
+        },
+        {
+          "id": "C4",
+          "n": "许清和",
+          "skill": "eco",
+          "ability": 70,
+          "post": "eco"
+        },
+        {
+          "id": "C5",
+          "n": "陆启明",
+          "skill": "commerce",
+          "ability": 70,
+          "post": "commerce"
+        }
+      ],
+      "cadreSeq": 5,
+      "equipment": {
+        "power": {
+          "wear": 76,
+          "offline": 1,
+          "units": 1,
+          "warned": false
+        },
+        "water": {
+          "wear": 3.348264407126957,
+          "offline": 0,
+          "units": 1,
+          "warned": false
+        },
+        "sewage": {
+          "wear": 0,
+          "offline": 0,
+          "units": 0
+        }
+      },
+      "offers": [
+        {
+          "type": "road",
+          "fac": "road",
+          "n": "城市主干道新建/改造",
+          "cost": 13771,
+          "award": 16848,
+          "months": 4,
+          "uid": "O1",
+          "state": "started",
+          "expires": 51
+        },
+        {
+          "type": "water",
+          "fac": "water",
+          "n": "乡镇供水提质工程",
+          "cost": 26291,
+          "award": 30456,
+          "months": 6,
+          "uid": "O2",
+          "state": "offered",
+          "expires": 51
+        }
+      ],
+      "offerSeq": 2,
+      "action": {
+        "kind": "p2_maintain",
+        "target": "power"
+      },
+      "bidType": "road",
+      "inspections": {
+        "4-7": true,
+        "4-8": true
+      },
+      "monthNotes": []
+    },
+    "logSeq": 12,
+    "hdr": 48.98267944488125,
+    "indCount": 4,
+    "landPct": 0.5325
+  },
+  {
+    "lvl": 3,
+    "year": 4,
+    "month": 9,
+    "age": 35,
+    "tenure": 0,
+    "cash": 9976058.694346905,
+    "reserve": 3019.2882701441654,
+    "reserveRate": 2,
+    "seen": {
+      "p_taxi": 54,
+      "n_boss_hi": 55,
+      "zhou1": 56
+    },
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 901.6111932915584,
+    "pros": 57.479934260623686,
+    "liv": 53.53915899320755,
+    "sat": 53.17796360142655,
+    "env": 83.17279910497538,
+    "rep": 50,
+    "unity": 60,
+    "landTotal": 50000,
+    "land": 25438.333333333336,
+    "landSold": 15000,
+    "housing": 43.5,
+    "f": {
+      "road": 1,
+      "bridge": 1,
+      "busdepot": 1,
+      "station": 0,
+      "nursery": 1,
+      "school": 3,
+      "clinic": 1,
+      "hosp": 2,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 1,
+      "power": 1,
+      "water": 1,
+      "sewage": 0,
+      "garbage": 0,
+      "gas": 1,
+      "pipe": 0,
+      "datacenter": 0,
+      "park": 2,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 1,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 0,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 0,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "renewal": 0,
+      "factory": 5
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 63
+      },
+      {
+        "id": "agri",
+        "age": 0,
+        "cut": 0,
+        "nm": "验收招商样本"
+      }
+    ],
+    "build": [
+      {
+        "id": "hosp",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 84240,
+        "months": 8,
+        "left": 8,
+        "wl": "公共卫生",
+        "p2Id": "P3",
+        "p2BondLeft": 0
+      },
+      {
+        "id": "clinic",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 24300,
+        "months": 4,
+        "left": 4,
+        "wl": "公共卫生",
+        "p2Id": "P4",
+        "p2BondLeft": 12000
+      },
+      {
+        "id": "road",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 34428,
+        "months": 4,
+        "left": 4,
+        "wl": null,
+        "p2Id": "P5",
+        "p2BondLeft": 0
+      }
+    ],
+    "cq": [
+      {
+        "amt": 192836.544,
+        "rate": 7,
+        "left": 27,
+        "term": 36
+      },
+      {
+        "amt": 128557.696,
+        "rate": 7,
+        "left": 51,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [
+      {
+        "amt": 12000,
+        "rate": 2.8,
+        "left": 60,
+        "term": 60
+      }
+    ],
+    "sbUnspent": 12000,
+    "sbIdle": 0,
+    "sbYear": 12000,
+    "task": null,
+    "frozen": false,
+    "staff": 19000,
+    "quota": 19950,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [],
+    "once": {},
+    "merit": 40,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 4,
+        "m": 9,
+        "t": "本月专项工作：设备专项检修；替换原安排，推进时执行。",
+        "c": "",
+        "q": 12
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "承接城市主干道新建/改造，按工期垫资，验收后补助4.2亿，预计收支差额7692万。",
+        "c": "",
+        "q": 11
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：道路，总投资3.6亿，工期4个月。",
+        "c": "",
+        "q": 10
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "专项债获批1.2亿，5年期，年利率2.8%。",
+        "c": "sys",
+        "q": 9
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：社区卫生服务中心，总投资2.4亿，工期4个月。",
+        "c": "",
+        "q": 8
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：医院，总投资8.4亿，工期8个月。",
+        "c": "",
+        "q": 7
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "验收招商样本签约落地，投资1000万，配套100万、供地20亩。",
+        "c": "good",
+        "q": 6
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "本地开发商 张敬平 那边近了一步。",
+        "c": "good",
+        "q": 5
+      },
+      {
+        "y": 4,
+        "m": 8,
+        "t": "公园绿地验收补助到账7938万。",
+        "c": "good",
+        "q": 4
+      },
+      {
+        "y": 4,
+        "m": 8,
+        "t": "公园绿地建成投用。",
+        "c": "good",
+        "q": 3
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "立项：公园绿地，总投资2.3亿，工期3个月。",
+        "c": "",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": {
+      "tax": 32089.831158015633,
+      "transfer": 15300,
+      "utility": 2988.9146111671316,
+      "rent": 0,
+      "reserve": 1007.5749153836551,
+      "wage": 16112,
+      "ops": 23150.97618887405,
+      "live": 12742.587794813622,
+      "wagePaid": 16112,
+      "opsPaid": 23150.97618887405,
+      "livePaid": 12742.587794813622,
+      "interestPaid": 1874.7997333333333,
+      "interest": 1874.7997333333333,
+      "principal": 0,
+      "build": 7560,
+      "p2Completed": [
+        "P1"
+      ],
+      "environment": {
+        "opening": 83.69583520142966,
+        "natural": -0.5308750560428898,
+        "ecology": 0.19979615137799708,
+        "action": 0,
+        "event": 0,
+        "pollution": -0.04195719178937938,
+        "overflow": -0.15,
+        "clipping": 0,
+        "closing": 83.17279910497538,
+        "grade": "合格"
+      },
+      "phase2": {
+        "completed": [
+          "P1"
+        ],
+        "notice": "p2_notice_4_8_site-3",
+        "agingCost": 82.9143407372213
+      },
+      "cashbook": {
+        "year": 4,
+        "month": 8,
+        "opening": 9975789.887210127,
+        "closing": 9971658.694346905,
+        "entries": [
+          {
+            "kind": "tax",
+            "amount": 32089.831158015633,
+            "note": "月度税收",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "transfer",
+            "amount": 15300,
+            "note": "常规转移支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "utility",
+            "amount": 2988.9146111671316,
+            "note": "公共事业经营收入",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "reserve",
+            "amount": -1007.5749153836551,
+            "note": "划入偿债准备金",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "wage",
+            "amount": -16112,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "ops",
+            "amount": -23150.97618887405,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "live",
+            "amount": -12742.587794813622,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "interest",
+            "amount": -1874.7997333333333,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "build",
+            "amount": -7560,
+            "note": "建设进度款",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "grant",
+            "amount": 7938,
+            "note": "公园绿地项目专项补贴",
+            "y": 4,
+            "m": 8
+          }
+        ],
+        "totals": {
+          "tax": 32089.831158015633,
+          "transfer": 15300,
+          "utility": 2988.9146111671316,
+          "reserve": -1007.5749153836551,
+          "wage": -16112,
+          "ops": -23150.97618887405,
+          "live": -12742.587794813622,
+          "interest": -1874.7997333333333,
+          "build": -7560,
+          "grant": 7938
+        },
+        "recurring": 50378.74576918276,
+        "oneoff": 7938,
+        "financing": 0,
+        "delta": -4131.192863221906,
+        "error": 0
+      }
+    },
+    "expMult": 1,
+    "over": null,
+    "tab": "over",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        },
+        "phase2": {
+          "site": "site-1",
+          "team": [
+            {
+              "id": "C1",
+              "n": "顾建宁",
+              "skill": "urban",
+              "ability": 75,
+              "post": "urban"
+            },
+            {
+              "id": "C2",
+              "n": "林慧",
+              "skill": "health",
+              "ability": 72,
+              "post": "health"
+            },
+            {
+              "id": "C3",
+              "n": "沈明远",
+              "skill": "finance",
+              "ability": 74,
+              "post": "finance"
+            }
+          ],
+          "equipment": {
+            "power": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "water": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "sewage": {
+              "wear": 0,
+              "offline": 0,
+              "units": 0
+            }
+          }
+        }
+      }
+    ],
+    "built": 1,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "p2_maintain",
+    "agPool": [
+      "province",
+      "study",
+      "invest"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "罗成栋",
+        "f": 99
+      },
+      "old": {
+        "n": "刘兆丰",
+        "f": 54
+      },
+      "lgfv": {
+        "n": "郑德昌",
+        "f": 51
+      },
+      "dev": {
+        "n": "张敬平",
+        "f": 59
+      },
+      "pet": {
+        "n": "马锦程",
+        "f": 46
+      },
+      "insp": {
+        "n": "许宗年",
+        "f": 44
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "res",
+        "mu": 696,
+        "loc": "老城片区",
+        "heat": 0.4831680021320398,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "res",
+        "mu": 776,
+        "loc": "沿河地块",
+        "heat": 0.573817913818818,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "com",
+        "mu": 1010,
+        "loc": "城东新区",
+        "heat": 0.6792168234919127,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 0,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [],
+    "leadSeq": 2,
+    "rivals": [
+      {
+        "n": "庆云市",
+        "pros": 63.25829258514568,
+        "pop": 771.4353938307613,
+        "aggr": 0.86,
+        "done": []
+      },
+      {
+        "n": "洛泾市",
+        "pros": 62.30010467907414,
+        "pop": 719.7047817427664,
+        "aggr": 0.74,
+        "done": []
+      }
+    ],
+    "talent": 0,
+    "bigp": {
+      "n": "区域金融后台基地",
+      "fac": "fin",
+      "base": 120000,
+      "y": 1,
+      "r": [
+        0.64,
+        1.34
+      ]
+    },
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 150,
+    "lsc": 83.33333333333333,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 12355.000000000002,
+          "res": 9625,
+          "com": 3458.333333333335
+        },
+        "leased": 0,
+        "used": 2061.6666666666665,
+        "sold": 0,
+        "protectedFarm": 15000,
+        "protectedEco": 7500
+      },
+      "leases": [],
+      "permits": {},
+      "tech": {},
+      "resources": [
+        "煤炭",
+        "油气"
+      ],
+      "finance": {
+        "opening": 9971658.694346905,
+        "entries": [
+          {
+            "kind": "policy",
+            "amount": -2700,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -2700,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -1500,
+            "note": "干部专项培训",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -100,
+            "note": "招商配套",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "financing",
+            "amount": 12000,
+            "note": "专项债融资",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -300,
+            "note": "争取市政合同前期工作",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -300,
+            "note": "争取市政合同前期工作",
+            "y": 4,
+            "m": 9
+          }
+        ],
+        "history": [
+          {
+            "year": 4,
+            "month": 6,
+            "opening": 10000000,
+            "closing": 9987879.0536,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 31960.666666666668,
+                "note": "月度税收",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "transfer",
+                "amount": 15300,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "utility",
+                "amount": 3000,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "reserve",
+                "amount": -1005.2133333333335,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "wage",
+                "amount": -16112,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "ops",
+                "amount": -23100.000000000004,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "live",
+                "amount": -12729.6,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "interest",
+                "amount": -1874.7997333333333,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "build",
+                "amount": -7560,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 6
+              }
+            ],
+            "totals": {
+              "tax": 31960.666666666668,
+              "transfer": 15300,
+              "utility": 3000,
+              "reserve": -1005.2133333333335,
+              "wage": -16112,
+              "ops": -23100.000000000004,
+              "live": -12729.6,
+              "interest": -1874.7997333333333,
+              "build": -7560
+            },
+            "recurring": 50260.66666666667,
+            "oneoff": 0,
+            "financing": 0,
+            "delta": -12120.946399999999,
+            "error": 0
+          },
+          {
+            "year": 4,
+            "month": 7,
+            "opening": 9987879.0536,
+            "closing": 9975789.887210127,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 32030.541151701116,
+                "note": "月度税收",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "transfer",
+                "amount": 15300,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "utility",
+                "amount": 2994.4599196577246,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "reserve",
+                "amount": -1006.5000214271769,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "wage",
+                "amount": -16112,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "ops",
+                "amount": -23125.82269079058,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "live",
+                "amount": -12735.045015680002,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "interest",
+                "amount": -1874.7997333333333,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "build",
+                "amount": -7560,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 7
+              }
+            ],
+            "totals": {
+              "tax": 32030.541151701116,
+              "transfer": 15300,
+              "utility": 2994.4599196577246,
+              "reserve": -1006.5000214271769,
+              "wage": -16112,
+              "ops": -23125.82269079058,
+              "live": -12735.045015680002,
+              "interest": -1874.7997333333333,
+              "build": -7560
+            },
+            "recurring": 50325.00107135884,
+            "oneoff": 0,
+            "financing": 0,
+            "delta": -12089.166389872253,
+            "error": 0
+          },
+          {
+            "year": 4,
+            "month": 8,
+            "opening": 9975789.887210127,
+            "closing": 9971658.694346905,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 32089.831158015633,
+                "note": "月度税收",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "transfer",
+                "amount": 15300,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "utility",
+                "amount": 2988.9146111671316,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "reserve",
+                "amount": -1007.5749153836551,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "wage",
+                "amount": -16112,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "ops",
+                "amount": -23150.97618887405,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "live",
+                "amount": -12742.587794813622,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "interest",
+                "amount": -1874.7997333333333,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "build",
+                "amount": -7560,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "grant",
+                "amount": 7938,
+                "note": "公园绿地项目专项补贴",
+                "y": 4,
+                "m": 8
+              }
+            ],
+            "totals": {
+              "tax": 32089.831158015633,
+              "transfer": 15300,
+              "utility": 2988.9146111671316,
+              "reserve": -1007.5749153836551,
+              "wage": -16112,
+              "ops": -23150.97618887405,
+              "live": -12742.587794813622,
+              "interest": -1874.7997333333333,
+              "build": -7560,
+              "grant": 7938
+            },
+            "recurring": 50378.74576918276,
+            "oneoff": 7938,
+            "financing": 0,
+            "delta": -4131.192863221906,
+            "error": 0
+          }
+        ]
+      },
+      "environment": {
+        "opening": 83.17279910497538,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 3,
+    "planZone": "mixed",
+    "projectClock": 45,
+    "careerProjects": [
+      {
+        "uid": "P1",
+        "site": "site-3",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "park",
+        "n": "公园绿地",
+        "kind": "ordinary",
+        "status": "operating",
+        "started": 42,
+        "cost": 22680,
+        "paid": 22680,
+        "sc": 150,
+        "risk": {
+          "quality": 0,
+          "environment": 0.6,
+          "safety": 0
+        },
+        "grant": {
+          "status": "paid",
+          "amount": 7938,
+          "paid": 7938,
+          "recovered": 0,
+          "attempts": 1,
+          "approvedYear": 4,
+          "minEnv": 40,
+          "paidAt": 44
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": 45,
+        "reviewAt": 51,
+        "completed": 44
+      },
+      {
+        "uid": "P2",
+        "site": "site-3",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "agri",
+        "n": "验收招商样本",
+        "kind": "investment",
+        "status": "operating",
+        "started": 45,
+        "cost": 100,
+        "paid": 100,
+        "sc": 150,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 51,
+        "referenceCost": 75000,
+        "completed": 45
+      },
+      {
+        "uid": "P3",
+        "site": "site-3",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "hosp",
+        "n": "医院",
+        "kind": "ordinary",
+        "status": "construction",
+        "started": 45,
+        "cost": 84240,
+        "paid": 0,
+        "sc": 150,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "approved",
+          "amount": 18533,
+          "paid": 0,
+          "recovered": 0,
+          "attempts": 1,
+          "approvedYear": 4,
+          "minEnv": 50
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51
+      },
+      {
+        "uid": "P4",
+        "site": "site-3",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "clinic",
+        "n": "社区卫生服务中心",
+        "kind": "ordinary",
+        "status": "construction",
+        "started": 45,
+        "cost": 24300,
+        "paid": 0,
+        "sc": 150,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 12000,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51
+      },
+      {
+        "uid": "P5",
+        "site": "site-3",
+        "city": "江岚市（副省级）",
+        "level": 3,
+        "fac": "road",
+        "n": "城市主干道新建/改造",
+        "kind": "municipal",
+        "status": "construction",
+        "started": 45,
+        "cost": 34428,
+        "paid": 0,
+        "sc": 150,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "municipal",
+          "amount": 42120,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51,
+        "contract": "O1"
+      }
+    ],
+    "projectSeq": 5,
+    "policyStats": {
+      "4": {
+        "attempts": 2,
+        "projects": [
+          "P1",
+          "P3"
+        ],
+        "reserved": 26471,
+        "paid": 7938,
+        "wins": 2,
+        "municipalPaid": 0
+      }
+    },
+    "policyNotices": {
+      "p2_notice_4_7_site-3": {
+        "id": "p2_notice_4_7_site-3",
+        "name": "汛期工程与排水检查",
+        "city": "江岚市（副省级）",
+        "month": 7,
+        "year": 4,
+        "checked": 0,
+        "findings": [],
+        "handled": false
+      },
+      "p2_notice_4_8_site-3": {
+        "id": "p2_notice_4_8_site-3",
+        "name": "汛期工程与排水检查",
+        "city": "江岚市（副省级）",
+        "month": 8,
+        "year": 4,
+        "checked": 0,
+        "findings": [],
+        "handled": false
+      }
+    },
+    "siteSeq": 3,
+    "phase2": {
+      "version": 1,
+      "site": "site-3",
+      "level": 3,
+      "team": [
+        {
+          "id": "C1",
+          "n": "顾建宁",
+          "skill": "urban",
+          "ability": 85,
+          "post": "urban"
+        },
+        {
+          "id": "C2",
+          "n": "林慧",
+          "skill": "health",
+          "ability": 72,
+          "post": "health"
+        },
+        {
+          "id": "C3",
+          "n": "沈明远",
+          "skill": "finance",
+          "ability": 74,
+          "post": "finance"
+        },
+        {
+          "id": "C4",
+          "n": "许清和",
+          "skill": "eco",
+          "ability": 70,
+          "post": "eco"
+        },
+        {
+          "id": "C5",
+          "n": "陆启明",
+          "skill": "commerce",
+          "ability": 70,
+          "post": "commerce"
+        }
+      ],
+      "cadreSeq": 5,
+      "equipment": {
+        "power": {
+          "wear": 76,
+          "offline": 1,
+          "units": 1,
+          "warned": false
+        },
+        "water": {
+          "wear": 3.65636781678242,
+          "offline": 0,
+          "units": 1,
+          "warned": false
+        },
+        "sewage": {
+          "wear": 0,
+          "offline": 0,
+          "units": 0
+        }
+      },
+      "offers": [
+        {
+          "type": "road",
+          "fac": "road",
+          "n": "城市主干道新建/改造",
+          "cost": 34428,
+          "award": 42120,
+          "months": 4,
+          "uid": "O1",
+          "state": "started",
+          "expires": 51
+        },
+        {
+          "type": "water",
+          "fac": "water",
+          "n": "乡镇供水提质工程",
+          "cost": 65727,
+          "award": 76140,
+          "months": 6,
+          "uid": "O2",
+          "state": "offered",
+          "expires": 51
+        }
+      ],
+      "offerSeq": 2,
+      "action": {
+        "kind": "p2_maintain",
+        "target": "power"
+      },
+      "bidType": "road",
+      "inspections": {
+        "4-7": true,
+        "4-8": true
+      },
+      "monthNotes": []
+    },
+    "logSeq": 12,
+    "hdr": 56.34305722755511,
+    "indCount": 6,
+    "landPct": 0.5325
+  },
+  {
+    "lvl": 4,
+    "year": 4,
+    "month": 9,
+    "age": 35,
+    "tenure": 0,
+    "cash": 9902369.358608661,
+    "reserve": 7911.747019965451,
+    "reserveRate": 2,
+    "seen": {
+      "p_taxi": 54,
+      "fam_school": 55,
+      "n_boss_hi": 56
+    },
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 2402.062046968592,
+    "pros": 58.81274759427571,
+    "liv": 51.47031492659988,
+    "sat": 52.873208343677916,
+    "env": 83.24113656301012,
+    "rep": 50,
+    "unity": 60,
+    "landTotal": 110000,
+    "land": 55988.333333333336,
+    "landSold": 33000,
+    "housing": 43.5,
+    "f": {
+      "road": 1,
+      "bridge": 1,
+      "busdepot": 1,
+      "station": 0,
+      "nursery": 1,
+      "school": 3,
+      "clinic": 1,
+      "hosp": 2,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 1,
+      "power": 1,
+      "water": 1,
+      "sewage": 0,
+      "garbage": 0,
+      "gas": 1,
+      "pipe": 0,
+      "datacenter": 0,
+      "park": 2,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 1,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 0,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 0,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "renewal": 0,
+      "factory": 6
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 63
+      },
+      {
+        "id": "agri",
+        "age": 0,
+        "cut": 0,
+        "nm": "验收招商样本"
+      }
+    ],
+    "build": [
+      {
+        "id": "hosp",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 224640.00000000003,
+        "months": 8,
+        "left": 8,
+        "wl": "公共卫生",
+        "p2Id": "P3",
+        "p2BondLeft": 0
+      },
+      {
+        "id": "clinic",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 64800.00000000001,
+        "months": 4,
+        "left": 4,
+        "wl": "公共卫生",
+        "p2Id": "P4",
+        "p2BondLeft": 32000
+      },
+      {
+        "id": "road",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 91809,
+        "months": 4,
+        "left": 4,
+        "wl": null,
+        "p2Id": "P5",
+        "p2BondLeft": 0
+      }
+    ],
+    "cq": [
+      {
+        "amt": 569980.1868387095,
+        "rate": 7,
+        "left": 27,
+        "term": 36
+      },
+      {
+        "amt": 379986.7912258064,
+        "rate": 7,
+        "left": 51,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [
+      {
+        "amt": 32000,
+        "rate": 2.8,
+        "left": 60,
+        "term": 60
+      }
+    ],
+    "sbUnspent": 32000,
+    "sbIdle": 0,
+    "sbYear": 32000,
+    "task": null,
+    "frozen": false,
+    "staff": 52000,
+    "quota": 54600,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [],
+    "once": {},
+    "merit": 40,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 4,
+        "m": 9,
+        "t": "本月专项工作：设备专项检修；替换原安排，推进时执行。",
+        "c": "",
+        "q": 12
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "承接城市主干道新建/改造，按工期垫资，验收后补助11亿，预计收支差额2.1亿。",
+        "c": "",
+        "q": 11
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：道路，总投资9.5亿，工期4个月。",
+        "c": "",
+        "q": 10
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "专项债获批3.2亿，5年期，年利率2.8%。",
+        "c": "sys",
+        "q": 9
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：社区卫生服务中心，总投资6.5亿，工期4个月。",
+        "c": "",
+        "q": 8
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "立项：医院，总投资22亿，工期8个月。",
+        "c": "",
+        "q": 7
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "验收招商样本签约落地，投资1000万，配套100万、供地20亩。",
+        "c": "good",
+        "q": 6
+      },
+      {
+        "y": 4,
+        "m": 9,
+        "t": "本地开发商 赵永康 那边近了一步。",
+        "c": "good",
+        "q": 5
+      },
+      {
+        "y": 4,
+        "m": 8,
+        "t": "公园绿地验收补助到账2.1亿。",
+        "c": "good",
+        "q": 4
+      },
+      {
+        "y": 4,
+        "m": 8,
+        "t": "公园绿地建成投用。",
+        "c": "good",
+        "q": 3
+      },
+      {
+        "y": 4,
+        "m": 6,
+        "t": "立项：公园绿地，总投资6.0亿，工期3个月。",
+        "c": "",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": {
+      "tax": 91236.19311552764,
+      "transfer": 32640,
+      "utility": 7969.522357834629,
+      "rent": 0,
+      "reserve": 2636.9143094672454,
+      "wage": 49608,
+      "ops": 60690.40220127508,
+      "live": 38207.971643218414,
+      "wagePaid": 49608,
+      "opsPaid": 60690.40220127508,
+      "livePaid": 38207.971643218414,
+      "interestPaid": 5541.474038709675,
+      "interest": 5541.474038709675,
+      "principal": 0,
+      "build": 20160.000000000007,
+      "p2Completed": [
+        "P1"
+      ],
+      "environment": {
+        "opening": 83.74203877249042,
+        "natural": -0.5322611631747125,
+        "ecology": 0.19989964584669698,
+        "action": 0,
+        "event": 0,
+        "pollution": -0.018540692152281144,
+        "overflow": -0.15,
+        "clipping": 0,
+        "closing": 83.24113656301012,
+        "grade": "合格"
+      },
+      "phase2": {
+        "completed": [
+          "P1"
+        ],
+        "notice": "p2_notice_4_8_site-3",
+        "agingCost": 227.98053269386045
+      },
+      "cashbook": {
+        "year": 4,
+        "month": 8,
+        "opening": 9910300.405327968,
+        "closing": 9886469.358608661,
+        "entries": [
+          {
+            "kind": "tax",
+            "amount": 91236.19311552764,
+            "note": "月度税收",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "transfer",
+            "amount": 32640,
+            "note": "常规转移支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "utility",
+            "amount": 7969.522357834629,
+            "note": "公共事业经营收入",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "reserve",
+            "amount": -2636.9143094672454,
+            "note": "划入偿债准备金",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "wage",
+            "amount": -49608,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "ops",
+            "amount": -60690.40220127508,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "live",
+            "amount": -38207.971643218414,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "interest",
+            "amount": -5541.474038709675,
+            "note": "月度支付",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "build",
+            "amount": -20160.000000000007,
+            "note": "建设进度款",
+            "y": 4,
+            "m": 8
+          },
+          {
+            "kind": "grant",
+            "amount": 21168,
+            "note": "公园绿地项目专项补贴",
+            "y": 4,
+            "m": 8
+          }
+        ],
+        "totals": {
+          "tax": 91236.19311552764,
+          "transfer": 32640,
+          "utility": 7969.522357834629,
+          "reserve": -2636.9143094672454,
+          "wage": -49608,
+          "ops": -60690.40220127508,
+          "live": -38207.971643218414,
+          "interest": -5541.474038709675,
+          "build": -20160.000000000007,
+          "grant": 21168
+        },
+        "recurring": 131845.71547336227,
+        "oneoff": 21168,
+        "financing": 0,
+        "delta": -23831.04671930815,
+        "error": 0
+      }
+    },
+    "expMult": 1,
+    "over": null,
+    "tab": "over",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        },
+        "phase2": {
+          "site": "site-1",
+          "team": [
+            {
+              "id": "C1",
+              "n": "顾建宁",
+              "skill": "urban",
+              "ability": 75,
+              "post": "urban"
+            },
+            {
+              "id": "C2",
+              "n": "林慧",
+              "skill": "health",
+              "ability": 72,
+              "post": "health"
+            },
+            {
+              "id": "C3",
+              "n": "沈明远",
+              "skill": "finance",
+              "ability": 74,
+              "post": "finance"
+            }
+          ],
+          "equipment": {
+            "power": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "water": {
+              "wear": 0,
+              "offline": 0,
+              "units": 1
+            },
+            "sewage": {
+              "wear": 0,
+              "offline": 0,
+              "units": 0
+            }
+          }
+        }
+      }
+    ],
+    "built": 1,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "p2_maintain",
+    "agPool": [
+      "debtwork",
+      "report",
+      "survey"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "罗成栋",
+        "f": 98
+      },
+      "old": {
+        "n": "刘兆丰",
+        "f": 54
+      },
+      "lgfv": {
+        "n": "邱锦程",
+        "f": 53
+      },
+      "dev": {
+        "n": "赵永康",
+        "f": 53
+      },
+      "pet": {
+        "n": "贺望山",
+        "f": 45
+      },
+      "insp": {
+        "n": "宋宗年",
+        "f": 45
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "res",
+        "mu": 957,
+        "loc": "老城片区",
+        "heat": 0.5062449252089628,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "res",
+        "mu": 1075,
+        "loc": "沿河地块",
+        "heat": 0.596894836895741,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "com",
+        "mu": 1407,
+        "loc": "城东新区",
+        "heat": 0.7022937465688357,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 0,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [],
+    "leadSeq": 2,
+    "rivals": [
+      {
+        "n": "庆云市",
+        "pros": 66.25829258514568,
+        "pop": 2057.1610502153635,
+        "aggr": 0.86,
+        "done": []
+      },
+      {
+        "n": "洛泾市",
+        "pros": 65.30010467907414,
+        "pop": 1919.2127513140438,
+        "aggr": 0.74,
+        "done": []
+      }
+    ],
+    "talent": 0,
+    "bigp": {
+      "n": "区域金融后台基地",
+      "fac": "fin",
+      "base": 320000,
+      "y": 1,
+      "r": [
+        0.64,
+        1.34
+      ]
+    },
+    "dist": [
+      {
+        "id": "城关区",
+        "n": "城关区",
+        "t": "core",
+        "pop": 427.7679550297558,
+        "pros": 67.73715148493648,
+        "liv": 56.908279561437666,
+        "debt": 45.21793836262077,
+        "honest": 0.49,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "和平区",
+        "n": "和平区",
+        "t": "core",
+        "pop": 476.98592874929307,
+        "pros": 64.61251416616142,
+        "liv": 59.97524550836533,
+        "debt": 48.45235954038799,
+        "honest": 0.68,
+        "lazy": true,
+        "hide": 0
+      },
+      {
+        "id": "新城区",
+        "n": "新城区",
+        "t": "new",
+        "pop": 352.6769278787076,
+        "pros": 60.696018159389496,
+        "liv": 48.45957347471267,
+        "debt": 71.8034255253151,
+        "honest": 0.38,
+        "lazy": true,
+        "hide": 0
+      },
+      {
+        "id": "临江新区",
+        "n": "临江新区",
+        "t": "new",
+        "pop": 276.05316261425617,
+        "pros": 54.22709401138127,
+        "liv": 46.492110080085695,
+        "debt": 80.45505234971642,
+        "honest": 0.25,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "开发区",
+        "n": "开发区",
+        "t": "ind",
+        "pop": 236.25943757370115,
+        "pros": 67.68819804862142,
+        "liv": 38.689697236754,
+        "debt": 46.77261785697192,
+        "honest": 0.62,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "双桥区",
+        "n": "双桥区",
+        "t": "ind",
+        "pop": 311.23819686099887,
+        "pros": 58.60895819030702,
+        "liv": 36.96453646849841,
+        "debt": 52.77909314073622,
+        "honest": 0.42,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "云岭区",
+        "n": "云岭区",
+        "t": "far",
+        "pop": 157.07780337408187,
+        "pros": 34.1651806011796,
+        "liv": 40.07299414742738,
+        "debt": 46.40146817360073,
+        "honest": 0.36,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "港北区",
+        "n": "港北区",
+        "t": "port",
+        "pop": 240.9229678340256,
+        "pros": 52.92086171545088,
+        "liv": 48.17972655501217,
+        "debt": 48.049727484583855,
+        "honest": 0.27,
+        "lazy": false,
+        "hide": 0
+      }
+    ],
+    "alloc": {
+      "城关区": {
+        "fund": 2,
+        "focus": "people"
+      },
+      "和平区": {
+        "fund": 2,
+        "focus": "people"
+      },
+      "新城区": {
+        "fund": 2,
+        "focus": "debt"
+      },
+      "临江新区": {
+        "fund": 2,
+        "focus": "debt"
+      },
+      "开发区": {
+        "fund": 2,
+        "focus": "eco"
+      },
+      "双桥区": {
+        "fund": 2,
+        "focus": "eco"
+      },
+      "云岭区": {
+        "fund": 2,
+        "focus": "eco"
+      },
+      "港北区": {
+        "fund": 2,
+        "focus": "eco"
+      }
+    },
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 400,
+    "lsc": 183.33333333333334,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 27205.000000000004,
+          "res": 21175,
+          "com": 7608.333333333333
+        },
+        "leased": 0,
+        "used": 4511.666666666666,
+        "sold": 0,
+        "protectedFarm": 33000,
+        "protectedEco": 16500
+      },
+      "leases": [],
+      "permits": {},
+      "tech": {},
+      "resources": [
+        "煤炭",
+        "油气"
+      ],
+      "finance": {
+        "opening": 9886469.358608661,
+        "entries": [
+          {
+            "kind": "policy",
+            "amount": -5760,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -5760,
+            "note": "借调专业干部",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -3200,
+            "note": "干部专项培训",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -100,
+            "note": "招商配套",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "financing",
+            "amount": 32000,
+            "note": "专项债融资",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -640,
+            "note": "争取市政合同前期工作",
+            "y": 4,
+            "m": 9
+          },
+          {
+            "kind": "policy",
+            "amount": -640,
+            "note": "争取市政合同前期工作",
+            "y": 4,
+            "m": 9
+          }
+        ],
+        "history": [
+          {
+            "year": 4,
+            "month": 6,
+            "opening": 10000000,
+            "closing": 9955195.3208,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 91235.09677419355,
+                "note": "月度税收",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "transfer",
+                "amount": 32640,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "utility",
+                "amount": 8000,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "reserve",
+                "amount": -2637.501935483871,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "wage",
+                "amount": -49608,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "ops",
+                "amount": -60544.00000000001,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "live",
+                "amount": -38188.8,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "interest",
+                "amount": -5541.474038709675,
+                "note": "月度支付",
+                "y": 4,
+                "m": 6
+              },
+              {
+                "kind": "build",
+                "amount": -20160.000000000004,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 6
+              }
+            ],
+            "totals": {
+              "tax": 91235.09677419355,
+              "transfer": 32640,
+              "utility": 8000,
+              "reserve": -2637.501935483871,
+              "wage": -49608,
+              "ops": -60544.00000000001,
+              "live": -38188.8,
+              "interest": -5541.474038709675,
+              "build": -20160.000000000004
+            },
+            "recurring": 131875.09677419355,
+            "oneoff": 0,
+            "financing": 0,
+            "delta": -44804.67920000001,
+            "error": 0
+          },
+          {
+            "year": 4,
+            "month": 7,
+            "opening": 9955195.3208,
+            "closing": 9910300.405327968,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 91241.77053834214,
+                "note": "月度税收",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "transfer",
+                "amount": 32640,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "utility",
+                "amount": 7984.768212374557,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "reserve",
+                "amount": -2637.330775014334,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "wage",
+                "amount": -49608,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "ops",
+                "amount": -60617.53584615178,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "live",
+                "amount": -38197.1135628749,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "interest",
+                "amount": -5541.474038709675,
+                "note": "月度支付",
+                "y": 4,
+                "m": 7
+              },
+              {
+                "kind": "build",
+                "amount": -20160,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 7
+              }
+            ],
+            "totals": {
+              "tax": 91241.77053834214,
+              "transfer": 32640,
+              "utility": 7984.768212374557,
+              "reserve": -2637.330775014334,
+              "wage": -49608,
+              "ops": -60617.53584615178,
+              "live": -38197.1135628749,
+              "interest": -5541.474038709675,
+              "build": -20160
+            },
+            "recurring": 131866.5387507167,
+            "oneoff": 0,
+            "financing": 0,
+            "delta": -44894.915472034,
+            "error": 0
+          },
+          {
+            "year": 4,
+            "month": 8,
+            "opening": 9910300.405327968,
+            "closing": 9886469.358608661,
+            "entries": [
+              {
+                "kind": "tax",
+                "amount": 91236.19311552764,
+                "note": "月度税收",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "transfer",
+                "amount": 32640,
+                "note": "常规转移支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "utility",
+                "amount": 7969.522357834629,
+                "note": "公共事业经营收入",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "reserve",
+                "amount": -2636.9143094672454,
+                "note": "划入偿债准备金",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "wage",
+                "amount": -49608,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "ops",
+                "amount": -60690.40220127508,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "live",
+                "amount": -38207.971643218414,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "interest",
+                "amount": -5541.474038709675,
+                "note": "月度支付",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "build",
+                "amount": -20160.000000000007,
+                "note": "建设进度款",
+                "y": 4,
+                "m": 8
+              },
+              {
+                "kind": "grant",
+                "amount": 21168,
+                "note": "公园绿地项目专项补贴",
+                "y": 4,
+                "m": 8
+              }
+            ],
+            "totals": {
+              "tax": 91236.19311552764,
+              "transfer": 32640,
+              "utility": 7969.522357834629,
+              "reserve": -2636.9143094672454,
+              "wage": -49608,
+              "ops": -60690.40220127508,
+              "live": -38207.971643218414,
+              "interest": -5541.474038709675,
+              "build": -20160.000000000007,
+              "grant": 21168
+            },
+            "recurring": 131845.71547336227,
+            "oneoff": 21168,
+            "financing": 0,
+            "delta": -23831.04671930815,
+            "error": 0
+          }
+        ]
+      },
+      "environment": {
+        "opening": 83.24113656301012,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 3,
+    "planZone": "mixed",
+    "projectClock": 45,
+    "careerProjects": [
+      {
+        "uid": "P1",
+        "site": "site-3",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "park",
+        "n": "公园绿地",
+        "kind": "ordinary",
+        "status": "operating",
+        "started": 42,
+        "cost": 60480.00000000001,
+        "paid": 60480.00000000001,
+        "sc": 400,
+        "risk": {
+          "quality": 0,
+          "environment": 0.6,
+          "safety": 0
+        },
+        "grant": {
+          "status": "paid",
+          "amount": 21168,
+          "paid": 21168,
+          "recovered": 0,
+          "attempts": 1,
+          "approvedYear": 4,
+          "minEnv": 40,
+          "paidAt": 44
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": 45,
+        "reviewAt": 51,
+        "completed": 44
+      },
+      {
+        "uid": "P2",
+        "site": "site-3",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "agri",
+        "n": "验收招商样本",
+        "kind": "investment",
+        "status": "operating",
+        "started": 45,
+        "cost": 100,
+        "paid": 100,
+        "sc": 400,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": true,
+        "meritGranted": true,
+        "warningAt": null,
+        "reviewAt": 51,
+        "referenceCost": 200000,
+        "completed": 45
+      },
+      {
+        "uid": "P3",
+        "site": "site-3",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "hosp",
+        "n": "医院",
+        "kind": "ordinary",
+        "status": "construction",
+        "started": 45,
+        "cost": 224640.00000000003,
+        "paid": 0,
+        "sc": 400,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51
+      },
+      {
+        "uid": "P4",
+        "site": "site-3",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "clinic",
+        "n": "社区卫生服务中心",
+        "kind": "ordinary",
+        "status": "construction",
+        "started": 45,
+        "cost": 64800.00000000001,
+        "paid": 0,
+        "sc": 400,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "none",
+          "amount": 0,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 32000,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51
+      },
+      {
+        "uid": "P5",
+        "site": "site-3",
+        "city": "海屿市（直辖市）",
+        "level": 4,
+        "fac": "road",
+        "n": "城市主干道新建/改造",
+        "kind": "municipal",
+        "status": "construction",
+        "started": 45,
+        "cost": 91809,
+        "paid": 0,
+        "sc": 400,
+        "risk": {
+          "quality": 0,
+          "environment": 0,
+          "safety": 0
+        },
+        "grant": {
+          "status": "municipal",
+          "amount": 112320,
+          "paid": 0,
+          "recovered": 0
+        },
+        "specialBond": 0,
+        "accepted": false,
+        "meritGranted": false,
+        "warningAt": null,
+        "reviewAt": 51,
+        "contract": "O1"
+      }
+    ],
+    "projectSeq": 5,
+    "policyStats": {
+      "4": {
+        "attempts": 1,
+        "projects": [
+          "P1"
+        ],
+        "reserved": 21168,
+        "paid": 21168,
+        "wins": 2,
+        "municipalPaid": 0
+      }
+    },
+    "policyNotices": {
+      "p2_notice_4_7_site-3": {
+        "id": "p2_notice_4_7_site-3",
+        "name": "汛期工程与排水检查",
+        "city": "海屿市（直辖市）",
+        "month": 7,
+        "year": 4,
+        "checked": 0,
+        "findings": [],
+        "handled": false
+      },
+      "p2_notice_4_8_site-3": {
+        "id": "p2_notice_4_8_site-3",
+        "name": "汛期工程与排水检查",
+        "city": "海屿市（直辖市）",
+        "month": 8,
+        "year": 4,
+        "checked": 0,
+        "findings": [],
+        "handled": false
+      }
+    },
+    "siteSeq": 3,
+    "phase2": {
+      "version": 1,
+      "site": "site-3",
+      "level": 4,
+      "team": [
+        {
+          "id": "C1",
+          "n": "顾建宁",
+          "skill": "urban",
+          "ability": 85,
+          "post": "urban"
+        },
+        {
+          "id": "C2",
+          "n": "林慧",
+          "skill": "health",
+          "ability": 72,
+          "post": "health"
+        },
+        {
+          "id": "C3",
+          "n": "沈明远",
+          "skill": "finance",
+          "ability": 74,
+          "post": "finance"
+        },
+        {
+          "id": "C4",
+          "n": "许清和",
+          "skill": "eco",
+          "ability": 70,
+          "post": "eco"
+        },
+        {
+          "id": "C5",
+          "n": "陆启明",
+          "skill": "commerce",
+          "ability": 70,
+          "post": "commerce"
+        }
+      ],
+      "cadreSeq": 5,
+      "equipment": {
+        "power": {
+          "wear": 76,
+          "offline": 1,
+          "units": 1,
+          "warned": false
+        },
+        "water": {
+          "wear": 3.7573634067691497,
+          "offline": 0,
+          "units": 1,
+          "warned": false
+        },
+        "sewage": {
+          "wear": 0,
+          "offline": 0,
+          "units": 0
+        }
+      },
+      "offers": [
+        {
+          "type": "road",
+          "fac": "road",
+          "n": "城市主干道新建/改造",
+          "cost": 91809,
+          "award": 112320,
+          "months": 4,
+          "uid": "O1",
+          "state": "started",
+          "expires": 51
+        },
+        {
+          "type": "water",
+          "fac": "water",
+          "n": "乡镇供水提质工程",
+          "cost": 175271,
+          "award": 203040,
+          "months": 6,
+          "uid": "O2",
+          "state": "offered",
+          "expires": 51
+        }
+      ],
+      "offerSeq": 2,
+      "action": {
+        "kind": "p2_maintain",
+        "target": "power"
+      },
+      "bidType": "road",
+      "inspections": {
+        "4-7": true,
+        "4-8": true
+      },
+      "monthNotes": []
+    },
+    "logSeq": 12,
+    "hdr": 59.39064426958009,
+    "indCount": 7,
+    "landPct": 0.5325
+  }
+]

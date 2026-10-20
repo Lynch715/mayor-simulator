@@ -1,0 +1,763 @@
+{
+  "housing": [
+    {
+      "level": "镇长",
+      "city": "青石镇",
+      "opening": 180,
+      "types": [
+        {
+          "type": "basic",
+          "cost": 428,
+          "land": 12,
+          "landPayment": 80,
+          "fullNormalSales": 547.84,
+          "developerMargin": 39.84000000000003
+        },
+        {
+          "type": "better",
+          "cost": 612,
+          "land": 12,
+          "landPayment": 80,
+          "fullNormalSales": 856.8,
+          "developerMargin": 164.79999999999995
+        },
+        {
+          "type": "luxury",
+          "cost": 857,
+          "land": 12,
+          "landPayment": 80,
+          "fullNormalSales": 1371.2,
+          "developerMargin": 434.20000000000005
+        }
+      ]
+    },
+    {
+      "level": "县长",
+      "city": "沂川县",
+      "opening": 3250,
+      "types": [
+        {
+          "type": "basic",
+          "cost": 4641,
+          "land": 100,
+          "landPayment": 1826,
+          "fullNormalSales": 5940.4800000000005,
+          "developerMargin": -526.5199999999995
+        },
+        {
+          "type": "better",
+          "cost": 6630,
+          "land": 100,
+          "landPayment": 1826,
+          "fullNormalSales": 9282,
+          "developerMargin": 826
+        },
+        {
+          "type": "luxury",
+          "cost": 9282,
+          "land": 100,
+          "landPayment": 1826,
+          "fullNormalSales": 14851.2,
+          "developerMargin": 3743.2000000000007
+        }
+      ]
+    },
+    {
+      "level": "市委书记",
+      "city": "临渡市",
+      "opening": 20000,
+      "types": [
+        {
+          "type": "basic",
+          "cost": 28560,
+          "land": 440,
+          "landPayment": 23381,
+          "fullNormalSales": 36556.8,
+          "developerMargin": -15384.199999999997
+        },
+        {
+          "type": "better",
+          "cost": 40800,
+          "land": 440,
+          "landPayment": 23381,
+          "fullNormalSales": 57120.00000000001,
+          "developerMargin": -7060.999999999993
+        },
+        {
+          "type": "luxury",
+          "cost": 57120,
+          "land": 440,
+          "landPayment": 23381,
+          "fullNormalSales": 91392,
+          "developerMargin": 10891
+        }
+      ]
+    },
+    {
+      "level": "市委书记",
+      "city": "江岚市（副省级）",
+      "opening": 37500,
+      "types": [
+        {
+          "type": "basic",
+          "cost": 53550,
+          "land": 1000,
+          "landPayment": 121961,
+          "fullNormalSales": 68544,
+          "developerMargin": -106967
+        },
+        {
+          "type": "better",
+          "cost": 76500,
+          "land": 1000,
+          "landPayment": 121961,
+          "fullNormalSales": 107100,
+          "developerMargin": -91361
+        },
+        {
+          "type": "luxury",
+          "cost": 107100,
+          "land": 1000,
+          "landPayment": 121961,
+          "fullNormalSales": 171360,
+          "developerMargin": -57701
+        }
+      ]
+    },
+    {
+      "level": "市委书记",
+      "city": "海屿市（直辖市）",
+      "opening": 80000,
+      "types": [
+        {
+          "type": "basic",
+          "cost": 114240,
+          "land": 2200,
+          "landPayment": 489819,
+          "fullNormalSales": 146227.2,
+          "developerMargin": -457831.8
+        },
+        {
+          "type": "better",
+          "cost": 163200,
+          "land": 2200,
+          "landPayment": 489819,
+          "fullNormalSales": 228480.00000000003,
+          "developerMargin": -424539
+        },
+        {
+          "type": "luxury",
+          "cost": 228480,
+          "land": 2200,
+          "landPayment": 489819,
+          "fullNormalSales": 365568,
+          "developerMargin": -352731
+        }
+      ]
+    }
+  ],
+  "negativeFacilityEvents": [
+    {
+      "id": "market_move",
+      "title": "老农贸市场的地被看上了",
+      "option": "出让，摊贩另行安置",
+      "fac": {
+        "id": "market",
+        "n": -1
+      }
+    }
+  ],
+  "artUsage": {
+    "p_developer": [
+      {
+        "id": "land_cheap",
+        "title": "企业申请低价出让工业用地",
+        "npc": "dev"
+      },
+      {
+        "id": "boss_square",
+        "title": "老板提出\"捐建\"广场",
+        "npc": "dev"
+      },
+      {
+        "id": "fake_sign",
+        "title": "招商签约仪式",
+        "npc": "dev"
+      },
+      {
+        "id": "bid_war",
+        "title": "邻市抢一个项目",
+        "npc": "dev"
+      },
+      {
+        "id": "tax_cut",
+        "title": "企业联名申请减税",
+        "npc": "dev"
+      },
+      {
+        "id": "golf",
+        "title": "企业家的邀请",
+        "npc": "dev"
+      },
+      {
+        "id": "newcity2",
+        "title": "新城的地卖不动",
+        "npc": "dev"
+      },
+      {
+        "id": "big_conf",
+        "title": "申办一场全国性会展",
+        "npc": "dev"
+      },
+      {
+        "id": "talent_war",
+        "title": "人才政策",
+        "npc": "dev"
+      },
+      {
+        "id": "ppp",
+        "title": "社会资本合作项目",
+        "npc": "dev"
+      },
+      {
+        "id": "market_move",
+        "title": "老农贸市场的地被看上了",
+        "npc": "dev"
+      },
+      {
+        "id": "dc_power",
+        "title": "数据中心的电费",
+        "npc": "dev"
+      },
+      {
+        "id": "shanty",
+        "title": "城中村改造",
+        "npc": "dev"
+      },
+      {
+        "id": "port_bonded",
+        "title": "申报综合保税区",
+        "npc": "dev"
+      },
+      {
+        "id": "agri_brand",
+        "title": "地理标志申报",
+        "npc": "dev"
+      },
+      {
+        "id": "mall_empty",
+        "title": "综合体空了一半",
+        "npc": "dev"
+      },
+      {
+        "id": "fin_bank",
+        "title": "引进银行区域总部",
+        "npc": "dev"
+      },
+      {
+        "id": "ecom",
+        "title": "直播电商基地",
+        "npc": "dev"
+      },
+      {
+        "id": "apportion",
+        "title": "\"自愿\"捐款",
+        "npc": "dev"
+      },
+      {
+        "id": "gift_card",
+        "title": "节前的购物卡",
+        "npc": "dev"
+      },
+      {
+        "id": "land_king",
+        "title": "地王",
+        "npc": "dev"
+      }
+    ],
+    "p_petitioner": [
+      {
+        "id": "school_petition",
+        "title": "群众联名要求增设学校",
+        "npc": "pet"
+      },
+      {
+        "id": "oldcommunity",
+        "title": "老旧小区改造申请",
+        "npc": "pet"
+      },
+      {
+        "id": "wage_migrant",
+        "title": "农民工集体讨薪",
+        "npc": "pet"
+      },
+      {
+        "id": "bus",
+        "title": "群众反映公交线路",
+        "npc": "pet"
+      },
+      {
+        "id": "pension",
+        "title": "退休职工反映养老金",
+        "npc": "pet"
+      },
+      {
+        "id": "hospital_dispute",
+        "title": "医患纠纷",
+        "npc": "pet"
+      },
+      {
+        "id": "vendor_debt",
+        "title": "供应商讨要工程款",
+        "npc": "pet"
+      },
+      {
+        "id": "garbage_full",
+        "title": "填埋场满了",
+        "npc": "pet"
+      },
+      {
+        "id": "waterlog",
+        "title": "一场暴雨淹了半个城",
+        "npc": "pet"
+      },
+      {
+        "id": "elevator",
+        "title": "老楼加装电梯",
+        "npc": "pet"
+      },
+      {
+        "id": "parking",
+        "title": "停车难",
+        "npc": "pet"
+      },
+      {
+        "id": "streetlight",
+        "title": "黑灯的街",
+        "npc": "pet"
+      },
+      {
+        "id": "mine_sink",
+        "title": "老矿塌陷区",
+        "npc": "pet"
+      },
+      {
+        "id": "pig_flu",
+        "title": "猪瘟",
+        "npc": "pet"
+      },
+      {
+        "id": "p_demolition",
+        "title": "拆迁户上访",
+        "npc": null
+      },
+      {
+        "id": "p_demolition2",
+        "title": "拆迁户越级上访",
+        "npc": null
+      },
+      {
+        "id": "p_noise",
+        "title": "噪音投诉",
+        "npc": null
+      },
+      {
+        "id": "p_wage",
+        "title": "企业欠薪",
+        "npc": null
+      },
+      {
+        "id": "p_pollution",
+        "title": "村民反映地下水",
+        "npc": null
+      },
+      {
+        "id": "p_school_fee",
+        "title": "学校乱收费",
+        "npc": null
+      },
+      {
+        "id": "p_road",
+        "title": "村里的路",
+        "npc": null
+      },
+      {
+        "id": "p_market",
+        "title": "摊贩被清理",
+        "npc": null
+      },
+      {
+        "id": "p_land",
+        "title": "村集体土地纠纷",
+        "npc": null
+      },
+      {
+        "id": "p_hukou",
+        "title": "外来务工人员子女入学",
+        "npc": null
+      },
+      {
+        "id": "p_elder",
+        "title": "独居老人",
+        "npc": null
+      },
+      {
+        "id": "p_taxi",
+        "title": "出租车司机罢运",
+        "npc": null
+      },
+      {
+        "id": "p_dog",
+        "title": "流浪狗咬人",
+        "npc": null
+      },
+      {
+        "id": "p_heating",
+        "title": "供暖不热",
+        "npc": null
+      },
+      {
+        "id": "p_landfill",
+        "title": "填埋场的味道",
+        "npc": null
+      },
+      {
+        "id": "p_scam_elder",
+        "title": "老人被骗",
+        "npc": null
+      },
+      {
+        "id": "p_cemetery",
+        "title": "公墓涨价",
+        "npc": null
+      },
+      {
+        "id": "p_teacher",
+        "title": "代课教师",
+        "npc": null
+      },
+      {
+        "id": "p_water_fee",
+        "title": "水费涨了",
+        "npc": null
+      },
+      {
+        "id": "p_night_work",
+        "title": "工地夜间施工",
+        "npc": null
+      },
+      {
+        "id": "p_queue",
+        "title": "挂号难",
+        "npc": null
+      },
+      {
+        "id": "p_schoolbus",
+        "title": "校车",
+        "npc": null
+      },
+      {
+        "id": "p_signboard",
+        "title": "统一门头",
+        "npc": null
+      }
+    ],
+    "p_inspector": [
+      {
+        "id": "audit_routine",
+        "title": "审计局例行检查",
+        "npc": "insp"
+      },
+      {
+        "id": "inspection",
+        "title": "上级检查组下周到",
+        "npc": "insp"
+      },
+      {
+        "id": "env_inspect",
+        "title": "环保督察组进驻",
+        "npc": "insp"
+      },
+      {
+        "id": "env_inspect2",
+        "title": "督察回头看",
+        "npc": "insp"
+      },
+      {
+        "id": "drunk",
+        "title": "一位局长酒驾被查",
+        "npc": "insp"
+      },
+      {
+        "id": "exam_leak",
+        "title": "事业编考试疑似泄题",
+        "npc": "insp"
+      },
+      {
+        "id": "whistle",
+        "title": "有人写了举报信",
+        "npc": "insp"
+      },
+      {
+        "id": "zhixia_inspect",
+        "title": "巡视组进驻",
+        "npc": "insp"
+      },
+      {
+        "id": "house_alloc",
+        "title": "保障房分配被举报",
+        "npc": "insp"
+      },
+      {
+        "id": "teacher_wage",
+        "title": "教师工资督查",
+        "npc": "insp"
+      },
+      {
+        "id": "river_black",
+        "title": "黑臭水体挂牌督办",
+        "npc": "insp"
+      },
+      {
+        "id": "quake",
+        "title": "一次小地震",
+        "npc": "insp"
+      },
+      {
+        "id": "scam_den",
+        "title": "电诈窝点",
+        "npc": "insp"
+      },
+      {
+        "id": "tender_ring",
+        "title": "围标串标",
+        "npc": "insp"
+      },
+      {
+        "id": "legacy_debt",
+        "title": "前任留下的账",
+        "npc": "insp"
+      }
+    ],
+    "p_oldleader": [
+      {
+        "id": "leader_nephew",
+        "title": "老领导打了个电话",
+        "npc": "old"
+      },
+      {
+        "id": "retired_leader_bid",
+        "title": "退休老领导的\"关照\"",
+        "npc": "old"
+      },
+      {
+        "id": "relative_canteen",
+        "title": "亲戚想承包机关食堂",
+        "npc": "old"
+      }
+    ],
+    "p_boss": [
+      {
+        "id": "gdp_target",
+        "title": "上级下达增速目标",
+        "npc": "boss"
+      },
+      {
+        "id": "commend",
+        "title": "上级通报表扬",
+        "npc": "boss"
+      },
+      {
+        "id": "boss_new",
+        "title": "新来的分管领导",
+        "npc": "boss"
+      },
+      {
+        "id": "boss_call",
+        "title": "上级的电话",
+        "npc": "boss"
+      },
+      {
+        "id": "zhixia_pop",
+        "title": "人口疏解",
+        "npc": "boss"
+      },
+      {
+        "id": "zhixia_rank",
+        "title": "城市排名",
+        "npc": "boss"
+      },
+      {
+        "id": "sub_city",
+        "title": "下面的区县想报项目",
+        "npc": "boss"
+      },
+      {
+        "id": "university",
+        "title": "争取一所大学分校",
+        "npc": "boss"
+      },
+      {
+        "id": "leader_visit",
+        "title": "省领导来调研",
+        "npc": "boss"
+      }
+    ],
+    "p_lgfv": [
+      {
+        "id": "media_debt",
+        "title": "媒体报道你这里的债务",
+        "npc": "lgfv"
+      },
+      {
+        "id": "lgfv_push",
+        "title": "城投公司总经理来汇报",
+        "npc": "lgfv"
+      },
+      {
+        "id": "lgfv_ceo",
+        "title": "城投总经理想辞职",
+        "npc": "lgfv"
+      },
+      {
+        "id": "lgfv_ceo2",
+        "title": "城投的窟窿",
+        "npc": "lgfv"
+      },
+      {
+        "id": "lgfv_ceo3",
+        "title": "表外债务被审计发现",
+        "npc": "lgfv"
+      },
+      {
+        "id": "debt_swap",
+        "title": "置换债额度",
+        "npc": "lgfv"
+      },
+      {
+        "id": "wage_delay_rumor",
+        "title": "\"要发不出工资了\"",
+        "npc": "lgfv"
+      }
+    ],
+    "p_zhou": [
+      {
+        "id": "zhou1",
+        "title": "常务副手的提议",
+        "npc": "zhou"
+      },
+      {
+        "id": "zhou2",
+        "title": "老周的提拔",
+        "npc": "zhou"
+      },
+      {
+        "id": "zhou2b",
+        "title": "老周的提拔",
+        "npc": "zhou"
+      },
+      {
+        "id": "zhou3",
+        "title": "老周被纪委叫去谈话",
+        "npc": "zhou"
+      },
+      {
+        "id": "zhou3b",
+        "title": "老周退居二线",
+        "npc": "zhou"
+      },
+      {
+        "id": "succ_plan",
+        "title": "接班人",
+        "npc": "zhou"
+      },
+      {
+        "id": "stadium_idle",
+        "title": "体育中心运营亏损",
+        "npc": "zhou"
+      },
+      {
+        "id": "school_merge",
+        "title": "撤点并校",
+        "npc": "zhou"
+      },
+      {
+        "id": "clinic_doc",
+        "title": "社区医生留不住",
+        "npc": "zhou"
+      },
+      {
+        "id": "nursery_video",
+        "title": "幼儿园出了视频",
+        "npc": "zhou"
+      },
+      {
+        "id": "hosp_grade",
+        "title": "医院申报三甲",
+        "npc": "zhou"
+      },
+      {
+        "id": "egov",
+        "title": "政务服务一网通办",
+        "npc": "zhou"
+      },
+      {
+        "id": "bikes",
+        "title": "共享单车堆成山",
+        "npc": "zhou"
+      },
+      {
+        "id": "bus_ev",
+        "title": "公交电动化",
+        "npc": "zhou"
+      },
+      {
+        "id": "night_market",
+        "title": "夜经济",
+        "npc": "zhou"
+      },
+      {
+        "id": "stats",
+        "title": "统计局的一个电话",
+        "npc": "zhou"
+      },
+      {
+        "id": "fireworks",
+        "title": "烟花禁不禁",
+        "npc": "zhou"
+      },
+      {
+        "id": "secretary",
+        "title": "秘书的事",
+        "npc": "zhou"
+      }
+    ],
+    "p_wife": [
+      {
+        "id": "fam_school",
+        "title": "孩子上学",
+        "npc": null
+      },
+      {
+        "id": "fam_biz",
+        "title": "爱人想做生意",
+        "npc": null
+      },
+      {
+        "id": "fam_father",
+        "title": "父亲住院",
+        "npc": null
+      }
+    ]
+  },
+  "newNoticeArt": {
+    "newPetition": {
+      "scene": "s_meeting",
+      "portrait": null
+    },
+    "newInspection": {
+      "scene": "s_meeting",
+      "portrait": null
+    }
+  }
+}

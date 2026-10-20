@@ -1,0 +1,20 @@
+{
+  "release": "v1.14",
+  "repository": "Lynch715/mayor-simulator",
+  "branch": "main",
+  "baseCommit": "9dc672d0f1dabee2daa73a15930aa963732254a9",
+  "site": "https://lynch715.github.io/mayor-simulator/",
+  "indexSha256": "f7fac7d2178a45f3be29a3117629cb3de87e1bf923d23338a4780e1085d870fc",
+  "oldIndexSha256": "dae5e8edf1c77b4326de7cbac9315dd7c27a48e70858f66f46f4e2803ac75cd4",
+  "gameAssetsChanged": false,
+  "licenseUnchanged": true,
+  "regressionTests": 184,
+  "protectedBrowserPreflight": {
+    "pages": 490,
+    "dialogs": 1456,
+    "saveRoundtrips": 30,
+    "originalStorageByteEqual": true
+  },
+  "phase4": false,
+  "postDeploymentEvidence": "Post-deployment checks are recorded separately in the local tests/release-v114 directory."
+}

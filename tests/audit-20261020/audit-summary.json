@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-20",
+  "sourceSha256": "8f075a14f9d2545d4c457881b0c797c470d1636fca0d4de66f2daa96ca0e04c5",
+  "productionCodeChanged": false,
+  "saveDataChanged": false,
+  "originalArtChanged": false,
+  "phase4": "cancelled",
+  "baselineTests": 135,
+  "pageChecks": 490,
+  "pageIssueCombinations": 35,
+  "dialogChecks": 1456,
+  "dialogIssueCombinations": 204,
+  "portraitFiles": 8,
+  "allWebpFiles": 35,
+  "exactFileDuplicates": [],
+  "decodedPixelDuplicates": [],
+  "portraitUsageCounts": {
+    "p_developer": 21,
+    "p_petitioner": 37,
+    "p_inspector": 15,
+    "p_oldleader": 3,
+    "p_boss": 9,
+    "p_lgfv": 7,
+    "p_zhou": 18,
+    "p_wife": 3
+  },
+  "campaignRuns": 60,
+  "campaignMonths": 2656,
+  "campaignBalanceErrors": 0,
+  "priorityOne": [
+    "A01-landscape-modal-blocked",
+    "G01-citywide-grant-clawback-fires-player",
+    "G02-private-estate-viability-missing"
+  ],
+  "limitations": [
+    "Viewport simulation, no real-device check",
+    "Synthetic threshold probes are not normal-play frequency estimates",
+    "Fixed campaign policies are not player win-rate estimates",
+    "UI checks do not prove absence of every visual flaw"
+  ],
+  "ordinaryEventDialogChecks": 1274,
+  "specialDialogChecks": 182
+}

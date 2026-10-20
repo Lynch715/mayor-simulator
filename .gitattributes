@@ -1,0 +1,2 @@
+# Archived HTML snapshots retain their verified original bytes.
+backups/*.html -whitespace

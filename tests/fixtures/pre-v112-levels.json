@@ -1,0 +1,2126 @@
+[
+  {
+    "lvl": 0,
+    "year": 4,
+    "month": 6,
+    "age": 35,
+    "tenure": 0,
+    "cash": 180,
+    "reserve": 0,
+    "reserveRate": 2,
+    "seen": {},
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 3.4,
+    "pros": 36,
+    "liv": 42,
+    "sat": 52,
+    "env": 58,
+    "rep": 50,
+    "unity": 60,
+    "landTotal": 600,
+    "land": 574.75,
+    "landSold": 0,
+    "housing": 20,
+    "f": {
+      "road": 1,
+      "bridge": 0,
+      "busdepot": 0,
+      "station": 0,
+      "nursery": 0,
+      "school": 1,
+      "clinic": 0,
+      "hosp": 1,
+      "social": 1,
+      "elder": 1,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 0,
+      "power": 1,
+      "water": 1,
+      "sewage": 0,
+      "garbage": 0,
+      "gas": 0,
+      "pipe": 0,
+      "datacenter": 0,
+      "park": 1,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 0,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 0,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 0,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "factory": 0
+    },
+    "ind": [],
+    "build": [
+      {
+        "id": "hosp",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 530.4,
+        "months": 8,
+        "left": 8,
+        "wl": "公共卫生"
+      }
+    ],
+    "cq": [],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 90,
+    "quota": 95,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [],
+    "once": {},
+    "merit": 40,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 1,
+        "m": 1,
+        "t": "立项：医院，总投资530万，工期8个月。",
+        "c": "",
+        "q": 3
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "长期出租工业用地20.0亩，年租金2万，按月收取，租期5年。",
+        "c": "good",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": null,
+    "expMult": 1,
+    "over": null,
+    "tab": "over",
+    "grantYr": 0,
+    "hist": [],
+    "built": 0,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "govern",
+    "agPool": [
+      "study",
+      "cadre",
+      "budget"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 48
+      },
+      "boss": {
+        "n": "马少华",
+        "f": 51
+      },
+      "old": {
+        "n": "孙成栋",
+        "f": 53
+      },
+      "lgfv": {
+        "n": "郑文秀",
+        "f": 48
+      },
+      "dev": {
+        "n": "邱克明",
+        "f": 47
+      },
+      "pet": {
+        "n": "韩志远",
+        "f": 51
+      },
+      "insp": {
+        "n": "程宗年",
+        "f": 55
+      }
+    },
+    "plots": [],
+    "plotSeq": 0,
+    "landRev": 0,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [],
+    "leadSeq": 0,
+    "rivals": null,
+    "talent": 0,
+    "bigp": null,
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 1,
+    "lsc": 1,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 250,
+          "res": 210,
+          "com": 114.75
+        },
+        "leased": 20,
+        "used": 5.25,
+        "sold": 0,
+        "protectedFarm": 180,
+        "protectedEco": 90
+      },
+      "leases": [
+        {
+          "mu": 20,
+          "annual": 2.4130711182733817,
+          "left": 60,
+          "term": 60,
+          "start": 13
+        }
+      ],
+      "permits": {},
+      "tech": {
+        "factory": 1
+      },
+      "resources": [
+        "煤炭"
+      ],
+      "finance": {
+        "opening": 180,
+        "entries": [],
+        "history": []
+      },
+      "environment": {
+        "opening": 58,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 2,
+    "planZone": "mixed",
+    "logSeq": 3
+  },
+  {
+    "lvl": 1,
+    "year": 4,
+    "month": 6,
+    "age": 35,
+    "tenure": 0,
+    "cash": 3250,
+    "reserve": 0,
+    "reserveRate": 2,
+    "seen": {},
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 38,
+    "pros": 47,
+    "liv": 50,
+    "sat": 52,
+    "env": 50,
+    "rep": 50,
+    "unity": 60,
+    "landTotal": 5000,
+    "land": 2686.25,
+    "landSold": 1500,
+    "housing": 45,
+    "f": {
+      "road": 1,
+      "bridge": 0,
+      "busdepot": 0,
+      "station": 0,
+      "nursery": 0,
+      "school": 2,
+      "clinic": 0,
+      "hosp": 1,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 0,
+      "power": 1,
+      "water": 1,
+      "sewage": 0,
+      "garbage": 0,
+      "gas": 0,
+      "pipe": 0,
+      "datacenter": 0,
+      "park": 1,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 0,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 0,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "factory": 2
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 60
+      }
+    ],
+    "build": [
+      {
+        "id": "hosp",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 5304,
+        "months": 8,
+        "left": 8,
+        "wl": "公共卫生"
+      }
+    ],
+    "cq": [
+      {
+        "amt": 9033.751670679609,
+        "rate": 7,
+        "left": 30,
+        "term": 36
+      },
+      {
+        "amt": 6022.501113786407,
+        "rate": 7,
+        "left": 54,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 1100,
+    "quota": 1155,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [],
+    "once": {},
+    "merit": 40,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 1,
+        "m": 1,
+        "t": "立项：医院，总投资5304万，工期8个月。",
+        "c": "",
+        "q": 3
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "长期出租工业用地20.0亩，年租金7万，按月收取，租期5年。",
+        "c": "good",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": null,
+    "expMult": 1,
+    "over": null,
+    "tab": "over",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        }
+      }
+    ],
+    "built": 0,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "govern",
+    "agPool": [
+      "survey",
+      "province",
+      "report"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 46
+      },
+      "boss": {
+        "n": "方永康",
+        "f": 45
+      },
+      "old": {
+        "n": "马锦程",
+        "f": 51
+      },
+      "lgfv": {
+        "n": "贺志远",
+        "f": 54
+      },
+      "dev": {
+        "n": "姜秉正",
+        "f": 55
+      },
+      "pet": {
+        "n": "张望山",
+        "f": 50
+      },
+      "insp": {
+        "n": "邱维民",
+        "f": 56
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "com",
+        "mu": 198,
+        "loc": "沿河地块",
+        "heat": 0.5301871738525538,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "com",
+        "mu": 174,
+        "loc": "老城片区",
+        "heat": 0.7102530515136627,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "ind",
+        "mu": 294,
+        "loc": "高铁片区",
+        "heat": 0.5327448778542189,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 0,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [],
+    "leadSeq": 0,
+    "rivals": null,
+    "talent": 0,
+    "bigp": null,
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 10,
+    "lsc": 8.333333333333334,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 1217.5,
+          "res": 962.4999999999999,
+          "com": 506.2500000000001
+        },
+        "leased": 20,
+        "used": 43.75,
+        "sold": 0,
+        "protectedFarm": 1500,
+        "protectedEco": 750
+      },
+      "leases": [
+        {
+          "mu": 20,
+          "annual": 6.711978078561152,
+          "left": 60,
+          "term": 60,
+          "start": 13
+        }
+      ],
+      "permits": {},
+      "tech": {
+        "factory": 1
+      },
+      "resources": [
+        "煤炭"
+      ],
+      "finance": {
+        "opening": 3250,
+        "entries": [],
+        "history": []
+      },
+      "environment": {
+        "opening": 50,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 2,
+    "planZone": "mixed",
+    "logSeq": 3
+  },
+  {
+    "lvl": 2,
+    "year": 4,
+    "month": 6,
+    "age": 35,
+    "tenure": 0,
+    "cash": 20000,
+    "reserve": 0,
+    "reserveRate": 2,
+    "seen": {},
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 320,
+    "pros": 50,
+    "liv": 50,
+    "sat": 52,
+    "env": 48,
+    "rep": 50,
+    "unity": 60,
+    "landTotal": 22000,
+    "land": 11887.5,
+    "landSold": 6600,
+    "housing": 45,
+    "f": {
+      "road": 1,
+      "bridge": 1,
+      "busdepot": 1,
+      "station": 0,
+      "nursery": 1,
+      "school": 2,
+      "clinic": 1,
+      "hosp": 2,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 1,
+      "power": 1,
+      "water": 1,
+      "sewage": 0,
+      "garbage": 0,
+      "gas": 0,
+      "pipe": 0,
+      "datacenter": 0,
+      "park": 1,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 0,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 0,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "factory": 3
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 60
+      }
+    ],
+    "build": [
+      {
+        "id": "hosp",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 31824,
+        "months": 8,
+        "left": 8,
+        "wl": "公共卫生"
+      }
+    ],
+    "cq": [
+      {
+        "amt": 67430.6208,
+        "rate": 7,
+        "left": 30,
+        "term": 36
+      },
+      {
+        "amt": 44953.747200000005,
+        "rate": 7,
+        "left": 54,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 7000,
+    "quota": 7350,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [],
+    "once": {},
+    "merit": 40,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 1,
+        "m": 1,
+        "t": "立项：医院，总投资3.2亿，工期8个月。",
+        "c": "",
+        "q": 3
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "长期出租工业用地20.0亩，年租金20万，按月收取，租期5年。",
+        "c": "good",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": null,
+    "expMult": 1,
+    "over": null,
+    "tab": "over",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        }
+      }
+    ],
+    "built": 0,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "govern",
+    "agPool": [
+      "envfix",
+      "report",
+      "survey"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 52
+      },
+      "boss": {
+        "n": "谢少华",
+        "f": 48
+      },
+      "old": {
+        "n": "陈怀安",
+        "f": 52
+      },
+      "lgfv": {
+        "n": "许成栋",
+        "f": 51
+      },
+      "dev": {
+        "n": "马德昌",
+        "f": 56
+      },
+      "pet": {
+        "n": "程庆生",
+        "f": 50
+      },
+      "insp": {
+        "n": "姜文秀",
+        "f": 51
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "com",
+        "mu": 748,
+        "loc": "沿河地块",
+        "heat": 0.5227119880456191,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "res",
+        "mu": 678,
+        "loc": "城东新区",
+        "heat": 0.6375343855011921,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "ind",
+        "mu": 837,
+        "loc": "高铁片区",
+        "heat": 0.47053196678941067,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 0,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [
+      {
+        "id": "L1",
+        "n": "鑫中汽车零部件集团",
+        "fac": "agri",
+        "sc": 1.31,
+        "inv": 39334,
+        "ask": {
+          "land": 950,
+          "cash": 2475,
+          "cut": 12
+        },
+        "rival": false,
+        "y": 1
+      },
+      {
+        "id": "L2",
+        "n": "裕华环保科技产业",
+        "fac": "fzone",
+        "sc": 1.09,
+        "inv": 78491,
+        "ask": {
+          "land": 1679,
+          "cash": 5003,
+          "cut": 0
+        },
+        "rival": false,
+        "y": 1
+      }
+    ],
+    "leadSeq": 2,
+    "rivals": null,
+    "talent": 0,
+    "bigp": null,
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 60,
+    "lsc": 36.666666666666664,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 5425.000000000001,
+          "res": 4235,
+          "com": 2227.500000000001
+        },
+        "leased": 20,
+        "used": 192.5,
+        "sold": 0,
+        "protectedFarm": 6600,
+        "protectedEco": 3300
+      },
+      "leases": [
+        {
+          "mu": 20,
+          "annual": 19.715413179856117,
+          "left": 60,
+          "term": 60,
+          "start": 13
+        }
+      ],
+      "permits": {},
+      "tech": {
+        "factory": 1
+      },
+      "resources": [
+        "煤炭",
+        "油气"
+      ],
+      "finance": {
+        "opening": 20000,
+        "entries": [],
+        "history": []
+      },
+      "environment": {
+        "opening": 48,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 2,
+    "planZone": "mixed",
+    "logSeq": 3
+  },
+  {
+    "lvl": 3,
+    "year": 4,
+    "month": 6,
+    "age": 35,
+    "tenure": 0,
+    "cash": 37500,
+    "reserve": 0,
+    "reserveRate": 2,
+    "seen": {},
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 900,
+    "pros": 53,
+    "liv": 50,
+    "sat": 52,
+    "env": 46,
+    "rep": 50,
+    "unity": 60,
+    "landTotal": 50000,
+    "land": 27042.5,
+    "landSold": 15000,
+    "housing": 45,
+    "f": {
+      "road": 1,
+      "bridge": 1,
+      "busdepot": 1,
+      "station": 0,
+      "nursery": 1,
+      "school": 3,
+      "clinic": 1,
+      "hosp": 2,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 1,
+      "power": 1,
+      "water": 1,
+      "sewage": 0,
+      "garbage": 0,
+      "gas": 1,
+      "pipe": 0,
+      "datacenter": 0,
+      "park": 1,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 0,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 0,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "factory": 5
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 60
+      }
+    ],
+    "build": [
+      {
+        "id": "hosp",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 79560,
+        "months": 8,
+        "left": 8,
+        "wl": "公共卫生"
+      }
+    ],
+    "cq": [
+      {
+        "amt": 192836.544,
+        "rate": 7,
+        "left": 30,
+        "term": 36
+      },
+      {
+        "amt": 128557.696,
+        "rate": 7,
+        "left": 54,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 19000,
+    "quota": 19950,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [],
+    "once": {},
+    "merit": 40,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 1,
+        "m": 1,
+        "t": "立项：医院，总投资8.0亿，工期8个月。",
+        "c": "",
+        "q": 3
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "长期出租工业用地20.0亩，年租金45万，按月收取，租期5年。",
+        "c": "good",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": null,
+    "expMult": 1,
+    "over": null,
+    "tab": "over",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        }
+      }
+    ],
+    "built": 0,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "govern",
+    "agPool": [
+      "debtwork",
+      "cadre",
+      "report"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 45
+      },
+      "boss": {
+        "n": "谢文秀",
+        "f": 46
+      },
+      "old": {
+        "n": "韩庆生",
+        "f": 51
+      },
+      "lgfv": {
+        "n": "张淑英",
+        "f": 54
+      },
+      "dev": {
+        "n": "李德昌",
+        "f": 47
+      },
+      "pet": {
+        "n": "刘锦程",
+        "f": 56
+      },
+      "insp": {
+        "n": "丁桂芳",
+        "f": 49
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "ind",
+        "mu": 1370,
+        "loc": "城东新区",
+        "heat": 0.6373077901338156,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "com",
+        "mu": 1219,
+        "loc": "高铁片区",
+        "heat": 0.6426753146831806,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "res",
+        "mu": 522,
+        "loc": "开发区西侧",
+        "heat": 0.6010419569049891,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 0,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [
+      {
+        "id": "L1",
+        "n": "瑞捷智能装备股份",
+        "fac": "port",
+        "sc": 0.84,
+        "inv": 506406,
+        "ask": {
+          "land": 8677,
+          "cash": 27069,
+          "cut": 24
+        },
+        "rival": true,
+        "y": 1
+      },
+      {
+        "id": "L2",
+        "n": "宏恒数据集团",
+        "fac": "aero",
+        "sc": 1.17,
+        "inv": 5264095,
+        "ask": {
+          "land": 10502,
+          "cash": 591078,
+          "cut": 36
+        },
+        "rival": false,
+        "y": 1
+      }
+    ],
+    "leadSeq": 2,
+    "rivals": [
+      {
+        "n": "桐城市",
+        "pros": 53.08533425629139,
+        "pop": 667.5653080875054,
+        "aggr": 1.01,
+        "done": []
+      },
+      {
+        "n": "洛泾市",
+        "pros": 61.335909182205796,
+        "pop": 914.4220384256914,
+        "aggr": 0.7,
+        "done": []
+      }
+    ],
+    "talent": 0,
+    "bigp": {
+      "n": "省级物流枢纽",
+      "fac": "port",
+      "base": 96000,
+      "y": 1,
+      "r": [
+        1.11,
+        0.65
+      ]
+    },
+    "dist": null,
+    "alloc": {},
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 150,
+    "lsc": 83.33333333333333,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 12355.000000000002,
+          "res": 9625,
+          "com": 5062.500000000002
+        },
+        "leased": 20,
+        "used": 437.5,
+        "sold": 0,
+        "protectedFarm": 15000,
+        "protectedEco": 7500
+      },
+      "leases": [
+        {
+          "mu": 20,
+          "annual": 44.50116161007195,
+          "left": 60,
+          "term": 60,
+          "start": 13
+        }
+      ],
+      "permits": {},
+      "tech": {
+        "factory": 1
+      },
+      "resources": [
+        "煤炭",
+        "油气"
+      ],
+      "finance": {
+        "opening": 37500,
+        "entries": [],
+        "history": []
+      },
+      "environment": {
+        "opening": 46,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 2,
+    "planZone": "mixed",
+    "logSeq": 3
+  },
+  {
+    "lvl": 4,
+    "year": 4,
+    "month": 6,
+    "age": 35,
+    "tenure": 0,
+    "cash": 80000,
+    "reserve": 0,
+    "reserveRate": 2,
+    "seen": {},
+    "brief": 0,
+    "buildCat": "traffic",
+    "pop": 2400,
+    "pros": 56,
+    "liv": 50,
+    "sat": 52,
+    "env": 44,
+    "rep": 50,
+    "unity": 60,
+    "landTotal": 110000,
+    "land": 59517.5,
+    "landSold": 33000,
+    "housing": 45,
+    "f": {
+      "road": 1,
+      "bridge": 1,
+      "busdepot": 1,
+      "station": 0,
+      "nursery": 1,
+      "school": 3,
+      "clinic": 1,
+      "hosp": 2,
+      "social": 1,
+      "elder": 0,
+      "house": 0,
+      "culture": 0,
+      "gym": 0,
+      "market": 1,
+      "power": 1,
+      "water": 1,
+      "sewage": 0,
+      "garbage": 0,
+      "gas": 1,
+      "pipe": 0,
+      "datacenter": 0,
+      "park": 1,
+      "greenway": 0,
+      "wetland": 0,
+      "river": 0,
+      "agri": 0,
+      "logi": 1,
+      "fzone": 0,
+      "mall": 0,
+      "tour": 0,
+      "tech": 0,
+      "port": 0,
+      "fin": 0,
+      "aero": 0,
+      "warehouse": 0,
+      "grain": 0,
+      "compute": 0,
+      "package": 0,
+      "seedling": 0,
+      "petrol": 0,
+      "lng": 0,
+      "solar": 0,
+      "equipment": 0,
+      "wall": 0,
+      "feed": 0,
+      "forge": 0,
+      "medical": 0,
+      "timber": 0,
+      "rubber": 0,
+      "ceramic": 0,
+      "cng": 0,
+      "metal": 0,
+      "paper": 0,
+      "chemical": 0,
+      "glass": 0,
+      "recycle": 0,
+      "fiber": 0,
+      "fuel": 0,
+      "aluminium": 0,
+      "fertilizer": 0,
+      "coke": 0,
+      "chromium": 0,
+      "coal": 0,
+      "opencoal": 0,
+      "washcoal": 0,
+      "lignite": 0,
+      "oilfield": 0,
+      "refinery": 0,
+      "factory": 6
+    },
+    "ind": [
+      {
+        "id": "logi",
+        "age": 60
+      }
+    ],
+    "build": [
+      {
+        "id": "hosp",
+        "zone": "mixed",
+        "paid": 0,
+        "cost": 212160,
+        "months": 8,
+        "left": 8,
+        "wl": "公共卫生"
+      }
+    ],
+    "cq": [
+      {
+        "amt": 569980.1868387095,
+        "rate": 7,
+        "left": 30,
+        "term": 36
+      },
+      {
+        "amt": 379986.7912258064,
+        "rate": 7,
+        "left": 54,
+        "term": 60
+      }
+    ],
+    "platform": 0,
+    "sb": [],
+    "sbUnspent": 0,
+    "sbIdle": 0,
+    "sbYear": 0,
+    "task": null,
+    "frozen": false,
+    "staff": 52000,
+    "quota": 54600,
+    "recruitThisYear": 0,
+    "reformDone": false,
+    "file": [],
+    "sanctions": 0,
+    "accRisk": 0,
+    "flags": {},
+    "taxcut": 0,
+    "nosell": 0,
+    "collect": 0,
+    "sched": [],
+    "once": {},
+    "merit": 40,
+    "ratings": [],
+    "dRun": 0,
+    "gaps": {
+      "wage": 0,
+      "ops": 0,
+      "live": 0
+    },
+    "sanbaoYr": 0,
+    "accidentsYr": 0,
+    "interestMiss": 0,
+    "log": [
+      {
+        "y": 1,
+        "m": 1,
+        "t": "立项：医院，总投资21亿，工期8个月。",
+        "c": "",
+        "q": 3
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "长期出租工业用地20.0亩，年租金82万，按月收取，租期5年。",
+        "c": "good",
+        "q": 2
+      },
+      {
+        "y": 1,
+        "m": 1,
+        "t": "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。",
+        "c": "sys",
+        "q": 1
+      }
+    ],
+    "resume": [
+      {
+        "y": 1,
+        "t": "任青石镇镇长"
+      }
+    ],
+    "monthly": null,
+    "expMult": 1,
+    "over": null,
+    "tab": "over",
+    "grantYr": 0,
+    "hist": [
+      {
+        "lvl": 0,
+        "city": "青石镇",
+        "years": 0,
+        "built": 0,
+        "hdr": 0,
+        "grades": "",
+        "sat": 52,
+        "pros": 36,
+        "liv": 42,
+        "debt": 0,
+        "pros0": 36,
+        "debt0": 0,
+        "leftY": 1,
+        "after": 0,
+        "phase1": {
+          "version": 1,
+          "legacy": false,
+          "grace": 0,
+          "land": {
+            "free": {
+              "ind": 270,
+              "res": 210,
+              "com": 120
+            },
+            "leased": 0,
+            "used": 0,
+            "sold": 0,
+            "protectedFarm": 180,
+            "protectedEco": 90
+          },
+          "leases": [],
+          "permits": {},
+          "tech": {},
+          "resources": [
+            "煤炭"
+          ],
+          "finance": {
+            "opening": 180,
+            "entries": [],
+            "history": []
+          },
+          "environment": {
+            "opening": 58,
+            "natural": 0,
+            "ecology": 0,
+            "action": 0,
+            "event": 0,
+            "pollution": 0,
+            "overflow": 0,
+            "clipping": 0
+          },
+          "envLock": false
+        }
+      }
+    ],
+    "built": 0,
+    "phase": "work",
+    "retY": 0,
+    "ppp": 0,
+    "ag": "govern",
+    "agPool": [
+      "report",
+      "envfix",
+      "guest"
+    ],
+    "agCd": {},
+    "agFlag": {},
+    "agUse": {},
+    "agN": 0,
+    "wind": "growth",
+    "windLeft": 2,
+    "windHist": [],
+    "npc": {
+      "zhou": {
+        "n": "周立山",
+        "f": 50
+      },
+      "boss": {
+        "n": "许永康",
+        "f": 53
+      },
+      "old": {
+        "n": "刘守成",
+        "f": 56
+      },
+      "lgfv": {
+        "n": "王少华",
+        "f": 46
+      },
+      "dev": {
+        "n": "李文秀",
+        "f": 50
+      },
+      "pet": {
+        "n": "张兆丰",
+        "f": 53
+      },
+      "insp": {
+        "n": "丁维民",
+        "f": 51
+      }
+    },
+    "plots": [
+      {
+        "id": "P1",
+        "use": "com",
+        "mu": 697,
+        "loc": "城南片区",
+        "heat": 0.800301173054255,
+        "y": 1
+      },
+      {
+        "id": "P2",
+        "use": "res",
+        "mu": 1485,
+        "loc": "城东新区",
+        "heat": 0.5795807510098585,
+        "y": 1
+      },
+      {
+        "id": "P3",
+        "use": "com",
+        "mu": 893,
+        "loc": "旧厂区",
+        "heat": 0.7559486578634151,
+        "y": 1
+      }
+    ],
+    "plotSeq": 3,
+    "landRev": 0,
+    "landHist": [],
+    "spotYr": 0,
+    "leads": [
+      {
+        "id": "L1",
+        "n": "恒兴半导体股份",
+        "fac": "tour",
+        "sc": 1.04,
+        "inv": 664921,
+        "ask": {
+          "land": 10940,
+          "cash": 77888,
+          "cut": 0
+        },
+        "rival": true,
+        "y": 1
+      },
+      {
+        "id": "L2",
+        "n": "鑫中生物股份",
+        "fac": "logi",
+        "sc": 1.11,
+        "inv": 397868,
+        "ask": {
+          "land": 7292,
+          "cash": 25404,
+          "cut": 24
+        },
+        "rival": false,
+        "y": 1
+      }
+    ],
+    "leadSeq": 2,
+    "rivals": [
+      {
+        "n": "瑞和市",
+        "pros": 50.7033380176872,
+        "pop": 2317.0491440221667,
+        "aggr": 0.79,
+        "done": []
+      },
+      {
+        "n": "洛泾市",
+        "pros": 64.39596563577652,
+        "pop": 1915.9291538223622,
+        "aggr": 0.97,
+        "done": []
+      }
+    ],
+    "talent": 0,
+    "bigp": {
+      "n": "省级科创走廊节点",
+      "fac": "tech",
+      "base": 448000,
+      "y": 1,
+      "r": [
+        0.69,
+        0.78
+      ]
+    },
+    "dist": [
+      {
+        "id": "城关区",
+        "n": "城关区",
+        "t": "core",
+        "pop": 442.39116980284456,
+        "pros": 66.01150513347238,
+        "liv": 55.41510879248381,
+        "debt": 36.39052036171779,
+        "honest": 0.49,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "和平区",
+        "n": "和平区",
+        "t": "core",
+        "pop": 500.117399212718,
+        "pros": 58.8541676113382,
+        "liv": 52.17607838846743,
+        "debt": 29.710155420470983,
+        "honest": 0.32,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "新城区",
+        "n": "新城区",
+        "t": "new",
+        "pop": 341.0041263207793,
+        "pros": 55.19474790524691,
+        "liv": 54.58979679271579,
+        "debt": 67.40162366209552,
+        "honest": 0.94,
+        "lazy": true,
+        "hide": 0
+      },
+      {
+        "id": "临江新区",
+        "n": "临江新区",
+        "t": "new",
+        "pop": 364.8431259691715,
+        "pros": 50.54953060019761,
+        "liv": 54.255109606310725,
+        "debt": 77.82556340703741,
+        "honest": 0.68,
+        "lazy": true,
+        "hide": 0
+      },
+      {
+        "id": "开发区",
+        "n": "开发区",
+        "t": "ind",
+        "pop": 284.48626994937655,
+        "pros": 64.43366636242718,
+        "liv": 45.3347347676754,
+        "debt": 44.81429123273119,
+        "honest": 0.31,
+        "lazy": true,
+        "hide": 0
+      },
+      {
+        "id": "双桥区",
+        "n": "双桥区",
+        "t": "ind",
+        "pop": 215.00181747972965,
+        "pros": 64.76923010591418,
+        "liv": 47.57486246712506,
+        "debt": 46.02529852511361,
+        "honest": 0.25,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "云岭区",
+        "n": "云岭区",
+        "t": "far",
+        "pop": 157.0893680110574,
+        "pros": 39.59863804560155,
+        "liv": 41.82567058876157,
+        "debt": 32.867410383652896,
+        "honest": 0.37,
+        "lazy": false,
+        "hide": 0
+      },
+      {
+        "id": "港北区",
+        "n": "港北区",
+        "t": "port",
+        "pop": 221.59720512628553,
+        "pros": 61.25820879358798,
+        "liv": 46.8249627109617,
+        "debt": 51.76010492676869,
+        "honest": 0.33,
+        "lazy": false,
+        "hide": 0
+      }
+    ],
+    "alloc": {
+      "城关区": {
+        "fund": 2,
+        "focus": "people"
+      },
+      "和平区": {
+        "fund": 2,
+        "focus": "people"
+      },
+      "新城区": {
+        "fund": 2,
+        "focus": "debt"
+      },
+      "临江新区": {
+        "fund": 2,
+        "focus": "debt"
+      },
+      "开发区": {
+        "fund": 2,
+        "focus": "eco"
+      },
+      "双桥区": {
+        "fund": 2,
+        "focus": "eco"
+      },
+      "云岭区": {
+        "fund": 2,
+        "focus": "eco"
+      },
+      "港北区": {
+        "fund": 2,
+        "focus": "eco"
+      }
+    },
+    "era": {},
+    "eraLand": 1,
+    "eraPop": 0,
+    "eraDebt": 0,
+    "eraRet": 0,
+    "sc": 400,
+    "lsc": 183.33333333333334,
+    "phase1": {
+      "version": 1,
+      "legacy": false,
+      "grace": 0,
+      "land": {
+        "free": {
+          "ind": 27205.000000000004,
+          "res": 21175,
+          "com": 11137.5
+        },
+        "leased": 20,
+        "used": 962.4999999999999,
+        "sold": 0,
+        "protectedFarm": 33000,
+        "protectedEco": 16500
+      },
+      "leases": [
+        {
+          "mu": 20,
+          "annual": 81.63008902446045,
+          "left": 60,
+          "term": 60,
+          "start": 13
+        }
+      ],
+      "permits": {},
+      "tech": {
+        "factory": 1
+      },
+      "resources": [
+        "煤炭",
+        "油气"
+      ],
+      "finance": {
+        "opening": 80000,
+        "entries": [],
+        "history": []
+      },
+      "environment": {
+        "opening": 44,
+        "natural": 0,
+        "ecology": 0,
+        "action": 0,
+        "event": 0,
+        "pollution": 0,
+        "overflow": 0,
+        "clipping": 0
+      },
+      "envLock": false
+    },
+    "schemaVersion": 2,
+    "planZone": "mixed",
+    "logSeq": 3
+  }
+]
