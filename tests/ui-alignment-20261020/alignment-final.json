@@ -1,0 +1,1556 @@
+{
+  "checks": 70,
+  "failures": [],
+  "rows": [
+    {
+      "label": "hr",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "width": 270,
+          "content": 510
+        }
+      ]
+    },
+    {
+      "label": "business",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "fin",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "width": 270,
+          "content": 360
+        }
+      ]
+    },
+    {
+      "label": "debt",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "projects",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "width": 270,
+          "content": 360
+        }
+      ]
+    },
+    {
+      "label": "hr",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "width": 310,
+          "content": 510
+        }
+      ]
+    },
+    {
+      "label": "business",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "fin",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "width": 310,
+          "content": 360
+        }
+      ]
+    },
+    {
+      "label": "debt",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "projects",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "width": 310,
+          "content": 360
+        }
+      ]
+    },
+    {
+      "label": "hr",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "width": 340,
+          "content": 510
+        }
+      ]
+    },
+    {
+      "label": "business",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "fin",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "width": 340,
+          "content": 360
+        }
+      ]
+    },
+    {
+      "label": "debt",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "projects",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "width": 340,
+          "content": 360
+        }
+      ]
+    },
+    {
+      "label": "hr",
+      "screen": [
+        768,
+        900
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "business",
+      "screen": [
+        768,
+        900
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "fin",
+      "screen": [
+        768,
+        900
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "debt",
+      "screen": [
+        768,
+        900
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "projects",
+      "screen": [
+        768,
+        900
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "hr",
+      "screen": [
+        900,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "business",
+      "screen": [
+        900,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "fin",
+      "screen": [
+        900,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "debt",
+      "screen": [
+        900,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "projects",
+      "screen": [
+        900,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "hr",
+      "screen": [
+        901,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "width": 465,
+          "content": 510
+        }
+      ]
+    },
+    {
+      "label": "business",
+      "screen": [
+        901,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "fin",
+      "screen": [
+        901,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "debt",
+      "screen": [
+        901,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "projects",
+      "screen": [
+        901,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "hr",
+      "screen": [
+        1024,
+        768
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "business",
+      "screen": [
+        1024,
+        768
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "fin",
+      "screen": [
+        1024,
+        768
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "debt",
+      "screen": [
+        1024,
+        768
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "projects",
+      "screen": [
+        1024,
+        768
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "hr",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "business",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "fin",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "debt",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "projects",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "monthly-safe",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "b": 568,
+          "r": 320
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 296,
+          "h": 470,
+          "b": 524,
+          "r": 308
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 294,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 307
+        },
+        "safeTop": 54,
+        "safeBottom": 524,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-reopened",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "b": 568,
+          "r": 320
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 296,
+          "h": 470,
+          "b": 524,
+          "r": 308
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 294,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 307
+        },
+        "safeTop": 54,
+        "safeBottom": 524,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "review-safe",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "b": 568,
+          "r": 320
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 296,
+          "h": 470,
+          "b": 524,
+          "r": 308
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 294,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 307
+        },
+        "safeTop": 54,
+        "safeBottom": 524,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "review-reopened",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "b": 568,
+          "r": 320
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 296,
+          "h": 470,
+          "b": 524,
+          "r": 308
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 294,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 307
+        },
+        "safeTop": 54,
+        "safeBottom": 524,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "ending_debt-safe",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "b": 568,
+          "r": 320
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 296,
+          "h": 470,
+          "b": 524,
+          "r": 308
+        },
+        "header": {
+          "x": 13,
+          "y": 187,
+          "w": 294,
+          "h": 73.8,
+          "b": 260.8,
+          "r": 307
+        },
+        "safeTop": 54,
+        "safeBottom": 524,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "ending_debt-reopened",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "b": 568,
+          "r": 320
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 296,
+          "h": 470,
+          "b": 524,
+          "r": 308
+        },
+        "header": {
+          "x": 13,
+          "y": 187,
+          "w": 294,
+          "h": 73.8,
+          "b": 260.8,
+          "r": 307
+        },
+        "safeTop": 54,
+        "safeBottom": 524,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-safe",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 640,
+          "b": 640,
+          "r": 360
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 336,
+          "h": 542,
+          "b": 596,
+          "r": 348
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 334,
+          "h": 73.8,
+          "b": 128.8,
+          "r": 347
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-reopened",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 640,
+          "b": 640,
+          "r": 360
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 336,
+          "h": 542,
+          "b": 596,
+          "r": 348
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 334,
+          "h": 73.8,
+          "b": 128.8,
+          "r": 347
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "review-safe",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 640,
+          "b": 640,
+          "r": 360
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 336,
+          "h": 542,
+          "b": 596,
+          "r": 348
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 334,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 347
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "review-reopened",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 640,
+          "b": 640,
+          "r": 360
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 336,
+          "h": 542,
+          "b": 596,
+          "r": 348
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 334,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 347
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "ending_debt-safe",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 640,
+          "b": 640,
+          "r": 360
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 336,
+          "h": 542,
+          "b": 596,
+          "r": 348
+        },
+        "header": {
+          "x": 13,
+          "y": 187,
+          "w": 334,
+          "h": 73.8,
+          "b": 260.8,
+          "r": 347
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "ending_debt-reopened",
+      "screen": [
+        360,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 640,
+          "b": 640,
+          "r": 360
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 336,
+          "h": 542,
+          "b": 596,
+          "r": 348
+        },
+        "header": {
+          "x": 13,
+          "y": 187,
+          "w": 334,
+          "h": 73.8,
+          "b": 260.8,
+          "r": 347
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-safe",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "b": 844,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 746,
+          "b": 800,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 73.8,
+          "b": 128.8,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 800,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-reopened",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "b": 844,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 746,
+          "b": 800,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 73.8,
+          "b": 128.8,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 800,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "review-safe",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "b": 844,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 746,
+          "b": 800,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 800,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "review-reopened",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "b": 844,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 746,
+          "b": 800,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 800,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "ending_debt-safe",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "b": 844,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 184.2,
+          "w": 366,
+          "h": 615.8,
+          "b": 800,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 317.2,
+          "w": 364,
+          "h": 73.8,
+          "b": 391,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 800,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "ending_debt-reopened",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "b": 844,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 184.2,
+          "w": 366,
+          "h": 615.8,
+          "b": 800,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 317.2,
+          "w": 364,
+          "h": 73.8,
+          "b": 391,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 800,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-safe",
+      "screen": [
+        390,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 640,
+          "b": 640,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 542,
+          "b": 596,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 73.8,
+          "b": 128.8,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-reopened",
+      "screen": [
+        390,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 640,
+          "b": 640,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 542,
+          "b": 596,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 73.8,
+          "b": 128.8,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "review-safe",
+      "screen": [
+        390,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 640,
+          "b": 640,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 542,
+          "b": 596,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "review-reopened",
+      "screen": [
+        390,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 640,
+          "b": 640,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 542,
+          "b": 596,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "ending_debt-safe",
+      "screen": [
+        390,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 640,
+          "b": 640,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 542,
+          "b": 596,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 187,
+          "w": 364,
+          "h": 73.8,
+          "b": 260.8,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "ending_debt-reopened",
+      "screen": [
+        390,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 640,
+          "b": 640,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 542,
+          "b": 596,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 187,
+          "w": 364,
+          "h": 73.8,
+          "b": 260.8,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-safe",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 568,
+          "h": 320,
+          "b": 320,
+          "r": 568
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 544,
+          "h": 222,
+          "b": 276,
+          "r": 556
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 542,
+          "h": 69.8,
+          "b": 124.8,
+          "r": 555
+        },
+        "safeTop": 54,
+        "safeBottom": 276,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-reopened",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 568,
+          "h": 320,
+          "b": 320,
+          "r": 568
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 544,
+          "h": 222,
+          "b": 276,
+          "r": 556
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 542,
+          "h": 69.8,
+          "b": 124.8,
+          "r": 555
+        },
+        "safeTop": 54,
+        "safeBottom": 276,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "review-safe",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 568,
+          "h": 320,
+          "b": 320,
+          "r": 568
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 544,
+          "h": 222,
+          "b": 276,
+          "r": 556
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 542,
+          "h": 69.8,
+          "b": 124.8,
+          "r": 555
+        },
+        "safeTop": 54,
+        "safeBottom": 276,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "review-reopened",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 568,
+          "h": 320,
+          "b": 320,
+          "r": 568
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 544,
+          "h": 222,
+          "b": 276,
+          "r": 556
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 542,
+          "h": 69.8,
+          "b": 124.8,
+          "r": 555
+        },
+        "safeTop": 54,
+        "safeBottom": 276,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "ending_debt-safe",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 568,
+          "h": 320,
+          "b": 320,
+          "r": 568
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 544,
+          "h": 222,
+          "b": 276,
+          "r": 556
+        },
+        "header": {
+          "x": 13,
+          "y": 111,
+          "w": 542,
+          "h": 69.8,
+          "b": 180.8,
+          "r": 555
+        },
+        "safeTop": 54,
+        "safeBottom": 276,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "ending_debt-reopened",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 568,
+          "h": 320,
+          "b": 320,
+          "r": 568
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 544,
+          "h": 222,
+          "b": 276,
+          "r": 556
+        },
+        "header": {
+          "x": 13,
+          "y": 111,
+          "w": 542,
+          "h": 69.8,
+          "b": 180.8,
+          "r": 555
+        },
+        "safeTop": 54,
+        "safeBottom": 276,
+        "scrollTop": 0
+      }
+    }
+  ]
+}

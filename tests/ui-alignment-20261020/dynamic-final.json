@@ -1,0 +1,226 @@
+{
+  "checks": 7,
+  "failures": [],
+  "rows": [
+    {
+      "label": "monthly-resized",
+      "screen": [
+        390,
+        640
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 640,
+          "b": 640,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 542,
+          "b": 596,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 73.8,
+          "b": 128.8,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 596,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-resized",
+      "screen": [
+        390,
+        568
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 568,
+          "b": 568,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 470,
+          "b": 524,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 73.8,
+          "b": 128.8,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 524,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-resized",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "b": 844,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 746,
+          "b": 800,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 73.8,
+          "b": 128.8,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 800,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-resized",
+      "screen": [
+        320,
+        568
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 320,
+          "h": 568,
+          "b": 568,
+          "r": 320
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 296,
+          "h": 470,
+          "b": 524,
+          "r": 308
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 294,
+          "h": 99.5,
+          "b": 154.5,
+          "r": 307
+        },
+        "safeTop": 54,
+        "safeBottom": 524,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "monthly-resized",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": [],
+      "geometry": {
+        "modal": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844,
+          "b": 844,
+          "r": 390
+        },
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 746,
+          "b": 800,
+          "r": 378
+        },
+        "header": {
+          "x": 13,
+          "y": 55,
+          "w": 364,
+          "h": 73.8,
+          "b": 128.8,
+          "r": 377
+        },
+        "safeTop": 54,
+        "safeBottom": 800,
+        "scrollTop": 0
+      }
+    },
+    {
+      "label": "continue-at-bottom",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "geometry": {
+        "doc": {
+          "x": 12,
+          "y": 54,
+          "w": 366,
+          "h": 746,
+          "b": 800,
+          "r": 378
+        },
+        "button": {
+          "x": 29,
+          "y": 687.3,
+          "w": 332,
+          "h": 48.5,
+          "b": 735.8,
+          "r": 361
+        }
+      }
+    },
+    {
+      "label": "continue-works",
+      "issues": []
+    }
+  ]
+}

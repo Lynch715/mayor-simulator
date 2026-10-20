@@ -1,0 +1,30 @@
+{
+  "sourceSha256": "73fd4d4c68d40788f559e2f32f1e469d819aca8a7440e08ae62d24764ffa5ef9",
+  "regressionTests": 184,
+  "alignmentChecks": 70,
+  "dynamicChecks": 7,
+  "pages": {
+    "checks": 490,
+    "issuePages": 0,
+    "issues": []
+  },
+  "events": {
+    "checks": 1274,
+    "issueDialogs": 0,
+    "issues": []
+  },
+  "specials": {
+    "checks": 182,
+    "issueDialogs": 0,
+    "issues": []
+  },
+  "compatibilityChecks": 30,
+  "storageRestoration": {
+    "byteEqual": true,
+    "backupFound": true,
+    "keysBefore": 5,
+    "keysAfter": 5
+  },
+  "published": false,
+  "physicalDeviceTested": false
+}
