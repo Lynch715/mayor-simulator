@@ -489,14 +489,13 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
     <h1>一方水土</h1>
     <div class="sub">地方主政者生涯模拟</div>
     <div class="rule"></div>
-    <p>你三十二岁，刚被任命为青石镇镇长。镇财政所的账本已经放在桌上：转移支付撑着工资，税收撑不起一条像样的路，储备地倒还剩几百亩。</p>
-    <p>往后二十八年，你会在这个体系里一级一级往上走，或者走不上去。每个月都要决定钱往哪投、地卖不卖、债发不发、编制招多少。上面看考核，下面看日子。</p>
-    <p>三保优先序、隐性债务率、专项债白名单、化债任务书——这些不是背景板，是每个月真会卡住你的东西。</p>
+    <p>你三十二岁，来到青石镇任职。财政所送来了账本：结余一百八十万元，工资、运转和民生支出都要按月支付。</p>
+    <p>镇上缺学位、缺病床，也缺能长期纳税的企业。每个月，你要定下工作安排，决定哪些项目先开工。</p>
     <div class="row" style="justify-content:center;margin-top:20px">
       <button class="primary" id="btnNew" style="padding:10px 28px">到任就职</button>
       <button id="btnLoad" style="padding:10px 20px">读取存档</button>
     </div>
-    <div class="foot">架空背景，所有地名、人物、事件均为虚构。游戏内任何伸手的路径都会走向失败结局，这不是难度设计，是规则。</div>
+    <div class="foot">架空背景，所有地名、人物、事件均为虚构。</div>
   </div>
 </div>
 
@@ -546,44 +545,44 @@ const LV=[
    lw 宜居权重 pw 繁荣权重 ew 每月环境增益 hw 每月房价压力压降 sw 满意度权重（按覆盖率乘） */
 const FAC={
  /* 交通 */
- road:{cat:'traffic',n:'道路',cost:220,months:4,maint:6,land:20,cap:2.5,wl:'交通',pw:12,d:'通达，才有人来，才有货走。'},
- bridge:{cat:'traffic',n:'桥梁',cost:300,months:6,maint:5,land:5,cap:3,wl:'交通',pw:3,lw:2,d:'一河两岸，桥少了两边都是死角。'},
- busdepot:{cat:'traffic',n:'公交场站',cost:180,months:4,maint:8,land:12,cap:3,wl:'交通',lw:3,sw:2,d:'班次密不密，看场站够不够。'},
- station:{cat:'traffic',n:'综合客运枢纽',cost:420,months:8,maint:9,land:30,cap:4,wl:'交通',pw:4,lw:2,lvl:1,d:'火车、长途、公交在一个地方换乘。'},
+ road:{cat:'traffic',n:'道路',cost:220,months:4,maint:6,land:20,cap:2.5,wl:'交通',pw:12,d:'连接居民区、工业区和周边乡镇。'},
+ bridge:{cat:'traffic',n:'桥梁',cost:300,months:6,maint:5,land:5,cap:3,wl:'交通',pw:3,lw:2,d:'连接两岸道路，减少绕行。'},
+ busdepot:{cat:'traffic',n:'公交场站',cost:180,months:4,maint:8,land:12,cap:3,wl:'交通',lw:3,sw:2,d:'为公交线路提供停靠、调度和维护场地。'},
+ station:{cat:'traffic',n:'综合客运枢纽',cost:420,months:8,maint:9,land:30,cap:4,wl:'交通',pw:4,lw:2,lvl:1,d:'衔接铁路、长途客运与市内公交。'},
  /* 民生 */
- nursery:{cat:'people',n:'公办幼儿园',cost:120,months:4,maint:3,land:6,cap:2,wl:'教育',lw:5,d:'年轻家长最先算的一笔账。'},
- school:{cat:'people',n:'学校',cost:380,months:6,maint:9,land:15,cap:1.4,wl:'教育',lw:22,d:'家长最盯着的一件事。'},
- clinic:{cat:'people',n:'社区卫生服务中心',cost:150,months:4,maint:5,land:5,cap:2.5,wl:'公共卫生',lw:5,d:'小病不出社区，大医院才排得开。'},
- hosp:{cat:'people',n:'医院',cost:520,months:8,maint:12,land:15,cap:1.6,wl:'公共卫生',lw:20,d:'平时没人念叨，出事第一个被骂。'},
- social:{cat:'people',n:'社保服务中心',cost:260,months:5,maint:10,land:8,cap:2.5,wl:'社保',lw:6,d:'办事窗口和低保发放。'},
- elder:{cat:'people',n:'养老院',cost:300,months:6,maint:9,land:12,cap:2.5,wl:'社保',lw:6,d:'老龄化压过来的时候，先缺这个。'},
- house:{cat:'people',n:'保障性住房',cost:400,months:8,maint:5,land:40,cap:2,wl:'安居',lw:2,hw:0.35,d:'压房价最实在的办法，就是占地。'},
- culture:{cat:'people',n:'文化馆·图书馆',cost:200,months:5,maint:6,land:12,cap:2,lw:4,d:'看不出产出，城市的气质在这里。'},
- gym:{cat:'people',n:'体育中心',cost:260,months:6,maint:7,land:25,cap:2,lw:3,sw:2,d:'建的时候热闹，运营是老问题。'},
- market:{cat:'people',n:'农贸市场',cost:90,months:3,maint:2,land:10,cap:2.5,lw:2,pw:1,sw:2,d:'菜价和摊贩生计，都在这里。'},
+ nursery:{cat:'people',n:'公办幼儿园',cost:120,months:4,maint:3,land:6,cap:2,wl:'教育',lw:5,d:'增加公办幼儿园学位。'},
+ school:{cat:'people',n:'学校',cost:380,months:6,maint:9,land:15,cap:1.4,wl:'教育',lw:22,d:'增加中小学学位，缓解就近入学压力。'},
+ clinic:{cat:'people',n:'社区卫生服务中心',cost:150,months:4,maint:5,land:5,cap:2.5,wl:'公共卫生',lw:5,d:'提供社区门诊和基本公共卫生服务。'},
+ hosp:{cat:'people',n:'医院',cost:520,months:8,maint:12,land:15,cap:1.6,wl:'公共卫生',lw:20,d:'增加病床和诊疗设施。'},
+ social:{cat:'people',n:'社保服务中心',cost:260,months:5,maint:10,land:8,cap:2.5,wl:'社保',lw:6,d:'办理社保、低保与社会救助业务。'},
+ elder:{cat:'people',n:'养老院',cost:300,months:6,maint:9,land:12,cap:2.5,wl:'社保',lw:6,d:'提供养老床位和集中照护。'},
+ house:{cat:'people',n:'保障性住房',cost:400,months:8,maint:5,land:40,cap:2,wl:'安居',lw:2,hw:0.35,d:'建设保障性住房，缓解住房压力。'},
+ culture:{cat:'people',n:'文化馆·图书馆',cost:200,months:5,maint:6,land:12,cap:2,lw:4,d:'设置阅览室和公共文化活动场地。'},
+ gym:{cat:'people',n:'体育中心',cost:260,months:6,maint:7,land:25,cap:2,lw:3,sw:2,d:'承办体育活动，日常需支付维护费用。'},
+ market:{cat:'people',n:'农贸市场',cost:90,months:3,maint:2,land:10,cap:2.5,lw:2,pw:1,sw:2,d:'为周边居民和摊贩提供固定经营场所。'},
  /* 市政 */
- power:{cat:'infra',n:'电厂',cost:900,months:10,maint:10,land:40,cap:4,wl:'基建',pw:10,d:'工业园的前提。'},
- water:{cat:'infra',n:'水厂',cost:420,months:6,maint:7,land:20,cap:4,wl:'基建',lw:9,d:'旱季断水一次，满意度掉一截。'},
- sewage:{cat:'infra',n:'污水厂',cost:480,months:7,maint:8,land:25,cap:4,wl:'基建',lw:8,ew:0.9,d:'环保督察来的时候，先看这个。'},
- garbage:{cat:'infra',n:'垃圾处理厂',cost:380,months:6,maint:7,land:30,cap:4,wl:'基建',lw:3,ew:0.5,d:'填埋场总有满的一天。'},
- gas:{cat:'infra',n:'燃气管网',cost:300,months:5,maint:5,land:5,cap:4,wl:'基建',lw:3,d:'老管道不换，出事只是时间问题。'},
- pipe:{cat:'infra',n:'地下管廊·排涝',cost:500,months:8,maint:6,land:5,cap:4,wl:'基建',lw:2,d:'埋在地下的政绩，下暴雨才看得见。'},
- datacenter:{cat:'infra',n:'数据中心·新基建',cost:600,months:6,maint:15,land:15,cap:4,wl:'基建',pw:5,lvl:1,d:'耗电大户，招商时很好用。'},
+ power:{cat:'infra',n:'电厂',cost:900,months:10,maint:10,land:40,cap:4,wl:'基建',pw:10,d:'增加供电容量，满足居民和企业用电。'},
+ water:{cat:'infra',n:'水厂',cost:420,months:6,maint:7,land:20,cap:4,wl:'基建',lw:9,d:'增加供水容量，保障居民和企业用水。'},
+ sewage:{cat:'infra',n:'污水厂',cost:480,months:7,maint:8,land:25,cap:4,wl:'基建',lw:8,ew:0.9,d:'增加污水处理能力，减少超载排污。'},
+ garbage:{cat:'infra',n:'垃圾处理厂',cost:380,months:6,maint:7,land:30,cap:4,wl:'基建',lw:3,ew:0.5,d:'集中处理生活垃圾，改善周边环境。'},
+ gas:{cat:'infra',n:'燃气管网',cost:300,months:5,maint:5,land:5,cap:4,wl:'基建',lw:3,d:'更新燃气管网和居民生活配套。'},
+ pipe:{cat:'infra',n:'地下管廊·排涝',cost:500,months:8,maint:6,land:5,cap:4,wl:'基建',lw:2,d:'改造地下管线，改善排涝条件。'},
+ datacenter:{cat:'infra',n:'数据中心·新基建',cost:600,months:6,maint:15,land:15,cap:4,wl:'基建',pw:5,lvl:1,d:'建设机房和算力配套，用电需求较高。'},
  /* 生态 */
- park:{cat:'eco',n:'公园绿地',cost:140,months:3,maint:4,land:30,cap:1.5,lw:9,ew:0.4,d:'便宜，见效快，占地。'},
- greenway:{cat:'eco',n:'绿道·慢行系统',cost:110,months:3,maint:2,land:15,cap:2.5,lw:2,ew:0.15,sw:1,d:'成本低，年轻人和老人都用得上。'},
- wetland:{cat:'eco',n:'湿地公园',cost:260,months:6,maint:5,land:80,cap:3,lw:3,ew:0.4,d:'占地大，能压住工业区的脾气。'},
- river:{cat:'eco',n:'河道整治',cost:320,months:6,maint:4,land:10,cap:3,wl:'基建',lw:2,ew:0.45,d:'黑臭水体挂牌督办，躲不掉。'},
+ park:{cat:'eco',n:'公园绿地',cost:140,months:3,maint:4,land:30,cap:1.5,lw:9,ew:0.4,d:'新增公共绿地，提供休憩场地。'},
+ greenway:{cat:'eco',n:'绿道·慢行系统',cost:110,months:3,maint:2,land:15,cap:2.5,lw:2,ew:0.15,sw:1,d:'连接步行和骑行线路。'},
+ wetland:{cat:'eco',n:'湿地公园',cost:260,months:6,maint:5,land:80,cap:3,lw:3,ew:0.4,d:'修复湿地，改善水环境。'},
+ river:{cat:'eco',n:'河道整治',cost:320,months:6,maint:4,land:10,cap:3,wl:'基建',lw:2,ew:0.45,d:'清理河道和排污口，改善水环境。'},
  /* 产业 */
- agri:{cat:'ind',n:'农产品加工园',cost:500,months:6,maint:8,land:60,ind:true,tax:24,jobs:0.7,pol:0.3,ramp:8,d:'本地能起步的产业，上限不高。'},
- logi:{cat:'ind',n:'物流园',cost:900,months:8,maint:12,land:80,ind:true,tax:38,jobs:1.0,pol:1.0,ramp:6,d:'投入低、回本快、上限也低。'},
- fzone:{cat:'ind',n:'标准厂房园区',cost:1200,months:8,maint:15,land:100,ind:true,tax:55,jobs:1.3,pol:1.4,ramp:8,d:'来得快的都是低端制造，环境要付账。'},
- mall:{cat:'ind',n:'商贸综合体',cost:700,months:8,maint:10,land:30,ind:true,tax:40,jobs:0.6,pol:0,ramp:10,needLiv:50,d:'人气不够就是一栋空楼。'},
- tour:{cat:'ind',n:'文旅园区',cost:1600,months:12,maint:18,land:120,ind:true,tax:70,jobs:0.8,pol:-0.4,ramp:24,needLiv:55,d:'宜居度上不去，游客不会来。'},
- tech:{cat:'ind',n:'高新园区',cost:7000,months:18,maint:90,land:150,ind:true,tax:150,jobs:1.5,pol:0.5,ramp:36,lvl:2,d:'税收大头，前三年基本不产出。'},
- port:{cat:'ind',n:'港口·陆港',cost:4000,months:14,maint:50,land:200,ind:true,tax:110,jobs:1.0,pol:0.6,ramp:24,lvl:2,d:'物流成本降一截，周边园区跟着起来。'},
- fin:{cat:'ind',n:'金融商务区',cost:5000,months:16,maint:60,land:60,ind:true,tax:140,jobs:0.6,pol:0,ramp:30,lvl:3,needLiv:60,d:'税高、不冒烟，但得先有人愿意来。'},
- aero:{cat:'ind',n:'航天科创城',cost:30000,months:30,maint:320,land:300,ind:true,tax:520,jobs:2.5,pol:0.3,ramp:48,lvl:3,d:'高负债、高产出，冲满分政绩用。'}
+ agri:{cat:'ind',n:'农产品加工园',cost:500,months:6,maint:8,land:60,ind:true,tax:24,jobs:0.7,pol:0.3,ramp:8,d:'建设加工车间，收购和加工本地农产品。'},
+ logi:{cat:'ind',n:'物流园',cost:900,months:8,maint:12,land:80,ind:true,tax:38,jobs:1.0,pol:1.0,ramp:6,d:'提供仓储、货运和装卸场地。'},
+ fzone:{cat:'ind',n:'标准厂房园区',cost:1200,months:8,maint:15,land:100,ind:true,tax:55,jobs:1.3,pol:1.4,ramp:8,d:'建设通用厂房，引进制造企业。'},
+ mall:{cat:'ind',n:'商贸综合体',cost:700,months:8,maint:10,land:30,ind:true,tax:40,jobs:0.6,pol:0,ramp:10,needLiv:50,d:'集中建设商铺、办公和商业配套。'},
+ tour:{cat:'ind',n:'文旅园区',cost:1600,months:12,maint:18,land:120,ind:true,tax:70,jobs:0.8,pol:-0.4,ramp:24,needLiv:55,d:'建设旅游接待设施，培育客源需要时间。'},
+ tech:{cat:'ind',n:'高新园区',cost:7000,months:18,maint:90,land:150,ind:true,tax:150,jobs:1.5,pol:0.5,ramp:36,lvl:2,d:'建设研发与生产配套，税收随投产进度增长。'},
+ port:{cat:'ind',n:'港口·陆港',cost:4000,months:14,maint:50,land:200,ind:true,tax:110,jobs:1.0,pol:0.6,ramp:24,lvl:2,d:'建设货运集散、仓储和口岸配套。'},
+ fin:{cat:'ind',n:'金融商务区',cost:5000,months:16,maint:60,land:60,ind:true,tax:140,jobs:0.6,pol:0,ramp:30,lvl:3,needLiv:60,d:'建设办公与金融服务配套。'},
+ aero:{cat:'ind',n:'航天科创城',cost:30000,months:30,maint:320,land:300,ind:true,tax:520,jobs:2.5,pol:0.3,ramp:48,lvl:3,d:'建设科研和产业配套，投资大、工期长。'}
 };
 
 
@@ -628,15 +627,15 @@ for(const [id,n,grade,cost,months,tax,jobs,pol,powerUse,waterUse,waste] of SOE){
  FAC[id]={cat:'ind',n,cost,months,tax,jobs,pol,powerUse,waterUse,waste,grade,ind:true,soe:true,
   maint:Math.round(cost*.012),land:grade*25+20,ramp:6+grade*3,lvl:grade===4?1:0,
   safety:['petrol','lng','cng','fuel','coal','opencoal','washcoal','lignite','oilfield','refinery'].includes(id)?'较高':'常规',
-  d:grade===4?'重污染项目需市级会审；建成后持续承担排放与治理成本。':'纳入用地、供需、税收和环境月度结算。'};
+  d:grade===4?'需市级会审，投产后须持续治理排放。':'开工需落实用地和水电，投产后按产能计税和排污。'};
 }
 FAC.solar.solar=2;FAC.solar.eco=.10;
 for(const id of ['coal','opencoal','washcoal','lignite'])FAC[id].resource='煤炭';
 FAC.oilfield.resource='油气';
 
-FAC.renewal={cat:'people',n:'老旧小区改造配套',cost:360,months:7,maint:6,land:8,cap:3,wl:'安居',lw:8,sw:3,hw:.05,d:'改造管网与公共空间，完成后持续提供民生配套。'};
+FAC.renewal={cat:'people',n:'老旧小区改造配套',cost:360,months:7,maint:6,land:8,cap:3,wl:'安居',lw:8,sw:3,hw:.05,d:'更新老旧小区管网和公共空间。'};
 const FACORDER=Object.keys(FAC);
-const CAT=[['traffic','交通','路桥场站，直接顶繁荣度。'],['people','民生','教育、医疗、社保、住房，宜居度和满意度的大头。'],['infra','市政','水电气与管网，缺一样就出事。'],['eco','生态','花钱不多，占地不少，环境靠它回升。'],['ind','产业','税收和就业。工业类需要电厂覆盖，污染要算账。']];
+const CAT=[['traffic','交通','道路、桥梁、公交和客运场站。'],['people','民生','学校、医院、养老和住房等公共服务。'],['infra','市政','水电、供排水、燃气和其他市政配套。'],['eco','生态','绿地、湿地和河道治理。'],['ind','产业','各类园区与国营企业。']];
 const _st='fill="none" stroke="currentColor" stroke-width="2"';
 const ICON={
  road:`<svg viewBox="0 0 34 34"><path d="M6 30L14 4h6l8 26" ${_st}/><path d="M17 8v4M17 16v4M17 24v4" stroke="currentColor" stroke-width="2"/></svg>`,
@@ -763,7 +762,7 @@ const EV=[
 {id:'bus',mo:[5,9],lv:[0,4],w:3,title:'群众反映公交线路',text:'新区到老城的公交一小时一班，晚上七点收车。上班的、上学的、看病的都在抱怨。公交公司说线路亏损，加班次就要补贴。',opts:[
  {t:'财政补贴，加密班次',n:'',fx:{cash:-50,liv:2,sat:2}},
  {t:'维持现状',n:'',fx:{sat:-2}}]},
-{id:'metro',lv:[2,4],w:2,once:true,title:'地铁申报窗口',text:'发改委开了一次申报窗口，你这里的人口和财政刚够门槛。地铁一条线的投资，够修二十所学校。但没有地铁，城市能级就卡在这一档。',opts:[
+{id:'metro',lv:[2,4],w:2,once:true,title:'地铁申报窗口',text:'发改委开了一次申报窗口，你这里的人口和财政刚够门槛。地铁一条线的投资，够修二十所学校。是否申报，需要你定。',opts:[
  {t:'申报建设',n:'巨额投入，符合专项债交通投向',fx:{q:'road',q2:'road',cash:-1500,pros:8,liv:3,sched:{id:'metro2',m:44}}},
  {t:'暂不申报',n:'',fx:{pros:-2}}]},
 {id:'hsr',lv:[3,4],w:2,once:true,title:'高铁站选址争议',text:'高铁新站两个方案：设在市中心，拆迁量大、成本高；设在郊区，便宜，但群众说"高铁站修到了外地"。',opts:[
@@ -847,7 +846,7 @@ const CHAIN2=[
   {t:'分档：投产达标的续，没达标的恢复',n:'',fx:{pros:-1,cash:60,npc:{k:'dev',v:-2},rep:2}}]},
 {id:'boss_square2',lv:[0,3],w:0,npc:'dev',title:'老板来要地了',
  text:'广场修好两年，市民很满意，牌子上刻着企业的名字。今天那位老板来了，带着当年的会议纪要复印件，说该办市场那块地了。\n\n纪要上有你的名字。',
- opts:[{t:'按当年说的办',n:'那件事补上了最后一块',fx:{file:{sev:3,t:'兑现协议出让承诺，完成利益输送闭环'},cashLand:0.4,npc:{k:'dev',v:10}},grey:true},
+ opts:[{t:'按当年说的办',n:'按原纪要办理，留下违规供地记录',fx:{file:{sev:3,t:'兑现违规供地承诺，为企业输送利益'},cashLand:0.4,npc:{k:'dev',v:10}},grey:true},
   {t:'走招拍挂，他要就来举牌',n:'翻脸',fx:{npc:{k:'dev',v:-18},rep:2,pros:-1}},
   {t:'拖着，说要研究',n:'拖不了太久',fx:{sched:{id:'boss_square2',m:14},npc:{k:'dev',v:-6}}}]},
 {id:'talent_war2',lv:[2,4],w:0,title:'安家补贴的账单',
@@ -915,7 +914,7 @@ const NPCEV=[
 {id:'n_boss_hi',lv:[0,4],w:12,npc:'boss',cond:S=>nf('boss')>=68,title:'省里的一次会上',
  text:'半年经济形势分析会，〔人〕在讲评时点了你的名，说你这里"路子是对的"。散会后他让秘书叫住你，问你还缺什么。',
  opts:[{t:'要资金',n:'',fx:{cash:260,npc:{k:'boss',v:-2}}},
-       {t:'要一个专项债的盘子',n:'额度而不是现钱',fx:{npc:{k:'boss',v:3},flag:'push'}},
+       {t:'要一个专项债的盘子',n:'争取融资额度，不直接拨款',fx:{npc:{k:'boss',v:3},flag:'push'}},
        {t:'什么都不要，说班子还能扛',n:'他记住了这句话',fx:{npc:{k:'boss',v:9},rep:2}}]},
 {id:'n_boss_lo',lv:[0,4],w:12,npc:'boss',cond:S=>nf('boss')<=32,title:'不点名的批评',
  text:'全省调度会上，〔人〕讲了一段"有的地方报上来的数字自己都不信"。没点名，但会后好几个人给你发消息。',
@@ -957,20 +956,20 @@ const NPCEV=[
  opts:[{t:'当面承诺，限期办结',n:'压力给到自己',fx:{sat:4,npc:{k:'pet',v:6},cash:-120}},
        {t:'感谢，但不承诺时限',n:'',fx:{sat:1,npc:{k:'pet',v:-10}}}]},
 {id:'n_pet_lo',lv:[0,4],w:12,npc:'pet',cond:S=>nf('pet')<=32,title:'他进京了',
- text:'〔人〕带着十几个人去了北京。信访局的人凌晨从接济站把他接回来，材料已经登记在册。\n\n这条记录会跟着你的年度考核走。',
+ text:'〔人〕带着十几个人去了北京。信访局的人凌晨从接济站把他接回来，材料已经登记在册。\n\n省里要求将处理情况列入年度考核材料。',
  opts:[{t:'亲自接谈，能解决的当场解决',n:'',fx:{sat:2,cash:-140,npc:{k:'pet',v:16},rep:-1}},
        {t:'交给信访局按程序办',n:'',fx:{sat:-4,rep:-3,npc:{k:'pet',v:-6}}},
        {t:'把人稳住，压下记录',n:'压得住一次，压不住第二次',fx:{sat:-2,file:{t:'干预信访登记',sev:2},npc:{k:'pet',v:-10}}}]},
 {id:'n_insp_hi',lv:[0,4],w:12,npc:'insp',cond:S=>nf('insp')>=68,title:'巡视组的一句提醒',
  text:'反馈会前一天，〔人〕在走廊里跟你说了半句话："你们那个园区的账，自己先看看。"说完就走了。',
- opts:[{t:'连夜自查，主动上报',n:'档案上多一条，但主动权在自己',fx:{mild:{t:'园区账目主动上报'},expose:0.7,npc:{k:'insp',v:6},rep:1}},
+ opts:[{t:'连夜自查，主动上报',n:'留下责任记录，争取主动整改',fx:{mild:{t:'园区账目主动上报'},expose:0.7,npc:{k:'insp',v:6},rep:1}},
        {t:'先把手续补齐',n:'',fx:{cash:-90,expose:0.85,npc:{k:'insp',v:2}}},
        {t:'当没听见',n:'他不会说第二次',fx:{npc:{k:'insp',v:-12}}}]},
 {id:'n_insp_lo',lv:[0,4],w:12,npc:'insp',cond:S=>nf('insp')<=32,title:'延长的巡视',
  text:'原定两周的巡视延到了六周。〔人〕调阅了近五年的常委会纪要和土地出让全套材料，谈话名单排到了乡镇。',
  opts:[{t:'全力配合，要什么给什么',n:'',fx:{expose:1.2,npc:{k:'insp',v:10},unity:-2}},
        {t:'该给的给，敏感的先放一放',n:'',fx:{expose:1.5,npc:{k:'insp',v:-6}}},
-       {t:'托老领导递话',n:'这个动作本身就是记录',fx:{expose:1.35,npc:{k:'old',v:-6},file:{t:'干预巡视工作',sev:2}}}]}
+       {t:'托老领导递话',n:'增加一条责任记录',fx:{expose:1.35,npc:{k:'old',v:-6},file:{t:'干预巡视工作',sev:2}}}]}
 ];
 EV.push(...NPCEV);
 const PET=[
@@ -1003,10 +1002,10 @@ const PET=[
  {t:'搁置',n:'',fx:{sat:-1}}]}
 ];
 const PROMO_TEXT={
- 1:'组织部门的考察谈话结束了。你被任命为沂川县县长。县里三十八万人，两千平方公里，财政比镇里大一个数量级，窟窿也是。',
- 2:'你被任命为临渡市市委书记。这座城市三百多万人，有一个像样的工业基础，也有一个规模不小的城投公司。',
- 3:'你调任江岚市市委书记。副省级城市，九百万人，上面直接盯着增速和债务两个数。',
- 4:'你被任命为海屿市市委书记。直辖市。这是这条路能走到的最高一级。往后的每个决定，都会在全国被看到。'
+ 1:'组织部门的考察谈话结束了。你被任命为沂川县县长。县里三十八万人，两千平方公里。到任材料里附着财政账目和在建项目清单。',
+ 2:'你被任命为临渡市市委书记。这座城市三百多万人，有一批工业企业，也有一个规模不小的城投公司。',
+ 3:'你调任江岚市市委书记。这座副省级城市有九百万人，经济增长和债务处置都列入了考核。',
+ 4:'你被任命为海屿市市委书记。这座直辖市有两千四百万人，八个区县的预算和考核材料已经送到办公室。'
 };
 /* ===== 事件第二批 ===== */
 EV.push(
@@ -1029,14 +1028,14 @@ EV.push(
  {t:'让校长办',n:'',fx:{file:{sev:1,t:'利用职务影响为子女择校'}},grey:true},
  {t:'按片区上',n:'爱人不高兴',fx:{}}]},
 {id:'fam_biz',lv:[1,4],w:2,once:true,cond:S=>S.year>=6,title:'爱人想做生意',text:'爱人辞了职，想开一家建材公司。她说"跟你的单位没关系，我自己做"。你清楚，这个城市里做建材的，没有一家跟政府项目没关系。',opts:[
- {t:'让她做',n:'档案里会多一条，早晚有人拿来说事',fx:{file:{sev:2,t:'配偶在本地从事与职权相关的经营活动'}},grey:true},
+ {t:'让她做',n:'增加一条责任记录',fx:{file:{sev:2,t:'配偶在本地从事与职权相关的经营活动'}},grey:true},
  {t:'让她去外地做，或者不做',n:'家里闹了一阵',fx:{unity:-1}}]},
 {id:'fam_father',mo:[2,12],lv:[0,4],w:2,once:true,cond:S=>S.year>=8,title:'父亲住院',text:'父亲脑梗住进了医院。院长听说了，说要安排最好的病房和专家，"不用走流程"。',opts:[
  {t:'接受安排',n:'',fx:{file:{sev:1,t:'接受管理服务对象提供的特殊医疗便利'}},grey:true},
  {t:'按正常程序排队',n:'',fx:{}}]},
 /* 大项目线 */
 {id:'newcity1',mo:[3],lv:[1,3],w:2,once:true,cond:S=>S.year>=4,title:'产业新城方案',text:'规划院拿来一个"产业新城"方案：在城东征地一万亩，建产业园、住宅、学校、商业，五年成形。测算的总投资是你现在年财政收入的十几倍，主要靠卖地和城投融资滚动。邻市去年就干了。',opts:[
- {t:'上',n:'先期投入巨大，大幅拉高债务；成了是政绩，砸了是烂尾',fx:{cash:-800,land:600,pros:6,flag:'newcity',sched:{id:'newcity2',m:24}}},
+ {t:'上',n:'先期投入巨大，大幅拉高债务；可能增加政绩，也有停工风险',fx:{cash:-800,land:600,pros:6,flag:'newcity',sched:{id:'newcity2',m:24}}},
  {t:'不上',n:'',fx:{pros:-2}}]},
 {id:'newcity2',lv:[1,4],w:0,title:'新城的地卖不动',text:'新城的一期地块挂了三次，两次流拍。开发商说"你们的配套还没起来，房子卖给谁"。前期的路和管网已经花出去了，城投那边的利息每个月都在滚。',opts:[
  {t:'降价供地，先把人气做起来',n:'',fx:{cashLand:0.5,land:-200,sat:-2,sched:{id:'newcity3',m:24}}},
@@ -1045,7 +1044,7 @@ EV.push(
 {id:'newcity3',lv:[1,4],w:0,title:'新城的局面',text:'四年过去了，新城有了几条像样的街，学校开学了，人也进来了一些。晚上的亮灯率大概三成。上级来看过，说"有点样子了"。',opts:[
  {t:'继续推进',n:'',fx:{pros:5,liv:3,q:'school'}}]},
 /* 上级线 */
-{id:'boss_new',lv:[1,4],w:2,once:true,cond:S=>S.tenure>=2,title:'新来的分管领导',text:'省里新来的分管领导第一次来调研，会上讲了四十分钟，核心两句话："增速要上去"，"债务要控住"。散会后他单独跟你说，年底要看数。',opts:[
+{id:'boss_new',lv:[1,4],w:2,once:true,cond:S=>S.tenure>=2,title:'新来的分管领导',text:'省里新来的分管领导第一次来调研，会上讲了四十分钟，反复提到两件事："增速要上去"，"债务要控住"。散会后他单独跟你说，年底要看数。',opts:[
  {t:'表态：增速优先',n:'',fx:{flag:'push',rep:2}},
  {t:'表态：先把债务控住',n:'',fx:{rep:-1,unity:1}}]},
 {id:'boss_call',lv:[1,4],w:2,cond:S=>S.hdr>=60,title:'上级的电话',text:'分管领导打电话来，语气不太好："你那里的隐债率我看到了。别人都在压，你在涨。年底考核我不好说话。"',opts:[
@@ -1068,10 +1067,10 @@ EV.push(
 {id:'ppp',lv:[2,4],w:2,title:'社会资本合作项目',text:'一家央企提出以合作模式承建一批道路和管网，政府不用一次性掏钱，分二十年付费。财政局算了一下，二十年总付费是直接建的两倍多，但账面上今年不算债务。',opts:[
  {t:'签',n:'今年不算债，长期挤财力',fx:{fac:{id:'road',n:2},flag:'ppp',mild:{t:'通过政企合作项目变相举债'},sched:{id:'ppp2',m:30}}},
  {t:'不签',n:'',fx:{}}]},
-{id:'metro_cost',mo:[10],lv:[2,4],w:2,cond:S=>S.once.metro,title:'地铁运营亏损',text:'地铁开通两年，每年运营亏损相当于年财政收入的一个零头，票价不能涨。这是当年申报的时候就知道的。',opts:[
+{id:'metro_cost',mo:[10],lv:[2,4],w:2,cond:S=>S.once.metro,title:'地铁运营亏损',text:'地铁开通两年，每年都需要财政补贴，票价暂时不能涨。运营公司报来了今年的补贴申请。',opts:[
  {t:'财政补贴',n:'',fx:{cash:-400,liv:1}},
  {t:'减少班次',n:'',fx:{sat:-4}}]},
-{id:'zhixia_pop',lv:[4,4],w:3,title:'人口疏解',text:'上面给了明确要求：中心城区人口要往外疏解，非核心功能要往外迁。搬的是批发市场、工厂和低端产业，走的是在那里谋生的人。',opts:[
+{id:'zhixia_pop',lv:[4,4],w:3,title:'人口疏解',text:'上面给了明确要求：中心城区人口要往外疏解，非核心功能要往外迁。批发市场和工厂需要另找地方，涉及搬迁安置。',opts:[
  {t:'按要求疏解',n:'',fx:{pop:-2,sat:-4,env:4,rep:3}},
  {t:'放慢节奏',n:'',fx:{rep:-4}}]},
 {id:'zhixia_rank',mo:[10,12],lv:[3,4],w:2,title:'城市排名',text:'一份民间的城市营商环境排名出来了，你的城市比去年掉了七位。上面看到了，媒体也在写。',opts:[
@@ -1115,7 +1114,7 @@ EV.push(
 {id:'lgfv_ceo',lv:[1,4],w:2,cond:S=>S.hdr>=40,title:'城投总经理想辞职',text:'城投公司总经理递了辞呈。他说这几年融资越来越难，利率越来越高，"每天都在借新还旧，我扛不住了"。',opts:[
  {t:'挽留，答应给他找出路',n:'',fx:{unity:2,sched:{id:'lgfv_ceo2',m:6}}},
  {t:'批准',n:'',fx:{unity:-1,rep:-1}}]},
-{id:'lgfv_ceo2',lv:[1,4],w:0,title:'城投的窟窿',text:'总经理留下了，也交了底：有两笔通过信托做的融资，没进过账，利率超过十个点。这算隐性债务里的隐性债务。',opts:[
+{id:'lgfv_ceo2',lv:[1,4],w:0,title:'城投的窟窿',text:'总经理留下了，也交了底：有两笔通过信托做的融资，没进过账，利率超过十个点。这些借款尚未列入债务台账。',opts:[
  {t:'纳入统计，主动上报',n:'隐债率上升，声誉小幅受损',fx:{addcq:0.12,rep:-2}},
  {t:'继续放在表外',n:'',fx:{mild:{t:'隐匿债务'},sched:{id:'lgfv_ceo3',m:12}}}]},
 {id:'lgfv_ceo3',lv:[1,4],w:0,title:'表外债务被审计发现',text:'审计发现了那两笔信托融资。通报里的措辞是"隐匿债务"。',opts:[{t:'接受处理',n:'',fx:{addcq:0.12,rep:-6,unity:-3}}]},
@@ -1238,7 +1237,7 @@ EV.push(
 {id:'stats',mo:[1,6,12],lv:[1,4],w:2,title:'统计局的一个电话',text:'统计局长打电话来，说按实际数据今年增速是负的。"其他地方也都调，咱们不调，排名就垫底。"',opts:[
  {t:'如实上报',n:'',fx:{rep:-3}},
  {t:'让他"技术处理"',n:'统计造假，留一笔记录',fx:{rep:1,mild:{t:'统计数据造假'}}}]},
-{id:'apportion',mo:[1,2,12],lv:[0,4],w:2,title:'"自愿"捐款',text:'办公室提议，让园区企业为一个民生项目"自愿捐款"，按纳税额分摊。企业不会说不，但会记住。',opts:[
+{id:'apportion',mo:[1,2,12],lv:[0,4],w:2,title:'"自愿"捐款',text:'办公室提议，让园区企业为一个民生项目"自愿捐款"，按纳税额分摊。企业没有当面反对。',opts:[
  {t:'搞',n:'钱进来了，企业不满',fx:{cash:80,pros:-1,mild:{t:'向企业摊派'}}},
  {t:'不搞',n:'',fx:{}}]},
 {id:'pig_flu',mo:[4,5],lv:[0,1],w:2,title:'猪瘟',text:'周边县出现猪瘟，本地养殖户开始恐慌抛售。农业局要求扑杀补贴、封锁道路。',opts:[
@@ -1248,7 +1247,7 @@ EV.push(
 {id:'cold_wave',mo:[12,1,2],lv:[0,4],w:2,cond:S=>S.month===12||S.month<=2,title:'寒潮',text:'零下十几度，老城区的供暖管网压力上不去，学校和医院先冷了。热力公司说燃料价格翻了倍，财政补贴不到位就停。',opts:[
  {t:'补贴到位，保供暖',n:'',fx:{cash:-80,sat:1}},
  {t:'让热力公司先扛着',n:'',fx:{sat:-4}}]},
-{id:'quake',mo:[5],lv:[0,4],w:1,title:'一次小地震',text:'凌晨一次四级多的地震，没有伤亡，但排查发现十几栋校舍和老楼有裂缝。加固要钱，不加固睡不着。',opts:[
+{id:'quake',mo:[5],lv:[0,4],w:1,title:'一次小地震',text:'凌晨一次四级多的地震，没有伤亡，但排查发现十几栋校舍和老楼有裂缝。住建局报来了加固方案和预算。',opts:[
  {t:'全部加固',n:'',fx:{cash:-150,rep:2}},
  {t:'先贴封条，观察',n:'',fx:{acc:0.6,sat:-1}}]},
 {id:'wildfire',mo:[3,4],lv:[0,2],w:2,cond:S=>S.month>=3&&S.month<=4,title:'清明山火',text:'上坟烧纸引发山火，烧了两天。林业局的扑火队人手不够，要调邻县的。',opts:[
@@ -1277,10 +1276,10 @@ EV.push(
 {id:'debt_swap',mo:[12,1],lv:[1,4],w:2,once:true,cond:S=>S.hdr>=50&&S.rep>=45,title:'置换债额度',text:'省里分下来一批置换债额度，可以把一部分城投债换成利率低得多的法定债务。条件是签承诺书：三年内不新增隐性债务，接受季度核查。',opts:[
  {t:'申报置换',n:'三成城投债转为专项债',fx:{swap:0.3,rep:1}},
  {t:'不申报',n:'',fx:{}}]},
-{id:'legacy_debt',mo:[12,1],lv:[1,4],w:2,once:true,cond:S=>S.tenure<=1,title:'前任留下的账',text:'审计在交接审计里发现前任通过一家融资租赁公司借的一笔钱，没入过账。上报，隐债率要涨一截；不上报，账就成了你的。',opts:[
+{id:'legacy_debt',mo:[12,1],lv:[1,4],w:2,once:true,cond:S=>S.tenure<=1,title:'前任留下的账',text:'审计在交接审计里发现前任通过一家融资租赁公司借的一笔钱，没入过账。财政局建议核实后补报，也有人担心会影响当年考核。',opts:[
  {t:'上报，纳入统计',n:'',fx:{addcq:0.1,rep:-1}},
  {t:'压着',n:'',fx:{mild:{t:'隐匿债务'}}}]},
-{id:'land_king',mo:[4,11],lv:[1,4],w:2,cond:S=>S.housing>50,title:'地王',text:'一块地拍出了历史最高价，媒体叫"地王"。土地收入是好事，但周边的房价一夜之间涨了两成。',opts:[
+{id:'land_king',mo:[4,11],lv:[1,4],w:2,cond:S=>S.housing>50,title:'地王',text:'一块地拍出了历史最高价，媒体叫"地王"。周边楼盘随即上调报价，涨幅接近两成。',opts:[
  {t:'成交',n:'',fx:{cashLand:1.2,housing:5,sat:-2}},
  {t:'中止出让',n:'',fx:{rep:-1}}]},
 {id:'wage_delay_rumor',mo:[1,12],lv:[0,4],w:2,cond:S=>S.cash<50*S.sc,title:'"要发不出工资了"',text:'财政紧张的消息传出去了，本地群里在传下个月发不出工资。有几个单位已经在打听消息。',opts:[
@@ -1334,18 +1333,18 @@ const RET=[
 
 /* ===== 年度节奏：十二个月各有各的性质 ===== */
 const MON=[null,
- {k:'两会',d:'人代会开幕，政府工作报告要把全年的数报出去。'},
+ {k:'两会',d:'人代会开幕，需提交全年工作计划和目标。'},
  {k:'春节',d:'走访慰问，机关的事大都压到节后。'},
  {k:'开工',d:'开春，压了一冬的项目集中开工。'},
  {k:'招商',d:'招商季，几个地方在抢同一批企业。'},
  {k:'汛前',d:'汛前检查，隐患台账要挂号销号。'},
- {k:'半年',d:'半年考核，上级要看进度条。'},
+ {k:'半年',d:'半年考核，各部门报送项目和预算执行进度。'},
  {k:'主汛',d:'主汛期，值班室二十四小时不能空。'},
  {k:'主汛',d:'高温和主汛期叠在一起，电和水都紧。'},
  {k:'开学',d:'开学季，学位、校车、食堂都是眼前的事。'},
  {k:'督察',d:'各路督察集中下沉的月份。'},
  {k:'冲刺',d:'年末冲刺，指标差多少全摆在桌上。'},
- {k:'清算',d:'年终清算，欠的账都要在这个月见面。'}];
+ {k:'清算',d:'年终结算，核对预算执行和到期债务。'}];
 function mon(){return MON[S.month]||MON[1];}
 
 /* ===== 本月安排：一个月只能亲自抓一件事 =====
@@ -1368,11 +1367,11 @@ const AG={
    const cand=['factory','bid_war','fake_sign','talent_war','ecom','port_bonded'].filter(id=>{const e=EV.find(x=>x.id===id);return e&&S.lvl>=e.lv[0]&&S.lvl<=e.lv[1];});
    if(cand.length&&Math.random()<0.5){S.sched.push({id:pick(cand),m:0});return '招商团出去一周，接待费'+fmt(c)+'。有一家已经在谈落地了。';}
    return '招商团出去一周，接待费'+fmt(c)+'。名片收了两百张，能不能落地再说。';}},
- team:{n:'班子谈心',cat:'班子',cd:4,w:s=>s.unity<50?3.5:0.8,d:'一个一个谈，把话摆到桌面上。',
+ team:{n:'班子谈心',cat:'班子',cd:4,w:s=>s.unity<50?3.5:0.8,d:'分别与班子成员谈话，协调分歧。',
   f:()=>{nAdd('zhou',5);S.unity+=4;return '谈了两周，有几个人的心结解开了，有几个只是不说了。';}},
- cadre:{n:'干部调整',cat:'班子',cd:8,d:'动几个关键岗位，用自己看得准的人。',
+ cadre:{n:'干部调整',cat:'班子',cd:8,d:'调整关键岗位，组织部门负责办理任免手续。',
   f:()=>{nAdd('zhou',-7);S.unity-=3;S.rep+=0.5;S.flags.cadre=(S.flags.cadre||0)+1;
-   const e=Math.random()<0.6;if(e){S.staff=Math.round(S.staff*1.005);return '调整了七个岗位。用顺手的人多了，被动的人也多了。';}
+   const e=Math.random()<0.6;if(e){S.staff=Math.round(S.staff*1.005);return '调整了七个岗位。部分干部对调整结果有意见。';}
    S.sat-=1;return '调整了七个岗位。有人写了信，说程序不合规。';}},
  safety:{n:'安全生产大检查',cat:'安全',cd:4,mo:[5,7,8],w:s=>s.accRisk>0?4:0.9,d:'停产排查，该封的封，该罚的罚。',
   f:()=>{nAdd('dev',-3);const had=S.accRisk>0;S.accRisk*=0.3;S.pros-=0.3;return had?'排查出的隐患点大部分销号了，事故风险降下来。':'查了一个月，没查出大问题。企业有意见，说影响生产。';}},
@@ -1384,25 +1383,25 @@ const AG={
   f:()=>{nAdd('dev',4);nAdd('pet',-6);if(S.lvl>=1)S.plots=(S.plots||[]).concat(genPlots(1));const mu=60*S.lsc;landAdd(mu,'ind');S.landTotal+=mu*0.4;S.sat-=2;S.rep-=0.3;
    return '一个片区签约完成，新增储备土地'+Math.round(mu)+'亩。有几户还堵在现场。';}},
  selfcheck:{n:'廉政自查',cat:'自身',cd:6,w:s=>s.file.some(f=>!f.exp)?3.5:0.6,d:'自己先把账翻一遍，能补的手续补上。',
-  f:()=>{nAdd('insp',4);S.expMult=Math.max(0.6,S.expMult*0.7);S.unity-=2;return '自查自纠一个月，几笔手续补齐了。有人觉得你在自己人身上下刀。';}},
- study:{n:'专题学习班',cat:'自身',cd:6,mo:[1,2],d:'关起门来务虚一周，也把姿态做出来。',
-  f:()=>{nAdd('insp',2);S.rep+=1.2;S.merit+=1.5;S.unity+=1;return '学习班办了一周。上面看得见，下面也松了一口气。';}},
+  f:()=>{nAdd('insp',4);S.expMult=Math.max(0.6,S.expMult*0.7);S.unity-=2;return '自查自纠一个月，几笔手续补齐了。班子里有人对自查范围有意见。';}},
+ study:{n:'专题学习班',cat:'自身',cd:6,mo:[1,2],d:'参加一周专题学习，交流工作安排。',
+  f:()=>{nAdd('insp',2);S.rep+=1.2;S.merit+=1.5;S.unity+=1;return '学习班办了一周。期间由班子成员分管日常事务。';}},
  media:{n:'接受媒体专访',cat:'自身',cd:6,d:'省台要做一期专题，讲你这几年干的事。',
-  f:()=>{nAdd('boss',1);nAdd('insp',-4);S.rep+=1.6;S.sat+=0.6;const risk=S.file.some(f=>!f.exp);if(risk){S.expMult*=1.18;return '专访播出，反响不错。你在镜头前讲得很好，讲得越好，看的人越多。';}
+  f:()=>{nAdd('boss',1);nAdd('insp',-4);S.rep+=1.6;S.sat+=0.6;const risk=S.file.some(f=>!f.exp);if(risk){S.expMult*=1.18;return '专访播出，反响不错。报道也引起了对相关项目的关注。';}
    return '专访播出，反响不错。';}},
  guest:{n:'接待上级调研',cat:'班子',cd:5,mo:[6,11],d:'省领导要来看一条线路，全程陪同。',
   f:()=>{nAdd('boss',3);const c=LV[S.lvl].transfer*0.05;S.cash-=c;S.rep+=1.5;S.unity+=0.5;
    return '陪了三天，路线安排得很顺。接待支出'+fmt(c)+'。';}},
  flood:{n:'防汛值守',cat:'安全',cd:2,only:[5,6,7,8,9],mo:[7,8],w:()=>1.8,d:'指挥部前置，你自己在值班室待着。',
   f:()=>{nAdd('zhou',2);S.agFlag.soft=0.5;S.accRisk*=0.6;S.sat+=0.5;S.unity-=0.5;
-   return '汛期值守。本月的突发事件冲击减半——不出事最好，出了事也兜得住。';}},
+   return '汛期值守。本月突发事件的冲击减半。';}},
  edu:{n:'教育专项督导',cat:'民生',cd:6,only:[8,9,10],mo:[9],w:()=>1.6,d:'开学前把学位、校车、食堂过一遍。',
   f:()=>{nAdd('pet',2);S.liv+=1.5;S.sat+=1;return '开学前把学位缺口摸清了，两所学校的食堂换了承包方。';}},
  debtwork:{n:'化债专班',cat:'财政',cd:6,mo:[12],w:s=>hdr()>50?3.5:0.7,cond:s=>s.cq.length>0,d:'一笔一笔和金融机构谈，能降息的降息。',
   f:()=>{nAdd('lgfv',5);let n=0;for(const b of S.cq){if(b.rate>5.5){b.rate-=0.5;n++;}}S.rep+=0.5;S.unity-=0.5;
    return n?n+' 笔城投债利率各降半个点。谈了一个月，脸都谈熟了。':'跑了一个月，利率一分没降。';}},
- report:{n:'作政府工作报告',cat:'自身',cd:12,only:[1],mo:[1],w:()=>3,d:'全年的数字，报高了压自己，报低了上面不满意。',
-  f:()=>{nAdd('boss',2);S.merit+=2;S.rep+=1;return '报告念完，掌声照例很齐。全年的数就这么定下来了。';}}
+ report:{n:'作政府工作报告',cat:'自身',cd:12,only:[1],mo:[1],w:()=>3,d:'汇报上年工作，提出本年目标。',
+  f:()=>{nAdd('boss',2);S.merit+=2;S.rep+=1;return '政府工作报告通过，本年目标已确定。';}}
 };
 function agWeight(k){const a=AG[k];let w=a.w?a.w(S):1;if(a.mo&&a.mo.indexOf(S.month)>=0)w*=4;return Math.max(0.02,w);}
 function agRefresh(){
@@ -1437,24 +1436,24 @@ function runAgenda(){
    sanbao 为三保出缺口时的压档级数；wd 为该风向下更容易出现的事件 */
 const WIND=[
  {id:'growth',n:'拼经济',w:[0.66,0.20,0.14],debt:0.5,clean:0.8,expose:0.85,
-  d:'全省经济工作会议开了两天，结论是一句话：发展是第一要务。增速排名从这个季度起每季通报。',
-  note:'考核向繁荣度倾斜（六成六），债务扣分打对折。上面这两年不问钱从哪来，只问项目在哪。',
+  d:'全省经济工作会议要求加快项目建设，从本季度起按季通报增速排名。',
+  note:'繁荣度占考核66%，债务扣分系数为0.5。',
   wd:['factory','bid_war','gdp_target','fake_sign','land_cheap','talent_war','big_conf','ecom','port_bonded','land_king','newcity1','ppp']},
  {id:'debt',n:'严控债务',w:[0.38,0.34,0.28],debt:2.2,clean:1.0,expose:1.0,
-  d:'化解隐性债务的文件转下来，措辞比往年硬：新增隐性债务终身问责，谁家的孩子谁抱走。',
-  note:'债务扣分加到两倍二，繁荣度权重压到三成八。这两年不适合上大项目。',
+  d:'省里下发化债文件，要求核实债务、落实偿还计划，并追究违规新增隐债的责任。',
+  note:'债务扣分系数为2.2，繁荣度占考核38%。',
   wd:['media_debt','legacy_debt','debt_swap','lgfv_push','lgfv_ceo','vendor_debt','stats','yearend_spend','idle_park','mall_empty']},
  {id:'people',n:'保民生',w:[0.28,0.44,0.28],debt:1.0,clean:1.0,expose:1.0,sanbao:2,
   d:'省里下发通知，"三保"支出排在所有支出之前，民生实事项目挂图作战，一月一调度。',
-  note:'宜居度成了最大的一项（四成四），三保出缺口直接压两档。',
+  note:'宜居度占考核44%；三保出现缺口，考核压两档。',
   wd:['school_petition','teacher_wage','pension','oldcommunity','nursery','clinic_doc','wage_migrant','house_alloc','elevator','p_hukou','p_elder','p_queue','p_heating']},
  {id:'green',n:'强环保',w:[0.36,0.26,0.16],env:0.22,debt:1.0,clean:1.2,expose:1.0,
   d:'中央生态环保督察进驻本省。两高项目一律从严，问题清单直接挂省政府网站。',
-  note:'环境指标破天荒计入考核，占两成二。前几年冒的烟，这两年要付账。',
+  note:'环境占考核22%，廉政扣分系数为1.2。',
   wd:['env_inspect','water_pollute','river_black','garbage_full','wetland_bird','plant_risk','hot_summer','p_pollution','p_landfill','p_noise']},
  {id:'clean',n:'正风肃纪',w:[0.44,0.30,0.26],debt:1.0,clean:2.0,expose:1.7,
   d:'省委巡视组对全省市县全覆盖。问题线索一律核查到底，不设时限。',
-  note:'责任档案曝光概率上升七成，廉政扣分翻倍。手上有事的人，这两年最难熬。',
+  note:'责任档案曝光概率提高70%，廉政扣分系数为2。',
   wd:['whistle','audit_routine','drunk','tender_ring','gift_card','golf','relative_canteen','exam_leak','zhixia_inspect','apportion','secretary','leader_nephew']}
 ];
 function windOf(){return WIND.find(w=>w.id===S.wind)||WIND[0];}
@@ -1475,19 +1474,19 @@ function newName(used){for(let i=0;i<40;i++){const x=pick(XINGS),m=pick(MINGS);
 /* follow:true 的人跨级跟着你走；其余每到一地换一批 */
 const NPCS={
  zhou:{r:'常务副手',img:'p_zhou',follow:true,fixed:'周立山',
-  d:'跟了你两任的老搭档。能力强，脾气也硬。',eff:'班子团结的中枢跟着他的态度走。'},
+  d:'跟了你两任的老搭档。能力强，脾气也硬。',eff:'他的态度影响班子团结。'},
  boss:{r:'分管副省长',img:'p_boss',follow:true,
-  d:'你在省里的直接上级。你的材料先过他的手。',eff:'他对你的看法折算进晋升的政绩门槛。'},
+  d:'你在省里的直接上级。你的材料先过他的手。',eff:'与他的关系影响晋升所需政绩。'},
  old:{r:'老领导',img:'p_oldleader',follow:true,
-  d:'把你从科员一步步带上来的人。现在退了，话还管用。',eff:'跑省厅时他的人脉帮得上忙。'},
+  d:'曾经带过你的领导，退休后仍与省里有联系。',eff:'他的引荐能帮助你与省里沟通。'},
  lgfv:{r:'城投董事长',img:'p_lgfv',
-  d:'表外的账都在他手上。你签的字，他兜的底。',eff:'他配不配合，决定城投债的实际额度。'},
+  d:'负责城投融资和项目垫资，常来找你协调。',eff:'与他的关系影响城投融资额度。'},
  dev:{r:'本地开发商',img:'p_developer',
-  d:'地是他拿的，楼是他盖的。土地财政有一半系在他身上。',eff:'他捧不捧场，直接反映在土地出让价上。'},
+  d:'在本地经营多年，参加过多次土地竞拍。',eff:'与他的关系影响土地出让价格。'},
  pet:{r:'老上访户',img:'p_petitioner',
-  d:'告了十年。别人躲他，他偏找一把手。',eff:'他服不服，决定信访件的多少。'},
+  d:'为几件旧事上访多年，常要求见主要领导。',eff:'与他的关系影响信访件数量。'},
  insp:{r:'巡视组组长',img:'p_inspector',
-  d:'这一轮巡视的带队人。客客气气，什么都记。',eff:'他对你的印象，影响责任档案被翻出来的概率。'}
+  d:'负责这一轮巡视，已开始调阅地方档案。',eff:'与他的关系影响责任档案被倒查的概率。'}
 };
 const NPCORDER=['zhou','boss','old','lgfv','dev','pet','insp'];
 function npcInit(all){S.npc=S.npc||{};
@@ -1528,19 +1527,19 @@ function mechTabs(){return Object.keys(MECH).filter(mechOn);}
 const ERA=[
  {y:10,id:'land_end',n:'土地财政退潮',
   d:'全国土地出让金连续两年两位数下滑。房企拿地的名单上，剩下的多半是各地的城投。省里开会不再提"土地是最大的财源"，改提"过紧日子"。',
-  note:'从今往后地价打七折，市场热度普遍走冷。靠卖地过日子的那套，到头了。',
+  note:'土地价格系数降至0.72，市场热度下降。',
   f:()=>{S.eraLand=0.72;if(S.plots)for(const p of S.plots)p.heat=clamp(p.heat-0.22,0.15,1.4);}},
  {y:14,id:'ret_delay',n:'渐进式延迟退休',
-  d:'全国人大常委会通过了延迟法定退休年龄的决定：男干部每四个月延一个月，用十五年把法定退休年龄从六十周岁推到六十三周岁。各级领导职务的任职年龄界限跟着往后挪。',
-  note:'到龄退休年龄整体后移：厅局级及以下 60→63，副省部级 63→65，正省部级 65→68。公务员只能到龄退休或弹性提前，没有弹性延迟这一说——想多干几年，只能往上走。',
+  d:'组织部转来通知，部分岗位的到龄退休年龄往后调整。人事科将按新规定办理退休手续。',
+  note:'到龄退休年龄整体后移：厅局级及以下 60→63，副省部级 63→65，正省部级 65→68。各岗位按调整后的年龄办理退休。',
   f:()=>{S.eraRet=1;}},
  {y:18,id:'pop_down',n:'人口负增长',
   d:'全国人口连续第三年负增长。新生儿数量比你刚工作那年少了一半多。省里的通报里第一次出现"收缩型城市"这个词。',
-  note:'人口自然增长转负。学位在空出来，养老床位在排队。抢人从加分项变成了必答题。',
+  note:'人口自然增长转负，后续公共服务需求会随人口变化。',
   f:()=>{S.eraPop=-0.0013;}},
  {y:25,id:'debt_hard',n:'化债硬约束',
   d:'新一轮化债方案下发：地方新增隐性债务一律终身问责，融资平台限期退出，存量只能压不能增。',
-  note:'城投债额度砍掉三分之一，新发利率上浮一个点。以后想干事，先想清楚钱从哪来。',
+  note:'城投债融资上限降至原来的三分之二，新发利率提高1个百分点。',
   f:()=>{S.eraDebt=1.5;}}
 ];
 function eraStep(){S.era=S.era||{};
@@ -1561,11 +1560,11 @@ function histLine(h){
 
 /* ===== 区县：直辖市。你不再自己盯设施，你决定给谁多少 ===== */
 const DTYPE={
- core:{n:'中心城区',d:'人多、地少、老房子多，要的是民生。'},
- new: {n:'新区',    d:'摊子铺得开，钱来得快，债也来得快。'},
- ind: {n:'工业区',  d:'税收支柱，环境和信访的老大难。'},
- far: {n:'远郊区',  d:'底子薄，给多少花多少，出成绩慢。'},
- port:{n:'口岸区',  d:'看外贸吃饭，行情好的时候很好看。'}
+ core:{n:'中心城区',d:'人口密集、用地紧张，老旧小区较多。'},
+ new: {n:'新区',    d:'开发项目较多，收入与债务增长较快。'},
+ ind: {n:'工业区',  d:'工业企业集中，税收较高，污染和信访较多。'},
+ far: {n:'远郊区',  d:'基础较弱，建设投入见效较慢。'},
+ port:{n:'口岸区',  d:'依赖口岸贸易，受市场行情影响较大。'}
 };
 const DSEED=[
  ['城关区','core'],['和平区','core'],['新城区','new'],['临江新区','new'],
@@ -1620,9 +1619,9 @@ const RCITY=['岐阳市','临海市','沅州市','白泉市','桐城市','常宁
 const COOP=[
  {id:'park',n:'共建产业园',d:'两市各出一块地，税收五五分成。',k:1.2,
   f:r=>{S.ind.push({id:'fzone',age:0,cut:0,nm:'跨市共建园区'});S.f.fzone=(S.f.fzone||0)+1;S.pros+=2;r.pros+=2;}},
- {id:'rail',n:'跨市轨道',d:'一小时通勤圈，两头都受益，钱主要是你出。',k:2.4,
+ {id:'rail',n:'跨市轨道',d:'建设两市通勤线路，由本市承担主要投入。',k:2.4,
   f:r=>{S.liv+=3;S.pros+=2.5;r.pros+=1.2;S.f.station=(S.f.station||0)+1;}},
- {id:'env',n:'流域生态共治',d:'上下游一起治，督察的板子才打不到你一个人身上。',k:0.9,
+ {id:'env',n:'流域生态共治',d:'两市共同治理流域污染。',k:0.9,
   f:r=>{S.env=clamp(S.env+4,0,100);r.pros+=0.5;S.rep+=2;}}
 ];
 const BIGP=[['tech','省级科创走廊节点'],['port','省级物流枢纽'],['fin','区域金融后台基地'],['fzone','先进制造业基地'],['tour','省级文旅度假区']];
@@ -2048,16 +2047,16 @@ function checkInstant(){
   return null;
 }
 const ENDINGS={
- fall:{t:'落马',d:'纪委监委的人在会议室等你。谈话持续了四个小时，你被带走的时候天已经黑了。责任档案里那几笔，一笔一笔被翻了出来。仕途在这里结束，后面的事，跟仕途没关系了。'},
+ fall:{t:'落马',d:'纪委监委的人在会议室等你。谈话持续了四个小时，你被带走的时候天已经黑了。调查组调取了任期内的签批和资金往来。组织部门随后免去了你的职务。'},
  fired:{t:'免职',d:'组织谈话很短。连续的考核不合格，或者累积的处分，让上面决定换人。你被安排到一个没有实权的岗位，一直待到退休。'},
- debt:{t:'债务暴雷',d:'城投债违约的消息先是在金融圈传，然后上了新闻。上级派了工作组接管财政，你被免职并接受调查。这座城市要用很多年来消化你留下的账。'},
+ debt:{t:'债务暴雷',d:'城投债违约的消息先是在金融圈传，然后上了新闻。上级派了工作组接管财政，你被免职并接受调查。存量债务和未完项目由工作组接手。'},
  sanbao:{t:'三保断裂',d:'工资连续半年发不出来，教师和医生先停了工，然后是环卫。人聚在政府门口，事情演变成了群体事件。上级问责，你被免职。'},
  accident:{t:'重大事故',d:'带病运行的机组在一个凌晨爆炸。伤亡数字出来的那天，你签了引咎辞职报告。安监局的那份隐患报告，被反复引用。'},
- sidelined:{t:'转任二线',d:'在这个岗位干满了年限，晋升的窗口没有打开。你被安排到人大或政协，工作清闲，会议很多。这一任的城市，交给下一个人。'},
- retire_top:{t:'功成身退',d:'〔年龄〕，你从直辖市市委书记的岗位上退下来。财政稳，民生稳，档案干净。退休那天，办公室的人送到楼下，没什么话，握了握手。'},
- retire_good:{t:'平稳退休',d:'〔年龄〕到点退休。没有走到最高一级，但每一任都交得出账。城市里有几条路、几所学校是你任上修的，没人记得是谁修的，用着就行。'},
- retire_plain:{t:'到龄退休',d:'〔年龄〕退休。仕途走得不远，但没有翻车。后来你偶尔回镇上走走，当年那条路还在。'},
- post_audit:{t:'退休后倒查',d:'退休第二年，你被带走了。终身追责，档案里那几笔终究被翻了出来。你以为过去的事，其实一直在那里。'}
+ sidelined:{t:'转任二线',d:'在这个岗位干满了年限，未能获任下一职务。你被安排到人大或政协，工作清闲，会议很多。这一任的城市，交给下一个人。'},
+ retire_top:{t:'功成身退',d:'〔年龄〕，你从直辖市市委书记的岗位上退下来。退休手续已经办妥。秘书把交接材料装进文件袋，办公室的同事送你到楼下。'},
+ retire_good:{t:'平稳退休',d:'〔年龄〕到点退休。办理交接后，你回到家中。老同事偶尔来坐坐，谈起任上修的路和学校。'},
+ retire_plain:{t:'到龄退休',d:'〔年龄〕退休。你偶尔回镇上走走，当年那条路还在。'},
+ post_audit:{t:'退休后倒查',d:'退休第二年，你被带走了。调查组调取了你任上的档案，要求说明几笔签批的依据。'}
 };
 function endGame(id){S.over=id;logIt('结局：'+ENDINGS[id].t,'bad');}
 function retireEnding(){if(S.file.some(f=>!f.exp&&!f.mild))return 'post_audit';if(S.lvl===4&&S.rep>=60)return 'retire_top';if(S.lvl>=2||S.rep>=55)return 'retire_good';return 'retire_plain';}
@@ -2080,10 +2079,10 @@ function findEvent(id){
 /* ---- 退休篇 ---- */
 function retiredStep(){S.retY++;const i=S.retY-1;if(i>=RET.length)return null;const r=RET[i];
   if(r.id==='r2'){const bad=S.file.filter(f=>!f.exp&&!f.mild);
-    if(bad.length){return {id:'r2',title:'退休第二年',text:'纪委的人来了。终身追责，档案里那几笔终究被翻了出来。你以为过去的事，其实一直在那里。',opts:[{t:'……',n:'',fx:{},end:'post_audit'}]};}
+    if(bad.length){return {id:'r2',title:'退休第二年',text:'纪委的人来了。调查组调取了你任上的档案，要求说明几笔签批的依据。',opts:[{t:'……',n:'',fx:{},end:'post_audit'}]};}
     return {id:'r2',title:'回头看',text:'纪委对你任上的一个项目做了例行回头看。来的人客客气气，翻了三天档案，走的时候说"没什么问题"。你送到门口，站了很久。',opts:[{t:'知道了',n:'',fx:{}}]};}
   if(r.id==='r5'){const h=S.hist;const town=h[0];let t='退休第五年，你回了一趟青石镇。';
-    if(town){t+=town.built>=6?'当年修的路还在，学校翻新过一次，镇上的人换了一茬。':town.built>=2?'当年修的那几样东西还在用，没人记得是谁修的。':'镇上和你走的时候差不多，年轻人还是在往外走。';
+    if(town){t+=town.built>=6?'当年修的路还在，学校翻新过一次，镇上的人换了一茬。':town.built>=2?'当年建的几处设施仍在使用，也有几处正在维修。':'镇上和你走的时候差不多，年轻人还是在往外走。';
       t+='你离开'+(town.after||0)+'年了，'+histLine(town);}
     if(h.length>1){t+='\n\n后面几任待过的地方：'+h.slice(1).map(x=>x.city.replace(/（.*/,'')+'（离任'+(x.after||0)+'年，繁荣'+Math.round(x.pros)+'、债务率'+Math.round(x.debt)+'%）').join('；')+'。';}
     t+='\n\n你一共主政了 '+h.reduce((a,x)=>a+x.years,0)+' 年，'+h.length+' 个地方，建成 '+h.reduce((a,x)=>a+x.built,0)+' 个项目。';
@@ -2204,10 +2203,10 @@ function vInd(){
    <button class="sm quiet" data-lead="${i}" data-how="drop">放弃</button></div></div>`;}).join('')
    :'<div class="hint">手上没有在谈的线索。年初会有新的，「外出招商」也能带回来。</div>';
  return `<div class="sec"><h2>在谈的招商线索</h2>
- <div class="hint">项目是企业投的，政府出的是地、配套和税收返还。压价谈成能省一半，谈崩了对方就走——有邻市在争的时候尤其。</div>
+ <div class="hint">企业承担项目投资，政府提供土地、配套及约定的税收返还。压价可能减少投入，也可能使企业放弃落地。</div>
  <div class="leads">${cards}</div></div>
  <div class="sec"><h2>产业结构</h2><div class="winds">${bar}</div>
- <div class="hint">科创占比推高繁荣度上限，制造占比压环境。同一类企业超过三家开始产能过剩，边际税收递减——堆同一种是走不远的。</div></div>
+ <div class="hint">科创产业有利于繁荣，制造业增加污染压力。同类企业超过三家，新增税收逐步递减。</div></div>
  <div class="sec"><h2>已落地企业</h2><table><tr><th>类型</th><th class="r">数量</th><th class="r">月税收</th><th class="r">产能</th></tr>${rows}</table>
  <div class="hint">工业用地上的老厂 ${S.f.factory} 家，另计月税 ${fmt(factoryUnits()*45*S.sc*supplyFactor())}。</div></div>`;}
 function vRegion(){
@@ -2225,15 +2224,15 @@ function vRegion(){
   <div class="pb"><button class="sm" data-bid="1">保守报价 ${fmt(B.base*0.6)}</button><button class="sm" data-bid="2">跟到底 ${fmt(B.base)}</button><button class="sm" data-bid="3">志在必得 ${fmt(B.base*1.7)}</button><button class="sm quiet" data-bid="0">不争</button></div></div>`
   :'<div class="hint">今年没有在争的省级项目。年初会有新的。</div>';
  return `<div class="sec"><h2>省内位次</h2><table><tr><th>名次</th><th>城市</th><th class="r">繁荣度</th><th class="r">人口</th><th class="r">备注</th></tr>${tbl}</table>
- <div class="hint">你排第 <b>${rank}</b>。年度考核按位次加减：第一 +3 分，第二 0 分，第三 −3 分。邻市每年自己也在长，进取度越高长得越快。</div></div>
+ <div class="hint">你排第 <b>${rank}</b>。年度考核按位次加减：第一 +3 分，第二 0 分，第三 −3 分。邻市会继续发展，增速受其进取度影响。</div></div>
  <div class="sec"><h2>省级重大项目争夺</h2>${big}</div>
  <div class="sec"><h2>人才与落户政策</h2><div class="tal">${tal}</div>
- <div class="hint">每档每月 ${fmt(LV[S.lvl].transfer*0.018)}，当前月支出 ${fmt(talentCost())}。补贴强度直接从邻市抽人——人口是零和的，你多一个他就少一个。</div></div>
- <div class="sec"><h2>都市圈协作</h2><div class="hint">合作不是慈善。同一个项目和同一座城市只能做一次。</div>
+ <div class="hint">每档每月 ${fmt(LV[S.lvl].transfer*0.018)}，当前月支出 ${fmt(talentCost())}。补贴会吸引邻市人口迁入。</div></div>
+ <div class="sec"><h2>都市圈协作</h2><div class="hint">同一项目与同一座城市仅可合作一次。</div>
  <div class="coopdesc">${COOP.map(c=>`<div><b>${c.n}</b>${esc(c.d)}</div>`).join('')}</div>
  <div class="leads">${coops}</div></div>`;}
 function vHist(){const hs=S.hist||[];if(!hs.length)return '';
- return `<div class="sec"><h2>你走过的地方</h2><div class="hint">离任之后，它们还在往前走。你留下的债和民意，接手的人要用很多年消化。</div>
+ return `<div class="sec"><h2>你走过的地方</h2><div class="hint">这里列出历任城市的近况，债务和公共服务仍会影响其后续发展。</div>
  <table><tr><th>城市</th><th class="r">在任</th><th class="r">离任已 </th><th class="r">现在繁荣</th><th class="r">现在债务率</th><th>近况</th></tr>
  ${hs.map(h=>`<tr><td>${esc(h.city.replace(/（.*/,''))}</td><td class="r">${h.years} 年</td><td class="r">${h.after||0} 年</td><td class="r">${Math.round(h.pros||0)}</td><td class="r ${(h.debt||0)>=80?'neg':''}">${Math.round(h.debt||0)}%</td><td style="font-size:13px">${esc(histLine(h))}</td></tr>`).join('')}</table></div>`;}
 function vDist(){
@@ -2247,10 +2246,10 @@ function vDist(){
   <td data-w="资金档"><div class="tiers">${[0,1,2,3,4,5].map(v=>`<button class="sm${a.fund===v?' on':''}" data-dist="${esc(d.id)}" data-k="fund" data-v="${v}">${v}</button>`).join('')}</div></td>
   <td data-w="侧重"><div class="tiers fo">${Object.keys(DFOCUS).map(f=>`<button class="sm${a.focus===f?' on':''}" data-dist="${esc(d.id)}" data-k="focus" data-v="${f}">${DFOCUS[f]}</button>`).join('')}</div></td></tr>`;}).join('');
  return `<div class="sec"><h2>建设资金分配</h2>
- <div class="hint">到了这一级，你不再一件一件盯设施。全市建设资金切成 <b>${DTIERMAX}</b> 档，每档每年 ${fmt(distTierCost())}，你决定哪个区拿几档、往哪个方向使。<b>市级考核里，区县的表现占五成五，你自己这一摊只占四成五。</b></div>
+ <div class="hint">全市建设资金共分 <b>${DTIERMAX}</b> 档，每档每年 ${fmt(distTierCost())}，按区分配资金并设置考核侧重。<b>市级考核中，区县表现占55%，市本级占45%。</b></div>
  <div class="hint">已分配 <b>${used}</b> / ${DTIERMAX} 档，全年支出 ${fmt(distSpend())}。区县加权平均：繁荣 <b>${av.pros.toFixed(0)}</b>、宜居 <b>${av.liv.toFixed(0)}</b>、债务率 <b>${av.debt.toFixed(0)}%</b>。</div>
  <table class="dist"><tr><th>区</th><th class="r">繁荣</th><th class="r">宜居</th><th class="r">债务</th><th>资金档</th><th>考核侧重</th></tr>${rows}</table>
- <div class="hint">「拼经济」出繁荣但压宜居、抬债务；「保民生」出宜居，慢；「控债务」压债务但繁荣掉。<b>区县的债务率一半算进市级隐性债务率</b>，压不住就是你的化债任务书。给「报表存疑」的区太多钱，它会把一部分变成瞒报的隐性债务——查出来那天并进市级账上，还带一条责任档案。</div></div>`;}
+ <div class="hint">「拼经济」提高繁荣，也会增加债务、降低宜居；「保民生」逐步提高宜居；「控债务」减少债务，也会降低繁荣。<b>区县的债务率一半算进市级隐性债务率</b>。「报表存疑」的区可能隐瞒部分融资，查实后计入市级债务并形成责任记录。</div></div>`;}
 function vDistrict(){return vDist();}
 function vLand(){
  const plots=S.plots||[];const dep=landDep();
@@ -2264,24 +2263,24 @@ function vLand(){
    ${p.use==='ind'?`<button class="sm" data-plot="${i}" data-how="deal">协议出让 ${fmt(base*0.45)}</button>`:''}
    <button class="sm" data-plot="${i}" data-how="hold">暂缓</button></div></div>`;}).join(''):'<div class="hint">今年没有可供地块。年初会重新梳理一批，「征地拆迁攻坚」也能补充储备。</div>';
  return `<div class="sec"><h2>今年的供地计划</h2>
- <div class="hint">土地是县级以上最主要的自主财力，一宗一宗地办。暂缓的地，明年市场未必更好。</div>
+ <div class="hint">按宗地办理出让、配建或暂缓。地价和市场热度会随时间变化。</div>
  <div class="kvline"><span><i>储备土地</i>${Math.round(S.land)} 亩</span><span><i>基准地价</i>${landPrice().toFixed(1)} 万/亩</span>${S.nosell>0?`<span><i>限购期</i>还有 ${S.nosell} 月</span>`:''}</div>
  <div class="coopdesc"><div><b>招拍挂</b>拿钱最多，住宅推高房价</div><div><b>限价配建</b>少拿一截，换一处实物当场交付，不占工期也不占现金流</div><div><b>协议出让</b>只限工业地，最便宜最快落地，也最容易留下记录</div></div>
  <div class="plots">${cards}</div></div>
  <div class="sec"><h2>土地财政依赖度</h2>${gauge(Math.min(100,dep),dep>=55,55)}
- <div class="hint">近三年土地出让收入占一般公共预算收入的 <b>${dep.toFixed(0)}%</b>。${dep>=70?'过半的日子靠卖地过，市场一冷，三保就悬。':dep>=45?'依赖已经不轻，房价压力和满意度都在为它买单。':'依赖度还在可控范围。'}累计出让 ${Math.round(S.landSold)} 亩，房价压力 ${Math.round(S.housing)}。</div></div>`;}
+ <div class="hint">近三年土地出让收入占一般公共预算收入的 <b>${dep.toFixed(0)}%</b>。${dep>=70?'对卖地收入依赖较高，市场转冷会影响支出安排。':dep>=45?'需关注卖地带来的房价和满意度变化。':'依赖度还在可控范围。'}累计出让 ${Math.round(S.landSold)} 亩，房价压力 ${Math.round(S.housing)}。</div></div>`;}
 function vOver(){const L=LV[S.lvl];const J=jobs();
-  const warns=[];if(S.cash<0)warns.push('财政赤字，三保随时出缺口。');if(S.hdr>=70)warns.push('隐性债务率超过70%，化债任务书压顶。');else if(S.hdr>=55)warns.push('隐性债务率接近红线。');
+  const warns=[];if(S.cash<0)warns.push('财政赤字，三保随时出缺口。');if(S.hdr>=70)warns.push('隐性债务率超过70%，已达到化债任务书触发线。');else if(S.hdr>=55)warns.push('隐性债务率接近红线。');
   if(S.sat<40)warns.push('满意度偏低，信访件会变多。');if(S.env<40)warns.push('环境指标差，环保督察随时会来。');if(cov('school')<0.6)warns.push('学位缺口大。');if(cov('hosp')<0.5)warns.push('医疗资源不足。');
-  if(eff()<0.85)warns.push('编制缺口，机关运转效率下降。');if(retLeft()<=2)warns.push(retLeft()<=0?'今年到龄退休。':'还有 '+retLeft()+' 年到龄退休，再往上走一步就多几年。');if(S.file.some(f=>!f.exp&&!f.mild))warns.push('责任档案里有未处理的越界记录。');
+  if(eff()<0.85)warns.push('编制缺口，机关运转效率下降。');if(retLeft()<=2)warns.push(retLeft()<=0?'今年到龄退休。':'还有 '+retLeft()+' 年到龄退休。');if(S.file.some(f=>!f.exp&&!f.mild))warns.push('责任档案里有尚未公开的违纪记录。');
   const bs=S.build.length?S.build.map(b=>`<tr><td>${FAC[b.id].n}${b.wl?'<span class="tag blue">'+b.wl+'</span>':''}${b.stalled?'<span class="tag red">资金不足停工</span>':''}</td><td class="r">${fmt(b.paid)} / ${fmt(b.cost)}</td><td class="r">剩 ${b.left} 月</td></tr>`).join(''):'<tr><td class="muted" colspan="3">没有在建项目。</td></tr>';
-  return `${artBox(S.phase==='retired'?'r_hometown':'city_'+S.lvl,'banner')}${vAgenda()}${vWind()}<div class="sec"><h2>${esc(L.city)}</h2><div class="hint">${S.lvl===0?'资源枯竭的老矿镇，年轻人在往外走。':S.lvl===1?'农业县，一个像样的物流园撑着税收。':S.lvl===2?'区域中心城市，工业基础尚可，城投规模不小。':S.lvl===3?'副省级城市，增速和债务两个数字都有人盯。':'直辖市。'}</div>
+  return `${artBox(S.phase==='retired'?'r_hometown':'city_'+S.lvl,'banner')}${vAgenda()}${vWind()}<div class="sec"><h2>${esc(L.city)}</h2><div class="hint">${S.lvl===0?'资源枯竭的老矿镇，年轻人在往外走。':S.lvl===1?'农业县，物流园是主要税源之一。':S.lvl===2?'区域中心城市，工业基础尚可，城投规模不小。':S.lvl===3?'副省级城市，经济增长与债务处置均列入考核。':'直辖市。'}</div>
   <div class="grid2"><div><table><tr><td>就业岗位覆盖</td><td class="r">${Math.round(J*100)}%</td></tr><tr><td>学位覆盖</td><td class="r">${Math.round(cov('school')*100)}%</td></tr><tr><td>医疗覆盖</td><td class="r">${Math.round(cov('hosp')*100)}%</td></tr><tr><td>道路通达</td><td class="r">${Math.round(cov('road')*100)}%</td></tr><tr><td>储备土地</td><td class="r">${Math.round(S.land)} 亩</td></tr></table></div>
   <div><table><tr><td>政绩进度</td><td class="r">${Math.round(S.merit)} / ${L.need>9999?'—':L.need}</td></tr><tr><td>财政紧张度</td><td class="r">${tension().toFixed(0)}</td></tr><tr><td>核定编制 / 在编</td><td class="r">${S.quota} / ${S.staff}</td></tr><tr><td>本任年限</td><td class="r">${S.tenure+1} / ${L.maxY}</td></tr><tr><td>到龄退休</td><td class="r">${retAge()} 岁　${retLeft()>0?'还有 '+retLeft()+' 年':'今年到点'}</td></tr><tr><td>历年考核</td><td class="r">${S.ratings.join(' ')||'—'}</td></tr></table></div></div></div>
   <div class="sec"><h2>需要注意</h2>${warns.length?'<ul style="padding-left:18px;font-size:14px">'+warns.map(w=>'<li>'+w+'</li>').join('')+'</ul>':'<div class="hint">眼下没有明显问题。</div>'}</div>
   <div class="sec"><h2>在建项目</h2><table>${bs}</table></div>
   ${eraOn().length?`<div class="sec"><h2>这个时代</h2>${eraOn().map(e=>`<div class="hint" style="margin:4px 0"><b>${esc(e.n)}</b>　${esc(e.note)}</div>`).join('')}</div>`:''}
-  <div class="sec"><h2>晋升条件</h2><div class="hint">政绩达到 ${L.need>9999?'—':Math.round(L.need*npcNeedMul())}${L.need>9999?'':'（基准 '+L.need+'，'+npcName('boss')+'的态度上下浮动一成半）'}、财政紧张度不超过 60、环境不低于30且已解除环境整改锁定、没有未完成的化债任务书、班子团结不低于 35、当年考核 A 或 B。任期满 ${L.maxY} 年未晋升即转任二线。<b>${esc(L.rank)}</b>的到龄退休年龄是 <b>${retAge()}</b> 岁——级别越高，能干的年头越长。</div></div>`;}
+  <div class="sec"><h2>晋升条件</h2><div class="hint">政绩达到 ${L.need>9999?'—':Math.round(L.need*npcNeedMul())}${L.need>9999?'':'（基准 '+L.need+'，'+npcName('boss')+'会影响门槛）'}、财政紧张度不超过 60、环境不低于30且已解除环境整改锁定、没有未完成的化债任务书、班子团结不低于 35、当年考核 A 或 B。任期满 ${L.maxY} 年未晋升即转任二线。<b>${esc(L.rank)}</b>的到龄退休年龄是 <b>${retAge()}</b> 岁。</div></div>`;}
 function vBuild(){
   S.buildCat=S.buildCat||'traffic';
   const LVN=['','县级','地级市','副省级','直辖市'];
@@ -2316,11 +2315,11 @@ function vDebt(){const h=hdr();
   ${path('财政偿还','动用结余和准备金还本，挤占当期财力',`<input type="number" id="repN" value="${Math.round(Math.min(cqOut(),S.reserve+Math.max(0,S.cash*0.5)))}" min="0" step="100"><span>万</span><button class="sm" id="btnRep">偿还</button>`)}
   ${path('盘活资产','变现 '+Math.round(80*S.lsc)+' 亩存量地块偿债，声誉小幅上升，每年一次','<button class="sm" id="btnRev">盘活</button>')}
   ${path('归集收益','一年内四成产业税收直接还本，繁荣度略降',`<button class="sm" id="btnCol" ${S.collect>0?'disabled':''}>${S.collect>0?'执行中 '+S.collect+'月':'启动'}</button>`)}
-  ${path('展期重组','全部城投债延长两年，利率上调一个点，声誉下降。治标不治本','<button class="sm danger" id="btnExt">展期</button>')}
+  ${path('展期重组','全部城投债延长两年，利率提高1个百分点，声誉下降','<button class="sm danger" id="btnExt">展期</button>')}
   ${path('平台转型','两成城投债转为经营性债务，不计隐债率。县级以上，每级一次',`<button class="sm" id="btnPlat" ${S.lvl<1||S.flags['plat'+S.lvl]?'disabled':''}>转型</button>`)}
   </div></div>`;}
 function vRel(){
-  return `<div class="sec"><h2>班子与关系</h2><div class="hint">关系跟工作一样，是一个月一个月攒起来的。标「跟随」的人换了地方还在，其余的到一地换一批。</div>
+  return `<div class="sec"><h2>班子与关系</h2><div class="hint">标「跟随」的人会随你调任，其余人物到任后重新结识。</div>
   <div class="rels">${NPCORDER.map(k=>{const D=NPCS[k],f=nf(k);
     return `<div class="rel"><div class="rn">${esc(D.r)} <b>${esc(nn(k))}</b>${D.follow?'<span class="tag">跟随</span>':''}</div>
     <div class="fbar wide"><i style="width:${f}%"></i></div><div class="rf">${Math.round(f)} · ${relLabel(f)}</div>
@@ -2372,7 +2371,7 @@ function showReview(R,done){const L=LV[S.lvl];
   <table style="margin:10px 0"><tr><td>综合得分</td><td class="r">${R.raw.toFixed(1)}</td></tr><tr><td>考核风向</td><td class="r">${esc(R.W.n)}</td></tr><tr><td>繁荣 ×${R.W.w[0]} / 宜居 ×${R.W.w[1]} / 满意 ×${R.W.w[2]}${R.W.env?' / 环境 ×'+R.W.env:''}</td><td class="r">${(R.W.w[0]*S.pros).toFixed(0)} / ${(R.W.w[1]*S.liv).toFixed(0)} / ${(R.W.w[2]*S.sat).toFixed(0)}${R.W.env?' / '+(R.W.env*S.env).toFixed(0):''}</td></tr><tr><td>债务扣分${R.W.debt!==1?'（×'+R.W.debt+'）':''}</td><td class="r">−${R.debtPen.toFixed(1)}</td></tr><tr><td>事故扣分</td><td class="r">−${R.accPen}</td></tr><tr><td>廉政扣分${R.W.clean!==1?'（×'+R.W.clean+'）':''}</td><td class="r">−${R.cleanPen.toFixed(1)}</td></tr><tr><td>政绩变动</td><td class="r">${R.gain>0?'+':''}${R.gain}　累计 ${Math.round(S.merit)}</td></tr>${R.rank?`<tr><td>省内位次</td><td class="r">第 ${R.rank} 名　${R.rankBonus>0?'+':''}${R.rankBonus}</td></tr>`:''}<tr><td>财政紧张度</td><td class="r">${R.tension.toFixed(0)}</td></tr></table>
   ${R.next==='promote'?'<p><b>组织部门已启动考察程序。</b></p>':R.next==='fall'?'<p style="color:var(--red)"><b>纪委监委在考察中发现线索。</b></p>':R.next==='sidelined'?'<p>本任年限已满。</p>':''}${R.envVeto?'<p class="neg">环境未达晋升要求，本年度暂停提拔；完成整改后可重新参评。</p>':''}${R.accountabilityBlock?'<p class="neg">处于项目责任观察期，暂缓提拔，处分和项目责任继续留档。</p>':''}<span class="seal">考核办</span></div><div class="opts"><button class="opt" id="rvOk"><span class="ot">知道了</span></button></div>`,'notice');
   $('#rvOk').onclick=()=>{hideDoc();done();};}
-function showPromo(lvl,done){showDoc(`<div class="dh"><div class="kind">任职通知</div><h2>关于${esc(LV[lvl].city.replace(/（.*/,''))}主要领导任职的通知</h2></div><div class="body">${esc(PROMO_TEXT[lvl])}\n\n上一任的政绩按四分之一带入新任期。新城市有存量债务，先看账。<span class="seal">组织部</span></div><div class="opts"><button class="opt" id="prOk"><span class="ot">到任</span></button></div>`,'notice');
+function showPromo(lvl,done){showDoc(`<div class="dh"><div class="kind">任职通知</div><h2>关于${esc(LV[lvl].city.replace(/（.*/,''))}主要领导任职的通知</h2></div><div class="body">${esc(PROMO_TEXT[lvl])}\n\n上一任政绩的四分之一计入新任期。到任账目中已列出存量债务。<span class="seal">组织部</span></div><div class="opts"><button class="opt" id="prOk"><span class="ot">到任</span></button></div>`,'notice');
   $('#prOk').onclick=()=>{hideDoc();done();};}
 function showEnding(){busy=false;const E=ENDINGS[S.over];
   showDoc(`${artBox('e_'+S.over,'wide')}<div class="dh"><div class="kind">结局</div><h2>${esc(E.t)}</h2></div><div class="body">${esc(E.d.replace(/〔年龄〕/g,S.age+' 岁'))}\n\n仕途 ${S.year-1} 年，终于 ${LV[S.lvl].t}（${esc(LV[S.lvl].city)}），${S.age} 岁。${S.hist.length?'\n\n'+S.hist.map(h=>h.city.replace(/（.*/,'')+' '+h.years+'年，建成'+h.built+'项，离任隐债率'+h.hdr+'%').join('；')+'。':''}历年考核：${S.ratings.join(' ')||'—'}。责任档案 ${S.file.length} 条。</div><div class="opts"><button class="opt" id="edFile"><span class="ot">查看履历与档案</span></button><button class="opt" id="edNew"><span class="ot">重新开局</span></button></div>`,'notice');
@@ -2464,7 +2463,7 @@ function eventAdmission(fx){if(fx&&fx.fac&&fx.fac.id==='factory'&&fx.fac.n>0)ret
 function addEventFactory(n){
  // Older events may promise a generic chemical factory. They cannot bypass new admission.
  const e=industryGate('factory',S.planZone||'mixed');
- if(e){logIt('工业项目未通过准入：'+e+'。保留洽谈，未新增工厂。','bad');return;}
+ if(e){logIt('工业项目未获准入：'+e+'。本次未引进工厂。','bad');return;}
  const mu=20*S.lsc*n;if(landFree('ind')<mu){logIt('工业项目未落地：可开发工业用地不足。','bad');return;}
  landTake(mu,'ind','事件项目');S.f.factory=(S.f.factory||0)+n;if(S.lvl===0)S.phase1.permits.factory--;
 }
@@ -2506,9 +2505,9 @@ function schedulePhaseAction(k){
  if(S.phase==='retired'||S.over)return '当前不能安排专项工作';
  if(k==='govern'&&S.phase1.environment.action>=3)return '本月环境治理已达到行动加分上限';
  if(k.startsWith('tech_')){const id=k.slice(5);if((phaseEnsure().tech[id]||0)>=3)return '该类企业已完成三轮技改';if(!(S.f[id]>0))return '没有对应在营企业';if(S.cash<techCost(id))return '财政不足以支付技改费用';}
- if(!AG[k])return '没有这项工作';S.ag=k;logIt('已安排'+AG[k].n+'，占用本月唯一亲自抓的工作机会。');return null;
+ if(!AG[k])return '没有这项工作';S.ag=k;logIt('已安排'+AG[k].n+'，已列入本月工作安排。');return null;
 }
-AG.govern={n:'专项环境治理',cat:'安全',cd:1,cond:()=>false,d:'常驻专项入口；消耗本月工作机会与治理资金，最多加3分，与事件共享月度5分上限。',f:()=>{
+AG.govern={n:'专项环境治理',cat:'安全',cd:1,cond:()=>false,d:'占本月安排并支付治理费，环境最多+3，与正向事件共用每月5分上限。',f:()=>{
  const P=phaseEnsure(),cost=LV[S.lvl].transfer*.18;if(S.cash<cost)return '治理未执行：财政不足，需要'+fmt(cost)+'。';
  S.cash-=cost;const used=S.agUse.govern||1,gain=3/(1+.15*Math.max(0,used-1));const added=envChange(gain,'action');return '投入'+fmt(cost)+'，环境改善'+added.toFixed(2)+'，同类长期重复治理收益递减。';}};
 for(const id of ['factory',...FACORDER.filter(id=>FAC[id].ind)]){
@@ -2582,39 +2581,39 @@ function cashForecast(){
 }
 function vCashbook(){
  const F=phaseEnsure().finance,last=F.history[F.history.length-1];const pending=cashTotals(F.entries);
- const forecast=cashForecast();return `<div class="sec phase-panel"><h2>财政分类台账</h2>${LS.get('yifang_save_before_v111')?'<button class="sm" id="btnLegacyExport">导出升级前存档</button>':''}<div class="hint">经常性收入与一次性收入分列；借债属于融资。水电经营收入按实收计，维护费用在运转支出中扣除。旧月份不追溯补造流水。</div>
- ${last?`<p>最近结算：第${last.year}年${last.month}月 · 经常性 ${fmt(last.recurring)} · 一次性 ${fmt(last.oneoff)} · 融资净流入 ${fmt(last.financing)}</p><div class="phase-scroll"><table><tr><th>已发生项目</th><th class="r">现金变动</th></tr>${Object.entries(last.totals).map(([k,v])=>`<tr><td>${CASH_NAMES[k]||k}</td><td class="r">${v>=0?'+':''}${fmt(v)}</td></tr>`).join('')}<tr><td>期初 → 期末</td><td class="r">${fmt(last.opening)} → ${fmt(last.closing)}</td></tr><tr><td>核对差额</td><td class="r">${last.error.toFixed(4)}万</td></tr></table></div>`:'<p class="muted">尚未产生新版月结流水。</p>'}
+ const forecast=cashForecast();return `<div class="sec phase-panel"><h2>财政分类台账</h2>${LS.get('yifang_save_before_v111')?'<button class="sm" id="btnLegacyExport">导出升级前存档</button>':''}<div class="hint">税收、租金和水电收入列入经常性收入；卖地、补助等单列。借款列融资，维护费列运转支出。</div>
+ ${last?`<p>最近结算：第${last.year}年${last.month}月 · 经常性 ${fmt(last.recurring)} · 一次性 ${fmt(last.oneoff)} · 融资净流入 ${fmt(last.financing)}</p><div class="phase-scroll"><table><tr><th>已发生项目</th><th class="r">现金变动</th></tr>${Object.entries(last.totals).map(([k,v])=>`<tr><td>${CASH_NAMES[k]||k}</td><td class="r">${v>=0?'+':''}${fmt(v)}</td></tr>`).join('')}<tr><td>期初 → 期末</td><td class="r">${fmt(last.opening)} → ${fmt(last.closing)}</td></tr><tr><td>核对差额</td><td class="r">${last.error.toFixed(4)}万</td></tr></table></div>`:'<p class="muted">推进到下月后显示结算记录。</p>'}
  <p class="phase-note">当前未结算流水：${F.entries.length}笔，净现金变动 ${fmt(pending.delta)}。${F.entries.length?F.entries.map(e=>esc(CASH_NAMES[e.kind]||e.kind)+' '+(e.amount>=0?'+':'')+fmt(e.amount)).join('；'):''}</p>
- <h2>未来3个月现金流预警</h2><div class="hint">按当前税源、租约和供需保守估算；包含到期本金、在建付款、准备金及现有专项债受限余额。不假定卖地、续借或未获批补贴；后续新增项目、人口变化与随机事件不在预测内。</div>
+ <h2>未来3个月现金流预警</h2><div class="hint">按当前税源、租约和供需估算，扣除到期本金、建设款和准备金。未计卖地、续借、待批补贴，以及后续人口和事件变化。</div>
  <div class="phase-scroll"><table class="phase-forecast"><tr><th>未来</th><th>收入</th><th>到期本金</th><th>建设</th><th>期末现金</th><th>可用现金*</th><th>状态</th></tr>${forecast.map(x=>`<tr><td>${x.i}个月</td><td>${fmt(x.income)}</td><td>${fmt(x.principal)}</td><td>${fmt(x.build)}</td><td>${fmt(x.cash)}</td><td>${fmt(x.available)}</td><td class="${x.warning!=='可覆盖'?'neg':''}">${x.warning}</td></tr>`).join('')}</table></div><div class="phase-note">* 扣除预测期末尚未投用的专项债资金；偿债准备金单列，不视为普通可花资金。</div></div>`;
 }
 function vEnvironment(E){
  E=E||phaseEnsure().environment;const end=E.closing===undefined?S.env:E.closing;
- return `<div class="sec phase-panel"><h2>环境收支台账</h2><p>环境总分 <b>${end.toFixed(2)}</b> / 100 · ${environmentLabel(end)}</p><div class="hint">60合格，85优秀；低于30暂停晋升，恢复至35解除整改锁定。长期生态加分上限2/月；行动与正向事件共用5分/月上限，污染和责任记录独立保留。</div><table>
+ return `<div class="sec phase-panel"><h2>环境收支台账</h2><p>环境总分 <b>${end.toFixed(2)}</b> / 100 · ${environmentLabel(end)}</p><div class="hint">60分合格，85分优秀。低于30暂停晋升，恢复至35解除整改限制。每月生态加分最多2分；行动与正向事件合计最多5分。</div><table>
  ${[['月初环境分',E.opening],['自然变化',E.natural],['常态化生态加分',E.ecology],['当月行动加分',E.action],['其他事件净变化',E.event],['生产污染扣减',E.pollution],['污水超载扣减',E.overflow],['0—100边界调整',E.clipping]].map(([n,v])=>`<tr><td>${n}</td><td class="r">${Number(v||0).toFixed(2)}</td></tr>`).join('')}</table></div>`;
 }
-function vUtilities(){const u=utilityStatus();return `<div class="sec phase-panel"><h2>水电与污水处理供需</h2><div class="hint">统一使用月度供需单位。居民和企业共用容量；缺水缺电压低产业税收与就业，污水超载增加环境损失。经营收入按实际服务量计算。${S.phase1.grace?'旧存档供需过渡保护还剩'+S.phase1.grace+'个月，期间生产系数最低90%。':''}</div><div class="phase-scroll"><table><tr><th>设施</th><th>容量</th><th>需求</th><th>已服务</th><th>负荷</th></tr>${['power','water','sewage'].map(k=>`<tr><td>${FAC[k].n}</td><td>${u[k].capacity.toFixed(1)}</td><td>${u[k].demand.toFixed(1)}</td><td>${u[k].served.toFixed(1)}</td><td class="${u[k].short>0?'neg':''}">${u[k].short>0?'超载 '+u[k].short.toFixed(1):'充足'}</td></tr>`).join('')}</table></div><p>月经营收入 ${fmt(utilityRevenue())} · 维护成本 ${fmt(utilityMaintenance())} · 经营结余 ${fmt(utilityRevenue()-utilityMaintenance())}</p></div>`;}
+function vUtilities(){const u=utilityStatus();return `<div class="sec phase-panel"><h2>水电与污水处理供需</h2><div class="hint">居民与企业共用水电容量；供应不足会降低产业税收和就业。污水超载会扣环境分，收费按实际服务量计算。${S.phase1.grace?'旧存档供需过渡保护还剩'+S.phase1.grace+'个月，期间生产系数最低90%。':''}</div><div class="phase-scroll"><table><tr><th>设施</th><th>容量</th><th>需求</th><th>已服务</th><th>负荷</th></tr>${['power','water','sewage'].map(k=>`<tr><td>${FAC[k].n}</td><td>${u[k].capacity.toFixed(1)}</td><td>${u[k].demand.toFixed(1)}</td><td>${u[k].served.toFixed(1)}</td><td class="${u[k].short>0?'neg':''}">${u[k].short>0?'超载 '+u[k].short.toFixed(1):'充足'}</td></tr>`).join('')}</table></div><p>月经营收入 ${fmt(utilityRevenue())} · 维护成本 ${fmt(utilityMaintenance())} · 经营结余 ${fmt(utilityRevenue()-utilityMaintenance())}</p></div>`;}
 function vLandBook(){
- const P=phaseEnsure(),L=P.land;return `<div class="sec phase-panel"><h2>土地储备与保护台账</h2><div class="hint">可开发库存合计与原有储备土地一致；已出租土地不再可建、可卖。原存档未知用途按工业45%、住宅35%、商服20%接续，不改变原有总亩数。保护地独立记录，不转成可开发库存。</div><table>${[['可开发工业用地',L.free.ind],['可开发住宅用地',L.free.res],['可开发商服及公共配套地',L.free.com],['新版已出租',L.leased],['新版建设占用',L.used],['新版已出让',L.sold],['永久基本农田（禁止开发）',L.protectedFarm],['生态保护地（禁止开发）',L.protectedEco]].map(([n,v])=>`<tr><td>${n}</td><td class="r">${v.toFixed(1)}亩</td></tr>`).join('')}</table>
- <h2>工业用地长期出租</h2><div class="hint">租金与出让金独立统计。按当前工业地评估价的6.5%确定年租金，签约锁价、按月收取；租满归还工业库存。出租本身不自动新增企业或税收。</div><div class="phase-row"><label>面积 <input id="leaseMu" type="number" min="1" step="1" value="${Math.max(1,Math.floor(Math.min(30*S.lsc,L.free.ind)))}">亩</label><select id="leaseYears" class="phase-select" aria-label="土地租期"><option value="5">5年</option><option value="10" selected>10年</option><option value="20">20年</option></select><button class="sm" id="btnLease">签订出租合同</button></div><p>已签${P.leases.length}份 · 年租金合计 ${fmt(rentIncome()*12)} · 按月入账 ${fmt(rentIncome())}</p>
+ const P=phaseEnsure(),L=P.land;return `<div class="sec phase-panel"><h2>土地储备与保护台账</h2><div class="hint">已出租土地在到期前不得另行建设或出让；农田和生态保护地不得开发。旧档未记录用途的土地按工业45%、住宅35%、商服20%划分，总面积不变。</div><table>${[['可开发工业用地',L.free.ind],['可开发住宅用地',L.free.res],['可开发商服及公共配套地',L.free.com],['已出租',L.leased],['建设已占用',L.used],['已出让',L.sold],['永久基本农田（禁止开发）',L.protectedFarm],['生态保护地（禁止开发）',L.protectedEco]].map(([n,v])=>`<tr><td>${n}</td><td class="r">${v.toFixed(1)}亩</td></tr>`).join('')}</table>
+ <h2>工业用地长期出租</h2><div class="hint">年租金按工业地评估价的6.5%锁定，按月收取，到期收回土地。出租只收租金，不直接增加企业和税收。</div><div class="phase-row"><label>面积 <input id="leaseMu" type="number" min="1" step="1" value="${Math.max(1,Math.floor(Math.min(30*S.lsc,L.free.ind)))}">亩</label><select id="leaseYears" class="phase-select" aria-label="土地租期"><option value="5">5年</option><option value="10" selected>10年</option><option value="20">20年</option></select><button class="sm" id="btnLease">签订出租合同</button></div><p>已签${P.leases.length}份 · 年租金合计 ${fmt(rentIncome()*12)} · 按月入账 ${fmt(rentIncome())}</p>
  ${P.leases.length?`<div class="phase-scroll"><table><tr><th>面积</th><th>年租金</th><th>剩余租期</th></tr>${P.leases.map(l=>`<tr><td>${l.mu.toFixed(1)}亩</td><td>${fmt(l.annual)}</td><td>${l.left}个月</td></tr>`).join('')}</table></div>`:''}</div>`;
 }
 function vIndustryControls(){
  const P=phaseEnsure(),ids=['factory',...FACORDER.filter(id=>FAC[id].ind)].filter(id=>S.f[id]>0);
- return `<div class="sec phase-panel"><h2>污染准入与治理</h2><div class="phase-row"><label>新工业项目片区 <select id="planZone" class="phase-select">${Object.entries(ZONES).map(([k,z])=>`<option value="${k}"${(S.planZone||'mixed')===k?' selected':''}>${z.n}</option>`).join('')}</select></label></div><p class="hint">低污染片区限低污染；综合产业片区允许低/中/高污染；限制工业片区限低/中污染；生态红线保护区禁工业。重污染仅可选专门治理的工业片区，并执行市级会审。现有企业保留经营，不追溯补批。</p><div class="phase-actions"><button class="sm" data-phase-action="govern">安排环境治理</button>${S.lvl===0?'<button class="sm" data-phase-action="permit_factory">申报招商工厂县级审批</button>':''}</div><p class="phase-note">专项工作替换本月原安排，推进下月时执行；不会额外获得工作机会。环境治理费用 ${fmt(LV[S.lvl].transfer*.18)}。</p>
+ return `<div class="sec phase-panel"><h2>污染准入与治理</h2><div class="phase-row"><label>新工业项目片区 <select id="planZone" class="phase-select">${Object.entries(ZONES).map(([k,z])=>`<option value="${k}"${(S.planZone||'mixed')===k?' selected':''}>${z.n}</option>`).join('')}</select></label></div><p class="hint">低污染片区限低污染；综合产业片区允许低/中/高污染；限制工业片区限低/中污染；生态红线保护区禁工业。重污染仅可选专门治理的工业片区，并执行市级会审。已落地企业继续经营。</p><div class="phase-actions"><button class="sm" data-phase-action="govern">安排环境治理</button>${S.lvl===0?'<button class="sm" data-phase-action="permit_factory">申报招商工厂县级审批</button>':''}</div><p class="phase-note">安排后替换本月工作，推进下月时执行。环境治理费用 ${fmt(LV[S.lvl].transfer*.18)}。</p>
  ${ids.length?`<div class="phase-scroll"><table><tr><th>企业</th><th>等级</th><th>技改</th><th>专项工作</th></tr>${ids.map(id=>`<tr><td>${FAC[id]?FAC[id].n:'招商工厂'}</td><td>${POLLUTION[pollutionGrade(id)]}</td><td>已${P.tech?.[id]||0}轮</td><td><button class="sm" data-phase-action="tech_${id}"${(phaseEnsure().tech[id]||0)>=3?' disabled':''}>安排技改 ${fmt(techCost(id))}</button></td></tr>`).join('')}</table></div>`:'<p class="muted">暂无在营工业企业。</p>'}</div>`;
 }
 // A dedicated serviced industrial zone handles heavy projects; protected land is never its source.
 ZONES.heavy={n:'重工业治理片区',max:4};
 const _vBuild=vBuild,_vFin=vFin,_vLand=vLand,_vOver=vOver,_vDebt=vDebt,_vInd=vInd,_bindPanel=bindPanel,_vAgenda=vAgenda,_renderAll=renderAll,_showMonthly=showMonthly;
 vAgenda=function(){const html=_vAgenda();const a=AG[S.ag];return html+(S.ag==='govern'||S.ag.startsWith('tech_')||S.ag.startsWith('permit_')?`<div class="sec"><b>已选专项工作：${esc(a.n)}</b><p>${esc(a.d)}</p></div>`:'');};
-vBuild=function(){return vUtilities()+vIndustryControls()+_vBuild()+`<details class="sec phase-reference"><summary>国营企业准入名录（34项，点击展开）</summary><div class="hint">安全风险与污染等级分别列示；光伏提供电力供给及有限生态收益。煤矿、油田需要资源条件。建设卡片在「产业」分类中。</div><div class="phase-scroll"><table><tr><th>项目</th><th>污染</th><th>安全</th><th>审批</th></tr>${SOE.map(([id])=>{const F=FAC[id],gate=industryGate(id,S.planZone||'mixed');return `<tr><td>${F.n}${F.resource?' · '+F.resource+'资源':''}</td><td>${POLLUTION[F.grade]}</td><td>${F.safety}</td><td>${gate?esc(gate):'可立项'}${(F.grade===4&&S.lvl===1)||(F.grade===3&&S.lvl===0)?`<button class="sm" data-phase-action="permit_${id}">申报${F.grade===4?'市级会审':'县级审批'}</button>`:''}</td></tr>`;}).join('')}</table></div></details>`;};
+vBuild=function(){return vUtilities()+vIndustryControls()+_vBuild()+`<details class="sec phase-reference"><summary>国营企业准入名录（34项，点击展开）</summary><div class="hint">企业可在「产业」分类中立项。煤矿、油田须有对应资源；光伏增加供电和生态收益。安全风险与污染等级分别列示。</div><div class="phase-scroll"><table><tr><th>项目</th><th>污染</th><th>安全</th><th>审批</th></tr>${SOE.map(([id])=>{const F=FAC[id],gate=industryGate(id,S.planZone||'mixed');return `<tr><td>${F.n}${F.resource?' · '+F.resource+'资源':''}</td><td>${POLLUTION[F.grade]}</td><td>${F.safety}</td><td>${gate?esc(gate):'可立项'}${(F.grade===4&&S.lvl===1)||(F.grade===3&&S.lvl===0)?`<button class="sm" data-phase-action="permit_${id}">申报${F.grade===4?'市级会审':'县级审批'}</button>`:''}</td></tr>`;}).join('')}</table></div></details>`;};
 vFin=function(){return vCashbook()+_vFin()+vLandBook();};vLand=function(){return vLandBook()+_vLand();};
 vOver=function(){return _vOver()+vEnvironment()+vUtilities();};vInd=function(){return vIndustryControls()+_vInd();};
 vDebt=function(){return _vDebt()+vLandBook();};
 bindPanel=function(){_bindPanel();const backup=$('#btnLegacyExport');if(backup)backup.onclick=()=>{const raw=LS.get('yifang_save_before_v111');if(!raw)return;const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(raw);a.download='一方水土-升级前原始存档.json';a.click();};const z=$('#planZone');if(z)z.onchange=()=>{S.planZone=z.value;renderAll();};const lease=$('#btnLease');if(lease)lease.onclick=()=>{const e=leaseLand(+$('#leaseMu').value,+$('#leaseYears').value);if(e)toast(e);renderAll();};document.querySelectorAll('[data-phase-action]').forEach(b=>b.onclick=()=>{const e=schedulePhaseAction(b.dataset.phaseAction);if(e)toast(e);renderAll();});};
 renderAll=function(){phaseEnsure();_renderAll();const M=S.monthly;if(M&&M.cashbook){const c=M.cashbook;$('#monthly').innerHTML=`<table><tr><td>经常性收入</td><td class="r">${fmt(c.recurring)}</td></tr><tr><td>一次性收入</td><td class="r">${fmt(c.oneoff)}</td></tr><tr><td>融资净流入</td><td class="r">${fmt(c.financing)}</td></tr><tr><td>现金变动</td><td class="r">${fmt(c.delta)}</td></tr></table><div class="hint">第${c.year}年${c.month}月；明细见财政台账。</div>`;}};
-showMonthly=function(B,done){_showMonthly(B,done);if($('#modal').classList.contains('on')){const body=$('#doc .body');if(body){const M=S.monthly;if(M.environment)body.insertAdjacentHTML('beforeend',vEnvironment(M.environment));if(M.cashbook)body.insertAdjacentHTML('beforeend',`<p class="phase-note">统一入账：经常性收入 ${fmt(M.cashbook.recurring)}，一次性收入 ${fmt(M.cashbook.oneoff)}，融资净流入 ${fmt(M.cashbook.financing)}；现金核对差额 ${M.cashbook.error.toFixed(4)}万。月内操作与当前推进前的余额比较口径不同，详见财政台账。</p>`);}}};
+showMonthly=function(B,done){_showMonthly(B,done);if($('#modal').classList.contains('on')){const body=$('#doc .body');if(body){const M=S.monthly;if(M.environment)body.insertAdjacentHTML('beforeend',vEnvironment(M.environment));if(M.cashbook)body.insertAdjacentHTML('beforeend',`<p class="phase-note">本月入账：经常性收入 ${fmt(M.cashbook.recurring)}，一次性收入 ${fmt(M.cashbook.oneoff)}，融资净流入 ${fmt(M.cashbook.financing)}；现金核对差额 ${M.cashbook.error.toFixed(4)}万。逐笔收支见财政台账。</p>`);}}};
 
 /* ===== v1.12 第二批：项目合同、专项资金、岗位、设备与跨任期责任 ===== */
 ICON.renewal=ICON.house;
@@ -2709,11 +2708,11 @@ function projectRemedyCost(p){return p.kind==='equipment'?maintenanceCost(p.fac)
 function remedyProject(uid,immediate=false){
  const p=projectById(uid),P=phase2Ensure();if(!p||p.status==='cancelled')return '项目不存在或已取消';if(p.site!==P.site)return '离任项目由原任地整改；个人责任仍保留';if(p.kind==='equipment'){const before=S.cash,message=maintainEquipment(p.fac,immediate?1.5:1);return S.cash<before?null:message;}
  if(['estate_construction','estate_stalled','restoring'].includes(p.status))return '请到经营页办理住宅监管、保交付或矿区修复';const role=p.risk.environment>p.risk.quality?'eco':'urban';const gate=roleGate(role);if(gate)return gate;if(p.grant.status==='withheld'&&S.env<p.grant.minEnv)return '需先将环境恢复到核定补贴门槛'+p.grant.minEnv+'，再办理复验';
- if(!Object.values(p.risk).some(v=>v>.01)&&p.status!=='rectification'){if(p.grant.status==='withheld'){p.grant.status='approved';collectProjectGrant(p);logIt(p.n+'补贴条件复验通过；全市指标不作为该项目污染隐患。','good');return null;}return '该项目暂无需要整改的隐患';}
+ if(!Object.values(p.risk).some(v=>v>.01)&&p.status!=='rectification'){if(p.grant.status==='withheld'){p.grant.status='approved';collectProjectGrant(p);logIt(p.n+'补贴复验通过，该项目未查出污染隐患。','good');return null;}return '该项目暂无需要整改的隐患';}
  const cost=projectRemedyCost(p)*(immediate?1.5:1);if(!spendProject(cost,'项目整改：'+p.n))return '整改资金不足，需要'+fmt(cost);
  p.risk={quality:0,environment:0,safety:0};p.remediedAt=projectMonth();p.warningAt=null;p.reviewAt=projectMonth()+12;
  if(p.status==='rectification'){if(p.deliveryHeld){S.f[p.fac]=(S.f[p.fac]||0)+1;p.deliveryHeld=false;}p.status='operating';p.accepted=true;grantProjectMerit(p);collectProjectGrant(p);}
- if(p.grant.status==='withheld'){p.grant.status='approved';collectProjectGrant(p);}logIt(p.n+'完成整改。已公开处分、已追回补贴和晋升观察期继续保留。','good');return null;
+ if(p.grant.status==='withheld'){p.grant.status='approved';collectProjectGrant(p);}logIt(p.n+'已完成整改，原处分、补贴追回和晋升观察期不变。','good');return null;
 }
 function grantProjectMerit(p){if(p.meritGranted)return;p.meritGranted=true;let gain=0;if(['hosp','clinic'].includes(p.fac)&&roleMember('health')?.skill==='health'){const unit=FAC[p.fac].cap*S.sc/S.pop,before=p.serviceBefore??Math.max(0,((S.f[p.fac]||0)-1)*unit),effective=clamp((Math.min(1,before+unit)-Math.min(1,before))/unit,0,1);p.serviceAdded=effective*unit;gain=Math.round(3*roleQuality('health')*effective);}if(p.kind==='municipal')gain+=Math.round(2*roleQuality('urban'));if(gain){S.merit+=gain;logIt(p.n+'专长匹配，政绩增加'+gain+'。','good');}}
 function settleProjectCompletions(){const done=[],pending=localProjects().filter(p=>p.status==='construction'),counts={};for(const id of ['hosp','clinic'])counts[id]=Math.max(0,(S.f[id]||0)-pending.filter(p=>p.fac===id&&!S.build.some(b=>b.p2Id===p.uid)).length);for(const p of pending){const b=S.build.find(b=>b.p2Id===p.uid);if(b)p.paid=b.paid;else{if(p.fac in counts)p.serviceBefore=counts[p.fac]++*FAC[p.fac].cap*S.sc/S.pop;finishProject(p);done.push(p.uid);}}return done;}
@@ -2723,7 +2722,7 @@ function finishProject(p){
  if(p.kind==='municipal'&&Math.random()<Math.min(.35,.12*(1-q)+p.risk.quality*.08)){
   p.status='rectification';p.accepted=false;p.deliveryHeld=true;S.f[p.fac]=Math.max(0,S.f[p.fac]-1);p.risk.quality=.7;p.warningAt=projectMonth();logIt(p.n+'未通过工程质量验收，补助暂缓，需安排整改。','bad');
  }else{p.status='operating';p.accepted=true;grantProjectMerit(p);}
- if(Object.values(p.risk).some(v=>v>=.20)){p.warningAt=projectMonth();logIt(p.n+'列入隐患台账，请安排专项整改，离任也保留责任。','bad');}
+ if(Object.values(p.risk).some(v=>v>=.20)){p.warningAt=projectMonth();logIt(p.n+'已列入隐患台账，需安排专项整改；离任后仍可能追责。','bad');}
  p.reviewAt=projectMonth()+6;
 }
 function recordProjectIncident(p,reason,severity=1){
@@ -2740,7 +2739,7 @@ function equipmentStep(){
   e.wear=clamp(e.wear+1+Math.max(0,load-1)*.3,0,100);
   if(e.wear>=60&&!e.warned){e.warned=true;logIt(FAC[type].n+'老化超过60，维护费和故障风险上升。','bad');}
   if(e.wear<55)e.warned=false;
-  if(e.wear>=70){let responsibility=projectById(e.riskId);if(!responsibility||responsibility.remediedAt){responsibility={uid:'P'+(++S.projectSeq),site:P.site,city:LV[S.lvl].city,level:S.lvl,fac:type,n:FAC[type].n+'设备维护责任',kind:'equipment',status:'operating',started:projectMonth(),cost:FAC[type].maint*S.sc*12,paid:0,sc:S.sc,risk:{quality:.2,environment:type==='sewage'?.4:0,safety:.5},grant:{status:'none',amount:0,paid:0,recovered:0},specialBond:0,accepted:true,meritGranted:true,warningAt:projectMonth(),reviewAt:projectMonth()+6};S.careerProjects.push(responsibility);e.riskId=responsibility.uid;logIt(FAC[type].n+'严重老化已形成维护责任记录，离任后仍保留。','bad');}}
+  if(e.wear>=70){let responsibility=projectById(e.riskId);if(!responsibility||responsibility.remediedAt){responsibility={uid:'P'+(++S.projectSeq),site:P.site,city:LV[S.lvl].city,level:S.lvl,fac:type,n:FAC[type].n+'设备维护责任',kind:'equipment',status:'operating',started:projectMonth(),cost:FAC[type].maint*S.sc*12,paid:0,sc:S.sc,risk:{quality:.2,environment:type==='sewage'?.4:0,safety:.5},grant:{status:'none',amount:0,paid:0,recovered:0},specialBond:0,accepted:true,meritGranted:true,warningAt:projectMonth(),reviewAt:projectMonth()+6};S.careerProjects.push(responsibility);e.riskId=responsibility.uid;logIt(FAC[type].n+'设备严重老化，已列入维护责任档案。','bad');}}
   if(e.wear>=70&&!e.offline&&Math.random()<.02*(e.wear/100)**2*(1.3-roleQuality('urban')*.5)){e.offline=2;S.sat=clamp(S.sat-2,0,100);nAdd('boss',-2);const p=projectById(e.riskId);if(p)recordProjectIncident(p,'长期设备隐患导致供给故障',1);logIt(FAC[type].n+'发生设备故障，2个月内有效容量减半；检修可提前恢复。','bad');}
  }
 }
@@ -2771,14 +2770,14 @@ function schedulePhase2(kind,target){
 function recruitSpecialist(skill){
  const P=phase2Ensure();if(!SPECIALTIES[skill]||P.team.length>=8)return '借调未执行：专长无效或已满8名关键干部';if(!spendProject(LV[S.lvl].transfer*.18,'借调专业干部'))return '借调未执行：前期保障经费不足';
  const names={urban:'程建川',eco:'许清和',health:'叶文清',commerce:'陆启明',finance:'罗明理'};const id='C'+(++P.cadreSeq);P.team.push({id,n:names[skill]+(P.cadreSeq>5?'·'+P.cadreSeq:''),skill,ability:70,post:roleMember(skill)?'':skill});
- return SPECIALTIES[skill]+'专长干部到位，从现有编制内调配，不重复增加在编总数。';
+ return SPECIALTIES[skill]+'干部已从现有编制内调配到岗。';
 }
 function trainSpecialist(id){const c=phase2Ensure().team.find(c=>c.id===id);if(!c||c.ability>=95)return '培训未执行：干部不存在或能力已达95';if(!spendProject(LV[S.lvl].transfer*.10,'干部专项培训'))return '培训经费不足';c.ability=Math.min(95,c.ability+10);return c.n+'完成培训，能力提高至'+c.ability+'。';}
 for(const [id,n,fn] of [
  ['p2_grant','申报项目专项补贴',applyProjectSubsidy],['p2_bid','向上对接市政工程',bidMunicipal],['p2_maintain','设备专项检修',maintainEquipment],
  ['p2_remedy','项目隐患整改',uid=>{const e=remedyProject(uid);return e?'整改未执行：'+e:'项目整改已完成。';}],['p2_recruit','借调专业干部',recruitSpecialist],['p2_train','干部专长培训',trainSpecialist]
-])AG[id]={n,cat:'专项',cond:()=>false,cd:1,d:'使用当月唯一亲自抓的工作机会，推进时检查人员、资金和项目资格。',f:()=>{const a=phase2Ensure().action;if(!a||a.kind!==id)return '专项工作目标已失效，请重新安排。';return fn(a.target);}};
-AG.province.n='向上汇报+争取政策';AG.province.d='专门沟通政策、提升上级好感；专项补贴改为按项目单独申报。';AG.province.f=()=>{nAdd('boss',4);S.rep=clamp(S.rep+.5,0,100);return '向上汇报并沟通项目政策，上级好感提高；本次没有财政拨款。';};
+])AG[id]={n,cat:'专项',cond:()=>false,cd:1,d:'占本月工作安排，办理时需满足人员、资金和项目条件。',f:()=>{const a=phase2Ensure().action;if(!a||a.kind!==id)return '专项工作目标已失效，请重新安排。';return fn(a.target);}};
+AG.province.n='向上汇报+争取政策';AG.province.d='向上级汇报工作、沟通政策。项目补贴需另行申报。';AG.province.f=()=>{nAdd('boss',4);S.rep=clamp(S.rep+.5,0,100);return '已向上级汇报工作、沟通政策，关系有所改善。此次未拨款。';};
 const _p2Bargain=bargainP,_p2Safety=AG.safety.f;
 bargainP=function(l){return Math.min(.95,_p2Bargain(l)+roleQuality('commerce')*.10);};
 AG.safety.f=()=>{const text=_p2Safety();for(const p of localProjects()){if(p.status!=='operating')continue;p.risk.safety*=.5;p.risk.quality*=.8;}return text+' 新登记项目的安全与质量隐患也同步降低。';};
@@ -2823,27 +2822,27 @@ tick=function(){
  p2MonthlyNotice=null;const stamp=projectMonth(),r=_p2Tick();S.projectClock=stamp+1;if(p2MonthlyNotice)r.evQueue.push(p2MonthlyNotice);for(const o of P.offers)if(o.state==='offered'&&projectMonth()>o.expires)o.state='expired';return r;
 };
 annual=function(){const r=_p2Annual();r.accountabilityBlock=(S.accountabilityUntil||0)>projectMonth();if(r.next==='promote'&&r.accountabilityBlock)r.next=null;return r;};
-findEvent=function(id){const n=(S.policyNotices||{})[id];if(!n)return _p2Find(id);const p=n.findings.map(projectById).find(p=>p&&p.site===phase2Ensure().site);const base={id,kind:'督查',title:n.name,text:n.city+'第'+n.year+'年'+n.month+'月定向检查：抽查'+n.checked+'个项目。'+(n.findings.length?'发现'+n.findings.length+'项隐患，相关项目已标记。':'未发现新增项目隐患。')+(S.env<40?' 全市环境偏低，需加强综合治理；仅凭总分不认定清洁项目违规。':'')+'\n\n1月高/重污染项目抽检概率为常规的两倍；汛期关注工程与排水，年末核验项目资金。'};
- base.opts=p?[{t:'立即拨款整改',n:'需要对应岗位；费用'+fmt(projectRemedyCost(p)*1.5)+'，不替代已公开责任',fx:{p2Remedy:p.uid,p2Notice:id}},{t:'安排下月专项整改',n:'占用下月工作机会；需对应岗位和经费',fx:{p2Schedule:{kind:'p2_remedy',target:p.uid},p2Notice:id}},{t:'记录问题，暂缓整改',n:'保留隐患和跨任期责任',fx:{p2Notice:id}}]:[{t:'收到，纳入项目台账',n:'',fx:{p2Notice:id}}];return base;};
+findEvent=function(id){const n=(S.policyNotices||{})[id];if(!n)return _p2Find(id);const p=n.findings.map(projectById).find(p=>p&&p.site===phase2Ensure().site);const base={id,kind:'督查',title:n.name,text:n.city+'第'+n.year+'年'+n.month+'月定向检查：抽查'+n.checked+'个项目。'+(n.findings.length?'发现'+n.findings.length+'项隐患，相关项目已标记。':'未发现新增项目隐患。')+(S.env<40?' 全市环境偏低，另需安排综合治理。':'')+'\n\n1月高/重污染项目抽检概率加倍。汛期检查工程与排水，年末核查资金。'};
+ base.opts=p?[{t:'立即拨款整改',n:'需要对应岗位；费用'+fmt(projectRemedyCost(p)*1.5)+'，原责任记录不变',fx:{p2Remedy:p.uid,p2Notice:id}},{t:'安排下月专项整改',n:'占用下月工作机会；需对应岗位和经费',fx:{p2Schedule:{kind:'p2_remedy',target:p.uid},p2Notice:id}},{t:'记录问题，暂缓整改',n:'保留隐患和跨任期责任',fx:{p2Notice:id}}]:[{t:'收到，纳入项目台账',n:'',fx:{p2Notice:id}}];return base;};
 applyFx=function(fx){_p2Fx(fx);if(!fx)return;if(fx.p2Remedy){const err=remedyProject(fx.p2Remedy,true);if(err)logIt('即时整改未完成：'+err,'bad');}if(fx.p2Schedule){const e=schedulePhase2(fx.p2Schedule.kind,fx.p2Schedule.target);if(e)logIt('未能安排整改：'+e,'bad');}if(fx.p2Notice&&S.policyNotices[fx.p2Notice])S.policyNotices[fx.p2Notice].handled=true;};
 cashForecast=function(){const rows=_p2Forecast();for(const r of rows)r.conditionalReceipts=localProjects().filter(p=>['approved','municipal'].includes(p.grant.status)&&S.build.some(b=>b.p2Id===p.uid&&b.left===r.i)).reduce((a,p)=>a+p.grant.amount,0);return rows;};
-retiredStep=function(){const r=_p2Retired();if(S.retY===2){const bad=(S.careerProjects||[]).find(p=>!p.incident&&p.warningAt!==null&&p.risk.quality+p.risk.environment+p.risk.safety>.8);if(bad)return {id:'p2_retirement_audit',kind:'倒查',title:'退休后项目倒查',text:bad.city+'「'+bad.n+'」长期未整改的严重隐患被查实。原始签批与责任台账仍然保留，退休没有终止追责。',opts:[{t:'接受调查',n:'',fx:{},end:'post_audit'}]};}return r;};
+retiredStep=function(){const r=_p2Retired();if(S.retY===2){const bad=(S.careerProjects||[]).find(p=>!p.incident&&p.warningAt!==null&&p.risk.quality+p.risk.environment+p.risk.safety>.8);if(bad)return {id:'p2_retirement_audit',kind:'倒查',title:'退休后项目倒查',text:bad.city+'「'+bad.n+'」长期未整改的严重隐患被查实。调查组正在核对当年的签批和整改记录。',opts:[{t:'接受调查',n:'',fx:{},end:'post_audit'}]};}return r;};
 MECH.projects={lv:0,tab:'项目'};
 function vCadres(){
- const P=phase2Ensure();return `<div class="sec phase-panel"><h2>关键岗位与干部专长</h2><div class="hint">沿用原编制与人物关系。关键干部从现有编制内任用；每人只任一个岗位。匹配专长按能力发挥，错配效率减半。无对应岗位时，市政承接、项目申补和专项检修等工作不能执行，普通建设与原行程保留。城建影响工期与质量，环保降低新工业隐患，卫健按医疗新增有效覆盖增加政绩，覆盖饱和不再追加，招商提高谈判成功率，财政提高申补成功率。</div><div class="phase-scroll"><table class="cadre-table"><tr><th>干部</th><th>专长/能力</th><th>岗位</th><th>培养</th></tr>${P.team.map(c=>`<tr><td>${esc(c.n)}</td><td>${SPECIALTIES[c.skill]} ${c.ability}</td><td><select data-cadre="${c.id}" aria-label="${esc(c.n)}岗位" class="phase-select"><option value=""${!c.post?' selected':''}>待岗</option>${Object.entries(SPECIALTIES).map(([k,n])=>`<option value="${k}"${c.post===k?' selected':''}>${n}负责人</option>`).join('')}</select></td><td><button class="sm" data-p2="p2_train" data-target="${c.id}"${c.ability>=95?' disabled':''}>安排培训</button></td></tr>`).join('')}</table></div><p>${Object.entries(SPECIALTIES).map(([k,n])=>n+'岗位 '+Math.round(roleQuality(k)*100)+'%').join(' · ')}</p><div class="phase-actions">${Object.entries(SPECIALTIES).map(([k,n])=>`<button class="sm" data-p2="p2_recruit" data-target="${k}"${P.team.length>=8?' disabled':''}>借调${n}干部</button>`).join('')}</div><p class="phase-note">借调与培训占用当月唯一专项工作；借调费用 ${fmt(LV[S.lvl].transfer*.18)}，培训费用 ${fmt(LV[S.lvl].transfer*.10)}。最多8名关键干部。</p></div>`;
+ const P=phase2Ensure();return `<div class="sec phase-panel"><h2>关键岗位与干部专长</h2><div class="hint">干部从现有编制内任用，一人一岗。专长匹配按能力办事，错配只发挥一半；缺岗时，相关专项工作暂停。城建影响工期和质量，环保降低工业隐患；卫健增加医疗项目政绩（仅新增覆盖），招商提高谈判成功率，财政提高申补成功率。</div><div class="phase-scroll"><table class="cadre-table"><tr><th>干部</th><th>专长/能力</th><th>岗位</th><th>培养</th></tr>${P.team.map(c=>`<tr><td>${esc(c.n)}</td><td>${SPECIALTIES[c.skill]} ${c.ability}</td><td><select data-cadre="${c.id}" aria-label="${esc(c.n)}岗位" class="phase-select"><option value=""${!c.post?' selected':''}>待岗</option>${Object.entries(SPECIALTIES).map(([k,n])=>`<option value="${k}"${c.post===k?' selected':''}>${n}负责人</option>`).join('')}</select></td><td><button class="sm" data-p2="p2_train" data-target="${c.id}"${c.ability>=95?' disabled':''}>安排培训</button></td></tr>`).join('')}</table></div><p>${Object.entries(SPECIALTIES).map(([k,n])=>n+'岗位 '+Math.round(roleQuality(k)*100)+'%').join(' · ')}</p><div class="phase-actions">${Object.entries(SPECIALTIES).map(([k,n])=>`<button class="sm" data-p2="p2_recruit" data-target="${k}"${P.team.length>=8?' disabled':''}>借调${n}干部</button>`).join('')}</div><p class="phase-note">借调、培训均占本月工作安排；借调费用 ${fmt(LV[S.lvl].transfer*.18)}，培训费用 ${fmt(LV[S.lvl].transfer*.10)}。最多8名关键干部。</p></div>`;
 }
-function vProjectPolicy(){const st=policyStats();return `<div class="sec phase-panel"><h2>上级政府关系与专项补贴</h2><p>上级好感 <b>${Math.floor(nf('boss'))}</b> / 100 · ${upperLabel()}</p><div class="hint">疏远0—39，普通40—69，良好70—89，密切90—100。复用原上级人物好感。「向上汇报+争取政策」只提升关系；专项补贴按新登记在建项目申请，完工验收合格后一次拨付。</div><p>本年度申报项目 ${st.projects.length}/4 · 申报次数 ${st.attempts} · 已核定 ${fmt(st.reserved)}/${fmt(LV[S.lvl].transfer*2)} · 已到账 ${fmt(st.paid)} · 市政已到账 ${fmt(st.municipalPaid)}</p><button class="sm" data-p2="province" data-target="">安排向上汇报</button><p class="phase-note">绿色项目门槛最低；高/重污染项目关系和环境门槛更高、比例更低。市政合同、专项补贴与专项债不对同一项目重复核定。旧在建项目融资来源不明，保留施工，不补造资格。拨付后三个月起，项目自身环保隐患未整改且全市环境低于40时，定向督查可追回补贴；城市低分不自动判定清洁项目违规。</p></div>`;}
-function vMunicipal(){const P=phase2Ensure(),st=policyStats();return `<div class="sec phase-panel"><h2>争取与承接市政工程</h2><div class="hint">每年最多取得4份合同，资格保留6个月。先争取合同再开工，建设期按月垫资，验收后取得定额补助；报价锁定，建设收支的盈利、回本或亏损均在开工前明示；差额尚未扣除前期工作、融资与后续维护费用。城建岗位缺人会停工，错配会延期并增加质量风险。</div><p>本年已获合同 ${st.wins}/4 · 城建统筹能力 ${Math.round(roleQuality('urban')*100)}%</p><div class="phase-scroll"><table><tr><th>工程</th><th>预计成本</th><th>定额补助</th><th>差额</th><th>工作安排</th></tr>${Object.keys(MUNICIPAL).map(k=>{const q=contractQuote(k);return `<tr><td>${q.n}</td><td>${fmt(q.cost)}</td><td>${fmt(q.award)}</td><td>${fmt(q.award-q.cost)}</td><td><button class="sm" data-p2="p2_bid" data-target="${k}">争取合同</button></td></tr>`;}).join('')}</table></div>${P.offers.length?`<h3>合同资格</h3>${P.offers.map(o=>`<div class="lead"><b>${o.n}</b><p>锁定成本 ${fmt(o.cost)} · 定额补助 ${fmt(o.award)} · ${o.months}个月 · ${o.state==='offered'?'待开工':o.state==='started'?'已开工':'已过期'}</p>${o.state==='offered'?`<button class="sm" data-start-municipal="${o.uid}">接受合同并开工</button>`:''}</div>`).join('')}`:''}</div>`;}
-function vEquipment(){const P=phase2Ensure();return `<div class="sec phase-panel"><h2>设备老化与专项检修</h2><div class="hint">水电污水设备从接入新版后开始累计老化，不推算未知历史设备年龄。老化增加维护费、降低有效容量；70以上才可能故障，先有60预警。新增设备会摊薄该组老化。检修使用城建岗位和本月工作机会。</div><div class="phase-scroll"><table><tr><th>设施组</th><th>老化</th><th>状态</th><th>专项检修</th></tr>${['power','water','sewage'].map(k=>{const e=P.equipment[k];return `<tr><td>${FAC[k].n} ×${S.f[k]||0}</td><td>${e.wear.toFixed(1)}/100</td><td>${e.offline?'故障 '+e.offline+'个月':'运行'}</td><td><button class="sm" data-p2="p2_maintain" data-target="${k}"${!S.f[k]?' disabled':''}>安排检修 ${fmt(maintenanceCost(k))}</button></td></tr>`;}).join('')}</table></div><p>当前老化新增月运维 ${fmt(agingMaintenance())}，已包含在运转支出内。</p></div>`;}
+function vProjectPolicy(){const st=policyStats();return `<div class="sec phase-panel"><h2>上级政府关系与专项补贴</h2><p>上级好感 <b>${Math.floor(nf('boss'))}</b> / 100 · ${upperLabel()}</p><div class="hint">疏远0—39，普通40—69，良好70—89，密切90—100。汇报可改善关系；在建项目可另行申补，完工验收后拨款。</div><p>本年度申报项目 ${st.projects.length}/4 · 申报次数 ${st.attempts} · 已核定 ${fmt(st.reserved)}/${fmt(LV[S.lvl].transfer*2)} · 已到账 ${fmt(st.paid)} · 市政已到账 ${fmt(st.municipalPaid)}</p><button class="sm" data-p2="province" data-target="">安排向上汇报</button><p class="phase-note">绿色项目较易获批，高/重污染项目要求更严。市政合同、专项补贴与专项债不可重复支持同一项目。未记录融资来源的项目不能申补。拨款满3个月后，项目环保隐患未整改且环境低于40，督查可追回补贴。</p></div>`;}
+function vMunicipal(){const P=phase2Ensure(),st=policyStats();return `<div class="sec phase-panel"><h2>争取与承接市政工程</h2><div class="hint">每年最多4份合同，中标资格有效6个月。建设款由本地按月垫付，验收后领定额补助。下表差额未扣前期工作、融资和后续维护费。缺城建干部会停工，专长不匹配可能延期或影响质量。</div><p>本年已获合同 ${st.wins}/4 · 城建统筹能力 ${Math.round(roleQuality('urban')*100)}%</p><div class="phase-scroll"><table><tr><th>工程</th><th>预计成本</th><th>定额补助</th><th>差额</th><th>工作安排</th></tr>${Object.keys(MUNICIPAL).map(k=>{const q=contractQuote(k);return `<tr><td>${q.n}</td><td>${fmt(q.cost)}</td><td>${fmt(q.award)}</td><td>${fmt(q.award-q.cost)}</td><td><button class="sm" data-p2="p2_bid" data-target="${k}">争取合同</button></td></tr>`;}).join('')}</table></div>${P.offers.length?`<h3>合同资格</h3>${P.offers.map(o=>`<div class="lead"><b>${o.n}</b><p>锁定成本 ${fmt(o.cost)} · 定额补助 ${fmt(o.award)} · ${o.months}个月 · ${o.state==='offered'?'待开工':o.state==='started'?'已开工':'已过期'}</p>${o.state==='offered'?`<button class="sm" data-start-municipal="${o.uid}">接受合同并开工</button>`:''}</div>`).join('')}`:''}</div>`;}
+function vEquipment(){const P=phase2Ensure();return `<div class="sec phase-panel"><h2>设备老化与专项检修</h2><div class="hint">老化会增加维护费、降低容量；60时预警，70起可能故障。增建设备可降低平均老化。检修需城建干部，占本月工作安排。</div><div class="phase-scroll"><table><tr><th>设施组</th><th>老化</th><th>状态</th><th>专项检修</th></tr>${['power','water','sewage'].map(k=>{const e=P.equipment[k];return `<tr><td>${FAC[k].n} ×${S.f[k]||0}</td><td>${e.wear.toFixed(1)}/100</td><td>${e.offline?'故障 '+e.offline+'个月':'运行'}</td><td><button class="sm" data-p2="p2_maintain" data-target="${k}"${!S.f[k]?' disabled':''}>安排检修 ${fmt(maintenanceCost(k))}</button></td></tr>`;}).join('')}</table></div><p>当前老化新增月运维 ${fmt(agingMaintenance())}，已包含在运转支出内。</p></div>`;}
 function vProjectLedger(all=false){
- const P=phase2Ensure(),ps=all?S.careerProjects:localProjects();return `<div class="sec phase-panel"><h2>${all?'跨任期项目责任档案':'本任项目与补助台账'}</h2><div class="hint">新登记项目保留所在地、立项时间、成本、融资、补助、验收、隐患与处分。离任项目出事只追究个人责任，补助返还由原任地承担。整改不会删除已经公开的处分或追回记录。</div>${(S.accountabilityUntil||0)>projectMonth()?`<p class="neg">处于项目责任观察期，尚有${S.accountabilityUntil-projectMonth()}个月暂停晋升。</p>`:''}${ps.length?ps.slice().reverse().map(p=>{const gate=subsidyGate(p.uid),risk=p.risk.quality+p.risk.environment+p.risk.safety;return `<div class="lead"><div class="lh"><b>${esc(p.n)}</b><span class="tag">${esc(p.city)}</span><span class="tag">${P2_STATUS[p.status]}</span></div><p>项目号 ${p.uid} · 成本 ${fmt(p.cost)} · 已付建设 ${fmt(p.paid)} · ${p.kind==='municipal'?'市政合同':p.kind==='equipment'?'设备维护责任（成本为参考维护额）':p.kind==='investment'?'招商落地（成本为财政配套投入）':p.kind==='estate'?'住宅开发（经营页办理监管与保交付）':p.kind==='restoration'?'矿区修复（经营页办理）':'普通项目'}</p><p>补助状态 ${esc(({none:'未申报',rejected:'未获批',approved:'已核定待验收',withheld:'待环保复验',municipal:'合同待验收',paid:'已拨付',recovered:'已追回',cancelled:'已取消'})[p.grant.status]||p.grant.status)} · 核定 ${fmt(p.grant.amount)} · 到账 ${fmt(p.grant.paid)} · 追回 ${fmt(p.grant.recovered)} · 专项债 ${fmt(p.specialBond)}</p><p class="${risk>=.2?'neg':'phase-note'}">质量/环保/安全隐患 ${p.risk.quality.toFixed(2)} / ${p.risk.environment.toFixed(2)} / ${p.risk.safety.toFixed(2)}${p.incident?'；已追责：'+esc(p.incident.reason):''}</p>${p.site===P.site&&S.phase!=='retired'?`<div class="phase-actions">${p.kind==='ordinary'&&p.status==='construction'?`<button class="sm" data-p2="p2_grant" data-target="${p.uid}"${gate?' disabled':''}>申报专项补贴</button>`:''}${(risk>.01||p.status==='rectification'||p.grant.status==='withheld')&&!['estate_construction','estate_stalled','restoring'].includes(p.status)?`<button class="sm" data-p2="p2_remedy" data-target="${p.uid}">${p.grant.status==='withheld'&&risk<=.01?'安排补贴复验':'安排隐患整改'}</button>`:''}</div>${p.kind==='ordinary'&&p.status==='construction'&&gate?'<p class="phase-note">'+esc(gate)+'</p>':''}`:''}</div>`;}).join(''):'<p class="muted">尚无新版登记项目；旧项目继续按原工期结算。</p>'}</div>`;
+ const P=phase2Ensure(),ps=all?S.careerProjects:localProjects();return `<div class="sec phase-panel"><h2>${all?'跨任期项目责任档案':'本任项目与补助台账'}</h2><div class="hint">项目的资金、验收和隐患记录如下。离任项目仍可能追责，追回补助由原任地支付。整改不撤销已作出的处分、补贴追回和晋升观察期。</div>${(S.accountabilityUntil||0)>projectMonth()?`<p class="neg">处于项目责任观察期，尚有${S.accountabilityUntil-projectMonth()}个月暂停晋升。</p>`:''}${ps.length?ps.slice().reverse().map(p=>{const gate=subsidyGate(p.uid),risk=p.risk.quality+p.risk.environment+p.risk.safety;return `<div class="lead"><div class="lh"><b>${esc(p.n)}</b><span class="tag">${esc(p.city)}</span><span class="tag">${P2_STATUS[p.status]}</span></div><p>项目号 ${p.uid} · 成本 ${fmt(p.cost)} · 已付建设 ${fmt(p.paid)} · ${p.kind==='municipal'?'市政合同':p.kind==='equipment'?'设备维护责任（成本为参考维护额）':p.kind==='investment'?'招商落地（成本为财政配套投入）':p.kind==='estate'?'住宅开发（经营页办理监管与保交付）':p.kind==='restoration'?'矿区修复（经营页办理）':'普通项目'}</p><p>补助状态 ${esc(({none:'未申报',rejected:'未获批',approved:'已核定待验收',withheld:'待环保复验',municipal:'合同待验收',paid:'已拨付',recovered:'已追回',cancelled:'已取消'})[p.grant.status]||p.grant.status)} · 核定 ${fmt(p.grant.amount)} · 到账 ${fmt(p.grant.paid)} · 追回 ${fmt(p.grant.recovered)} · 专项债 ${fmt(p.specialBond)}</p><p class="${risk>=.2?'neg':'phase-note'}">质量/环保/安全隐患 ${p.risk.quality.toFixed(2)} / ${p.risk.environment.toFixed(2)} / ${p.risk.safety.toFixed(2)}${p.incident?'；已追责：'+esc(p.incident.reason):''}</p>${p.site===P.site&&S.phase!=='retired'?`<div class="phase-actions">${p.kind==='ordinary'&&p.status==='construction'?`<button class="sm" data-p2="p2_grant" data-target="${p.uid}"${gate?' disabled':''}>申报专项补贴</button>`:''}${(risk>.01||p.status==='rectification'||p.grant.status==='withheld')&&!['estate_construction','estate_stalled','restoring'].includes(p.status)?`<button class="sm" data-p2="p2_remedy" data-target="${p.uid}">${p.grant.status==='withheld'&&risk<=.01?'安排补贴复验':'安排隐患整改'}</button>`:''}</div>${p.kind==='ordinary'&&p.status==='construction'&&gate?'<p class="phase-note">'+esc(gate)+'</p>':''}`:''}</div>`;}).join(''):'<p class="muted">暂无项目记录。</p>'}</div>`;
 }
 function vProjects(){return vProjectPolicy()+vMunicipal()+vProjectLedger();}
 const _p2Hr=vHR,_p2Build=vBuild,_p2File=vFile,_p2Fin=vFin,_p2Agenda=vAgenda,_p2Bind=bindPanel,_p2Monthly=showMonthly;
-vHR=function(){return vCadres()+_p2Hr();};vBuild=function(){return vEquipment()+_p2Build();};vFile=function(){return _p2File()+vProjectLedger(true);};vFin=function(){const html=_p2Fin();return vProjectPolicy()+html+`<div class="sec phase-panel"><h2>待验收补助提示</h2><p class="phase-note">已核定补助和市政定额补助仍需完工验收，不提前算入保守现金流。未来三个月预计具备完工条件的补助：${cashForecast().map(r=>r.i+'个月内对应'+fmt(r.conditionalReceipts)).join('；')}。</p>${LS.get('yifang_save_before_v112')?'<button class="sm" id="btnP2Backup">导出第二批升级前存档</button>':''}</div>`;};
+vHR=function(){return vCadres()+_p2Hr();};vBuild=function(){return vEquipment()+_p2Build();};vFile=function(){return _p2File()+vProjectLedger(true);};vFin=function(){const html=_p2Fin();return vProjectPolicy()+html+`<div class="sec phase-panel"><h2>待验收补助提示</h2><p class="phase-note">补助须验收后到账，暂不计入现金流预测。未来3个月可能完工的项目对应补助：${cashForecast().map(r=>r.i+'个月内对应'+fmt(r.conditionalReceipts)).join('；')}。</p>${LS.get('yifang_save_before_v112')?'<button class="sm" id="btnP2Backup">导出第二批升级前存档</button>':''}</div>`;};
 vAgenda=function(){const html=_p2Agenda();return html+(S.ag.startsWith('p2_')?`<div class="sec"><b>已选专项工作：${esc(AG[S.ag].n)}</b><p>与原行程共用每月一次机会。目标：${esc(projectById(S.phase2.action?.target)?.n||MUNICIPAL[S.phase2.action?.target]?.n||SPECIALTIES[S.phase2.action?.target]||S.phase2.action?.target||'')}</p></div>`:'');};
 bindPanel=function(){_p2Bind();document.querySelectorAll('[data-p2]').forEach(b=>b.onclick=()=>{const err=b.dataset.p2==='province'?(S.ag='province',null):schedulePhase2(b.dataset.p2,b.dataset.target);if(err)toast(err);renderAll();});document.querySelectorAll('[data-cadre]').forEach(el=>el.onchange=()=>{const e=assignCadre(el.dataset.cadre,el.value);if(e)toast(e);renderAll();});document.querySelectorAll('[data-start-municipal]').forEach(b=>b.onclick=()=>{const e=startMunicipal(b.dataset.startMunicipal);if(e)toast(e);renderAll();});const backup=$('#btnP2Backup');if(backup)backup.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v112'));a.download='一方水土-第二批升级前存档.json';a.click();};};
-showMonthly=function(B,done){_p2Monthly(B,done);const body=$('#doc .body');if(body&&$('#modal').classList.contains('on')&&S.monthly?.phase2)body.insertAdjacentHTML('beforeend',`<div class="sec phase-panel"><h2>项目与设备复盘</h2><p>本月新登记项目完工 ${S.monthly.phase2.completed.length} 项；老化新增月运维 ${fmt(S.monthly.phase2.agingCost)}。${S.monthly.phase2.notice?'本月有定向督查件，继续后处理。':''}</p></div>`);};
+showMonthly=function(B,done){_p2Monthly(B,done);const body=$('#doc .body');if(body&&$('#modal').classList.contains('on')&&S.monthly?.phase2)body.insertAdjacentHTML('beforeend',`<div class="sec phase-panel"><h2>项目与设备复盘</h2><p>本月台账内完工项目 ${S.monthly.phase2.completed.length} 项；老化新增月运维 ${fmt(S.monthly.phase2.agingCost)}。${S.monthly.phase2.notice?'本月有定向督查件，继续后处理。':''}</p></div>`);};
 
 /* ===== v1.13 第三批：企业经营、住宅开发、区域竞争和生态修复 ===== */
 const LIFE_NAMES={ramp:'产能爬坡',stable:'稳定生产',difficulty:'经营困难',reduced:'减产运行',expanding:'扩产建设',relocating:'搬迁停产',closed:'已退出'};
@@ -2882,10 +2881,10 @@ function firmWork(kind,uid){if(S.phase==='retired'||S.over)return '当前不能�
  if(!spendBusiness(cost,'企业经营调整：'+f.name))return '企业调整经费不足，需要'+fmt(cost);
  // spendProject已记账，换用专门类别，不重复入账。
  const e=S.phase1.finance.entries.at(-1);if(e)e.kind='firmAid';
- if(kind==='p3_aid'){f.aid.push(projectMonth());f.health=Math.min(100,f.health+22);f.bad=Math.max(0,f.bad-4);f.protectedUntil=projectMonth()+6;if(['difficulty','reduced'].includes(f.stage))f.stage='stable';return f.name+'完成阶段性帮扶，6个月内稳产；反复帮扶不会提高基础产能。';}
+ if(kind==='p3_aid'){f.aid.push(projectMonth());f.health=Math.min(100,f.health+22);f.bad=Math.max(0,f.bad-4);f.protectedUntil=projectMonth()+6;if(['difficulty','reduced'].includes(f.stage))f.stage='stable';return f.name+'已获稳产帮扶，为期6个月，基础产能不变。';}
  if(kind==='p3_expand'){const land=(FAC[f.fac]?.land||40)*S.lsc*.35*.5;landTake(land,'ind','企业扩产');if((pollutionGrade(f.fac)===4&&S.lvl===1)||(pollutionGrade(f.fac)===3&&S.lvl===0))S.phase1.permits[f.fac]--;f.expansion={left:6,land,cost};f.stage='expanding';const p=projectById(f.project);if(p){p.risk.environment=Math.max(p.risk.environment,.2);p.warningAt=projectMonth();}return f.name+'扩产立项，6个月后增加50%产能，同步增加资源需求和排污。';}
- if(kind==='p3_move'){const land=(FAC[f.fac]?.land||40)*S.lsc*.35*f.capacity;landTake(land,'ind','企业搬迁');if((pollutionGrade(f.fac)===4&&S.lvl===1)||(pollutionGrade(f.fac)===3&&S.lvl===0))S.phase1.permits[f.fac]--;f.stage='relocating';f.move={left:4,land,cost};return f.name+'在本任辖区内搬迁，4个月停产；旧址不自动转为可开发土地，责任档案继续保留。';}
- closeFirm(f,'有序退出');return f.name+'有序退出；税收、就业与资源消耗同步停止，土地不重复返还。';
+ if(kind==='p3_move'){const land=(FAC[f.fac]?.land||40)*S.lsc*.35*f.capacity;landTake(land,'ind','企业搬迁');if((pollutionGrade(f.fac)===4&&S.lvl===1)||(pollutionGrade(f.fac)===3&&S.lvl===0))S.phase1.permits[f.fac]--;f.stage='relocating';f.move={left:4,land,cost};return f.name+'开始辖区内搬迁，停产4个月；旧址暂不返还土地，原责任记录不变。';}
+ closeFirm(f,'有序退出');return f.name+'已退出，停止生产、纳税和用工，土地暂不返还。';
 }
 function closeFirm(f,reason){if(f.stage==='closed')return false;f.stage='closed';f.exitAt=projectMonth();S.f[f.fac]=Math.max(0,(S.f[f.fac]||0)-1);S.sat=clamp(S.sat-1,0,100);if(FAC[f.fac]?.resource==='煤炭')addMine(f);logIt(f.name+reason+'，停止生产，既有责任不清除。','bad');return true;}
 function companyStep(){const P=phase3Ensure();syncFirms();for(const f of P.firms){if(f.stage==='closed')continue;
@@ -2913,14 +2912,14 @@ function homeWorkQuote(kind,uid){const h=phase3Ensure().homes.find(h=>h.uid===ui
  else if(kind==='p3_rescue'){if(h.stage!=='stalled')error='仅可对已停工项目保交付';cost=h.finance?.version===2?Math.max(h.cost*.3,h.cost-h.finance.constructionPaid-h.finance.cash+h.cost*.12):h.cost*.3;}
  else error='未知住宅工作';cost=Math.round(cost);if(!error&&businessCash()<cost)error='财政不足，需要'+fmt(cost);return {h,cost,error};}
 function homeWork(kind,uid){const {h,cost,error}=homeWorkQuote(kind,uid);if(error)return error;if(!spendBusiness(cost,'住宅监管/保交付：'+h.n))return '财政不足，需要'+fmt(cost);
- if(kind==='p3_rescue'&&h.finance?.version===2){h.finance.cash+=cost;h.finance.publicRescue+=cost;}h.developerFunds=Math.max(h.developerFunds,65);h.regulatedUntil=projectMonth()+6;h.riskMonths=0;if(h.stage==='stalled'){h.stage='construction';h.left=Math.max(2,h.left);const p=projectById(h.project);if(p)p.status='estate_construction';h.rescueCost=(h.rescueCost||0)+cost;}return h.n+'已落实'+(kind==='p3_rescue'?'保交付投入；个人既有责任保留':'资金监管，6个月内降低资金链风险')+'。';}
+ if(kind==='p3_rescue'&&h.finance?.version===2){h.finance.cash+=cost;h.finance.publicRescue+=cost;}h.developerFunds=Math.max(h.developerFunds,65);h.regulatedUntil=projectMonth()+6;h.riskMonths=0;if(h.stage==='stalled'){h.stage='construction';h.left=Math.max(2,h.left);const p=projectById(h.project);if(p)p.status='estate_construction';h.rescueCost=(h.rescueCost||0)+cost;}return h.n+'已落实'+(kind==='p3_rescue'?'保交付投入，原责任记录不变':'资金监管，6个月内降低资金链风险')+'。';}
 function housingStep(){const P=phase3Ensure(),counts={};for(const h of P.homes)if(h.stage==='selling')counts[h.type]=(counts[h.type]||0)+1;
  for(const h of P.homes){const T=HOME_TYPES[h.type],p=projectById(h.project);if(h.stage==='construction'){
   if(h.mode==='private'&&h.finance?.version===2){const f=h.finance,stress=h.cost*Math.max(0,1-P.market.index)*.035*(h.regulatedUntil>projectMonth()?.1:1),loss=Math.min(f.cash,stress);f.cash-=loss;f.loss+=loss;const remaining=Math.max(0,h.cost-f.constructionPaid);h.developerFunds=remaining?clamp(f.cash/remaining*100,0,100):100;}
   else if(h.mode==='private'&&h.regulatedUntil<=projectMonth())h.developerFunds=clamp(h.developerFunds+(P.market.index-1)*6-.3,0,100);
   if(h.mode==='private'&&h.developerFunds<35){h.riskMonths++;if(h.riskMonths===1)logIt(h.n+'出现资金链预警，可安排资金监管。','bad');if(h.riskMonths>=3){h.stage='stalled';p.status='estate_stalled';p.risk.quality=.6;p.warningAt=projectMonth();S.sat=clamp(S.sat-6,0,100);S.unity=clamp(S.unity-3,0,100);nAdd('boss',-6);logIt(h.n+'资金链断裂停工，需决定是否投入保交付。','bad');continue;}}
   else h.riskMonths=0;
-  if(roleQuality('urban')===0)continue;if(h.finance?.version===2){const f=h.finance,due=(h.cost-f.constructionPaid)/Math.max(1,h.left);if(f.cash+1e-7<due)continue;f.cash-=due;f.constructionPaid+=due;}if(--h.left<=0){h.stage='selling';h.finished=projectMonth();finishProject(p);S.pros=clamp(S.pros+1,0,100);S.liv=clamp(S.liv+(h.type==='basic'?1.5:1),0,100);S.merit+=2;logIt(h.n+'完工验收，开始按行情去化；尚未售出的房屋不会计作财政回款。','good');}continue;
+  if(roleQuality('urban')===0)continue;if(h.finance?.version===2){const f=h.finance,due=(h.cost-f.constructionPaid)/Math.max(1,h.left);if(f.cash+1e-7<due)continue;f.cash-=due;f.constructionPaid+=due;}if(--h.left<=0){h.stage='selling';h.finished=projectMonth();finishProject(p);S.pros=clamp(S.pros+1,0,100);S.liv=clamp(S.liv+(h.type==='basic'?1.5:1),0,100);S.merit+=2;logIt(h.n+'已完工，开始销售；售出后按实际金额回款。','good');}continue;
  }
  if(h.stage==='stalled'){h.stallMonths++;if(h.stallMonths>=6&&p&&!p.incident)recordProjectIncident(p,'住宅停工长期未解决，保交付责任落实不到位',1);continue;}
  if(h.stage!=='selling')continue;
@@ -2933,7 +2932,7 @@ function housingStep(){const P=phase3Ensure(),counts={};for(const h of P.homes)i
 }
 function addMine(f){const P=phase3Ensure();if(P.mines.some(m=>m.firm===f.uid))return;P.mines.push({uid:'M'+(++P.seq),firm:f.uid,n:f.name+'退出矿区',stage:'idle',left:0,cost:Math.round(firmRef(f)*.35),paid:0,project:null,restoredAt:null});}
 function startMine(uid){if(S.phase==='retired'||S.over)return '当前不能立项修复';const P=phase3Ensure(),m=P.mines.find(m=>m.uid===uid);if(!m||m.stage!=='idle')return '矿区已立项或不存在';if(roleGate('eco'))return roleGate('eco');if(roleGate('urban'))return roleGate('urban');if(businessCash()<m.cost/6)return '至少需要首月修复资金'+fmt(m.cost/6);const p=trackProject({id:'park',cost:m.cost,paid:0},'restoration');p.n=m.n+'生态修复';p.status='restoring';m.project=p.uid;m.stage='restoring';m.left=6;logIt(m.n+'修复立项，6个月逐月支付，总投入'+fmt(m.cost)+'。');return null;}
-function mineStep(){const P=phase3Ensure();let paidThisMonth=0;for(const m of P.mines){if(m.stage!=='restoring'||roleQuality('eco')===0||roleQuality('urban')===0)continue;const due=(m.cost-m.paid)/m.left;if(businessCash()<due)continue;S.cash-=due;paidThisMonth+=due;book('restore',-due,m.n+'修复进度款');m.paid+=due;m.left--;const p=projectById(m.project);p.paid=m.paid;if(!m.left){m.stage='restored';m.restoredAt=projectMonth();finishProject(p);envChange(4,'action');S.merit+=2;logIt(m.n+'修复验收，环境一次加分计入月度上限，后续生态收益共用长期上限。','good');}}return paidThisMonth;}
+function mineStep(){const P=phase3Ensure();let paidThisMonth=0;for(const m of P.mines){if(m.stage!=='restoring'||roleQuality('eco')===0||roleQuality('urban')===0)continue;const due=(m.cost-m.paid)/m.left;if(businessCash()<due)continue;S.cash-=due;paidThisMonth+=due;book('restore',-due,m.n+'修复进度款');m.paid+=due;m.left--;const p=projectById(m.project);p.paid=m.paid;if(!m.left){m.stage='restored';m.restoredAt=projectMonth();finishProject(p);envChange(4,'action');S.merit+=2;logIt(m.n+'修复通过验收，环境加分已入账，后续按月计算生态加分。','good');}}return paidThisMonth;}
 function restoreDue(){return (S.phase3?.mines||[]).filter(m=>m.stage==='restoring'&&m.left>0).reduce((a,m)=>a+(m.cost-m.paid)/m.left,0);}
 function mineEcology(){return (S.phase3?.mines||[]).filter(m=>m.stage==='restored').length*.15;}
 function ensureRival3(){const P=S.phase3;if(!P)return;for(let i=P.rivals.length;i<(S.rivals||[]).length;i++){const r=S.rivals[i];P.rivals.push({personality:i%2?'steady':'aggressive',environment:clamp(S.env+5,0,100),safety:80,clean:80,liv:S.liv,debt:35,risk:0,projects:0,land:0,accidents:0,last:'接续原邻市经济数据'});}}
@@ -2941,7 +2940,7 @@ function scoreParts(r=null){if(!r)return {economy:clamp(S.pros,0,100),safety:cla
 function compositeScore(parts){return parts.economy*.45+parts.safety*.15+parts.clean*.10+parts.environment*.15+parts.livelihood*.15;}
 function rival3Year(){const P=phase3Ensure();ensureRival3();for(let i=0;i<(S.rivals||[]).length;i++){const r=S.rivals[i],a=P.rivals[i],hot=a.personality==='aggressive';r.pros=clamp(r.pros+rnd(hot?1.5:.5,hot?4:2)-(S.talent||0)*.22,20,100);r.pop*=1+rnd(-.002,.012)-(S.talent||0)*.0022;
  a.projects+=hot?2:1;a.debt=clamp(a.debt+(hot?6:-1),0,150);a.risk=clamp(a.risk+(hot?.14:-.04),0,1);a.environment=clamp(a.environment+(hot?-2:1),0,100);a.safety=clamp(a.safety+(hot?-2:1),0,100);a.liv=clamp(a.liv+(hot?.4:1),0,100);a.last=hot?'加码招商，债务与隐患上升':'控制投资，逐步改善民生';
- if(a.risk>=.5&&Math.random()<a.risk*.35){a.accidents++;r.pros=clamp(r.pros-8,20,100);a.safety=clamp(a.safety-18,0,100);a.clean=clamp(a.clean-8,0,100);a.risk*=.5;a.last='积累隐患引发事故，综合排名下滑';logIt(r.n+'招商后期隐患暴露，经济和安全指标回落。','bad');}
+ if(a.risk>=.5&&Math.random()<a.risk*.35){a.accidents++;r.pros=clamp(r.pros-8,20,100);a.safety=clamp(a.safety-18,0,100);a.clean=clamp(a.clean-8,0,100);a.risk*=.5;a.last='积累隐患引发事故，综合排名下滑';logIt(r.n+'出现招商项目隐患，经济和安全指标下降。','bad');}
  }}
 function landContest(){const P=phase3Ensure();if(!S.rivals?.length)return '区域玩法尚未开放';if(roleGate('commerce'))return roleGate('commerce');if(P.landBidYear===S.year)return '本年度已争取过土地指标';const cost=transferPay()*.08;if(!spendBusiness(cost,'年度工业用地指标竞争'))return '前期工作资金不足';P.landBidYear=S.year;const my=.6+nf('boss')/200+roleQuality('commerce')*.5+rnd(0,.5);let best=-1,value=0;P.rivals.forEach((a,i)=>{const v=(a.personality==='aggressive'?1.15:.8)+rnd(0,.6);if(v>value){value=v;best=i;}});const mu=Math.round(S.landTotal*.012);
  if(my>=value){landAdd(mu,'ind');S.landTotal+=mu;logIt('年度用地指标竞争获批'+mu+'亩工业地；住宅和保护地额度不变。','good');return '新增工业用地指标'+mu+'亩。';}P.rivals[best].land+=mu;P.rivals[best].last='赢得年度用地指标';return '本次用地指标由'+S.rivals[best].n+'取得，前期工作费用不退。';}
@@ -2949,8 +2948,8 @@ function industryPetition(){const P=phase3Ensure();if(S.agFlag?.nopet)return nul
  P.lastPetition=projectMonth();const id='p3_pet_'+P.site+'_'+projectMonth();P.notices[id]={id,firm:f.uid,title:'工业片区群众联名来信',handled:false,at:projectMonth()};return id;}
 function petitionWork(id,how){const P=phase3Ensure(),n=P.notices[id];if(!n||n.handled)return '事项已处理或失效';const f=firmById(n.firm);if(!f)return '企业已不存在';if(how==='rectify'){if(roleGate('eco'))return roleGate('eco');const cost=firmRef(f)*.08;if(!spendBusiness(Math.round(cost),'产业信访专项整改'))return '整改经费不足';const p=projectById(f.project);if(p)p.risk.environment*=.4;f.protectedUntil=projectMonth()+2;envChange(1.5,'action');S.sat=clamp(S.sat+2,0,100);}else if(how==='hear'){S.sat=clamp(S.sat+1,0,100);f.stage=['stable','difficulty'].includes(f.stage)?'reduced':f.stage;f.bad=Math.max(f.bad,9);f.limitedUntil=projectMonth()+3;n.followup=projectMonth()+6;}else{S.sat=clamp(S.sat-3,0,100);nAdd('pet',-3);const p=projectById(f.project);if(p){p.risk.environment=Math.max(p.risk.environment,.35);p.warningAt=projectMonth();}}
  n.handled=true;return null;}
-function schedulePhase3(kind,target){if(S.phase==='retired'||S.over)return '当前不能安排专项工作';if(!AG[kind])return '专项工作不存在';let e=null;if(['p3_aid','p3_expand','p3_move','p3_close'].includes(kind))e=firmGate(kind,target);if(['p3_regulate','p3_rescue'].includes(kind))e=homeWorkQuote(kind,target).error;if(kind==='p3_land')e=roleGate('commerce');if(e)return e;phase3Ensure().action={kind,target};S.ag=kind;logIt('已安排'+AG[kind].n+'，使用本月唯一亲自抓的工作机会。');return null;}
-for(const [id,n] of [['p3_aid','帮扶企业稳产'],['p3_expand','企业扩产审批'],['p3_move','辖区内企业搬迁'],['p3_close','企业有序退出'],['p3_regulate','房企资金监管'],['p3_rescue','停工住宅保交付'],['p3_land','争取年度工业用地指标'],['p3_petition','产业信访专项整改']])AG[id]={n,cat:'专项',cond:()=>false,cd:1,d:'使用当月唯一工作机会，执行时复核资金、人员与资格。',f:()=>{const a=phase3Ensure().action;if(!a||a.kind!==id)return '专项工作目标已失效';const text=id==='p3_land'?landContest():id==='p3_petition'?petitionWork(a.target,'rectify'):id==='p3_regulate'||id==='p3_rescue'?homeWork(id,a.target):firmWork(id,a.target);return text||'专项工作已完成。';}};
+function schedulePhase3(kind,target){if(S.phase==='retired'||S.over)return '当前不能安排专项工作';if(!AG[kind])return '专项工作不存在';let e=null;if(['p3_aid','p3_expand','p3_move','p3_close'].includes(kind))e=firmGate(kind,target);if(['p3_regulate','p3_rescue'].includes(kind))e=homeWorkQuote(kind,target).error;if(kind==='p3_land')e=roleGate('commerce');if(e)return e;phase3Ensure().action={kind,target};S.ag=kind;logIt('已安排'+AG[kind].n+'，已列入本月工作安排。');return null;}
+for(const [id,n] of [['p3_aid','帮扶企业稳产'],['p3_expand','企业扩产审批'],['p3_move','辖区内企业搬迁'],['p3_close','企业有序退出'],['p3_regulate','房企资金监管'],['p3_rescue','停工住宅保交付'],['p3_land','争取年度工业用地指标'],['p3_petition','产业信访专项整改']])AG[id]={n,cat:'专项',cond:()=>false,cd:1,d:'占本月工作安排，办理时需满足人员、资金和项目条件。',f:()=>{const a=phase3Ensure().action;if(!a||a.kind!==id)return '专项工作目标已失效';const text=id==='p3_land'?landContest():id==='p3_petition'?petitionWork(a.target,'rectify'):id==='p3_regulate'||id==='p3_rescue'?homeWork(id,a.target):firmWork(id,a.target);return text||'专项工作已完成。';}};
 const _p3Init=initLevel,_p3Migrate=migrate,_p3Load=load,_p3Close=closeLevel,_p3Tick=tick,_p3FinClose=closeFinanceMonth,_p3Find=findEvent,_p3Admission=eventAdmission,_p3Fx=applyFx,_p3LandPrice=landPrice,_p3Settle=settleProjectCompletions;
 initLevel=function(lvl,merit){p3Initializing=true;try{_p3Init(lvl,merit);}finally{p3Initializing=false;}phase3Reset(false);};
 migrate=function(){_p3Migrate();phase3Ensure();S.auditRevision=114;};
@@ -2962,17 +2961,17 @@ closeFinanceMonth=function(M){const P=phase3Ensure();housingStep();const restore
 tick=function(){const P=phase3Ensure();p3Notices=[];P.notes=[];if(projectMonth()>=P.market.next){P.market.index=clamp(P.market.index+rnd(-.18,.18)+(.98-P.market.index)*.2,.45,1.5);P.market.next=projectMonth()+6;}companyStep();const result=_p3Tick();result.evQueue.push(...p3Notices);return result;};
 rivalStep=function(){rival3Year();};
 myRank=function(){if(!S.rivals?.length)return 1;const mine=compositeScore(scoreParts());return 1+S.rivals.filter(r=>compositeScore(scoreParts(r))>mine+1e-9).length;};
-findEvent=function(id){const n=S.phase3?.notices[id];if(!n)return _p3Find(id);const f=firmById(n.firm);return {id,kind:'信访件',title:n.title,text:'工业片区群众反映「'+(f?.name||'企业')+'」异味、噪声与排水问题。生产和就业需要稳定，群众也要求看到整改进度。\n\n可以拨款整改、先听证限产或暂缓办理。投诉冷却6个月，原有信访与督查件仍照常处理。',opts:[{t:'立即拨款，限期治理',n:'需要环保岗位，经费'+fmt(f?firmRef(f)*.08:0),fx:{p3Pet:{id,how:'rectify'}}},{t:'先听证并限产，安排后续整改',n:'不立即花钱；企业减产，满意度小幅回升',fx:{p3Pet:{id,how:'hear'}}},{t:'暂缓办理，先保生产',n:'满意度下降；既有环保隐患继续保留',fx:{p3Pet:{id,how:'defer'}}}]};};
+findEvent=function(id){const n=S.phase3?.notices[id];if(!n)return _p3Find(id);const f=firmById(n.firm);return {id,kind:'信访件',title:n.title,text:'工业片区群众反映「'+(f?.name||'企业')+'」的异味、噪声和排水问题，要求公布整改进度。\n\n企业表示担心停产影响订单。请确定处理意见；同类产业投诉至少间隔6个月。',opts:[{t:'立即拨款，限期治理',n:'需要环保岗位，经费'+fmt(f?firmRef(f)*.08:0),fx:{p3Pet:{id,how:'rectify'}}},{t:'先听证并限产，安排后续整改',n:'不立即花钱；企业减产，满意度小幅回升',fx:{p3Pet:{id,how:'hear'}}},{t:'暂缓办理，先保生产',n:'满意度下降；既有环保隐患继续保留',fx:{p3Pet:{id,how:'defer'}}}]};};
 eventAdmission=function(fx){const old=_p3Admission(fx);if(old)return old;if(fx?.p3Pet){const n=S.phase3?.notices[fx.p3Pet.id],f=n&&firmById(n.firm);if(!n||n.handled||!f)return '事项已处理或失效';if(fx.p3Pet.how==='rectify'){if(roleGate('eco'))return roleGate('eco');if(businessCash()<Math.round(firmRef(f)*.08))return '专项整改经费不足，可先听证限产';}}return null;};
 applyFx=function(fx){if(fx?.p3Pet){const gate=eventAdmission(fx);if(gate){logIt(gate,'bad');return;}const e=petitionWork(fx.p3Pet.id,fx.p3Pet.how);if(e)logIt(e,'bad');return;}_p3Fx(fx);};
 MECH.business={lv:0,tab:'经营'};
 function marketLabel(){const x=phase3Ensure().market.index;return x<.8?'冷淡':x>1.15?'火热':'平稳';}
 function workBtn(kind,target,label,disabled=false){const reason=['p3_aid','p3_expand','p3_move','p3_close'].includes(kind)?firmGate(kind,target):['p3_regulate','p3_rescue'].includes(kind)?homeWorkQuote(kind,target).error:null;return `<span class="phase-work"><button class="sm" data-p3="${kind}" data-target="${target}"${disabled||reason?' disabled':''}>${label}</button>${reason?'<span class="phase-note">'+esc(reason)+'</span>':''}</span>`;}
-function vCompanies(){const P=phase3Ensure();syncFirms();return `<div class="sec phase-panel"><h2>企业经营与生命周期</h2><p>产业与住宅市场：<b>${marketLabel()}</b>（${P.market.index.toFixed(2)}）</p><div class="hint">建设期沿用原项目队列。落地后进入爬坡、稳定、困难、减产、扩产、搬迁或退出；产能同时影响税收、就业、水电、污水与污染。老企业按原产能接续，前6个月不新增经营恶化。扩产最多一次、增加50%产能；搬迁只限本任辖区，不转移责任。退出不自动返还旧土地，也不免除追责。专项工作共用原每月一次机会；需招商岗位，搬迁需城建岗位。</div>${P.firms.length?P.firms.slice().reverse().map(f=>`<div class="lead"><div class="lh"><b>${esc(f.name)}</b><span class="tag">${LIFE_NAMES[f.stage]}</span></div><p>企业号 ${f.uid} · 经营健康 ${f.health.toFixed(0)} · 当前产能 ${(firmFactor(f,f.generic?60:S.ind[f.index]?.age||0)*100).toFixed(0)}% · ${POLLUTION[pollutionGrade(f.fac)]||'低污染'}${f.expansion?' · 扩产剩余'+f.expansion.left+'月':''}${f.move?' · 搬迁剩余'+f.move.left+'月':''}${f.limitedUntil>projectMonth()?' · 听证限产至项目月'+f.limitedUntil:''}</p>${f.stage!=='closed'?`<div class="phase-actions">${workBtn('p3_aid',f.uid,'帮扶 '+fmt(firmRef(f)*.08))}${workBtn('p3_expand',f.uid,'扩产 '+fmt(firmRef(f)*.3),f.stage!=='stable'||f.capacity>=1.5)}${workBtn('p3_move',f.uid,'搬迁 '+fmt(firmRef(f)*.25))}${workBtn('p3_close',f.uid,'有序退出 '+fmt(firmRef(f)*.05))}</div>`:''}</div>`).join(''):'<p class="muted">尚无在营企业；原建设和招商入口保留。</p>'}</div>`;}
-function vHomes(){const P=phase3Ensure(),support=homeSupport();return `<div class="sec phase-panel"><h2>住宅开发</h2><div class="hint">仅用住宅储备。自主开发一次垫资，完工后按实际去化收款；出让房企只收土地款和实际销售税，不分售房利润。库存压低后续地价，开发和销售均影响房价压力；高房价继续影响民生。配套可使用已有道路、供排水和公园。旧宗地出让、配建与保障房玩法保留。</div><p>住宅储备 ${landFree('res').toFixed(1)}亩 · 待售库存 ${housingInventory().toFixed(1)}套（项目套数随住宅用地规模计算）</p><p>配套：道路${support.road?'✓':'不足'} · 供排水${support.pipe?'✓':'不足'} · 公园${support.park?'✓':'不足'}</p><div class="home-offers">${Object.entries(HOME_TYPES).map(([k,T])=>{const q=homeQuote(k,'self'),g=homeGate(k,'self'),gp=homeGate(k,'private');return `<section class="home-offer"><h3>${T.n}</h3><dl><dt>用地 / 套数</dt><dd>${q.land}亩 / ${q.units}套</dd><dt>建设工期</dt><dd>${q.months}个月</dd><dt>自主建设投入</dt><dd>${fmt(q.cost)}</dd><dt>当前预计总售值</dt><dd>${fmt(q.expectedSales)}</dd><dt>房企土地款</dt><dd>${fmt(q.landPrice)}</dd><dt>房企总资金</dt><dd>${fmt(q.capital)}</dd><dt>房企预计净额</dt><dd>${fmt(q.net)}</dd></dl><div class="phase-button-group"><button class="sm" data-home="${k}" data-mode="self"${g?' disabled':''}>自主开发</button><span class="phase-note">${g?esc(g):''}</span><button class="sm" data-home="${k}" data-mode="private"${gp?' disabled':''}>出让房企</button><span class="phase-note">${gp?esc(gp):''}</span></div></section>`;}).join('')}</div><p class="phase-note">审批提示：${esc(homeGate('basic','self')||'当前可自主开发刚需住宅')}；${esc(homeGate('basic','private')||'当前可向房企供地')}。新项目房企报价须覆盖土地款、全部建设与12%建设周转资金；土地款实付后，建设付款和经营损耗从房企资金逐笔扣除。旧住宅合同保留原报价、套数、进度与资金指数。报价为立项时锁定值；售房金额随未来行情变化，未售库存不计现金、不自动举债。每类去化能力由同类在售项目按标准规模共享，高端住宅在繁荣不足60时更慢；不保证盈利。平台投入未包括土地机会成本与外部融资费用。</p>${P.homes.slice().reverse().map(h=>`<div class="lead"><b>${esc(h.n)}</b><span class="tag">${({construction:'建设中',selling:'销售中',stalled:'资金链断裂停工',sold:'已售罄'})[h.stage]}</span><p>项目号 ${h.uid} · 工期剩余 ${h.left}月 · 剩余 ${h.remaining.toFixed(1)}/${homeUnits(h)}套 · 已售 ${h.sold.toFixed(1)}套</p><p>平台售房回款 ${fmt(h.received)} · 财政销售税 ${fmt(h.tax)} · ${h.mode==='self'?'垫资本金 '+fmt(h.cost):'土地款 '+fmt(h.landPrice)+(h.finance?.version===2?' · 房企现金 '+fmt(h.finance.cash)+' · 建设已付 '+fmt(h.finance.constructionPaid):' · 旧合同资金指数 '+h.developerFunds.toFixed(0)+'/100')}${h.rescueCost?' · 保交付投入'+fmt(h.rescueCost):''}</p>${h.mode==='private'&&h.stage!=='sold'?`<div class="phase-actions">${workBtn('p3_regulate',h.uid,'资金监管 '+fmt(h.cost*.025),h.stage==='stalled'||h.regulatedUntil>projectMonth())}${workBtn('p3_rescue',h.uid,'保交付 '+fmt(homeWorkQuote('p3_rescue',h.uid).cost),h.stage!=='stalled')}</div>`:''}</div>`).join('')}</div>`;}
-function vMines(){const P=phase3Ensure();return `<div class="sec phase-panel"><h2>退出矿区生态修复</h2><div class="hint">本版中煤矿实际退出后形成矿区台账，不追溯补造老矿坑。需环保与城建岗位；6个月逐月支付、缺钱停工。验收一次加4分，纳入月度一次性加分上限；每月生态加0.15，与原生态设施共用2分上限。修复不把未知产权或保护地变成可售土地，也不会清除事故处分。</div>${P.mines.length?P.mines.map(m=>`<div class="lead"><b>${esc(m.n)}</b><p>${({idle:'待修复',restoring:'修复中',restored:'已修复'})[m.stage]} · 总投入 ${fmt(m.cost)} · 已付 ${fmt(m.paid)} · 剩余${m.left}个月</p>${m.stage==='idle'?`<button class="sm" data-mine="${m.uid}">立项生态修复</button>`:''}</div>`).join(''):'<p class="muted">暂无本版登记的退出煤矿矿区。</p>'}</div>`;}
+function vCompanies(){const P=phase3Ensure();syncFirms();return `<div class="sec phase-panel"><h2>企业经营</h2><p>产业与住宅市场：<b>${marketLabel()}</b>（${P.market.index.toFixed(2)}）</p><div class="hint">产能影响税收、就业和水电需求。帮扶、扩产和退出需招商干部，搬迁需城建干部，均占本月工作安排。扩产限一次，增加50%产能；搬迁只在本辖区办理。退出不返还土地，原有责任仍可追查。旧档企业有6个月经营过渡期。</div>${P.firms.length?P.firms.slice().reverse().map(f=>`<div class="lead"><div class="lh"><b>${esc(f.name)}</b><span class="tag">${LIFE_NAMES[f.stage]}</span></div><p>企业号 ${f.uid} · 经营健康 ${f.health.toFixed(0)} · 当前产能 ${(firmFactor(f,f.generic?60:S.ind[f.index]?.age||0)*100).toFixed(0)}% · ${POLLUTION[pollutionGrade(f.fac)]||'低污染'}${f.expansion?' · 扩产剩余'+f.expansion.left+'月':''}${f.move?' · 搬迁剩余'+f.move.left+'月':''}${f.limitedUntil>projectMonth()?' · 听证限产至项目月'+f.limitedUntil:''}</p>${f.stage!=='closed'?`<div class="phase-actions">${workBtn('p3_aid',f.uid,'帮扶 '+fmt(firmRef(f)*.08))}${workBtn('p3_expand',f.uid,'扩产 '+fmt(firmRef(f)*.3),f.stage!=='stable'||f.capacity>=1.5)}${workBtn('p3_move',f.uid,'搬迁 '+fmt(firmRef(f)*.25))}${workBtn('p3_close',f.uid,'有序退出 '+fmt(firmRef(f)*.05))}</div>`:''}</div>`).join(''):'<p class="muted">暂无在营企业，可到建设或产业页引进项目。</p>'}</div>`;}
+function vHomes(){const P=phase3Ensure(),support=homeSupport();return `<div class="sec phase-panel"><h2>住宅开发</h2><div class="hint">住宅须使用住宅用地，并具备道路、供排水和公园配套。自主开发由财政垫资，卖房后回款；交给房企开发，财政收土地款和销售税。库存积压会压低地价，房价过高会影响民生。</div><p>住宅储备 ${landFree('res').toFixed(1)}亩 · 待售库存 ${housingInventory().toFixed(1)}套（项目套数随住宅用地规模计算）</p><p>配套：道路${support.road?'✓':'不足'} · 供排水${support.pipe?'✓':'不足'} · 公园${support.park?'✓':'不足'}</p><div class="home-offers">${Object.entries(HOME_TYPES).map(([k,T])=>{const q=homeQuote(k,'self'),g=homeGate(k,'self'),gp=homeGate(k,'private');return `<section class="home-offer"><h3>${T.n}</h3><dl><dt>用地 / 套数</dt><dd>${q.land}亩 / ${q.units}套</dd><dt>建设工期</dt><dd>${q.months}个月</dd><dt>自主建设投入</dt><dd>${fmt(q.cost)}</dd><dt>当前预计总售值</dt><dd>${fmt(q.expectedSales)}</dd><dt>房企土地款</dt><dd>${fmt(q.landPrice)}</dd><dt>房企总资金</dt><dd>${fmt(q.capital)}</dd><dt>房企预计净额</dt><dd>${fmt(q.net)}</dd></dl><div class="phase-button-group"><button class="sm" data-home="${k}" data-mode="self"${g?' disabled':''}>自主开发</button><span class="phase-note">${g?esc(g):''}</span><button class="sm" data-home="${k}" data-mode="private"${gp?' disabled':''}>出让房企</button><span class="phase-note">${gp?esc(gp):''}</span></div></section>`;}).join('')}</div><p class="phase-note">审批提示：${esc(homeGate('basic','self')||'当前可自主开发刚需住宅')}；${esc(homeGate('basic','private')||'当前可向房企供地')}。房企报价须覆盖土地、建设和12%周转金，支出从房企账户支付。旧合同按原约定执行。未售房屋不记现金收入，也不自动借债。同类楼盘共用销售能力，繁荣度低于60时高端住宅销售较慢。自主开发成本不含土地机会成本和融资费。</p>${P.homes.slice().reverse().map(h=>`<div class="lead"><b>${esc(h.n)}</b><span class="tag">${({construction:'建设中',selling:'销售中',stalled:'资金链断裂停工',sold:'已售罄'})[h.stage]}</span><p>项目号 ${h.uid} · 工期剩余 ${h.left}月 · 剩余 ${h.remaining.toFixed(1)}/${homeUnits(h)}套 · 已售 ${h.sold.toFixed(1)}套</p><p>平台售房回款 ${fmt(h.received)} · 财政销售税 ${fmt(h.tax)} · ${h.mode==='self'?'垫资本金 '+fmt(h.cost):'土地款 '+fmt(h.landPrice)+(h.finance?.version===2?' · 房企现金 '+fmt(h.finance.cash)+' · 建设已付 '+fmt(h.finance.constructionPaid):' · 旧合同资金指数 '+h.developerFunds.toFixed(0)+'/100')}${h.rescueCost?' · 保交付投入'+fmt(h.rescueCost):''}</p>${h.mode==='private'&&h.stage!=='sold'?`<div class="phase-actions">${workBtn('p3_regulate',h.uid,'资金监管 '+fmt(h.cost*.025),h.stage==='stalled'||h.regulatedUntil>projectMonth())}${workBtn('p3_rescue',h.uid,'保交付 '+fmt(homeWorkQuote('p3_rescue',h.uid).cost),h.stage!=='stalled')}</div>`:''}</div>`).join('')}</div>`;}
+function vMines(){const P=phase3Ensure();return `<div class="sec phase-panel"><h2>退出矿区生态修复</h2><div class="hint">有退出记录的煤矿可申请修复。需环保和城建干部，工期6个月，逐月付款，缺款停工。验收环境+4，此后每月+0.15，分别受行动及生态月上限约束。修复不增加可开发土地，也不撤销事故处分。</div>${P.mines.length?P.mines.map(m=>`<div class="lead"><b>${esc(m.n)}</b><p>${({idle:'待修复',restoring:'修复中',restored:'已修复'})[m.stage]} · 总投入 ${fmt(m.cost)} · 已付 ${fmt(m.paid)} · 剩余${m.left}个月</p>${m.stage==='idle'?`<button class="sm" data-mine="${m.uid}">立项生态修复</button>`:''}</div>`).join(''):'<p class="muted">暂无可修复的退出煤矿。</p>'}</div>`;}
 function vBusiness(){return vCompanies()+vHomes()+vMines();}
-function vComposite(){const P=phase3Ensure();ensureRival3();const all=[{n:LV[S.lvl].city,me:true,p:scoreParts()}].concat((S.rivals||[]).map((r,i)=>({n:r.n,p:scoreParts(r),ai:P.rivals[i]}))).sort((a,b)=>compositeScore(b.p)-compositeScore(a.p));return `<div class="sec phase-panel"><h2>多维度综合排名</h2><div class="hint">经济规模代理值（繁荣度）45%＋安全15%＋廉政10%＋生态15%＋民生15%。所有分项0—100；原年度考核权重随风向保留，省内位次改用此综合分，仍为第一+3、第二0、第三−3。这里的经济代理值避免把不同人口规模直接比绝对GDP。</div><div class="phase-scroll"><table><tr><th>城市/人格</th><th>综合</th><th>经济</th><th>安全</th><th>廉政</th><th>生态</th><th>民生</th></tr>${all.map((r,i)=>`<tr><td>${i+1}. ${esc(r.n)}<br>${r.me?'本市':r.ai?.personality==='aggressive'?'激进招商':'稳健保守'}</td><td>${compositeScore(r.p).toFixed(1)}</td>${Object.values(r.p).map(v=>`<td>${v.toFixed(1)}</td>`).join('')}</tr>`).join('')}</table></div>${P.rivals.map((a,i)=>`<p>${esc(S.rivals[i].n)}：债务压力${a.debt.toFixed(0)} · 隐患${(a.risk*100).toFixed(0)} · 已争项目${a.projects} · 获用地指标${a.land}亩；${esc(a.last)}</p>`).join('')}${S.rivals?.length?workBtn('p3_land','','争取年度工业用地指标 · 前期费'+fmt(transferPay()*.08),P.landBidYear===S.year):''}</div>`;}
+function vComposite(){const P=phase3Ensure();ensureRival3();const all=[{n:LV[S.lvl].city,me:true,p:scoreParts()}].concat((S.rivals||[]).map((r,i)=>({n:r.n,p:scoreParts(r),ai:P.rivals[i]}))).sort((a,b)=>compositeScore(b.p)-compositeScore(a.p));return `<div class="sec phase-panel"><h2>省内综合排名</h2><div class="hint">综合排名：经济45%、安全15%、廉政10%、生态15%、民生15%，各项0—100；经济项按繁荣度计。省内第一名年度考核+3分，第二名0分，第三名−3分。其余考核权重按省里风向执行。</div><div class="phase-scroll"><table><tr><th>城市/人格</th><th>综合</th><th>经济</th><th>安全</th><th>廉政</th><th>生态</th><th>民生</th></tr>${all.map((r,i)=>`<tr><td>${i+1}. ${esc(r.n)}<br>${r.me?'本市':r.ai?.personality==='aggressive'?'激进招商':'稳健保守'}</td><td>${compositeScore(r.p).toFixed(1)}</td>${Object.values(r.p).map(v=>`<td>${v.toFixed(1)}</td>`).join('')}</tr>`).join('')}</table></div>${P.rivals.map((a,i)=>`<p>${esc(S.rivals[i].n)}：债务压力${a.debt.toFixed(0)} · 隐患${(a.risk*100).toFixed(0)} · 已争项目${a.projects} · 获用地指标${a.land}亩；${esc(a.last)}</p>`).join('')}${S.rivals?.length?workBtn('p3_land','','争取年度工业用地指标 · 前期费'+fmt(transferPay()*.08),P.landBidYear===S.year):''}</div>`;}
 const _p3Forecast=cashForecast;
 cashForecast=function(){const rows=_p3Forecast(),mines=(S.phase3?.mines||[]).filter(m=>m.stage==='restoring').map(m=>({...m}));let accumulated=0;for(const r of rows){let payment=0;for(const m of mines)if(m.left>0){const due=(m.cost-m.paid)/m.left;m.paid+=due;m.left--;payment+=due;}accumulated+=payment;r.restore=payment;r.build+=payment;r.cash-=accumulated;r.available-=accumulated;r.warning=r.cash<0?'现金缺口':r.available<0?'受限资金压力':'可覆盖';}return rows;};
 function rivalBidFactor(r,i){const a=S.phase3?.rivals[i];return a?(a.personality==='aggressive'?1.15:.85)*clamp(1-Math.max(0,a.debt-90)/200,.6,1):1;}
