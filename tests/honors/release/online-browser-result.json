@@ -1,0 +1,8 @@
+{
+  "checks": 1283,
+  "failures": [],
+  "isolatedStorage": true,
+  "playerStorageUnchanged": true,
+  "playerStorageKeys": 0,
+  "scope": "5 widths × 5 levels; filters, ranking, save/load, ending and restart"
+}

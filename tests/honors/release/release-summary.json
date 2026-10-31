@@ -1,0 +1,30 @@
+{
+  "featureCommit": "fb517461fc8060dd0b348b3303f8bffd78e848ee",
+  "repository": "Lynch715/mayor-simulator",
+  "branch": "main",
+  "url": "https://lynch715.github.io/mayor-simulator/",
+  "deployment": "https://github.com/Lynch715/mayor-simulator/actions/runs/41219768264",
+  "deploymentConclusion": "success",
+  "runtimeSha256": "346fd2993580df80847cf2867430bf6cf4a907ab08f94e6bca8ecec7ff9ce5ab",
+  "runtimeFilesByteMatched": 4,
+  "regressionTestsPassed": 218,
+  "onlineBrowserAssertionsPassed": 1283,
+  "onlineBrowserFailures": [],
+  "onlineConsoleErrors": [],
+  "formalLegacyImportSamples": 5,
+  "formalLegacyImportSource": "repository synthetic fixtures only",
+  "saveKey": "yifang_save",
+  "websiteOriginAndPathUnchanged": true,
+  "qaStorageIsolated": true,
+  "originalStorageByteUnchanged": true,
+  "originalGameStorageKeysPresentInQABrowser": 0,
+  "physicalDeviceTested": false,
+  "downloadCapture": "IAB download-event wait timed out for the existing data-URL export handler; no successful exported-file comparison is claimed",
+  "evidence": [
+    "payload-verification.json",
+    "online-browser-result.json",
+    "formal-import-result.json",
+    "pages-build.json",
+    "online-ranking.jpg"
+  ]
+}

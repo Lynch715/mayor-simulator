@@ -1,0 +1,34 @@
+{
+  "url": "https://lynch715.github.io/mayor-simulator/",
+  "allMatch": true,
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 370601,
+      "sha256": "346fd2993580df80847cf2867430bf6cf4a907ab08f94e6bca8ecec7ff9ce5ab",
+      "matches": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "status": 200,
+      "bytes": 636,
+      "sha256": "bccdc8df4ca23d6e84c6beeb3dfd931dbca883bd206788455954fcff34c91e69",
+      "matches": true
+    },
+    {
+      "path": "backups/index-before-honors-20261031.html",
+      "status": 200,
+      "bytes": 352396,
+      "sha256": "6008d016bca5026469bb226d650e3c06a39deb8b1f710ab4eddfd76f03b14e4b",
+      "matches": true
+    },
+    {
+      "path": "tests/honors/browser-qa.html",
+      "status": 200,
+      "bytes": 7916,
+      "sha256": "f7fc6170909f3a522c00220bbbbdd5cff090f7f51232e8cdb1bacea0ab1c409c",
+      "matches": true
+    }
+  ]
+}
