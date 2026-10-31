@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>成就与排名 · 隔离验收</title>
+<style>body{font:14px system-ui;margin:16px;background:#eae8e1;color:#22252a}button,select{font:inherit;min-height:40px;margin:4px;padding:6px 12px}iframe{display:block;border:1px solid #aaa;background:#fff;height:850px;max-width:none}pre{white-space:pre-wrap}#wrap{overflow:auto;max-width:100%}.controls{position:sticky;top:0;background:#eae8e1;padding:8px;z-index:5}</style>
+<h1>成就与排名 · 隔离验收</h1><p>所有游戏存储在内存中模拟，不读写本机真实存档与榜单。下方为真实游戏界面。</p>
+<div class="controls"><button id="run" disabled>运行浏览器矩阵</button><button id="honors" disabled>展示成就样本</button><button id="rank" disabled>展示省内排名</button><button id="ending" disabled>展示结局入口</button><label>预览宽度 <select id="width"><option>1280</option><option>901</option><option>640</option><option>390</option><option>320</option></select></label><strong id="status">加载中</strong></div>
+<pre id="results"></pre><div id="wrap"><iframe id="game" title="隔离测试游戏" style="width:1280px"></iframe></div>
+<script>
+const frame=document.querySelector('#game'),status=document.querySelector('#status');let failures=[],checks=0;
+const run=code=>frame.contentWindow.eval(code);
+const wait=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+const assert=(ok,message)=>{checks++;if(!ok)failures.push(message);};
+function playerStorage(){try{return JSON.stringify(Object.keys(localStorage).filter(k=>k.startsWith('yifang_')).sort().map(k=>[k,localStorage.getItem(k)]));}catch(e){return null;}}
+const playerStorageBefore=playerStorage();
+function sample(level=3){run(`newGame();${level?'initLevel('+level+',50);':''}S.cash=1000000;S.built=12;S.pros=84;S.liv=82;S.sat=86;S.env=85;S.ratings=['A','A','A'];honorSync();$('#cover').style.display='none';`);}
+function show(tab){run(`hideDoc();S.tab='${tab}';renderAll();`);}
+function geometry(label){const d=frame.contentDocument,w=frame.contentWindow.innerWidth;assert(d.documentElement.scrollWidth<=w+1,label+' 页面横向溢出');for(const c of d.querySelectorAll('.honor-card')){const r=c.getBoundingClientRect();assert(r.left>=0&&r.right<=w+1,label+' 成就卡片越界');}const selected=d.querySelector('#tabs .on');if(selected){const r=selected.getBoundingClientRect(),b=d.querySelector('#tabs').getBoundingClientRect();assert(r.left>=b.left-1&&r.right<=b.right+1,label+' 当前页签不可见');}assert(!d.querySelector('#panel').textContent.includes('undefined'),label+' undefined');}
+document.querySelector('#width').onchange=async e=>{frame.style.width=e.target.value+'px';await wait();run('fitTabs()');};
+document.querySelector('#honors').onclick=()=>{sample();run("honorFilter='全部';honorStatus='all'");show('honors');};
+document.querySelector('#rank').onclick=()=>{sample();run("rankView='city';rankMetric='composite'");show('ranking');};
+document.querySelector('#ending').onclick=()=>{sample(4);run("endGame('retire_top');showEnding()");};
+document.querySelector('#run').onclick=async()=>{
+ failures=[];checks=0;status.textContent='验收中';document.querySelector('#run').disabled=true;
+ try{
+ for(const width of [1280,901,640,390,320]){frame.style.width=width+'px';await wait();for(let lv=0;lv<5;lv++){
+  sample(lv);run("honorFilter='全部';honorStatus='all'");show('honors');await wait();geometry(width+' lv'+lv+' 成就');
+  assert(frame.contentDocument.querySelectorAll('.honor-card').length===25,'成就数量');
+  for(const cat of ['仕途','建设','经济','民生','生态','财政']){frame.contentDocument.querySelector(`[data-honor-cat="${cat}"]`).click();assert(Array.from(frame.contentDocument.querySelectorAll('.honor-card .phase-note')).filter((_,i)=>i%2===0).every(e=>e.textContent.includes(cat)),'分类筛选 '+cat);}
+  frame.contentDocument.querySelector('[data-honor-cat="全部"]').click();const select=frame.contentDocument.querySelector('#honorStatus');select.value='unlocked';select.dispatchEvent(new frame.contentWindow.Event('change'));assert(!frame.contentDocument.querySelector('.honor-card:not(.earned)'),'只看已解锁');
+  const select2=frame.contentDocument.querySelector('#honorStatus');select2.value='locked';select2.dispatchEvent(new frame.contentWindow.Event('change'));assert(!frame.contentDocument.querySelector('.honor-card.earned'),'只看未解锁');
+  show('ranking');await wait();geometry(width+' lv'+lv+' 生涯榜');const id=run('S.honors.id');run('save();save();load()');assert(run('careerRead().filter(r=>r.id===S.honors.id).length')===1,'重复保存去重');assert(run('S.honors.id')===id,'读档ID');
+  frame.contentDocument.querySelector('[data-rank-view="city"]').click();await wait();geometry(width+' lv'+lv+' 城市榜');
+  for(const metric of ['composite','economy','safety','clean','environment','livelihood']){frame.contentDocument.querySelector(`[data-rank-metric="${metric}"]`).click();assert(run('rankMetric')===metric,'指标切换 '+metric);}
+ }}
+ sample(0);run('tick();renderAll()');assert(!!run('S.honors.unlocked.first_month'),'真实月结解锁首月成就');assert(frame.contentDocument.querySelector('#mtoast')?.textContent.includes('履职伊始'),'成就解锁提示');const logCount=run('S.log.filter(x=>x.t.includes("成就达成")).length');run('renderAll();renderAll()');assert(run('S.log.filter(x=>x.t.includes("成就达成")).length')===logCount,'刷新不重复通知');
+ sample(4);run("endGame('retire_top');showEnding()");const button=Array.from(frame.contentDocument.querySelectorAll('#doc button')).find(b=>b.textContent.includes('查看成就与排名'));assert(!!button,'结局排名入口');button.click();assert(run('S.tab')==='ranking','结局入口到榜单');assert(!frame.contentDocument.querySelector('#modal.on'),'结局弹窗关闭');
+ run('newGame()');assert(run("careerRead().some(r=>r.ending==='retire_top')"),'重开保留退休记录');
+ frame.style.width='390px';document.querySelector('#width').value='390';sample();run("honorFilter='全部';honorStatus='all'");show('honors');await wait();
+ }catch(e){failures.push(e.stack);}
+ const unchanged=playerStorageBefore!==null&&playerStorageBefore===playerStorage();assert(unchanged,'玩家原始存储逐字节保持一致');const result={checks,failures,isolatedStorage:true,playerStorageUnchanged:unchanged,playerStorageKeys:playerStorageBefore===null?null:JSON.parse(playerStorageBefore).length,scope:'5 widths × 5 levels; filters, ranking, save/load, ending and restart'};document.querySelector('#results').textContent=JSON.stringify(result,null,2);status.textContent=failures.length?'验收失败':'全部通过';document.querySelector('#run').disabled=false;
+};
+(async()=>{let html=await (await fetch('../../index.html')).text();const shim=`<script>const qaStore=new Map();Object.defineProperty(window,'localStorage',{value:{getItem:k=>qaStore.get(k)||null,setItem:(k,v)=>qaStore.set(k,String(v)),removeItem:k=>qaStore.delete(k)}});window.addEventListener('error',e=>parent.document.querySelector('#results').textContent+='\\n'+e.message);<\/script>`;html=html.replace('<head>','<head><base href="'+new URL('../../',location.href)+'">').replace('<script>',shim+'<script>');frame.onload=()=>{document.querySelectorAll('.controls button').forEach(b=>b.disabled=false);status.textContent='隔离环境就绪';const preview=new URLSearchParams(location.search).get('preview');if(preview){document.body.style.margin='0';document.querySelectorAll('body>h1,body>p,.controls,#results').forEach(e=>e.style.display='none');frame.style.cssText='width:100%;height:100vh;border:0';sample();if(preview==='ranking'){run("rankView='city'");show('ranking');}else show('honors');}};frame.srcdoc=html;})();
+</script></html>

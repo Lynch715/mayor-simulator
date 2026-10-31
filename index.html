@@ -47,6 +47,24 @@ select,input[type=number]{font-family:inherit;font-size:14px;padding:5px 8px;bor
 .pos{color:var(--green)}.neg{color:var(--red)}.muted{color:var(--ink3)}
 h1,h2,h3{font-family:var(--serif);font-weight:700}
 
+/* 成就、排名沿用纸白与朱红，窄屏表格在容器内横滑。 */
+.honor-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+.honor-summary>div{padding:14px;background:var(--paper);border:1px solid var(--line2)}
+.honor-summary b{display:block;color:var(--red2);font-size:28px;line-height:1.25;font-variant-numeric:tabular-nums}
+.honor-summary small{font-size:13px;color:var(--ink2);font-weight:400}.honor-summary span{font-size:13px;color:var(--ink2)}
+.honor-filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.honor-filters button{min-height:40px}
+.honor-filters button.on{border-color:var(--red);color:var(--red2);background:rgba(180,35,28,.05);font-weight:600}
+.honor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.honor-card{padding:14px;border:1px solid var(--line2);background:var(--paper);min-width:0;overflow-wrap:anywhere}
+.honor-card.earned{background:#fff;border-color:var(--gold)}.honor-card p{font-size:13px;margin-top:8px}
+.honor-card-head{display:flex;gap:10px;align-items:center}.honor-card-head>div{flex:1;min-width:0}.honor-card-head h3{font-size:16px}.honor-card-head>b{font-size:12px;white-space:nowrap}
+.honor-seal{display:grid;place-items:center;width:34px;height:36px;flex-shrink:0;border:1px solid var(--line);font:20px var(--serif);color:var(--ink3)}
+.earned .honor-seal{border:2px solid var(--red);color:var(--red);transform:rotate(-5deg)}
+.career-breakdown{display:flex;gap:8px 18px;flex-wrap:wrap;padding:10px 0;color:var(--ink2);font-size:13px}.career-breakdown b{color:var(--ink)}
+.rank-me td{background:rgba(180,35,28,.045)}.rank-me td:first-child{border-left:3px solid var(--red)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:640px){.honor-grid{grid-template-columns:minmax(0,1fr)}.honor-summary{gap:8px}.honor-summary>div{padding:10px}.honor-summary b{font-size:25px}#honorStatus{min-height:44px}}
+
 /* 红头 */
 #head{background:#fff;border-bottom:1px solid var(--line)}
 #head .inner{max-width:1120px;margin:0 auto;padding:14px 20px 0}
@@ -2147,10 +2165,10 @@ function renderAll(){if(!S)return;getters();const L=LV[S.lvl];
    ['满意度',Math.round(S.sat),'房价压力 '+Math.round(S.housing),S.sat,S.sat<35],
    ['隐性债务率',h.toFixed(0)+'%',S.task?'化债任务书执行中':S.frozen?'融资已冻结':'总债务率 '+debtRatio().toFixed(0)+'%',Math.min(100,h),h>=70]];
   $('#stats').innerHTML=st.map(([l,v,d,bar,warn])=>`<div class="stat${warn?' warn':''}"><div class="l">${l}</div><div class="v num">${v}</div><div class="d muted">${d}</div>${bar!==null?`<div class="bar"><i style="width:${bar}%"></i></div>`:''}</div>`).join('');
-  const TABN={over:'总览',build:'建设',fin:'财政',debt:'债务',hr:'人事',file:'档案'};
-  const tabs=['over','build'].concat(mechTabs()).concat(['fin','debt','hr','file']);
+  const TABN={over:'总览',build:'建设',fin:'财政',debt:'债务',hr:'人事',file:'档案',honors:'成就',ranking:'排名'};
+  const tabs=['over','build'].concat(mechTabs()).concat(['fin','debt','hr','file','honors','ranking']);
   const VIEW={over:vOver,build:vBuild,fin:vFin,debt:vDebt,hr:vHR,file:vFile,
-    land:vLand,ind:vInd,region:vRegion,district:vDistrict,projects:vProjects,business:vBusiness};
+    land:vLand,ind:vInd,region:vRegion,district:vDistrict,projects:vProjects,business:vBusiness,honors:vHonors,ranking:vRanking};
   if(tabs.indexOf(S.tab)<0)S.tab='over';
   $('#tabs').innerHTML=tabs.map(t=>`<button data-t="${t}"${t===S.tab?' class="on"':''}>${MECH[t]?MECH[t].tab:TABN[t]}</button>`).join('');
   document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{S.tab=b.dataset.t;renderAll();});
@@ -2983,6 +3001,101 @@ vFin=function(){return _p3Fin()+`<div class="sec phase-panel"><h2>住宅资金�
 vAgenda=function(){return _p3Agenda()+(S.ag.startsWith('p3_')?`<div class="sec"><b>已选经营工作：${esc(AG[S.ag].n)}</b><p>目标：${esc(phase3Ensure().action?.target||'年度用地指标')}；占用本月原工作机会，推进时执行。</p></div>`:'');};
 bindPanel=function(){_p3Bind();document.querySelectorAll('[data-p3]').forEach(b=>b.onclick=()=>{const e=schedulePhase3(b.dataset.p3,b.dataset.target);if(e)toast(e);else mtoast('已安排'+AG[b.dataset.p3].n+'，推进下月时执行。');renderAll();});document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>{const e=startHome(b.dataset.home,b.dataset.mode);if(e)toast(e);else mtoast('住宅项目已立项，锁定报价并记入资金与土地台账。');renderAll();});document.querySelectorAll('[data-mine]').forEach(b=>b.onclick=()=>{const e=startMine(b.dataset.mine);if(e)toast(e);renderAll();});const a114=$('#btnAuditBackup');if(a114)a114.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v114'));a.download='一方水土-审计修复前存档.json';a.click();};const b=$('#btnP3Backup');if(b)b.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v113'));a.download='一方水土-第三批升级前存档.json';a.click();};};
 showMonthly=function(B,done){_p3Monthly(B,done);const body=$('#doc .body');if(body&&$('#modal').classList.contains('on')&&S.monthly?.phase3){const m=S.monthly.phase3;body.insertAdjacentHTML('beforeend',`<div class="sec phase-panel"><h2>企业与住宅复盘</h2><p>市场指数 ${m.market.toFixed(2)} · 待售住宅 ${m.inventory.toFixed(1)}套 · 当月平台销售回款 ${fmt(m.sales)} · 已修复矿区${m.mines}处。</p></div>`);}};
+
+/* ---- 成就与本机历局排名：只记录荣誉，不改动经营数值 ---- */
+const HONOR_DEFS=[
+ {id:'first_month',cat:'仕途',n:'履职伊始',d:'完成第一个月的工作结算',key:'months',goal:1,points:5},
+ ...[1,2,3,4].map((lv,i)=>({id:'level_'+lv,cat:'仕途',n:['县域主政','执掌一市','区域领航','直辖履新'][i],d:'任职'+LV[lv].city+'，职级'+LV[lv].rank,key:'level',goal:lv,points:[10,20,30,50][i]})),
+ ...[1,10,30].map((n,i)=>({id:'built_'+n,cat:'建设',n:['第一块砖','百业待兴','建设有成'][i],d:'本局累计建成'+n+'项设施',key:'built',goal:n,points:[10,20,30][i]})),
+ {id:'grade_a',cat:'仕途',n:'年度优秀',d:'获得一次年度考核A',key:'gradeA',goal:1,points:10},
+ {id:'grade_streak',cat:'仕途',n:'三载争先',d:'连续三年年度考核A',key:'gradeStreak',goal:3,points:30},
+ ...[['pros','经济','百业兴旺'],['liv','民生','宜居之城'],['sat','民生','民心所向'],['env','生态','绿水青山']].map(([key,cat,n])=>({id:'metric_'+key,cat,n,d:({pros:'繁荣度',liv:'宜居度',sat:'满意度',env:'环境'})[key]+'达到80',key,goal:80,points:15})),
+ {id:'safe_12',cat:'财政',n:'三保有底',d:'连续12个月三保足额支付且未欠付利息',key:'safeBest',goal:12,points:25},
+ {id:'safe_36',cat:'财政',n:'长治久安',d:'连续36个月三保足额支付且未欠付利息',key:'safeBest',goal:36,points:40},
+ {id:'green_12',cat:'生态',n:'常绿之城',d:'连续12个月结算时环境不低于80',key:'greenBest',goal:12,points:25},
+ {id:'happy_12',cat:'民生',n:'民心长在',d:'连续12个月结算时满意度不低于80',key:'happyBest',goal:12,points:25},
+ {id:'debt_relief',cat:'财政',n:'化债有方',d:'同一任内将曾达到70%的隐性债务率降至40%以下',key:'debtRelief',goal:1,points:30},
+ {id:'region_first',cat:'仕途',n:'省内争先',d:'年度考核时获得省内综合第一',key:'regionBest',goal:1,points:20},
+ {id:'region_streak',cat:'仕途',n:'三年领跑',d:'连续三年年度考核时获得省内综合第一',key:'regionBest',goal:3,points:40},
+ {id:'home_sold',cat:'建设',n:'安居落地',d:'完成一项住宅开发并全部售罄',key:'homes',goal:1,points:20},
+ {id:'mine_restored',cat:'生态',n:'旧矿新绿',d:'完成一处退出矿区生态修复',key:'mines',goal:1,points:25},
+ {id:'retirement',cat:'仕途',n:'岁月有成',d:'完成退休篇，获得到龄退休、平稳退休或功成身退结局',key:'retirement',goal:1,points:30},
+ {id:'clean_retirement',cat:'仕途',n:'清风归来',d:'无责任档案、无处分，完成正常退休结局',key:'cleanRetirement',goal:1,points:40}
+];
+const HONOR_BOARD_KEY='yifang_career_board_v1';
+let honorSequence=0,honorFilter='全部',honorStatus='all',rankView='career',rankMetric='composite',careerStorageFailed=false;
+function honorNumber(n){return Number.isFinite(n)?Math.max(0,n):0;}
+function honorLegacyId(){let h=2166136261;const raw=JSON.stringify(S);for(let i=0;i<raw.length;i++)h=Math.imul(h^raw.charCodeAt(i),16777619);return 'legacy-'+(h>>>0).toString(36);}
+function honorEnsure(){
+ if(!S.honors||typeof S.honors!=='object'||Array.isArray(S.honors))S.honors={version:1,id:honorLegacyId(),unlocked:{},stats:{months:Math.max(0,(S.year-1)*12+S.month-1)}};
+ const H=S.honors;if(typeof H.id!=='string'||!H.id)H.id=honorLegacyId();
+ if(!H.unlocked||typeof H.unlocked!=='object'||Array.isArray(H.unlocked))H.unlocked={};
+ if(!H.stats||typeof H.stats!=='object'||Array.isArray(H.stats))H.stats={};
+ for(const k of ['months','safe','safeBest','green','greenBest','happy','happyBest','region','regionBest','debtPeak','debtRelief'])H.stats[k]=honorNumber(H.stats[k]);
+ return H;
+}
+function honorMetrics(){
+ const H=honorEnsure(),hist=S.hist||[],closed=hist.at(-1)?.lvl===S.lvl;
+ const sites=hist.map(h=>h.phase3).filter(Boolean).concat(closed?[]:[S.phase3]).filter(Boolean);
+ let gradeStreak=0,streak=0;for(const g of S.ratings){streak=g==='A'?streak+1:0;gradeStreak=Math.max(gradeStreak,streak);}
+ const retirement=['retire_plain','retire_good','retire_top'].includes(S.over)?1:0;
+ return {...H.stats,level:S.lvl,built:hist.reduce((n,h)=>n+honorNumber(h.built),0)+(closed?0:honorNumber(S.built)),
+  gradeA:S.ratings.filter(g=>g==='A').length,gradeStreak,pros:S.pros,liv:S.liv,sat:S.sat,env:S.env,
+  homes:sites.reduce((n,p)=>n+(p.homes||[]).filter(h=>h.stage==='sold').length,0),
+  mines:sites.reduce((n,p)=>n+(p.mines||[]).filter(m=>m.stage==='restored').length,0),
+  retirement,cleanRetirement:retirement&&!S.file.length&&!S.sanctions?1:0};
+}
+function honorSync(announce=false){
+ if(!S)return [];const H=honorEnsure();
+ H.stats.debtPeak=Math.max(H.stats.debtPeak,honorNumber(hdr()));
+ if(H.stats.debtPeak>=70&&hdr()<40)H.stats.debtRelief=1;
+ const metrics=honorMetrics(),added=[];
+ for(const a of HONOR_DEFS)if(!H.unlocked[a.id]&&honorNumber(metrics[a.key])>=a.goal){H.unlocked[a.id]={year:S.year,month:S.month};added.push(a);}
+ if(announce&&added.length){const text='成就达成：'+added.map(a=>a.n).join('、');logIt(text,'good');if(typeof document!=='undefined')mtoast(text);}
+ return added;
+}
+function honorPoints(){return HONOR_DEFS.reduce((n,a)=>n+(S.honors?.unlocked[a.id]?a.points:0),0);}
+function honorTotalPoints(){return HONOR_DEFS.reduce((n,a)=>n+a.points,0);}
+function careerSnapshot(){
+ const m=honorMetrics(),parts=scoreParts(),grades=S.ratings;
+ const details={level:300*clamp(S.lvl/4,0,1),governance:350*clamp(compositeScore(parts)/100,0,1),
+  construction:150*clamp(m.built/30,0,1),grades:grades.length?100*grades.reduce((n,g)=>n+({A:1,B:.65,C:.3,D:0}[g]||0),0)/grades.length:0,
+  honors:100*honorPoints()/honorTotalPoints()};
+ return {id:S.honors.id,score:Math.round(Object.values(details).reduce((n,v)=>n+v,0)),details,level:S.lvl,year:S.year,month:S.month,
+  built:m.built,achieved:HONOR_DEFS.filter(a=>S.honors.unlocked[a.id]).length,ending:ENDINGS[S.over]?S.over:null,
+  status:S.over?'ended':S.phase==='retired'?'retired':'playing'};
+}
+function careerRead(){try{const rows=JSON.parse(LS.get(HONOR_BOARD_KEY)||'[]');return Array.isArray(rows)?rows.filter(r=>r&&typeof r.id==='string'&&Number.isFinite(r.score)&&r.score>=0&&r.score<=1000&&Number.isInteger(r.level)&&LV[r.level]&&Number.isFinite(r.year)&&Number.isFinite(r.month)&&Number.isFinite(r.achieved)):[];}catch(e){return [];}}
+function careerRows(){const current=careerSnapshot(),others=careerRead().filter(r=>r.id!==current.id).sort((a,b)=>b.score-a.score||a.id.localeCompare(b.id)).slice(0,19);return others.concat(current).sort((a,b)=>b.score-a.score||a.id.localeCompare(b.id));}
+function careerRecord(){if(!S)return false;honorSync();try{localStorage.setItem(HONOR_BOARD_KEY,JSON.stringify(careerRows()));careerStorageFailed=false;return true;}catch(e){careerStorageFailed=true;return false;}}
+function competitionRanks(rows,value){return rows.map(r=>({...r,place:1+rows.filter(x=>value(x)>value(r)+1e-9).length}));}
+function vHonors(){
+ const H=honorEnsure(),metrics=honorMetrics(),count=HONOR_DEFS.filter(a=>H.unlocked[a.id]).length;
+ const cats=['全部',...new Set(HONOR_DEFS.map(a=>a.cat))],defs=HONOR_DEFS.filter(a=>(honorFilter==='全部'||a.cat===honorFilter)&&(honorStatus==='all'||(honorStatus==='unlocked')===!!H.unlocked[a.id]));
+ return `<section class="sec"><h2>一任一印 · 生涯成就</h2><div class="honor-summary"><div><b>${count}<small> / ${HONOR_DEFS.length}</small></b><span>已解锁成就</span></div><div><b>${honorPoints()}<small> / ${honorTotalPoints()}</small></b><span>荣誉积分</span></div></div><div class="gauge" role="progressbar" aria-label="成就完成度" aria-valuemin="0" aria-valuemax="${HONOR_DEFS.length}" aria-valuenow="${count}"><i style="width:${count/HONOR_DEFS.length*100}%"></i></div><p class="hint">成就仅授予荣誉积分，达成后永久记入本局存档。旧档按现有履历补认；连续月数、化债过程与省内年度连冠从升级后记录，不推测过去。</p><div class="honor-filters" aria-label="成就分类">${cats.map(c=>`<button class="sm${honorFilter===c?' on':''}" data-honor-cat="${c}" aria-pressed="${honorFilter===c}">${c}</button>`).join('')}</div><div class="row"><label for="honorStatus">显示</label><select id="honorStatus"><option value="all"${honorStatus==='all'?' selected':''}>全部成就</option><option value="unlocked"${honorStatus==='unlocked'?' selected':''}>已解锁</option><option value="locked"${honorStatus==='locked'?' selected':''}>未解锁</option></select></div></section><div class="honor-grid">${defs.length?defs.map(a=>{const unlocked=H.unlocked[a.id],value=Math.min(a.goal,honorNumber(metrics[a.key]));return `<article class="honor-card${unlocked?' earned':''}"><div class="honor-card-head"><span class="honor-seal" aria-hidden="true">${unlocked?'印':'待'}</span><div><h3>${esc(a.n)}</h3><span class="phase-note">${a.cat} · ${a.points}积分</span></div><b class="${unlocked?'pos':'muted'}">${unlocked?'已解锁':'未解锁'}</b></div><p>${esc(a.d)}</p><div class="gauge"><i style="width:${unlocked?100:value/a.goal*100}%"></i></div><p class="phase-note">${unlocked?'第'+unlocked.year+'年'+unlocked.month+'月达成':'当前进度 '+(Number.isInteger(value)?value:value.toFixed(1))+' / '+a.goal}</p></article>`;}).join(''):'<p class="hint">此分类下暂无符合条件的成就。</p>'}</div>`;
+}
+const RANK_METRICS={composite:'综合',economy:'经济',safety:'安全',clean:'廉政',environment:'生态',livelihood:'民生'};
+function rankCities(){return [{n:LV[S.lvl].city,me:true,p:scoreParts()},...(S.rivals||[]).map(r=>({n:r.n,me:false,p:scoreParts(r)}))].map(r=>({...r,value:rankMetric==='composite'?compositeScore(r.p):r.p[rankMetric]})).sort((a,b)=>b.value-a.value);}
+function vRanking(){
+ const snapshot=careerSnapshot(),rows=competitionRanks(careerRows(),r=>r.score),mine=rows.find(r=>r.id===S.honors.id);
+ const cityTab=rankView==='city';
+ return `<section class="sec"><h2>功过有据 · 排名册</h2><div class="honor-filters"><button class="sm${!cityTab?' on':''}" data-rank-view="career" aria-pressed="${!cityTab}">本机生涯榜</button><button class="sm${cityTab?' on':''}" data-rank-view="city" aria-pressed="${cityTab}">城市治理榜</button></div><p class="hint">本机榜只记录此浏览器的历局成绩，保留当前局与其他最高19局；自动保存、手动保存及结局时更新，同一存档导入后更新原记录。各局按最新记录计分，同分并列。榜单保存在本机，清除网站数据会丢失；游戏存档导出保留本局成就。</p></section>${cityTab?vCityRanking():`<section class="sec"><div class="honor-summary"><div><b>${snapshot.score}<small> / 1000</small></b><span>本局生涯分</span></div><div><b>${mine.place}<small> / ${rows.length}</small></b><span>本机位次</span></div></div><p class="hint">最高职务300分 · 当前治理350分 · 累计建设150分（30项满分） · 历年考核100分（A/B/C/D按100/65/30/0折算均值） · 荣誉积分100分。职务、治理、建设、成就均按完成比例折算。</p><div class="career-breakdown">${[['level','职务'],['governance','治理'],['construction','建设'],['grades','考核'],['honors','荣誉']].map(([k,n])=>`<span>${n} <b>${snapshot.details[k].toFixed(1)}</b></span>`).join('')}</div><div class="phase-scroll"><table class="career-table"><caption class="sr-only">本机生涯排名</caption><thead><tr><th>名次 / 生涯</th><th>总分</th><th>最高职务</th><th>进度 / 结局</th><th>成就</th></tr></thead><tbody>${rows.map(r=>`<tr${r.id===S.honors.id?' class="rank-me"':''}><td>${r.place}. ${r.id===S.honors.id?'本局':'历局 '+esc(r.id.slice(-7))}</td><td><b>${r.score}</b></td><td>${esc(LV[r.level].t)}<br><span class="phase-note">${esc(LV[r.level].rank)}</span></td><td>第${r.year}年${r.month}月<br>${r.ending?esc(ENDINGS[r.ending]?.t||'已结束'):r.status==='retired'?'退休篇':'任职中'}</td><td>${r.achieved} / ${HONOR_DEFS.length}</td></tr>`).join('')}</tbody></table></div><p class="phase-note" id="careerStorageStatus"></p></section>`}`;
+}
+function vCityRanking(){
+ const rows=competitionRanks(rankCities(),r=>r.value);
+ return `<section class="sec"><h2>${S.rivals?.length?'省内城市治理榜':'本地治理成绩单'}</h2><p class="hint">沿用原省内综合分：经济45%、安全15%、廉政10%、生态15%、民生15%。经济按繁荣度，民生取宜居与满意度均值；安全按本年事故及项目隐患扣分，廉政按公开责任记录与处分扣分。分项排序供比较；年度考核仍按原综合位次计分。</p>${!S.rivals?.length?'<p class="hint">副省级任职后开放与两座模拟邻市的竞争；当前展示本地实绩。</p>':''}<div class="honor-filters" aria-label="排名指标">${Object.entries(RANK_METRICS).map(([k,n])=>`<button class="sm${rankMetric===k?' on':''}" data-rank-metric="${k}" aria-pressed="${rankMetric===k}">${n}</button>`).join('')}</div><div class="phase-scroll"><table><caption class="sr-only">城市${RANK_METRICS[rankMetric]}排名</caption><thead><tr><th>位次 / 城市</th>${Object.values(RANK_METRICS).map(n=>`<th>${n}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr${r.me?' class="rank-me"':''}><td>${r.place}. ${esc(r.n)}${r.me?'<br>本地':''}</td><td>${compositeScore(r.p).toFixed(1)}</td>${['economy','safety','clean','environment','livelihood'].map(k=>`<td>${r.p[k].toFixed(1)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section>`;
+}
+const _honorNew=newGame,_honorInit=initLevel,_honorMigrate=migrate,_honorTick=tick,_honorAnnual=annual,_honorSave=save,_honorEnd=endGame,_honorRender=renderAll,_honorBind=bindPanel,_honorEnding=showEnding;
+newGame=function(){if(S)careerRecord();_honorNew();S.honors={version:1,id:'career-'+Date.now().toString(36)+'-'+(++honorSequence),unlocked:{},stats:{}};honorFilter='全部';honorStatus='all';rankView='career';rankMetric='composite';honorSync();};
+initLevel=function(lv,merit){if(S?.honors)honorSync();_honorInit(lv,merit);if(S.honors){S.honors.stats.debtPeak=honorNumber(hdr());honorSync();}};
+migrate=function(){_honorMigrate();honorSync();};
+tick=function(){const H=honorEnsure(),clock=projectMonth();const result=_honorTick();if(H.stats.lastMonth!==clock){const st=H.stats;st.lastMonth=clock;st.months++;for(const [key,ok] of [['safe',Object.values(S.gaps).every(v=>v===0)&&S.interestMiss===0],['green',S.env>=80],['happy',S.sat>=80]]){st[key]=ok?st[key]+1:0;st[key+'Best']=Math.max(st[key+'Best'],st[key]);}}honorSync(true);return result;};
+annual=function(){const H=honorEnsure(),R=_honorAnnual();if(H.stats.lastYear!==R.year){H.stats.lastYear=R.year;H.stats.region=R.rank===1?H.stats.region+1:0;H.stats.regionBest=Math.max(H.stats.regionBest,H.stats.region);}honorSync(true);return R;};
+save=function(){if(!S)return;honorSync();_honorSave();careerRecord();};
+endGame=function(id){_honorEnd(id);honorSync(true);careerRecord();};
+renderAll=function(){if(!S)return;honorSync(true);_honorRender();};
+bindPanel=function(){_honorBind();document.querySelectorAll('[data-honor-cat]').forEach(b=>b.onclick=()=>{honorFilter=b.dataset.honorCat;renderAll();});const status=$('#honorStatus');if(status)status.onchange=()=>{honorStatus=status.value;renderAll();};document.querySelectorAll('[data-rank-view]').forEach(b=>b.onclick=()=>{rankView=b.dataset.rankView;renderAll();});document.querySelectorAll('[data-rank-metric]').forEach(b=>b.onclick=()=>{rankMetric=b.dataset.rankMetric;renderAll();});const storage=$('#careerStorageStatus');if(storage){const saved=careerRead().find(r=>r.id===S.honors.id);storage.textContent=careerStorageFailed?'本机榜单未能写入，请释放浏览器存储空间后重新保存。':saved?'榜单在保存进度及结局时更新。':'本局尚未存入榜单；保存进度后写入本机记录。';}};
+showEnding=function(){_honorEnding();const opts=$('#doc .opts');if(opts){const b=document.createElement('button');b.className='opt';b.innerHTML='<span class="ot">查看成就与排名 · '+careerSnapshot().score+'分</span>';b.onclick=()=>{hideDoc();S.tab='ranking';renderAll();};opts.prepend(b);}};
 
 document.addEventListener('DOMContentLoaded',()=>{
   addEventListener('resize',fitDialogViewport);
