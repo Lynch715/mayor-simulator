@@ -1,0 +1,407 @@
+{
+  "date": "2026-11-01",
+  "sourceSha256": "5b50621a57e76e59568c1dd57d126e00eed131932f59ff80fa8a90b431f6357a",
+  "scope": "Regression matrix for event admission repair; synthetic in-memory state only.",
+  "runtimeModified": true,
+  "counts": {
+    "69设施×5级别": 345,
+    "17类高重污染×5片区": 85,
+    "全部工业失败不扣资格": 86,
+    "资源条件与已批资格": 5,
+    "扩产搬迁执行与资格": 400,
+    "六类市政合同": 36,
+    "全部项目专项补贴资格": 69,
+    "旧档迁移资产与资格保留": 25,
+    "招商事件县批与片区": 5,
+    "真实招商项目池": 50,
+    "真实区域竞标项目池": 25,
+    "跨市产业园落地": 4,
+    "住宅开发审批": 48,
+    "退出矿区修复立项": 5,
+    "事件立项失败不得先发副作用": 10,
+    "工业事件不能绕过片区准入": 1,
+    "双项目事件必须核验全部所需土地": 1
+  },
+  "passed": 1200,
+  "failed": 0,
+  "failures": [],
+  "examples": {
+    "school_petition": {
+      "event": {
+        "id": "school_petition",
+        "levels": [
+          0,
+          4
+        ],
+        "option": "拨款新建一所学校",
+        "fx": {
+          "q": "school",
+          "sat": 3
+        }
+      },
+      "gate": "学校：对应用途的可开发土地不足",
+      "before": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "after": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "logs": [
+        "项目效果未执行：学校：对应用途的可开发土地不足。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "metro": {
+      "event": {
+        "id": "metro",
+        "levels": [
+          2,
+          4
+        ],
+        "option": "申报建设",
+        "fx": {
+          "q": "road",
+          "q2": "road",
+          "cash": -1500,
+          "pros": 8,
+          "liv": 3,
+          "sched": {
+            "id": "metro2",
+            "m": 44
+          }
+        }
+      },
+      "gate": "道路：对应用途的可开发土地不足",
+      "before": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 50,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "after": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 50,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "logs": [
+        "项目效果未执行：道路：对应用途的可开发土地不足。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "aging": {
+      "event": {
+        "id": "aging",
+        "levels": [
+          1,
+          4
+        ],
+        "option": "新建养老院",
+        "fx": {
+          "q": "elder"
+        }
+      },
+      "gate": "养老院：对应用途的可开发土地不足",
+      "before": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 47,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "after": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 47,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "logs": [
+        "项目效果未执行：养老院：对应用途的可开发土地不足。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "land_cheap3": {
+      "event": {
+        "id": "land_cheap3",
+        "levels": [
+          0,
+          4
+        ],
+        "option": "转成标准厂房园区，政府自己接",
+        "fx": {
+          "q": "fzone",
+          "cash": -60,
+          "pros": 2
+        }
+      },
+      "gate": "标准厂房园区：对应用途的可开发土地不足",
+      "before": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "after": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "logs": [
+        "项目效果未执行：标准厂房园区：对应用途的可开发土地不足。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "newcity3": {
+      "event": {
+        "id": "newcity3",
+        "levels": [
+          1,
+          4
+        ],
+        "option": "继续推进",
+        "fx": {
+          "pros": 5,
+          "liv": 3,
+          "q": "school"
+        }
+      },
+      "gate": "学校：对应用途的可开发土地不足",
+      "before": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 47,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "after": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 47,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "logs": [
+        "项目效果未执行：学校：对应用途的可开发土地不足。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "nursery": {
+      "event": {
+        "id": "nursery",
+        "levels": [
+          0,
+          4
+        ],
+        "option": "新建公办园",
+        "fx": {
+          "q": "nursery",
+          "sat": 2
+        }
+      },
+      "gate": "公办幼儿园：对应用途的可开发土地不足",
+      "before": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "after": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "logs": [
+        "项目效果未执行：公办幼儿园：对应用途的可开发土地不足。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "garbage_full": {
+      "event": {
+        "id": "garbage_full",
+        "levels": [
+          0,
+          4
+        ],
+        "option": "立项建垃圾处理厂",
+        "fx": {
+          "q": "garbage"
+        }
+      },
+      "gate": "垃圾处理厂：对应用途的可开发土地不足",
+      "before": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "after": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "logs": [
+        "项目效果未执行：垃圾处理厂：对应用途的可开发土地不足。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "gas_leak": {
+      "event": {
+        "id": "gas_leak",
+        "levels": [
+          0,
+          4
+        ],
+        "option": "全面改造燃气管网",
+        "fx": {
+          "q": "gas",
+          "sat": -1
+        }
+      },
+      "gate": "燃气管网：对应用途的可开发土地不足",
+      "before": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "after": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "logs": [
+        "项目效果未执行：燃气管网：对应用途的可开发土地不足。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "waterlog": {
+      "event": {
+        "id": "waterlog",
+        "levels": [
+          0,
+          4
+        ],
+        "option": "上马地下管廊和排涝工程",
+        "fx": {
+          "q": "pipe",
+          "sat": -1
+        }
+      },
+      "gate": "地下管廊·排涝：对应用途的可开发土地不足",
+      "before": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "after": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "logs": [
+        "项目效果未执行：地下管廊·排涝：对应用途的可开发土地不足。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "river_black": {
+      "event": {
+        "id": "river_black",
+        "levels": [
+          0,
+          4
+        ],
+        "option": "河道整治立项",
+        "fx": {
+          "q": "river"
+        }
+      },
+      "gate": "河道整治：对应用途的可开发土地不足",
+      "before": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "after": {
+        "cash": 1000000000,
+        "sat": 52,
+        "pros": 36,
+        "liv": 95,
+        "sched": 0,
+        "build": 0
+      },
+      "logs": [
+        "项目效果未执行：河道整治：对应用途的可开发土地不足。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "industrialEvent": {
+      "fx": {
+        "q": "fzone",
+        "cash": -60,
+        "pros": 2
+      },
+      "beforeCash": 1000000000,
+      "afterCash": 1000000000,
+      "beforePros": 45,
+      "afterPros": 47,
+      "build": 0,
+      "logs": [
+        "项目效果未执行：标准厂房园区：该片区不允许中污染项目，保护区禁止工业开发。",
+        "到任。青石镇，三万四千人，一个资源枯竭的老矿镇。"
+      ]
+    },
+    "partialMetro": {
+      "cashDelta": 0,
+      "projects": [],
+      "followupScheduled": false
+    }
+  }
+}

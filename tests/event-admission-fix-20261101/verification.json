@@ -1,0 +1,21 @@
+{
+  "sourceSha256": "5b50621a57e76e59568c1dd57d126e00eed131932f59ff80fa8a90b431f6357a",
+  "baseCommit": "7f2e5f76198702570611a0494301ce258b8b7e9c",
+  "baseSha256": "dcbad23be90f1bb69ce9f9f27c5f01b1d412e583272136ca6b1fc2ee74fbef61",
+  "regressionGroups": 1473,
+  "flowMatrixGroups": 1200,
+  "focusedTests": 39,
+  "existingRegressionGroups": 234,
+  "localBrowser": {
+    "checks": 436,
+    "failures": [],
+    "isolatedStorage": true,
+    "physicalDevice": false,
+    "scope": "1280 / 640 / 390 / 320px; 10 actual event dialogs, blocked costs/rewards, full metro construction, save/load, and injected registration failure"
+  },
+  "saveKey": "yifang_save",
+  "saveSchemaChanged": false,
+  "legacyDataPreserved": "Existing assets, approvals, projects, contracts, pending work and historical partially completed events retained.",
+  "physicalDeviceTested": false,
+  "status": "verified locally before publication"
+}

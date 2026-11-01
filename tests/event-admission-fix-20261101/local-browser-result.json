@@ -1,0 +1,7 @@
+{
+  "checks": 436,
+  "failures": [],
+  "isolatedStorage": true,
+  "physicalDevice": false,
+  "scope": "1280 / 640 / 390 / 320px; 10 actual event dialogs, blocked costs/rewards, full metro construction, save/load, and injected registration failure"
+}

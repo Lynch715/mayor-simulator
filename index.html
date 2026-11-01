@@ -1061,7 +1061,8 @@ EV.push(
  {t:'财政继续投配套，等市场回暖',n:'',fx:{cash:-600,sched:{id:'newcity3',m:24}}},
  {t:'收缩规模，止损',n:'',fx:{pros:-6,rep:-3}}]},
 {id:'newcity3',lv:[1,4],w:0,title:'新城的局面',text:'四年过去了，新城有了几条像样的街，学校开学了，人也进来了一些。晚上的亮灯率大概三成。上级来看过，说"有点样子了"。',opts:[
- {t:'继续推进',n:'',fx:{pros:5,liv:3,q:'school'}}]},
+ {t:'继续推进',n:'',fx:{pros:5,liv:3,q:'school'}},
+ {t:'先补齐建设条件，下月再议',n:'本次不立项、不增加指标，下月重新办理',fx:{sched:{id:'newcity3',m:0}}}]},
 /* 上级线 */
 {id:'boss_new',lv:[1,4],w:2,once:true,cond:S=>S.tenure>=2,title:'新来的分管领导',text:'省里新来的分管领导第一次来调研，会上讲了四十分钟，反复提到两件事："增速要上去"，"债务要控住"。散会后他单独跟你说，年底要看数。',opts:[
  {t:'表态：增速优先',n:'',fx:{flag:'push',rep:2}},
@@ -1882,10 +1883,12 @@ function fmtPop(v){return v>=10000?(v/10000).toFixed(2)+'亿':v>=1000?Math.round
 function logIt(t,c){S.logSeq=(S.logSeq||0)+1;S.log.unshift({y:S.year,m:S.month,t,c:c||'',q:S.logSeq});if(S.log.length>200)S.log.length=200;}
 
 /* ---- 动作 ---- */
-function queueBuild(id){const F=FAC[id];if(F.lvl!==undefined&&S.lvl<F.lvl)return '等级不够';
+function buildGate(id,plan){const F=FAC[id];if(!F)return '没有该项目';if(F.lvl!==undefined&&S.lvl<F.lvl)return '等级不够';
   if(F.needLiv&&S.liv<F.needLiv)return '宜居度不足'+F.needLiv;
   if(F.ind&&!F.solar&&cov('power')<0.5)return '电厂覆盖不足，先建电厂';
-  const land=F.land*S.lsc*0.35;const gate=industryGate(id,S.planZone||'mixed');if(F.ind&&gate)return gate;if(landFree(F.ind?'ind':'any')<land)return '对应用途的可开发土地不足';
+  const free=plan?plan.free:phaseEnsure().land.free,land=F.land*S.lsc*0.35,available=F.ind?free.ind:free.ind+free.res+free.com;
+  const gate=industryGate(id,S.planZone||'mixed',plan?.permits);if(F.ind&&gate)return gate;if(available<land)return '对应用途的可开发土地不足';return null;}
+function queueBuild(id){const err=buildGate(id);if(err)return err;const F=FAC[id],land=F.land*S.lsc*0.35;
   landTake(land,F.ind?'ind':'any','建设');S.build.push({id,zone:S.planZone||'mixed',paid:0,cost:F.cost*S.sc*(1+0.02*S.year),months:F.months,left:F.months,wl:F.wl});
   logIt('立项：'+F.n+'，总投资'+fmt(F.cost*S.sc*(1+0.02*S.year))+'，工期'+F.months+'个月。');return null;}
 function cancelBuild(i){const b=S.build[i];if(!b)return;const returned=FAC[b.id].land*S.lsc*0.35*0.5;phaseEnsure().land.used=Math.max(0,S.phase1.land.used-returned);landAdd(returned,FAC[b.id].ind?'ind':'com');S.build.splice(i,1);logIt('取消项目：'+FAC[b.id].n+'，已付资金不退。','bad');}
@@ -1921,13 +1924,12 @@ function reform(){if(S.reformDone)return '本级已完成机构改革';const c=L
 
 /* ---- 效果应用 ---- */
 function applyFx(fx){if(!fx)return;
-  if(fx.fac&&fx.fac.id==='factory'&&fx.fac.n>0){const gate=industryGate('factory',S.planZone||'mixed');if(gate||landFree('ind')<20*S.lsc*fx.fac.n){logIt('项目效果未执行：'+(gate||'工业用地不足')+'。','bad');return;}}
+  const gate=queueEventProjects(fx);if(gate){logIt('项目效果未执行：'+gate+'。','bad');return false;}
   if(fx.cash)S.cash+=fx.cash*S.sc;if(fx.cashLand){const mu=Math.min(landFree('any'),fx.land<0?-fx.land*S.lsc:40*S.lsc);const rev=mu*landPrice()*fx.cashLand;landTake(mu,'any','事件出让');S.landSold+=mu;S.cash+=rev;S.landRev=(S.landRev||0)+rev;book('land',rev,'事件土地出让');}
   const _sf=(S.agFlag&&S.agFlag.soft)||1;if(fx.sat)S.sat=clamp(S.sat+(fx.sat<0?fx.sat*_sf:fx.sat),0,100);if(fx.env)envChange(fx.env,'event');if(fx.pros)S.pros=clamp(S.pros+fx.pros,0,100);
   if(fx.liv)S.liv=clamp(S.liv+fx.liv,0,100);if(fx.rep)S.rep=clamp(S.rep+fx.rep,0,100);if(fx.unity)S.unity=clamp(S.unity+fx.unity,0,100);
   if(fx.pop)S.pop*=1+fx.pop/100;if(fx.land&&!(fx.cashLand&&fx.land<0)){if(fx.land>0){landAdd(fx.land*S.lsc,'ind');S.landTotal+=fx.land*S.lsc;}else landTake(Math.min(landFree('any'),-fx.land*S.lsc),'any','事件占用');}
-  if(fx.fac){if(fx.fac.n>0&&fx.fac.id==='factory'){addEventFactory(fx.fac.n);}else S.f[fx.fac.id]=Math.max(0,(S.f[fx.fac.id]||0)+fx.fac.n);}
-  if(fx.q){const e=queueBuild(fx.q);if(e)logIt('立项失败：'+e,'bad');}if(fx.q2){queueBuild(fx.q2);}
+  if(fx.fac&&!(fx.fac.n>0&&fx.fac.id==='factory'))S.f[fx.fac.id]=Math.max(0,(S.f[fx.fac.id]||0)+fx.fac.n);
   if(fx.file){S.file.push({y:S.year,t:fx.file.t,sev:fx.file.sev,exp:false,mild:false});}
   if(fx.mild){S.file.push({y:S.year,t:fx.mild.t,sev:0,exp:false,mild:true});}
   if(fx.sched)S.sched.push({id:fx.sched.id,m:fx.sched.m});
@@ -1938,6 +1940,7 @@ function applyFx(fx){if(!fx)return;
   if(fx.addcq){const x=annualIncome()*fx.addcq;S.cq.push({amt:x,rate:10,left:24,term:24});}
   if(fx.swap){const sw=cqOut()*fx.swap;let x=sw;S.cq.sort((a,b)=>b.rate-a.rate);for(const b of S.cq){const y=Math.min(b.amt,x);b.amt-=y;x-=y;}S.cq=S.cq.filter(b=>b.amt>1);if(sw>1){S.sb.push({amt:sw,rate:2.8,left:120,term:120});logIt('置换债到位：'+fmt(sw)+'城投债转为法定债务。','good');}}
   if(fx.flag==='newcity')S.flags.newcity=1;if(fx.flag==='ppp')S.ppp=(S.ppp||0)+LV[S.lvl].transfer*0.04;
+  return true;
 }
 
 /* ---- 月结 ---- */
@@ -2384,7 +2387,7 @@ function showEvent(ev,done){const kind=ev.kind||(ev.id.startsWith('p_')?'信访�
   const by=nk&&(ev.npc||A.portrait)?`<div class="by"><b>${esc(npcName(nk))}</b><span class="fbar"><i style="width:${nf(nk)}%"></i></span><em>${relLabel(nf(nk))}</em></div>`:'';
   showDoc(`${A.wide?artBox(A.wide,'wide'):artBox(A.scene)}<div class="dh"><div class="kind">${kind}</div><h2>${esc(sub(ev.title))}</h2>${by}</div><div class="body${A.portrait?' hasp':''}">${artPortrait(A.portrait)}<div>${esc(sub(ev.text))}</div></div><div class="opts">${ev.opts.map((o,i)=>{const blocked=eventAdmission(o.fx);const ok=reqOk(o)&&!blocked;const note=blocked|| (reqOk(o)?o.n:'需要'+npcName(o.req.k)+'的信任（'+o.req.v+'，当前 '+nf(o.req.k)+'）');
     return `<button class="opt${o.grey?' grey':''}${ok?'':' dis'}" data-i="${i}"${ok?'':' disabled'}><span class="ot">${esc(sub(o.t))}</span>${note?'<span class="on">'+esc(sub(note))+'</span>':''}</button>`;}).join('')}</div>`);
-  document.querySelectorAll('#doc .opt').forEach(b=>b.onclick=()=>{const o=ev.opts[+b.dataset.i];if(!reqOk(o)||eventAdmission(o.fx))return;applyFx(o.fx);if(ev.once)S.once[ev.id]=1;logIt('【'+ev.title+'】'+o.t+(o.grey?'（进入责任档案）':''),o.grey?'bad':'');hideDoc();if(o.end){busy=false;endGame(o.end);renderAll();showEnding();return;}done();});}
+  document.querySelectorAll('#doc .opt').forEach(b=>b.onclick=()=>{const o=ev.opts[+b.dataset.i];if(!reqOk(o)||eventAdmission(o.fx))return;if(applyFx(o.fx)===false){toast('项目未能立项，未扣款或执行其他效果，请重新选择。');return;}if(ev.once)S.once[ev.id]=1;logIt('【'+ev.title+'】'+o.t+(o.grey?'（进入责任档案）':''),o.grey?'bad':'');hideDoc();if(o.end){busy=false;endGame(o.end);renderAll();showEnding();return;}done();});}
 function showReview(R,done){const L=LV[S.lvl];
   showDoc(`<div class="dh"><div class="kind">年度考核通报</div><h2>关于第 ${R.year} 年度${esc(L.city)}综合考核结果的通报</h2></div><div class="body"><div class="row" style="align-items:flex-end"><span class="grade">${R.grade}</span><span class="muted" style="padding-bottom:6px">${{A:'优秀',B:'良好',C:'合格',D:'不合格'}[R.grade]}${R.sanbao?'（三保出现缺口，压 '+(R.W.sanbao||1)+' 档）':''}</span></div>
   <table style="margin:10px 0"><tr><td>综合得分</td><td class="r">${R.raw.toFixed(1)}</td></tr><tr><td>考核风向</td><td class="r">${esc(R.W.n)}</td></tr><tr><td>繁荣 ×${R.W.w[0]} / 宜居 ×${R.W.w[1]} / 满意 ×${R.W.w[2]}${R.W.env?' / 环境 ×'+R.W.env:''}</td><td class="r">${(R.W.w[0]*S.pros).toFixed(0)} / ${(R.W.w[1]*S.liv).toFixed(0)} / ${(R.W.w[2]*S.sat).toFixed(0)}${R.W.env?' / '+(R.W.env*S.env).toFixed(0):''}</td></tr><tr><td>债务扣分${R.W.debt!==1?'（×'+R.W.debt+'）':''}</td><td class="r">−${R.debtPen.toFixed(1)}</td></tr><tr><td>事故扣分</td><td class="r">−${R.accPen}</td></tr><tr><td>廉政扣分${R.W.clean!==1?'（×'+R.W.clean+'）':''}</td><td class="r">−${R.cleanPen.toFixed(1)}</td></tr><tr><td>政绩变动</td><td class="r">${R.gain>0?'+':''}${R.gain}　累计 ${Math.round(S.merit)}</td></tr>${R.rank?`<tr><td>省内位次</td><td class="r">第 ${R.rank} 名　${R.rankBonus>0?'+':''}${R.rankBonus}</td></tr>`:''}<tr><td>财政紧张度</td><td class="r">${R.tension.toFixed(0)}</td></tr></table>
@@ -2470,8 +2473,8 @@ function leaseLand(mu,years=10){
 function leasesStep(){const P=phaseEnsure();for(const l of P.leases){l.left--;if(l.left===0){P.land.leased-=l.mu;landAdd(l.mu,'ind');logIt('工业用地租约到期，收回'+l.mu.toFixed(1)+'亩，可重新配置。','good');}}P.leases=P.leases.filter(l=>l.left>0);}
 function pollutionGrade(id){const F=FAC[id];if(id==='factory')return 3;if(!F||!F.ind)return 0;return F.grade||(F.pol>1.5?3:F.pol>.5?2:1);}
 function industryApproval(id){const g=pollutionGrade(id);return g===3&&S.lvl===0?'县级审批':g===4&&S.lvl===1?'市级会审':'';}
-function industryPermitKey(id){
- if(!industryApproval(id))return null;const permits=phaseEnsure().permits;
+function industryPermitKey(id,permits=phaseEnsure().permits){
+ if(!industryApproval(id))return null;
  if(permits[id]>0)return id;
  // Keep the existing factory key so approvals already earned in old saves remain usable.
  return pollutionGrade(id)===3&&permits.factory>0?'factory':null;
@@ -2482,15 +2485,37 @@ function vIndustryPermit(id){
  const pending=S.ag==='permit_'+id||(pollutionGrade(id)===3&&S.ag==='permit_factory');
  return `<div class="phase-permit"><p class="phase-note">${approval}资格：${specific+common}项${common?'（含通用'+common+'项）':''}，立项消耗1项。${pending?'本月已安排审批，推进下月后办理。':''}</p>${specific+common>0?'':`<button class="sm" data-phase-action="permit_${id}"${pending?' disabled':''}>${pending?'已安排'+approval:'申报'+approval}</button>`}</div>`;
 }
-function industryGate(id,zone='mixed'){
+function industryGate(id,zone='mixed',permits){
  const F=FAC[id];if(id!=='factory'&&(!F||!F.ind))return null;
  const g=pollutionGrade(id);if(!ZONES[zone]||g>ZONES[zone].max)return '该片区不允许'+POLLUTION[g]+'项目，保护区禁止工业开发';
  if(g===4&&S.lvl<1)return '镇级禁止申报重污染项目';
- if(industryApproval(id)&&industryPermitKey(id)===null)return POLLUTION[g]+'项目须先申报'+industryApproval(id);
+ if(industryApproval(id)&&industryPermitKey(id,permits)===null)return POLLUTION[g]+'项目须先申报'+industryApproval(id);
  if(F&&F.resource&&!phaseEnsure().resources.includes(F.resource))return '本地缺少'+F.resource+'资源条件';
  return null;
 }
-function eventAdmission(fx){if(fx&&fx.fac&&fx.fac.id==='factory'&&fx.fac.n>0)return industryGate('factory',S.planZone||'mixed')||(landFree('ind')<20*S.lsc*fx.fac.n?'工业用地不足':null);return null;}
+function eventBuildGate(fx){
+ const factory=fx?.fac?.id==='factory'&&fx.fac.n>0,ids=[fx?.q,fx?.q2].filter(Boolean);if(!factory&&!ids.length)return null;
+ const P=phaseEnsure(),plan={free:{...P.land.free},permits:{...P.permits}};
+ const reserve=(id,mu,use)=>{let left=mu;for(const k of use==='ind'?['ind']:['com','ind','res']){const n=Math.min(left,plan.free[k]);plan.free[k]-=n;left-=n;}const key=industryPermitKey(id,plan.permits);if(key!==null)plan.permits[key]--;};
+ if(factory){const err=industryGate('factory',S.planZone||'mixed',plan.permits),mu=20*S.lsc*fx.fac.n;if(err)return err;if(plan.free.ind<mu)return '工业用地不足';reserve('factory',mu,'ind');}
+ for(const id of ids){const err=buildGate(id,plan);if(err)return FAC[id]?FAC[id].n+'：'+err:err;const F=FAC[id];reserve(id,F.land*S.lsc*.35,F.ind?'ind':'any');}
+ return null;
+}
+function queueEventProjects(fx){
+ const factory=fx?.fac?.id==='factory'&&fx.fac.n>0,ids=[fx?.q,fx?.q2].filter(Boolean);if(!factory&&!ids.length)return null;
+ const err=eventBuildGate(fx);if(err)return err;const P=phaseEnsure();
+ // Registration is synchronous; retain the existing arrays and undo only this batch if any step fails.
+ const before={land:JSON.parse(JSON.stringify(P.land)),permits:{...P.permits},free:S.land,factory:S.f.factory,build:S.build.slice(),projects:S.careerProjects.slice(),seq:S.projectSeq,log:S.log.slice(),logSeq:S.logSeq};
+ try{
+  if(factory){addEventFactory(fx.fac.n);if(S.f.factory!==(before.factory||0)+fx.fac.n)throw new Error('招商工厂未能落地，请重新检查准入条件');}
+  for(const id of ids){const error=queueBuild(id);if(error)throw new Error(error);}return null;
+ }catch(error){
+  Object.assign(P.land,before.land);for(const key of Object.keys(P.permits))delete P.permits[key];Object.assign(P.permits,before.permits);S.land=before.free;S.f.factory=before.factory;
+  S.build.splice(0,S.build.length,...before.build);S.careerProjects.splice(0,S.careerProjects.length,...before.projects);S.projectSeq=before.seq;S.log.splice(0,S.log.length,...before.log);S.logSeq=before.logSeq;
+  return error.message||'项目登记未完成，请重新选择';
+ }
+}
+function eventAdmission(fx){return eventBuildGate(fx);}
 function addEventFactory(n){
  // Older events may promise a generic chemical factory. They cannot bypass new admission.
  const e=industryGate('factory',S.planZone||'mixed');
@@ -2855,7 +2880,7 @@ tick=function(){
 annual=function(){const r=_p2Annual();r.accountabilityBlock=(S.accountabilityUntil||0)>projectMonth();if(r.next==='promote'&&r.accountabilityBlock)r.next=null;return r;};
 findEvent=function(id){const n=(S.policyNotices||{})[id];if(!n)return _p2Find(id);const p=n.findings.map(projectById).find(p=>p&&p.site===phase2Ensure().site);const base={id,kind:'督查',title:n.name,text:n.city+'第'+n.year+'年'+n.month+'月定向检查：抽查'+n.checked+'个项目。'+(n.findings.length?'发现'+n.findings.length+'项隐患，相关项目已标记。':'未发现新增项目隐患。')+(S.env<40?' 全市环境偏低，另需安排综合治理。':'')+'\n\n1月高/重污染项目抽检概率加倍。汛期检查工程与排水，年末核查资金。'};
  base.opts=p?[{t:'立即拨款整改',n:'需要对应岗位；费用'+fmt(projectRemedyCost(p)*1.5)+'，原责任记录不变',fx:{p2Remedy:p.uid,p2Notice:id}},{t:'安排下月专项整改',n:'占用下月工作机会；需对应岗位和经费',fx:{p2Schedule:{kind:'p2_remedy',target:p.uid},p2Notice:id}},{t:'记录问题，暂缓整改',n:'保留隐患和跨任期责任',fx:{p2Notice:id}}]:[{t:'收到，纳入项目台账',n:'',fx:{p2Notice:id}}];return base;};
-applyFx=function(fx){_p2Fx(fx);if(!fx)return;if(fx.p2Remedy){const err=remedyProject(fx.p2Remedy,true);if(err)logIt('即时整改未完成：'+err,'bad');}if(fx.p2Schedule){const e=schedulePhase2(fx.p2Schedule.kind,fx.p2Schedule.target);if(e)logIt('未能安排整改：'+e,'bad');}if(fx.p2Notice&&S.policyNotices[fx.p2Notice])S.policyNotices[fx.p2Notice].handled=true;};
+applyFx=function(fx){const applied=_p2Fx(fx);if(applied===false)return false;if(!fx)return;if(fx.p2Remedy){const err=remedyProject(fx.p2Remedy,true);if(err)logIt('即时整改未完成：'+err,'bad');}if(fx.p2Schedule){const e=schedulePhase2(fx.p2Schedule.kind,fx.p2Schedule.target);if(e)logIt('未能安排整改：'+e,'bad');}if(fx.p2Notice&&S.policyNotices[fx.p2Notice])S.policyNotices[fx.p2Notice].handled=true;return applied;};
 cashForecast=function(){const rows=_p2Forecast();for(const r of rows)r.conditionalReceipts=localProjects().filter(p=>['approved','municipal'].includes(p.grant.status)&&S.build.some(b=>b.p2Id===p.uid&&b.left===r.i)).reduce((a,p)=>a+p.grant.amount,0);return rows;};
 retiredStep=function(){const r=_p2Retired();if(S.retY===2){const bad=(S.careerProjects||[]).find(p=>!p.incident&&p.warningAt!==null&&p.risk.quality+p.risk.environment+p.risk.safety>.8);if(bad)return {id:'p2_retirement_audit',kind:'倒查',title:'退休后项目倒查',text:bad.city+'「'+bad.n+'」长期未整改的严重隐患被查实。调查组正在核对当年的签批和整改记录。',opts:[{t:'接受调查',n:'',fx:{},end:'post_audit'}]};}return r;};
 MECH.projects={lv:0,tab:'项目'};
@@ -2994,7 +3019,7 @@ rivalStep=function(){rival3Year();};
 myRank=function(){if(!S.rivals?.length)return 1;const mine=compositeScore(scoreParts());return 1+S.rivals.filter(r=>compositeScore(scoreParts(r))>mine+1e-9).length;};
 findEvent=function(id){const n=S.phase3?.notices[id];if(!n)return _p3Find(id);const f=firmById(n.firm);return {id,kind:'信访件',title:n.title,text:'工业片区群众反映「'+(f?.name||'企业')+'」的异味、噪声和排水问题，要求公布整改进度。\n\n企业表示担心停产影响订单。请确定处理意见；同类产业投诉至少间隔6个月。',opts:[{t:'立即拨款，限期治理',n:'需要环保岗位，经费'+fmt(f?firmRef(f)*.08:0),fx:{p3Pet:{id,how:'rectify'}}},{t:'先听证并限产，安排后续整改',n:'不立即花钱；企业减产，满意度小幅回升',fx:{p3Pet:{id,how:'hear'}}},{t:'暂缓办理，先保生产',n:'满意度下降；既有环保隐患继续保留',fx:{p3Pet:{id,how:'defer'}}}]};};
 eventAdmission=function(fx){const old=_p3Admission(fx);if(old)return old;if(fx?.p3Pet){const n=S.phase3?.notices[fx.p3Pet.id],f=n&&firmById(n.firm);if(!n||n.handled||!f)return '事项已处理或失效';if(fx.p3Pet.how==='rectify'){if(roleGate('eco'))return roleGate('eco');if(businessCash()<Math.round(firmRef(f)*.08))return '专项整改经费不足，可先听证限产';}}return null;};
-applyFx=function(fx){if(fx?.p3Pet){const gate=eventAdmission(fx);if(gate){logIt(gate,'bad');return;}const e=petitionWork(fx.p3Pet.id,fx.p3Pet.how);if(e)logIt(e,'bad');return;}_p3Fx(fx);};
+applyFx=function(fx){if(fx?.p3Pet){const gate=eventAdmission(fx);if(gate){logIt(gate,'bad');return;}const e=petitionWork(fx.p3Pet.id,fx.p3Pet.how);if(e)logIt(e,'bad');return;}return _p3Fx(fx);};
 MECH.business={lv:0,tab:'经营'};
 function marketLabel(){const x=phase3Ensure().market.index;return x<.8?'冷淡':x>1.15?'火热':'平稳';}
 function workBtn(kind,target,label,disabled=false){const reason=['p3_aid','p3_expand','p3_move','p3_close'].includes(kind)?firmGate(kind,target):['p3_regulate','p3_rescue'].includes(kind)?homeWorkQuote(kind,target).error:null;return `<span class="phase-work"><button class="sm" data-p3="${kind}" data-target="${target}"${disabled||reason?' disabled':''}>${label}</button>${reason?'<span class="phase-note">'+esc(reason)+'</span>':''}</span>`;}

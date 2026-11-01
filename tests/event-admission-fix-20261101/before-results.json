@@ -1,0 +1,185 @@
+{
+  "passed": 16,
+  "failed": 23,
+  "cases": [
+    {
+      "name": "school_petition：缺地时不扣款、加指标、占审批或安排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "school_petition：条件满足时一次建齐并结算原有事件效果",
+      "pass": true
+    },
+    {
+      "name": "metro：缺地时不扣款、加指标、占审批或安排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "metro：条件满足时一次建齐并结算原有事件效果",
+      "pass": true
+    },
+    {
+      "name": "aging：缺地时不扣款、加指标、占审批或安排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "aging：条件满足时一次建齐并结算原有事件效果",
+      "pass": true
+    },
+    {
+      "name": "land_cheap3：缺地时不扣款、加指标、占审批或安排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "land_cheap3：条件满足时一次建齐并结算原有事件效果",
+      "pass": true
+    },
+    {
+      "name": "newcity3：缺地时不扣款、加指标、占审批或安排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "newcity3：条件满足时一次建齐并结算原有事件效果",
+      "pass": true
+    },
+    {
+      "name": "nursery：缺地时不扣款、加指标、占审批或安排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "nursery：条件满足时一次建齐并结算原有事件效果",
+      "pass": true
+    },
+    {
+      "name": "garbage_full：缺地时不扣款、加指标、占审批或安排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "garbage_full：条件满足时一次建齐并结算原有事件效果",
+      "pass": true
+    },
+    {
+      "name": "gas_leak：缺地时不扣款、加指标、占审批或安排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "gas_leak：条件满足时一次建齐并结算原有事件效果",
+      "pass": true
+    },
+    {
+      "name": "waterlog：缺地时不扣款、加指标、占审批或安排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "waterlog：条件满足时一次建齐并结算原有事件效果",
+      "pass": true
+    },
+    {
+      "name": "river_black：缺地时不扣款、加指标、占审批或安排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "river_black：条件满足时一次建齐并结算原有事件效果",
+      "pass": true
+    },
+    {
+      "name": "生态红线中的厂房事件不能先扣配套费或增加繁荣",
+      "pass": false,
+      "error": "The \"string\" argument must be of type string. Received type object (null)"
+    },
+    {
+      "name": "地铁土地只够一项时，两项都不建、不扣完整费、不排后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "同批两个高污染项目共用县批，不能一份资格批准两项",
+      "pass": false,
+      "error": "The \"string\" argument must be of type string. Received type object (null)"
+    },
+    {
+      "name": "专属资格优先，另一项目才使用通用资格",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- true\n"
+    },
+    {
+      "name": "同一企业的两次建项也必须有两份资格",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "规划按土地用途累计，不能用住宅或公共地代替工业地",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "供电、职务、宜居度、资源条件与建设按钮共用",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "只读预检不占地、不扣审批、不消耗随机数",
+      "pass": true
+    },
+    {
+      "name": "无效项目不能先发放事件现金、奖励或后续",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "第二项登记失败时回退整批，保留原在建项目及其对象",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- false\n"
+    },
+    {
+      "name": "第二项登记抛错时回退整批，保留原在建项目及其对象",
+      "pass": false,
+      "error": "模拟登记异常"
+    },
+    {
+      "name": "招商工厂与建设混合事件资格不足时整批不执行",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'eventAdmission(fx)'))\n"
+    },
+    {
+      "name": "混合事件中登记失败会还原已加入的招商工厂和责任记录",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- false\n"
+    },
+    {
+      "name": "修复前已有项目、审批、合同和待办安排跨版本逐字保存读取",
+      "pass": true
+    },
+    {
+      "name": "旧档已经部分建成的历史地铁事件不会被追溯取消或重复结算",
+      "pass": true
+    },
+    {
+      "name": "改造前后非建设事件保持原效果",
+      "pass": true
+    },
+    {
+      "name": "所有建设事件在缺地时仍有可办理的替代选项，避免月结卡住",
+      "pass": true
+    },
+    {
+      "name": "新城缺地时可下月再议，不建项、不加指标、不收费",
+      "pass": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(run(c,'deferred'))\n"
+    },
+    {
+      "name": "旧档已排期的新城事件读取后也有替代选项，原排期不变",
+      "pass": true
+    }
+  ]
+}
