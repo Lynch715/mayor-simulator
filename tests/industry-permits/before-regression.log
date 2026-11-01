@@ -1,0 +1,60 @@
+FAIL 复现截图：通用县批后可在重工业治理片区立项冶炼、造纸或化工 Expected values to be strictly equal:
++ actual - expected
+
++ '高污染项目须先申报县级审批'
+- null
+
+FAIL 七种高污染国企均可使用通用县批；一份资格只准一次立项 Expected values to be strictly equal:
++ actual - expected
+
++ '高污染项目须先申报县级审批'
+- null
+
+FAIL 安排审批不即时发资格；实际月结执行后才能立项 Expected values to be strictly equal:
++ actual - expected
+
++ '高污染项目须先申报县级审批'
+- null
+
+PASS 环境不合格或随机审批失败不发资格
+FAIL 先用本企业专属资格，保留通用资格供其他项目 Expected values to be strictly equal:
++ actual - expected
+
++ '高污染项目须先申报县级审批'
+- null
+
+PASS 专属审批不用于其他国企或招商工厂
+PASS 失败立项不扣资格或挪用土地，修复条件后可继续
+PASS 县级通用资格不代替市级重污染会审或镇级禁入
+PASS 市级会审不绕过资源、片区条件，失败不扣资格
+PASS 低中污染无需审批，不扣通用资格；县级以上高污染不扣旧资格
+FAIL 旧档只存factory资格也直接生效，迁移、保存、读取不改存量资产 Expected values to be strictly equal:
++ actual - expected
+
++ '高污染项目须先申报县级审批'
+- null
+
+FAIL 旧版真实存档获批后跨版本读取，不要求玩家重批 Expected values to be strictly equal:
++ actual - expected
+
++ '高污染项目须先申报县级审批'
+- null
+
+PASS 招商事件消耗同一通用资格，不能重复用于国企
+FAIL p3_expand 同步消耗通用资格且无NaN，第二家被拦截 Expected values to be strictly equal:
++ actual - expected
+
++ '高污染项目须先申报县级审批'
+- null
+
+FAIL p3_move 同步消耗通用资格且无NaN，第二家被拦截 Expected values to be strictly equal:
++ actual - expected
+
++ '高污染项目须先申报县级审批'
+- null
+
+FAIL 建设卡片直接显示项目审批入口、通用余量和待办状态 The expression evaluated to a falsy value:
+
+  assert.ok(html.includes('县级通用审批资格：0项'))
+
+{"passed":7,"failed":9}

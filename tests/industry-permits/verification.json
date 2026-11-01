@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-01",
+  "status": "local fix verified; not published",
+  "rootCause": "Generic county approval was stored at permits.factory while state-owned industrial projects checked only permits[projectId].",
+  "compatibility": "Existing permits.factory and project-specific keys retained; no save conversion or schema change. No player save imported or modified.",
+  "regressions": {
+    "tests-phase1.cjs.log": "38 tests passed",
+    "tests-phase2.cjs.log": "50 phase2 tests passed",
+    "tests-phase3.cjs.log": "47 phase3 tests passed",
+    "fixes-v114-regression.cjs.log": "49 audit-fix tests passed",
+    "honors-regression.cjs.log": "34 honors/ranking tests passed",
+    "regression.log": "{\"passed\":16,\"failed\":0}"
+  },
+  "totalRegressionGroups": 234,
+  "browser": {
+    "checks": 308,
+    "failures": [],
+    "isolatedStorage": true,
+    "scope": "1280 / 640 / 390 / 320px; generic and dedicated county approvals, actual next-month dialogs, construction, save/load, municipal review",
+    "physicalDevice": false
+  },
+  "browserTool": "Codex in-app browser",
+  "sourceSha256": "dcbad23be90f1bb69ce9f9f27c5f01b1d412e583272136ca6b1fc2ee74fbef61",
+  "beforeSha256": "346fd2993580df80847cf2867430bf6cf4a907ab08f94e6bca8ecec7ff9ce5ab",
+  "screenshot": "mobile-approved.jpg",
+  "physicalDeviceTested": false
+}
