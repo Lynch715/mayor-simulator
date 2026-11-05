@@ -500,6 +500,38 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 @media(min-width:641px){.phase-actions:has(> :nth-child(3):last-child),.phase-actions:has(> :nth-child(5):last-child),.phase-actions:has(> :nth-child(6):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:900px){#main{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:640px){#tabs button{flex:0 0 auto}.home-offers{grid-template-columns:minmax(0,1fr)}.doc .body.brief .kv{grid-template-columns:repeat(2,minmax(0,1fr))}#modal{justify-content:flex-end}}
+
+/* 执政地图：沿用纸白、朱红；手机上可放大后在框内滑动 */
+.map-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0;font-size:13px}
+.map-tools button{min-height:36px}
+.map-wrap{border:1px solid var(--line);background:#E8E5C6;overflow:auto;-webkit-overflow-scrolling:touch;max-width:100%;touch-action:pan-x pan-y}
+.map-svg{display:block;width:100%;height:auto;font-family:var(--sans)}
+.map-wrap.z2 .map-svg{width:200%;min-width:200%}
+.map-wrap.z2{max-height:72vh}
+.map-info{margin-top:8px;padding:8px 12px;border-left:3px solid var(--red);background:var(--paper);font-size:14px;min-height:38px;overflow-wrap:anywhere}
+.map-change{margin:6px 0 4px;padding:7px 12px;background:rgba(154,122,42,.09);border:1px solid rgba(154,122,42,.35);font-size:13px;line-height:1.7;overflow-wrap:anywhere}
+.map-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:12px;color:var(--ink2)}
+.map-legend span{display:inline-flex;align-items:center;gap:5px}
+.map-legend i{display:inline-block;width:14px;height:12px;border-radius:1px}
+.lg-mk{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--ink2);background:#fff;font:700 9px var(--sans);color:var(--gold)}
+.lg-build{border:1.5px dashed var(--red);background:#FFF8EE}.lg-warn{border:0;background:var(--red);width:10px;height:10px}.lg-new{border-color:var(--gold)}
+.mm-mk{cursor:pointer;outline:none}.mm-mk:hover circle,.mm-mk:focus-visible circle{stroke-width:2.6}
+.mm-closed{opacity:.7}
+.mm-geo{font:600 15px var(--serif);fill:#5E5A48;text-anchor:middle;letter-spacing:.3em;paint-order:stroke;stroke:#F3F2EE;stroke-width:3px}
+.mm-small{font:11px var(--sans);fill:#5A5E66;text-anchor:middle}
+.mm-title{font:700 20px var(--serif);fill:#22252A;letter-spacing:.08em}
+.mm-sub{font:11px var(--sans);fill:#5A5E66}
+.mm-seal{font:700 15px var(--serif);fill:#B4231C;text-anchor:middle}
+.mm-badge{font:700 8px var(--sans);fill:#fff;text-anchor:middle}
+.mm-newtag{font:700 10px var(--sans);fill:#9A7A2A;text-anchor:middle;paint-order:stroke;stroke:#fff;stroke-width:3px}
+.mm-dlabel{font:600 12px var(--serif);fill:#4E2E5C;text-anchor:middle}
+.mm-dist{cursor:pointer}
+.mm-zone{font:600 13px var(--serif);fill:#6B4A2E;text-anchor:middle;letter-spacing:.2em;paint-order:stroke;stroke:#F3F2EE;stroke-width:3.5px}
+.mm-rival{font:600 13px var(--serif);fill:#5A5E66;paint-order:stroke;stroke:#F3F2EE;stroke-width:3px}
+.mm-pulse{transform-box:fill-box;transform-origin:center;animation:mmPulse 1.6s ease-out infinite}
+@keyframes mmPulse{0%{opacity:.9;transform:scale(.85)}100%{opacity:0;transform:scale(1.9)}}
+@media(prefers-reduced-motion:reduce){.mm-pulse{animation:none}}
+@media(max-width:640px){.map-info{font-size:13px}.map-tools button{min-height:40px}}
 </style>
 </head>
 <body>
@@ -2169,9 +2201,9 @@ function renderAll(){if(!S)return;getters();const L=LV[S.lvl];
    ['满意度',Math.round(S.sat),'房价压力 '+Math.round(S.housing),S.sat,S.sat<35],
    ['隐性债务率',h.toFixed(0)+'%',S.task?'化债任务书执行中':S.frozen?'融资已冻结':'总债务率 '+debtRatio().toFixed(0)+'%',Math.min(100,h),h>=70]];
   $('#stats').innerHTML=st.map(([l,v,d,bar,warn])=>`<div class="stat${warn?' warn':''}"><div class="l">${l}</div><div class="v num">${v}</div><div class="d muted">${d}</div>${bar!==null?`<div class="bar"><i style="width:${bar}%"></i></div>`:''}</div>`).join('');
-  const TABN={over:'总览',build:'建设',fin:'财政',debt:'债务',hr:'人事',file:'档案',honors:'成就',ranking:'排名'};
-  const tabs=['over','build'].concat(mechTabs()).concat(['fin','debt','hr','file','honors','ranking']);
-  const VIEW={over:vOver,build:vBuild,fin:vFin,debt:vDebt,hr:vHR,file:vFile,
+  const TABN={over:'总览',map:'地图',build:'建设',fin:'财政',debt:'债务',hr:'人事',file:'档案',honors:'成就',ranking:'排名'};
+  const tabs=['over'].concat(S.phase==='retired'?[]:['map'],['build']).concat(mechTabs()).concat(['fin','debt','hr','file','honors','ranking']);
+  const VIEW={over:vOver,map:vMap,build:vBuild,fin:vFin,debt:vDebt,hr:vHR,file:vFile,
     land:vLand,ind:vInd,region:vRegion,district:vDistrict,projects:vProjects,business:vBusiness,honors:vHonors,ranking:vRanking};
   if(tabs.indexOf(S.tab)<0)S.tab='over';
   $('#tabs').innerHTML=tabs.map(t=>`<button data-t="${t}"${t===S.tab?' class="on"':''}>${MECH[t]?MECH[t].tab:TABN[t]}</button>`).join('');
@@ -3134,6 +3166,285 @@ endGame=function(id){_honorEnd(id);honorSync(true);careerRecord();};
 renderAll=function(){if(!S)return;honorSync(true);_honorRender();};
 bindPanel=function(){_honorBind();document.querySelectorAll('[data-honor-cat]').forEach(b=>b.onclick=()=>{honorFilter=b.dataset.honorCat;renderAll();});const status=$('#honorStatus');if(status)status.onchange=()=>{honorStatus=status.value;renderAll();};document.querySelectorAll('[data-rank-view]').forEach(b=>b.onclick=()=>{rankView=b.dataset.rankView;renderAll();});document.querySelectorAll('[data-rank-metric]').forEach(b=>b.onclick=()=>{rankMetric=b.dataset.rankMetric;renderAll();});const storage=$('#careerStorageStatus');if(storage){const saved=careerRead().find(r=>r.id===S.honors.id);storage.textContent=careerStorageFailed?'本机榜单未能写入，请释放浏览器存储空间后重新保存。':saved?'榜单在保存进度及结局时更新。':'本局尚未存入榜单；保存进度后写入本机记录。';}};
 showEnding=function(){_honorEnding();const opts=$('#doc .opts');if(opts){const b=document.createElement('button');b.className='opt';b.innerHTML='<span class="ot">查看成就与排名 · '+careerSnapshot().score+'分</span>';b.onclick=()=>{hideDoc();S.tab='ranking';renderAll();};opts.prepend(b);}};
+
+/* ===== 执政地图：只读现有存档状态绘制，不写入存档 ===== */
+/* 每一级一张固定底图（山水、农田、城区网格），设施、企业、住宅和在建项目落在预先排好的地块上；
+   同一类设施第 k 座永远在同一个位置，新建只会新增图标，不会让其他东西挪位。 */
+const MAP_W=1000,MAP_H=640,MAP_MAX=5;
+const MAPGEO=[
+ {cx:430,cy:330,R:168,ind:.8*Math.PI,neo:.32*Math.PI,river:{n:'青石河',w:16,pts:[[700,-20],[660,120],[600,230],[612,360],[700,470],[820,560],[900,670]]},
+  hills:[[180,150,125,'青石山'],[330,70,80],[95,400,90],[880,110,105,'北岭']],rail:null,oldMine:[250,235],scale:'1 公里'},
+ {cx:470,cy:270,R:200,ind:0,neo:Math.PI,river:{n:'沂川河',w:30,pts:[[-20,480],[160,440],[330,485],[520,455],[700,495],[860,445],[1020,470]]},
+  hills:[[885,105,115,'东蒙山'],[745,45,70]],rail:[[-10,150],[1010,95]],scale:'5 公里'},
+ {cx:500,cy:310,R:235,ind:.08*Math.PI,neo:-.62*Math.PI,river:{n:'临渡江',w:38,pts:[[-20,80],[180,160],[360,255],[520,330],[690,385],[850,470],[1020,560]]},
+  hills:[[140,525,120,'南屏山'],[300,615,85]],rail:[[-10,600],[1010,40]],scale:'10 公里'},
+ {cx:560,cy:270,R:265,ind:.02*Math.PI,neo:Math.PI,river:{n:'岚江',w:50,pts:[[-20,540],[200,515],[400,560],[600,540],[800,580],[1020,555]]},
+  lake:[165,245,105,68,'岚湖'],hills:[[905,85,105,'岚山']],rail:[[-10,70],[1010,190]],scale:'15 公里'},
+ {cx:470,cy:320,R:290,ind:.3*Math.PI,neo:-.78*Math.PI,river:{n:'屿江',w:30,pts:[[-20,385],[150,360],[300,405],[450,380],[600,425],[720,392],[835,402]]},
+  sea:[[825,-10],[790,85],[832,165],[800,255],[852,335],[818,425],[868,520],[838,650],[1010,650],[1010,-10]],
+  islands:[[925,205,40,24],[952,420,30,18],[905,565,22,14]],hills:[[85,135,105,'云岭'],[60,525,85]],rail:[[-10,40],[1010,250]],scale:'20 公里',
+  dseed:{'城关区':[455,300],'和平区':[540,350],'新城区':[300,200],'临江新区':[260,420],'开发区':[640,500],'双桥区':[700,260],'云岭区':[110,300],'港北区':[720,90]}}
+];
+const MAP_LU={res:'#EEDC9A',old:'#D8CCB2',civic:'#E9B5C0',com:'#E59C8E',ind:'#CDAA84',heavy:'#B08C70',logi:'#C1B1D1',util:'#A9C9CF',park:'#B9D5A2',vac:'#F4F1E8'};
+const MAP_MK={civic:'#B4231C',traffic:'#5A5E66',infra:'#234C86',eco:'#2E6B4A',ind:'#7A5532',heavy:'#5A3A2A',home:'#9A7A2A'};
+const MAP_GLYPH={
+ chimney:'<path d="M5 30V18l7 4v-4l7 4V8h5v22z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 6c0-3 4-3 4-6" fill="none" stroke="currentColor" stroke-width="1.6"/>',
+ mine:'<path d="M4 28h26M9 28l8-14 8 14" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10l10-6M14 4l6 10" stroke="currentColor" stroke-width="2"/>',
+ solar:'<path d="M5 22l5-12h18l-5 12z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 10l-3 12M20 10l-3 12M7 16h19M17 22v6M12 28h10" stroke="currentColor" stroke-width="1.5"/>',
+ derrick:'<path d="M17 4l-8 26M17 4l8 26M11 22h12M13 14h8" fill="none" stroke="currentColor" stroke-width="2"/>',
+ home:'<path d="M5 30V14l12-9 12 9v16" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h4M19 18h4M11 24h4M19 24h4" stroke="currentColor" stroke-width="2"/>',
+ crane:'<path d="M9 30V6h3v24M6 30h12M12 8h18M12 8l6-4 12 4M26 8v10" fill="none" stroke="currentColor" stroke-width="2"/><rect x="23" y="18" width="6" height="4" fill="currentColor"/>'
+};
+let mapCache={},mapSel=null,mapZoom=1,mapPrev=null,mapItemsNow=[];
+function mapRng(seed){let a=seed>>>0;return ()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function mapHash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+function mapSmooth(pts,step=7){const out=[];for(let i=0;i<pts.length-1;i++){const p0=pts[Math.max(0,i-1)],p1=pts[i],p2=pts[i+1],p3=pts[Math.min(pts.length-1,i+2)];
+  const n=Math.max(2,Math.ceil(Math.hypot(p2[0]-p1[0],p2[1]-p1[1])/step));
+  for(let j=0;j<n;j++){const t=j/n,t2=t*t,t3=t2*t;out.push([0,1].map(k=>.5*((2*p1[k])+(-p0[k]+p2[k])*t+(2*p0[k]-5*p1[k]+4*p2[k]-p3[k])*t2+(-p0[k]+3*p1[k]-3*p2[k]+p3[k])*t3)));}}
+ out.push(pts[pts.length-1].slice());return out;}
+function mapNear(line,x,y){let best=1e9,bi=0;for(let i=0;i<line.length;i++){const d=Math.hypot(line[i][0]-x,line[i][1]-y);if(d<best){best=d;bi=i;}}return {d:best,i:bi,t:bi/(line.length-1)};}
+function mapInPoly(poly,x,y){let c=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const [xi,yi]=poly[i],[xj,yj]=poly[j];if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))c=!c;}return c;}
+function mapAngDiff(a,b){let d=Math.abs(a-b)%(2*Math.PI);return d>Math.PI?2*Math.PI-d:d;}
+function mapPath(pts,close){return pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join('')+(close?'Z':'');}
+/* 底图与地块池：每级算一次后缓存 */
+function mapGeo(lvl){if(mapCache[lvl])return mapCache[lvl];
+ const G=MAPGEO[lvl],rng=mapRng(9173+lvl*7919),river=mapSmooth(G.river.pts);
+ const ph1=rng()*6.28,ph2=rng()*6.28,rad=th=>G.R*(1+.11*Math.sin(3*th+ph1)+.07*Math.sin(5*th+ph2));
+ const wet=(x,y,m=0)=>mapNear(river,x,y).d<G.river.w/2+6+m||(G.sea&&mapInPoly(G.sea,x,y))||(G.lake&&((x-G.lake[0])/(G.lake[2]+6+m))**2+((y-G.lake[1])/(G.lake[3]+6+m))**2<1)||(G.islands||[]).some(()=>false);
+ const hill=(x,y)=>G.hills.some(h=>Math.hypot(x-h[0],y-h[1])<h[2]*.92);
+ const P=44,x0=G.cx-Math.round(G.cx/P)*P,y0=G.cy-Math.round(G.cy/P)*P,lots=[],blocks=[];
+ for(let by=y0-P;by<MAP_H+P;by+=P)for(let bx=x0-P;bx<MAP_W+P;bx+=P){
+  const mx=bx+P/2,my=by+P/2,th=Math.atan2(my-G.cy,mx-G.cx),d=Math.hypot(mx-G.cx,my-G.cy)/rad(th);
+  const blk={x:bx,y:by,d,th,lots:[]};blocks.push(blk);
+  for(const [ax,ay] of [[0,0],[1,0],[0,1],[1,1]]){const x=bx+2+ax*22,y=by+2+ay*22,cx=x+9,cy=y+9;
+   if(cx<14||cy<14||cx>MAP_W-14||cy>MAP_H-14)continue;if(wet(cx,cy)||hill(cx,cy))continue;
+   const l={x,y,cx,cy,d:Math.hypot(cx-G.cx,cy-G.cy)/rad(Math.atan2(cy-G.cy,cx-G.cx)),th:Math.atan2(cy-G.cy,cx-G.cx),j:rng(),id:lots.length,blk};lots.push(l);blk.lots.push(l);}}
+ const used=new Set(),take=(list)=>{for(const l of list)if(!used.has(l.id)){used.add(l.id);return l;}return null;};
+ const order=(f,key)=>lots.filter(f).sort((a,b)=>key(a)-key(b));
+ const inInd=l=>mapAngDiff(l.th,G.ind)<.62,inNeo=l=>mapAngDiff(l.th,G.neo)<.7;
+ const urban=l=>l.d<=1&&!inInd(l);
+ /* 公共设施：按类型轮转，从核心向外排，第 k 座位置固定 */
+ const civicTypes=['school','hosp','clinic','nursery','social','elder','culture','gym','market','busdepot','pipe','gas'];
+ const civicOrder=order(l=>urban(l)&&l.d<.82,l=>l.d+l.j*.18),slots={};
+ for(let k=0;k<MAP_MAX;k++)for(const t of civicTypes){(slots[t]=slots[t]||[]).push(take(civicOrder));}
+ const resOrder=order(l=>urban(l)&&l.d>.3,l=>l.j);
+ for(const t of ['park','house','renewal'])slots[t]=[];
+ for(let k=0;k<MAP_MAX;k++)for(const t of ['park','house'])slots[t].push(take(resOrder));
+ const near=(l)=>mapNear(river,l.cx,l.cy);
+ const riverSide=order(l=>!inInd(l)&&near(l).d<G.river.w/2+40&&l.d<1.5,l=>near(l).t);
+ slots.water=[];for(let k=0;k<MAP_MAX;k++)slots.water.push(take(riverSide));
+ const riverDown=riverSide.slice().reverse();slots.sewage=[];for(let k=0;k<MAP_MAX;k++)slots.sewage.push(take(riverDown));
+ const edge=order(l=>!inInd(l)&&!inNeo(l)&&l.d>.86&&l.d<1.35,l=>l.d+l.j*.3);
+ for(const t of ['power','garbage','datacenter','station']){slots[t]=[];}
+ for(let k=0;k<MAP_MAX;k++)for(const t of ['power','garbage','datacenter'])slots[t].push(take(edge));
+ if(G.rail){const ra=G.rail,rl=mapSmooth(ra,10),rs=order(l=>mapNear(rl,l.cx,l.cy).d<22,l=>Math.hypot(l.cx-G.cx,l.cy-G.cy));for(let k=0;k<MAP_MAX;k++)slots.station.push(take(rs));}
+ else for(let k=0;k<MAP_MAX;k++)slots.station.push(take(edge));
+ /* 企业池：同一池内按企业登记顺序落位 */
+ /* 企业池互不重叠：按优先级认领地块，每池容量固定，排序只依赖底图 */
+ const pools={},claim=(k,cap,f,key)=>{pools[k]=order(l=>!used.has(l.id)&&f(l),key).slice(0,cap);pools[k].forEach(l=>used.add(l.id));};
+ const seaSide=l=>{for(let dx=16;dx<=70;dx+=18)if(mapInPoly(G.sea,l.cx+dx,l.cy))return true;return false;};
+ claim('port',16,G.sea?l=>l.cx>650&&seaSide(l):l=>near(l).d<G.river.w/2+34&&l.d>.95,G.sea?l=>Math.hypot(l.cx-G.cx,l.cy-G.cy):l=>l.d+l.j*.2);
+ claim('mine',18,l=>l.d>1&&G.hills.some(h=>{const r=Math.hypot(l.cx-h[0],l.cy-h[1]);return r>h[2]*.88&&r<h[2]*1.4;}),l=>l.j);
+ claim('core',20,l=>urban(l)&&l.d<.55,l=>l.d+l.j*.1);
+ claim('ind',90,l=>inInd(l)&&l.d>.35&&l.d<1.6,l=>l.d+l.j*.12);
+ claim('heavy',40,l=>mapAngDiff(l.th,G.ind)<.95&&l.d>1.6,l=>l.d+mapAngDiff(l.th,G.ind)*.8+l.j*.15);
+ if(pools.heavy.length<16){const more=order(l=>!used.has(l.id)&&l.d>1.55&&!inNeo(l),l=>mapAngDiff(l.th,G.ind)+l.j*.1).slice(0,24);more.forEach(l=>used.add(l.id));pools.heavy=pools.heavy.concat(more);}
+ claim('tech',30,l=>l.d>.72&&l.d<1.55&&mapAngDiff(l.th,(G.ind+G.neo)/2)<.8,l=>l.d+l.j*.15);
+ claim('neo',36,l=>inNeo(l)&&l.d>.84&&l.d<1.8,l=>l.d+l.j*.1);
+ claim('tour',14,l=>l.d>1.05&&l.d<2.1&&(near(l).d<G.river.w+70||G.hills.some(h=>Math.hypot(l.cx-h[0],l.cy-h[1])<h[2]*1.7)),l=>l.d+l.j*.4);
+ claim('agri',40,l=>l.d>1.25&&l.d<2.3,l=>l.j);
+ for(const k of ['tour','mine','port'])if(pools[k].length<4)pools[k]=pools[k].concat(pools.agri.slice(-6));
+ /* 街道：城区街块边线，按离中心远近排序，道路越多亮出越多 */
+ const inFoot=b=>b.d<=1.04&&b.lots.length>=2;const foot=new Set(blocks.filter(inFoot).map(b=>b.x+','+b.y)),streets=[];
+ for(const b of blocks){if(!foot.has(b.x+','+b.y))continue;
+  if(foot.has((b.x+P)+','+b.y))streets.push({a:[b.x+P,b.y],b:[b.x+P,b.y+P],d:b.d});
+  if(foot.has(b.x+','+(b.y+P)))streets.push({a:[b.x,b.y+P],b:[b.x+P,b.y+P],d:b.d});}
+ streets.sort((a,b)=>a.d-b.d||(a.a[0]-b.a[0])||(a.a[1]-b.a[1]));
+ /* 绿道、湿地、桥位 */
+ const bank=river.map((p,i)=>{const q=river[Math.min(river.length-1,i+1)],r=river[Math.max(0,i-1)],dx=q[0]-r[0],dy=q[1]-r[1],n=Math.hypot(dx,dy)||1,o=G.river.w/2+7;return [p[0]-dy/n*o,p[1]+dx/n*o];});
+ const segs=[];for(let i=0;i+16<bank.length;i+=16)segs.push({pts:bank.slice(i,i+17),d:Math.hypot(bank[i+8][0]-G.cx,bank[i+8][1]-G.cy)});segs.sort((a,b)=>a.d-b.d);
+ const wetSpots=river.filter((p,i)=>i%9===0).map(p=>({p,d:Math.hypot(p[0]-G.cx,p[1]-G.cy)})).filter(o=>o.d>G.R*1.1&&o.p[0]>20&&o.p[0]<MAP_W-20&&o.p[1]>20&&o.p[1]<MAP_H-20).sort((a,b)=>a.d-b.d);
+ const bridges=river.map((p,i)=>({p,i,d:Math.hypot(p[0]-G.cx,p[1]-G.cy)})).filter(o=>o.i>3&&o.i<river.length-4&&o.p[0]>30&&o.p[0]<MAP_W-30&&o.p[1]>30&&o.p[1]<MAP_H-30).sort((a,b)=>a.d-b.d);
+ const bsp=[];for(const b of bridges){if(bsp.every(x=>Math.abs(x.i-b.i)>9))bsp.push(b);if(bsp.length>=MAP_MAX+1)break;}
+ /* 远处的田、山体等高线 */
+ const contours=G.hills.map(h=>{const out=[];for(let ring=0;ring<4;ring++){const r=h[2]*(1-ring*.22),pts=[];const p1=rng()*6.28,p2=rng()*6.28;for(let a=0;a<48;a++){const th=a/48*6.283,rr=r*(1+.1*Math.sin(3*th+p1)+.06*Math.sin(7*th+p2));pts.push([h[0]+Math.cos(th)*rr,h[1]+Math.sin(th)*rr*.82]);}out.push(pts);}return out;});
+ const footPath=[];for(let a=0;a<72;a++){const th=a/72*6.283,r=rad(th)*1.06;footPath.push([G.cx+Math.cos(th)*r,G.cy+Math.sin(th)*r]);}
+ return mapCache[lvl]={G,river,lots,blocks,slots,pools,streets,segs,wetSpots,bsp,contours,footPath,urbanLots:lots.filter(l=>l.d<=1&&!inInd(l)),indLots:lots.filter(l=>inInd(l)&&l.d>.35&&l.d<1.05),wet,rad};
+}
+function mapFirmPool(fac){const F=FAC[fac]||{};if(fac==='mall'||fac==='fin')return 'core';if(fac==='port')return 'port';if(fac==='tour')return 'tour';
+ if(['agri','grain','feed','seedling','solar'].includes(fac))return 'agri';if(['tech','aero','compute','medical'].includes(fac))return 'tech';
+ if(F.resource||fac==='oilfield')return 'mine';if(F.grade>=3)return 'heavy';return 'ind';}
+function mapFirmGlyph(fac){const F=FAC[fac]||{};if(['coal','opencoal','washcoal','lignite'].includes(fac))return 'g:mine';if(fac==='oilfield')return 'g:derrick';if(fac==='solar')return 'g:solar';
+ if(ICON[fac])return 'i:'+fac;if(F.grade>=3)return 'g:chimney';if(['warehouse','petrol','lng','cng','fuel'].includes(fac))return 'i:logi';if(fac==='factory')return 'i:fzone';return 'i:fzone';}
+const MAP_STAGE={ramp:'爬坡试产',stable:'稳定生产',difficulty:'经营困难',reduced:'减产',expanding:'扩产中',relocating:'搬迁停产',closed:'已关闭'};
+const MAP_HOME={construction:'施工中',stalled:'停工',selling:'在售',sold:'已售罄',cancelled:'已取消'};
+/* 由当前状态排出全部图元，纯读取 */
+function mapItems(){const M=mapGeo(S.lvl),items=[],lotTone={};
+ const put=(o)=>{items.push(o);return o;};
+ const slotLot=(t,k)=>{const list=M.slots[t];if(!list||!list.length)return null;return list[Math.min(k,list.length-1)];};
+ const bq={};S.build.forEach((b,i)=>{bq[b.id]=bq[b.id]||[];bq[b.id].push({b,i});});
+ const pubTypes=Object.keys(M.slots).filter(t=>FAC[t]&&!FAC[t].ind);
+ for(const t of pubTypes){const F=FAC[t],n=S.f[t]||0,cat=F.cat==='people'?'civic':F.cat;
+  const vis=Math.min(n,MAP_MAX);for(let k=0;k<vis;k++){const l=slotLot(t,k);if(!l)continue;const extra=(k===MAP_MAX-1&&n>MAP_MAX)?n-MAP_MAX+1:0;
+   let status='运行中',warn=false;const eq=S.phase2?.equipment?.[t];if(eq){if(eq.offline>0){status='设备故障，容量减半';warn=true;}else if(eq.wear>=60){status='设备老化 '+Math.round(eq.wear);warn=true;}}
+   lotTone[l.id]=t==='park'?'park':t==='house'?'res':['power','water','sewage','garbage','gas','pipe','datacenter'].includes(t)?'util':'civic';
+   put({key:'f:'+t+':'+k,kind:'fac',lot:l,icon:'i:'+t,color:MAP_MK[cat]||MAP_MK.civic,name:F.n,extra,status,warn,info:F.n+(n>1?'（共 '+n+' 座）':'')+'　'+status+(F.cap&&!F.ind?'　覆盖 '+Math.round(cov(t)*100)+'%':'')});}
+  (bq[t]||[]).forEach(({b},j)=>{const k=n+j;if(k>=MAP_MAX+2)return;const l=slotLot(t,Math.min(k,MAP_MAX-1));if(!l)return;
+   put({key:'b:'+t+':'+k,kind:'build',lot:l,icon:'i:'+t,color:MAP_MK[cat]||MAP_MK.civic,name:F.n,build:b,info:F.n+'　在建 '+(b.months-b.left)+'/'+b.months+' 月　已付 '+fmt(b.paid)+' / '+fmt(b.cost)+(b.stalled?'　资金不足停工':'')});});}
+ /* 企业 */
+ const P3=S.phase3,firms=P3?P3.firms:[],poolUse={};
+ const poolLot=(pool)=>{const list=M.pools[pool]&&M.pools[pool].length?M.pools[pool]:M.pools.ind;const i=poolUse[pool]=(poolUse[pool]||0)+1;return list.length?list[(i-1)%list.length]:null;};
+ for(const f of firms){const pool=mapFirmPool(f.fac),l=poolLot(pool);if(!l)continue;const F=FAC[f.fac]||{},grade=pollutionGrade(f.fac);
+  const mine=f.stage==='closed'&&P3?.mines?.find(m=>m.firm===f.uid);
+  const stage=mine?({idle:'退出矿区，待修复',restoring:'矿区生态修复中',restored:'矿区已修复为绿地'}[mine.stage]):MAP_STAGE[f.stage]||f.stage;
+  lotTone[l.id]=mine&&mine.stage==='restored'?'park':pool==='heavy'?'heavy':pool==='core'?'com':['logi','warehouse'].includes(f.fac)?'logi':'ind';
+  put({key:'firm:'+f.uid+':'+(mine?'m'+mine.stage:f.stage),kind:'firm',lot:l,icon:mine?(mine.stage==='restored'?'i:park':'g:mine'):mapFirmGlyph(f.fac),color:mine&&mine.stage==='restored'?MAP_MK.eco:pool==='heavy'||grade>=3?MAP_MK.heavy:MAP_MK.ind,name:f.name,
+   firm:f,grade,pool,mine,status:stage,closed:f.stage==='closed'&&!(mine&&mine.stage==='restored'),restoring:mine&&mine.stage==='restoring',warn:['difficulty','reduced'].includes(f.stage),big:['tech','aero','port','fin','tour'].includes(f.fac),
+   info:f.name+'　'+stage+(grade&&!mine?'　'+POLLUTION[grade]:'')+(f.capacity>1?'　产能 '+Math.round(f.capacity*100)+'%':'')});}
+ S.build.forEach((b,i)=>{const F=FAC[b.id];if(!F||!F.ind)return;const pool=mapFirmPool(b.id),l=poolLot(pool);if(!l)return;
+  put({key:'b:'+b.id+':'+i+':'+(b.p2Id||''),kind:'build',lot:l,icon:mapFirmGlyph(b.id),color:pollutionGrade(b.id)>=3?MAP_MK.heavy:MAP_MK.ind,name:F.n,build:b,
+   info:F.n+'　在建 '+(b.months-b.left)+'/'+b.months+' 月　已付 '+fmt(b.paid)+' / '+fmt(b.cost)+(b.stalled?'　资金不足停工':'')});});
+ /* 住宅开发：每个项目占新区两块地 */
+ let hi=0;for(const h of (P3?.homes||[])){if(h.stage==='cancelled')continue;const a=M.pools.neo[hi*2],b2=M.pools.neo[hi*2+1];hi++;if(!a)continue;
+  const st=MAP_HOME[h.stage]||h.stage;for(const l of [a,b2])if(l)lotTone[l.id]=h.stage==='selling'||h.stage==='sold'?'res':'vac';
+  put({key:'home:'+h.uid+':'+h.stage,kind:'home',lot:a,lot2:b2,icon:'g:home',color:MAP_MK.home,name:h.n,home:h,status:st,warn:h.stage==='stalled',
+   info:h.n+'　'+st+(h.stage==='construction'?' 剩 '+h.left+' 月':h.stage==='selling'?' 剩余 '+Math.round(h.remaining)+' 套':'')+(h.stage==='stalled'?'　房企资金断裂，需保交付':'')});}
+ return {M,items,lotTone};
+}
+function mapKeys(){try{if(!S||S.phase==='retired')return null;const {items}=mapItems();return {lvl:S.lvl,site:S.phase2?.site,keys:new Set(items.map(i=>i.key)),roads:S.f.road||0};}catch(e){return null;}}
+function mapGlyphUse(icon,x,y,s){const [t,k]=icon.split(':');return `<use href="#mm-${t}-${k}" x="${(x-s/2).toFixed(1)}" y="${(y-s/2).toFixed(1)}" width="${s}" height="${s}"/>`;}
+function mapDefs(items){const need=new Set(items.map(i=>i.icon));need.add('g:crane');
+ const sym=[...need].map(icon=>{const [t,k]=icon.split(':');const raw=t==='i'?(ICON[k]||ICON.fzone).replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,''):MAP_GLYPH[k]||'';return `<symbol id="mm-${t}-${k}" viewBox="0 0 34 34">${raw}</symbol>`;}).join('');
+ return `<defs>${sym}
+ <pattern id="mmFarm" width="46" height="34" patternUnits="userSpaceOnUse" patternTransform="rotate(-8)"><rect width="46" height="34" fill="#E8E5C6"/><rect x="1" y="1" width="21" height="15" fill="#E1E0BA"/><rect x="24" y="1" width="21" height="15" fill="#ECE9CF"/><rect x="1" y="18" width="21" height="15" fill="#EEEBD2"/><rect x="24" y="18" width="21" height="15" fill="#DFDDB4"/><path d="M3 5h17M3 9h17M3 13h17M26 22h17M26 26h17M26 30h17" stroke="#CFCB9E" stroke-width=".7"/></pattern>
+ <pattern id="mmForest" width="18" height="16" patternUnits="userSpaceOnUse"><rect width="18" height="16" fill="#D3DFBF"/><path d="M5 11l3-6 3 6zM13 15l2.5-5 2.5 5z" fill="#A9C190"/></pattern>
+ <pattern id="mmHatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0v6" stroke="#B4231C" stroke-width="1.2" opacity=".55"/></pattern>
+ <radialGradient id="mmSmoke"><stop offset="0" stop-color="#5B5550" stop-opacity=".5"/><stop offset="1" stop-color="#5B5550" stop-opacity="0"/></radialGradient></defs>`;}
+function mapSvg(){const {M,items,lotTone}=mapItems(),G=M.G,L=LV[S.lvl];mapItemsNow=items;
+ const prev=mapPrev&&mapPrev.lvl===S.lvl&&mapPrev.site===S.phase2?.site?mapPrev:null;
+ const env=clamp(S.env,0,100),clean=clamp((env-28)/52+.07*(S.f.river||0)+.04*Math.min(3,S.f.sewage||0),0,1);
+ const mix=(a,b,t)=>'#'+[0,2,4].map(i=>Math.round(parseInt(a.substr(i+1,2),16)*(1-t)+parseInt(b.substr(i+1,2),16)*t).toString(16).padStart(2,'0')).join('');
+ const water=mix('#A39C7C','#8DBCD8',clean),waterEdge=mix('#6E6A52','#4E7FA3',clean);
+ const o=[];
+ o.push(`<rect width="${MAP_W}" height="${MAP_H}" fill="url(#mmFarm)"/>`);
+ o.push(`<path d="${mapPath(M.footPath,true)}" fill="#E4DED0" stroke="#CFC6B2" stroke-width="1"/>`);
+ /* 山体：生态保护红线 */
+ G.hills.forEach((h,i)=>{const rings=M.contours[i];o.push(`<path d="${mapPath(rings[0],true)}" fill="url(#mmForest)" stroke="#2E6B4A" stroke-width="1.2" stroke-dasharray="5 3" opacity=".95"/>`);
+  for(let r=1;r<rings.length;r++)o.push(`<path d="${mapPath(rings[r],true)}" fill="none" stroke="#8C7B58" stroke-width=".8" opacity=".7"/>`);
+  if(h[3])o.push(`<text x="${h[0]}" y="${h[1]+4}" class="mm-geo">${h[3]}</text>`);});
+ if(G.oldMine)o.push(`<g opacity=".8"><ellipse cx="${G.oldMine[0]}" cy="${G.oldMine[1]}" rx="26" ry="14" fill="#B7A68A" stroke="#7A6A4E" stroke-dasharray="3 2"/><text x="${G.oldMine[0]-44}" y="${G.oldMine[1]+4}" class="mm-small">老矿区</text></g>`);
+ /* 水系 */
+ if(G.sea){o.push(`<path d="${mapPath(G.sea,true)}" fill="${water}" stroke="${waterEdge}" stroke-width="1.4"/>`);
+  for(let k=1;k<4;k++)o.push(`<path d="${mapPath(G.sea.slice(0,8).map(p=>[p[0]+k*14,p[1]]))}" fill="none" stroke="#fff" stroke-width=".8" opacity="${.5-k*.1}"/>`);
+  (G.islands||[]).forEach(s=>o.push(`<ellipse cx="${s[0]}" cy="${s[1]}" rx="${s[2]}" ry="${s[3]}" fill="#D3DFBF" stroke="#8C7B58" stroke-width=".9"/>`));
+  o.push(`<text x="935" y="320" class="mm-geo" fill="#3D6A8A">东 海</text>`);}
+ if(G.lake){const k=G.lake;o.push(`<ellipse cx="${k[0]}" cy="${k[1]}" rx="${k[2]}" ry="${k[3]}" fill="${water}" stroke="${waterEdge}" stroke-width="1.4"/><text x="${k[0]}" y="${k[1]+5}" class="mm-geo" fill="#3D6A8A">${k[4]}</text>`);}
+ const rp=mapPath(M.river);
+ o.push(`<path d="${rp}" fill="none" stroke="${waterEdge}" stroke-width="${G.river.w+3}" stroke-linecap="round" stroke-linejoin="round"/><path d="${rp}" fill="none" stroke="${water}" stroke-width="${G.river.w}" stroke-linecap="round" stroke-linejoin="round"/>`);
+ if(clean<.45)o.push(`<path d="${rp}" fill="none" stroke="#6B5E3A" stroke-width="${G.river.w*.35}" stroke-dasharray="2 9" stroke-linecap="round" opacity="${(.45-clean)*1.6}"/>`);
+ const rl=M.river[Math.floor(M.river.length*.18)];o.push(`<text x="${rl[0]}" y="${rl[1]-G.river.w/2-8}" class="mm-geo" fill="#3D6A8A">${G.river.n}</text>`);
+ /* 湿地、绿道 */
+ for(let k=0;k<Math.min(S.f.wetland||0,M.wetSpots.length);k++){const p=M.wetSpots[k].p;o.push(`<g class="mm-wet"><ellipse cx="${p[0]}" cy="${p[1]-G.river.w/2-12}" rx="30" ry="12" fill="#A9CDB0" stroke="#2E6B4A" stroke-width=".8"/><path d="M${p[0]-14} ${p[1]-G.river.w/2-8}v-9M${p[0]-6} ${p[1]-G.river.w/2-7}v-12M${p[0]+4} ${p[1]-G.river.w/2-8}v-10M${p[0]+13} ${p[1]-G.river.w/2-7}v-8" stroke="#2E6B4A" stroke-width="1.2"/></g>`);}
+ const wB=S.build.filter(b=>b.id==='wetland').length,wN=Math.min(S.f.wetland||0,M.wetSpots.length);
+ for(let k=wN;k<Math.min(wN+wB,M.wetSpots.length);k++){const p=M.wetSpots[k].p;o.push(`<ellipse cx="${p[0]}" cy="${p[1]-G.river.w/2-12}" rx="30" ry="12" fill="#F7F1E4" fill-opacity=".7" stroke="#B4231C" stroke-width="1.2" stroke-dasharray="3 2"/>`);}
+ const gN=Math.min((S.f.greenway||0)*2,M.segs.length),gB=S.build.filter(b=>b.id==='greenway').length*2;
+ for(let k=0;k<Math.min(gN+gB,M.segs.length);k++)o.push(`<path d="${mapPath(M.segs[k].pts)}" fill="none" stroke="${k<gN?'#2E6B4A':'#B4231C'}" stroke-width="2.4" stroke-dasharray="${k<gN?'1 5':'4 4'}" stroke-linecap="round"/>`);
+ /* 对外交通 */
+ const hw=`M0 ${G.cy}H${MAP_W}M${G.cx} 0V${MAP_H}`;o.push(`<path d="${hw}" stroke="#B9B2A2" stroke-width="7"/><path d="${hw}" stroke="#FBF6E8" stroke-width="4"/>`);
+ if(G.rail&&S.lvl>=1){const rr=mapPath(mapSmooth(G.rail,10));o.push(`<path d="${rr}" stroke="#4A4D52" stroke-width="4" fill="none"/><path d="${rr}" stroke="#fff" stroke-width="2" stroke-dasharray="9 9" fill="none"/>`);}
+ /* 地块 */
+ const pop=S.pop/L.pop,fill=clamp(.3+.3*pop+.003*S.pros,.3,.94),oldBase=[.6,.48,.38,.3,.24][S.lvl],oldFrac=clamp(oldBase-.07*(S.f.renewal||0),0,1);
+ const urban=M.urbanLots.slice().sort((a,b)=>a.d-b.d),nFill=Math.round(urban.length*fill),nOld=Math.round(nFill*oldFrac);
+ const lotG=[];urban.forEach((l,i)=>{let tone=lotTone[l.id];if(!tone)tone=i<nOld?'old':i<nFill?'res':'vac';
+  lotG.push(`<rect x="${l.x}" y="${l.y}" width="18" height="18" rx="1.5" fill="${MAP_LU[tone]}"${tone==='vac'?' stroke="#CFC7B4" stroke-dasharray="2 2"':''}/>`);
+  if(tone==='res'||tone==='old'){const h=1+Math.floor(l.j*3);lotG.push(`<path d="M${l.x+3} ${l.y+5}h${4+h*2}M${l.x+3} ${l.y+10}h${9}M${l.x+3} ${l.y+15}h${5+h}" stroke="${tone==='old'?'#A99A7C':'#C9B36A'}" stroke-width="1.4"/>`);}});
+ for(const l of M.indLots){const tone=lotTone[l.id];if(tone)continue;lotG.push(`<rect x="${l.x}" y="${l.y}" width="18" height="18" fill="none" stroke="#B89B78" stroke-width=".8" stroke-dasharray="2 2"/>`);}
+ for(const it of items){const l=it.lot,tone=lotTone[l.id];if(M.urbanLots.includes(l)&&!it.build)continue;
+  const bx=it.kind==='home'?[it.lot,it.lot2].filter(Boolean):[l];for(const q of bx)lotG.push(`<rect x="${q.x-1}" y="${q.y-1}" width="20" height="20" rx="1.5" fill="${it.build||it.home&&it.home.stage==='construction'?'#F7F1E4':MAP_LU[tone]||MAP_LU.ind}" stroke="${it.build?'#B4231C':'#A3927A'}" stroke-width="${it.build?1:.6}"${it.build?' stroke-dasharray="3 2"':''}/>`);}
+ o.push(`<g>${lotG.join('')}</g>`);
+ /* 街道 */
+ const roadN=S.f.road||0,share=clamp(.34+.11*roadN,.34,1),nSt=Math.round(M.streets.length*share),nBuild=(S.build.filter(b=>b.id==='road').length)*Math.round(M.streets.length*.11);
+ const stD=M.streets.slice(0,nSt).map(s=>`M${s.a[0]} ${s.a[1]}L${s.b[0]} ${s.b[1]}`).join('');o.push(`<path d="${stD}" stroke="#BDB4A0" stroke-width="4.6" stroke-linecap="square"/><path d="${stD}" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="square"/>`);
+ if(nBuild)o.push(`<path class="mm-new-road" d="${M.streets.slice(nSt,nSt+nBuild).map(s=>`M${s.a[0]} ${s.a[1]}L${s.b[0]} ${s.b[1]}`).join('')}" stroke="#B4231C" stroke-width="2" stroke-dasharray="4 3"/>`);
+ o.push(`<path d="M${G.cx-G.R*1.05} ${G.cy}H${G.cx+G.R*1.05}M${G.cx} ${G.cy-G.R*1.05}V${G.cy+G.R*1.05}" stroke="#F4D9A0" stroke-width="5"/>`);
+ /* 桥 */
+ const nBridge=Math.min((S.f.bridge||0)+1,M.bsp.length),bBuild=S.build.filter(b=>b.id==='bridge').length;
+ M.bsp.slice(0,Math.min(M.bsp.length,nBridge+bBuild)).forEach((b,k)=>{const i=b.i,p=M.river[i],q=M.river[i+2],r=M.river[i-2],dx=q[0]-r[0],dy=q[1]-r[1],n=Math.hypot(dx,dy)||1,ux=-dy/n,uy=dx/n,h=G.river.w/2+7,pend=k>=nBridge;
+  o.push(`<path d="M${p[0]-ux*h} ${p[1]-uy*h}L${p[0]+ux*h} ${p[1]+uy*h}" stroke="${pend?'#B4231C':'#5A5E66'}" stroke-width="7" ${pend?'stroke-dasharray="3 3"':''}/><path d="M${p[0]-ux*h} ${p[1]-uy*h}L${p[0]+ux*h} ${p[1]+uy*h}" stroke="${pend?'#F7F1E4':'#FBF6E8'}" stroke-width="4"/>`);});
+ /* 区县边界（直辖市） */
+ if(S.lvl>=4&&G.dseed&&S.dist){const seeds=S.dist.map(d=>({d,p:G.dseed[d.n]||[G.cx,G.cy]}));
+  seeds.forEach(sd=>{let poly=[[0,0],[MAP_W,0],[MAP_W,MAP_H],[0,MAP_H]];for(const ot of seeds){if(ot===sd)continue;const mx=(sd.p[0]+ot.p[0])/2,my=(sd.p[1]+ot.p[1])/2,nx=ot.p[0]-sd.p[0],ny=ot.p[1]-sd.p[1];const inside=p=>(p[0]-mx)*nx+(p[1]-my)*ny<=0,np=[];
+    for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],ia=inside(a),ib=inside(b);if(ia)np.push(a);if(ia!==ib){const da=(a[0]-mx)*nx+(a[1]-my)*ny,db=(b[0]-mx)*nx+(b[1]-my)*ny,t=da/(da-db);np.push([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]);}}poly=np;}
+   o.push(`<path d="${mapPath(poly,true)}" fill="none" stroke="#7B4A8C" stroke-width="1.3" stroke-dasharray="8 3 2 3" opacity=".75"/>`);
+   o.push(`<g class="mm-dist" data-mk="d:${esc(sd.d.n)}"><rect x="${sd.p[0]-30}" y="${sd.p[1]-11}" width="60" height="20" rx="2" fill="#fff" fill-opacity=".82" stroke="#7B4A8C" stroke-width=".8"/><text x="${sd.p[0]}" y="${sd.p[1]+4}" class="mm-dlabel">${esc(sd.d.n)}</text></g>`);});
+  if(G.sea)o.push(`<path d="${mapPath(G.sea,true)}" fill="${water}" stroke="${waterEdge}" stroke-width="1.4"/>`);
+  (G.islands||[]).forEach(s=>o.push(`<ellipse cx="${s[0]}" cy="${s[1]}" rx="${s[2]}" ry="${s[3]}" fill="#D3DFBF" stroke="#8C7B58" stroke-width=".9"/>`));}
+ /* 污染烟羽与整体雾霾 */
+ for(const it of items){if(it.kind!=='firm'||it.closed||it.mine||it.grade<2)continue;const f=it.firm;if(['relocating','closed'].includes(f.stage))continue;
+  const tech=S.phase1?.tech?.[f.fac]||0,a=clamp((it.grade-1)/3*(1-tech*.22)*(f.stage==='reduced'?.5:1),0,1),x=it.lot.cx,y=it.lot.cy;
+  o.push(`<g class="mm-smoke" opacity="${(a*.9).toFixed(2)}"><ellipse cx="${x+14}" cy="${y-16}" rx="${10+it.grade*3}" ry="${6+it.grade*2}" fill="url(#mmSmoke)"/><ellipse cx="${x+30}" cy="${y-26}" rx="${14+it.grade*4}" ry="${8+it.grade*2}" fill="url(#mmSmoke)"/><ellipse cx="${x+50}" cy="${y-34}" rx="${18+it.grade*5}" ry="${9+it.grade*2}" fill="url(#mmSmoke)"/></g>`);}
+ if(env<55)o.push(`<rect width="${MAP_W}" height="${MAP_H}" fill="#8A7A55" opacity="${((55-env)/140).toFixed(3)}" pointer-events="none"/>`);
+ /* 片区名 */
+ const zl=(pool,txt,min)=>{const used=items.filter(it=>it.pool===pool||(it.build&&mapFirmPool(it.build.id)===pool&&FAC[it.build.id]?.ind)).length;if(used<min)return;const ls=M.pools[pool].slice(0,Math.max(6,used));if(!ls.length)return;const x=ls.reduce((a,l)=>a+l.cx,0)/ls.length;let y=Math.max(...ls.map(l=>l.cy))+26;if(y>MAP_H-10)y=Math.min(...ls.map(l=>l.cy))-18;const xx=clamp(x,txt.length*8+8,MAP_W-txt.length*8-8);o.push(`<text x="${xx.toFixed(0)}" y="${clamp(y,16,MAP_H-10).toFixed(0)}" class="mm-zone">${txt}</text>`);};
+ zl('ind','产业园区',0);zl('heavy','重工业治理片区',1);zl('tech','科创片区',1);
+ if((P3h=>P3h&&P3h.some(h=>h.stage!=='cancelled'))(S.phase3?.homes)){const ls=M.pools.neo.slice(0,6);if(ls.length){const x=ls.reduce((a,l)=>a+l.cx,0)/ls.length,y=Math.min(...ls.map(l=>l.cy))-14;o.push(`<text x="${x.toFixed(0)}" y="${Math.max(16,y).toFixed(0)}" class="mm-zone">新区</text>`);}}
+ /* 图标 */
+ const mk=[];items.forEach((it,i)=>{const x=it.kind==='home'&&it.lot2?(it.lot.cx+it.lot2.cx)/2:it.lot.cx,y=it.kind==='home'&&it.lot2?(it.lot.cy+it.lot2.cy)/2:it.lot.cy;it.x=x;it.y=y;
+  const r=it.big?14.5:12,pending=it.build||it.home&&it.home.stage==='construction'||it.restoring||it.firm&&['expanding','relocating'].includes(it.firm.stage);
+  const isNew=prev&&!prev.keys.has(it.key);const sel=mapSel===it.key;
+  let g=`<g class="mm-mk${it.closed?' mm-closed':''}${sel?' mm-sel':''}" data-mk="${i}" style="color:${it.closed?'#8B8F98':it.color}" tabindex="0" role="button" aria-label="${esc(it.info)}">`;
+  if(isNew)g+=`<circle class="mm-pulse" cx="${x}" cy="${y}" r="${r+3}" fill="none" stroke="${it.build?'#B4231C':'#9A7A2A'}" stroke-width="2"/>`;
+  g+=`<circle cx="${x}" cy="${y}" r="${r}" fill="${pending?'#FFF8EE':'#fff'}" stroke="${pending?'#B4231C':'currentColor'}" stroke-width="${sel?2.6:1.5}"${pending?' stroke-dasharray="3 2"':''}/>`;
+  g+=mapGlyphUse(pending&&it.build?it.icon:it.icon,x,y,r*1.35);
+  if(it.build){const b=it.build,pr=clamp((b.months-b.left)/Math.max(1,b.months),0,1),a0=-Math.PI/2,a1=a0+pr*2*Math.PI,R2=r+2.5;
+   if(pr>0)g+=`<path d="M${x+Math.cos(a0)*R2} ${y+Math.sin(a0)*R2}A${R2} ${R2} 0 ${pr>.5?1:0} 1 ${(x+Math.cos(a1)*R2).toFixed(2)} ${(y+Math.sin(a1)*R2).toFixed(2)}" fill="none" stroke="#B4231C" stroke-width="2"/>`;
+   g+=`<g style="color:#B4231C">${mapGlyphUse('g:crane',x+r*.9,y-r*.9,11)}</g>`;}
+  if(it.closed)g+=`<path d="M${x-r*.7} ${y-r*.7}L${x+r*.7} ${y+r*.7}" stroke="#8B8F98" stroke-width="1.6"/>`;
+  if(it.warn||it.build&&it.build.stalled)g+=`<circle cx="${x+r*.75}" cy="${y-r*.75}" r="4.2" fill="#B4231C"/><text x="${x+r*.75}" y="${y-r*.75+3}" class="mm-badge">!</text>`;
+  if(it.extra)g+=`<rect x="${x+r*.3}" y="${y+r*.35}" width="16" height="11" rx="2" fill="#22252A"/><text x="${x+r*.3+8}" y="${y+r*.35+8.5}" class="mm-badge">×${it.extra}</text>`;
+  if(isNew&&!it.build)g+=`<text x="${x}" y="${y-r-5}" class="mm-newtag">新</text>`;
+  mk.push(g+'</g>');});
+ o.push(mk.join(''));
+ /* 图廓：图名、指北针、比例尺、邻市 */
+ const title=L.city.replace(/（.*/,'');
+ const tw=Math.max(title.length*21,118),sx=34+tw+20;
+ o.push(`<g class="mm-frame"><rect x="14" y="14" width="${tw+78}" height="54" fill="#fff" fill-opacity=".92" stroke="#22252A" stroke-width="1"/><rect x="17" y="17" width="${tw+72}" height="48" fill="none" stroke="#22252A" stroke-width=".5"/><text x="28" y="42" class="mm-title">${esc(title)}</text><text x="28" y="59" class="mm-sub">现状图 · 第${S.year}年${S.month}月</text>
+ <g transform="rotate(-6 ${sx} 40)"><rect x="${sx-14}" y="26" width="28" height="28" fill="none" stroke="#B4231C" stroke-width="2"/><text x="${sx}" y="45.5" class="mm-seal">规</text></g></g>`);
+ o.push(`<g transform="translate(${MAP_W-44} ${G.sea?MAP_H-120:52})"><circle r="17" fill="#fff" fill-opacity=".85" stroke="#22252A"/><path d="M0 -13L5 4L0 1L-5 4Z" fill="#22252A"/><text y="-21" class="mm-small" style="font-weight:700">北</text></g>`);
+ o.push(`<g transform="translate(${MAP_W-170} ${MAP_H-22})"><path d="M0 0h50" stroke="#22252A" stroke-width="3"/><path d="M50 0h50" stroke="#22252A" stroke-width="1" /><path d="M0 -4v8M50 -4v8M100 -4v8" stroke="#22252A"/><text x="50" y="-8" class="mm-small">${G.scale}</text></g>`);
+ if(S.rivals&&S.rivals.length){const spots=[[MAP_W-14,MAP_H/2-90,'end'],[14,MAP_H-40,'start']];S.rivals.slice(0,2).forEach((r,i)=>{const s=spots[i];o.push(`<text x="${s[0]}" y="${s[1]}" class="mm-rival" text-anchor="${s[2]}">${i?'← ':''}${esc(r.n)}${i?'':' →'}</text>`);});}
+ return `<svg class="map-svg" viewBox="0 0 ${MAP_W} ${MAP_H}" role="img" aria-label="${esc(title)}现状图" xmlns="http://www.w3.org/2000/svg">${mapDefs(items)}${o.join('')}</svg>`;
+}
+function mapChanges(items){const prev=mapPrev&&mapPrev.lvl===S.lvl&&mapPrev.site===S.phase2?.site?mapPrev:null;if(!prev)return '';
+ const done={},start={},moved={};for(const it of items){if(prev.keys.has(it.key))continue;
+  const bag=it.build||it.home&&it.home.stage==='construction'?start:it.kind==='fac'?done:moved;
+  const n=it.kind==='firm'||it.kind==='home'?it.name+'（'+it.status+'）':it.name;bag[n]=(bag[n]||0)+1;}
+ const fmtBag=b=>Object.entries(b).map(([n,c])=>esc(n)+(c>1?'×'+c:'')).join('、');
+ const parts=[];if(Object.keys(done).length)parts.push('<b>新建成</b> '+fmtBag(done));if(Object.keys(start).length)parts.push('<b>新开工</b> '+fmtBag(start));if(Object.keys(moved).length)parts.push('<b>企业与住宅</b> '+fmtBag(moved));
+ if((S.f.road||0)>prev.roads)parts.push('<b>新通车</b> 城区道路');
+ return parts.length?`<div class="map-change">上月以来：${parts.join('　')}</div>`:'';}
+function vMap(){if(S.phase==='retired')return '<div class="sec"><div class="hint">已退休。</div></div>';phase3Ensure();
+ const svg=mapSvg(),items=mapItemsNow,sel=items.find(i=>i.key===mapSel);
+ const nFac=items.filter(i=>i.kind==='fac').length,nB=items.filter(i=>i.build).length,nF=items.filter(i=>i.kind==='firm'&&!i.closed).length;
+ const legend=[['res','居住'],['old','老旧小区'],['civic','公共服务'],['com','商业商务'],['ind','工业'],['heavy','重工业'],['util','市政设施'],['park','绿地'],['vac','待开发']].map(([k,n])=>`<span><i style="background:${MAP_LU[k]}${k==='vac'?';border:1px dashed #CFC7B4':''}"></i>${n}</span>`).join('');
+ return `<div class="sec"><h2>${esc(LV[S.lvl].city)}现状图</h2><div class="hint">建成的设施、企业、住宅和在建工地都会落在图上；红色虚线圈是在建，外圈红弧是工期进度。道路越多街网越密，环境越好河水越清。点图标查看详情。</div>
+ ${mapChanges(items)}
+ <div class="map-tools"><span class="muted">图上设施 ${nFac} · 在营企业 ${nF} · 在建 ${nB}</span><button class="sm" id="mapZoom" aria-pressed="${mapZoom>1}">${mapZoom>1?'缩小全图':'放大查看'}</button></div>
+ <div class="map-wrap${mapZoom>1?' z2':''}" id="mapWrap">${svg}</div>
+ <div class="map-info" id="mapInfo" aria-live="polite">${sel?esc(sel.info):'点选或悬停图上的图标，查看名称与状态。'}</div>
+ <div class="map-legend">${legend}<span><b class="lg-mk lg-build"></b>在建</span><span><b class="lg-mk lg-warn"></b>需处理</span><span><b class="lg-mk lg-new">新</b>上月以来新增</span></div></div>`;}
+function mapBind(){const wrap=$('#mapWrap');if(!wrap)return;const info=$('#mapInfo');
+ const show=(el,pin)=>{const v=el.dataset.mk;let t='';if(v.startsWith('d:')){const d=(S.dist||[]).find(d=>d.n===v.slice(2));if(d)t=d.n+'　繁荣 '+Math.round(d.pros)+'　宜居 '+Math.round(d.liv)+'　债务率 '+Math.round(d.debt)+'%　建设资金 '+(S.alloc?.[d.n]?.fund??'—')+' 档';}
+  else{const it=mapItemsNow[+v];if(!it)return;t=it.info;if(pin){mapSel=it.key;wrap.querySelectorAll('.mm-sel').forEach(x=>x.classList.remove('mm-sel'));el.classList.add('mm-sel');}}
+  if(info)info.textContent=t;};
+ wrap.querySelectorAll('[data-mk]').forEach(el=>{el.addEventListener('click',()=>show(el,true));el.addEventListener('mouseenter',()=>show(el,false));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(el,true);}});});
+ wrap.addEventListener('mouseleave',()=>{const it=mapItemsNow.find(i=>i.key===mapSel);if(info)info.textContent=it?it.info:'点选或悬停图上的图标，查看名称与状态。';});
+ const z=$('#mapZoom');if(z)z.onclick=()=>{mapZoom=mapZoom>1?1:2;renderAll();const w=$('#mapWrap'),G=MAPGEO[S.lvl];if(w&&mapZoom>1){w.scrollLeft=G.cx/MAP_W*w.scrollWidth-w.clientWidth/2;w.scrollTop=G.cy/MAP_H*w.scrollHeight-w.clientHeight/2;}};}
+/* 推进下月前记下图上已有的东西，月报后在地图上标出新增 */
+const _mapNext=next;
+next=function(){if(!busy&&S&&!S.over){const k=mapKeys();if(k)mapPrev=k;}return _mapNext.apply(this,arguments);};
+const _mapBindPanel=bindPanel;
+bindPanel=function(){_mapBindPanel();if(S&&S.tab==='map')mapBind();};
 
 document.addEventListener('DOMContentLoaded',()=>{
   addEventListener('resize',fitDialogViewport);
