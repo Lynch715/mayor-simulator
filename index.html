@@ -850,7 +850,7 @@ const EV=[
 {id:'ai_wave',lv:[2,4],w:2,cond:S=>S.year>=8,title:'自动化冲击',text:'园区两家大厂上了自动化产线，一次性裁了几千人。失业的人在人社局门口排队，税收倒是没少。',opts:[
  {t:'财政出钱搞转岗培训',n:'',fx:{cash:-300,sat:2}},
  {t:'让市场消化',n:'',fx:{sat:-5,pros:1}}]},
-{id:'land_expro',mo:[3,11],lv:[0,3],w:3,cond:S=>S.landPct<0.25,title:'储备土地不够了',text:'国土局说，储备地块快见底了，再要供地就得征地。北边有一片村集体用地，征地要补偿，村民也不一定同意。',opts:[
+{id:'land_expro',mo:[3,11],lv:[0,4],w:3,lowLand:3,cond:S=>S.landPct<0.25,title:'储备土地不够了',text:'国土局说，储备地块快见底了，再要供地就得征地。北边有一片村集体用地，征地要补偿，村民也不一定同意。',opts:[
  {t:'启动征地',n:'补偿支出，满意度下降',fx:{cash:-250,land:250,sat:-4}},
  {t:'暂不征地',n:'',fx:{}}]},
 {id:'hospital_dispute',mo:[5,11],lv:[0,4],w:2,title:'医患纠纷',text:'一起手术失败，家属在医院门口摆了花圈。医院说手术没有过错，家属说不给说法就不走。',opts:[
@@ -2041,7 +2041,7 @@ function tick(){
   if(!evQueue.length){
     const pPet=(S.agFlag&&S.agFlag.nopet)?0:(S.month%3===0?0.5:(S.sat<40?0.15:0.08))*npcPetMul();
     if(Math.random()<pPet){const id=draw(PET.filter(p=>!p.id.endsWith('2')&&(!p.cond||p.cond(S))),p=>(p.mo&&p.mo.indexOf(S.month)>=0?3.5:1)*(_wd.indexOf(p.id)>=0?2.2:1));if(id)evQueue.push(id);}
-    else if(Math.random()<0.6){const id=draw(EV.filter(e=>e.w>0&&S.lvl>=e.lv[0]&&S.lvl<=e.lv[1]&&!(e.once&&S.once[e.id])&&(!e.cond||e.cond(S))),e=>e.w*(e.mo&&e.mo.indexOf(S.month)>=0?3.5:1)*(_wd.indexOf(e.id)>=0?2.2:1));if(id)evQueue.push(id);}}
+    else if(Math.random()<0.6){const id=draw(EV.filter(e=>e.w>0&&S.lvl>=e.lv[0]&&S.lvl<=e.lv[1]&&!(e.once&&S.once[e.id])&&(!e.cond||e.cond(S))),e=>e.w*(e.lowLand&&S.landPct<0.1?e.lowLand:1)*(e.mo&&e.mo.indexOf(S.month)>=0?3.5:1)*(_wd.indexOf(e.id)>=0?2.2:1));if(id)evQueue.push(id);}}
   for(const id of evQueue)S.seen[id]=now;
   S.month++;let annualDue=false;if(S.month>12){S.month=1;annualDue=true;}
   return {evQueue,annualDue};
