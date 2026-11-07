@@ -263,6 +263,7 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 .brief-opt input{margin-top:3px;flex:0 0 auto}
 #mtoast{position:fixed;left:50%;top:10px;transform:translate(-50%,-140%);max-width:min(92vw,640px);background:rgba(34,37,42,.94);color:#fff;font-size:13px;padding:9px 16px;border-radius:4px;z-index:70;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .25s ease;pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #mtoast.on{transform:translate(-50%,0)}
+#mtoast.bad{background:rgba(150,38,38,.95)}#mtoast.good{background:rgba(34,92,60,.95)}
 @media (max-width:640px){.kv{grid-template-columns:repeat(2,1fr);gap:6px}.kv b{font-size:15px}#mtoast{top:calc(8px + env(safe-area-inset-top));font-size:12px;padding:8px 12px}}
 
 /* 呈批件弹窗 */
@@ -481,6 +482,15 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 .save-actions button{width:100%;min-height:44px;margin:0}
 .save-actions .credits{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px;margin-top:4px;padding-top:10px;border-top:1px solid var(--line2);color:var(--ink2);line-height:1.7}
 .save-actions .credits span{white-space:nowrap}
+.save-actions .install-btn{grid-column:1/-1;border-color:var(--blue);color:var(--blue)}
+#installTip{position:fixed;inset:0;z-index:65;background:rgba(20,22,26,.45);display:flex;align-items:center;justify-content:center;padding:16px}
+#installTip[hidden]{display:none}
+#installTip .box{background:#fff;max-width:420px;width:100%;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.35);padding:20px 22px;font-size:14px;line-height:1.75}
+#installTip h3{margin:0 0 6px;font-size:18px}
+#installTip ol{margin:8px 0 0;padding-left:20px}
+#installTip .row{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+#installTip .row button{min-height:44px;padding:0 18px}
+@media (max-width:640px){#installTip{align-items:flex-end;padding:0}#installTip .box{max-width:none;padding:18px 18px calc(18px + env(safe-area-inset-bottom))}}
 .home-offers{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
 .home-offer .phase-button-group{grid-template-columns:minmax(0,1fr);grid-template-rows:48px minmax(0,1fr) 48px minmax(0,1fr);align-items:start}
 .home-offer dd,.kv b{font-variant-numeric:tabular-nums}
@@ -618,6 +628,7 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
       <button class="primary" id="btnNew" style="padding:10px 28px">到任就职</button>
       <button id="btnLoad" style="padding:10px 20px">读取存档</button>
     </div>
+    <div class="row" style="justify-content:center;margin-top:10px"><button class="sm install-btn" id="btnInstallCover" hidden>安装到桌面，像 App 一样打开</button></div>
     <div class="foot">架空背景，所有地名、人物、事件均为虚构。</div>
   </div>
 </div>
@@ -650,6 +661,7 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
       <button class="sm" id="btnExport">导出存档</button>
       <button class="sm" id="btnImport">导入存档</button>
       <button class="sm danger" id="btnReset">重新开局</button>
+      <button class="sm install-btn" id="btnInstall" hidden>安装到桌面</button>
       <input type="file" id="fileIn" style="display:none" accept=".json">
       <div class="credits"><span>制作人：大老师</span><span>微信：lynchrrr</span></div>
     </div>
@@ -2020,11 +2032,11 @@ function collectStart(){if(S.collect>0)return '正在执行';S.collect=12;logIt(
 function extendCQ(){if(!S.cq.length)return '没有城投债';for(const b of S.cq){b.left+=24;b.rate+=1;}S.rep-=4;S.unity-=1;logIt('城投债展期重组：期限延长两年，利率上调一个点。声誉受损。','bad');return null;}
 function platformTransform(){if(S.lvl<1)return '县级以上才能操作';if(S.flags['plat'+S.lvl])return '本级已转型过';let x=cqOut()*0.2;
   for(const b of S.cq)b.amt*=0.8;S.platform+=x;S.flags['plat'+S.lvl]=1;logIt('城投平台转型：'+fmt(x)+'城投债转为经营性债务。','sys');return null;}
-function recruit(n){n=Math.round(n);if(n<=0)return '';if(S.recruitThisYear>0)return '今年已招录';const room=S.quota-S.staff;if(n>room)return '超出核定编制';
+function recruit(n){n=Math.round(n);if(!(n>0))return '请先填写招录人数';if(S.recruitThisYear>0)return '今年已招录';const room=S.quota-S.staff;if(n>room)return '超出核定编制';
   const cap=Math.round(S.staff*0.08);S.recruitThisYear=n;
   if(n>cap){const got=Math.round(cap+(n-cap)*0.5);S.staff+=got;S.sat-=3;S.rep-=2;logIt('招录'+n+'人，报录比超出承载，实际到岗'+got+'人，引发舆情。','bad');}
   else{S.staff+=n;logIt('招录事业编'+n+'人。');}return null;}
-function cutStaff(n){n=Math.round(n);if(n<=0)return '';if(n>S.staff*0.1)return '一次最多缩编一成';S.staff-=n;S.unity-=3;S.sat-=1;logIt('缩减编制'+n+'人。班子有意见。','bad');return null;}
+function cutStaff(n){n=Math.round(n);if(!(n>0))return '请先填写缩减人数';if(n>S.staff*0.1)return '一次最多缩编一成';S.staff-=n;S.unity-=3;S.sat-=1;logIt('缩减编制'+n+'人。班子有意见。','bad');return null;}
 function reform(){if(S.reformDone)return '本级已完成机构改革';const c=LV[S.lvl].transfer*1.5;if(S.cash<c)return '需要'+fmt(c);S.cash-=c;S.reformDone=true;S.unity-=4;logIt('机构改革完成，行政运转成本下降。','sys');return null;}
 
 /* ---- 效果应用 ---- */
@@ -2316,13 +2328,13 @@ function vInd(){
  const mix=indMix();const leads=S.leads||[];
  const cnt={};S.ind.forEach((x,i)=>{if(indFactor(x,i)>0)cnt[x.id]=(cnt[x.id]||0)+1;});
  const rows=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]).map(k=>{const o=overCap(k);
-   return `<tr><td>${FAC[k].n}<span class="tag">${CATN[INDCAT[k]||'mfg']}</span></td><td class="r">${cnt[k]} 个</td><td class="r">${fmt(FAC[k].tax*S.sc*industryUnits(k)*o*supplyFactor())}</td><td class="r ${o<0.95?'neg':''}">${o<0.995?'×'+o.toFixed(2)+' 过剩':'—'}</td></tr>`;}).join('')
+   return `<tr><td>${FAC[k].n}<span class="tag">${CATN[INDCAT[k]||'mfg']}</span></td><td class="r">${cnt[k]} 个</td><td class="r">${fmt(industryTaxOf(k))}</td><td class="r ${o<0.95?'neg':''}">${o<0.995?'×'+o.toFixed(2)+' 过剩':'—'}</td></tr>`;}).join('')
    ||'<tr><td class="muted" colspan="4">还没有落地的产业项目。</td></tr>';
  const bar=[['mfg',mix.mfg],['trade',mix.trade],['tech',mix.tech]].map(([k,v])=>
    `<div class="wb"><i style="width:${v*100}%"></i><span>${CATN[k]} ${Math.round(v*100)}%</span></div>`).join('');
  const cards=leads.length?leads.map((l,i)=>{const F=FAC[l.fac];const e=leadOK(l);
    return `<div class="lead"><div class="lh"><b>${esc(l.n)}</b><span class="tag">${CATN[INDCAT[l.fac]||'mfg']}</span><span class="tag">${F.n}</span>${l.rival?'<span class="tag red">邻市在争</span>':''}${l.cut?'<span class="tag blue">已谈过</span>':''}</div>
-   <div class="lm"><span><i>投资</i>${fmt(l.inv)}</span><span><i>达产月税</i>${fmt(F.tax*S.sc)}</span><span><i>就业系数</i>${F.jobs}</span><span><i>污染</i>${F.pol}</span>${F.ramp?`<span><i>达产期</i>${F.ramp} 个月</span>`:''}</div>
+   <div class="lm"><span><i>投资</i>${fmt(l.inv)}</span>${indPreviewSpans(l.fac)}<span><i>就业系数</i>${F.jobs}</span><span><i>污染</i>${F.pol}</span>${F.ramp?`<span><i>达产期</i>${F.ramp} 个月</span>`:''}</div>${indPreviewNote(l.fac)}
    <div class="lm ask"><span><i>要供地</i><b>${l.ask.land}</b> 亩</span><span><i>要配套</i><b>${fmt(l.ask.cash)}</b></span><span><i>税收返还</i><b>${l.ask.cut?l.ask.cut+' 个月':'不要'}</b></span></div>
    ${e?`<div class="lw">${esc(e)}</div>`:''}
    <div class="pb"><button class="sm" data-lead="${i}" data-how="take"${e?' disabled':''}>按条件签约</button>
@@ -2335,7 +2347,7 @@ function vInd(){
  <div class="sec"><h2>产业结构</h2><div class="winds">${bar}</div>
  <div class="hint">科创产业有利于繁荣，制造业增加污染压力。同类企业超过三家，新增税收逐步递减。</div></div>
  <div class="sec"><h2>已落地企业</h2><table><tr><th>类型</th><th class="r">数量</th><th class="r">月税收</th><th class="r">产能</th></tr>${rows}</table>
- <div class="hint">工业用地上的老厂 ${S.f.factory} 家，另计月税 ${fmt(factoryUnits()*45*S.sc*supplyFactor())}。</div></div>`;}
+ <div class="hint">工业用地上的老厂 ${S.f.factory} 家，另计月税 ${fmt(factoryUnits()*45*S.sc*supplyFactor()*(S.taxcut>0?.6:1))}。</div>${supplyFactor()<.98?`<div class="hint neg">水电满足率仅 ${Math.round(supplyFactor()*100)}%：全部产业税和就业按此比例打折。新上园区会继续拉低满足率，宜先补电厂、水厂。</div>`:''}${S.ind.some(x=>x.cut>0)?'<div class="hint">税收返还期内的企业按半数计税，已计入上表。</div>':''}</div>`;}
 function vRegion(){
  const rs=S.rivals||[];const rank=myRank();const B=S.bigp;
  const all=[{n:LV[S.lvl].city.replace(/（.*/,''),pros:S.pros,pop:S.pop,me:1}].concat(rs).sort((a,b)=>b.pros-a.pros);
@@ -2346,7 +2358,7 @@ function vRegion(){
    return `<button class="sm" data-coop="${i}" data-cid="${c.id}"${done?' disabled':''}>${c.n} ${done?'（已建）':fmt(LV[S.lvl].transfer*c.k)}</button>`;}).join('')}</div>
   </div>`).join('');
  const big=B?`<div class="lead"><div class="lh"><b>${esc(B.n)}</b><span class="tag">${FAC[B.fac].n}</span><span class="tag red">两市在争</span></div>
-  <div class="lm"><span><i>达产月税</i>${fmt(FAC[B.fac].tax*S.sc)}</span>${S.rivals.map((r,i)=>`<span><i>${esc(r.n)}报价意愿</i>${B.r[i]}</span>`).join('')}</div>
+  <div class="lm">${indPreviewSpans(B.fac)}${S.rivals.map((r,i)=>`<span><i>${esc(r.n)}报价意愿</i>${B.r[i]}</span>`).join('')}</div>${indPreviewNote(B.fac)}
   <div class="lm">落到谁家，谁的繁荣度就多三个点。</div>
   <div class="pb"><button class="sm" data-bid="1">保守报价 ${fmt(B.base*0.6)}</button><button class="sm" data-bid="2">跟到底 ${fmt(B.base)}</button><button class="sm" data-bid="3">志在必得 ${fmt(B.base*1.7)}</button><button class="sm quiet" data-bid="0">不争</button></div></div>`
   :'<div class="hint">今年没有在争的省级项目。年初会有新的。</div>';
@@ -2416,7 +2428,7 @@ function vBuild(){
   const rows=FACORDER.filter(k=>FAC[k].cat===cat[0]).map(k=>{const F=FAC[k];const locked=F.lvl!==undefined&&S.lvl<F.lvl;const c=F.ind?null:cov(k);const cost=F.cost*S.sc*(1+0.02*S.year);
     const gate=F.ind?industryGate(k,S.planZone||'mixed'):null;const cnt=S.f[k]||0;const building=S.build.filter(b=>b.id===k).length;
     const eff=[];if(F.pw)eff.push('繁荣');if(F.lw)eff.push('宜居');if(F.sw)eff.push('满意度');if(F.ew)eff.push('环境');if(F.hw)eff.push('压房价');if(F.ind)eff.push('税收·就业·'+POLLUTION[pollutionGrade(k)]);
-    return `<div class="fac${locked?' locked':''}"><span style="color:var(--blue)">${ICON[k]||ICON.fzone}</span><div><div class="n">${F.n} <span class="muted num" style="font-weight:400">×${cnt}${building?' (+'+building+'在建)':''}</span>${F.wl?'<span class="tag blue">'+F.wl+'</span>':''}${locked?'<span class="tag red">'+LVN[F.lvl]+'以上</span>':''}</div><div class="i">${F.d}${gate?'<br><span class="neg">'+esc(gate)+'</span>':''}</div><div class="i eff">影响：${eff.join('、')}</div><div class="kvline"><span><i>投资</i>${fmt(cost)}</span><span><i>工期</i>${F.months} 月</span><span><i>占地</i>${Math.round(F.land*S.lsc*0.35)} 亩</span><span><i>月运维</i>${fmt(F.maint*S.sc)}</span>${F.ind?`<span><i>达产月税</i>${fmt(F.tax*S.sc)}</span><span><i>爬坡</i>${F.ramp} 月</span><span><i>用电/用水/排污</i>${F.powerUse??.55} / ${F.waterUse??.45} / ${F.waste??.3} ×当地规模</span>`:''}${F.needLiv?`<span><i>需宜居度</i>≥${F.needLiv}</span>`:''}</div>${F.ind?vIndustryPermit(k):''}${c!==null?`<div class="cov">覆盖 ${Math.round(c*100)}%${gauge(c*100,c<0.5)}</div>`:''}</div><button class="sm" data-build="${k}" ${locked||gate?'disabled':''}>立项</button></div>`;}).join('');
+    return `<div class="fac${locked?' locked':''}"><span style="color:var(--blue)">${ICON[k]||ICON.fzone}</span><div><div class="n">${F.n} <span class="muted num" style="font-weight:400">×${cnt}${building?' (+'+building+'在建)':''}</span>${F.wl?'<span class="tag blue">'+F.wl+'</span>':''}${locked?'<span class="tag red">'+LVN[F.lvl]+'以上</span>':''}</div><div class="i">${F.d}${gate?'<br><span class="neg">'+esc(gate)+'</span>':''}</div><div class="i eff">影响：${eff.join('、')}</div><div class="kvline"><span><i>投资</i>${fmt(cost)}</span><span><i>工期</i>${F.months} 月</span><span><i>占地</i>${Math.round(F.land*S.lsc*0.35)} 亩</span><span><i>月运维</i>${fmt(F.maint*S.sc)}</span>${F.ind?`${indPreviewSpans(k)}<span><i>爬坡</i>${F.ramp} 月</span><span><i>用电/用水/排污</i>${F.powerUse??.55} / ${F.waterUse??.45} / ${F.waste??.3} ×当地规模</span>`:''}${F.needLiv?`<span><i>需宜居度</i>≥${F.needLiv}</span>`:''}</div>${F.ind?indPreviewNote(k):''}${F.ind?vIndustryPermit(k):''}${c!==null?`<div class="cov">覆盖 ${Math.round(c*100)}%${gauge(c*100,c<0.5)}</div>`:''}</div><button class="sm" data-build="${k}" ${locked||gate?'disabled':''}>立项</button></div>`;}).join('');
   const bl=S.build.map((b,i)=>`<tr><td data-l="项目">${FAC[b.id].n}${b.stalled?'<span class="tag red">停工</span>':''}</td><td data-l="已付 / 总投资" class="r">${fmt(b.paid)} / ${fmt(b.cost)}</td><td data-l="工期" class="r">剩 ${b.left} 月</td><td data-l="操作" class="m-actions"><button class="sm danger" data-cancel="${i}">取消</button></td></tr>`).join('');
   return `<div class="sec"><h2>市政设施与产业</h2><div class="hint">立项后按工期逐月付款，财政不够就停工。产业园区需要电厂覆盖过半。${S.f.factory?'另有招商引进的工厂 '+S.f.factory+' 家。':''}</div>${tabs}<div class="hint" style="margin-top:8px">${cat[2]}</div>${rows}</div>
   <div class="sec"><h2>在建</h2><div class="m-table-wrap"><table class="m-cards">${bl||'<tr><td class="muted">无</td></tr>'}</table></div></div>`;}
@@ -2479,7 +2491,7 @@ function bindPanel(){
   on('#btnRec',()=>recruit(+$('#recN').value));on('#btnCut',()=>cutStaff(+$('#cutN').value));on('#btnReform',reform);
   const rr=$('#resRate');if(rr)rr.oninput=()=>{S.reserveRate=+rr.value;$('#resRateV').textContent=rr.value+'%';};
 }
-function toast(msg){logIt(msg,'bad');mtoast(msg);}
+function toast(msg){logIt(msg,'bad');mtoast(msg,'bad');}
 /* ---- 弹窗 ---- */
 let dialogRevision=0;
 function showDoc(html,cls){const d=$('#doc');d.className='doc '+(cls||'');d.innerHTML=html;d.setAttribute('role','dialog');d.setAttribute('aria-modal','true');const h=d.querySelector('h2');if(h){h.id='docTitle';d.setAttribute('aria-labelledby','docTitle');}const modal=$('#modal');fitDialogViewport();modal.classList.add('on');d.scrollTop=0;const revision=++dialogRevision;requestAnimationFrame(()=>{if(modal.classList.contains('on')&&dialogRevision===revision)d.scrollTop=0;});}
@@ -2539,7 +2551,7 @@ function showMonthly(B,done){const M=S.monthly;if(!M){done();return;}
   $('#mbBrief').onchange=e=>{S.brief=e.target.checked?1:0;};
   $('#mbOk').onclick=()=>{hideDoc();done();};}
 let _mt=null;
-function mtoast(t){let el=$('#mtoast');if(!el){el=document.createElement('div');el.id='mtoast';el.setAttribute('role','status');el.setAttribute('aria-live','polite');document.body.appendChild(el);}el.textContent=t;el.classList.add('on');clearTimeout(_mt);_mt=setTimeout(()=>el.classList.remove('on'),Math.max(4200,Math.min(10000,t.length*100)));}
+function mtoast(t,kind){let el=$('#mtoast');if(!el){el=document.createElement('div');el.id='mtoast';el.setAttribute('role','status');el.setAttribute('aria-live','polite');document.body.appendChild(el);}el.textContent=t;el.classList.toggle('bad',kind==='bad');el.classList.toggle('good',kind==='good');el.classList.add('on');clearTimeout(_mt);_mt=setTimeout(()=>el.classList.remove('on'),Math.max(4200,Math.min(10000,t.length*100)));}
 const LS={get:k=>{try{return localStorage.getItem(k);}catch(e){return null;}},set:(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}},del:k=>{try{localStorage.removeItem(k);}catch(e){}}};
 function save(){LS.set('yifang_save',JSON.stringify(S));}
 function migrate(){if(!S)return;S.f=S.f||{};for(const k of FACORDER)if(S.f[k]===undefined)S.f[k]=0;if(S.f.factory===undefined)S.f.factory=0;S.seen=S.seen||{};S.brief=S.brief||0;S.buildCat=S.buildCat||'traffic';S.logSeq=S.logSeq||S.log.length;S.build=(S.build||[]).filter(b=>FAC[b.id]);S.ind=(S.ind||[]).filter(x=>FAC[x.id]);S.agCd=S.agCd||{};S.agFlag=S.agFlag||{};S.agUse=S.agUse||{};S.agN=S.agN||0;if(!AG[S.ag])S.ag='routine';if(!S.wind||!WIND.find(w=>w.id===S.wind)){S.wind='growth';S.windLeft=3;}S.windHist=S.windHist||[];S.plotSeq=S.plotSeq||0;S.landRev=S.landRev||0;S.landHist=S.landHist||[];S.spotYr=S.spotYr||0;S.leadSeq=S.leadSeq||0;if(!S.leads)S.leads=S.lvl>=2?genLeads(2):[];S.talent=S.talent||0;S.alloc=S.alloc||{};S.era=S.era||{};S.hist=(S.hist||[]).map(h=>(h.pros===undefined&&(h.pros=55,h.liv=52,h.debt=h.hdr||40,h.after=0),h));if(S.lvl>=3&&!S.rivals)initRivals();if(S.lvl>=4&&!S.dist)initDist();S.ind=(S.ind||[]).map(x=>(x.cut===undefined&&(x.cut=0),x));if(!S.plots)S.plots=S.lvl>=1?genPlots(3):[];if(!S.npc)npcInit(true);else for(const k of NPCORDER)if(!S.npc[k])S.npc[k]={n:NPCS[k].fixed||newName(),f:50};if(!S.agPool||!S.agPool.length||S.agPool.some(k=>!AG[k]))agRefresh();phaseEnsure();}
@@ -2662,11 +2674,12 @@ function environmentMonth(ecology){
 }
 function environmentLabel(v){return v>=85?'优秀':v>=60?'合格':v>=30?'待改善':'不合格 · 晋升暂停';}
 function techCost(id){return (FAC[id]?FAC[id].cost:1200)*S.sc*.12*(1+(phaseEnsure().tech[id]||0));}
+function agReplaceNote(k){const prev=S.ag;if(!prev||prev===k||prev==='routine'||!AG[prev])return '';return '（已替换原安排「'+AG[prev].n+'」）';}
 function schedulePhaseAction(k){
  if(S.phase==='retired'||S.over)return '当前不能安排专项工作';
  if(k==='govern'&&S.phase1.environment.action>=3)return '本月环境治理已达到行动加分上限';
  if(k.startsWith('tech_')){const id=k.slice(5);if((phaseEnsure().tech[id]||0)>=3)return '该类企业已完成三轮技改';if(!(S.f[id]>0))return '没有对应在营企业';if(S.cash<techCost(id))return '财政不足以支付技改费用';}
- if(!AG[k])return '没有这项工作';S.ag=k;logIt('已安排'+AG[k].n+'，已列入本月工作安排。');return null;
+ if(!AG[k])return '没有这项工作';const note=agReplaceNote(k);S.ag=k;logIt('已安排'+AG[k].n+'，列入本月工作安排'+note+'，推进下月时执行。');return null;
 }
 AG.govern={n:'专项环境治理',cat:'安全',cd:1,cond:()=>false,d:'占本月安排并支付治理费，环境最多+3，与正向事件共用每月5分上限。',f:()=>{
  const P=phaseEnsure(),cost=LV[S.lvl].transfer*.18;if(S.cash<cost)return '治理未执行：财政不足，需要'+fmt(cost)+'。';
@@ -2688,6 +2701,25 @@ jobs=function(){return _phaseJobs()*supplyFactor();};
 monthIncome=function(){return taxCommerce()+taxIndustry()+transferPay()+utilityRevenue()+rentIncome();};
 // Debt capacity uses net utility proceeds, never gross turnover or a one-off sale.
 annualIncome=function(){return (taxCommerce()+taxIndustry()+transferPay()+rentIncome()+Math.max(0,utilityRevenue()-utilityMaintenance()))*12;};
+/* ---- 产业项目实际收益预估：与 taxIndustry 同一口径（水电满足率、同类过剩、运维），供立项/招商/争项目卡片显示 ---- */
+function _ocAt(x){return 1/(1+0.13*Math.max(0,x-3));}
+function industryPreview(fac){const F=FAC[fac];if(!F||!F.ind)return null;
+ const u=utilityStatus(),sc=S.sc,pAdd=((F.powerUse===undefined?.55:F.powerUse)+(fac==='datacenter'?1.2:0))*sc,wAdd=(F.waterUse===undefined?.45:F.waterUse)*sc;
+ const ratio=(o,add)=>{const d=o.demand+add;return d>0?Math.min(1,o.capacity/d):1;};
+ const grace=phaseEnsure().grace>0,lim=r=>grace?Math.max(.9,r):Math.max(.25,r);
+ const sNow=supplyFactor(),sAfter=lim(Math.min(ratio(u.power,pAdd),ratio(u.water,wAdd)));
+ const c=industryUnits(fac),marg=(c+1)*_ocAt(c+1)-c*_ocAt(c);
+ const nominal=F.tax*sc,real=nominal*marg*sAfter,drag=Math.max(0,_phaseTax()*(sNow-sAfter)),maint=F.maint*sc*(0.9+0.2*eff());
+ return {nominal,real,drag,maint,net:real-drag-maint,sNow,sAfter,marg,same:c,ramp:F.ramp||0};}
+function indPreviewSpans(fac){const v=industryPreview(fac);if(!v)return '';
+ return `<span><i>达产月税（预估）</i>${fmt(v.real)}${v.real<v.nominal*.97?'<small class="muted">／名义'+fmt(v.nominal)+'</small>':''}</span><span><i>达产后月净增</i><b class="${v.net>=0?'pos':'neg'}">${v.net>=0?'+':'−'}${fmt(Math.abs(v.net))}</b></span>`;}
+function indPreviewNote(fac){const v=industryPreview(fac);if(!v)return '';const pct=x=>Math.round(x*100)+'%',n=[];
+ if(v.sAfter<v.sNow-.005)n.push(`水电满足率将由${pct(v.sNow)}降到${pct(v.sAfter)}，现有企业税收每月少收约${fmt(v.drag)}`);
+ else if(v.sNow<.98)n.push(`当前水电满足率${pct(v.sNow)}，产业税按此比例征收`);
+ if(v.marg<.95)n.push(`同类已有${Math.round(v.same)}家，新增税收按${pct(v.marg)}计`);
+ n.push(`运维费建成即全额支付${v.ramp?`，税收在${v.ramp}个月爬坡期内逐月增加`:''}`);
+ return `<div class="i ${v.net<0?'neg':'muted'}" style="margin-top:4px">${v.net<0?'按现状测算，达产后仍入不敷出：':''}${n.join('；')}。</div>`;}
+function industryTaxOf(k){const cut=S.taxcut>0?.6:1,sf=supplyFactor();return S.ind.reduce((a,x,i)=>x.id===k?a+FAC[k].tax*S.sc*indFactor(x,i)*overCap(k)*(x.cut>0?.5:1):a,0)*sf*cut;}
 function book(kind,amount,note){if(!amount||!Number.isFinite(amount))return;const F=phaseEnsure().finance;F.entries.push({kind,amount,note,y:S.year,m:S.month});}
 function cashTotals(entries){
  const totals={};for(const e of entries)totals[e.kind]=(totals[e.kind]||0)+e.amount;
@@ -2941,7 +2973,7 @@ function schedulePhase2(kind,target){
  if(kind==='p2_grant')err=subsidyGate(target);
  if(['p2_bid','p2_maintain'].includes(kind))err=roleGate('urban');
  if(kind==='p2_remedy'){const p=projectById(target);if(!p||p.site!==P.site)return '仅能安排本任项目整改';err=roleGate(p.risk.environment>p.risk.quality?'eco':'urban');}
- if(err)return err;P.action={kind,target};S.ag=kind;logIt('本月专项工作：'+AG[kind].n+'；替换原安排，推进时执行。');return null;
+ if(err)return err;const note=agReplaceNote(kind);P.action={kind,target};S.ag=kind;logIt('本月专项工作：'+AG[kind].n+note+'，推进下月时执行。');return null;
 }
 function recruitSpecialist(skill){
  const P=phase2Ensure();if(!SPECIALTIES[skill]||P.team.length>=8)return '借调未执行：专长无效或已满8名关键干部';if(!spendProject(LV[S.lvl].transfer*.18,'借调专业干部'))return '借调未执行：前期保障经费不足';
@@ -3017,7 +3049,7 @@ function vProjects(){return vProjectPolicy()+vMunicipal()+vProjectLedger();}
 const _p2Hr=vHR,_p2Build=vBuild,_p2File=vFile,_p2Fin=vFin,_p2Agenda=vAgenda,_p2Bind=bindPanel,_p2Monthly=showMonthly;
 vHR=function(){return vCadres()+_p2Hr();};vBuild=function(){return vEquipment()+_p2Build();};vFile=function(){return _p2File()+vProjectLedger(true);};vFin=function(){const html=_p2Fin();return vProjectPolicy()+html+`<div class="sec phase-panel"><h2>待验收补助提示</h2><p class="phase-note">补助须验收后到账，暂不计入现金流预测。未来3个月可能完工的项目对应补助：${cashForecast().map(r=>r.i+'个月内对应'+fmt(r.conditionalReceipts)).join('；')}。</p>${LS.get('yifang_save_before_v112')?'<button class="sm" id="btnP2Backup">导出第二批升级前存档</button>':''}</div>`;};
 vAgenda=function(){const html=_p2Agenda();return html+(S.ag.startsWith('p2_')?`<div class="sec"><b>已选专项工作：${esc(AG[S.ag].n)}</b><p>与原行程共用每月一次机会。目标：${esc(projectById(S.phase2.action?.target)?.n||MUNICIPAL[S.phase2.action?.target]?.n||SPECIALTIES[S.phase2.action?.target]||S.phase2.action?.target||'')}</p></div>`:'');};
-bindPanel=function(){_p2Bind();document.querySelectorAll('[data-p2]').forEach(b=>b.onclick=()=>{const err=b.dataset.p2==='province'?(S.ag='province',null):schedulePhase2(b.dataset.p2,b.dataset.target);if(err)toast(err);renderAll();});document.querySelectorAll('[data-cadre]').forEach(el=>el.onchange=()=>{const e=assignCadre(el.dataset.cadre,el.value);if(e)toast(e);renderAll();});document.querySelectorAll('[data-start-municipal]').forEach(b=>b.onclick=()=>{const e=startMunicipal(b.dataset.startMunicipal);if(e)toast(e);renderAll();});const backup=$('#btnP2Backup');if(backup)backup.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v112'));a.download='一方水土-第二批升级前存档.json';a.click();};};
+bindPanel=function(){_p2Bind();document.querySelectorAll('[data-p2]').forEach(b=>b.onclick=()=>{const err=b.dataset.p2==='province'?(logIt('已安排'+AG.province.n+'，列入本月工作安排'+agReplaceNote('province')+'，推进下月时执行。'),S.ag='province',null):schedulePhase2(b.dataset.p2,b.dataset.target);if(err)toast(err);renderAll();});document.querySelectorAll('[data-cadre]').forEach(el=>el.onchange=()=>{const e=assignCadre(el.dataset.cadre,el.value);if(e)toast(e);renderAll();});document.querySelectorAll('[data-start-municipal]').forEach(b=>b.onclick=()=>{const e=startMunicipal(b.dataset.startMunicipal);if(e)toast(e);renderAll();});const backup=$('#btnP2Backup');if(backup)backup.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v112'));a.download='一方水土-第二批升级前存档.json';a.click();};};
 showMonthly=function(B,done){_p2Monthly(B,done);const body=$('#doc .body');if(body&&$('#modal').classList.contains('on')&&S.monthly?.phase2)body.insertAdjacentHTML('beforeend',`<div class="sec phase-panel"><h2>项目与设备复盘</h2><p>本月台账内完工项目 ${S.monthly.phase2.completed.length} 项；老化新增月运维 ${fmt(S.monthly.phase2.agingCost)}。${S.monthly.phase2.notice?'本月有定向督查件，继续后处理。':''}</p></div>`);};
 
 /* ===== v1.13 第三批：企业经营、住宅开发、区域竞争和生态修复 ===== */
@@ -3067,7 +3099,7 @@ function companyStep(){const P=phase3Ensure();syncFirms();for(const f of P.firms
  if(f.expansion){if(--f.expansion.left<=0){f.capacity=1.5;f.expansion=null;f.stage='stable';logIt(f.name+'扩产完成，产能提高50%。','good');}continue;}
  if(f.move){if(--f.move.left<=0){f.move=null;f.stage='ramp';if(!f.generic)S.ind[f.index].age=0;logIt(f.name+'完成辖区内搬迁，重新爬坡。','good');}continue;}
  if((f.limitedUntil||0)>projectMonth())continue;
- if(f.stage==='ramp'){if(f.generic||S.ind[f.index].age>=(FAC[f.fac]?.ramp||1))f.stage='stable';continue;}
+ if(f.stage==='ramp'){if(f.generic||S.ind[f.index].age>=(FAC[f.fac]?.ramp||1)){f.stage='stable';if(!f.generic)logIt(f.name+'产能爬坡完成，正式达产。','good');}continue;}
  if(P.grace>0||f.protectedUntil>projectMonth())continue;
  const drift=(P.market.index-1)*3+(supplyFactor()-.85)*1.5+(roleQuality('commerce')*.4)-.08;f.health=clamp(f.health+drift+rnd(-.6,.6),0,100);
  if(f.health<45){f.bad++;if(f.bad>=3&&f.stage==='stable'){f.stage='difficulty';logIt(f.name+'经营转弱，出现减产信号，可安排企业帮扶。','bad');}if(f.bad>=9)f.stage='reduced';if(f.bad>=24)closeFirm(f,'连续困难24个月后关闭');}
@@ -3124,7 +3156,7 @@ function industryPetition(){const P=phase3Ensure();if(S.agFlag?.nopet)return nul
  P.lastPetition=projectMonth();const id='p3_pet_'+P.site+'_'+projectMonth();P.notices[id]={id,firm:f.uid,title:'工业片区群众联名来信',handled:false,at:projectMonth()};return id;}
 function petitionWork(id,how){const P=phase3Ensure(),n=P.notices[id];if(!n||n.handled)return '事项已处理或失效';const f=firmById(n.firm);if(!f)return '企业已不存在';if(how==='rectify'){if(roleGate('eco'))return roleGate('eco');const cost=firmRef(f)*.08;if(!spendBusiness(Math.round(cost),'产业信访专项整改'))return '整改经费不足';const p=projectById(f.project);if(p)p.risk.environment*=.4;f.protectedUntil=projectMonth()+2;envChange(1.5,'action');S.sat=clamp(S.sat+2,0,100);}else if(how==='hear'){S.sat=clamp(S.sat+1,0,100);f.stage=['stable','difficulty'].includes(f.stage)?'reduced':f.stage;f.bad=Math.max(f.bad,9);f.limitedUntil=projectMonth()+3;n.followup=projectMonth()+6;}else{S.sat=clamp(S.sat-3,0,100);nAdd('pet',-3);const p=projectById(f.project);if(p){p.risk.environment=Math.max(p.risk.environment,.35);p.warningAt=projectMonth();}}
  n.handled=true;return null;}
-function schedulePhase3(kind,target){if(S.phase==='retired'||S.over)return '当前不能安排专项工作';if(!AG[kind])return '专项工作不存在';let e=null;if(['p3_aid','p3_expand','p3_move','p3_close'].includes(kind))e=firmGate(kind,target);if(['p3_regulate','p3_rescue'].includes(kind))e=homeWorkQuote(kind,target).error;if(kind==='p3_land')e=roleGate('commerce');if(e)return e;phase3Ensure().action={kind,target};S.ag=kind;logIt('已安排'+AG[kind].n+'，已列入本月工作安排。');return null;}
+function schedulePhase3(kind,target){if(S.phase==='retired'||S.over)return '当前不能安排专项工作';if(!AG[kind])return '专项工作不存在';let e=null;if(['p3_aid','p3_expand','p3_move','p3_close'].includes(kind))e=firmGate(kind,target);if(['p3_regulate','p3_rescue'].includes(kind))e=homeWorkQuote(kind,target).error;if(kind==='p3_land')e=roleGate('commerce');if(e)return e;const note=agReplaceNote(kind);phase3Ensure().action={kind,target};S.ag=kind;logIt('已安排'+AG[kind].n+'，列入本月工作安排'+note+'。');return null;}
 for(const [id,n] of [['p3_aid','帮扶企业稳产'],['p3_expand','企业扩产审批'],['p3_move','辖区内企业搬迁'],['p3_close','企业有序退出'],['p3_regulate','房企资金监管'],['p3_rescue','停工住宅保交付'],['p3_land','争取年度工业用地指标'],['p3_petition','产业信访专项整改']])AG[id]={n,cat:'专项',cond:()=>false,cd:1,d:'占本月工作安排，办理时需满足人员、资金和项目条件。',f:()=>{const a=phase3Ensure().action;if(!a||a.kind!==id)return '专项工作目标已失效';const text=id==='p3_land'?landContest():id==='p3_petition'?petitionWork(a.target,'rectify'):id==='p3_regulate'||id==='p3_rescue'?homeWork(id,a.target):firmWork(id,a.target);return text||'专项工作已完成。';}};
 const _p3Init=initLevel,_p3Migrate=migrate,_p3Load=load,_p3Close=closeLevel,_p3Tick=tick,_p3FinClose=closeFinanceMonth,_p3Find=findEvent,_p3Admission=eventAdmission,_p3Fx=applyFx,_p3LandPrice=landPrice,_p3Settle=settleProjectCompletions;
 initLevel=function(lvl,merit){p3Initializing=true;try{_p3Init(lvl,merit);}finally{p3Initializing=false;}phase3Reset(false);};
@@ -3157,7 +3189,7 @@ vRegion=function(){const html=_p3Region();return vComposite()+html.replace(/<div
 vOver=function(){return _p3Over()+`<div class="sec phase-panel"><h2>经营提示</h2><p>市场${marketLabel()} · 在营企业 ${phase3Ensure().firms.filter(f=>f.stage!=='closed').length} · 住宅待售 ${housingInventory().toFixed(1)}套。经营页可处理稳产、扩产、住宅开发与矿区修复。</p></div>`;};
 vFin=function(){return _p3Fin()+`<div class="sec phase-panel"><h2>住宅资金与升级备份</h2><p>平台住宅未收回投入 ${fmt(phase3Ensure().homes.filter(h=>h.mode==='self').reduce((a,h)=>a+Math.max(0,h.cost-h.received),0))}。开发成本、土地款、销售回款和税收分别入账；未来售房款不计入保守现金流。</p><div class="backup-actions">${LS.get('yifang_save_before_v114')?'<button class="sm" id="btnAuditBackup">导出审计修复前存档</button>':''}${LS.get('yifang_save_before_v113')?'<button class="sm" id="btnP3Backup">导出第三批升级前存档</button>':''}</div></div>`;};
 vAgenda=function(){return _p3Agenda()+(S.ag.startsWith('p3_')?`<div class="sec"><b>已选经营工作：${esc(AG[S.ag].n)}</b><p>目标：${esc(phase3Ensure().action?.target||'年度用地指标')}；占用本月原工作机会，推进时执行。</p></div>`:'');};
-bindPanel=function(){_p3Bind();document.querySelectorAll('[data-p3]').forEach(b=>b.onclick=()=>{const e=schedulePhase3(b.dataset.p3,b.dataset.target);if(e)toast(e);else mtoast('已安排'+AG[b.dataset.p3].n+'，推进下月时执行。');renderAll();});document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>{const e=startHome(b.dataset.home,b.dataset.mode);if(e)toast(e);else mtoast('住宅项目已立项，锁定报价并记入资金与土地台账。');renderAll();});document.querySelectorAll('[data-mine]').forEach(b=>b.onclick=()=>{const e=startMine(b.dataset.mine);if(e)toast(e);renderAll();});const a114=$('#btnAuditBackup');if(a114)a114.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v114'));a.download='一方水土-审计修复前存档.json';a.click();};const b=$('#btnP3Backup');if(b)b.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v113'));a.download='一方水土-第三批升级前存档.json';a.click();};};
+bindPanel=function(){_p3Bind();document.querySelectorAll('[data-p3]').forEach(b=>b.onclick=()=>{const e=schedulePhase3(b.dataset.p3,b.dataset.target);if(e)toast(e);renderAll();});document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>{const e=startHome(b.dataset.home,b.dataset.mode);if(e)toast(e);else mtoast('住宅项目已立项，锁定报价并记入资金与土地台账。');renderAll();});document.querySelectorAll('[data-mine]').forEach(b=>b.onclick=()=>{const e=startMine(b.dataset.mine);if(e)toast(e);renderAll();});const a114=$('#btnAuditBackup');if(a114)a114.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v114'));a.download='一方水土-审计修复前存档.json';a.click();};const b=$('#btnP3Backup');if(b)b.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v113'));a.download='一方水土-第三批升级前存档.json';a.click();};};
 showMonthly=function(B,done){_p3Monthly(B,done);const body=$('#doc .body');if(body&&$('#modal').classList.contains('on')&&S.monthly?.phase3){const m=S.monthly.phase3;body.insertAdjacentHTML('beforeend',`<div class="sec phase-panel"><h2>企业与住宅复盘</h2><p>市场指数 ${m.market.toFixed(2)} · 待售住宅 ${m.inventory.toFixed(1)}套 · 当月平台销售回款 ${fmt(m.sales)} · 已修复矿区${m.mines}处。</p></div>`);}};
 
 /* ---- 成就与本机历局排名：只记录荣誉，不改动经营数值 ---- */
@@ -3619,6 +3651,71 @@ document.addEventListener('DOMContentLoaded',()=>{
   },{passive:false});
   document.addEventListener('dblclick',stop,{passive:false});
   window.addEventListener('wheel',function(e){if(e.ctrlKey)e.preventDefault();},{passive:false});
+})();
+/* ---- 操作反馈：按钮执行后写了日志却没有弹出提示，就把本次新增的日志弹出来 ---- */
+(function(){
+  var seq0=null,shown=0,orig=mtoast;
+  mtoast=function(){shown++;return orig.apply(this,arguments);};
+  var skip='#nextbtn,#btnNew,#btnLoad,#btnReset,#btnImport,#btnExport,#btnInstall,#btnInstallCover';
+  document.addEventListener('click',function(e){
+    var b=e.target&&e.target.closest&&e.target.closest('button');
+    seq0=null;if(!b||typeof S==='undefined'||!S||b.disabled||b.matches(skip)||b.closest('#modal,#cover,#installTip'))return;
+    seq0=S.logSeq||0;shown=0;
+  },true);
+  document.addEventListener('click',function(){
+    if(seq0===null||!S)return;var s=seq0;seq0=null;
+    if(shown||document.querySelector('#modal.on'))return;
+    var news=(S.log||[]).filter(function(l){return (l.q||0)>s;}).reverse();
+    if(!news.length)return;
+    mtoast(news.map(function(l){return l.t;}).join('　'),news.some(function(l){return l.c==='bad';})?'bad':(news.some(function(l){return l.c==='good';})?'good':''));
+  });
+})();
+
+/* ---- 安装到桌面（PWA）：首次打开提示一次，之后在封面和右侧存档区随时可装 ---- */
+(function(){
+  var KEY='yifang_install_prompted',deferred=null;
+  var ua=navigator.userAgent||'';
+  var isIOS=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  var isAndroid=/android/i.test(ua);
+  var inApp=/MicroMessenger|QQ\/|Weibo|DingTalk|Lark|Feishu|AlipayClient|baiduboxapp/i.test(ua);
+  var standalone=function(){return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;};
+  var btns=function(){return [document.getElementById('btnInstall'),document.getElementById('btnInstallCover')].filter(Boolean);};
+  var refresh=function(){var hide=standalone()||location.protocol==='file:';btns().forEach(function(b){b.hidden=hide;});};
+  if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
+    addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});
+  }
+  addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;refresh();});
+  addEventListener('appinstalled',function(){deferred=null;LS.set(KEY,'installed');refresh();closeTip();mtoast('已安装到桌面，之后可从桌面图标直接打开。','good');});
+  function guide(){
+    if(inApp)return '<p>当前是在微信 / QQ 等 App 内打开的，无法直接安装。</p><ol><li>点右上角「···」</li><li>选「在浏览器中打开」</li><li>在浏览器里再点一次「安装到桌面」</li></ol>';
+    if(isIOS)return '<p>iPhone / iPad 请用 Safari 打开本页：</p><ol><li>点底部的「分享」按钮</li><li>选「添加到主屏幕」</li><li>点右上角「添加」</li></ol>';
+    if(isAndroid)return '<p>如果没有弹出安装窗口：</p><ol><li>点浏览器右上角菜单「⋮」或「≡」</li><li>选「安装应用」或「添加到主屏幕 / 桌面」</li><li>部分国产手机需在系统设置里允许浏览器「创建桌面快捷方式」</li></ol><p class="muted">推荐使用 Chrome、Edge 或系统自带浏览器。</p>';
+    return '<p>电脑上可点地址栏右侧的「安装」图标，或在浏览器菜单中选「安装一方水土」。</p>';
+  }
+  var tip=null;
+  function closeTip(){if(tip)tip.hidden=true;}
+  function showTip(first){
+    if(!tip){tip=document.createElement('div');tip.id='installTip';tip.setAttribute('role','dialog');tip.setAttribute('aria-modal','true');document.body.appendChild(tip);
+      tip.addEventListener('click',function(e){if(e.target===tip)closeTip();});}
+    var can=!!deferred;
+    tip.innerHTML='<div class="box"><h3>把「一方水土」装到桌面</h3><p>安装后从桌面图标直接打开，全屏显示，没有地址栏，存档照常保留在本机。</p>'+(can?'':guide())+
+      (first?'<p class="muted" style="font-size:12px">以后也可以在封面或右侧存档区找到「安装到桌面」。</p>':'')+
+      '<div class="row"><button id="itLater">'+(first?'以后再说':'关闭')+'</button>'+(can?'<button class="primary" id="itGo">立即安装</button>':'')+'</div></div>';
+    tip.hidden=false;
+    document.getElementById('itLater').onclick=closeTip;
+    var go=document.getElementById('itGo');if(go)go.onclick=install;
+  }
+  function install(){
+    if(!deferred){showTip(false);return;}
+    var d=deferred;deferred=null;closeTip();
+    d.prompt();(d.userChoice||Promise.resolve({})).then(function(r){if(r&&r.outcome==='accepted')LS.set(KEY,'installed');refresh();});
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    refresh();btns().forEach(function(b){b.onclick=install;});
+    if(standalone()||location.protocol==='file:'||LS.get(KEY))return;
+    /* 等安卓浏览器把安装事件发出来再提示，最多等 2.5 秒 */
+    setTimeout(function(){if(standalone()||LS.get(KEY))return;LS.set(KEY,'shown');showTip(true);},2500);
+  });
 })();
 </script>
 </body>

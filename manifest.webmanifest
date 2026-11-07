@@ -4,6 +4,7 @@
   "description": "地方主政者生涯模拟",
   "lang": "zh-CN",
   "dir": "ltr",
+  "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
