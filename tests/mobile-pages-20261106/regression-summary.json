@@ -1,0 +1,64 @@
+{
+  "phase1": {
+    "passed": 38,
+    "failed": 0,
+    "exitCode": 0,
+    "log": "phase1.log"
+  },
+  "phase2": {
+    "passed": 50,
+    "failed": 0,
+    "exitCode": 0,
+    "log": "phase2.log"
+  },
+  "phase3": {
+    "passed": 47,
+    "failed": 0,
+    "exitCode": 0,
+    "log": "phase3.log"
+  },
+  "fixes-v114": {
+    "passed": 49,
+    "failed": 0,
+    "exitCode": 0,
+    "log": "fixes-v114.log"
+  },
+  "honors": {
+    "passed": 34,
+    "failed": 0,
+    "exitCode": 0,
+    "log": "honors.log"
+  },
+  "industry-permits": {
+    "passed": 16,
+    "failed": 0,
+    "exitCode": 0,
+    "log": "industry-permits.log"
+  },
+  "event-admission": {
+    "passed": 39,
+    "failed": 0,
+    "exitCode": 0,
+    "log": "event-admission.log"
+  },
+  "event-matrix": {
+    "passed": 1200,
+    "failed": 0,
+    "exitCode": 0,
+    "log": "event-matrix.log"
+  },
+  "ui-cards-land-event": {
+    "passed": 192,
+    "failed": 0,
+    "exitCode": 0,
+    "log": "ui-cards-land-event.log"
+  },
+  "mobile-pages": {
+    "passed": 97,
+    "failed": 0,
+    "viewCases": 95,
+    "preservedControls": 1794,
+    "fullScriptOutsideFourViewsIdentical": true,
+    "renderedValuesStateAndRngIdentical": true
+  }
+}

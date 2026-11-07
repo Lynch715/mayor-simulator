@@ -1,0 +1,5691 @@
+{
+  "pages": 360,
+  "issuePages": 33,
+  "counts": {
+    "buttons-touching": 20,
+    "page-overflow": 12,
+    "vertical-text": 42,
+    "uncontained-table": 16
+  },
+  "errors": [],
+  "rows": [
+    {
+      "level": 0,
+      "label": "over",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "map",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "build:traffic",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:people",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:infra",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:eco",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:ind",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "projects",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "business",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "fin",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 25,
+            "y": 2844.6,
+            "w": 158,
+            "h": 40,
+            "right": 183,
+            "bottom": 2884.6
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "debt",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "hr",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "file",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "honors",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "ranking",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "ranking:city",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "over",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "map",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "build:traffic",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:people",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:infra",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:eco",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:ind",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "land",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "projects",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "business",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "fin",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 25,
+            "y": 313.6,
+            "w": 158,
+            "h": 40,
+            "right": 183,
+            "bottom": 353.6
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "debt",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "hr",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "file",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -2745,
+            "w": 320,
+            "h": 667,
+            "right": 320,
+            "bottom": -2078
+          },
+          "viewport": 320,
+          "scrollWidth": 395
+        },
+        {
+          "kind": "vertical-text",
+          "text": "青石镇",
+          "rect": {
+            "x": 25,
+            "y": -1836.1,
+            "w": 23,
+            "h": 74.9,
+            "right": 48,
+            "bottom": -1761.2
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "青石镇5 年建成 45 项离任隐债率 78%ABBABACABABABA",
+          "rect": {
+            "x": 25,
+            "y": -1836.1,
+            "w": 370.3,
+            "h": 75.4,
+            "right": 395.3,
+            "bottom": -1760.7
+          }
+        }
+      ],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "honors",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "ranking",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "ranking:city",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "over",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "vertical-text",
+          "text": "政绩进度",
+          "rect": {
+            "x": 25,
+            "y": 841.3,
+            "w": 23,
+            "h": 95.7,
+            "right": 48,
+            "bottom": 936.9
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "财政紧张度",
+          "rect": {
+            "x": 25,
+            "y": 936.9,
+            "w": 23,
+            "h": 117,
+            "right": 48,
+            "bottom": 1053.9
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "核定编制 / 在编",
+          "rect": {
+            "x": 25,
+            "y": 1053.9,
+            "w": 23,
+            "h": 158.6,
+            "right": 48,
+            "bottom": 1212.5
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "本任年限",
+          "rect": {
+            "x": 25,
+            "y": 1212.5,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1308.7
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "到龄退休",
+          "rect": {
+            "x": 25,
+            "y": 1308.7,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1404.9
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "历年考核",
+          "rect": {
+            "x": 25,
+            "y": 1404.9,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1501.1
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "map",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "build:traffic",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:people",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:infra",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:eco",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:ind",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "land",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "ind",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "projects",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "business",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "fin",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 25,
+            "y": 251.2,
+            "w": 158,
+            "h": 40,
+            "right": 183,
+            "bottom": 291.2
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "debt",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "hr",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "file",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -3076.5,
+            "w": 320,
+            "h": 667,
+            "right": 320,
+            "bottom": -2409.5
+          },
+          "viewport": 320,
+          "scrollWidth": 395
+        },
+        {
+          "kind": "vertical-text",
+          "text": "青石镇",
+          "rect": {
+            "x": 25,
+            "y": -2071.4,
+            "w": 23,
+            "h": 74.9,
+            "right": 48,
+            "bottom": -1996.5
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "沂川县",
+          "rect": {
+            "x": 25,
+            "y": -1996.5,
+            "w": 23,
+            "h": 75.4,
+            "right": 48,
+            "bottom": -1921.1
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "青石镇5 年建成 45 项离任隐债率 78%ABBABACABABABA沂川县6 年建成 64 项离任隐债率 78%ABBABACABABABA",
+          "rect": {
+            "x": 25,
+            "y": -2071.4,
+            "w": 370.3,
+            "h": 150.8,
+            "right": 395.3,
+            "bottom": -1920.6
+          }
+        }
+      ],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "honors",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "ranking",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "ranking:city",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "over",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -613.5,
+            "w": 320,
+            "h": 667,
+            "right": 320,
+            "bottom": 53.5
+          },
+          "viewport": 320,
+          "scrollWidth": 384
+        },
+        {
+          "kind": "vertical-text",
+          "text": "政绩进度",
+          "rect": {
+            "x": 25,
+            "y": 814.3,
+            "w": 23,
+            "h": 95.7,
+            "right": 48,
+            "bottom": 909.9
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "财政紧张度",
+          "rect": {
+            "x": 25,
+            "y": 909.9,
+            "w": 23,
+            "h": 117,
+            "right": 48,
+            "bottom": 1026.9
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "核定编制 / 在编",
+          "rect": {
+            "x": 25,
+            "y": 1026.9,
+            "w": 23,
+            "h": 158.6,
+            "right": 48,
+            "bottom": 1185.5
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "本任年限",
+          "rect": {
+            "x": 25,
+            "y": 1185.5,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1281.7
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "到龄退休",
+          "rect": {
+            "x": 25,
+            "y": 1281.7,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1377.9
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "历年考核",
+          "rect": {
+            "x": 25,
+            "y": 1377.9,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1474.1
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "就业岗位覆盖130%学位覆盖70%医疗覆盖53%道路通达140%储备土地20104 亩",
+          "rect": {
+            "x": 25,
+            "y": 618.3,
+            "w": 359.1,
+            "h": 169,
+            "right": 384.1,
+            "bottom": 787.3
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "政绩进度52 / 220财政紧张度95核定编制 / 在编19950 / 19000本任年限4 / 9到龄退休63 岁　还有 6 年历年考核A B B C A B B C A B B C A B B C A B B C A B B C A",
+          "rect": {
+            "x": 25,
+            "y": 814.3,
+            "w": 359.1,
+            "h": 660.3,
+            "right": 384.1,
+            "bottom": 1474.6
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "map",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "build:traffic",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:people",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:infra",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:eco",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:ind",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "land",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "ind",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "region",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "projects",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "business",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "fin",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 25,
+            "y": 313.7,
+            "w": 158,
+            "h": 40,
+            "right": 183,
+            "bottom": 353.7
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "debt",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "hr",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "file",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -3248,
+            "w": 320,
+            "h": 667,
+            "right": 320,
+            "bottom": -2581
+          },
+          "viewport": 320,
+          "scrollWidth": 395
+        },
+        {
+          "kind": "vertical-text",
+          "text": "青石镇",
+          "rect": {
+            "x": 25,
+            "y": -2146.7,
+            "w": 23,
+            "h": 74.9,
+            "right": 48,
+            "bottom": -2071.8
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "沂川县",
+          "rect": {
+            "x": 25,
+            "y": -2071.8,
+            "w": 23,
+            "h": 75.4,
+            "right": 48,
+            "bottom": -1996.4
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "临渡市",
+          "rect": {
+            "x": 25,
+            "y": -1996.4,
+            "w": 23,
+            "h": 75.4,
+            "right": 48,
+            "bottom": -1921
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "青石镇5 年建成 45 项离任隐债率 78%ABBABACABABABA沂川县6 年建成 64 项离任隐债率 78%ABBABACABABABA临渡市7 年建成 83 项离任隐债率 78%ABBABACABABABA",
+          "rect": {
+            "x": 25,
+            "y": -2146.7,
+            "w": 370.3,
+            "h": 226.2,
+            "right": 395.3,
+            "bottom": -1920.5
+          }
+        }
+      ],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "honors",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "ranking",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "ranking:city",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "over",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -595.5,
+            "w": 320,
+            "h": 667,
+            "right": 320,
+            "bottom": 71.5
+          },
+          "viewport": 320,
+          "scrollWidth": 463
+        },
+        {
+          "kind": "vertical-text",
+          "text": "政绩进度",
+          "rect": {
+            "x": 25,
+            "y": 832.3,
+            "w": 23,
+            "h": 95.7,
+            "right": 48,
+            "bottom": 927.9
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "财政紧张度",
+          "rect": {
+            "x": 25,
+            "y": 927.9,
+            "w": 23,
+            "h": 117,
+            "right": 48,
+            "bottom": 1044.9
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "核定编制 / 在编",
+          "rect": {
+            "x": 25,
+            "y": 1044.9,
+            "w": 23,
+            "h": 158.6,
+            "right": 48,
+            "bottom": 1203.5
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "本任年限",
+          "rect": {
+            "x": 25,
+            "y": 1203.5,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1299.7
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "到龄退休",
+          "rect": {
+            "x": 25,
+            "y": 1299.7,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1395.9
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "历年考核",
+          "rect": {
+            "x": 25,
+            "y": 1395.9,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1492.1
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "就业岗位覆盖130%学位覆盖70%医疗覆盖53%道路通达140%储备土地44229 亩",
+          "rect": {
+            "x": 25,
+            "y": 636.3,
+            "w": 438.3,
+            "h": 169,
+            "right": 463.3,
+            "bottom": 805.3
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "政绩进度52 / —财政紧张度90核定编制 / 在编54600 / 52000本任年限4 / 12到龄退休65 岁　还有 2 年历年考核A B B C A B B C A B B C A B B C A B B C A B B C A B ",
+          "rect": {
+            "x": 25,
+            "y": 832.3,
+            "w": 438.3,
+            "h": 660.3,
+            "right": 463.3,
+            "bottom": 1492.6
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "map",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "build:traffic",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:people",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:infra",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:eco",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:ind",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "land",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "ind",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "region",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "district",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "projects",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "business",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "fin",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 25,
+            "y": 313.7,
+            "w": 158,
+            "h": 40,
+            "right": 183,
+            "bottom": 353.7
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "debt",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "hr",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "file",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -3508.5,
+            "w": 320,
+            "h": 667,
+            "right": 320,
+            "bottom": -2841.5
+          },
+          "viewport": 320,
+          "scrollWidth": 413
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "青石镇5 年建成 45 项离任隐债率 78%ABBABACABABABA沂川县6 年建成 64 项离任隐债率 78%ABBABACABABABA临渡市7 年建成 83 项离任隐债率 78%ABBABACABABABA江岚市（副省级）8 年建",
+          "rect": {
+            "x": 25,
+            "y": -2311,
+            "w": 388.5,
+            "h": 280.8,
+            "right": 413.5,
+            "bottom": -2030.2
+          }
+        }
+      ],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "honors",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "ranking",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "ranking:city",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "over",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "map",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "build:traffic",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:people",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:infra",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:eco",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:ind",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "projects",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "business",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "fin",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 170,
+            "y": 187.3,
+            "w": 158,
+            "h": 40,
+            "right": 328,
+            "bottom": 227.3
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "debt",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "hr",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "file",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "honors",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "ranking",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "ranking:city",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "over",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "map",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "build:traffic",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:people",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:infra",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:eco",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:ind",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "land",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "projects",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "business",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "fin",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 170,
+            "y": 400.2,
+            "w": 158,
+            "h": 40,
+            "right": 328,
+            "bottom": 440.2
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "debt",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "hr",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "file",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -2471.5,
+            "w": 360,
+            "h": 800,
+            "right": 360,
+            "bottom": -1671.5
+          },
+          "viewport": 360,
+          "scrollWidth": 395
+        },
+        {
+          "kind": "vertical-text",
+          "text": "青石镇",
+          "rect": {
+            "x": 25,
+            "y": -1621.8,
+            "w": 23,
+            "h": 74.9,
+            "right": 48,
+            "bottom": -1546.9
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "青石镇5 年建成 45 项离任隐债率 78%ABBABACABABABA",
+          "rect": {
+            "x": 25,
+            "y": -1621.8,
+            "w": 370.3,
+            "h": 75.4,
+            "right": 395.3,
+            "bottom": -1546.4
+          }
+        }
+      ],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "honors",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "ranking",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "ranking:city",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "over",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "map",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "build:traffic",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:people",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:infra",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:eco",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:ind",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "land",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "ind",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "projects",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "business",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "fin",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 170,
+            "y": 317.8,
+            "w": 158,
+            "h": 40,
+            "right": 328,
+            "bottom": 357.8
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "debt",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "hr",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "file",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -2767.5,
+            "w": 360,
+            "h": 800,
+            "right": 360,
+            "bottom": -1967.5
+          },
+          "viewport": 360,
+          "scrollWidth": 395
+        },
+        {
+          "kind": "vertical-text",
+          "text": "青石镇",
+          "rect": {
+            "x": 25,
+            "y": -1842.4,
+            "w": 23,
+            "h": 74.9,
+            "right": 48,
+            "bottom": -1767.5
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "沂川县",
+          "rect": {
+            "x": 25,
+            "y": -1767.5,
+            "w": 23,
+            "h": 75.4,
+            "right": 48,
+            "bottom": -1692.1
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "青石镇5 年建成 45 项离任隐债率 78%ABBABACABABABA沂川县6 年建成 64 项离任隐债率 78%ABBABACABABABA",
+          "rect": {
+            "x": 25,
+            "y": -1842.4,
+            "w": 370.3,
+            "h": 150.8,
+            "right": 395.3,
+            "bottom": -1691.6
+          }
+        }
+      ],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "honors",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "ranking",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "ranking:city",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "over",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -542,
+            "w": 360,
+            "h": 800,
+            "right": 360,
+            "bottom": 258
+          },
+          "viewport": 360,
+          "scrollWidth": 384
+        },
+        {
+          "kind": "vertical-text",
+          "text": "政绩进度",
+          "rect": {
+            "x": 25,
+            "y": 899.1,
+            "w": 23,
+            "h": 95.7,
+            "right": 48,
+            "bottom": 994.8
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "财政紧张度",
+          "rect": {
+            "x": 25,
+            "y": 994.8,
+            "w": 23,
+            "h": 117,
+            "right": 48,
+            "bottom": 1111.8
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "核定编制 / 在编",
+          "rect": {
+            "x": 25,
+            "y": 1111.8,
+            "w": 23,
+            "h": 158.6,
+            "right": 48,
+            "bottom": 1270.3
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "本任年限",
+          "rect": {
+            "x": 25,
+            "y": 1270.3,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1366.5
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "到龄退休",
+          "rect": {
+            "x": 25,
+            "y": 1366.5,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1462.7
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "历年考核",
+          "rect": {
+            "x": 25,
+            "y": 1462.7,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1558.9
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "就业岗位覆盖130%学位覆盖70%医疗覆盖53%道路通达140%储备土地20104 亩",
+          "rect": {
+            "x": 25,
+            "y": 703.1,
+            "w": 359.1,
+            "h": 169,
+            "right": 384.1,
+            "bottom": 872.1
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "政绩进度52 / 220财政紧张度95核定编制 / 在编19950 / 19000本任年限4 / 9到龄退休63 岁　还有 6 年历年考核A B B C A B B C A B B C A B B C A B B C A B B C A",
+          "rect": {
+            "x": 25,
+            "y": 899.1,
+            "w": 359.1,
+            "h": 660.3,
+            "right": 384.1,
+            "bottom": 1559.4
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "map",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "build:traffic",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:people",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:infra",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:eco",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:ind",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "land",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "ind",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "region",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "projects",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "business",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "fin",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 170,
+            "y": 359.4,
+            "w": 158,
+            "h": 40,
+            "right": 328,
+            "bottom": 399.4
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "debt",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "hr",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "file",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -2894,
+            "w": 360,
+            "h": 800,
+            "right": 360,
+            "bottom": -2094
+          },
+          "viewport": 360,
+          "scrollWidth": 395
+        },
+        {
+          "kind": "vertical-text",
+          "text": "青石镇",
+          "rect": {
+            "x": 25,
+            "y": -1893.5,
+            "w": 23,
+            "h": 74.9,
+            "right": 48,
+            "bottom": -1818.6
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "沂川县",
+          "rect": {
+            "x": 25,
+            "y": -1818.6,
+            "w": 23,
+            "h": 75.4,
+            "right": 48,
+            "bottom": -1743.2
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "临渡市",
+          "rect": {
+            "x": 25,
+            "y": -1743.2,
+            "w": 23,
+            "h": 75.4,
+            "right": 48,
+            "bottom": -1667.8
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "青石镇5 年建成 45 项离任隐债率 78%ABBABACABABABA沂川县6 年建成 64 项离任隐债率 78%ABBABACABABABA临渡市7 年建成 83 项离任隐债率 78%ABBABACABABABA",
+          "rect": {
+            "x": 25,
+            "y": -1893.5,
+            "w": 370.3,
+            "h": 226.2,
+            "right": 395.3,
+            "bottom": -1667.3
+          }
+        }
+      ],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "honors",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "ranking",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "ranking:city",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "over",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -542,
+            "w": 360,
+            "h": 800,
+            "right": 360,
+            "bottom": 258
+          },
+          "viewport": 360,
+          "scrollWidth": 463
+        },
+        {
+          "kind": "vertical-text",
+          "text": "政绩进度",
+          "rect": {
+            "x": 25,
+            "y": 899.1,
+            "w": 23,
+            "h": 95.7,
+            "right": 48,
+            "bottom": 994.8
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "财政紧张度",
+          "rect": {
+            "x": 25,
+            "y": 994.8,
+            "w": 23,
+            "h": 117,
+            "right": 48,
+            "bottom": 1111.8
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "核定编制 / 在编",
+          "rect": {
+            "x": 25,
+            "y": 1111.8,
+            "w": 23,
+            "h": 158.6,
+            "right": 48,
+            "bottom": 1270.3
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "本任年限",
+          "rect": {
+            "x": 25,
+            "y": 1270.3,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1366.5
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "到龄退休",
+          "rect": {
+            "x": 25,
+            "y": 1366.5,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1462.7
+          }
+        },
+        {
+          "kind": "vertical-text",
+          "text": "历年考核",
+          "rect": {
+            "x": 25,
+            "y": 1462.7,
+            "w": 23,
+            "h": 96.2,
+            "right": 48,
+            "bottom": 1558.9
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "就业岗位覆盖130%学位覆盖70%医疗覆盖53%道路通达140%储备土地44229 亩",
+          "rect": {
+            "x": 25,
+            "y": 703.1,
+            "w": 438.3,
+            "h": 169,
+            "right": 463.3,
+            "bottom": 872.1
+          }
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "政绩进度52 / —财政紧张度90核定编制 / 在编54600 / 52000本任年限4 / 12到龄退休65 岁　还有 2 年历年考核A B B C A B B C A B B C A B B C A B B C A B B C A B ",
+          "rect": {
+            "x": 25,
+            "y": 899.1,
+            "w": 438.3,
+            "h": 660.3,
+            "right": 463.3,
+            "bottom": 1559.4
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "map",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "build:traffic",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:people",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:infra",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:eco",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:ind",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "land",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "ind",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "region",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "district",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "projects",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "business",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "fin",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 170,
+            "y": 379.9,
+            "w": 158,
+            "h": 40,
+            "right": 328,
+            "bottom": 419.9
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "debt",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "hr",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "file",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "page-overflow",
+          "text": "一方水土\n\n.phase-scroll{overflow-x:auto;max-width:100%}.phase-scroll table{min-width:360px}.phase-note{font-size:12px;color:",
+          "rect": {
+            "x": 0,
+            "y": -3138.5,
+            "w": 360,
+            "h": 800,
+            "right": 360,
+            "bottom": -2338.5
+          },
+          "viewport": 360,
+          "scrollWidth": 413
+        },
+        {
+          "kind": "uncontained-table",
+          "text": "青石镇5 年建成 45 项离任隐债率 78%ABBABACABABABA沂川县6 年建成 64 项离任隐债率 78%ABBABACABABABA临渡市7 年建成 83 项离任隐债率 78%ABBABACABABABA江岚市（副省级）8 年建",
+          "rect": {
+            "x": 25,
+            "y": -2062.6,
+            "w": 388.5,
+            "h": 280.8,
+            "right": 413.5,
+            "bottom": -1781.8
+          }
+        }
+      ],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "honors",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "ranking",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "ranking:city",
+      "screen": [
+        360,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": true,
+          "hint": true
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "over",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "map",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "build:traffic",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:people",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:infra",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:eco",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:ind",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "projects",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "business",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "fin",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 170,
+            "y": 74.7,
+            "w": 158,
+            "h": 40,
+            "right": 328,
+            "bottom": 114.7
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "debt",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "hr",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "file",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "honors",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "ranking",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "ranking:city",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "over",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "map",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "build:traffic",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:people",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:infra",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:eco",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:ind",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "land",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "projects",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "business",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "fin",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 170,
+            "y": 380.2,
+            "w": 158,
+            "h": 40,
+            "right": 328,
+            "bottom": 420.2
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "debt",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "hr",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "file",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "honors",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "ranking",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "ranking:city",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "over",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "map",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "build:traffic",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:people",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:infra",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:eco",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:ind",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "land",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "ind",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "projects",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "business",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "fin",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 170,
+            "y": 380.2,
+            "w": 158,
+            "h": 40,
+            "right": 328,
+            "bottom": 420.2
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "debt",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "hr",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "file",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "honors",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "ranking",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "ranking:city",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "over",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "map",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "build:traffic",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:people",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:infra",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:eco",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:ind",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "land",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "ind",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "region",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "projects",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "business",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "fin",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 170,
+            "y": 380.2,
+            "w": 158,
+            "h": 40,
+            "right": 328,
+            "bottom": 420.2
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "debt",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "hr",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "file",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "honors",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "ranking",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "ranking:city",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "over",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "map",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "build:traffic",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:people",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:infra",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:eco",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:ind",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "land",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "ind",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "region",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "district",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "projects",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "business",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "fin",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 170,
+            "y": 380.2,
+            "w": 158,
+            "h": 40,
+            "right": 328,
+            "bottom": 420.2
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "debt",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "hr",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "file",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "honors",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "ranking",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "ranking:city",
+      "screen": [
+        640,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "over",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "map",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "build:traffic",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:people",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:infra",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:eco",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "build:ind",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "projects",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "business",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "fin",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 260,
+            "y": 754.7,
+            "w": 152,
+            "h": 26.5,
+            "right": 412,
+            "bottom": 781.2
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "debt",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "hr",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "file",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "honors",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 0,
+      "label": "ranking",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 0,
+      "label": "ranking:city",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "over",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "map",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "build:traffic",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:people",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:infra",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:eco",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "build:ind",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "land",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "projects",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "business",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "fin",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 260,
+            "y": 775.5,
+            "w": 152,
+            "h": 26.5,
+            "right": 412,
+            "bottom": 802
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "debt",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "hr",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "file",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "honors",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 1,
+      "label": "ranking",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "label": "ranking:city",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "over",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "map",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "build:traffic",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:people",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:infra",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:eco",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "build:ind",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "land",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "ind",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "projects",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "business",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "fin",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 260,
+            "y": 754.5,
+            "w": 152,
+            "h": 26.5,
+            "right": 412,
+            "bottom": 781
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "debt",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "hr",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "file",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "honors",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 2,
+      "label": "ranking",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "label": "ranking:city",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "over",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "map",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "build:traffic",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:people",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:infra",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:eco",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "build:ind",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "land",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "ind",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "region",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "projects",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "business",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "fin",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 260,
+            "y": 754.5,
+            "w": 152,
+            "h": 26.5,
+            "right": 412,
+            "bottom": 781
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "debt",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "hr",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "file",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "honors",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 3,
+      "label": "ranking",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "label": "ranking:city",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "over",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "map",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "build:traffic",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:people",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:infra",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:eco",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "build:ind",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "land",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "ind",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "region",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "district",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "projects",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "business",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "fin",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [
+        {
+          "kind": "buttons-touching",
+          "text": "导出第三批升级前存档",
+          "rect": {
+            "x": 260,
+            "y": 754.5,
+            "w": 152,
+            "h": 26.5,
+            "right": 412,
+            "bottom": 781
+          }
+        }
+      ],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "debt",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "hr",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "file",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "honors",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "level": 4,
+      "label": "ranking",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "label": "ranking:city",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": [
+        {
+          "scrollable": false,
+          "hint": false
+        }
+      ]
+    }
+  ],
+  "storage": "in-memory only"
+}

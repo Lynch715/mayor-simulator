@@ -1,0 +1,51 @@
+{
+  "source": "tests/land-event-20261106/landsim.cjs",
+  "execution": "unchanged evaluate callback in VM",
+  "result": [
+    {
+      "lv": 0,
+      "mode": "builder",
+      "eligPct": 88,
+      "avgShareWhenElig": "6.1%",
+      "hitsPer10y": "2.50",
+      "avgPool": 48,
+      "landPctYearly_seed6": "83,27,3,0,0,0,0,0,0,0"
+    },
+    {
+      "lv": 1,
+      "mode": "builder",
+      "eligPct": 98,
+      "avgShareWhenElig": "5.2%",
+      "hitsPer10y": "1.87",
+      "avgPool": 60,
+      "landPctYearly_seed6": "38,3,0,0,0,0,0,0,0,0"
+    },
+    {
+      "lv": 2,
+      "mode": "builder",
+      "eligPct": 98,
+      "avgShareWhenElig": "5.0%",
+      "hitsPer10y": "2.57",
+      "avgPool": 65,
+      "landPctYearly_seed6": "38,3,0,0,0,0,0,0,0,0"
+    },
+    {
+      "lv": 3,
+      "mode": "builder",
+      "eligPct": 98,
+      "avgShareWhenElig": "5.1%",
+      "hitsPer10y": "2.70",
+      "avgPool": 66,
+      "landPctYearly_seed6": "38,3,0,0,0,0,0,0,0,0"
+    },
+    {
+      "lv": 4,
+      "mode": "builder",
+      "eligPct": 98,
+      "avgShareWhenElig": "5.7%",
+      "hitsPer10y": "3.40",
+      "avgPool": 61,
+      "landPctYearly_seed6": "38,3,0,0,0,0,0,0,0,0"
+    }
+  ]
+}

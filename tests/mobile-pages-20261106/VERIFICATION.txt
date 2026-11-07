@@ -1,0 +1,70 @@
+一方水土 · 其他页面手机排版验收（2026-11-06）
+结果：本地全部通过；本轮发布文件与已验收本体一致。线上部署记录保存在本地release/。
+
+范围与备份
+- 游戏本体：index.html，单文件；改动仅为CSS与vHist、基础vOver、基础vFile、P3 vFin四处视图模板。
+- 基线：backups/index-before-mobile-pages-20261106.html（上一轮已发布的ui-cards版本）。
+- 基线SHA256：0e777a83f9378b2a8665622ac90917a9f6edb73df820270c4d2fa4c833ff0e6a
+- 当前SHA256：5c8bf5df7c85dfb19fdf82a175d6936812feee80dbc84230f8de0185ea722d18
+- 未改数值、状态结构、准入/审批条件、存档迁移、事件效果、按钮处理器或data-phase-action等入口。
+- 完整脚本移除上述四个展示模板范围后，与基线逐字相同；非样式的静态HTML相同。
+- 测试在注入Map存储的隔离iframe中运行，不读取或改写玩家localStorage。
+
+复现与修复位置（当前index.html行号）
+1. CSS 534 / 535 / 549：m-text允许长文本换行，m-wide在卡片内占整行；短值仍不换行。
+2. CSS 568–574、基础vOver 2406：双栏子项min-width:0；手机640px及以下单栏；overview-summary固定标签列的合理宽度，rating-history可换行。
+   原因：长任期的连续考核原受td.r的nowrap限制，撑开整个grid2，让标签列缩到一字宽，并让页面横向溢出。
+3. vHist 2363–2364：「你走过的地方」改用m-cards + data-l；城市首行，近况整行，桌面保留六列表格。
+4. 基础vFile 2463：「历任小结」改用m-cards + data-l并补表头；考核整行可换行，空记录保留。
+   原因：原五列表格将长城名及完整考核记录挤在同一行，手机横向撑出页面，城市名逐字竖排。
+5. CSS 571–573、P3 vFin 3158：两个原备份按钮包入backup-actions，gap:8px、最小高度44px、可折行。
+   原因：有v113/v114旧档备份时，两个按钮的HTML紧邻，无空隙；手机换行后也紧贴。按钮ID、显示条件、下载文案和处理器全部保留。
+6. README.md顶部新增本轮说明；新增本目录浏览器/回归入口、原始结果、日志、截图与source.diff。
+
+浏览器验收
+- 使用新版Codex In-app Browser，经 http://127.0.0.1:19140 载入，未使用file://或旧browser-use。
+- 工作状态：320×667、360×800、375×667、390×844、640×800、1280×800；五级职务的全部可见页签、五个建设分类、两类排名，共540个场景。
+  页面包含总览、地图、建设、土地、产业、区域、区县、项目、经营、财政、债务、人事、档案、成就、排名（依级别开放）。
+- 使用现有v114-scenes五级夹具，并补充8/14/20/26/32年长任期、31条考核、多任履历、大额资金债务、长国企名、在建项目、市政报价及旧档导出按钮。
+- 修复前：同样540场景，55个有问题场景；页面横向溢出23处、竖排文字78处、未包裹溢出表格30处、导出按钮紧贴30处，分布在总览、档案和财政。
+- 修复后：540场景，issuePages=0、counts={}、errors=[]，见after-pages.json。
+  282个横滑容器的提示与实际溢出一致；窄屏卡片无内部横向溢出。滚动到控件后检测中心及内缩四角的命中，未发现遮挡；避开胶囊按钮外部圆角。
+- 退休状态：375×667、390×844，五级全部可见页签/建设分类/排名，共130场景，无问题，见after-retired-pages.json。
+- 弹窗：月结、年度考核、信访事件、退休结局，320×667 / 375×667 / 390×844 / 568×320 / 1280×800，共20场景；弹窗在视口内，选项可通过内部滚动到达。见after-dialogs.json。
+- 原卡片专项：390px / 1280px，共5964项通过、failures=[]；覆盖镇/县全部五片区、实际月结审批，以及技改、检修、合同、干部岗位和培训入口。
+  390px审批卡片仍最高68px；375px / 390px / 1280px点击申报后名录保持展开、子组状态不变，scrollY差均为0；往返页签和其他details状态保留。见ui-cards-smoke.json。
+- 375px总览、390px档案/城市近况/财政、1280px桌面档案已人工看图复核。桌面保留表格，手机城市名横排。
+- 本次为应用内浏览器视口模拟；未做实体手机或Chrome DevTools设备预设验收。临时视口已恢复。
+
+回归（全部退出码0，0失败；原始输出见同名log）
+- node tests/phase1.cjs：38通过
+- node tests/phase2.cjs：50通过
+- node tests/phase3.cjs：47通过
+- node tests/fixes-v114/regression.cjs：49通过
+- node tests/honors/regression.cjs：34通过
+- node tests/industry-permits/regression.cjs：16通过
+- node tests/event-admission-fix-20261101/regression.cjs：39通过
+- node tests/event-admission-fix-20261101/matrix.cjs：1200通过
+- node tests/ui-cards-20261106/regression.cjs：192通过
+  含180种新建/读档分组、既有industryGate默认兼容、提示文案与分组解耦、五级各120个月新旧逐月状态及随机流一致。
+  land-event：不改原tests/land-event-20261106/landsim.cjs的evaluate模拟主体，在同一VM中执行；新旧版分别五级各30局×120个月（每版18000个月），结果完全一致。见land-event.json。
+- node tests/mobile-pages-20261106/regression.cjs：97通过
+  完整非视图脚本/静态HTML守护2项；五级×19视图场景95项。
+  1794个控件的标签、属性、data入口一致；显示数值、新旧渲染后的S和随机流一致。见regression-results.json与regression-summary.json。
+
+截图（均为实际应用内浏览器截图；before使用不可变备份）
+  after-city-history-390.jpg: 390×832
+  after-finance-390.jpg: 390×832
+  after-history-390.jpg: 390×832
+  after-history-desktop-1280.jpg: 1280×800
+  after-overview-375.jpg: 375×667
+  before-finance-390.jpg: 390×832
+  before-history-390.jpg: 390×832
+  before-overview-375.jpg: 375×667
+
+复跑浏览器
+1. 在项目根目录运行 python3 -m http.server 19140 --bind 127.0.0.1
+2. 打开 /tests/mobile-pages-20261106/browser-qa.html，点“检查全部页面”“检查弹窗”。
+3. ?retired=1&width=375,390 补查退休状态；?before=1&width=375,390 复现旧版问题。
+4. ?preview=1&level=4&page=file&section=历任小结 查看隔离预览；page=over&section=海屿市 查看长考核；page=fin&section=住宅资金 查看导出按钮。
+5. /tests/ui-cards-20261106/browser-qa.html?width=390,1280 点“运行全部界面检查”，复跑原交互与折叠/滚动。

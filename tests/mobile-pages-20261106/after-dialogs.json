@@ -1,0 +1,187 @@
+{
+  "dialogs": 20,
+  "errors": [],
+  "rows": [
+    {
+      "label": "monthly",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "review",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "event",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "ending",
+      "screen": [
+        320,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "monthly",
+      "screen": [
+        375,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "review",
+      "screen": [
+        375,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "event",
+      "screen": [
+        375,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "ending",
+      "screen": [
+        375,
+        667
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "monthly",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "review",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "event",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "ending",
+      "screen": [
+        390,
+        844
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "monthly",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "review",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "event",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "ending",
+      "screen": [
+        568,
+        320
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "monthly",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "review",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "event",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    },
+    {
+      "label": "ending",
+      "screen": [
+        1280,
+        800
+      ],
+      "issues": [],
+      "scrolls": []
+    }
+  ],
+  "storage": "in-memory only"
+}

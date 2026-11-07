@@ -531,7 +531,8 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 .m-table-wrap{max-width:100%;overflow-x:auto}.m-table-wrap table{min-width:360px}
 .m-cards td:first-child{word-break:keep-all;overflow-wrap:anywhere}
 .m-cards .m-actions button{width:100%;min-height:44px}
-.short-value,td.r,.m-cards td:not(:first-child):not(.m-actions):not(.m-levels){white-space:nowrap}
+.short-value,td.r,.m-cards td:not(:first-child):not(.m-actions):not(.m-levels):not(.m-text){white-space:nowrap}
+.m-cards td.m-text{white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
 .phase-scroll table th{white-space:nowrap}
 .phase-data td:not(:first-child){white-space:nowrap}
 .phase-scroll table :is(th,td):first-child{position:sticky;left:0;z-index:1;background:var(--paper);word-break:keep-all;overflow-wrap:anywhere}
@@ -545,6 +546,7 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
   table.m-cards td:first-child{grid-column:1/-1;font-size:14px;font-weight:600;white-space:normal}
   table.m-cards td:first-child::before,table.m-cards .m-actions::before,table.m-cards .m-levels::before{display:none}
   table.m-cards .m-actions,table.m-cards .m-levels{grid-column:1/-1}
+  table.m-cards .m-wide{grid-column:1/-1}
   table.m-cards :is(button,select){width:100%;min-height:44px;margin:2px 0 0}
   table.cadre-table td:nth-child(-n+2){grid-column:auto}.cadre-table td:nth-child(2){justify-content:flex-end}
   table.cadre-table td:nth-child(2)::before{display:none}
@@ -561,6 +563,15 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
   .soe-card:has(button) .soe-card-status{flex-basis:100%;max-width:none;margin-left:0}
   .soe-card button{width:100%}
 }
+
+/* 长履历与旧档工具：只约束展示宽度，数值和原按钮入口保持原样。 */
+.grid2>div{min-width:0}
+.overview-summary td:first-child{width:44%;word-break:keep-all}
+.overview-summary td.rating-history{white-space:normal;word-break:normal;overflow-wrap:anywhere}
+.backup-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.backup-actions:empty{display:none}
+.backup-actions button{flex:1 1 180px;min-height:44px;max-width:100%;white-space:normal}
+@media(max-width:640px){.grid2{grid-template-columns:minmax(0,1fr)}}
 
 /* 执政地图：沿用纸白、朱红；手机上可放大后在框内滑动 */
 .map-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0;font-size:13px}
@@ -2349,8 +2360,8 @@ function vRegion(){
  <div class="leads">${coops}</div></div>`;}
 function vHist(){const hs=S.hist||[];if(!hs.length)return '';
  return `<div class="sec"><h2>你走过的地方</h2><div class="hint">这里列出历任城市的近况，债务和公共服务仍会影响其后续发展。</div>
- <table><tr><th>城市</th><th class="r">在任</th><th class="r">离任已 </th><th class="r">现在繁荣</th><th class="r">现在债务率</th><th>近况</th></tr>
- ${hs.map(h=>`<tr><td>${esc(h.city.replace(/（.*/,''))}</td><td class="r">${h.years} 年</td><td class="r">${h.after||0} 年</td><td class="r">${Math.round(h.pros||0)}</td><td class="r ${(h.debt||0)>=80?'neg':''}">${Math.round(h.debt||0)}%</td><td style="font-size:13px">${esc(histLine(h))}</td></tr>`).join('')}</table></div>`;}
+ <div class="m-table-wrap"><table class="m-cards history-status"><tr><th>城市</th><th class="r">在任</th><th class="r">离任已 </th><th class="r">现在繁荣</th><th class="r">现在债务率</th><th>近况</th></tr>
+ ${hs.map(h=>`<tr><td data-l="城市">${esc(h.city.replace(/（.*/,''))}</td><td data-l="在任" class="r">${h.years} 年</td><td data-l="离任已" class="r">${h.after||0} 年</td><td data-l="现在繁荣" class="r">${Math.round(h.pros||0)}</td><td data-l="现在债务率" class="r ${(h.debt||0)>=80?'neg':''}">${Math.round(h.debt||0)}%</td><td data-l="近况" class="m-wide m-text" style="font-size:13px">${esc(histLine(h))}</td></tr>`).join('')}</table></div></div>`;}
 function vDist(){
  const ds=S.dist||[];const av=distAvg();const used=distTiers();
  const rows=ds.map(d=>{const a=S.alloc[d.id]||{fund:0,focus:'eco'};
@@ -2392,7 +2403,7 @@ function vOver(){const L=LV[S.lvl];const J=jobs();
   const bs=S.build.length?S.build.map(b=>`<tr><td>${FAC[b.id].n}${b.wl?'<span class="tag blue">'+b.wl+'</span>':''}${b.stalled?'<span class="tag red">资金不足停工</span>':''}</td><td class="r">${fmt(b.paid)} / ${fmt(b.cost)}</td><td class="r">剩 ${b.left} 月</td></tr>`).join(''):'<tr><td class="muted" colspan="3">没有在建项目。</td></tr>';
   return `${artBox(S.phase==='retired'?'r_hometown':'city_'+S.lvl,'banner')}${vAgenda()}${vWind()}<div class="sec"><h2>${esc(L.city)}</h2><div class="hint">${S.lvl===0?'资源枯竭的老矿镇，年轻人在往外走。':S.lvl===1?'农业县，物流园是主要税源之一。':S.lvl===2?'区域中心城市，工业基础尚可，城投规模不小。':S.lvl===3?'副省级城市，经济增长与债务处置均列入考核。':'直辖市。'}</div>
   <div class="grid2"><div><table><tr><td>就业岗位覆盖</td><td class="r">${Math.round(J*100)}%</td></tr><tr><td>学位覆盖</td><td class="r">${Math.round(cov('school')*100)}%</td></tr><tr><td>医疗覆盖</td><td class="r">${Math.round(cov('hosp')*100)}%</td></tr><tr><td>道路通达</td><td class="r">${Math.round(cov('road')*100)}%</td></tr><tr><td>储备土地</td><td class="r">${Math.round(S.land)} 亩</td></tr></table></div>
-  <div><table><tr><td>政绩进度</td><td class="r">${Math.round(S.merit)} / ${L.need>9999?'—':L.need}</td></tr><tr><td>财政紧张度</td><td class="r">${tension().toFixed(0)}</td></tr><tr><td>核定编制 / 在编</td><td class="r">${S.quota} / ${S.staff}</td></tr><tr><td>本任年限</td><td class="r">${S.tenure+1} / ${L.maxY}</td></tr><tr><td>到龄退休</td><td class="r">${retAge()} 岁　${retLeft()>0?'还有 '+retLeft()+' 年':'今年到点'}</td></tr><tr><td>历年考核</td><td class="r">${S.ratings.join(' ')||'—'}</td></tr></table></div></div></div>
+  <div><table class="overview-summary"><tr><td>政绩进度</td><td class="r">${Math.round(S.merit)} / ${L.need>9999?'—':L.need}</td></tr><tr><td>财政紧张度</td><td class="r">${tension().toFixed(0)}</td></tr><tr><td>核定编制 / 在编</td><td class="r">${S.quota} / ${S.staff}</td></tr><tr><td>本任年限</td><td class="r">${S.tenure+1} / ${L.maxY}</td></tr><tr><td>到龄退休</td><td class="r">${retAge()} 岁　${retLeft()>0?'还有 '+retLeft()+' 年':'今年到点'}</td></tr><tr><td>历年考核</td><td class="r rating-history">${S.ratings.join(' ')||'—'}</td></tr></table></div></div></div>
   <div class="sec"><h2>需要注意</h2>${warns.length?'<ul style="padding-left:18px;font-size:14px">'+warns.map(w=>'<li>'+w+'</li>').join('')+'</ul>':'<div class="hint">眼下没有明显问题。</div>'}</div>
   <div class="sec"><h2>在建项目</h2><table>${bs}</table></div>
   ${eraOn().length?`<div class="sec"><h2>这个时代</h2>${eraOn().map(e=>`<div class="hint" style="margin:4px 0"><b>${esc(e.n)}</b>　${esc(e.note)}</div>`).join('')}</div>`:''}
@@ -2449,7 +2460,7 @@ function vHR(){const need=staffNeed();const r=S.staff/need;
 function vFile(){
   const files=S.file.length?S.file.map(f=>`<li>${f.y}年　${esc(f.t)}${f.mild?'<span class="sev">违规</span>':'<span class="sev">违纪·'+['','一般','较重','严重'][f.sev]+'</span>'}${f.exp?'<span class="exp">'+(f.mild?'已处分':'已查处')+'</span>':''}</li>`).join(''):'<li class="muted">档案干净。</li>';
   return vHist()+`<div class="sec"><h2>履历</h2><ul class="resume" style="list-style:none">${S.resume.map(r=>`<li><span class="y">${r.y}年</span>${esc(r.t)}</li>`).join('')}</ul></div>
-  <div class="sec"><h2>历任小结</h2><table>${S.hist.length?S.hist.map(h=>`<tr><td>${esc(h.city)}</td><td class="r">${h.years} 年</td><td class="r">建成 ${h.built} 项</td><td class="r">离任隐债率 ${h.hdr}%</td><td class="r">${h.grades}</td></tr>`).join(''):'<tr><td class="muted">还在第一任。</td></tr>'}</table></div>
+  <div class="sec"><h2>历任小结</h2><div class="m-table-wrap"><table class="m-cards career-history"><tr><th>城市</th><th>在任</th><th>建成</th><th>离任隐债率</th><th>考核</th></tr>${S.hist.length?S.hist.map(h=>`<tr><td data-l="城市">${esc(h.city)}</td><td data-l="在任" class="r">${h.years} 年</td><td data-l="建成" class="r">${h.built} 项</td><td data-l="离任隐债率" class="r">${h.hdr}%</td><td data-l="考核" class="r m-wide m-text">${h.grades}</td></tr>`).join(''):'<tr><td class="muted" colspan="5">还在第一任。</td></tr>'}</table></div></div>
   <div class="sec"><h2>责任档案</h2><div class="hint">终身留存。违纪记录随时可能被倒查，退休也不例外。违规记录两年内可能被通报处分，累计四次免职。</div><ul class="file" style="list-style:none">${files}</ul></div>`;}
 function bindPanel(){
   document.querySelectorAll('[data-dist]').forEach(b=>b.onclick=()=>{const e=distSet(b.dataset.dist,b.dataset.k,b.dataset.k==='fund'?+b.dataset.v:b.dataset.v);if(e)toast(e);renderAll();});
@@ -3144,7 +3155,7 @@ function rivalWon(i){const a=S.phase3?.rivals[i];if(a){a.projects++;a.debt=clamp
 const _p3Bind=bindPanel,_p3Region=vRegion,_p3Fin=vFin,_p3Over=vOver,_p3Monthly=showMonthly,_p3Agenda=vAgenda;
 vRegion=function(){const html=_p3Region();return vComposite()+html.replace(/<div class="sec"><h2>省内位次<\/h2>[\s\S]*?<\/div><\/div>/,'');};
 vOver=function(){return _p3Over()+`<div class="sec phase-panel"><h2>经营提示</h2><p>市场${marketLabel()} · 在营企业 ${phase3Ensure().firms.filter(f=>f.stage!=='closed').length} · 住宅待售 ${housingInventory().toFixed(1)}套。经营页可处理稳产、扩产、住宅开发与矿区修复。</p></div>`;};
-vFin=function(){return _p3Fin()+`<div class="sec phase-panel"><h2>住宅资金与升级备份</h2><p>平台住宅未收回投入 ${fmt(phase3Ensure().homes.filter(h=>h.mode==='self').reduce((a,h)=>a+Math.max(0,h.cost-h.received),0))}。开发成本、土地款、销售回款和税收分别入账；未来售房款不计入保守现金流。</p>${LS.get('yifang_save_before_v114')?'<button class="sm" id="btnAuditBackup">导出审计修复前存档</button>':''}${LS.get('yifang_save_before_v113')?'<button class="sm" id="btnP3Backup">导出第三批升级前存档</button>':''}</div>`;};
+vFin=function(){return _p3Fin()+`<div class="sec phase-panel"><h2>住宅资金与升级备份</h2><p>平台住宅未收回投入 ${fmt(phase3Ensure().homes.filter(h=>h.mode==='self').reduce((a,h)=>a+Math.max(0,h.cost-h.received),0))}。开发成本、土地款、销售回款和税收分别入账；未来售房款不计入保守现金流。</p><div class="backup-actions">${LS.get('yifang_save_before_v114')?'<button class="sm" id="btnAuditBackup">导出审计修复前存档</button>':''}${LS.get('yifang_save_before_v113')?'<button class="sm" id="btnP3Backup">导出第三批升级前存档</button>':''}</div></div>`;};
 vAgenda=function(){return _p3Agenda()+(S.ag.startsWith('p3_')?`<div class="sec"><b>已选经营工作：${esc(AG[S.ag].n)}</b><p>目标：${esc(phase3Ensure().action?.target||'年度用地指标')}；占用本月原工作机会，推进时执行。</p></div>`:'');};
 bindPanel=function(){_p3Bind();document.querySelectorAll('[data-p3]').forEach(b=>b.onclick=()=>{const e=schedulePhase3(b.dataset.p3,b.dataset.target);if(e)toast(e);else mtoast('已安排'+AG[b.dataset.p3].n+'，推进下月时执行。');renderAll();});document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>{const e=startHome(b.dataset.home,b.dataset.mode);if(e)toast(e);else mtoast('住宅项目已立项，锁定报价并记入资金与土地台账。');renderAll();});document.querySelectorAll('[data-mine]').forEach(b=>b.onclick=()=>{const e=startMine(b.dataset.mine);if(e)toast(e);renderAll();});const a114=$('#btnAuditBackup');if(a114)a114.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v114'));a.download='一方水土-审计修复前存档.json';a.click();};const b=$('#btnP3Backup');if(b)b.onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(LS.get('yifang_save_before_v113'));a.download='一方水土-第三批升级前存档.json';a.click();};};
 showMonthly=function(B,done){_p3Monthly(B,done);const body=$('#doc .body');if(body&&$('#modal').classList.contains('on')&&S.monthly?.phase3){const m=S.monthly.phase3;body.insertAdjacentHTML('beforeend',`<div class="sec phase-panel"><h2>企业与住宅复盘</h2><p>市场指数 ${m.market.toFixed(2)} · 待售住宅 ${m.inventory.toFixed(1)}套 · 当月平台销售回款 ${fmt(m.sales)} · 已修复矿区${m.mines}处。</p></div>`);}};

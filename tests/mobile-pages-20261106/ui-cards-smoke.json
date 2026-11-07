@@ -1,0 +1,283 @@
+{
+  "checks": 5964,
+  "failures": [],
+  "maxCardHeight": 95,
+  "maxMobileCardHeight": 95,
+  "maxApprovalCardHeight": 68,
+  "retention": [
+    {
+      "width": 390,
+      "height": 844,
+      "before": 4470.5,
+      "after": 4470.5,
+      "delta": 0,
+      "directoryOpen": true,
+      "unavailableOpen": false,
+      "action": "permit_metal"
+    },
+    {
+      "width": 375,
+      "height": 667,
+      "before": 4614,
+      "after": 4614,
+      "delta": 0,
+      "directoryOpen": true,
+      "unavailableOpen": false,
+      "action": "permit_metal"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "before": 3317,
+      "after": 3317,
+      "delta": 0,
+      "directoryOpen": true,
+      "unavailableOpen": false,
+      "action": "permit_metal"
+    }
+  ],
+  "matrix": [
+    {
+      "width": 390,
+      "height": 844,
+      "lvl": 0,
+      "zone": "low",
+      "permit": "none",
+      "counts": {
+        "ready": 8,
+        "approval": 0,
+        "blocked": 26
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lvl": 0,
+      "zone": "mixed",
+      "permit": "none",
+      "counts": {
+        "ready": 17,
+        "approval": 7,
+        "blocked": 10
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lvl": 0,
+      "zone": "restricted",
+      "permit": "none",
+      "counts": {
+        "ready": 17,
+        "approval": 0,
+        "blocked": 17
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lvl": 0,
+      "zone": "eco",
+      "permit": "none",
+      "counts": {
+        "ready": 0,
+        "approval": 0,
+        "blocked": 34
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lvl": 0,
+      "zone": "heavy",
+      "permit": "none",
+      "counts": {
+        "ready": 17,
+        "approval": 7,
+        "blocked": 10
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lvl": 1,
+      "zone": "low",
+      "permit": "none",
+      "counts": {
+        "ready": 8,
+        "approval": 0,
+        "blocked": 26
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lvl": 1,
+      "zone": "mixed",
+      "permit": "none",
+      "counts": {
+        "ready": 24,
+        "approval": 0,
+        "blocked": 10
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lvl": 1,
+      "zone": "restricted",
+      "permit": "none",
+      "counts": {
+        "ready": 17,
+        "approval": 0,
+        "blocked": 17
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lvl": 1,
+      "zone": "eco",
+      "permit": "none",
+      "counts": {
+        "ready": 0,
+        "approval": 0,
+        "blocked": 34
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lvl": 1,
+      "zone": "heavy",
+      "permit": "none",
+      "counts": {
+        "ready": 24,
+        "approval": 9,
+        "blocked": 1
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "lvl": 0,
+      "zone": "low",
+      "permit": "none",
+      "counts": {
+        "ready": 8,
+        "approval": 0,
+        "blocked": 26
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "lvl": 0,
+      "zone": "mixed",
+      "permit": "none",
+      "counts": {
+        "ready": 17,
+        "approval": 7,
+        "blocked": 10
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "lvl": 0,
+      "zone": "restricted",
+      "permit": "none",
+      "counts": {
+        "ready": 17,
+        "approval": 0,
+        "blocked": 17
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "lvl": 0,
+      "zone": "eco",
+      "permit": "none",
+      "counts": {
+        "ready": 0,
+        "approval": 0,
+        "blocked": 34
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "lvl": 0,
+      "zone": "heavy",
+      "permit": "none",
+      "counts": {
+        "ready": 17,
+        "approval": 7,
+        "blocked": 10
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "lvl": 1,
+      "zone": "low",
+      "permit": "none",
+      "counts": {
+        "ready": 8,
+        "approval": 0,
+        "blocked": 26
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "lvl": 1,
+      "zone": "mixed",
+      "permit": "none",
+      "counts": {
+        "ready": 24,
+        "approval": 0,
+        "blocked": 10
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "lvl": 1,
+      "zone": "restricted",
+      "permit": "none",
+      "counts": {
+        "ready": 17,
+        "approval": 0,
+        "blocked": 17
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "lvl": 1,
+      "zone": "eco",
+      "permit": "none",
+      "counts": {
+        "ready": 0,
+        "approval": 0,
+        "blocked": 34
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "lvl": 1,
+      "zone": "heavy",
+      "permit": "none",
+      "counts": {
+        "ready": 24,
+        "approval": 9,
+        "blocked": 1
+      }
+    }
+  ],
+  "storage": "in-memory only",
+  "physicalDevice": false
+}
