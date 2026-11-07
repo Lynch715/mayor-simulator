@@ -1,0 +1,106 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>操作卡片 · 隔离验收</title>
+<style>body{font:14px system-ui;margin:12px;background:#eae8e1}button,select{font:inherit;min-height:44px;padding:6px 12px;margin:4px}.controls{display:flex;flex-wrap:wrap;align-items:center}iframe{display:block;border:0;background:#f3f2ee}#wrap{overflow:auto;max-width:100%}pre{white-space:pre-wrap}body.preview{margin:0}body.preview>.controls,body.preview>pre,body.preview>h1{display:none}</style>
+<h1>操作卡片 · 隔离验收</h1><div class="controls"><button id="run" disabled>运行全部界面检查</button><button id="show" disabled>展示当前场景</button><button id="single" disabled>检查当前场景</button><select id="level" aria-label="职务"><option value="0">镇级</option><option value="1">县级</option><option value="3">副省级</option></select><select id="zone" aria-label="片区"><option value="mixed">综合产业片区</option><option value="low">低污染片区</option><option value="restricted">限制工业片区</option><option value="eco">生态红线保护区</option><option value="heavy">重工业治理片区</option></select><select id="page" aria-label="页面"><option value="build">建设</option><option value="projects">项目</option><option value="hr">人事</option><option value="fin">财政</option><option value="region">区域</option><option value="ranking">排名</option></select><select id="permit" aria-label="许可"><option value="none">未获许可</option><option value="generic">县级通用许可</option><option value="dedicated">全部专属许可</option></select><strong id="status">加载中</strong></div><pre id="results"></pre><div id="wrap"><iframe id="game" title="隔离测试游戏"></iframe></div>
+<script>
+const frame=document.querySelector('#game'),out=document.querySelector('#results'),statusEl=document.querySelector('#status');
+const run=code=>frame.contentWindow.eval(code),doc=()=>frame.contentDocument;
+const wait=()=>new Promise(r=>setTimeout(r,60));
+let checks=0,failures=[],matrix=[],maxCardHeight=0,maxMobileCardHeight=0,maxApprovalCardHeight=0,retention=[];
+function assert(ok,label){checks++;if(!ok)throw Error(label);}
+function sample(lvl=0,zone='mixed',permit='none',page='build'){
+ run(`Math.random=(()=>{let seed=71834;return ()=>((seed=(1664525*seed+1013904223)>>>0)/4294967296)})();newGame();initLevel(${lvl},0);S.cash=1000000;S.env=85;S.npc.boss.f=100;Math.random=()=>.1;S.tab='${page}';S.buildCat='traffic';S.planZone='${zone}';S.f.paper=1;S.f.grain=1;S.f.power=2;S.phase1.tech.paper=2;${permit==='generic'?'S.phase1.permits.factory=1;':permit==='dedicated'?'SOE.forEach(([id])=>S.phase1.permits[id]=1);':''}recruitSpecialist('urban');$('#cover').style.display='none';hideDoc();busy=false;renderAll();`);
+ const dir=doc().querySelector('.soe-directory');if(dir){dir.open=true;dir.querySelector('.soe-unavailable').open=true;}
+}
+function noOverflow(label){assert(doc().documentElement.scrollWidth<=frame.clientWidth+1,label+' 页面横向溢出');}
+function checkDirectory(label,width){
+ const dir=doc().querySelector('.soe-directory');assert(!!dir,label+' 名录存在');assert(!dir.querySelector('table'),label+' 无表格');assert(!dir.textContent.includes('点击展开'),label+' 展开文案');
+ const expected=run(`SOE.map(([id])=>{const gate=industryGate(id,S.planZone),approval=industryApproval(id);return {id,gate,name:FAC[id].n,state:gate===null?'ready':approval&&industryPermitKey(id)===null&&industryGate(id,S.planZone,undefined,{ignorePermit:true})===null?'approval':'blocked'};})`);
+ const counts={};for(const group of dir.querySelectorAll('[data-soe-group]')){const cards=group.querySelectorAll('.soe-card');counts[group.dataset.soeGroup]=cards.length;assert(group.firstElementChild.textContent.includes(cards.length+'项'),label+' 分组数量');}
+ for(const e of expected){
+  const card=dir.querySelector('[data-soe="'+e.id+'"]'),box=card.getBoundingClientRect();maxCardHeight=Math.max(maxCardHeight,box.height);if(width>=360&&width<=390)maxMobileCardHeight=Math.max(maxMobileCardHeight,box.height);
+  assert(card.closest('[data-soe-group]').dataset.soeGroup===e.state,label+' 归类 '+e.id);
+  assert(card.querySelector('.soe-card-name').title===e.name,label+' 完整名称 '+e.id);
+  assert(!card.querySelector('.soe-card-name').textContent.startsWith('青石'),label+' 显示名截断 '+e.id);
+  assert(box.left>=-1&&box.right<=width+1,label+' 卡片边界 '+e.id);
+  if(width>=360&&width<=390)assert(box.height<=96.1,label+' 卡片过高 '+e.id+': '+box.height);
+  for(const chip of card.querySelectorAll('.lvl-chip')){const r=chip.getBoundingClientRect();assert(r.height<=26&&r.width>30,label+' 等级横排 '+e.id);}
+  const button=card.querySelector('button'),text=card.querySelector('.soe-card-status');assert(!!button===(e.state==='approval'),label+' 许可按钮 '+e.id);
+  if(button){const r=button.getBoundingClientRect(),levels=card.querySelector('.lvl-chips').getBoundingClientRect();assert(r.height>=44,label+' 按钮高度 '+e.id);assert(!text.textContent.includes('须先申报'),label+' 审批不重复说明');if(width>=360){assert(r.top<levels.bottom&&r.bottom>levels.top&&r.left>=levels.right,label+' 等级与按钮同一行');assert(Math.abs(r.right-box.right)<1,label+' 按钮靠右');if(width<=390){maxApprovalCardHeight=Math.max(maxApprovalCardHeight,box.height);assert(box.height<=68.1,label+' 审批卡片超过68px '+e.id+': '+box.height);}}else{assert(r.top>=levels.bottom-.1,label+' 小于360按钮另起一行');assert(Math.abs(r.width-box.width)<1,label+' 小于360按钮占满整行');}}
+   if(e.state==='ready'&&width>=360){const r=text.getBoundingClientRect(),levels=card.querySelector('.lvl-chips').getBoundingClientRect();assert(Math.abs(r.right-box.right)<1&&r.top<levels.bottom&&r.bottom>levels.top,label+' 可立项靠右且与标签同行');}
+ }
+ assert(expected.length===34,label+' 共34项');noOverflow(label);return counts;
+}
+function checkCards(label,width){
+ for(const table of doc().querySelectorAll('table.m-cards')){
+  assert(!table.closest('.phase-scroll'),label+' 操作卡片无横滑提示');
+  for(const row of Array.from(table.rows).slice(1)){
+   const box=row.getBoundingClientRect();assert(box.right<=width+1,label+' 操作行无越界');
+   for(const el of row.querySelectorAll('button,select')){const r=el.getBoundingClientRect();assert(r.height>=44,label+' 控件高度');if(width<=640)assert(Math.abs(r.width-(box.width-26))<2,label+' 控件整行 '+r.width+'/'+box.width);}
+   if(width<=640&&table.classList.contains('cadre-table')){const cells=row.cells;assert(Math.abs(cells[0].getBoundingClientRect().top-cells[1].getBoundingClientRect().top)<2,label+' 姓名与专长同行');}
+  }
+ }
+ noOverflow(label);
+}
+function checkScroll(label){
+ for(const el of doc().querySelectorAll('.phase-scroll')){
+  const overflow=el.clientWidth>0&&el.scrollWidth>el.clientWidth+1;assert(el.classList.contains('is-overflow')===overflow,label+' 横滑提示跟随实际溢出');
+  if(!overflow)continue;const cell=el.querySelector('th:first-child');if(!cell)continue;const before=cell.getBoundingClientRect().left;el.scrollLeft=100;assert(Math.abs(cell.getBoundingClientRect().left-before)<2,label+' 首列固定');el.scrollLeft=0;
+ }
+}
+async function advance(){doc().querySelector('#nextbtn').click();await wait();for(let i=0;i<20&&doc().querySelector('#modal.on');i++){const b=Array.from(doc().querySelectorAll('#doc .opts button')).find(x=>!x.disabled);assert(!!b,'月结弹窗有可用操作');b.click();await wait();}assert(!run('busy'),'真实月结完成');}
+async function checkDetailsRetention(width,height){
+ frame.style.width=width+'px';frame.style.height=height+'px';sample();await wait();
+ let dir=doc().querySelector('.soe-directory');dir.open=false;dir.querySelector('.soe-unavailable').open=true;run('renderAll()');await wait();
+ assert(!doc().querySelector('.soe-directory').open,'关闭名录重绘后仍关闭');assert(doc().querySelector('.soe-unavailable').open,'父级关闭时仍保留子级状态');
+ dir=doc().querySelector('.soe-directory');dir.open=true;dir.querySelector('.soe-unavailable').open=false;doc().querySelector('[data-soe-group="approval"]').scrollIntoView({block:'start'});await wait();
+ const before=run('window.scrollY'),keys=run('JSON.stringify(Object.keys(S).sort())');
+ doc().querySelector('.soe-directory [data-phase-action="permit_metal"]').click();await wait();
+ const after=run('window.scrollY');assert(run('S.ag')==='permit_metal','点击仍安排原 permit_metal 工作');assert(doc().querySelector('.soe-directory').open,'申报名录保持展开');assert(!doc().querySelector('.soe-unavailable').open,'申报后暂不可建保持关闭');assert(Math.abs(after-before)<=1,'申报后页面位置不跳 '+before+' → '+after);assert(run('JSON.stringify(Object.keys(S).sort())')===keys,'UI状态不写入游戏对象');
+ retention.push({width,height,before,after,delta:after-before,directoryOpen:true,unavailableOpen:false,action:run('S.ag')});
+ doc().querySelector('#tabs [data-t="fin"]').click();await wait();doc().querySelector('#tabs [data-t="build"]').click();await wait();assert(doc().querySelector('.soe-directory').open&&!doc().querySelector('.soe-unavailable').open,'往返页签保留折叠状态');assert(Math.abs(run('window.scrollY')-after)<=1,'返回建设页恢复页面位置 '+after+' → '+run('window.scrollY'));
+ run(`var qaOriginalEquipment=vEquipment;var qaRefCount=3;vEquipment=function(){return qaOriginalEquipment()+'<details class="sec phase-reference" id="qa-reference"><summary>额外参考</summary><p>独立折叠内容</p></details><details class="sec phase-reference"><summary>通用参考 · '+qaRefCount+'项</summary><p>没有id的折叠内容</p></details>';};renderAll();`);await wait();
+ const refs=doc().querySelectorAll('.phase-reference:not(.soe-directory)');refs.forEach(el=>el.open=true);run('qaRefCount=4;renderAll()');await wait();assert(Array.from(doc().querySelectorAll('.phase-reference:not(.soe-directory)')).every(el=>el.open),'其他phase-reference（含无id、数量变化）保留展开');
+ doc().querySelectorAll('.phase-reference:not(.soe-directory)').forEach(el=>el.open=false);run('renderAll()');await wait();assert(Array.from(doc().querySelectorAll('.phase-reference:not(.soe-directory)')).every(el=>!el.open),'其他phase-reference保留关闭');run('vEquipment=qaOriginalEquipment;renderAll()');await wait();
+}
+async function allChecks(){
+ checks=0;failures=[];matrix=[];maxCardHeight=0;maxMobileCardHeight=0;maxApprovalCardHeight=0;retention=[];document.querySelector('#run').disabled=true;statusEl.textContent='检查中';
+ try{
+  for(const [width,height] of [[320,667],[359,800],[360,800],[375,667],[390,844],[420,800],[640,800],[1024,800],[1280,800]].filter(([w])=>!new URLSearchParams(location.search).has('width')||new URLSearchParams(location.search).get('width').split(',').includes(String(w)))){
+   frame.style.width=width+'px';frame.style.height=height+'px';await wait();
+   for(const lvl of [0,1])for(const zone of ['low','mixed','restricted','eco','heavy'])for(const permit of ['none']){
+    statusEl.textContent=[width,lvl,zone,permit].join('/');sample(lvl,zone,permit);await wait();matrix.push({width,height,lvl,zone,permit,counts:checkDirectory([width,lvl,zone,permit].join('/'),width)});
+   }
+   for(const page of ['build','projects','hr']){sample(1,'heavy','none',page);await wait();checkCards(width+'/'+page,width);}
+   sample(1,'heavy','dedicated');assert(run("queueBuild('paper')")===null,'在建长名称测试项目可立项');run("S.build[0].cost=1234567;S.build[0].paid=123456.7;renderAll()");await wait();checkCards(width+'/construction',width);
+   for(const page of ['fin','region','ranking']){sample(3,'mixed','none',page);if(page==='ranking')run("rankView='city';renderAll()");await wait();checkScroll(width+'/'+page);noOverflow(width+'/'+page);}
+   sample(3,'mixed','none','ranking');await wait();checkScroll(width+'/career');
+  }
+  await checkDetailsRetention(390,844);await checkDetailsRetention(375,667);await checkDetailsRetention(1280,800);
+  for(const [lvl,id] of [[0,'paper'],[1,'refinery']]){
+   sample(lvl,'heavy');doc().querySelector('.soe-directory [data-phase-action="permit_'+id+'"]').click();assert(run('S.ag')==='permit_'+id,'名录按钮沿用 permit_ '+id);await advance();
+   const c=doc().querySelector('.soe-directory [data-soe="'+id+'"]');assert(c.closest('[data-soe-group]').dataset.soeGroup==='ready','真实审批后归入可立项 '+id);assert(!c.querySelector('button'),'获批后不显示申报按钮 '+id);
+  }
+  sample(0,'heavy','generic');const c=doc().querySelector('.soe-directory [data-soe="paper"]');assert(!c.querySelector('button'),'旧通用许可直接生效');
+  doc().querySelector('[data-phase-action="tech_paper"]').click();assert(run('S.ag')==='tech_paper','技改原按钮行为');
+  sample(1,'heavy');doc().querySelector('[data-p2="p2_maintain"][data-target="power"]').click();assert(run('S.ag')==='p2_maintain'&&run('S.phase2.action.target')==='power','检修原按钮行为');
+  sample(1,'heavy','none','projects');doc().querySelector('[data-p2="p2_bid"]').click();assert(run('S.ag')==='p2_bid','市政合同原按钮行为');
+  sample(1,'heavy','none','hr');const first=doc().querySelector('[data-cadre]'),id=first.dataset.cadre;first.value='eco';first.dispatchEvent(new Event('change'));assert(run(`S.phase2.team.find(c=>c.id==='${id}').post`)==='eco','岗位原下拉行为');doc().querySelector('[data-p2="p2_train"]').click();assert(run('S.ag')==='p2_train','培训原按钮行为');
+ }catch(e){failures.push(e.stack);}
+ const result={checks,failures,maxCardHeight,maxMobileCardHeight,maxApprovalCardHeight,retention,matrix,storage:'in-memory only',physicalDevice:false};out.textContent=JSON.stringify(result,null,2);statusEl.textContent=failures.length?'检查失败':'全部通过';document.querySelector('#run').disabled=false;
+}
+function show(){const q=new URLSearchParams(location.search),lvl=+(q.get('level')||document.querySelector('#level').value),zone=q.get('zone')||document.querySelector('#zone').value,page=q.get('page')||document.querySelector('#page').value,permit=q.get('permit')||document.querySelector('#permit').value;
+ frame.style.width=(q.has('preview')?innerWidth:+q.get('width')||Math.min(innerWidth-24,1280))+'px';frame.style.height=(q.has('preview')?innerHeight:844)+'px';sample(lvl,zone,permit,page);
+ if(q.has('preview')){document.body.classList.add('preview');requestAnimationFrame(()=>{const e=page==='build'?doc().querySelector(q.get('focus')==='approval'?'[data-soe-group=approval]':q.get('focus')==='blocked'?'[data-soe-group=blocked]':'.soe-directory'):doc().querySelector('#panel');if(q.get('fold')==='closed')doc().querySelector('.soe-unavailable').open=false;e.scrollIntoView({block:'start'});if(q.get('after')==='1')setTimeout(()=>{const before=run('window.scrollY');doc().querySelector('.soe-directory [data-phase-action="permit_metal"]').click();setTimeout(()=>{const after=run('window.scrollY');out.textContent=JSON.stringify({before,after,delta:after-before,directoryOpen:doc().querySelector('.soe-directory').open,unavailableOpen:doc().querySelector('.soe-unavailable').open,action:run('S.ag')},null,2);},100);},100);});}
+ statusEl.textContent='隔离预览就绪';}
+document.querySelector('#single').onclick=async()=>{
+ checks=0;failures=[];matrix=[];maxCardHeight=0;
+ try{await wait();const width=frame.clientWidth;const dir=doc().querySelector('.soe-directory');if(dir)matrix.push(checkDirectory('当前场景',width));checkCards('当前场景',width);checkScroll('当前场景');}catch(e){failures.push(e.stack);}
+ out.textContent=JSON.stringify({checks,failures,maxCardHeight,matrix,width:frame.clientWidth,height:frame.clientHeight},null,2);statusEl.textContent=failures.length?'检查失败':'当前场景通过';
+};
+document.querySelector('#run').onclick=allChecks;document.querySelector('#show').onclick=show;
+(async()=>{
+ let html=await(await fetch('../../index.html',{cache:'no-store'})).text();
+ const shim=`<script>const qaStore=new Map();Object.defineProperty(window,'localStorage',{value:{getItem:k=>qaStore.get(k)||null,setItem:(k,v)=>qaStore.set(k,String(v)),removeItem:k=>qaStore.delete(k)}});window.addEventListener('error',e=>parent.document.querySelector('#results').textContent+='\\n'+e.message);<\/script>`;
+ html=html.replace('<head>','<head><base href="'+new URL('../../',location.href)+'">').replace('<script>',shim+'<script>');frame.onload=()=>{document.querySelectorAll('.controls button').forEach(b=>b.disabled=false);show();};frame.srcdoc=html;
+})();
+</script></html>

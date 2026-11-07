@@ -1,0 +1,8 @@
+{
+  "passed": 192,
+  "classificationCases": 180,
+  "campaignMonthsPerVersion": 600,
+  "landEventMonthsPerVersion": 18000,
+  "landEventParity": true,
+  "failed": 0
+}

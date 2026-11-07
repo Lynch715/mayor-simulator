@@ -1,0 +1,76 @@
+一方水土 · ui-cards-20261106 追补验收（2026-11-06）
+
+本轮三项追补
+1. 重绘保留 details 的展开/关闭状态及 scrollX/scrollY，按页签缓存在 Map 中。
+   覆盖 soe-directory、soe-unavailable 和其他 phase-reference（有/无 id、数量变化）。
+   隐藏的折叠项保留已记忆值；不将界面偏好写入 S、存档或 localStorage。
+   同步完成横滑提示行的布局后再恢复滚动，避免延迟提示引发约31px锚定偏移。
+2. 宽度≥360px：名称单行；等级与申报按钮同行，按钮靠右，触控高度仍≥44px。
+   390px（以及360/375px）审批卡片最高68px；可立项文字在标签行靠右。
+   宽度<360px：申报按钮另起整行。其他卡片的高度不套用68px审批卡片目标。
+3. industryGate 增加第四个可选参数 {ignorePermit:true}，只在名录展示层调用。
+   needsApproval 仅判断审批需求、许可和跳过许可后的片区/镇级禁令/资源阻断；无文案比对。
+   缺资源的未许可项目归入暂不可建并显示资源原因；默认调用及真实立项规则不变。
+
+备份与范围
+- 追补前原文：backups/index-before-ui-cards-followup-20261106.html。
+- 首轮原文仍保留：backups/index-before-ui-cards-20261106.html。
+- 首轮验收报告及浏览器结果：VERIFICATION-initial.txt / browser-initial.json。
+- 未改数值、游戏数据、存档结构及原按钮处理器；以上为发布前本地验收，上线核验在本地 release/ 目录另存。
+- scope-audit.json：276个非展示命名函数，除获准的 industryGate 可选参数外无变化；
+  FAC/SOE/ZONES/LV/MUNICIPAL/POLLUTION/SPECIALTIES/EV/PET 数据完全一致。
+
+同一套回归（最终本体，全部通过）
+- phase1：38；phase2：50；phase3：47；fixes-v114：49；honors：34。
+- industry-permits：16；event-admission：39；事件准入矩阵：1200。
+- ui-cards 专项：192组，包括180组新建/读档分类。
+- 新增默认准入契约：原有两/三参数调用与追补前本体逐项比对4200次，全部一致。
+- 新增 ignorePermit 范围测试：不得绕过片区、镇级重污染禁令或资源限制。
+- 新增文案变形回归：把所有拒绝提示换成完全不同的文本，分组与申报按钮仍不变。
+- 五级各120个月，状态JSON及随机流逐月与首轮备份一致（两版共1200个月）。
+- land-event：复用 tests/land-event-20261106/landsim.cjs 原 evaluate 回调在 VM 复跑；
+  每版五级×30局×120个月，两版共36000个月，结果完全一致。未使用其 file:// 浏览器包装入口。
+
+应用内浏览器（最终本体）
+- 25926项检查，0失败；90组名录场景，镇/县两级全部五种片区。
+- 尺寸：320×667、359×800、360×800、375×667、390×844、420×800、640×800、1024×800、1280×800。
+- 360px边界、窄屏整行按钮、390px审批卡片≤68px、等级横排与可立项靠右均通过。
+- 手机无页面横向溢出；原技改/设备/干部/合同/在建卡片、纯数字表固定首列及横滑提示通过。
+- 名录关闭/展开、父级关闭时的子级状态、一般phase-reference、无id折叠项、标题数量变化、
+  往返页签的折叠与位置均通过；UI状态未写入游戏对象。
+- 申报前后滚动差：390px=0，375px=0，1280px=0。
+- 真实下月县级审批/市级会审、已有通用许可、原技改/检修/合同/岗位/培训行为全部通过。
+- 存储完全为内存隔离，不读取或修改玩家存档。使用新版应用内浏览器，未做Chrome DevTools或实体手机验收。
+
+390px截图及直接鼠标点击证据
+- screenshots/390-approval-compact.jpg：需审批组，7张68px审批卡片与暂不可建折叠组。
+- screenshots/390-approval-preserved.jpg：实际点击原申报按钮后，名录继续展开，暂不可建继续关闭。
+- 390-click-proof.json：window.scrollY 4470.5 → 4470.5，差值0px；
+  页脚本月工作已变为原有色金属冶炼项目县级审批。截图未改动游戏UI或叠加说明。
+- browser-final.json 为本轮完整结果；本地 followup.diff 为相对追补前本体的差异（差异文件不发布）。
+
+本轮修改位置
+- index.html:519 — 名录卡片名称/等级行、靠右状态和紧凑审批卡片样式。
+- index.html:558 — <360px申报按钮独占一行。
+- index.html:2582 — industryGate 可选 ignorePermit，默认行为保留。
+- index.html:2760 — vIndustryDirectory 结构化判断及标签/按钮同排模板。
+- index.html:3526 — fitPhaseScrollHints 共用显示测量。
+- index.html:3532 — 内存折叠状态与渲染前后位置恢复。
+- index.html:3573 — 原异步溢出观察器复用测量函数。
+- README.md 顶部 — 追补更新说明。
+- tests/ui-cards-20261106/regression.cjs / browser-qa.html — 契约、文案、边界、折叠与位置专项测试。
+
+复跑
+node tests/phase1.cjs
+node tests/phase2.cjs
+node tests/phase3.cjs
+node tests/fixes-v114/regression.cjs
+node tests/honors/regression.cjs
+node tests/industry-permits/regression.cjs
+node tests/event-admission-fix-20261101/regression.cjs
+node tests/event-admission-fix-20261101/matrix.cjs
+node tests/ui-cards-20261106/regression.cjs
+通过localhost HTTP打开 tests/ui-cards-20261106/browser-qa.html，点击“运行全部界面检查”。
+
+本体 SHA-256：0e777a83f9378b2a8665622ac90917a9f6edb73df820270c4d2fa4c833ff0e6a
+追补前备份 SHA-256：26f782433e19f0e77c304d5a79d56134f5b0131536200cb2782a3b597ee6e6d9

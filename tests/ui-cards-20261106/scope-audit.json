@@ -1,0 +1,11 @@
+{
+  "baseline": "backups/index-before-ui-cards-followup-20261106.html",
+  "nonViewFunctionsChecked": 276,
+  "allowedFunctionChanges": [
+    "industryGate"
+  ],
+  "unexpectedFunctionChanges": [],
+  "gameDataChanged": [],
+  "defaultGateContract": "4200 comparisons against baseline; all passed",
+  "displayOnlyAddition": "fitPhaseScrollHints plus in-memory details/scroll wrapper installed at DOMContentLoaded"
+}

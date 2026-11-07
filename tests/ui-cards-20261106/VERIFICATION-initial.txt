@@ -1,0 +1,78 @@
+一方水土 · 手机操作表卡片与国企准入名录（2026-11-06）
+
+范围
+- index.html：展示模板、CSS；industryGate 仅替换拒绝理由文案。
+- 新增 DOM 测量仅切换 .phase-scroll.is-overflow，不读写 S 或存档。
+- 原按钮 data-phase-action / data-p2 / data-cadre / data-cancel 与处理器保留。
+- backups/index-before-ui-cards-20261106.html 为改动前原文（含上一轮制作人署名）。
+- 本轮未提交、推送或发布。
+
+回归（最终本体）
+- phase1：38/38
+- phase2：50/50
+- phase3：47/47
+- fixes-v114：49/49
+- honors：34/34
+- industry-permits：16/16
+- event-admission：39/39；独立矩阵1200/1200
+- ui-cards：189/189，含镇县两级×5片区×3许可×3资源×新建/读档=180组。
+- 五级各120个月：逐月状态JSON、随机流与备份本体完全一致（两版共1200个月）。
+- land-event：复用 tests/land-event-20261106/landsim.cjs 原 evaluate 回调，
+  在 VM 中运行，避免该包装脚本的 file:// 浏览器入口；每版五级×30局×120个月，
+  两版共36000个月、结果完全一致。结果见 land-event.json。
+- 范围核对：276个非 v 前缀命名函数，除允许的拒绝理由文案（归一化后比对）外原文相同；
+  FAC/SOE/ZONES/LV/MUNICIPAL/POLLUTION/SPECIALTIES/EV/PET 序列化数据相同。见 scope-audit.json。
+
+浏览器（最终本体）
+- 16364项检查，0项失败；60组名录场景。
+- 尺寸：375×667、390×844、420×800、640×800、1024×800、1280×800。
+- 镇县两级所有五种片区；完整名录每项都检查归类、数量、名称、资源及等级标签。
+- 所有测量卡片最高96px，指定手机最高96px；无页面横向溢出。
+- 审批卡片窄屏按钮第三行且≥44px；技改、干部、市政、检修、在建等操作控件整行≥44px。
+- 覆盖实际下月县级审批、市级会审、已有通用许可、原技改/检修/合同/岗位/培训行为。
+- 覆盖数字表格实际溢出提示、固定首列与非溢出表格无提示。
+- 使用新版应用内浏览器（内存 localStorage 隔离）。未读取、覆盖或清理玩家存档。
+- Chrome工具返回不可用，连接清单仅有IAB与MCP Apps；未完成Chrome DevTools预设或实体手机验收。
+- 判定结果：browser-final.json；截屏：screenshots/。
+
+额外发现并修复
+- 建设页「在建」表：长企业名+大额投资会挤压，改为同一手机卡片，取消按钮不变。
+- 经营页复用污染治理表，同步获得等级标签和手机技改卡片。
+- 财政、土地、债务等复用台账，继承真实溢出提示、短金额横排及固定首列。
+
+复跑
+node tests/phase1.cjs
+node tests/phase2.cjs
+node tests/phase3.cjs
+node tests/fixes-v114/regression.cjs
+node tests/honors/regression.cjs
+node tests/industry-permits/regression.cjs
+node tests/event-admission-fix-20261101/regression.cjs
+node tests/event-admission-fix-20261101/matrix.cjs
+node tests/ui-cards-20261106/regression.cjs
+浏览器：通过 localhost HTTP 打开 tests/ui-cards-20261106/browser-qa.html，点击“运行全部界面检查”。
+
+本体 SHA-256：26f782433e19f0e77c304d5a79d56134f5b0131536200cb2782a3b597ee6e6d9
+备份 SHA-256：b367ab18fba779aa57b4bf2d1c4e5b4eb9428bb8a30025f4711a5c01a64c5b31
+
+修改位置（最终行号）
+index.html:450 — 横滑提示仅 .is-overflow 时显示。
+index.html:470 — 交互表 th/td 对齐及控件高度。
+index.html:507 — 共用等级标签、分组名录、m-cards、短值横排与固定首列样式。
+index.html:2394 — 原 vBuild 的在建项目表，补充卡片及字段标签。
+index.html:2576 — industryGate 仅替换片区拒绝理由文案。
+index.html:2726 — vCashbook 现金流预警表标注 phase-data。
+index.html:2745 — vIndustryControls 企业技改表采用 m-cards 与等级标签。
+index.html:2750 — 新增展示函数 vIndustryLevels。
+index.html:2754 — 新增展示函数 vIndustryDirectory（分组、计数、许可按钮条件）。
+index.html:2769 — vBuild 包装层调用分组名录。
+index.html:2990 — vCadres 姓名专长同行、岗位与培训整行。
+index.html:2994 — vMunicipal 市政工程操作卡片。
+index.html:2995 — vEquipment 设备检修操作卡片。
+index.html:3133 — vComposite 省内综合排名数字表标注。
+index.html:3220 — vRanking 生涯榜数字表标注。
+index.html:3225 — vCityRanking 城市治理榜数字表标注。
+index.html:3534 — 新增仅操作DOM类的实际溢出测量。
+README.md:10 — 顶部更新说明。
+backups/index-before-ui-cards-20261106.html — 修改前原文备份。
+tests/ui-cards-20261106/ — 新增隔离验收夹具、专项回归、结果、差异及截图。
