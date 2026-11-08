@@ -483,6 +483,17 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 .save-actions .credits{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px;margin-top:4px;padding-top:10px;border-top:1px solid var(--line2);color:var(--ink2);line-height:1.7}
 .save-actions .credits span{white-space:nowrap}
 .save-actions .install-btn{grid-column:1/-1;border-color:var(--blue);color:var(--blue)}
+#saveSheet{position:fixed;inset:0;z-index:66;background:rgba(20,22,26,.45);display:flex;align-items:center;justify-content:center;padding:16px}
+#saveSheet[hidden]{display:none}
+#saveSheet .box{background:#fff;max-width:460px;width:100%;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.35);padding:20px 22px;font-size:14px;line-height:1.75;max-height:90vh;overflow:auto}
+#saveSheet h3{margin:0 0 6px;font-size:18px}
+#saveSheet .acts{display:grid;gap:10px;margin-top:14px}
+#saveSheet .acts button{min-height:46px;text-align:left;padding:8px 14px;line-height:1.4}
+#saveSheet .acts button small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+#saveSheet textarea{width:100%;height:120px;margin-top:4px;font:12px/1.4 monospace;border:1px solid var(--line);padding:8px}
+#saveSheet .row{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+#saveSheet .row button{min-height:44px;padding:0 18px}
+@media (max-width:640px){#saveSheet{align-items:flex-end;padding:0}#saveSheet .box{max-width:none;padding:18px 18px calc(18px + env(safe-area-inset-bottom))}}
 #installTip{position:fixed;inset:0;z-index:65;background:rgba(20,22,26,.45);display:flex;align-items:center;justify-content:center;padding:16px}
 #installTip[hidden]{display:none}
 #installTip .box{background:#fff;max-width:420px;width:100%;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.35);padding:20px 22px;font-size:14px;line-height:1.75}
@@ -3608,7 +3619,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   $('#btnSave').onclick=()=>{save();logIt('已保存。','sys');renderAll();};
   $('#btnExport').onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(S));a.download='一方水土-存档-第'+S.year+'年.json';a.click();};
   $('#btnImport').onclick=()=>$('#fileIn').click();
-  $('#fileIn').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const imported=JSON.parse(r.result);if(imported.auditRevision!==114&&!LS.get('yifang_save_before_v114'))LS.set('yifang_save_before_v114',r.result);if(!imported.phase3&&!LS.get('yifang_save_before_v113'))LS.set('yifang_save_before_v113',r.result);if(!imported.phase2&&!LS.get('yifang_save_before_v112'))LS.set('yifang_save_before_v112',r.result);if(!imported.phase1&&!LS.get('yifang_save_before_v111'))LS.set('yifang_save_before_v111',r.result);S=imported;migrate();renderAll();logIt('存档已导入。','sys');renderAll();}catch(x){alert('存档文件无法读取。');}};r.readAsText(f);};
+  $('#fileIn').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const imported=JSON.parse(r.result);if(imported.auditRevision!==114&&!LS.get('yifang_save_before_v114'))LS.set('yifang_save_before_v114',r.result);if(!imported.phase3&&!LS.get('yifang_save_before_v113'))LS.set('yifang_save_before_v113',r.result);if(!imported.phase2&&!LS.get('yifang_save_before_v112'))LS.set('yifang_save_before_v112',r.result);if(!imported.phase1&&!LS.get('yifang_save_before_v111'))LS.set('yifang_save_before_v111',r.result);S=imported;migrate();renderAll();logIt('存档已导入。','sys');renderAll();mtoast('存档已导入：第'+S.year+'年'+S.month+'月。','good');}catch(x){alert('存档文件无法读取。');}};r.readAsText(f);};
   $('#btnReset').onclick=()=>{if(confirm('放弃当前进度，重新开局？')){LS.del('yifang_save');newGame();renderAll();}};
   $('#modal').onclick=e=>{if(e.target.id==='modal'){/* 呈批件必须处理，不允许点空白关闭 */}};
   if(LS.get('yifang_save'))$('#btnLoad').textContent='继续上次';
@@ -3715,6 +3726,82 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(standalone()||location.protocol==='file:'||LS.get(KEY))return;
     /* 等安卓浏览器把安装事件发出来再提示，最多等 2.5 秒 */
     setTimeout(function(){if(standalone()||LS.get(KEY))return;LS.set(KEY,'shown');showTip(true);},2500);
+  });
+})();
+/* ---- 存档导出/导入：手机上 data: 链接下载经常失效（iPhone 从桌面图标打开、微信内置浏览器等），
+   改为「分享/保存到文件」「下载文件」「复制存档文本」三条路；导入也支持直接粘贴文本 ---- */
+(function(){
+  var sheet=null;
+  var ua=navigator.userAgent||'';
+  var inApp=/MicroMessenger|QQ\/|Weibo|DingTalk|Lark|Feishu|AlipayClient|baiduboxapp/i.test(ua);
+  var isIOS=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  var standalone=function(){return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;};
+  function close(){if(sheet)sheet.hidden=true;}
+  function open(html){
+    if(!sheet){sheet=document.createElement('div');sheet.id='saveSheet';sheet.setAttribute('role','dialog');sheet.setAttribute('aria-modal','true');document.body.appendChild(sheet);
+      sheet.addEventListener('click',function(e){if(e.target===sheet)close();});}
+    sheet.innerHTML='<div class="box">'+html+'<div class="row"><button id="ssClose">关闭</button></div></div>';sheet.hidden=false;
+    document.getElementById('ssClose').onclick=close;
+  }
+  function fileName(){return 'yifang-save-y'+S.year+'-m'+S.month+'.json';}
+  function text(){return JSON.stringify(S);}
+  function fallbackCopy(t){try{var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,t.length);var ok=document.execCommand('copy');ta.remove();return ok;}catch(e){return false;}}
+  function copyText(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).then(function(){return true;},function(){return fallbackCopy(t);});
+    return Promise.resolve(fallbackCopy(t));
+  }
+  function download(){
+    try{var blob=new Blob([text()],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+      a.href=url;a.download=fileName();a.rel='noopener';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},4000);
+      mtoast(isIOS?'已发起下载：在弹窗里点「下载」，文件会存到「文件」App 的「下载」文件夹。':'已发起下载：在浏览器的下载列表里可以找到存档文件。','good');
+    }catch(e){mtoast('这个浏览器不支持下载文件，请改用「复制存档文本」。','bad');}
+  }
+  function canShareFile(){try{return !!(window.File&&navigator.share&&navigator.canShare&&navigator.canShare({files:[new File(['{}'],'t.json',{type:'application/json'})]}));}catch(e){return false;}}
+  function share(){
+    var f=new File([text()],fileName(),{type:'application/json'});
+    navigator.share({files:[f],title:'一方水土存档'}).then(function(){close();mtoast('存档已分享 / 保存。','good');},function(e){if(e&&e.name==='AbortError')return;mtoast('分享没有成功，请改用「复制存档文本」。','bad');});
+  }
+  function exportSheet(){
+    if(!S){mtoast('还没有进行中的游戏。','bad');return;}
+    var sa=standalone(),noDl=inApp||(isIOS&&sa);
+    var tip=inApp?'<p class="neg">当前在微信 / QQ 等 App 内打开，无法下载文件。请用「复制存档文本」，粘贴到备忘录或发给自己保存。</p>':
+      (isIOS&&sa?'<p class="muted">从桌面图标打开时，iPhone 不能直接下载文件，请用下面的方式保存。</p>':'');
+    open('<h3>导出存档</h3><p>存档平时只保存在<b>当前这个浏览器</b>里。换手机、换浏览器、清理浏览器数据，或在 iPhone 上改从桌面图标打开，都看不到原来的进度，需要先导出再导入。</p>'+tip+
+      '<div class="acts">'+
+      (canShareFile()?'<button id="ssShare"><b>分享 / 保存到文件</b><small>存到「文件」App、网盘，或发给微信「文件传输助手」</small></button>':'')+
+      (noDl?'':'<button id="ssDl"><b>下载存档文件</b><small>'+fileName()+'</small></button>')+
+      '<button id="ssCopy"><b>复制存档文本</b><small>任何浏览器都能用，导入时选「粘贴存档文本」</small></button></div>');
+    var b;
+    if((b=document.getElementById('ssShare')))b.onclick=share;
+    if((b=document.getElementById('ssDl')))b.onclick=function(){close();download();};
+    document.getElementById('ssCopy').onclick=function(){var t=text();copyText(t).then(function(ok){
+      if(ok){close();mtoast('存档文本已复制（约 '+Math.max(1,Math.round(t.length/1024))+' KB），请粘贴到备忘录或发给自己保存。','good');}
+      else{var box=sheet.querySelector('.box');var ta=document.createElement('textarea');ta.value=t;ta.readOnly=true;box.insertBefore(ta,box.querySelector('.row'));ta.focus();ta.select();mtoast('浏览器不允许自动复制：存档文本已显示在弹窗里，请长按全选后复制。','bad');}
+    });};
+  }
+  function importText(t){
+    t=(t||'').trim();if(!t){mtoast('没有粘贴任何内容。','bad');return;}
+    var a=t.indexOf('{'),z=t.lastIndexOf('}');if(a<0||z<a){mtoast('这段文本不是有效的一方水土存档。','bad');return;}
+    t=t.slice(a,z+1);
+    try{var o=JSON.parse(t);if(!o||typeof o!=='object'||!('year' in o)||!('cash' in o))throw 0;}catch(e){mtoast('这段文本不是有效的一方水土存档。','bad');return;}
+    close();var fi=document.getElementById('fileIn');
+    fi.onchange({target:{files:[new File([t],'paste.json',{type:'application/json'})]}});
+  }
+  function importSheet(){
+    open('<h3>导入存档</h3><p>导入会<b>覆盖当前进度</b>，建议先导出一份当前存档。</p><div class="acts">'+
+      '<button id="ssFile"><b>选择存档文件</b><small>.json 文件</small></button>'+
+      '<button id="ssPaste"><b>粘贴存档文本</b><small>用「复制存档文本」导出的内容</small></button></div>');
+    document.getElementById('ssFile').onclick=function(){close();var fi=document.getElementById('fileIn');fi.value='';fi.click();};
+    document.getElementById('ssPaste').onclick=function(){
+      var acts=sheet.querySelector('.acts');
+      acts.innerHTML='<textarea id="ssText" placeholder="在这里长按，粘贴存档文本"></textarea><button id="ssGo" class="primary"><b>导入这段存档</b></button>';
+      var ta=document.getElementById('ssText');ta.focus();
+      document.getElementById('ssGo').onclick=function(){importText(ta.value);};
+    };
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var ex=document.getElementById('btnExport'),im=document.getElementById('btnImport');
+    if(ex)ex.onclick=exportSheet;if(im)im.onclick=importSheet;
   });
 })();
 </script>
