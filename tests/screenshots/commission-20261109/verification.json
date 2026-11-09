@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-09",
+  "status": "completed locally; not committed or published",
+  "indexSha256": "0322f7ae8641ba00fe3e95895b8ac4cf9557bb0a258b642efd7e0417e5e13d05",
+  "backup": "/Users/ruis/Claude/Projects/我的仕途/backups/index-before-commission-20261109.html",
+  "backupSha256": "abdb188993da881e7f02ca19c1f0bc8289aa85df0f6251ab8af2ea854051a6e1",
+  "modifiedFiles": [
+    "index.html",
+    "README.md"
+  ],
+  "evidenceDirectory": "/Users/ruis/Claude/Projects/我的仕途/tests/screenshots/commission-20261109",
+  "saveFields": {
+    "S.player": "{name}: 1–6 Han/Latin/middle-dot code points; legacy fallback 无名",
+    "S.places": "Six distinct 1–4 character stems: town/county/city/subprovincial city/municipality/province; legacy defaults",
+    "S.orders": "Pure-text appointment and ending order snapshots, deduplicated by key; legacy []"
+  },
+  "unchangedSaveKey": "yifang_save",
+  "modifiedFunctions": [
+    "newGame (base + honors wrapper forwards opts)",
+    "migrate (base)",
+    "esc",
+    "applyFx (display placeholders in new responsibility entries)",
+    "retiredStep (historical town name)",
+    "vFile",
+    "bindPanel (base)",
+    "showDoc (commission modal stacking)",
+    "showEvent (render and log placeholder substitution)",
+    "showPromo",
+    "showEnding (base summary + outer order sequence)",
+    "next (only appointment resume/log wording)",
+    "mapSvg (escaped dynamic geography)",
+    "ending-card draw (player name + historical/custom place text)"
+  ],
+  "addedFunctions": [
+    "cleanIdentityText",
+    "placeStemInput",
+    "identityPlaces",
+    "ensureIdentity",
+    "playerName",
+    "placeName",
+    "placeText",
+    "safeCanvasText",
+    "arrivalText",
+    "validateStartOptions",
+    "soeShortName",
+    "showStartSettings",
+    "orderAuthority",
+    "appointmentHistory",
+    "orderNumber",
+    "appointmentOrder",
+    "recordOrder",
+    "orderText",
+    "orderHtml",
+    "showOrder",
+    "vOrders",
+    "endingFacts",
+    "endingOrders"
+  ],
+  "dynamicGetters": [
+    "LV[i].city",
+    "LV[i].unit",
+    "FAC[SOE id].n",
+    "HONOR_DEFS level achievement d"
+  ],
+  "historyProtection": "S.hist city and S.resume strings are never rewritten; document bodies and issuers are snapshots",
+  "defaultPlaceSourceGrep": [
+    {
+      "line": 725,
+      "text": "const DEFAULT_PLACES=['青石','沂川','临渡','江岚','海屿','衡川'];"
+    }
+  ],
+  "regressions": [
+    {
+      "suite": "phase1",
+      "passed": 38,
+      "expected": 38,
+      "exitCode": 0
+    },
+    {
+      "suite": "phase2",
+      "passed": 50,
+      "expected": 50,
+      "exitCode": 0
+    },
+    {
+      "suite": "phase3",
+      "passed": 47,
+      "expected": 47,
+      "exitCode": 0
+    },
+    {
+      "suite": "fixes-v114",
+      "passed": 49,
+      "expected": 49,
+      "exitCode": 0
+    }
+  ],
+  "coreQA": {
+    "passed": 10,
+    "cases": [
+      "姓名长度、中文/英文/间隔号、空白及注入校验",
+      "六项地名去后缀、去首尾空白、留空默认、重复及超长校验",
+      "newGame(opts)、placeName四种形式与省名",
+      "地名规范化只在表单执行一次，合法主体尾字不被反复剥离",
+      "旧档补默认值、历史字符串不回溯、迁移幂等",
+      "五级任命机关、中央/省委权限、候选人措辞和省辖关系",
+      "文书去重、纯文本快照与保存重读",
+      "10种结局×5级机关、黑白样式及重复查看去重",
+      "导入恶意姓名/地名安全回退，文书及HTML属性正确转义",
+      "五级各120个月与备份版的玩法状态、随机流一致"
+    ],
+    "gameplayComparison": {
+      "levels": 5,
+      "monthsPerLevel": 120,
+      "statesCompared": 600
+    }
+  },
+  "browserQA": {
+    "checks": [
+      "Actual form: inline invalid-name, duplicate-place, long-place rejection; reset; suffix removal; six places persisted",
+      "Arrival log, map river/heading, archive commission replay",
+      "All four real promotion callbacks: initLevel, history summary, arrival log, resume and saved orders",
+      "100 WeChat-UA ending scenarios: all 10 endings × 5 levels × 320/390 widths; sequence, no early share button, unchanged outcome and no stamp overlap",
+      "Canvas: player and custom places, 1080px PNG, no URL/QR/document text"
+    ],
+    "layoutChecks": 249,
+    "documentLayoutChecks": 247,
+    "errors": [],
+    "wechatScope": "Chromium UA + touch/mobile viewport simulation; no physical WeChat/iOS WebView tested",
+    "isolation": "New Chromium process and fresh incognito contexts; localhost only; no existing profile accessed"
+  },
+  "inAppBrowser": {
+    "recoveredAfterInitialTimeout": true,
+    "url": "http://127.0.0.1:18769/",
+    "verified": [
+      "new-game form",
+      "custom 李清和 / 测试镇 / 北辰县 / 明川省",
+      "commission with correct county issuer",
+      "arrival log",
+      "map",
+      "archive replay"
+    ],
+    "viewport390": {
+      "documentClientWidth": 364,
+      "documentScrollWidth": 364,
+      "pageScrollWidth": 390
+    },
+    "consoleErrorsAndWarnings": []
+  },
+  "screenshots": [
+    "commission-1280.png",
+    "commission-390.png",
+    "commission-long-name-390.png",
+    "custom-map-1280.png",
+    "custom-map-390.png",
+    "ending-card-custom.png",
+    "fall-lv3-page1-390.png",
+    "fall-lv3-page2-390.png",
+    "orders-archive-390.png",
+    "post-audit-long-name-page1-320.png",
+    "post-audit-long-name-page2-320.png",
+    "promotion-lv1-390.png",
+    "promotion-lv2-390.png",
+    "promotion-lv3-390.png",
+    "promotion-lv4-390.png",
+    "settings-1280.png"
+  ],
+  "limitations": [
+    "No physical phone or real WeChat WebView used; WeChat user agent, touch and narrow viewport simulated in Chromium."
+  ],
+  "simulationLogic": "5 office levels × 120 months compared against backup: same gameplay state and RNG; excludes only identity/orders, requested log/resume wording and generated career ID",
+  "noNewExternalDependencies": true,
+  "artAssetsChanged": false,
+  "sharingCard": "1080px generated PNG; contains player and custom places, no URL, QR code or investigation-document text",
+  "blackDocumentButton": "Gray-black in normal and hovered states, checked through computed CSS"
+}

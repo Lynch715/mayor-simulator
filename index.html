@@ -636,6 +636,35 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 @keyframes mmPulse{0%{opacity:.9;transform:scale(.85)}100%{opacity:0;transform:scale(1.9)}}
 @media(prefers-reduced-motion:reduce){.mm-pulse{animation:none}}
 @media(max-width:640px){.map-info{font-size:13px}.map-tools button{min-height:40px}}
+/* 委任状与调令：落款、印章各占布局位置，窄屏不叠压正文。 */
+#modal.commission-front{z-index:75}
+.doc.commission{background:#FFFEFA}
+.doc.commission .dh{border-bottom:2px solid var(--red)}
+.doc.commission h2,.order-subtitle,.order-signer,.order-entry{overflow-wrap:anywhere;word-break:normal}
+.doc .body.commission-form,.doc .body.order-body{white-space:normal}
+.commission-form label{display:block;font-weight:600;margin:8px 0 5px}
+.commission-form input{width:100%;min-width:0;box-sizing:border-box;font:inherit;padding:9px 10px}
+.commission-input-row{display:flex;gap:8px;align-items:stretch}
+.commission-input-row input{flex:1}.commission-input-row button{flex:0 0 auto}
+.commission-form details{margin-top:14px;border-top:1px solid var(--line2);padding-top:12px}
+.commission-form summary{cursor:pointer;font-weight:600}
+.commission-place-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.field-error{font-family:var(--sans);font-size:12px;color:var(--red);min-height:1.6em;margin:3px 0 8px!important}
+.commission-form input[aria-invalid=true]{border-color:var(--red)}
+.order-subtitle{font-family:var(--serif);font-size:15px;line-height:1.65;margin:12px 0 6px}
+.order-number{font-size:12px;color:var(--ink3);overflow-wrap:anywhere}
+.order-body p{margin:0 0 14px}.order-note,.order-summary{font-size:13px;color:var(--ink2);border-top:1px solid var(--line2);padding-top:10px}
+.order-signature{display:flex;justify-content:flex-end;align-items:center;gap:18px;margin-top:26px;padding-top:8px;flex-wrap:wrap}
+.order-signer{flex:1 1 190px;text-align:right;min-width:0}.order-signer p{margin:0 0 5px}
+.seal.seal-round{box-sizing:border-box;flex:0 0 94px;width:94px;height:94px;border-radius:50%;border:3px double var(--red);padding:10px 2px;display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:11px;line-height:1.3;letter-spacing:.08em;margin:6px;transform:rotate(-8deg)}
+.seal-round b{font-size:24px;font-weight:400;line-height:1.2}
+.order-list{display:grid;gap:9px}.order-entry{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:4px;width:100%;font-size:13px;min-width:0;padding:12px}
+.order-entry span{font-size:12px;color:var(--ink2)}
+.order-black .dh{border-bottom-color:#333!important}.order-black .kind,.order-black h2{color:#262626}
+.order-black button.primary,.order-black button.primary:hover{background:#333;border-color:#333;color:#fff}
+.order-black-label{border:2px solid #333;color:#333;display:inline-block;letter-spacing:.25em;padding:8px 12px;flex:0 0 auto}
+@media(max-width:420px){.commission-place-grid{grid-template-columns:1fr}.order-signature{gap:8px}.order-signer{flex-basis:100%;text-align:left}.seal.seal-round{margin-left:auto}.doc.commission h2{font-size:22px}}
+
 </style>
 </head>
 <body>
@@ -644,10 +673,10 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
     <h1>一方水土</h1>
     <div class="sub">地方主政者生涯模拟</div>
     <div class="rule"></div>
-    <p>你三十二岁，来到青石镇任职。财政所送来了账本：结余一百八十万元，工资、运转和民生支出都要按月支付。</p>
+    <p>你三十二岁，即将到一座小镇任职。财政所送来了账本：结余一百八十万元，工资、运转和民生支出都要按月支付。</p>
     <p>镇上缺学位、缺病床，也缺能长期纳税的企业。每个月，你要定下工作安排，决定哪些项目先开工。</p>
     <div class="row" style="justify-content:center;margin-top:20px">
-      <button class="primary" id="btnNew" style="padding:10px 28px">到任就职</button>
+      <button class="primary" id="btnNew" style="padding:10px 28px">新开局</button>
       <button id="btnLoad" style="padding:10px 20px">读取存档</button>
     </div>
     <div class="row" style="justify-content:center;margin-top:10px"><button class="sm install-btn" id="btnInstallCover" hidden>安装到桌面，像 App 一样打开</button></div>
@@ -656,7 +685,7 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 </div>
 
 <div id="head"><div class="inner">
-  <div class="redtitle" id="unitName">青石镇人民政府<small>主政者工作台</small></div>
+  <div class="redtitle" id="unitName">地方主政机关<small>主政者工作台</small></div>
   <div class="rule"></div>
   <div class="meta" id="meta"></div>
 </div></div>
@@ -692,13 +721,40 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 <div id="modal"><div class="doc" id="doc"></div></div>
 <script>
 /* ========== 数据 ========== */
+/* 姓名与地名只参与展示；旧履历和城市快照不回写。 */
+const DEFAULT_PLACES=['青石','沂川','临渡','江岚','海屿','衡川'];
+const PLACE_SUFFIXES=['镇','县','市','市','市','省'];
+let S=null;
+function cleanIdentityText(value,max){const s=typeof value==='string'?value.trim():'';return s&&Array.from(s).length<=max&&/^[\p{Script=Han}A-Za-z·]+$/u.test(s)?s:'';}
+function placeStemInput(value){return (typeof value==='string'?value.trim():'').replace(/(?:市[（(](?:副省级|直辖市)[）)]|[镇县市省])$/g,'');}
+function identityPlaces(values){const places=DEFAULT_PLACES.map((d,i)=>cleanIdentityText(values?.[i],4)||d);return new Set(places).size===6?places:DEFAULT_PLACES.slice();}
+function ensureIdentity(){if(!S)return;S.player={name:cleanIdentityText(S.player?.name,6)||'无名'};S.places=identityPlaces(S.places);if(!Array.isArray(S.orders))S.orders=[];}
+function playerName(){return cleanIdentityText(S?.player?.name,6)||'无名';}
+function placeName(lvl,form='short'){
+ const i=Number.isInteger(lvl)&&lvl>=0&&lvl<6?lvl:0;
+ const stem=cleanIdentityText(S?.places?.[i],4)||DEFAULT_PLACES[i];
+ const short=stem+PLACE_SUFFIXES[i];
+ return form==='stem'?stem:form==='unit'?short+'人民政府':form==='full'?short+(i===3?'（副省级）':i===4?'（直辖市）':''):short;
+}
+function placeText(value){const tokens={'镇名':[0,'stem'],'镇':[0,'short'],'县名':[1,'stem'],'县':[1,'short'],'市2名':[2,'stem'],'市2':[2,'short'],'市3':[3,'short'],'市4':[4,'short'],'省名':[5,'stem'],'省':[5,'short']};return String(value??'').replace(/〔(镇名|镇|县名|县|市2名|市2|市3|市4|省名|省|姓名)〕/g,(all,key)=>key==='姓名'?playerName():placeName(...tokens[key]));}
+function safeCanvasText(value,max=48){return Array.from(String(value??'').replace(/[\u0000-\u001f\u007f\u202a-\u202e<>]/g,'')).slice(0,max).join('');}
+function arrivalText(lvl){return (lvl<2?'当选':'到任')+placeName(lvl,'short')+LV[lvl].t;}
+function validateStartOptions(name,values){
+ const trimmed=typeof name==='string'?name.trim():'';const errors={};
+ if(!cleanIdentityText(trimmed,6))errors.name='请填写1–6个字的姓名，只能使用中文、英文字母和间隔号「·」。';
+ const places=DEFAULT_PLACES.map((d,i)=>{const raw=typeof values?.[i]==='string'?values[i].trim():'';const stem=raw?placeStemInput(raw):d;if(!cleanIdentityText(stem,4))errors['place'+i]='请填1–4个字的地名主体，只能使用中文、英文字母和间隔号「·」。';return stem;});
+ places.forEach((p,i)=>{if(p&&places.some((q,j)=>i!==j&&q===p))errors['place'+i]='六个地名主体不能重复。';});
+ return {name:trimmed,places,errors,valid:Object.keys(errors).length===0};
+}
+
 const LV=[
- {t:'镇长',rank:'乡科级正职',ret:60,retMax:63,unit:'青石镇人民政府',city:'青石镇',pop:3.4,sc:1,transfer:120,land:600,landPrice:6,staff:90,need:100,maxY:8,cq:0.9,wage:0.6},
- {t:'县长',rank:'县处级正职',ret:60,retMax:63,unit:'沂川县人民政府',city:'沂川县',pop:38,sc:10,transfer:1300,land:5000,landPrice:14,staff:1100,need:140,maxY:9,cq:1.1,wage:0.66},
- {t:'市委书记',rank:'厅局级正职',ret:60,retMax:63,unit:'临渡市人民政府',city:'临渡市',pop:320,sc:60,transfer:8000,land:22000,landPrice:40,staff:7000,need:180,maxY:9,cq:1.3,wage:0.72},
- {t:'市委书记',rank:'副省部级',ret:63,retMax:65,unit:'江岚市人民政府',city:'江岚市（副省级）',pop:900,sc:150,transfer:15000,land:50000,landPrice:90,staff:19000,need:220,maxY:9,cq:1.5,wage:0.8},
- {t:'市委书记',rank:'正省部级',ret:65,retMax:68,unit:'海屿市人民政府',city:'海屿市（直辖市）',pop:2400,sc:400,transfer:32000,land:110000,landPrice:160,staff:52000,need:99999,maxY:12,cq:1.8,wage:0.9}
+ {t:'镇长',rank:'乡科级正职',ret:60,retMax:63,pop:3.4,sc:1,transfer:120,land:600,landPrice:6,staff:90,need:100,maxY:8,cq:0.9,wage:0.6},
+ {t:'县长',rank:'县处级正职',ret:60,retMax:63,pop:38,sc:10,transfer:1300,land:5000,landPrice:14,staff:1100,need:140,maxY:9,cq:1.1,wage:0.66},
+ {t:'市委书记',rank:'厅局级正职',ret:60,retMax:63,pop:320,sc:60,transfer:8000,land:22000,landPrice:40,staff:7000,need:180,maxY:9,cq:1.3,wage:0.72},
+ {t:'市委书记',rank:'副省部级',ret:63,retMax:65,pop:900,sc:150,transfer:15000,land:50000,landPrice:90,staff:19000,need:220,maxY:9,cq:1.5,wage:0.8},
+ {t:'市委书记',rank:'正省部级',ret:65,retMax:68,pop:2400,sc:400,transfer:32000,land:110000,landPrice:160,staff:52000,need:99999,maxY:12,cq:1.8,wage:0.9}
 ];
+LV.forEach((level,lvl)=>Object.defineProperties(level,{city:{enumerable:true,get:()=>placeName(lvl,'full')},unit:{enumerable:true,get:()=>placeName(lvl,'unit')}}));
 /* 设施：cat 分类；cap 每单位覆盖人口(万×sc)；wl 专项债白名单投向；
    lw 宜居权重 pw 繁荣权重 ew 每月环境增益 hw 每月房价压力压降 sw 满意度权重（按覆盖率乘） */
 const FAC={
@@ -746,43 +802,43 @@ const FAC={
 
 /* v1.11：新增企业沿用原设施建设、税收、就业和产能过剩机制。污染与安全分开。 */
 const SOE=[
- ['warehouse','青石镇国营仓储物流有限公司',1,620,7,38,.85,.15,.25,.15,.08],
- ['grain','青石国营粮油食品加工厂',1,460,6,27,.8,.25,.3,.5,.35],
- ['compute','青石国营数据算力中心',1,2200,12,95,.45,.1,2.2,.5,.1],
- ['package','青石国营包装材料厂',1,560,7,32,.9,.3,.4,.35,.25],
- ['seedling','青石国营苗木繁育基地',1,300,5,17,.6,.05,.12,.6,.05],
- ['petrol','青石国营综合加油站',1,380,5,25,.35,.12,.15,.1,.06],
- ['lng','青石国营油气综合加注站（加油+LNG）',1,600,7,38,.4,.15,.25,.15,.08],
- ['solar','青石镇分布式光伏电站',1,680,8,23,.25,0,0,.08,.02],
- ['equipment','青石国营重型装备零部件制造厂',2,1100,10,65,1.2,.7,.9,.55,.4],
- ['wall','青石国营新型墙体建材厂',2,800,8,48,1,.85,.7,.5,.35],
- ['feed','青石国营饲料蛋白加工厂',2,700,8,43,1,.7,.5,.8,.65],
- ['forge','青石国营金属构件锻造厂',2,950,9,57,1.1,.9,1.1,.45,.3],
- ['medical','青石国营医用耗材生产基地',2,1250,11,76,1,.55,.75,.9,.6],
- ['timber','青石国营木材深加工工厂',2,650,7,40,1,.75,.5,.45,.3],
- ['rubber','青石国营橡胶密封制品厂',2,850,9,51,1,.85,.7,.65,.5],
- ['ceramic','青石国营陶瓷新材料厂',2,1350,12,80,1.1,.95,1.25,.7,.5],
- ['cng','青石国营压缩天然气CNG母站',2,1050,10,63,.5,.6,.9,.25,.15],
- ['metal','青石国营有色金属冶炼配套加工厂',3,1800,14,115,1.3,1.8,1.7,1.3,1],
- ['paper','青石国营制浆造纸有限公司',3,1600,13,105,1.4,2,1.1,2.1,1.8],
- ['chemical','青石国营基础化工助剂厂',3,1500,12,100,1.1,2.1,1.2,1.6,1.35],
- ['glass','青石国营玻璃熔制工厂',3,1700,13,108,1.2,1.7,1.8,.9,.7],
- ['recycle','青石国营再生冶炼厂',3,1400,12,90,1.2,2.2,1.6,1.1,.9],
- ['fiber','青石国营化纤原料制造厂',3,1900,14,120,1.3,2,1.5,1.8,1.5],
- ['fuel','青石国营燃料油储备库',3,1300,11,78,.55,1.6,.5,.45,.3],
- ['aluminium','青石国营铝冶炼厂',4,3400,20,210,1.8,3.2,3.4,2,1.5],
- ['fertilizer','青石国营基础氮磷化肥工厂',4,2700,18,170,1.6,3.5,2.1,2.8,2.4],
- ['coke','青石国营焦化有限公司',4,2600,18,165,1.5,3.8,1.9,2.2,1.8],
- ['chromium','青石国营铬盐生产基地',4,2900,19,185,1.3,4,2,2.5,2.2],
- ['coal','青石国营红层煤炭开发有限公司',4,2400,18,150,2,3,1.5,1.2,1],
- ['opencoal','青石国营露天煤业开发有限责任公司',4,2100,16,135,1.6,3.6,1.3,1.1,.8],
- ['washcoal','青石国营矿区煤炭洗选综合开发公司',4,3000,20,190,1.8,3.7,1.8,2.6,2.3],
- ['lignite','青石国营褐煤资源开发有限公司',4,2200,17,145,1.7,4,1.4,1.5,1.1],
- ['oilfield','青石国营油田开发有限公司',4,3800,24,235,1.4,3.3,1.8,2,1.6],
- ['refinery','青石国营原油炼制厂（炼油厂）',4,4200,24,260,1.6,4,2.7,3,2.6]
+ ['warehouse','〔镇〕国营仓储物流有限公司',1,620,7,38,.85,.15,.25,.15,.08],
+ ['grain','〔镇名〕国营粮油食品加工厂',1,460,6,27,.8,.25,.3,.5,.35],
+ ['compute','〔镇名〕国营数据算力中心',1,2200,12,95,.45,.1,2.2,.5,.1],
+ ['package','〔镇名〕国营包装材料厂',1,560,7,32,.9,.3,.4,.35,.25],
+ ['seedling','〔镇名〕国营苗木繁育基地',1,300,5,17,.6,.05,.12,.6,.05],
+ ['petrol','〔镇名〕国营综合加油站',1,380,5,25,.35,.12,.15,.1,.06],
+ ['lng','〔镇名〕国营油气综合加注站（加油+LNG）',1,600,7,38,.4,.15,.25,.15,.08],
+ ['solar','〔镇〕分布式光伏电站',1,680,8,23,.25,0,0,.08,.02],
+ ['equipment','〔镇名〕国营重型装备零部件制造厂',2,1100,10,65,1.2,.7,.9,.55,.4],
+ ['wall','〔镇名〕国营新型墙体建材厂',2,800,8,48,1,.85,.7,.5,.35],
+ ['feed','〔镇名〕国营饲料蛋白加工厂',2,700,8,43,1,.7,.5,.8,.65],
+ ['forge','〔镇名〕国营金属构件锻造厂',2,950,9,57,1.1,.9,1.1,.45,.3],
+ ['medical','〔镇名〕国营医用耗材生产基地',2,1250,11,76,1,.55,.75,.9,.6],
+ ['timber','〔镇名〕国营木材深加工工厂',2,650,7,40,1,.75,.5,.45,.3],
+ ['rubber','〔镇名〕国营橡胶密封制品厂',2,850,9,51,1,.85,.7,.65,.5],
+ ['ceramic','〔镇名〕国营陶瓷新材料厂',2,1350,12,80,1.1,.95,1.25,.7,.5],
+ ['cng','〔镇名〕国营压缩天然气CNG母站',2,1050,10,63,.5,.6,.9,.25,.15],
+ ['metal','〔镇名〕国营有色金属冶炼配套加工厂',3,1800,14,115,1.3,1.8,1.7,1.3,1],
+ ['paper','〔镇名〕国营制浆造纸有限公司',3,1600,13,105,1.4,2,1.1,2.1,1.8],
+ ['chemical','〔镇名〕国营基础化工助剂厂',3,1500,12,100,1.1,2.1,1.2,1.6,1.35],
+ ['glass','〔镇名〕国营玻璃熔制工厂',3,1700,13,108,1.2,1.7,1.8,.9,.7],
+ ['recycle','〔镇名〕国营再生冶炼厂',3,1400,12,90,1.2,2.2,1.6,1.1,.9],
+ ['fiber','〔镇名〕国营化纤原料制造厂',3,1900,14,120,1.3,2,1.5,1.8,1.5],
+ ['fuel','〔镇名〕国营燃料油储备库',3,1300,11,78,.55,1.6,.5,.45,.3],
+ ['aluminium','〔镇名〕国营铝冶炼厂',4,3400,20,210,1.8,3.2,3.4,2,1.5],
+ ['fertilizer','〔镇名〕国营基础氮磷化肥工厂',4,2700,18,170,1.6,3.5,2.1,2.8,2.4],
+ ['coke','〔镇名〕国营焦化有限公司',4,2600,18,165,1.5,3.8,1.9,2.2,1.8],
+ ['chromium','〔镇名〕国营铬盐生产基地',4,2900,19,185,1.3,4,2,2.5,2.2],
+ ['coal','〔镇名〕国营红层煤炭开发有限公司',4,2400,18,150,2,3,1.5,1.2,1],
+ ['opencoal','〔镇名〕国营露天煤业开发有限责任公司',4,2100,16,135,1.6,3.6,1.3,1.1,.8],
+ ['washcoal','〔镇名〕国营矿区煤炭洗选综合开发公司',4,3000,20,190,1.8,3.7,1.8,2.6,2.3],
+ ['lignite','〔镇名〕国营褐煤资源开发有限公司',4,2200,17,145,1.7,4,1.4,1.5,1.1],
+ ['oilfield','〔镇名〕国营油田开发有限公司',4,3800,24,235,1.4,3.3,1.8,2,1.6],
+ ['refinery','〔镇名〕国营原油炼制厂（炼油厂）',4,4200,24,260,1.6,4,2.7,3,2.6]
 ];
 for(const [id,n,grade,cost,months,tax,jobs,pol,powerUse,waterUse,waste] of SOE){
- FAC[id]={cat:'ind',n,cost,months,tax,jobs,pol,powerUse,waterUse,waste,grade,ind:true,soe:true,
+ FAC[id]={cat:'ind',get n(){return placeText(n);},cost,months,tax,jobs,pol,powerUse,waterUse,waste,grade,ind:true,soe:true,
   maint:Math.round(cost*.012),land:grade*25+20,ramp:6+grade*3,lvl:grade===4?1:0,
   safety:['petrol','lng','cng','fuel','coal','opencoal','washcoal','lignite','oilfield','refinery'].includes(id)?'较高':'常规',
   d:grade===4?'需市级会审，投产后须持续治理排放。':'开工需落实用地和水电，投产后按产能计税和排污。'};
@@ -1160,10 +1216,10 @@ const PET=[
  {t:'搁置',n:'',fx:{sat:-1}}]}
 ];
 const PROMO_TEXT={
- 1:'组织部门的考察谈话结束了。你被任命为沂川县县长。县里三十八万人，两千平方公里。到任材料里附着财政账目和在建项目清单。',
- 2:'你被任命为临渡市市委书记。这座城市三百多万人，有一批工业企业，也有一个规模不小的城投公司。',
- 3:'你调任江岚市市委书记。这座副省级城市有九百万人，经济增长和债务处置都列入了考核。',
- 4:'你被任命为海屿市市委书记。这座直辖市有两千四百万人，八个区县的预算和考核材料已经送到办公室。'
+ 1:'〔县〕有三十八万人，两千平方公里。到任材料里附着财政账目和在建项目清单。',
+ 2:'〔市2〕有三百多万人，有一批工业企业，也有一个规模不小的城投公司。',
+ 3:'〔市3〕是隶属〔省〕的副省级城市，有九百万人，经济增长和债务处置都列入了考核。',
+ 4:'〔市4〕是直辖市，不隶属任何省，有两千四百万人，八个区县的预算和考核材料已经送到办公室。'
 };
 /* ===== 事件第二批 ===== */
 EV.push(
@@ -1946,10 +2002,8 @@ function retAge(lv){const L=LV[lv===undefined?S.lvl:lv];return S.eraRet?L.retMax
 function retLeft(){return Math.max(0,retAge()-S.age);}
 const rnd=(a,b)=>a+Math.random()*(b-a);
 const pick=arr=>arr[Math.floor(Math.random()*arr.length)];
-let S=null;
-
-function newGame(){
-  S={lvl:0,year:1,month:1,age:32,tenure:0,cash:0,reserve:0,reserveRate:2,seen:{},brief:0,buildCat:'traffic',
+function newGame(opts={}){
+  S={player:{name:cleanIdentityText(opts.name,6)||'无名'},places:identityPlaces(opts.places),orders:[],lvl:0,year:1,month:1,age:32,tenure:0,cash:0,reserve:0,reserveRate:2,seen:{},brief:0,buildCat:'traffic',
      pop:0,pros:38,liv:42,sat:50,env:58,rep:50,unity:60,
      landTotal:0,land:0,landSold:0,housing:20,f:{},ind:[],build:[],
      cq:[],platform:0,sb:[],sbUnspent:0,sbIdle:0,sbYear:0,task:null,frozen:false,
@@ -1958,8 +2012,8 @@ function newGame(){
      sched:[],once:{},merit:0,ratings:[],dRun:0,gaps:{wage:0,ops:0,live:0},sanbaoYr:0,accidentsYr:0,
      interestMiss:0,log:[],resume:[],monthly:null,expMult:1,over:null,tab:'over',grantYr:0,hist:[],built:0,phase:'work',retY:0,ppp:0,ag:'routine',agPool:[],agCd:{},agFlag:{},agUse:{},agN:0,wind:'growth',windLeft:2,windHist:[],npc:null,plots:[],plotSeq:0,landRev:0,landHist:[],spotYr:0,leads:[],leadSeq:0,rivals:null,talent:0,bigp:null,dist:null,alloc:{},era:{},eraLand:1,eraPop:0,eraDebt:0,eraRet:0};
   initLevel(0,0);
-  logIt('到任。青石镇，三万四千人，一个资源枯竭的老矿镇。','sys');
-  S.resume.push({y:1,t:'任青石镇镇长'});
+  logIt(arrivalText(0)+'。'+placeName(0)+'，三万四千人，一个资源枯竭的老矿镇。','sys');
+  S.resume.push({y:1,t:arrivalText(0)});
 }
 function closeLevel(){if(S.lvl===undefined)return;S.hist.push({lvl:S.lvl,city:LV[S.lvl].city,years:S.tenure,built:S.built,hdr:Math.round(hdr()),grades:S.ratings.slice(-S.tenure).join(''),sat:Math.round(S.sat),
   pros:Math.round(S.pros),liv:Math.round(S.liv),debt:Math.round(hdr()),pros0:Math.round(S.pros),debt0:Math.round(hdr()),leftY:S.year,after:0});}
@@ -2069,8 +2123,8 @@ function applyFx(fx){if(!fx)return;
   if(fx.liv)S.liv=clamp(S.liv+fx.liv,0,100);if(fx.rep)S.rep=clamp(S.rep+fx.rep,0,100);if(fx.unity)S.unity=clamp(S.unity+fx.unity,0,100);
   if(fx.pop)S.pop*=1+fx.pop/100;if(fx.land&&!(fx.cashLand&&fx.land<0)){if(fx.land>0){landAdd(fx.land*S.lsc,'ind');S.landTotal+=fx.land*S.lsc;}else landTake(Math.min(landFree('any'),-fx.land*S.lsc),'any','事件占用');}
   if(fx.fac&&!(fx.fac.n>0&&fx.fac.id==='factory'))S.f[fx.fac.id]=Math.max(0,(S.f[fx.fac.id]||0)+fx.fac.n);
-  if(fx.file){S.file.push({y:S.year,t:fx.file.t,sev:fx.file.sev,exp:false,mild:false});}
-  if(fx.mild){S.file.push({y:S.year,t:fx.mild.t,sev:0,exp:false,mild:true});}
+  if(fx.file){S.file.push({y:S.year,t:placeText(fx.file.t),sev:fx.file.sev,exp:false,mild:false});}
+  if(fx.mild){S.file.push({y:S.year,t:placeText(fx.mild.t),sev:0,exp:false,mild:true});}
   if(fx.sched)S.sched.push({id:fx.sched.id,m:fx.sched.m});
   if(fx.flag==='push')S.flags.push=1;if(fx.flag==='nosell')S.nosell=18;if(fx.flag==='taxcut')S.taxcut=36;
   if(fx.acc)S.accRisk+=fx.acc*_sf;if(fx.npc)nAdd(fx.npc.k,fx.npc.v);if(fx.npc2)nAdd(fx.npc2.k,fx.npc2.v);
@@ -2242,7 +2296,7 @@ function retiredStep(){S.retY++;const i=S.retY-1;if(i>=RET.length)return null;co
   if(r.id==='r2'){const bad=S.file.filter(f=>!f.exp&&!f.mild);
     if(bad.length){return {id:'r2',title:'退休第二年',text:'纪委的人来了。调查组调取了你任上的档案，要求说明几笔签批的依据。',opts:[{t:'……',n:'',fx:{},end:'post_audit'}]};}
     return {id:'r2',title:'回头看',text:'纪委对你任上的一个项目做了例行回头看。来的人客客气气，翻了三天档案，走的时候说"没什么问题"。你送到门口，站了很久。',opts:[{t:'知道了',n:'',fx:{}}]};}
-  if(r.id==='r5'){const h=S.hist;const town=h[0];let t='退休第五年，你回了一趟青石镇。';
+  if(r.id==='r5'){const h=S.hist;const town=h[0];let t='退休第五年，你回了一趟'+(town?.city?.replace(/（.*/,'')||placeName(0))+'。';
     if(town){t+=town.built>=6?'当年修的路还在，学校翻新过一次，镇上的人换了一茬。':town.built>=2?'当年建的几处设施仍在使用，也有几处正在维修。':'镇上和你走的时候差不多，年轻人还是在往外走。';
       t+='你离开'+(town.after||0)+'年了，'+histLine(town);}
     if(h.length>1){t+='\n\n后面几任待过的地方：'+h.slice(1).map(x=>x.city.replace(/（.*/,'')+'（离任'+(x.after||0)+'年，繁荣'+Math.round(x.pros)+'、债务率'+Math.round(x.debt)+'%）').join('；')+'。';}
@@ -2294,7 +2348,7 @@ function preloadArt(){const list=['city_'+(S?S.lvl:0)].concat(Object.keys(SCENE)
 
 /* ========== 界面 ========== */
 const $=s=>document.querySelector(s);
-const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function renderAll(){if(!S)return;getters();const L=LV[S.lvl];
   $('#unitName').innerHTML=esc(L.unit)+'<small>主政者工作台</small>';
   if(S.phase==='retired'){$('#unitName').innerHTML='退休生活<small>第'+S.retY+'年</small>';}
@@ -2491,12 +2545,14 @@ function vHR(){const need=staffNeed();const r=S.staff/need;
   <div class="sec"><h2>招录</h2><div class="hint">每年一次。单次招录超过在编 8% 会招不满并引发舆情。今年${S.recruitThisYear>0?'已招录 '+S.recruitThisYear+' 人':'尚未招录'}。</div><div class="row"><input type="number" id="recN" value="${Math.max(0,Math.min(S.quota-S.staff,Math.round(S.staff*0.06)))}" min="0" style="width:120px"> 人<button class="sm" id="btnRec" ${S.recruitThisYear>0?'disabled':''}>招录</button></div></div>
   <div class="sec"><h2>缩编</h2><div class="row"><input type="number" id="cutN" value="0" min="0" style="width:120px"> 人<button class="sm danger" id="btnCut">缩减</button></div><div class="hint">一次最多一成，班子会有意见。</div></div>
   <div class="sec"><h2>机构改革</h2><div class="hint">一次性投入 ${fmt(LV[S.lvl].transfer*1.5)}，机关运转成本下降一成。每级一次。</div><button class="sm" id="btnReform" ${S.reformDone?'disabled':''}>${S.reformDone?'已完成':'启动改革'}</button></div>`;}
+function soeShortName(name){for(const prefix of [placeName(0)+'国营',placeName(0,'stem')+'国营',placeName(0)])if(name.startsWith(prefix))return name.slice(prefix.length);return name;}
 function vFile(){
   const files=S.file.length?S.file.map(f=>`<li>${f.y}年　${esc(f.t)}${f.mild?'<span class="sev">违规</span>':'<span class="sev">违纪·'+['','一般','较重','严重'][f.sev]+'</span>'}${f.exp?'<span class="exp">'+(f.mild?'已处分':'已查处')+'</span>':''}</li>`).join(''):'<li class="muted">档案干净。</li>';
-  return vHist()+`<div class="sec"><h2>履历</h2><ul class="resume" style="list-style:none">${S.resume.map(r=>`<li><span class="y">${r.y}年</span>${esc(r.t)}</li>`).join('')}</ul></div>
+  return vHist()+vOrders()+`<div class="sec"><h2>履历</h2><ul class="resume" style="list-style:none">${S.resume.map(r=>`<li><span class="y">${r.y}年</span>${esc(r.t)}</li>`).join('')}</ul></div>
   <div class="sec"><h2>历任小结</h2><div class="m-table-wrap"><table class="m-cards career-history"><tr><th>城市</th><th>在任</th><th>建成</th><th>离任隐债率</th><th>考核</th></tr>${S.hist.length?S.hist.map(h=>`<tr><td data-l="城市">${esc(h.city)}</td><td data-l="在任" class="r">${h.years} 年</td><td data-l="建成" class="r">${h.built} 项</td><td data-l="离任隐债率" class="r">${h.hdr}%</td><td data-l="考核" class="r m-wide m-text">${h.grades}</td></tr>`).join(''):'<tr><td class="muted" colspan="5">还在第一任。</td></tr>'}</table></div></div>
   <div class="sec"><h2>责任档案</h2><div class="hint">终身留存。违纪记录随时可能被倒查，退休也不例外。违规记录两年内可能被通报处分，累计四次免职。</div><ul class="file" style="list-style:none">${files}</ul></div>`;}
 function bindPanel(){
+  document.querySelectorAll('[data-order]').forEach(b=>b.onclick=()=>{const o=S.orders?.[+b.dataset.order];if(o)showOrder(o,'返回档案',hideDoc,'orderClose');});
   document.querySelectorAll('[data-dist]').forEach(b=>b.onclick=()=>{const e=distSet(b.dataset.dist,b.dataset.k,b.dataset.k==='fund'?+b.dataset.v:b.dataset.v);if(e)toast(e);renderAll();});
   document.querySelectorAll('[data-talent]').forEach(b=>b.onclick=()=>{S.talent=+b.dataset.talent;renderAll();});
   document.querySelectorAll('[data-coop]').forEach(b=>b.onclick=()=>{const e=coopDo(+b.dataset.coop,b.dataset.cid);if(e)toast(e);renderAll();});
@@ -2516,27 +2572,26 @@ function bindPanel(){
 function toast(msg){logIt(msg,'bad');mtoast(msg,'bad');}
 /* ---- 弹窗 ---- */
 let dialogRevision=0;
-function showDoc(html,cls){const d=$('#doc');d.className='doc '+(cls||'');d.innerHTML=html;d.setAttribute('role','dialog');d.setAttribute('aria-modal','true');const h=d.querySelector('h2');if(h){h.id='docTitle';d.setAttribute('aria-labelledby','docTitle');}const modal=$('#modal');fitDialogViewport();modal.classList.add('on');d.scrollTop=0;const revision=++dialogRevision;requestAnimationFrame(()=>{if(modal.classList.contains('on')&&dialogRevision===revision)d.scrollTop=0;});}
+function showDoc(html,cls){const d=$('#doc');d.className='doc '+(cls||'');d.innerHTML=html;d.setAttribute('role','dialog');d.setAttribute('aria-modal','true');const h=d.querySelector('h2');if(h){h.id='docTitle';d.setAttribute('aria-labelledby','docTitle');}const modal=$('#modal');fitDialogViewport();modal.classList.toggle('commission-front',!!cls&&cls.split(' ').includes('commission'));modal.classList.add('on');d.scrollTop=0;const revision=++dialogRevision;requestAnimationFrame(()=>{if(modal.classList.contains('on')&&dialogRevision===revision)d.scrollTop=0;});}
 /* 只更新视口显示尺寸，不修改游戏状态或存档。 */
 function fitDialogViewport(){const modal=$('#modal');if(!modal)return;const v=window.visualViewport;modal.style.setProperty('--dialog-height',(v?v.height:window.innerHeight)+'px');modal.style.setProperty('--dialog-top',(v?v.offsetTop:0)+'px');}
 function hideDoc(){$('#modal').classList.remove('on');}
 function showEvent(ev,done){const kind=ev.kind||(ev.id.startsWith('p_')?'信访件':SYSEV[ev.id]?'通知':/^r\d$/.test(ev.id)?'退休第'+S.retY+'年':'呈批件');
   const A=evArt(ev);const nk=evNpc(ev);
-  const sub=t=>nk?String(t).replace(/〔人〕/g,npcName(nk)).replace(/〔名〕/g,nn(nk)):String(t);
+  const sub=t=>placeText(nk?String(t).replace(/〔人〕/g,npcName(nk)).replace(/〔名〕/g,nn(nk)):String(t));
   const by=nk&&(ev.npc||A.portrait)?`<div class="by"><b>${esc(npcName(nk))}</b><span class="fbar"><i style="width:${nf(nk)}%"></i></span><em>${relLabel(nf(nk))}</em></div>`:'';
   showDoc(`${A.wide?artBox(A.wide,'wide'):artBox(A.scene)}<div class="dh"><div class="kind">${kind}</div><h2>${esc(sub(ev.title))}</h2>${by}</div><div class="body${A.portrait?' hasp':''}">${artPortrait(A.portrait)}<div>${esc(sub(ev.text))}</div></div><div class="opts">${ev.opts.map((o,i)=>{const blocked=eventAdmission(o.fx);const ok=reqOk(o)&&!blocked;const note=blocked|| (reqOk(o)?o.n:'需要'+npcName(o.req.k)+'的信任（'+o.req.v+'，当前 '+nf(o.req.k)+'）');
     return `<button class="opt${o.grey?' grey':''}${ok?'':' dis'}" data-i="${i}"${ok?'':' disabled'}><span class="ot">${esc(sub(o.t))}</span>${note?'<span class="on">'+esc(sub(note))+'</span>':''}</button>`;}).join('')}</div>`);
-  document.querySelectorAll('#doc .opt').forEach(b=>b.onclick=()=>{const o=ev.opts[+b.dataset.i];if(!reqOk(o)||eventAdmission(o.fx))return;if(applyFx(o.fx)===false){toast('项目未能立项，未扣款或执行其他效果，请重新选择。');return;}if(ev.once)S.once[ev.id]=1;logIt('【'+ev.title+'】'+o.t+(o.grey?'（进入责任档案）':''),o.grey?'bad':'');hideDoc();if(o.end){busy=false;endGame(o.end);renderAll();showEnding();return;}done();});}
+  document.querySelectorAll('#doc .opt').forEach(b=>b.onclick=()=>{const o=ev.opts[+b.dataset.i];if(!reqOk(o)||eventAdmission(o.fx))return;if(applyFx(o.fx)===false){toast('项目未能立项，未扣款或执行其他效果，请重新选择。');return;}if(ev.once)S.once[ev.id]=1;logIt('【'+sub(ev.title)+'】'+sub(o.t)+(o.grey?'（进入责任档案）':''),o.grey?'bad':'');hideDoc();if(o.end){busy=false;endGame(o.end);renderAll();showEnding();return;}done();});}
 function showReview(R,done){const L=LV[S.lvl];
   showDoc(`<div class="dh"><div class="kind">年度考核通报</div><h2>关于第 ${R.year} 年度${esc(L.city)}综合考核结果的通报</h2></div><div class="body"><div class="row" style="align-items:flex-end"><span class="grade">${R.grade}</span><span class="muted" style="padding-bottom:6px">${{A:'优秀',B:'良好',C:'合格',D:'不合格'}[R.grade]}${R.sanbao?'（三保出现缺口，压 '+(R.W.sanbao||1)+' 档）':''}</span></div>
   <table style="margin:10px 0"><tr><td>综合得分</td><td class="r">${R.raw.toFixed(1)}</td></tr><tr><td>考核风向</td><td class="r">${esc(R.W.n)}</td></tr><tr><td>繁荣 ×${R.W.w[0]} / 宜居 ×${R.W.w[1]} / 满意 ×${R.W.w[2]}${R.W.env?' / 环境 ×'+R.W.env:''}</td><td class="r">${(R.W.w[0]*S.pros).toFixed(0)} / ${(R.W.w[1]*S.liv).toFixed(0)} / ${(R.W.w[2]*S.sat).toFixed(0)}${R.W.env?' / '+(R.W.env*S.env).toFixed(0):''}</td></tr><tr><td>债务扣分${R.W.debt!==1?'（×'+R.W.debt+'）':''}</td><td class="r">−${R.debtPen.toFixed(1)}</td></tr><tr><td>事故扣分</td><td class="r">−${R.accPen}</td></tr><tr><td>廉政扣分${R.W.clean!==1?'（×'+R.W.clean+'）':''}</td><td class="r">−${R.cleanPen.toFixed(1)}</td></tr><tr><td>政绩变动</td><td class="r">${R.gain>0?'+':''}${R.gain}　累计 ${Math.round(S.merit)}</td></tr>${R.rank?`<tr><td>省内位次</td><td class="r">第 ${R.rank} 名　${R.rankBonus>0?'+':''}${R.rankBonus}</td></tr>`:''}<tr><td>财政紧张度</td><td class="r">${R.tension.toFixed(0)}</td></tr></table>
   ${R.next==='promote'?'<p><b>组织部门已启动考察程序。</b></p>':R.next==='fall'?'<p style="color:var(--red)"><b>纪委监委在考察中发现线索。</b></p>':R.next==='sidelined'?'<p>本任年限已满。</p>':''}${R.envVeto?'<p class="neg">环境未达晋升要求，本年度暂停提拔；完成整改后可重新参评。</p>':''}${R.accountabilityBlock?'<p class="neg">处于项目责任观察期，暂缓提拔，处分和项目责任继续留档。</p>':''}<span class="seal">考核办</span></div><div class="opts"><button class="opt" id="rvOk"><span class="ot">知道了</span></button></div>`,'notice');
   $('#rvOk').onclick=()=>{hideDoc();done();};}
-function showPromo(lvl,done){showDoc(`<div class="dh"><div class="kind">任职通知</div><h2>关于${esc(LV[lvl].city.replace(/（.*/,''))}主要领导任职的通知</h2></div><div class="body">${esc(PROMO_TEXT[lvl])}\n\n上一任政绩的四分之一计入新任期。到任账目中已列出存量债务。<span class="seal">组织部</span></div><div class="opts"><button class="opt" id="prOk"><span class="ot">到任</span></button></div>`,'notice');
-  $('#prOk').onclick=()=>{hideDoc();done();};}
+function showPromo(lvl,done){const order=recordOrder(appointmentOrder(lvl));showOrder(order,'赴任',()=>{hideDoc();done();order.summary=appointmentHistory(lvl);save();},'prOk');}
 function showEnding(){busy=false;const E=ENDINGS[S.over];
-  showDoc(`${artBox('e_'+S.over,'wide')}<div class="dh"><div class="kind">结局</div><h2>${esc(E.t)}</h2></div><div class="body">${esc(E.d.replace(/〔年龄〕/g,S.age+' 岁'))}\n\n仕途 ${S.year-1} 年，终于 ${LV[S.lvl].t}（${esc(LV[S.lvl].city)}），${S.age} 岁。${S.hist.length?'\n\n'+S.hist.map(h=>h.city.replace(/（.*/,'')+' '+h.years+'年，建成'+h.built+'项，离任隐债率'+h.hdr+'%').join('；')+'。':''}历年考核：${S.ratings.join(' ')||'—'}。责任档案 ${S.file.length} 条。</div><div class="opts"><button class="opt" id="edFile"><span class="ot">查看履历与档案</span></button><button class="opt" id="edNew"><span class="ot">重新开局</span></button></div>`,'notice');
-  $('#edFile').onclick=()=>{hideDoc();S.tab='file';renderAll();};$('#edNew').onclick=()=>{hideDoc();LS.del('yifang_save');newGame();renderAll();};
+  showDoc(`${artBox('e_'+S.over,'wide')}<div class="dh"><div class="kind">结局</div><h2>${esc(E.t)}</h2></div><div class="body">${esc(E.d.replace(/〔年龄〕/g,S.age+' 岁'))}\n\n${esc(playerName())}同志仕途 ${S.year-1} 年，终于 ${LV[S.lvl].t}（${esc(LV[S.lvl].city)}），${S.age} 岁。${S.hist.length?'\n\n'+esc(S.hist.map(h=>h.city.replace(/（.*/,'')+' '+h.years+'年，建成'+h.built+'项，离任隐债率'+h.hdr+'%').join('；'))+'。':''}历年考核：${S.ratings.join(' ')||'—'}。责任档案 ${S.file.length} 条。</div><div class="opts"><button class="opt" id="edFile"><span class="ot">查看履历与档案</span></button><button class="opt" id="edNew"><span class="ot">重新开局</span></button></div>`,'notice');
+  $('#edFile').onclick=()=>{hideDoc();S.tab='file';renderAll();};$('#edNew').onclick=showStartSettings;
   LS.del('yifang_save');}
 /* ---- 推进 ---- */
 let busy=false;
@@ -2553,7 +2608,7 @@ function next(){if(busy||!S||S.over)return;busy=true;
       if(R.next==='fired'){closeLevel();endGame('fired');renderAll();showEnding();busy=false;return;}
       if(R.next==='sidelined'){closeLevel();endGame('sidelined');renderAll();showEnding();busy=false;return;}
       if(R.next==='retire'){closeLevel();S.phase='retired';S.retY=0;logIt('到龄退休。','sys');showDoc(`<div class="dh"><div class="kind">通知</div><h2>关于退休的通知</h2></div><div class="body">${S.age} 岁，到点了。${LV[S.lvl].rank}的年龄界限就在这里，组织谈话很短，感谢了你的工作。办公室的人帮你收拾东西，一个纸箱就装完了。\n\n往后几年，每次推进是一年。</div><div class="opts"><button class="opt" id="rtOk"><span class="ot">离开办公室</span></button></div>`,'notice');$('#rtOk').onclick=()=>{hideDoc();busy=false;save();renderAll();};return;}
-      if(R.next==='promote'){const nl=S.lvl+1;showPromo(nl,()=>{initLevel(nl,S.merit*0.25);S.resume.push({y:S.year,t:'任'+LV[nl].city.replace(/（.*/,'')+LV[nl].t});logIt('到任'+LV[nl].city+'。','sys');busy=false;save();renderAll();preloadArt();});return;}
+      if(R.next==='promote'){const nl=S.lvl+1;showPromo(nl,()=>{initLevel(nl,S.merit*0.25);S.resume.push({y:S.year,t:arrivalText(nl)});logIt(arrivalText(nl)+'。','sys');busy=false;save();renderAll();preloadArt();});return;}
       busy=false;save();renderAll();});}));
 }
 /* ---- 月度简报 ---- */
@@ -2576,7 +2631,7 @@ let _mt=null;
 function mtoast(t,kind){let el=$('#mtoast');if(!el){el=document.createElement('div');el.id='mtoast';el.setAttribute('role','status');el.setAttribute('aria-live','polite');document.body.appendChild(el);}el.textContent=t;el.classList.toggle('bad',kind==='bad');el.classList.toggle('good',kind==='good');el.classList.add('on');clearTimeout(_mt);_mt=setTimeout(()=>el.classList.remove('on'),Math.max(4200,Math.min(10000,t.length*100)));}
 const LS={get:k=>{try{return localStorage.getItem(k);}catch(e){return null;}},set:(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}},del:k=>{try{localStorage.removeItem(k);}catch(e){}}};
 function save(){LS.set('yifang_save',JSON.stringify(S));}
-function migrate(){if(!S)return;S.f=S.f||{};for(const k of FACORDER)if(S.f[k]===undefined)S.f[k]=0;if(S.f.factory===undefined)S.f.factory=0;S.seen=S.seen||{};S.brief=S.brief||0;S.buildCat=S.buildCat||'traffic';S.logSeq=S.logSeq||S.log.length;S.build=(S.build||[]).filter(b=>FAC[b.id]);S.ind=(S.ind||[]).filter(x=>FAC[x.id]);S.agCd=S.agCd||{};S.agFlag=S.agFlag||{};S.agUse=S.agUse||{};S.agN=S.agN||0;if(!AG[S.ag])S.ag='routine';if(!S.wind||!WIND.find(w=>w.id===S.wind)){S.wind='growth';S.windLeft=3;}S.windHist=S.windHist||[];S.plotSeq=S.plotSeq||0;S.landRev=S.landRev||0;S.landHist=S.landHist||[];S.spotYr=S.spotYr||0;S.leadSeq=S.leadSeq||0;if(!S.leads)S.leads=S.lvl>=2?genLeads(2):[];S.talent=S.talent||0;S.alloc=S.alloc||{};S.era=S.era||{};S.hist=(S.hist||[]).map(h=>(h.pros===undefined&&(h.pros=55,h.liv=52,h.debt=h.hdr||40,h.after=0),h));if(S.lvl>=3&&!S.rivals)initRivals();if(S.lvl>=4&&!S.dist)initDist();S.ind=(S.ind||[]).map(x=>(x.cut===undefined&&(x.cut=0),x));if(!S.plots)S.plots=S.lvl>=1?genPlots(3):[];if(!S.npc)npcInit(true);else for(const k of NPCORDER)if(!S.npc[k])S.npc[k]={n:NPCS[k].fixed||newName(),f:50};if(!S.agPool||!S.agPool.length||S.agPool.some(k=>!AG[k]))agRefresh();phaseEnsure();}
+function migrate(){if(!S)return;ensureIdentity();S.f=S.f||{};for(const k of FACORDER)if(S.f[k]===undefined)S.f[k]=0;if(S.f.factory===undefined)S.f.factory=0;S.seen=S.seen||{};S.brief=S.brief||0;S.buildCat=S.buildCat||'traffic';S.logSeq=S.logSeq||S.log.length;S.build=(S.build||[]).filter(b=>FAC[b.id]);S.ind=(S.ind||[]).filter(x=>FAC[x.id]);S.agCd=S.agCd||{};S.agFlag=S.agFlag||{};S.agUse=S.agUse||{};S.agN=S.agN||0;if(!AG[S.ag])S.ag='routine';if(!S.wind||!WIND.find(w=>w.id===S.wind)){S.wind='growth';S.windLeft=3;}S.windHist=S.windHist||[];S.plotSeq=S.plotSeq||0;S.landRev=S.landRev||0;S.landHist=S.landHist||[];S.spotYr=S.spotYr||0;S.leadSeq=S.leadSeq||0;if(!S.leads)S.leads=S.lvl>=2?genLeads(2):[];S.talent=S.talent||0;S.alloc=S.alloc||{};S.era=S.era||{};S.hist=(S.hist||[]).map(h=>(h.pros===undefined&&(h.pros=55,h.liv=52,h.debt=h.hdr||40,h.after=0),h));if(S.lvl>=3&&!S.rivals)initRivals();if(S.lvl>=4&&!S.dist)initDist();S.ind=(S.ind||[]).map(x=>(x.cut===undefined&&(x.cut=0),x));if(!S.plots)S.plots=S.lvl>=1?genPlots(3):[];if(!S.npc)npcInit(true);else for(const k of NPCORDER)if(!S.npc[k])S.npc[k]={n:NPCS[k].fixed||newName(),f:50};if(!S.agPool||!S.agPool.length||S.agPool.some(k=>!AG[k]))agRefresh();phaseEnsure();}
 function load(){try{const s=LS.get('yifang_save');if(!s)return false;S=JSON.parse(s);migrate();return true;}catch(e){return false;}}
 /* ===== v1.11 第一批：同一份土地、现金和环境台账贯穿所有旧入口 ===== */
 const POLLUTION=['','低污染','中污染','高污染','重污染'];
@@ -2828,7 +2883,7 @@ function vIndustryDirectory(){
   const zone=S.planZone||'mixed',gate=industryGate(id,zone),approval=industryApproval(id),otherGate=industryGate(id,zone,undefined,{ignorePermit:true});
   const needsApproval=approval&&industryPermitKey(id)===null&&otherGate===null;
   const state=gate===null?'ready':needsApproval?'approval':'blocked',F=FAC[id];
-  groups[state].push(`<article class="soe-card" data-soe="${id}"><div class="soe-card-name" title="${esc(F.n)}">${esc(F.n.replace(/^(?:青石镇国营|青石国营|青石镇)/,''))}${F.resource?`<span class="soe-resource">需${esc(F.resource)}</span>`:''}</div><div class="soe-card-line">${vIndustryLevels(id)}<div class="soe-card-status${state==='ready'?' soe-ready':''}">${state==='ready'?'可立项':state==='approval'?`<button class="sm" data-phase-action="permit_${id}">申报${approval}</button>`:esc(otherGate||gate)}</div></div></article>`);
+  groups[state].push(`<article class="soe-card" data-soe="${id}"><div class="soe-card-name" title="${esc(F.n)}">${esc(soeShortName(F.n))}${F.resource?`<span class="soe-resource">需${esc(F.resource)}</span>`:''}</div><div class="soe-card-line">${vIndustryLevels(id)}<div class="soe-card-status${state==='ready'?' soe-ready':''}">${state==='ready'?'可立项':state==='approval'?`<button class="sm" data-phase-action="permit_${id}">申报${approval}</button>`:esc(otherGate||gate)}</div></div></article>`);
  }
  const heading=(name,items)=>`${name}<span class="soe-group-count">${items.length}项</span>`;
  return `<details class="sec phase-reference soe-directory"><summary>国营企业准入名录 · ${SOE.length}项</summary><div class="hint">企业可在「产业」分类中立项。煤矿、油田须有对应资源；光伏增加供电和生态收益。安全风险与污染等级分别列示。</div>${[['ready','可立项'],['approval','需审批']].map(([key,name])=>`<section class="soe-group" data-soe-group="${key}"><h3>${heading(name,groups[key])}</h3>${groups[key].join('')}</section>`).join('')}<details class="soe-unavailable" data-soe-group="blocked"><summary><span>${heading('暂不可建',groups.blocked)}</span></summary>${groups.blocked.join('')}</details></details>`;
@@ -3217,7 +3272,7 @@ showMonthly=function(B,done){_p3Monthly(B,done);const body=$('#doc .body');if(bo
 /* ---- 成就与本机历局排名：只记录荣誉，不改动经营数值 ---- */
 const HONOR_DEFS=[
  {id:'first_month',cat:'仕途',n:'履职伊始',d:'完成第一个月的工作结算',key:'months',goal:1,points:5},
- ...[1,2,3,4].map((lv,i)=>({id:'level_'+lv,cat:'仕途',n:['县域主政','执掌一市','区域领航','直辖履新'][i],d:'任职'+LV[lv].city+'，职级'+LV[lv].rank,key:'level',goal:lv,points:[10,20,30,50][i]})),
+ ...[1,2,3,4].map((lv,i)=>({id:'level_'+lv,cat:'仕途',n:['县域主政','执掌一市','区域领航','直辖履新'][i],get d(){return '任职'+LV[lv].city+'，职级'+LV[lv].rank;},key:'level',goal:lv,points:[10,20,30,50][i]})),
  ...[1,10,30].map((n,i)=>({id:'built_'+n,cat:'建设',n:['第一块砖','百业待兴','建设有成'][i],d:'本局累计建成'+n+'项设施',key:'built',goal:n,points:[10,20,30][i]})),
  {id:'grade_a',cat:'仕途',n:'年度优秀',d:'获得一次年度考核A',key:'gradeA',goal:1,points:10},
  {id:'grade_streak',cat:'仕途',n:'三载争先',d:'连续三年年度考核A',key:'gradeStreak',goal:3,points:30},
@@ -3298,7 +3353,7 @@ function vCityRanking(){
  return `<section class="sec"><h2>${S.rivals?.length?'省内城市治理榜':'本地治理成绩单'}</h2><p class="hint">沿用原省内综合分：经济45%、安全15%、廉政10%、生态15%、民生15%。经济按繁荣度，民生取宜居与满意度均值；安全按本年事故及项目隐患扣分，廉政按公开责任记录与处分扣分。分项排序供比较；年度考核仍按原综合位次计分。</p>${!S.rivals?.length?'<p class="hint">副省级任职后开放与两座模拟邻市的竞争；当前展示本地实绩。</p>':''}<div class="honor-filters" aria-label="排名指标">${Object.entries(RANK_METRICS).map(([k,n])=>`<button class="sm${rankMetric===k?' on':''}" data-rank-metric="${k}" aria-pressed="${rankMetric===k}">${n}</button>`).join('')}</div><div class="phase-scroll"><table class="city-rank-table phase-data"><caption class="sr-only">城市${RANK_METRICS[rankMetric]}排名</caption><thead><tr><th>位次 / 城市</th>${Object.values(RANK_METRICS).map(n=>`<th>${n}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr${r.me?' class="rank-me"':''}><td>${r.place}. ${esc(r.n)}${r.me?'<br>本地':''}</td><td>${compositeScore(r.p).toFixed(1)}</td>${['economy','safety','clean','environment','livelihood'].map(k=>`<td>${r.p[k].toFixed(1)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section>`;
 }
 const _honorNew=newGame,_honorInit=initLevel,_honorMigrate=migrate,_honorTick=tick,_honorAnnual=annual,_honorSave=save,_honorEnd=endGame,_honorRender=renderAll,_honorBind=bindPanel,_honorEnding=showEnding;
-newGame=function(){if(S)careerRecord();_honorNew();S.honors={version:1,id:'career-'+Date.now().toString(36)+'-'+(++honorSequence),unlocked:{},stats:{}};honorFilter='全部';honorStatus='all';rankView='career';rankMetric='composite';honorSync();};
+newGame=function(opts){if(S)careerRecord();_honorNew(opts);S.honors={version:1,id:'career-'+Date.now().toString(36)+'-'+(++honorSequence),unlocked:{},stats:{}};honorFilter='全部';honorStatus='all';rankView='career';rankMetric='composite';honorSync();};
 initLevel=function(lv,merit){if(S?.honors)honorSync();_honorInit(lv,merit);if(S.honors){S.honors.stats.debtPeak=honorNumber(hdr());honorSync();}};
 migrate=function(){_honorMigrate();honorSync();};
 tick=function(){const H=honorEnsure(),clock=projectMonth();const result=_honorTick();if(H.stats.lastMonth!==clock){const st=H.stats;st.lastMonth=clock;st.months++;for(const [key,ok] of [['safe',Object.values(S.gaps).every(v=>v===0)&&S.interestMiss===0],['green',S.env>=80],['happy',S.sat>=80]]){st[key]=ok?st[key]+1:0;st[key+'Best']=Math.max(st[key+'Best'],st[key]);}}honorSync(true);return result;};
@@ -3314,11 +3369,11 @@ showEnding=function(){_honorEnding();const opts=$('#doc .opts');if(opts){const b
    同一类设施第 k 座永远在同一个位置，新建只会新增图标，不会让其他东西挪位。 */
 const MAP_W=1000,MAP_H=640,MAP_MAX=5;
 const MAPGEO=[
- {cx:430,cy:330,R:168,ind:.8*Math.PI,neo:.32*Math.PI,river:{n:'青石河',w:16,pts:[[700,-20],[660,120],[600,230],[612,360],[700,470],[820,560],[900,670]]},
-  hills:[[180,150,125,'青石山'],[330,70,80],[95,400,90],[880,110,105,'北岭']],rail:null,oldMine:[250,235],scale:'1 公里'},
- {cx:470,cy:270,R:200,ind:0,neo:Math.PI,river:{n:'沂川河',w:30,pts:[[-20,480],[160,440],[330,485],[520,455],[700,495],[860,445],[1020,470]]},
+ {cx:430,cy:330,R:168,ind:.8*Math.PI,neo:.32*Math.PI,river:{n:'〔镇名〕河',w:16,pts:[[700,-20],[660,120],[600,230],[612,360],[700,470],[820,560],[900,670]]},
+  hills:[[180,150,125,'〔镇名〕山'],[330,70,80],[95,400,90],[880,110,105,'北岭']],rail:null,oldMine:[250,235],scale:'1 公里'},
+ {cx:470,cy:270,R:200,ind:0,neo:Math.PI,river:{n:'〔县名〕河',w:30,pts:[[-20,480],[160,440],[330,485],[520,455],[700,495],[860,445],[1020,470]]},
   hills:[[885,105,115,'东蒙山'],[745,45,70]],rail:[[-10,150],[1010,95]],scale:'5 公里'},
- {cx:500,cy:310,R:235,ind:.08*Math.PI,neo:-.62*Math.PI,river:{n:'临渡江',w:38,pts:[[-20,80],[180,160],[360,255],[520,330],[690,385],[850,470],[1020,560]]},
+ {cx:500,cy:310,R:235,ind:.08*Math.PI,neo:-.62*Math.PI,river:{n:'〔市2名〕江',w:38,pts:[[-20,80],[180,160],[360,255],[520,330],[690,385],[850,470],[1020,560]]},
   hills:[[140,525,120,'南屏山'],[300,615,85]],rail:[[-10,600],[1010,40]],scale:'10 公里'},
  {cx:560,cy:270,R:265,ind:.02*Math.PI,neo:Math.PI,river:{n:'岚江',w:50,pts:[[-20,540],[200,515],[400,560],[600,540],[800,580],[1020,555]]},
   lake:[165,245,105,68,'岚湖'],hills:[[905,85,105,'岚山']],rail:[[-10,70],[1010,190]],scale:'15 公里'},
@@ -3473,18 +3528,18 @@ function mapSvg(){const {M,items,lotTone}=mapItems(),G=M.G,L=LV[S.lvl];mapItemsN
  /* 山体：生态保护红线 */
  G.hills.forEach((h,i)=>{const rings=M.contours[i];o.push(`<path d="${mapPath(rings[0],true)}" fill="url(#mmForest)" stroke="#2E6B4A" stroke-width="1.2" stroke-dasharray="5 3" opacity=".95"/>`);
   for(let r=1;r<rings.length;r++)o.push(`<path d="${mapPath(rings[r],true)}" fill="none" stroke="#8C7B58" stroke-width=".8" opacity=".7"/>`);
-  if(h[3])o.push(`<text x="${h[0]}" y="${h[1]+4}" class="mm-geo">${h[3]}</text>`);});
+  if(h[3])o.push(`<text x="${h[0]}" y="${h[1]+4}" class="mm-geo">${esc(placeText(h[3]))}</text>`);});
  if(G.oldMine)o.push(`<g opacity=".8"><ellipse cx="${G.oldMine[0]}" cy="${G.oldMine[1]}" rx="26" ry="14" fill="#B7A68A" stroke="#7A6A4E" stroke-dasharray="3 2"/><text x="${G.oldMine[0]-44}" y="${G.oldMine[1]+4}" class="mm-small">老矿区</text></g>`);
  /* 水系 */
  if(G.sea){o.push(`<path d="${mapPath(G.sea,true)}" fill="${water}" stroke="${waterEdge}" stroke-width="1.4"/>`);
   for(let k=1;k<4;k++)o.push(`<path d="${mapPath(G.sea.slice(0,8).map(p=>[p[0]+k*14,p[1]]))}" fill="none" stroke="#fff" stroke-width=".8" opacity="${.5-k*.1}"/>`);
   (G.islands||[]).forEach(s=>o.push(`<ellipse cx="${s[0]}" cy="${s[1]}" rx="${s[2]}" ry="${s[3]}" fill="#D3DFBF" stroke="#8C7B58" stroke-width=".9"/>`));
   o.push(`<text x="935" y="320" class="mm-geo" fill="#3D6A8A">东 海</text>`);}
- if(G.lake){const k=G.lake;o.push(`<ellipse cx="${k[0]}" cy="${k[1]}" rx="${k[2]}" ry="${k[3]}" fill="${water}" stroke="${waterEdge}" stroke-width="1.4"/><text x="${k[0]}" y="${k[1]+5}" class="mm-geo" fill="#3D6A8A">${k[4]}</text>`);}
+ if(G.lake){const k=G.lake;o.push(`<ellipse cx="${k[0]}" cy="${k[1]}" rx="${k[2]}" ry="${k[3]}" fill="${water}" stroke="${waterEdge}" stroke-width="1.4"/><text x="${k[0]}" y="${k[1]+5}" class="mm-geo" fill="#3D6A8A">${esc(placeText(k[4]))}</text>`);}
  const rp=mapPath(M.river);
  o.push(`<path d="${rp}" fill="none" stroke="${waterEdge}" stroke-width="${G.river.w+3}" stroke-linecap="round" stroke-linejoin="round"/><path d="${rp}" fill="none" stroke="${water}" stroke-width="${G.river.w}" stroke-linecap="round" stroke-linejoin="round"/>`);
  if(clean<.45)o.push(`<path d="${rp}" fill="none" stroke="#6B5E3A" stroke-width="${G.river.w*.35}" stroke-dasharray="2 9" stroke-linecap="round" opacity="${(.45-clean)*1.6}"/>`);
- const rl=M.river[Math.floor(M.river.length*.18)];o.push(`<text x="${rl[0]}" y="${rl[1]-G.river.w/2-8}" class="mm-geo" fill="#3D6A8A">${G.river.n}</text>`);
+ const rl=M.river[Math.floor(M.river.length*.18)];o.push(`<text x="${rl[0]}" y="${rl[1]-G.river.w/2-8}" class="mm-geo" fill="#3D6A8A">${esc(placeText(G.river.n))}</text>`);
  /* 湿地、绿道 */
  for(let k=0;k<Math.min(S.f.wetland||0,M.wetSpots.length);k++){const p=M.wetSpots[k].p;o.push(`<g class="mm-wet"><ellipse cx="${p[0]}" cy="${p[1]-G.river.w/2-12}" rx="30" ry="12" fill="#A9CDB0" stroke="#2E6B4A" stroke-width=".8"/><path d="M${p[0]-14} ${p[1]-G.river.w/2-8}v-9M${p[0]-6} ${p[1]-G.river.w/2-7}v-12M${p[0]+4} ${p[1]-G.river.w/2-8}v-10M${p[0]+13} ${p[1]-G.river.w/2-7}v-8" stroke="#2E6B4A" stroke-width="1.2"/></g>`);}
  const wB=S.build.filter(b=>b.id==='wetland').length,wN=Math.min(S.f.wetland||0,M.wetSpots.length);
@@ -3592,6 +3647,86 @@ function fitPhaseScrollHints(){
   document.querySelectorAll('.phase-scroll').forEach(el=>el.classList.toggle('is-overflow',el.clientWidth>0&&el.scrollWidth>el.clientWidth+1));
 }
 
+/* ===== 开局设置与任命、结局文书：快照只存纯文本，不存 HTML ===== */
+function showStartSettings(){
+ const labels=['镇名','县名','地级市名','副省级市名','直辖市名','省名'];
+ const randomName=()=>pick(XINGS)+pick(['清和','予安','知远','书衡','明初','言川','景行','守宁','怀谨']);
+ showDoc(`<div class="dh"><div class="kind">履新准备</div><h2>开局设置</h2></div><div class="body commission-form"><form id="commissionForm" novalidate><label for="playerName">姓名 <span class="hint">必填 · 1–6个字</span></label><div class="commission-input-row"><input id="playerName" name="playerName" value="${esc(randomName())}" maxlength="32" autocomplete="off" aria-describedby="error-name"><button type="button" id="randomPlayerName">随机</button></div><p class="field-error" id="error-name" aria-live="polite"></p><details id="customPlaces"><summary>自定义地名 <span class="hint">可选 · 含省名</span></summary><p class="hint">只填1–4个字的主体，镇、县、市、省由程序添加；留空使用默认值。六项不能重名。</p><div class="commission-place-grid">${labels.map((label,i)=>`<div><label for="place${i}">${esc(label)} <span class="hint">+ ${esc(PLACE_SUFFIXES[i])}${i===3?'（副省级）':i===4?'（直辖市）':''}</span></label><input id="place${i}" value="${esc(DEFAULT_PLACES[i])}" maxlength="32" autocomplete="off" aria-describedby="error-place${i}"><p class="field-error" id="error-place${i}" aria-live="polite"></p></div>`).join('')}</div><button type="button" id="resetPlaces">恢复默认</button><p class="hint">副省级市隶属所填省份；直辖市不隶属任何省。</p></details></form></div><div class="opts"><button class="opt primary" type="submit" form="commissionForm" id="commissionConfirm"><span class="ot">确认 · 领取委任状</span></button><button class="opt" id="commissionCancel"><span class="ot">返回</span></button></div>`,'notice commission');
+ const validate=()=>{const result=validateStartOptions($('#playerName').value,labels.map((_,i)=>$('#place'+i).value));for(const key of ['name',...labels.map((_,i)=>'place'+i)]){const input=$(key==='name'?'#playerName':'#'+key);$('#error-'+key).textContent=result.errors[key]||'';input.setAttribute('aria-invalid',result.errors[key]?'true':'false');}return result;};
+ $('#randomPlayerName').onclick=()=>{$('#playerName').value=randomName();validate();};
+ $('#resetPlaces').onclick=()=>{DEFAULT_PLACES.forEach((p,i)=>$('#place'+i).value=p);validate();};
+ $('#commissionForm').oninput=validate;
+ labels.forEach((_,i)=>$('#place'+i).onblur=validate);
+ $('#commissionForm').onsubmit=e=>{e.preventDefault();const result=validate();if(!result.valid){if(Object.keys(result.errors).some(k=>k!=='name'))$('#customPlaces').open=true;$(result.errors.name?'#playerName':'#'+Object.keys(result.errors)[0]).focus();return;}result.places.forEach((stem,i)=>$('#place'+i).value=stem);newGame({name:result.name,places:result.places});const order=recordOrder(appointmentOrder(0));showOrder(order,'到任',()=>{hideDoc();$('#cover').style.display='none';busy=false;renderAll();preloadArt();save();},'commissionArrive');};
+ $('#commissionCancel').onclick=hideDoc;
+}
+function orderAuthority(lvl){
+ const county=placeName(1),city=placeName(2),province=placeName(5);
+ return [
+  {party:'中共'+county+'委',issuer:'中共'+county+'委（组织部代章）',discipline:county+'纪委监委',announcement:''},
+  {party:'中共'+city+'委',issuer:'中共'+city+'委',discipline:city+'纪委监委',announcement:''},
+  {party:'中共'+province+'委',issuer:'中共'+province+'委',discipline:province+'纪委监委',announcement:''},
+  {party:'中共中央',issuer:'中共'+province+'委',discipline:'中央纪委国家监委',announcement:'宣布：省委干部大会'},
+  {party:'中共中央',issuer:'中共中央组织部',discipline:'中央纪委国家监委',announcement:'宣布：'+placeName(4)+'领导干部大会'}
+ ][lvl];
+}
+function appointmentHistory(lvl){
+ if(!lvl)return '';
+ const last=S.hist?.at(-1),h=last?.lvl===lvl-1?last:null;
+ const years=h?h.years:S.tenure,grades=h?h.grades:S.ratings.slice(-S.tenure).join('');
+ return '履历摘要：上一任'+years+'年；考核成绩 '+(grades||'尚无年度考核')+'。';
+}
+function orderNumber(lvl,seq){return (lvl<2?'〔'+placeName(lvl===0?1:2)+'委〕组干':'组任')+'〔第'+S.year+'年〕'+seq+'号';}
+function appointmentOrder(lvl){
+ const a=orderAuthority(lvl),name=playerName();
+ const titles=[`中共〔县〕委关于〔姓名〕同志任职的通知`,`中共〔市2〕委关于〔姓名〕等同志职务任免的通知`,`中共〔省〕委关于〔姓名〕等同志职务任免的通知`,`关于〔姓名〕同志任职的通知`,`关于〔姓名〕同志任职的通知`];
+ const cores=[
+  '经县委研究决定：〔姓名〕同志任中共〔镇〕委员会委员、副书记，提名为〔镇〕人民政府镇长候选人。',
+  '经市委研究决定：〔姓名〕同志任中共〔县〕委委员、常委、副书记，提名为〔县〕人民政府县长候选人；免去其中共〔镇〕委员会副书记职务，镇长职务按法定程序办理辞职。',
+  '经省委研究决定：〔姓名〕同志任中共〔市2〕委委员、常委、书记；免去其中共〔县〕委副书记职务，县长职务按法定程序办理辞职。',
+  '中共中央批准：〔姓名〕同志任中共〔市3〕委委员、常委、书记；免去其中共〔市2〕委书记、常委、委员职务。',
+  '中共中央决定：〔姓名〕同志任中共〔市4〕委委员、常委、书记；免去其中共〔市3〕委书记、常委、委员职务。'
+ ];
+ const notes=['镇长依法须经人民代表大会选举产生。请核清到任账目，逐项回应群众提出的实际困难。','县长依法须经人民代表大会选举产生。请依照法定程序办理交接，把应办事项接续落实。','请按规定完成交接，对未结事项逐项留存依据。','由省委干部大会宣布中央决定，请按规定做好职务交接。','由本市领导干部大会宣布中央决定，请按规定做好职务交接。'];
+ return {key:'appointment:'+lvl+':'+S.year+':'+S.month,kind:'appointment',year:S.year,month:S.month,lvl,heading:lvl?'任职通知':'委任状',eyebrow:lvl?'调令':'任命文书',title:placeText(titles[lvl]),number:orderNumber(lvl,(S.orders?.length||0)+1),role:placeName(lvl)+LV[lvl].t+'（'+LV[lvl].rank+'）',player:name,issuer:a.issuer,announcement:a.announcement,body:[placeText(cores[lvl]),'职级：'+LV[lvl].rank+'。',...(lvl?[placeText(PROMO_TEXT[lvl]),'上一任政绩的四分之一计入新任期。到任账目中已列出存量债务。']:[])],summary:appointmentHistory(lvl),note:notes[lvl],tone:'red'};
+}
+function recordOrder(order){if(!Array.isArray(S.orders))S.orders=[];const found=S.orders.find(o=>o&&o.key===order.key);if(found)return found;S.orders.push(order);return order;}
+function orderText(value,max=2400){return String(value??'').slice(0,max);}
+function orderHtml(order){
+ const e=value=>esc(orderText(value));const black=order.tone==='black';
+ return `<div class="dh"><div class="kind">${e(order.eyebrow)}</div><h2>${e(order.heading)}</h2>${order.title&&order.title!==order.heading?`<p class="order-subtitle">${e(order.title)}</p>`:''}<p class="order-number">${e(order.number)}</p></div><div class="body order-body">${(Array.isArray(order.body)?order.body:[]).slice(0,12).map(p=>`<p>${e(p)}</p>`).join('')}${order.summary?`<p class="order-summary">${e(order.summary)}</p>`:''}${order.note?`<p class="order-note">${e(order.note)}</p>`:''}<div class="order-signature"><div class="order-signer"><p>${e(order.issuer)}</p>${order.announcement?`<p class="hint">${e(order.announcement)}</p>`:''}<p>第${e(order.year)}年${e(order.month)}月</p></div>${black?'<span class="order-black-label">通报</span>':'<span class="seal seal-round" aria-label="文书印章"><span>任命文书</span><b>★</b><span>存档</span></span>'}</div></div>`;
+}
+function showOrder(order,label,done,id='orderNext'){
+ showDoc(orderHtml(order)+`<div class="opts"><button class="opt primary" id="${esc(id)}"><span class="ot">${esc(label)}</span></button></div>`,'notice commission order-document'+(order.tone==='black'?' order-black':''));
+ $('#'+id).onclick=done;
+}
+function vOrders(){const orders=Array.isArray(S.orders)?S.orders:[];return `<section class="sec"><h2>任命文书</h2><p class="hint">委任状、历次任职通知与结局文书按签发时内容存档，可点开重阅。</p><div class="order-list">${orders.length?orders.map((o,i)=>o?`<button class="order-entry" data-order="${i}"><strong>${esc(orderText(o.heading,100))} · 第${esc(orderText(o.year,8))}年${esc(orderText(o.month,8))}月</strong><span>${esc(orderText(o.number,100))}</span><span>${esc(orderText(o.role,100))}</span></button>`:'').reverse().join(''):'<p class="muted">暂无存档文书。旧存档不补造往期文书。</p>'}</div></section>`;}
+function endingFacts(){
+ const facts=new Set();for(const f of S.file||[]){const t=String(f.t||'');
+  if(/申报|注水|虚报|造假|材料|报表/.test(t))facts.add('在项目申报中弄虚作假');
+  else if(/隐债|融资|债务|返还|财政/.test(t))facts.add('违反财经纪律作出不当决策');
+  else if(/亲属|配偶|子女|医疗|择校/.test(t))facts.add('利用职务影响为亲属谋取不当利益');
+  else if(/收受|礼|宴|报销|接待/.test(t))facts.add('违反廉洁纪律接受不当利益');
+  else if(/工程|项目|招标|招投|建设|用地|审批|土地|规划/.test(t))facts.add('违规干预工程项目和审批事项');
+  else facts.add('履职中违反有关工作纪律');
+ }return facts.size?'经查，其存在'+[...facts].join('、')+'等问题。':'经查，其对任职期间有关违纪违法问题负有责任。';
+}
+function endingOrders(){
+ const lvl=S.lvl,a=orderAuthority(lvl),name=playerName(),place=placeName(lvl),role=place+LV[lvl].t,seq=(S.orders?.length||0)+1;
+ const base={kind:'ending',year:S.year,month:S.month,lvl,role,player:name,issuer:a.issuer,announcement:'',tone:'red',eyebrow:'组织文书',note:'',summary:''};
+ const make=(i,title,body,extra={})=>recordOrder({...base,key:'ending:'+S.over+':'+lvl+':'+i,heading:title,title,number:orderNumber(lvl,seq+i),body,...extra});
+ if(['fall','post_audit'].includes(S.over)){
+  const retired=S.over==='post_audit';const who=retired?role+'（已退休）'+name:name;
+  return [make(0,'留置通知书',['致家属：',who+'涉嫌严重职务违法和职务犯罪，经批准，'+a.discipline+'于第'+S.year+'年'+S.month+'月对其采取留置措施，特此通知。'],{issuer:a.discipline,tone:'black',eyebrow:'调查文书'}),make(1,'关于'+name+'严重违纪违法案的通报',[(retired?role+'（已退休）'+name+'退休后仍被查处，相关问题反映出不收敛、不收手。':'')+endingFacts(),'经'+a.party+'批准，给予'+name+'开除党籍处分；由'+a.discipline+'给予开除公职处分；收缴违纪违法所得；将其涉嫌犯罪问题移送检察机关依法审查起诉。','检察机关已依法决定逮捕。'],{issuer:a.discipline,tone:'black',eyebrow:'案件通报'})];
+ }
+ if(S.over==='debt')return [make(0,'关于成立'+place+'财政金融风险处置工作组的通知',['决定成立'+place+'财政金融风险处置工作组，核实存量债务，统筹到期兑付和基本公共服务支出，接续办理未完项目。','有关单位应按规定移交账册、合同和项目资料，逐项登记交接。'],{issuer:a.party}),make(1,'关于'+name+'同志免职的通知',['经研究决定，免去'+name+'同志'+role+'职务，相关手续依规依法办理。','另案接受调查。'])];
+ if(S.over==='sanbao')return [make(0,'问责决定',['因基本民生、工资和运转保障工作出现严重失责，依据《中国共产党问责条例》，对'+name+'同志予以免职问责。','有关职务变动按规定程序办理；未结保障事项由接任负责人继续落实。'],{issuer:a.party})];
+ if(S.over==='accident')return [make(0,'事故调查报告结论摘要',['调查认定，涉事设施隐患排查和停运整改未落实到位，风险报告未得到及时处置。有关部门对安全管理失管负有责任。',name+'同志作为当地主要负责人，对督促整改不力负有领导责任。事故处置、善后及责任处理分别依规办理。'],{issuer:a.party+'事故调查组'}),make(1,'关于同意'+name+'同志辞去职务的通知',['经研究，同意'+name+'同志因重大事故引咎辞去'+role+'职务，相关手续依规依法办理。','请按规定移交未结工作和事故处置材料。'])];
+ if(S.over==='fired')return [make(0,'关于'+name+'同志免职的通知',['经研究决定，免去'+name+'同志'+role+'职务，相关手续依规依法办理。','安排其他工作。请按要求完成交接。'])];
+ if(S.over==='sidelined')return [make(0,'关于'+name+'同志职务调整的通知',['经研究决定，'+name+'同志不再担任'+role+'职务，提名为'+place+(lvl===0?'人大副主席候选人。':'人大常委会副主任候选人。'),'有关任免、选举事项按法定程序办理。请将任内未结事项列单交接。'])];
+ return [make(0,'关于'+name+'同志退休的通知',['经研究决定，'+name+'同志按规定退休，不再担任'+role+'职务，相关手续依规办理。',...(S.over==='retire_top'?['任内履职尽责，交接工作有序。组织对其多年来承担的工作予以肯定。']:[]),'请协同完成档案和工作资料移交。退休后的有关事项按规定办理。'])];
+}
+
 document.addEventListener('DOMContentLoaded',()=>{
   // 折叠与页面位置只存在本次页面的内存中；所有页签内的 details 共用此保护。
   const detailViews=new Map();let renderedView=null,restoreSequence=0;
@@ -3625,13 +3760,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   addEventListener('resize',fitDialogViewport);
   if(window.visualViewport){window.visualViewport.addEventListener('resize',fitDialogViewport);window.visualViewport.addEventListener('scroll',fitDialogViewport);}
   $('#nextbtn').onclick=next;
-  $('#btnNew').onclick=()=>{newGame();$('#cover').style.display='none';renderAll();preloadArt();};
+  $('#btnNew').onclick=showStartSettings;
   $('#btnLoad').onclick=()=>{if(load()){$('#cover').style.display='none';renderAll();preloadArt();}else alert('没有找到存档。');};
   $('#btnSave').onclick=()=>{save();logIt('已保存。','sys');renderAll();};
   $('#btnExport').onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(S));a.download='一方水土-存档-第'+S.year+'年.json';a.click();};
   $('#btnImport').onclick=()=>$('#fileIn').click();
   $('#fileIn').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const imported=JSON.parse(r.result);if(imported.auditRevision!==114&&!LS.get('yifang_save_before_v114'))LS.set('yifang_save_before_v114',r.result);if(!imported.phase3&&!LS.get('yifang_save_before_v113'))LS.set('yifang_save_before_v113',r.result);if(!imported.phase2&&!LS.get('yifang_save_before_v112'))LS.set('yifang_save_before_v112',r.result);if(!imported.phase1&&!LS.get('yifang_save_before_v111'))LS.set('yifang_save_before_v111',r.result);S=imported;migrate();renderAll();logIt('存档已导入。','sys');renderAll();mtoast('存档已导入：第'+S.year+'年'+S.month+'月。','good');}catch(x){alert('存档文件无法读取。');}};r.readAsText(f);};
-  $('#btnReset').onclick=()=>{if(confirm('放弃当前进度，重新开局？')){LS.del('yifang_save');newGame();renderAll();}};
+  $('#btnReset').onclick=()=>{if(confirm('放弃当前进度，重新开局？'))showStartSettings();};
   $('#modal').onclick=e=>{if(e.target.id==='modal'){/* 呈批件必须处理，不允许点空白关闭 */}};
   if(LS.get('yifang_save'))$('#btnLoad').textContent='继续上次';
 });
@@ -3852,7 +3987,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     var d=(E.d||'').replace(/〔年龄〕/g,S.age+' 岁');
     wrap(g,d,W-2*P).forEach(function(l){g.fillText(l,P,y);y+=52;});y+=18;
     g.fillStyle=MUTED;g.font='400 28px '+SANS;
-    g.fillText('仕途 '+Math.max(0,S.year-1)+' 年 · 终于'+LV[S.lvl].city+LV[S.lvl].t+' · '+S.age+' 岁',P,y);y+=70;
+    wrap(g,playerName()+'同志 · 仕途 '+Math.max(0,S.year-1)+' 年 · 终于'+LV[S.lvl].city+LV[S.lvl].t+' · '+S.age+' 岁',W-2*P).forEach(function(line){g.fillText(line,P,y);y+=40;});y+=30;
     /* 数据卡 */
     var tiles=[[snap.score,'/1000','生涯分'],[snap.built,'项','建成项目'],[snap.achieved,'/'+HONOR_DEFS.length,'解锁成就'],[S.ratings.filter(function(x){return x==='A';}).length,'次','考核优秀']];
     var tw=(W-2*P-3*20)/4,th=170;
@@ -3866,7 +4001,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     career().forEach(function(h,i,arr){
       var cx=P+14;g.fillStyle=h.cur?RED:'#fff';g.strokeStyle=RED;g.lineWidth=4;g.beginPath();g.arc(cx,y+20,12,0,Math.PI*2);g.fill();g.stroke();
       if(i<arr.length-1){g.fillStyle=LINE;g.fillRect(cx-2,y+36,4,64);}
-      g.fillStyle=INK;g.font='700 32px '+SANS;g.fillText(LV[h.lvl].city+' '+LV[h.lvl].t,P+48,y);
+      g.fillStyle=INK;g.font='700 32px '+SANS;g.fillText(safeCanvasText(h.city||placeName(h.lvl,'full'),32)+' '+LV[h.lvl].t,P+48,y,W-2*P-48);
       g.fillStyle=MUTED;g.font='400 26px '+SANS;g.fillText(h.years+' 年 · 建成 '+h.built+' 项 · '+(h.cur?'终局':'离任')+'隐债率 '+h.hdr+'%',P+48,y+46);
       y+=104;});
     y+=10;
@@ -3928,6 +4063,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   var _bind=bindPanel;
   bindPanel=function(){_bind.apply(this,arguments);document.querySelectorAll('[data-end-card]').forEach(function(b){b.onclick=openCard;});};
 })();
+/* 结局文书逐页展示，完成后调用原结局呈批件及分享图入口。 */
+const _commissionEndingResult=showEnding;
+showEnding=function(){if(!S?.over)return;busy=false;const orders=endingOrders();let index=0;const advance=()=>{if(index>=orders.length){_commissionEndingResult();return;}const order=orders[index++];showOrder(order,index<orders.length?'下一页':'查看结局',advance,'endingOrderNext');};advance();};
 </script>
 </body>
 </html>

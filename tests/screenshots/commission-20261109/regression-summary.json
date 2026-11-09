@@ -1,0 +1,26 @@
+[
+  {
+    "suite": "phase1",
+    "passed": 38,
+    "expected": 38,
+    "exitCode": 0
+  },
+  {
+    "suite": "phase2",
+    "passed": 50,
+    "expected": 50,
+    "exitCode": 0
+  },
+  {
+    "suite": "phase3",
+    "passed": 47,
+    "expected": 47,
+    "exitCode": 0
+  },
+  {
+    "suite": "fixes-v114",
+    "passed": 49,
+    "expected": 49,
+    "exitCode": 0
+  }
+]

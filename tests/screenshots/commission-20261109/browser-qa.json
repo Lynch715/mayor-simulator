@@ -1,0 +1,2500 @@
+{
+  "checks": [
+    "Actual form: inline invalid-name, duplicate-place, long-place rejection; reset; suffix removal; six places persisted",
+    "Arrival log, map river/heading, archive commission replay",
+    "All four real promotion callbacks: initLevel, history summary, arrival log, resume and saved orders",
+    "100 WeChat-UA ending scenarios: all 10 endings × 5 levels × 320/390 widths; sequence, no early share button, unchanged outcome and no stamp overlap",
+    "Canvas: player and custom places, 1080px PNG, no URL/QR/document text"
+  ],
+  "layoutChecks": 249,
+  "documentLayoutChecks": 247,
+  "layouts": [
+    {
+      "label": "commission 390",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "commission 1280",
+      "width": 1280,
+      "page": 1280,
+      "doc": {
+        "width": 638,
+        "scrollWidth": 638
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "custom map 390",
+      "width": 390,
+      "page": 390,
+      "doc": null,
+      "sealOverlaps": false
+    },
+    {
+      "label": "custom map 1280",
+      "width": 1280,
+      "page": 1280,
+      "doc": null,
+      "sealOverlaps": false
+    },
+    {
+      "label": "promotion 1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "promotion 2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "promotion 3",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "promotion 4",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 fall page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 fall page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv0 fall",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 post_audit page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 post_audit page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv0 post_audit",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 debt page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 debt page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv0 debt",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 sanbao page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv0 sanbao",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 accident page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 accident page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv0 accident",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 fired page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv0 fired",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 sidelined page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv0 sidelined",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 retire_top page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv0 retire_top",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 retire_good page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv0 retire_good",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv0 retire_plain page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv0 retire_plain",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 fall page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 fall page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv1 fall",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 post_audit page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 post_audit page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv1 post_audit",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 debt page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 debt page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv1 debt",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 sanbao page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv1 sanbao",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 accident page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 accident page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv1 accident",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 fired page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv1 fired",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 sidelined page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv1 sidelined",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 retire_top page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv1 retire_top",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 retire_good page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv1 retire_good",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv1 retire_plain page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv1 retire_plain",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 fall page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 fall page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv2 fall",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 post_audit page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 post_audit page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv2 post_audit",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 debt page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 debt page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv2 debt",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 sanbao page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv2 sanbao",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 accident page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 accident page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv2 accident",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 fired page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv2 fired",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 sidelined page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv2 sidelined",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 retire_top page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv2 retire_top",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 retire_good page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv2 retire_good",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv2 retire_plain page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv2 retire_plain",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 fall page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 fall page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv3 fall",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 post_audit page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 post_audit page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv3 post_audit",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 debt page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 debt page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv3 debt",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 sanbao page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv3 sanbao",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 accident page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 accident page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv3 accident",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 fired page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv3 fired",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 sidelined page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv3 sidelined",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 retire_top page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv3 retire_top",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 retire_good page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv3 retire_good",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv3 retire_plain page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv3 retire_plain",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 fall page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 fall page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv4 fall",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 post_audit page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 post_audit page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv4 post_audit",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 debt page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 debt page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv4 debt",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 sanbao page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv4 sanbao",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 accident page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 accident page2",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv4 accident",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 fired page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv4 fired",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 sidelined page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv4 sidelined",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 retire_top page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv4 retire_top",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 retire_good page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv4 retire_good",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "320 lv4 retire_plain page1",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 320 lv4 retire_plain",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scrollWidth": 294
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 fall page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 fall page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv0 fall",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 post_audit page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 post_audit page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv0 post_audit",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 debt page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 debt page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv0 debt",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 sanbao page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv0 sanbao",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 accident page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 accident page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv0 accident",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 fired page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv0 fired",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 sidelined page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv0 sidelined",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 retire_top page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv0 retire_top",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 retire_good page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv0 retire_good",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv0 retire_plain page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv0 retire_plain",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 fall page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 fall page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv1 fall",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 post_audit page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 post_audit page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv1 post_audit",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 debt page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 debt page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv1 debt",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 sanbao page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv1 sanbao",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 accident page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 accident page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv1 accident",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 fired page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv1 fired",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 sidelined page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv1 sidelined",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 retire_top page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv1 retire_top",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 retire_good page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv1 retire_good",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv1 retire_plain page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv1 retire_plain",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 fall page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 fall page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv2 fall",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 post_audit page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 post_audit page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv2 post_audit",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 debt page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 debt page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv2 debt",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 sanbao page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv2 sanbao",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 accident page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 accident page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv2 accident",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 fired page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv2 fired",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 sidelined page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv2 sidelined",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 retire_top page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv2 retire_top",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 retire_good page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv2 retire_good",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv2 retire_plain page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv2 retire_plain",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 fall page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 fall page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv3 fall",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 post_audit page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 post_audit page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv3 post_audit",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 debt page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 debt page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv3 debt",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 sanbao page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv3 sanbao",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 accident page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 accident page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv3 accident",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 fired page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv3 fired",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 sidelined page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv3 sidelined",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 retire_top page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv3 retire_top",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 retire_good page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv3 retire_good",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv3 retire_plain page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv3 retire_plain",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 fall page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 fall page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv4 fall",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 post_audit page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 post_audit page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv4 post_audit",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 debt page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 debt page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv4 debt",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 sanbao page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv4 sanbao",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 accident page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 accident page2",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv4 accident",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 fired page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv4 fired",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 sidelined page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv4 sidelined",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 retire_top page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv4 retire_top",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 retire_good page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv4 retire_good",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "390 lv4 retire_plain page1",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "final 390 lv4 retire_plain",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    },
+    {
+      "label": "long name commission 390",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scrollWidth": 364
+      },
+      "sealOverlaps": false
+    }
+  ],
+  "errors": [],
+  "wechatScope": "Chromium UA + touch/mobile viewport simulation; no physical WeChat/iOS WebView tested",
+  "isolation": "New Chromium process and fresh incognito contexts; localhost only; no existing profile accessed"
+}
