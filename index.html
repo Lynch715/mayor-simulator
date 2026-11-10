@@ -665,6 +665,20 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 .order-black-label{border:2px solid #333;color:#333;display:inline-block;letter-spacing:.25em;padding:8px 12px;flex:0 0 auto}
 @media(max-width:420px){.commission-place-grid{grid-template-columns:1fr}.order-signature{gap:8px}.order-signer{flex-basis:100%;text-align:left}.seal.seal-round{margin-left:auto}.doc.commission h2{font-size:22px}}
 
+/* 年终拨款确认与资金调整 */
+.doc .body.district-budget-body{white-space:normal}
+.district-budget-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.district-budget-summary>div{padding:10px;border:1px solid var(--line2);background:var(--paper);min-width:0}
+.district-budget-summary span{display:block;font:12px var(--sans);color:var(--ink3)}
+.district-budget-summary strong{display:block;font-size:24px;line-height:1.5;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.district-budget-body p{margin-bottom:10px}.district-budget-body details{margin-top:14px;border-top:1px solid var(--line2);padding-top:12px}
+.district-budget-body summary{font-weight:600;cursor:pointer}.district-budget-list{display:grid;gap:8px;margin-top:12px}
+.district-budget-row{display:grid;grid-template-columns:minmax(0,1fr) 90px;align-items:center;gap:12px;padding:10px;border:1px solid var(--line2)}
+.district-budget-row label{min-width:0;overflow-wrap:anywhere}.district-budget-row small{display:block;font-size:12px;color:var(--ink3)}
+.district-budget-row select{min-width:0;width:100%;min-height:44px;font-size:16px}
+.district-budget-doc .opt{overflow-wrap:anywhere}
+@media(max-width:360px){.district-budget-summary{gap:7px}.district-budget-summary strong{font-size:21px}.district-budget-row{grid-template-columns:minmax(0,1fr) 80px;gap:8px}}
+
 </style>
 </head>
 <body>
@@ -2209,7 +2223,8 @@ function tick(){
 }
 
 /* ---- 年终 ---- */
-function annual(){
+function annual(options){
+  const pending=pendingDistrictYearEnd();if(pending)return {...pending.result,districtPending:true};
   S.year++;S.age++;S.tenure++;S.recruitThisYear=0;S.sbYear=0;S.staff=Math.round(S.staff*0.985);S.quota=Math.round(staffNeed()*1.06);
   const R={};R.year=S.year-1;
   const sanctionsYr=S.file.filter(f=>f.mild&&f.exp&&f.expY===R.year).length;
@@ -2241,7 +2256,12 @@ function annual(){
   if(S.lvl>=1){const keep=(S.plots||[]).filter(p=>(p.held||0)<2);S.plots=keep.concat(genPlots(Math.max(1,3-keep.length)));}
   if(S.lvl>=2){const kp=(S.leads||[]).filter(l=>S.year-l.y<2);S.leads=kp.concat(genLeads(Math.max(1,3-kp.length)));}
   if(S.lvl>=3){rivalStep();if(!S.bigp||S.year-S.bigp.y>=1)newBigP();}
+  if(S.lvl>=4&&S.dist?.length&&options?.deferDistrict){S.pendingDistrictYearEnd={version:1,stage:'allocation',year:R.year,result:R};return {...R,districtPending:true};}
   if(S.lvl>=4)distStep();
+  return annualTail(R);
+}
+function annualTail(R){
+  const g=R.grade;
   eraStep();histStep();
   S.sanbaoYr=0;S.accidentsYr=0;S.flags.push=0;
   S.resume.push({y:R.year,t:LV[S.lvl].city+'第'+S.tenure+'年，年度考核'+g+'，政绩'+Math.round(S.merit)});
@@ -2376,7 +2396,8 @@ function renderAll(){if(!S)return;getters();const L=LV[S.lvl];
   $('#log').innerHTML=S.log.slice(0,60).map(x=>`<div class="${x.c==='bad'?'bad':x.c==='good'?'good':x.c==='sys'?'sys':''}"><span class="t">${x.y}年${x.m}月</span>${esc(x.t)}</div>`).join('');
   const exp=wageBill()+opsBill()+liveBill();const inc=monthIncome();
   const _agn=(AG[S.ag||'routine']||AG.routine).n;
-  $('#nexthint').textContent=(S.phase==='retired'?'':'本月安排：'+_agn+'　')+`预计下月：收入 ${fmt(inc)}，三保支出 ${fmt(exp)}，${inc-exp>=0?'结余':'缺口'} ${fmt(Math.abs(inc-exp))}`;
+  const districtNotice=districtForecastPayment(1);
+  $('#nexthint').textContent=(districtNotice?'年终区县拨款约'+districtMoney(districtNotice)+'（扣前可调整）　':'')+(S.phase==='retired'?'':'本月安排：'+_agn+'　')+`预计下月：收入 ${fmt(inc)}，三保支出 ${fmt(exp)}，三保收支${inc-exp>=0?'结余':'缺口'} ${fmt(Math.abs(inc-exp))}`;
   $('#nextbtn').disabled=!!S.over;$('#nextbtn').textContent=S.phase==='retired'?'下 年':'下 月';
 }
 /* 页签多起来之后要能看出还能横滑，且当前页签必须在视野里 */
@@ -2461,7 +2482,7 @@ function vDist(){
   <td data-w="资金档"><div class="tiers">${[0,1,2,3,4,5].map(v=>`<button class="sm${a.fund===v?' on':''}" data-dist="${esc(d.id)}" data-k="fund" data-v="${v}">${v}</button>`).join('')}</div></td>
   <td data-w="侧重"><div class="tiers fo">${Object.keys(DFOCUS).map(f=>`<button class="sm${a.focus===f?' on':''}" data-dist="${esc(d.id)}" data-k="focus" data-v="${f}">${DFOCUS[f]}</button>`).join('')}</div></td></tr>`;}).join('');
  return `<div class="sec"><h2>建设资金分配</h2>
- <div class="hint">全市建设资金共分 <b>${DTIERMAX}</b> 档，每档每年 ${fmt(distTierCost())}，按区分配资金并设置考核侧重。<b>市级考核中，区县表现占55%，市本级占45%。</b></div>
+ <div class="hint">全市建设资金共分 <b>${DTIERMAX}</b> 档，每档每年 ${fmt(distTierCost())}，按区分配资金并设置考核侧重。年底一次支付，扣款前会提醒并允许调整；不必分满全部档位。<b>市级考核中，区县表现占55%，市本级占45%。</b></div>
  <div class="hint">已分配 <b>${used}</b> / ${DTIERMAX} 档，全年支出 ${fmt(distSpend())}。区县加权平均：繁荣 <b>${av.pros.toFixed(0)}</b>、宜居 <b>${av.liv.toFixed(0)}</b>、债务率 <b>${av.debt.toFixed(0)}%</b>。</div>
  <table class="dist"><tr><th>区</th><th class="r">繁荣</th><th class="r">宜居</th><th class="r">债务</th><th>资金档</th><th>考核侧重</th></tr>${rows}</table>
  <div class="hint">「拼经济」提高繁荣，也会增加债务、降低宜居；「保民生」逐步提高宜居；「控债务」减少债务，也会降低繁荣。<b>区县的债务率一半算进市级隐性债务率</b>。「报表存疑」的区可能隐瞒部分融资，查实后计入市级债务并形成责任记录。</div></div>`;}
@@ -2595,7 +2616,7 @@ function showEnding(){busy=false;const E=ENDINGS[S.over];
   LS.del('yifang_save');}
 /* ---- 推进 ---- */
 let busy=false;
-function next(){if(busy||!S||S.over)return;busy=true;
+function next(){if(busy||!S||S.over)return;if(resumeDistrictYearEnd())return;busy=true;
   if(S.phase==='retired'){const ev=retiredStep();if(!ev){busy=false;return;}showEvent(ev,()=>{busy=false;save();renderAll();});return;}
   const before={y:S.year,m:S.month,cash:S.cash,pros:S.pros,liv:S.liv,sat:S.sat,env:S.env,hdr:hdr(),pop:S.pop,rep:S.rep,unity:S.unity,seq:S.logSeq||0,building:S.build.length};
   runAgenda();
@@ -2603,14 +2624,17 @@ function next(){if(busy||!S||S.over)return;busy=true;
   const inst=checkInstant();if(inst){endGame(inst);renderAll();showEnding();busy=false;return;}
   const runEvents=(i,after)=>{if(i>=evQueue.length){after();return;}const ev=findEvent(evQueue[i]);if(!ev){runEvents(i+1,after);return;}showEvent(ev,()=>{renderAll();if(S.over)return;runEvents(i+1,after);});};
   showMonthly(before,()=>runEvents(0,()=>{if(!annualDue){busy=false;save();renderAll();return;}
-    const R=annual();renderAll();showReview(R,()=>{
+    const R=annual({deferDistrict:true});renderAll();if(R.districtPending){persistDistrictYearEnd();showDistrictBudget();return;}afterAnnualReview(R);}));
+}
+function afterAnnualReview(R){renderAll();showReview(R,()=>{
+  acknowledgeDistrictYearEnd(R);
       if(R.next==='fall'){closeLevel();endGame('fall');renderAll();showEnding();busy=false;return;}
       if(R.next==='fired'){closeLevel();endGame('fired');renderAll();showEnding();busy=false;return;}
       if(R.next==='sidelined'){closeLevel();endGame('sidelined');renderAll();showEnding();busy=false;return;}
       if(R.next==='retire'){closeLevel();S.phase='retired';S.retY=0;logIt('到龄退休。','sys');showDoc(`<div class="dh"><div class="kind">通知</div><h2>关于退休的通知</h2></div><div class="body">${S.age} 岁，到点了。${LV[S.lvl].rank}的年龄界限就在这里，组织谈话很短，感谢了你的工作。办公室的人帮你收拾东西，一个纸箱就装完了。\n\n往后几年，每次推进是一年。</div><div class="opts"><button class="opt" id="rtOk"><span class="ot">离开办公室</span></button></div>`,'notice');$('#rtOk').onclick=()=>{hideDoc();busy=false;save();renderAll();};return;}
       if(R.next==='promote'){const nl=S.lvl+1;showPromo(nl,()=>{initLevel(nl,S.merit*0.25);S.resume.push({y:S.year,t:arrivalText(nl)});logIt(arrivalText(nl)+'。','sys');busy=false;save();renderAll();preloadArt();});return;}
-      busy=false;save();renderAll();});}));
-}
+      busy=false;save();renderAll();
+});}
 /* ---- 月度简报 ---- */
 function showMonthly(B,done){const M=S.monthly;if(!M){done();return;}
   const news=S.log.filter(x=>x.q>B.seq).reverse();
@@ -2845,7 +2869,8 @@ function cashForecast(){
   const reserve=income*S.reserveRate/100,base=wageBill()+opsBill()+liveBill()+talentCost();
   let interest=S.platform*.005,principal=0;for(const b of debt){if(b.amt<=0)continue;interest+=b.amt*b.rate/1200;b.left--;if(b.left<=0){principal+=b.amt;b.amt=0;}}
   let build=0;for(const b of builds){if(b.left>0){const due=(b.cost-b.paid)/b.left;build+=due;b.paid+=due;b.left--;if(b.wl)unspent=Math.max(0,unspent-due);}}
-  cash+=income-reserve-base-interest-principal-build;out.push({i,income,base,reserve,interest,principal,build,cash,available:cash-unspent,warning:cash<0?'现金缺口':cash-unspent<0?'受限资金压力':'可覆盖'});
+  const district=districtForecastPayment(i);
+  cash+=income-reserve-base-interest-principal-build-district;out.push({i,income,base,reserve,interest,principal,build,district,cash,available:cash-unspent,warning:cash<0?'现金缺口':cash-unspent<0?'受限资金压力':'可覆盖'});
   for(const l of leases)l.left--;
  }return out;
 }
@@ -2854,8 +2879,8 @@ function vCashbook(){
  const forecast=cashForecast();return `<div class="sec phase-panel"><h2>财政分类台账</h2>${LS.get('yifang_save_before_v111')?'<button class="sm" id="btnLegacyExport">导出升级前存档</button>':''}<div class="hint">税收、租金和水电收入列入经常性收入；卖地、补助等单列。借款列融资，维护费列运转支出。</div>
  ${last?`<p>最近结算：第${last.year}年${last.month}月 · 经常性 ${fmt(last.recurring)} · 一次性 ${fmt(last.oneoff)} · 融资净流入 ${fmt(last.financing)}</p><div class="phase-scroll"><table><tr><th>已发生项目</th><th class="r">现金变动</th></tr>${Object.entries(last.totals).map(([k,v])=>`<tr><td>${CASH_NAMES[k]||k}</td><td class="r">${v>=0?'+':''}${fmt(v)}</td></tr>`).join('')}<tr><td>期初 → 期末</td><td class="r">${fmt(last.opening)} → ${fmt(last.closing)}</td></tr><tr><td>核对差额</td><td class="r">${last.error.toFixed(4)}万</td></tr></table></div>`:'<p class="muted">推进到下月后显示结算记录。</p>'}
  <p class="phase-note">当前未结算流水：${F.entries.length}笔，净现金变动 ${fmt(pending.delta)}。${F.entries.length?F.entries.map(e=>esc(CASH_NAMES[e.kind]||e.kind)+' '+(e.amount>=0?'+':'')+fmt(e.amount)).join('；'):''}</p>
- <h2>未来3个月现金流预警</h2><div class="hint">按当前税源、租约和供需估算，扣除到期本金、建设款和准备金。未计卖地、续借、待批补贴，以及后续人口和事件变化。</div>
- <div class="phase-scroll"><table class="phase-forecast phase-data"><tr><th>未来</th><th>收入</th><th>到期本金</th><th>建设</th><th>期末现金</th><th>可用现金*</th><th>状态</th></tr>${forecast.map(x=>`<tr><td>${x.i}个月</td><td>${fmt(x.income)}</td><td>${fmt(x.principal)}</td><td>${fmt(x.build)}</td><td>${fmt(x.cash)}</td><td>${fmt(x.available)}</td><td class="${x.warning!=='可覆盖'?'neg':''}">${x.warning}</td></tr>`).join('')}</table></div><div class="phase-note">* 扣除预测期末尚未投用的专项债资金；偿债准备金单列，不视为普通可花资金。</div></div>`;
+ <h2>未来3个月现金流预警</h2><div class="hint">按当前税源、租约和供需估算，扣除到期本金、建设款、准备金及跨年区县拨款。区县拨款按当前年收入口径和资金档位估算，扣款前可调整；待确认的拨款计入首月。未计卖地、续借、待批补贴，以及后续人口和事件变化。</div>
+ <div class="phase-scroll"><table class="phase-forecast phase-data"><tr><th>未来</th><th>收入</th><th>到期本金</th><th>建设</th><th>区县拨款</th><th>期末现金</th><th>可用现金*</th><th>状态</th></tr>${forecast.map(x=>`<tr><td>${x.i}个月</td><td>${fmt(x.income)}</td><td>${fmt(x.principal)}</td><td>${fmt(x.build)}</td><td>${districtMoney(x.district)}</td><td>${fmt(x.cash)}</td><td>${fmt(x.available)}</td><td class="${x.warning!=='可覆盖'?'neg':''}">${x.warning}</td></tr>`).join('')}</table></div><div class="phase-note">* 扣除预测期末尚未投用的专项债资金；偿债准备金单列，不视为普通可花资金。</div></div>`;
 }
 function vEnvironment(E){
  E=E||phaseEnsure().environment;const end=E.closing===undefined?S.env:E.closing;
@@ -3106,7 +3131,8 @@ tick=function(){
  const P=phase2Ensure();allocateProjectBonds(true);for(const b of S.build){const p=projectById(b.p2Id);b.crewPaused=!!(p&&p.kind==='municipal'&&roleGate('urban'));if(p&&p.kind==='municipal'&&!b.crewPaused&&b.left>1&&roleQuality('urban')<.6&&Math.random()<.18){b.left++;p.delays=(p.delays||0)+1;p.risk.quality=Math.max(.2,p.risk.quality);p.warningAt=projectMonth();logIt(p.n+'因城建人员错配延后一个月，已列入质量隐患台账，需继续垫资。','bad');}}
  p2MonthlyNotice=null;const stamp=projectMonth(),r=_p2Tick();S.projectClock=stamp+1;if(p2MonthlyNotice)r.evQueue.push(p2MonthlyNotice);for(const o of P.offers)if(o.state==='offered'&&projectMonth()>o.expires)o.state='expired';return r;
 };
-annual=function(){const r=_p2Annual();r.accountabilityBlock=(S.accountabilityUntil||0)>projectMonth();if(r.next==='promote'&&r.accountabilityBlock)r.next=null;return r;};
+function phase2AnnualResult(r){r.accountabilityBlock=(S.accountabilityUntil||0)>projectMonth();if(r.next==='promote'&&r.accountabilityBlock)r.next=null;return r;}
+annual=function(options){const r=_p2Annual(options);return r.districtPending?r:phase2AnnualResult(r);};
 findEvent=function(id){const n=(S.policyNotices||{})[id];if(!n)return _p2Find(id);const p=n.findings.map(projectById).find(p=>p&&p.site===phase2Ensure().site);const base={id,kind:'督查',title:n.name,text:n.city+'第'+n.year+'年'+n.month+'月定向检查：抽查'+n.checked+'个项目。'+(n.findings.length?'发现'+n.findings.length+'项隐患，相关项目已标记。':'未发现新增项目隐患。')+(S.env<40?' 全市环境偏低，另需安排综合治理。':'')+'\n\n1月高/重污染项目抽检概率加倍。汛期检查工程与排水，年末核查资金。'};
  base.opts=p?[{t:'立即拨款整改',n:'需要对应岗位；费用'+fmt(projectRemedyCost(p)*1.5)+'，原责任记录不变',fx:{p2Remedy:p.uid,p2Notice:id}},{t:'安排下月专项整改',n:'占用下月工作机会；需对应岗位和经费',fx:{p2Schedule:{kind:'p2_remedy',target:p.uid},p2Notice:id}},{t:'记录问题，暂缓整改',n:'保留隐患和跨任期责任',fx:{p2Notice:id}}]:[{t:'收到，纳入项目台账',n:'',fx:{p2Notice:id}}];return base;};
 applyFx=function(fx){const applied=_p2Fx(fx);if(applied===false)return false;if(!fx)return;if(fx.p2Remedy){const err=remedyProject(fx.p2Remedy,true);if(err)logIt('即时整改未完成：'+err,'bad');}if(fx.p2Schedule){const e=schedulePhase2(fx.p2Schedule.kind,fx.p2Schedule.target);if(e)logIt('未能安排整改：'+e,'bad');}if(fx.p2Notice&&S.policyNotices[fx.p2Notice])S.policyNotices[fx.p2Notice].handled=true;return applied;};
@@ -3313,7 +3339,7 @@ function honorMetrics(){
   retirement,cleanRetirement:retirement&&!S.file.length&&!S.sanctions?1:0};
 }
 function honorSync(announce=false){
- if(!S)return [];const H=honorEnsure();
+ if(!S||pendingDistrictYearEnd()?.stage==='allocation')return [];const H=honorEnsure();
  H.stats.debtPeak=Math.max(H.stats.debtPeak,honorNumber(hdr()));
  if(H.stats.debtPeak>=70&&hdr()<40)H.stats.debtRelief=1;
  const metrics=honorMetrics(),added=[];
@@ -3357,7 +3383,8 @@ newGame=function(opts){if(S)careerRecord();_honorNew(opts);S.honors={version:1,i
 initLevel=function(lv,merit){if(S?.honors)honorSync();_honorInit(lv,merit);if(S.honors){S.honors.stats.debtPeak=honorNumber(hdr());honorSync();}};
 migrate=function(){_honorMigrate();honorSync();};
 tick=function(){const H=honorEnsure(),clock=projectMonth();const result=_honorTick();if(H.stats.lastMonth!==clock){const st=H.stats;st.lastMonth=clock;st.months++;for(const [key,ok] of [['safe',Object.values(S.gaps).every(v=>v===0)&&S.interestMiss===0],['green',S.env>=80],['happy',S.sat>=80]]){st[key]=ok?st[key]+1:0;st[key+'Best']=Math.max(st[key+'Best'],st[key]);}}honorSync(true);return result;};
-annual=function(){const H=honorEnsure(),R=_honorAnnual();if(H.stats.lastYear!==R.year){H.stats.lastYear=R.year;H.stats.region=R.rank===1?H.stats.region+1:0;H.stats.regionBest=Math.max(H.stats.regionBest,H.stats.region);}honorSync(true);return R;};
+function honorAnnualResult(R,H=honorEnsure()){if(H.stats.lastYear!==R.year){H.stats.lastYear=R.year;H.stats.region=R.rank===1?H.stats.region+1:0;H.stats.regionBest=Math.max(H.stats.regionBest,H.stats.region);}honorSync(true);return R;}
+annual=function(options){const H=honorEnsure(),R=_honorAnnual(options);return R.districtPending?R:honorAnnualResult(R,H);};
 save=function(){if(!S)return;honorSync();_honorSave();careerRecord();};
 endGame=function(id){_honorEnd(id);honorSync(true);careerRecord();};
 renderAll=function(){if(!S)return;honorSync(true);_honorRender();};
@@ -3727,6 +3754,37 @@ function endingOrders(){
  return [make(0,'关于'+name+'同志退休的通知',['经研究决定，'+name+'同志按规定退休，不再担任'+role+'职务，相关手续依规办理。',...(S.over==='retire_top'?['任内履职尽责，交接工作有序。组织对其多年来承担的工作予以肯定。']:[]),'请协同完成档案和工作资料移交。退休后的有关事项按规定办理。'])];
 }
 
+/* 年终暂存只用于等待玩家确认；旧档没有此字段时不补扣往年拨款。 */
+function pendingDistrictYearEnd(){const p=S?.pendingDistrictYearEnd;return p&&p.version===1&&S.lvl===4&&!S.over&&p.year===S.year-1&&p.result?.year===p.year&&['allocation','review'].includes(p.stage)?p:null;}
+function persistDistrictYearEnd(){LS.set('yifang_save',JSON.stringify(S));}
+function districtForecastPayment(i){if(S.lvl!==4||!S.dist?.length)return 0;const p=pendingDistrictYearEnd();return (p?.stage==='allocation'&&i===1)||(S.month+i-1)%12===0?distSpend():0;}
+function districtMoney(value){return Math.abs(value)>=1e4?(value/1e4).toFixed(2)+'亿':Math.round(value)+'万';}
+function districtBudgetSnapshot(){const amount=distSpend();return {tiers:distTiers(),tierCost:distTierCost(),income:annualIncome(),amount,cash:S.cash,afterCash:S.cash-amount,available:S.cash-(S.sbUnspent||0)-amount};}
+let districtSettling=false;
+function settleDistrictYearEnd(){
+ const pending=pendingDistrictYearEnd();if(!pending||pending.stage!=='allocation'||districtSettling)return null;
+ const original=JSON.stringify(S);districtSettling=true;
+ try{
+  const before=S.cash,tiers=distTiers();distStep();
+  const paid=before-S.cash,R=phase2AnnualResult(annualTail(pending.result));
+  pending.stage='review';pending.result=R;pending.paid=paid;pending.tiers=tiers;honorAnnualResult(R);
+  logIt('第'+R.year+'年度区县建设拨款：'+tiers+'档，支付'+districtMoney(paid)+'，拨款后现金'+districtMoney(S.cash)+'。','sys');
+  persistDistrictYearEnd();return R;
+ }catch(error){S=JSON.parse(original);throw error;}finally{districtSettling=false;}
+}
+function acknowledgeDistrictYearEnd(R){const p=pendingDistrictYearEnd();if(p?.stage==='review'&&p.year===R.year)delete S.pendingDistrictYearEnd;}
+function showDistrictBudget(){
+ const pending=pendingDistrictYearEnd();if(!pending)return;
+ if(pending.stage==='review'){afterAnnualReview(pending.result);return;}
+ showDoc(`<div class="dh"><div class="kind">年终财政结算 · 扣款前确认</div><h2>第${esc(pending.year)}年度区县拨款</h2></div><div class="body district-budget-body"><p>本年度区县建设拨款尚未扣除。请核对金额；可以先调整各区资金档位，再确认支付。</p><div class="district-budget-summary"><div><span>本次拨款</span><strong id="districtAnnualAmount"></strong></div><div><span>资金总档位</span><strong id="districtTotalTiers"></strong></div><div><span>当前现金</span><strong id="districtBeforeCash"></strong></div><div><span>扣款后现金</span><strong id="districtAfterCash"></strong></div></div><p class="hint" id="districtBudgetBasis"></p><p class="hint" id="districtAvailable"></p><p class="neg" id="districtBudgetWarning" role="status"></p><p class="field-error" id="districtBudgetError" role="status" aria-live="polite"></p><details id="districtAllocationEditor"><summary>各区资金分配</summary><div class="district-budget-list">${S.dist.map((d,i)=>{const a=S.alloc[d.id]||{fund:0,focus:'eco'};return `<div class="district-budget-row"><label for="districtFund${i}"><b>${esc(d.n)}</b><small>当前侧重：${esc(DFOCUS[a.focus]||'—')}</small></label><select id="districtFund${i}" data-district-fund="${i}" aria-label="${esc(d.n)}资金档">${[0,1,2,3,4,5].map(v=>`<option value="${v}"${a.fund===v?' selected':''}>${v}档</option>`).join('')}</select></div>`;}).join('')}</div><p class="hint">仍沿用每区0–5档、全市最多16档的规则；不用分满。这里只调整资金，区县考核侧重保持原方案。</p></details></div><div class="opts"><button class="opt" id="districtAdjust"><span class="ot">调整资金分配</span></button><button class="opt primary" id="districtConfirm"><span class="ot">确认拨款并继续</span></button></div>`,'notice district-budget-doc');
+ const update=()=>{const b=districtBudgetSnapshot();$('#districtAnnualAmount').textContent=districtMoney(b.amount);$('#districtTotalTiers').textContent=b.tiers+' / '+DTIERMAX+'档';$('#districtBeforeCash').textContent=districtMoney(b.cash);$('#districtAfterCash').textContent=districtMoney(b.afterCash);$('#districtAfterCash').classList.toggle('neg',b.afterCash<0);$('#districtBudgetBasis').textContent='按当前经常性年收入'+districtMoney(b.income)+'计算：每档2.2%，当前合计'+(b.tiers*2.2).toFixed(1)+'%。';$('#districtAvailable').textContent='扣款后可用现金（扣除未使用专项债）：'+districtMoney(b.available)+'。';$('#districtBudgetWarning').textContent=b.afterCash<0?'当前方案会使现金为负，可先下调资金档位；确认后仍按原拨款规则执行。':b.available<0?'扣款后可用现金不足，部分现金属于未使用专项债，请核对资金分配。':'';$('#districtConfirm .ot').textContent='确认拨款 '+districtMoney(b.amount)+' 并继续';};
+ $('#districtAdjust').onclick=()=>{const editor=$('#districtAllocationEditor');editor.open=true;editor.querySelector('select')?.focus();};
+ document.querySelectorAll('#doc [data-district-fund]').forEach(el=>el.onchange=()=>{if(pendingDistrictYearEnd()!==pending)return;const d=S.dist[+el.dataset.districtFund],value=Number(el.value);if(!d||!Number.isInteger(value)||value<0||value>5)return;const error=distSet(d.id,'fund',value);$('#districtBudgetError').textContent=error||'';if(error)el.value=String(S.alloc[d.id].fund);else persistDistrictYearEnd();update();});
+ $('#districtConfirm').onclick=()=>{if(pendingDistrictYearEnd()!==pending||pending.stage!=='allocation')return;$('#districtConfirm').disabled=true;try{const R=settleDistrictYearEnd();if(R){hideDoc();afterAnnualReview(R);}}catch(error){showDistrictBudget();$('#districtBudgetError').textContent='结算未完成，已保留扣款前状态，请重试。';}};
+ update();
+}
+function resumeDistrictYearEnd(){const p=pendingDistrictYearEnd();if(!p)return false;busy=true;showDistrictBudget();return true;}
+
 document.addEventListener('DOMContentLoaded',()=>{
   // 折叠与页面位置只存在本次页面的内存中；所有页签内的 details 共用此保护。
   const detailViews=new Map();let renderedView=null,restoreSequence=0;
@@ -3761,11 +3819,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(window.visualViewport){window.visualViewport.addEventListener('resize',fitDialogViewport);window.visualViewport.addEventListener('scroll',fitDialogViewport);}
   $('#nextbtn').onclick=next;
   $('#btnNew').onclick=showStartSettings;
-  $('#btnLoad').onclick=()=>{if(load()){$('#cover').style.display='none';renderAll();preloadArt();}else alert('没有找到存档。');};
+  $('#btnLoad').onclick=()=>{if(load()){$('#cover').style.display='none';renderAll();preloadArt();resumeDistrictYearEnd();}else alert('没有找到存档。');};
   $('#btnSave').onclick=()=>{save();logIt('已保存。','sys');renderAll();};
   $('#btnExport').onclick=()=>{const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(S));a.download='一方水土-存档-第'+S.year+'年.json';a.click();};
   $('#btnImport').onclick=()=>$('#fileIn').click();
-  $('#fileIn').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const imported=JSON.parse(r.result);if(imported.auditRevision!==114&&!LS.get('yifang_save_before_v114'))LS.set('yifang_save_before_v114',r.result);if(!imported.phase3&&!LS.get('yifang_save_before_v113'))LS.set('yifang_save_before_v113',r.result);if(!imported.phase2&&!LS.get('yifang_save_before_v112'))LS.set('yifang_save_before_v112',r.result);if(!imported.phase1&&!LS.get('yifang_save_before_v111'))LS.set('yifang_save_before_v111',r.result);S=imported;migrate();renderAll();logIt('存档已导入。','sys');renderAll();mtoast('存档已导入：第'+S.year+'年'+S.month+'月。','good');}catch(x){alert('存档文件无法读取。');}};r.readAsText(f);};
+  $('#fileIn').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const imported=JSON.parse(r.result);if(imported.auditRevision!==114&&!LS.get('yifang_save_before_v114'))LS.set('yifang_save_before_v114',r.result);if(!imported.phase3&&!LS.get('yifang_save_before_v113'))LS.set('yifang_save_before_v113',r.result);if(!imported.phase2&&!LS.get('yifang_save_before_v112'))LS.set('yifang_save_before_v112',r.result);if(!imported.phase1&&!LS.get('yifang_save_before_v111'))LS.set('yifang_save_before_v111',r.result);S=imported;migrate();renderAll();logIt('存档已导入。','sys');renderAll();mtoast('存档已导入：第'+S.year+'年'+S.month+'月。','good');resumeDistrictYearEnd();}catch(x){alert('存档文件无法读取。');}};r.readAsText(f);};
   $('#btnReset').onclick=()=>{if(confirm('放弃当前进度，重新开局？'))showStartSettings();};
   $('#modal').onclick=e=>{if(e.target.id==='modal'){/* 呈批件必须处理，不允许点空白关闭 */}};
   if(LS.get('yifang_save'))$('#btnLoad').textContent='继续上次';

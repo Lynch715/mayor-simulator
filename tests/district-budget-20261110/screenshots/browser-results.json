@@ -1,0 +1,202 @@
+{
+  "checks": [
+    "Actual year-end, editing cap, exact one-time charge and forecast 320",
+    "Actual year-end, editing cap, exact one-time charge and forecast 360",
+    "Reload unpaid checkpoint resumes before payment with edited allocation",
+    "Reload paid checkpoint resumes review without charging again",
+    "Actual year-end, editing cap, exact one-time charge and forecast 390",
+    "Actual year-end, editing cap, exact one-time charge and forecast 640",
+    "Actual year-end, editing cap, exact one-time charge and forecast 1280",
+    "Zero allocation and brief mode 0 still require explicit confirmation",
+    "Zero allocation and brief mode 1 still require explicit confirmation",
+    "Non-municipal annual flow has no district prompt",
+    "Actual negative post-payment cash warning appears without silently changing allocation",
+    "Legacy 1 month save preserves assets and uses correct unpaid status",
+    "Legacy 12 month save preserves assets and uses correct unpaid status",
+    "Reload paid review still performs original retire outcome",
+    "Reload paid review still performs original fired outcome",
+    "Real file import resumes unpaid allocation or paid review without double charge"
+  ],
+  "layouts": [
+    {
+      "label": "before payment 320",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scroll": 294
+      }
+    },
+    {
+      "label": "allocation editor 320",
+      "width": 320,
+      "page": 320,
+      "doc": {
+        "width": 294,
+        "scroll": 294
+      }
+    },
+    {
+      "label": "cash forecast 320",
+      "width": 320,
+      "page": 320,
+      "doc": null
+    },
+    {
+      "label": "before payment 360",
+      "width": 360,
+      "page": 360,
+      "doc": {
+        "width": 334,
+        "scroll": 334
+      }
+    },
+    {
+      "label": "allocation editor 360",
+      "width": 360,
+      "page": 360,
+      "doc": {
+        "width": 334,
+        "scroll": 334
+      }
+    },
+    {
+      "label": "cash forecast 360",
+      "width": 360,
+      "page": 360,
+      "doc": null
+    },
+    {
+      "label": "before payment 390",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scroll": 364
+      }
+    },
+    {
+      "label": "allocation editor 390",
+      "width": 390,
+      "page": 390,
+      "doc": {
+        "width": 364,
+        "scroll": 364
+      }
+    },
+    {
+      "label": "cash forecast 390",
+      "width": 390,
+      "page": 390,
+      "doc": null
+    },
+    {
+      "label": "before payment 640",
+      "width": 640,
+      "page": 640,
+      "doc": {
+        "width": 599,
+        "scroll": 599
+      }
+    },
+    {
+      "label": "allocation editor 640",
+      "width": 640,
+      "page": 640,
+      "doc": {
+        "width": 599,
+        "scroll": 599
+      }
+    },
+    {
+      "label": "cash forecast 640",
+      "width": 640,
+      "page": 640,
+      "doc": null
+    },
+    {
+      "label": "before payment 1280",
+      "width": 1280,
+      "page": 1280,
+      "doc": {
+        "width": 623,
+        "scroll": 623
+      }
+    },
+    {
+      "label": "allocation editor 1280",
+      "width": 1280,
+      "page": 1280,
+      "doc": {
+        "width": 623,
+        "scroll": 623
+      }
+    },
+    {
+      "label": "cash forecast 1280",
+      "width": 1280,
+      "page": 1280,
+      "doc": null
+    }
+  ],
+  "errors": [],
+  "payloads": [
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315194773",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315196033",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315197231",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315199654",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315200830",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315202087",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315202947",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315203761",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315204597",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315205463",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315206502",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315207378",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315208876",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    },
+    {
+      "url": "http://127.0.0.1:18910/?v=1794315210312",
+      "sha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1"
+    }
+  ],
+  "scope": "Fresh browser contexts; localhost or explicit Pages URL; mobile/touch and WeChat UA simulation, not a physical phone"
+}

@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-10",
+  "feature": "年终区县拨款扣前确认、调整与现金预测",
+  "previousCommit": "46f8310085454880d63fac25271341feeb49d661",
+  "sourceSha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1",
+  "backup": "backups/index-before-district-budget-20261110.html",
+  "backupSha256": "0322f7ae8641ba00fe3e95895b8ac4cf9557bb0a258b642efd7e0417e5e13d05",
+  "changedFunctions": [
+    "annual",
+    "annualTail",
+    "next",
+    "afterAnnualReview",
+    "honorSync",
+    "phase2AnnualResult",
+    "honorAnnualResult",
+    "cashForecast",
+    "vCashbook",
+    "vDist",
+    "renderAll next-hint",
+    "load/import UI callbacks",
+    "pendingDistrictYearEnd",
+    "persistDistrictYearEnd",
+    "districtForecastPayment",
+    "districtMoney",
+    "districtBudgetSnapshot",
+    "settleDistrictYearEnd",
+    "acknowledgeDistrictYearEnd",
+    "showDistrictBudget",
+    "resumeDistrictYearEnd"
+  ],
+  "saveCompatibility": {
+    "key": "yifang_save",
+    "temporaryField": "S.pendingDistrictYearEnd",
+    "stages": [
+      "allocation",
+      "review"
+    ],
+    "legacyMissingField": "No inferred unpaid balance and no back-charge",
+    "preserved": [
+      "cash",
+      "land",
+      "cq",
+      "sb",
+      "build",
+      "file",
+      "hist",
+      "resume",
+      "player",
+      "places",
+      "orders",
+      "alloc",
+      "dist",
+      "phase1",
+      "phase2",
+      "phase3"
+    ],
+    "noPrivatePlayerSaveAccess": true
+  },
+  "balance": {
+    "tierRate": 0.022,
+    "totalTierCap": 16,
+    "perDistrict": [
+      0,
+      5
+    ],
+    "defaultSimulation": "600 monthly state and RNG comparisons passed",
+    "deferredWithoutEdits": "State, annual result and RNG match prior synchronous annual excluding checkpoint/payment log"
+  },
+  "regressions": "checks/regressions.json",
+  "special": "regression-results.json",
+  "browser": "screenshots/browser-results.json",
+  "historicalTestNotes": {
+    "honors": "Supported baseline argument points to immediate pre-change backup.",
+    "eventAdmission": "Original suite: 36/39 on both current source and prior release; same 3 historical byte-equality cases cannot accept previously released identity migration. event-admission-compat.cjs asserts only the specified defaults are added and every original field remains identical: 39/39."
+  },
+  "iab": {
+    "viewport": "390x844",
+    "observed": "Edited 16 tiers to 8; amount53.82亿 to26.91亿; cash unchanged191.60亿 until confirm; paid once and continued annual review with cash164.69亿.",
+    "consoleNote": "Two MutationObserver.observe TypeErrors were captured in the IAB iframe harness session; source was not attributed. No page/console errors reproduced in fresh isolated Chromium contexts; see browser-results.json."
+  },
+  "mobileScope": "Viewport, touch and WeChat user-agent simulation; no physical device or real WeChat WebView",
+  "excludedCommonDifferences": [
+    "tests/event-admission-fix-20261101/audit-results.json"
+  ],
+  "preservedRemoteOnly": [
+    "LICENSE",
+    "tests/release-v114/release-phase1.txt",
+    "tests/release-v114/release-phase2.txt",
+    "tests/release-v114/release-phase3.txt",
+    "tests/release-v114/release-regression.txt"
+  ],
+  "releaseEvidence": "Only write local release/ after deployment, never push it."
+}

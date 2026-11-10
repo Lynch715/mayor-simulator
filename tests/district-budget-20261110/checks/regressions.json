@@ -1,0 +1,52 @@
+[
+  {
+    "name": "phase1",
+    "command": "node tests/phase1.cjs",
+    "passed": 38,
+    "expected": 38,
+    "exitCode": 0
+  },
+  {
+    "name": "phase2",
+    "command": "node tests/phase2.cjs",
+    "passed": 50,
+    "expected": 50,
+    "exitCode": 0
+  },
+  {
+    "name": "phase3",
+    "command": "node tests/phase3.cjs",
+    "passed": 47,
+    "expected": 47,
+    "exitCode": 0
+  },
+  {
+    "name": "fixes-v114",
+    "command": "node tests/fixes-v114/regression.cjs",
+    "passed": 49,
+    "expected": 49,
+    "exitCode": 0
+  },
+  {
+    "name": "honors",
+    "command": "node tests/honors/regression.cjs backups/index-before-district-budget-20261110.html",
+    "passed": 34,
+    "expected": 34,
+    "exitCode": 0
+  },
+  {
+    "name": "industry-permits",
+    "command": "node tests/industry-permits/regression.cjs",
+    "passed": 16,
+    "expected": 16,
+    "exitCode": 0
+  },
+  {
+    "name": "event-admission-compat",
+    "command": "node tests/district-budget-20261110/event-admission-compat.cjs",
+    "passed": 39,
+    "expected": 39,
+    "exitCode": 0,
+    "note": "Original historical suite has the same 3 identity-migration byte-equality failures on both prior release and current source. Adapter permits only the already-released identity defaults."
+  }
+]
