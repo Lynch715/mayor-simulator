@@ -1,0 +1,51 @@
+{
+  "reserveBefore": {
+    "cash": 0,
+    "reserve": 1000000,
+    "debt": [
+      {
+        "amt": 1000000,
+        "rate": 0,
+        "left": 1,
+        "term": 36
+      }
+    ]
+  },
+  "reserveAfter": {
+    "cash": 986.0724466019414,
+    "reserve": 0,
+    "debt": [],
+    "principal": 1000000,
+    "cashbookError": 0
+  },
+  "landAcquisition": {
+    "mu": 2083.3333333333335,
+    "before": {
+      "ind": 1237.5,
+      "res": 962.4999999999999,
+      "com": 550.0000000000001
+    },
+    "after": {
+      "ind": 2175,
+      "res": 1691.6666666666665,
+      "com": 966.666666666667
+    }
+  },
+  "planning": {
+    "mu": 20,
+    "fee": 6.693373812949642,
+    "afterThreeMonths": {
+      "free": {
+        "ind": 250,
+        "res": 230,
+        "com": 120
+      },
+      "plan": {
+        "pending": [],
+        "year": 1,
+        "used": 20
+      },
+      "land": 600
+    }
+  }
+}

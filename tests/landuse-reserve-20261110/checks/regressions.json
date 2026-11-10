@@ -1,0 +1,37 @@
+[
+  {
+    "name": "phase1",
+    "command": "node tests/phase1.cjs",
+    "passed": 38,
+    "expected": 38,
+    "exitCode": 0
+  },
+  {
+    "name": "phase2",
+    "command": "node tests/phase2.cjs",
+    "passed": 50,
+    "expected": 50,
+    "exitCode": 0
+  },
+  {
+    "name": "phase3",
+    "command": "node tests/phase3.cjs",
+    "passed": 47,
+    "expected": 47,
+    "exitCode": 0
+  },
+  {
+    "name": "fixes-v114",
+    "command": "node tests/fixes-v114/regression.cjs",
+    "passed": 49,
+    "expected": 49,
+    "exitCode": 0
+  },
+  {
+    "name": "landuse-reserve",
+    "command": "node tests/landuse-reserve-20261110/regression.cjs",
+    "passed": 32,
+    "expected": 32,
+    "exitCode": 0
+  }
+]

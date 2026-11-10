@@ -1,0 +1,144 @@
+{
+  "completedAt": "2026-11-10T14:54:18.418688+00:00",
+  "source": "index.html",
+  "sourceSha256": "25049b972ec2414bc9108f36721781e117a218a5911031343b24ada6664153e2",
+  "backup": "backups/index-before-landuse-reserve-20261110.html",
+  "backupSha256": "9db9affdf6724d559f3f7d4d2e543eac00da3a9edae2c87156e8beb1f1164db1",
+  "choices": {
+    "newLand": "Automatic 45% industrial / 35% residential / 20% commercial for land_expro, AG.landwork and positive fx.land. Existing stock unchanged.",
+    "landPlanning": {
+      "feeRate": 0.05,
+      "annualMuCap": "100*S.lsc",
+      "months": 3,
+      "gate": "roleGate('urban')",
+      "funding": "Available cash excluding unused special bond money",
+      "scope": "Only free ind/res/com stock; removed immediately, released to target after 3 monthly settlements"
+    },
+    "districtWarning": "A: honest<0.55; distStep unchanged",
+    "reserve": "Reserve first for maturing CQ, then cash; SB remains cash-only. Contributions, fund source and complete principal recorded separately.",
+    "transferNoticeThreshold": "5% of recurring annual income; review button uses reserve without changing original promotion outcome"
+  },
+  "changedFunctions": {
+    "land": [
+      "AG.landwork.f",
+      "applyFx",
+      "phaseReset",
+      "phaseEnsure",
+      "migrate",
+      "closeFinanceMonth",
+      "closeLevel wrapper",
+      "vLand",
+      "vLandBook",
+      "vHomes",
+      "bindPanel wrapper"
+    ],
+    "district": [
+      "vDist"
+    ],
+    "reserve": [
+      "tick",
+      "repayCQ",
+      "cashForecast",
+      "vCashbook",
+      "initLevel",
+      "appointmentOrder (used by showPromo)",
+      "showReview",
+      "vFin",
+      "vDebt wrapper"
+    ]
+  },
+  "newFunctions": [
+    "landAddMixed",
+    "landPlanEnsure",
+    "landPlanCap",
+    "landPlanUsed",
+    "landPlanLocked",
+    "landPlanCost",
+    "landPlanGate",
+    "startLandPlan",
+    "landPlansStep",
+    "vLandPlanning",
+    "bindLandPlanning",
+    "vReserveControls",
+    "promotionReserveNotice"
+  ],
+  "saveFields": {
+    "key": "yifang_save",
+    "S.landUsePlan": {
+      "pending": [],
+      "year": "current S.year",
+      "used": 0
+    },
+    "pendingEntry": {
+      "from": "ind/res/com",
+      "to": "ind/res/com, different from from",
+      "mu": "locked area",
+      "left": 3,
+      "fee": "upfront paid fee snapshot",
+      "year": "registration year",
+      "month": "registration month"
+    },
+    "S.hist[].landUsePlan": "Snapshot only for an old office with registered changes; absent in old history",
+    "S.reserve": "existing field; default0 if missing",
+    "S.reserveRate": "existing field; default2 if missing",
+    "S.monthly.reservePrincipal": "Optional informational amount, missing means0",
+    "forecastRows": "reservePayment and reserveBalance are calculated on read, not a new stored pool"
+  },
+  "validation": {
+    "regressions": [
+      {
+        "name": "phase1",
+        "command": "node tests/phase1.cjs",
+        "passed": 38,
+        "expected": 38,
+        "exitCode": 0
+      },
+      {
+        "name": "phase2",
+        "command": "node tests/phase2.cjs",
+        "passed": 50,
+        "expected": 50,
+        "exitCode": 0
+      },
+      {
+        "name": "phase3",
+        "command": "node tests/phase3.cjs",
+        "passed": 47,
+        "expected": 47,
+        "exitCode": 0
+      },
+      {
+        "name": "fixes-v114",
+        "command": "node tests/fixes-v114/regression.cjs",
+        "passed": 49,
+        "expected": 49,
+        "exitCode": 0
+      },
+      {
+        "name": "landuse-reserve",
+        "command": "node tests/landuse-reserve-20261110/regression.cjs",
+        "passed": 32,
+        "expected": 32,
+        "exitCode": 0
+      }
+    ],
+    "total": 216,
+    "unrelatedStateAndRngMonths": 600,
+    "fixtures": "fixtures.json",
+    "browser": {
+      "flowChecks": 9,
+      "layoutChecks": 18,
+      "errors": [],
+      "scope": "Fresh isolated Chromium contexts; mobile/touch and WeChat UA simulation, not a physical phone"
+    },
+    "iab": "390px form submission locks30mu; promotion review repays1000wan; appointment snapshots remaining9000wan; after arrival reserve0 with local-retention log."
+  },
+  "preserved": [
+    "Original regression source files",
+    "Existing save keys, existing land/finance ledgers and old city strings",
+    "Annual industrial land competition, lease return and project cancellation land rules",
+    "District concealment and detection probabilities",
+    "Existing rate, penalty, growth, cost and event balance apart from requested reserve/land-use mechanisms",
+    "Assets and dependencies"
+  ]
+}

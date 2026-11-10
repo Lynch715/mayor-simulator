@@ -1,0 +1,185 @@
+{
+  "passed": 32,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "准备金足、现金不足：到期城投债正常兑付，不被迫展期",
+      "passed": true
+    },
+    {
+      "name": "现金已为负时准备金仍直接付本金，不被其他缺口吞掉",
+      "passed": true
+    },
+    {
+      "name": "准备金不足时再用现金，资金来源和完整本金分列对平",
+      "passed": true
+    },
+    {
+      "name": "准备金与现金都不足时仅剩余本金按原惩罚展期",
+      "passed": true
+    },
+    {
+      "name": "专项债维持现金兑付，不能消耗城投偿债准备金",
+      "passed": true
+    },
+    {
+      "name": "主动还本在现金为负时仍可使用已有准备金，不再被现金缺口抵减",
+      "passed": true
+    },
+    {
+      "name": "到期当月新划入的准备金也用于城投还本",
+      "passed": true
+    },
+    {
+      "name": "现金预测滚动准备金池，不跨月重复使用，不用于专项债",
+      "passed": true
+    },
+    {
+      "name": "准备金预测计入每月划入，且现金、可用现金不把整池当钱花",
+      "passed": true
+    },
+    {
+      "name": "现金预测纯读取，不消耗随机数、不修改存档",
+      "passed": true
+    },
+    {
+      "name": "债务和财政页统一说明，城投已清且有余额时提示调低比例",
+      "passed": true
+    },
+    {
+      "name": "晋升文书记录原任地余额，调任日志说明留在当地，余额不携带",
+      "passed": true
+    },
+    {
+      "name": "晋升考察只在余额较大时提前提示，不改晋升结果",
+      "passed": true
+    },
+    {
+      "name": "新增土地按45/35/20进入三类：expro",
+      "passed": true
+    },
+    {
+      "name": "新增土地按45/35/20进入三类：agenda",
+      "passed": true
+    },
+    {
+      "name": "新增土地按45/35/20进入三类：fx",
+      "passed": true
+    },
+    {
+      "name": "工业租约到期仍归工业地，取消项目退地仍按原用途",
+      "passed": true
+    },
+    {
+      "name": "控规双向调整、锁定3个月、守恒：ind→res",
+      "passed": true
+    },
+    {
+      "name": "控规双向调整、锁定3个月、守恒：ind→com",
+      "passed": true
+    },
+    {
+      "name": "控规双向调整、锁定3个月、守恒：res→ind",
+      "passed": true
+    },
+    {
+      "name": "控规双向调整、锁定3个月、守恒：res→com",
+      "passed": true
+    },
+    {
+      "name": "控规双向调整、锁定3个月、守恒：com→ind",
+      "passed": true
+    },
+    {
+      "name": "控规双向调整、锁定3个月、守恒：com→res",
+      "passed": true
+    },
+    {
+      "name": "锁定工业地不可出租或建设；锁定住宅地不可开发或出让",
+      "passed": true
+    },
+    {
+      "name": "所有可开发地用尽后不挪用锁定、保护或已占土地",
+      "passed": true
+    },
+    {
+      "name": "无城建干部、面积无效、用途不合法、资金不足均不扣费锁地",
+      "passed": true
+    },
+    {
+      "name": "年度限额按岗位规模缩放，新年恢复额度但不释放锁地",
+      "passed": true
+    },
+    {
+      "name": "调整后重读存档不提前释放土地，第三次月结生效且不重复",
+      "passed": true
+    },
+    {
+      "name": "报表存疑标签覆盖0.45至0.55区间，瞒报与审计概率代码不变",
+      "passed": true
+    },
+    {
+      "name": "旧档补默认计划且迁移幂等，资金、用途、保护地与原台账不重写",
+      "passed": true
+    },
+    {
+      "name": "缺失准备金字段的老档补0和2%，不凭空生成资金",
+      "passed": true
+    },
+    {
+      "name": "未触发本轮机制时五级各120月的其他玩法状态及随机流不变",
+      "passed": true
+    }
+  ],
+  "fixtures": {
+    "reserveBefore": {
+      "cash": 0,
+      "reserve": 1000000,
+      "debt": [
+        {
+          "amt": 1000000,
+          "rate": 0,
+          "left": 1,
+          "term": 36
+        }
+      ]
+    },
+    "reserveAfter": {
+      "cash": 986.0724466019414,
+      "reserve": 0,
+      "debt": [],
+      "principal": 1000000,
+      "cashbookError": 0
+    },
+    "landAcquisition": {
+      "mu": 2083.3333333333335,
+      "before": {
+        "ind": 1237.5,
+        "res": 962.4999999999999,
+        "com": 550.0000000000001
+      },
+      "after": {
+        "ind": 2175,
+        "res": 1691.6666666666665,
+        "com": 966.666666666667
+      }
+    },
+    "planning": {
+      "mu": 20,
+      "fee": 6.693373812949642,
+      "afterThreeMonths": {
+        "free": {
+          "ind": 250,
+          "res": 230,
+          "com": 120
+        },
+        "plan": {
+          "pending": [],
+          "year": 1,
+          "used": 20
+        },
+        "land": 600
+      }
+    }
+  }
+}

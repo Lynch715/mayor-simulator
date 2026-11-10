@@ -679,6 +679,14 @@ table.dist .rd{font-size:12px;color:var(--ink3);margin-top:3px;font-weight:400}
 .district-budget-doc .opt{overflow-wrap:anywhere}
 @media(max-width:360px){.district-budget-summary{gap:7px}.district-budget-summary strong{font-size:21px}.district-budget-row{grid-template-columns:minmax(0,1fr) 80px;gap:8px}}
 
+/* 控规用途调整：表单在窄屏逐项排列 */
+.land-plan-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.land-plan-fields label{display:grid;gap:5px;min-width:0;font-size:13px}
+.land-plan-fields select,.land-plan-fields input{width:100%;min-width:0;min-height:44px;font-size:16px}
+.land-plan-panel{border-top:1px solid var(--line2);padding-top:18px;margin-top:18px}
+.land-plan-panel .sm,#promoReserveRepay{min-height:44px}.land-plan-panel p{overflow-wrap:anywhere}.land-plan-panel .phase-scroll table{min-width:0}
+@media(max-width:640px){.land-plan-fields{grid-template-columns:1fr}.land-plan-panel #btnLandPlan{width:100%}}
+
 </style>
 </head>
 <body>
@@ -1028,7 +1036,7 @@ const EV=[
  {t:'财政出钱搞转岗培训',n:'',fx:{cash:-300,sat:2}},
  {t:'让市场消化',n:'',fx:{sat:-5,pros:1}}]},
 {id:'land_expro',mo:[3,11],lv:[0,4],w:3,lowLand:3,cond:S=>S.landPct<0.25,title:'储备土地不够了',text:'国土局说，储备地块快见底了，再要供地就得征地。北边有一片村集体用地，征地要补偿，村民也不一定同意。',opts:[
- {t:'启动征地',n:'补偿支出，满意度下降',fx:{cash:-250,land:250,sat:-4}},
+ {t:'启动征地',n:'补偿支出、满意度下降；新增地按工业45%、住宅35%、商服20%入库',fx:{cash:-250,land:250,sat:-4}},
  {t:'暂不征地',n:'',fx:{}}]},
 {id:'hospital_dispute',mo:[5,11],lv:[0,4],w:2,title:'医患纠纷',text:'一起手术失败，家属在医院门口摆了花圈。医院说手术没有过错，家属说不给说法就不走。',opts:[
  {t:'走医疗鉴定，依法处理',n:'',fx:{sat:-1,rep:1}},
@@ -1609,8 +1617,8 @@ const AG={
  budget:{n:'财政专题会',cat:'财政',cd:4,mo:[6,12],d:'一个部门一个部门过预算，压非急需支出。',
   f:()=>{nAdd('lgfv',-2);S.agFlag.ops=0.85;S.unity-=1;return '本月行政运转支出压下一成半。各部门都不高兴。';}},
  landwork:{n:'征地拆迁攻坚',cat:'经济',cd:6,mo:[3],w:s=>s.land<s.landTotal*0.12?3.5:0.9,d:'成立指挥部，限期完成一片区的签约。',
-  f:()=>{nAdd('dev',4);nAdd('pet',-6);if(S.lvl>=1)S.plots=(S.plots||[]).concat(genPlots(1));const mu=60*S.lsc;landAdd(mu,'ind');S.landTotal+=mu*0.4;S.sat-=2;S.rep-=0.3;
-   return '一个片区签约完成，新增储备土地'+Math.round(mu)+'亩。有几户还堵在现场。';}},
+  f:()=>{nAdd('dev',4);nAdd('pet',-6);if(S.lvl>=1)S.plots=(S.plots||[]).concat(genPlots(1));const mu=60*S.lsc;landAddMixed(mu);S.landTotal+=mu*0.4;S.sat-=2;S.rep-=0.3;
+   return '一个片区签约完成，新增储备土地'+Math.round(mu)+'亩，按工业45%、住宅35%、商服20%入库。有几户还堵在现场。';}},
  selfcheck:{n:'廉政自查',cat:'自身',cd:6,w:s=>s.file.some(f=>!f.exp)?3.5:0.6,d:'自己先把账翻一遍，能补的手续补上。',
   f:()=>{nAdd('insp',4);S.expMult=Math.max(0.6,S.expMult*0.7);S.unity-=2;return '自查自纠一个月，几笔手续补齐了。班子里有人对自查范围有意见。';}},
  study:{n:'专题学习班',cat:'自身',cd:6,mo:[1,2],d:'参加一周专题学习，交流工作安排。',
@@ -2032,6 +2040,7 @@ function newGame(opts={}){
 function closeLevel(){if(S.lvl===undefined)return;S.hist.push({lvl:S.lvl,city:LV[S.lvl].city,years:S.tenure,built:S.built,hdr:Math.round(hdr()),grades:S.ratings.slice(-S.tenure).join(''),sat:Math.round(S.sat),
   pros:Math.round(S.pros),liv:Math.round(S.liv),debt:Math.round(hdr()),pros0:Math.round(S.pros),debt0:Math.round(hdr()),leftY:S.year,after:0});}
 function initLevel(lvl,carryMerit){
+  const reserveLeft=lvl>0?Math.max(0,S.reserve||0):0,oldPlace=lvl>0?placeName(S.lvl):'';
   if(lvl>0)closeLevel();
   const L=LV[lvl];S.lvl=lvl;S.sc=L.sc;S.lsc=L.land/600;S.tenure=0;S.merit=carryMerit;
   S.pop=L.pop;S.landTotal=L.land;S.land=L.land*(lvl===0?1:0.55);S.landSold=L.land*(lvl===0?0:0.3);S.housing=lvl===0?20:45;
@@ -2055,6 +2064,7 @@ function initLevel(lvl,carryMerit){
   if(S.lvl>=4)initDist();else{S.dist=null;S.alloc={};}
   npcInit(false);
   S.agCd={};S.agFlag={};S.ag='routine';agRefresh();
+  if(reserveLeft>0)logIt('原任地'+oldPlace+'偿债准备金'+fmt(reserveLeft)+'留在当地，不随调任结转。','sys');
 }
 /* ---- 计算 ---- */
 function cov(id){return clamp((S.f[id]||0)*FAC[id].cap*S.sc/S.pop,0,1.4);}
@@ -2110,7 +2120,7 @@ function issueCQ(amt,term){if(!Number.isFinite(amt)||![36,60].includes(term))ret
 function issueSB(amt,term){if(!Number.isFinite(amt)||![60,120].includes(term))return '请输入有效金额与期限';if(S.frozen)return '新增融资已冻结';if(S.lvl<1)return '县级以上才能申报';if(wlCostLeft()<=0)return '没有在建的白名单项目';
   amt=Math.min(amt,sbQuota(),wlCostLeft()-S.sbUnspent);if(amt<=0)return '额度不足或项目资金已覆盖';
   S.sb.push({amt,rate:2.8,left:term,term});S.cash+=amt;S.sbUnspent+=amt;S.sbYear+=amt;logIt('专项债获批'+fmt(amt)+'，'+term/12+'年期，年利率2.8%。','sys');return null;}
-function repayCQ(amt){if(!Number.isFinite(amt)||amt<=0)return '请输入有效还本金额';amt=Math.min(amt,S.cash+S.reserve,cqOut());if(amt<=0)return '没有可用资金';
+function repayCQ(amt){if(!Number.isFinite(amt)||amt<=0)return '请输入有效还本金额';amt=Math.min(amt,Math.max(0,S.cash)+S.reserve,cqOut());if(amt<=0)return '没有可用资金';
   let fromRes=Math.min(S.reserve,amt);S.reserve-=fromRes;S.cash-=(amt-fromRes);let left=amt;
   S.cq.sort((a,b)=>a.left-b.left);for(const b of S.cq){const x=Math.min(b.amt,left);b.amt-=x;left-=x;if(left<=0)break;}
   S.cq=S.cq.filter(b=>b.amt>1);logIt('财政偿还城投债本金'+fmt(amt)+'。','good');return null;}
@@ -2135,7 +2145,7 @@ function applyFx(fx){if(!fx)return;
   if(fx.cash)S.cash+=fx.cash*S.sc;if(fx.cashLand){const mu=Math.min(landFree('any'),fx.land<0?-fx.land*S.lsc:40*S.lsc);const rev=mu*landPrice()*fx.cashLand;landTake(mu,'any','事件出让');S.landSold+=mu;S.cash+=rev;S.landRev=(S.landRev||0)+rev;book('land',rev,'事件土地出让');}
   const _sf=(S.agFlag&&S.agFlag.soft)||1;if(fx.sat)S.sat=clamp(S.sat+(fx.sat<0?fx.sat*_sf:fx.sat),0,100);if(fx.env)envChange(fx.env,'event');if(fx.pros)S.pros=clamp(S.pros+fx.pros,0,100);
   if(fx.liv)S.liv=clamp(S.liv+fx.liv,0,100);if(fx.rep)S.rep=clamp(S.rep+fx.rep,0,100);if(fx.unity)S.unity=clamp(S.unity+fx.unity,0,100);
-  if(fx.pop)S.pop*=1+fx.pop/100;if(fx.land&&!(fx.cashLand&&fx.land<0)){if(fx.land>0){landAdd(fx.land*S.lsc,'ind');S.landTotal+=fx.land*S.lsc;}else landTake(Math.min(landFree('any'),-fx.land*S.lsc),'any','事件占用');}
+  if(fx.pop)S.pop*=1+fx.pop/100;if(fx.land&&!(fx.cashLand&&fx.land<0)){if(fx.land>0){landAddMixed(fx.land*S.lsc);S.landTotal+=fx.land*S.lsc;}else landTake(Math.min(landFree('any'),-fx.land*S.lsc),'any','事件占用');}
   if(fx.fac&&!(fx.fac.n>0&&fx.fac.id==='factory'))S.f[fx.fac.id]=Math.max(0,(S.f[fx.fac.id]||0)+fx.fac.n);
   if(fx.file){S.file.push({y:S.year,t:placeText(fx.file.t),sev:fx.file.sev,exp:false,mild:false});}
   if(fx.mild){S.file.push({y:S.year,t:placeText(fx.mild.t),sev:0,exp:false,mild:true});}
@@ -2168,7 +2178,7 @@ function tick(){
   let interest=0,principal=0;
   for(const b of S.cq){interest+=b.amt*b.rate/1200;}for(const b of S.sb){interest+=b.amt*b.rate/1200;}interest+=S.platform*6/1200;
   const gi=pay(interest,'interest');M.interestPaid=interest-gi;if(gi>1){S.interestMiss++;S.rep-=2;S.unity-=1;if(S.cq.length){S.cq.sort((a,b)=>b.amt-a.amt);S.cq[0].amt+=gi;}else{S.cq.push({amt:gi,rate:8,left:12,term:12});}logIt('利息'+fmt(gi)+'未能支付，滚入本金。连续逾期'+S.interestMiss+'月。','bad');}else S.interestMiss=0;
-  for(const b of [...S.cq,...S.sb]){b.left--;if(b.left<=0){const due=b.amt,g=pay(due,'principal');principal+=due-g;b.amt=g;if(g>1){b.left=24;b.rate+=1;S.rep-=4;S.unity-=2;logIt('到期本金'+fmt(due)+'，已还'+fmt(due-g)+'，剩余'+fmt(g)+'被迫展期。','bad');}else b.amt=0;}}
+  for(const [b,cityDebt] of [...S.cq.map(b=>[b,true]),...S.sb.map(b=>[b,false])]){b.left--;if(b.left<=0){const due=b.amt,fromReserve=cityDebt?Math.min(Math.max(0,S.reserve||0),due):0;if(fromReserve>0){S.reserve-=fromReserve;book('reserve',fromReserve,'准备金兑付到期城投债');book('principal',-fromReserve,'到期城投债本金');M.reservePrincipal=(M.reservePrincipal||0)+fromReserve;logIt('准备金兑付到期城投债'+fmt(fromReserve)+'。','sys');}const g=pay(due-fromReserve,'principal');principal+=due-g;b.amt=g;if(g>1){b.left=24;b.rate+=1;S.rep-=4;S.unity-=2;logIt('到期本金'+fmt(due)+'，已还'+fmt(due-g)+'，剩余'+fmt(g)+'被迫展期。','bad');}else b.amt=0;}}
   S.cq=S.cq.filter(b=>b.amt>1);S.sb=S.sb.filter(b=>b.amt>1);
   if(S.collect>0){S.collect--;const c=taxIndustry()*0.4;const p=Math.min(c,cqOut(),Math.max(0,S.cash));S.cash-=p;book('principal',-p,'产业税收归集还本');S.cq.sort((a,b)=>a.left-b.left);let left=p;for(const b of S.cq){const x=Math.min(b.amt,left);b.amt-=x;left-=x;if(left<=0)break;}S.cq=S.cq.filter(b=>b.amt>1);principal+=p;S.pros-=0.15;}
   M.interest=interest;M.principal=principal;
@@ -2475,7 +2485,7 @@ function vDist(){
  const ds=S.dist||[];const av=distAvg();const used=distTiers();
  const rows=ds.map(d=>{const a=S.alloc[d.id]||{fund:0,focus:'eco'};
   const tips=[];if(d.lazy)tips.push('<span class="tag">干劲一般</span>');
-  if(d.honest<0.45)tips.push('<span class="tag red">报表存疑</span>');
+  if(d.honest<0.55)tips.push('<span class="tag red">报表存疑</span>');
   if(d.debt>=90)tips.push('<span class="tag red">债务偏高</span>');
   return `<tr><td><b>${esc(d.n)}</b><span class="tag">${DTYPE[d.t].n}</span>${tips.join('')}<div class="rd">${fmtPop(d.pop)}　${esc(DTYPE[d.t].d)}</div></td>
   <td class="r" data-l="繁荣">${d.pros.toFixed(0)}</td><td class="r" data-l="宜居">${d.liv.toFixed(0)}</td><td class="r ${d.debt>=90?'neg':''}" data-l="债务">${d.debt.toFixed(0)}%</td>
@@ -2499,7 +2509,7 @@ function vLand(){
    ${p.use==='ind'?`<button class="sm" data-plot="${i}" data-how="deal">协议出让 ${fmt(base*0.45)}</button>`:''}
    <button class="sm" data-plot="${i}" data-how="hold">暂缓</button></div></div>`;}).join(''):'<div class="hint">今年没有可供地块。年初会重新梳理一批，「征地拆迁攻坚」也能补充储备。</div>';
  return `<div class="sec"><h2>今年的供地计划</h2>
- <div class="hint">按宗地办理出让、配建或暂缓。地价和市场热度会随时间变化。</div>
+ <div class="hint">按宗地办理出让、配建或暂缓。新增征地按工业45%、住宅35%、商服20%入库；用途不足可在控规中调整，锁定土地不参与供地。地价和市场热度会随时间变化。</div>
  <div class="kvline"><span><i>储备土地</i>${Math.round(S.land)} 亩</span><span><i>基准地价</i>${landPrice().toFixed(1)} 万/亩</span>${S.nosell>0?`<span><i>限购期</i>还有 ${S.nosell} 月</span>`:''}</div>
  <div class="coopdesc"><div><b>招拍挂</b>拿钱最多，住宅推高房价</div><div><b>限价配建</b>少拿一截，换一处实物当场交付，不占工期也不占现金流</div><div><b>协议出让</b>只限工业地，最便宜最快落地，也最容易留下记录</div></div>
  <div class="plots">${cards}</div></div>
@@ -2534,10 +2544,12 @@ function vFin(){const inc=monthIncome();const M=S.monthly;
   <tr><td>商业税收</td><td class="r">${fmt(taxCommerce())}</td></tr><tr><td>产业税收${S.taxcut>0?'<span class="tag">减免中 '+S.taxcut+'月</span>':''}</td><td class="r">${fmt(taxIndustry())}</td></tr><tr><td>转移支付</td><td class="r">${fmt(transferPay())}</td></tr><tr><td>公共事业经营收入</td><td class="r">${fmt(utilityRevenue())}</td></tr><tr><td>土地租金（月收）</td><td class="r">${fmt(rentIncome())}</td></tr><tr class="sum"><td>收入合计</td><td class="r">${fmt(inc)}</td></tr></table>
   <table style="margin-top:12px"><tr><th>三保优先序</th><th class="r">金额</th></tr><tr><td>保工资　在编 ${S.staff} 人</td><td class="r">${fmt(wageBill())}</td></tr><tr><td>保运转　设施运维与机关经费</td><td class="r">${fmt(opsBill())}</td></tr><tr><td>保基本民生　教育医疗社保</td><td class="r">${fmt(liveBill())}</td></tr><tr><td>债务利息</td><td class="r">${fmt(S.cq.reduce((a,b)=>a+b.amt*b.rate/1200,0)+S.sb.reduce((a,b)=>a+b.amt*b.rate/1200,0)+S.platform*0.005)}</td></tr><tr><td>建设投入（在建及矿区修复）</td><td class="r">${fmt((S.build.reduce((a,b)=>a+(b.cost-b.paid)/b.left,0)+restoreDue()))}</td></tr><tr class="sum"><td>支出合计</td><td class="r">${fmt(wageBill()+opsBill()+liveBill()+S.cq.reduce((a,b)=>a+b.amt*b.rate/1200,0)+S.sb.reduce((a,b)=>a+b.amt*b.rate/1200,0)+S.platform*0.005+(S.build.reduce((a,b)=>a+(b.cost-b.paid)/b.left,0)+restoreDue()))}</td></tr></table>
   <div class="hint">结算顺序：工资 → 运转 → 基本民生 → 利息本金 → 建设。前三项出缺口就是三保缺口，年度考核压档一档。</div></div>
-  <div class="sec"><h2>偿债准备金率</h2><div class="row"><input type="range" id="resRate" min="0" max="8" step="0.5" value="${S.reserveRate}" style="max-width:300px"><span id="resRateV" class="num">${S.reserveRate}%</span></div><div class="hint">每月按收入比例上缴准备金池，只能用于化债。当前池内 ${fmt(S.reserve)}。</div></div>
+  ${vReserveControls()}
   ${mechOn('land')?`<div class="sec"><h2>土地出让</h2><div class="hint">县级以上按宗办理，请到<b>土地</b>页。这里只保留零星供地，全年限额 ${Math.round(40*S.lsc)} 亩，已用 ${Math.round(S.spotYr||0)} 亩。储备 ${Math.round(S.land)} 亩，基准地价 ${landPrice().toFixed(1)} 万/亩。</div>
   <div class="row"><input type="number" id="landN" value="${Math.round(Math.min(S.land,12*S.lsc))}" min="0" step="5" style="width:120px"> 亩<button class="sm" id="btnSell">零星出让</button></div></div>`:`<div class="sec"><h2>土地出让</h2><div class="hint">储备土地 ${Math.round(S.land)} 亩，当前地价 ${landPrice().toFixed(1)} 万/亩。累计出让 ${Math.round(S.landSold)} 亩，房价压力 ${Math.round(S.housing)}。卖得越多，房价压力越高，满意度越低。${S.nosell>0?'<span class="tag red">限购期还有 '+S.nosell+' 月</span>':''}</div>
   <div class="row"><input type="number" id="landN" value="${Math.round(Math.min(S.land,50*S.lsc))}" min="0" step="10" style="width:120px"> 亩<button class="sm" id="btnSell">挂牌出让</button></div></div>`}`;}
+function vReserveControls(){return `<div class="sec"><h2>偿债准备金率</h2><div class="row"><input type="range" id="resRate" aria-label="偿债准备金率" min="0" max="8" step="0.5" value="${S.reserveRate}" style="max-width:300px"><span id="resRateV" class="num">${S.reserveRate}%</span></div><div class="hint">每月按收入比例上缴，可用于主动还本和兑付到期城投债；调任时不随人走。当前池内 ${fmt(S.reserve)}。专项债到期仍由现金兑付。</div>${cqOut()===0&&S.reserve>0?'<p class="hint">城投债已清，可将比例调为 0。</p>':''}</div>`;}
+function promotionReserveNotice(R){return R.next==='promote'&&S.reserve>0&&S.reserve>=annualIncome()*.05;}
 function vDebt(){const h=hdr();
   const cqRows=S.cq.map(b=>`<tr><td>城投债</td><td class="r">${fmt(b.amt)}</td><td class="r">${b.rate.toFixed(1)}%</td><td class="r">${b.left} 月</td></tr>`).join('');
   const sbRows=S.sb.map(b=>`<tr><td>专项债</td><td class="r">${fmt(b.amt)}</td><td class="r">${b.rate}%</td><td class="r">${b.left} 月</td></tr>`).join('');
@@ -2607,7 +2619,8 @@ function showEvent(ev,done){const kind=ev.kind||(ev.id.startsWith('p_')?'信访�
 function showReview(R,done){const L=LV[S.lvl];
   showDoc(`<div class="dh"><div class="kind">年度考核通报</div><h2>关于第 ${R.year} 年度${esc(L.city)}综合考核结果的通报</h2></div><div class="body"><div class="row" style="align-items:flex-end"><span class="grade">${R.grade}</span><span class="muted" style="padding-bottom:6px">${{A:'优秀',B:'良好',C:'合格',D:'不合格'}[R.grade]}${R.sanbao?'（三保出现缺口，压 '+(R.W.sanbao||1)+' 档）':''}</span></div>
   <table style="margin:10px 0"><tr><td>综合得分</td><td class="r">${R.raw.toFixed(1)}</td></tr><tr><td>考核风向</td><td class="r">${esc(R.W.n)}</td></tr><tr><td>繁荣 ×${R.W.w[0]} / 宜居 ×${R.W.w[1]} / 满意 ×${R.W.w[2]}${R.W.env?' / 环境 ×'+R.W.env:''}</td><td class="r">${(R.W.w[0]*S.pros).toFixed(0)} / ${(R.W.w[1]*S.liv).toFixed(0)} / ${(R.W.w[2]*S.sat).toFixed(0)}${R.W.env?' / '+(R.W.env*S.env).toFixed(0):''}</td></tr><tr><td>债务扣分${R.W.debt!==1?'（×'+R.W.debt+'）':''}</td><td class="r">−${R.debtPen.toFixed(1)}</td></tr><tr><td>事故扣分</td><td class="r">−${R.accPen}</td></tr><tr><td>廉政扣分${R.W.clean!==1?'（×'+R.W.clean+'）':''}</td><td class="r">−${R.cleanPen.toFixed(1)}</td></tr><tr><td>政绩变动</td><td class="r">${R.gain>0?'+':''}${R.gain}　累计 ${Math.round(S.merit)}</td></tr>${R.rank?`<tr><td>省内位次</td><td class="r">第 ${R.rank} 名　${R.rankBonus>0?'+':''}${R.rankBonus}</td></tr>`:''}<tr><td>财政紧张度</td><td class="r">${R.tension.toFixed(0)}</td></tr></table>
-  ${R.next==='promote'?'<p><b>组织部门已启动考察程序。</b></p>':R.next==='fall'?'<p style="color:var(--red)"><b>纪委监委在考察中发现线索。</b></p>':R.next==='sidelined'?'<p>本任年限已满。</p>':''}${R.envVeto?'<p class="neg">环境未达晋升要求，本年度暂停提拔；完成整改后可重新参评。</p>':''}${R.accountabilityBlock?'<p class="neg">处于项目责任观察期，暂缓提拔，处分和项目责任继续留档。</p>':''}<span class="seal">考核办</span></div><div class="opts"><button class="opt" id="rvOk"><span class="ot">知道了</span></button></div>`,'notice');
+  ${R.next==='promote'?'<p><b>组织部门已启动考察程序。</b></p>':R.next==='fall'?'<p style="color:var(--red)"><b>纪委监委在考察中发现线索。</b></p>':R.next==='sidelined'?'<p>本任年限已满。</p>':''}${promotionReserveNotice(R)?`<p class="phase-note">偿债准备金 ${fmt(S.reserve)}。调任后准备金不随人走${cqOut()>0?'，可先用于偿还城投债。':'；城投债已清，请核对留存余额。'}</p>${cqOut()>0?'<button class="sm" id="promoReserveRepay">先用准备金还本</button><p class="field-error" id="promoReserveError" role="status"></p>':''}`:''}${R.envVeto?'<p class="neg">环境未达晋升要求，本年度暂停提拔；完成整改后可重新参评。</p>':''}${R.accountabilityBlock?'<p class="neg">处于项目责任观察期，暂缓提拔，处分和项目责任继续留档。</p>':''}<span class="seal">考核办</span></div><div class="opts"><button class="opt" id="rvOk"><span class="ot">知道了</span></button></div>`,'notice');
+  const reserveRepay=$('#promoReserveRepay');if(reserveRepay)reserveRepay.onclick=()=>{const error=repayCQ(Math.min(S.reserve,cqOut()));if(error){$('#promoReserveError').textContent=error;return;}renderAll();showReview(R,done);};
   $('#rvOk').onclick=()=>{hideDoc();done();};}
 function showPromo(lvl,done){const order=recordOrder(appointmentOrder(lvl));showOrder(order,'赴任',()=>{hideDoc();done();order.summary=appointmentHistory(lvl);save();},'prOk');}
 function showEnding(){busy=false;const E=ENDINGS[S.over];
@@ -2655,7 +2668,7 @@ let _mt=null;
 function mtoast(t,kind){let el=$('#mtoast');if(!el){el=document.createElement('div');el.id='mtoast';el.setAttribute('role','status');el.setAttribute('aria-live','polite');document.body.appendChild(el);}el.textContent=t;el.classList.toggle('bad',kind==='bad');el.classList.toggle('good',kind==='good');el.classList.add('on');clearTimeout(_mt);_mt=setTimeout(()=>el.classList.remove('on'),Math.max(4200,Math.min(10000,t.length*100)));}
 const LS={get:k=>{try{return localStorage.getItem(k);}catch(e){return null;}},set:(k,v)=>{try{localStorage.setItem(k,v);}catch(e){}},del:k=>{try{localStorage.removeItem(k);}catch(e){}}};
 function save(){LS.set('yifang_save',JSON.stringify(S));}
-function migrate(){if(!S)return;ensureIdentity();S.f=S.f||{};for(const k of FACORDER)if(S.f[k]===undefined)S.f[k]=0;if(S.f.factory===undefined)S.f.factory=0;S.seen=S.seen||{};S.brief=S.brief||0;S.buildCat=S.buildCat||'traffic';S.logSeq=S.logSeq||S.log.length;S.build=(S.build||[]).filter(b=>FAC[b.id]);S.ind=(S.ind||[]).filter(x=>FAC[x.id]);S.agCd=S.agCd||{};S.agFlag=S.agFlag||{};S.agUse=S.agUse||{};S.agN=S.agN||0;if(!AG[S.ag])S.ag='routine';if(!S.wind||!WIND.find(w=>w.id===S.wind)){S.wind='growth';S.windLeft=3;}S.windHist=S.windHist||[];S.plotSeq=S.plotSeq||0;S.landRev=S.landRev||0;S.landHist=S.landHist||[];S.spotYr=S.spotYr||0;S.leadSeq=S.leadSeq||0;if(!S.leads)S.leads=S.lvl>=2?genLeads(2):[];S.talent=S.talent||0;S.alloc=S.alloc||{};S.era=S.era||{};S.hist=(S.hist||[]).map(h=>(h.pros===undefined&&(h.pros=55,h.liv=52,h.debt=h.hdr||40,h.after=0),h));if(S.lvl>=3&&!S.rivals)initRivals();if(S.lvl>=4&&!S.dist)initDist();S.ind=(S.ind||[]).map(x=>(x.cut===undefined&&(x.cut=0),x));if(!S.plots)S.plots=S.lvl>=1?genPlots(3):[];if(!S.npc)npcInit(true);else for(const k of NPCORDER)if(!S.npc[k])S.npc[k]={n:NPCS[k].fixed||newName(),f:50};if(!S.agPool||!S.agPool.length||S.agPool.some(k=>!AG[k]))agRefresh();phaseEnsure();}
+function migrate(){if(!S)return;ensureIdentity();S.f=S.f||{};for(const k of FACORDER)if(S.f[k]===undefined)S.f[k]=0;if(S.f.factory===undefined)S.f.factory=0;S.seen=S.seen||{};S.brief=S.brief||0;if(!Number.isFinite(S.reserve))S.reserve=0;if(!Number.isFinite(S.reserveRate))S.reserveRate=2;S.buildCat=S.buildCat||'traffic';S.logSeq=S.logSeq||S.log.length;S.build=(S.build||[]).filter(b=>FAC[b.id]);S.ind=(S.ind||[]).filter(x=>FAC[x.id]);S.agCd=S.agCd||{};S.agFlag=S.agFlag||{};S.agUse=S.agUse||{};S.agN=S.agN||0;if(!AG[S.ag])S.ag='routine';if(!S.wind||!WIND.find(w=>w.id===S.wind)){S.wind='growth';S.windLeft=3;}S.windHist=S.windHist||[];S.plotSeq=S.plotSeq||0;S.landRev=S.landRev||0;S.landHist=S.landHist||[];S.spotYr=S.spotYr||0;S.leadSeq=S.leadSeq||0;if(!S.leads)S.leads=S.lvl>=2?genLeads(2):[];S.talent=S.talent||0;S.alloc=S.alloc||{};S.era=S.era||{};S.hist=(S.hist||[]).map(h=>(h.pros===undefined&&(h.pros=55,h.liv=52,h.debt=h.hdr||40,h.after=0),h));if(S.lvl>=3&&!S.rivals)initRivals();if(S.lvl>=4&&!S.dist)initDist();S.ind=(S.ind||[]).map(x=>(x.cut===undefined&&(x.cut=0),x));if(!S.plots)S.plots=S.lvl>=1?genPlots(3):[];if(!S.npc)npcInit(true);else for(const k of NPCORDER)if(!S.npc[k])S.npc[k]={n:NPCS[k].fixed||newName(),f:50};if(!S.agPool||!S.agPool.length||S.agPool.some(k=>!AG[k]))agRefresh();phaseEnsure();landPlanEnsure();}
 function load(){try{const s=LS.get('yifang_save');if(!s)return false;S=JSON.parse(s);migrate();return true;}catch(e){return false;}}
 /* ===== v1.11 第一批：同一份土地、现金和环境台账贯穿所有旧入口 ===== */
 const POLLUTION=['','低污染','中污染','高污染','重污染'];
@@ -2667,9 +2680,10 @@ function phaseReset(legacy=false){
  const free=Math.max(0,S.land),ind=free*.45,res=free*.35;
  S.phase1={version:1,legacy,grace:legacy?6:0,land:{free:{ind,res,com:free-ind-res},leased:0,used:0,sold:0,protectedFarm:S.landTotal*.30,protectedEco:S.landTotal*.15},leases:[],permits:{},tech:{},resources:S.lvl>=2?['煤炭','油气']:['煤炭'],
   finance:{opening:S.cash,entries:[],history:[]},environment:{opening:S.env,natural:0,ecology:0,action:0,event:0,pollution:0,overflow:0,clipping:0},envLock:false};
- S.schemaVersion=2;S.planZone='mixed';
+ S.landUsePlan={pending:[],year:S.year,used:0};S.schemaVersion=2;S.planZone='mixed';
 }
-function phaseEnsure(){if(!S.phase1||S.phase1.version!==1)phaseReset(true);return S.phase1;}
+function landPlanEnsure(){if(!S.landUsePlan||typeof S.landUsePlan!=='object')S.landUsePlan={};const P=S.landUsePlan;if(!Array.isArray(P.pending))P.pending=[];if(!Number.isInteger(P.year))P.year=S.year;if(!Number.isFinite(P.used))P.used=0;return P;}
+function phaseEnsure(){if(!S.phase1||S.phase1.version!==1)phaseReset(true);landPlanEnsure();return S.phase1;}
 function landFree(use='any'){const f=phaseEnsure().land.free;return use==='any'?f.ind+f.res+f.com:(f[use]||0);}
 function landTake(mu,use='any',reason='占用'){
  if(!Number.isFinite(mu)||mu<0||mu>landFree(use)+1e-7)return false;
@@ -2679,6 +2693,28 @@ function landTake(mu,use='any',reason='占用'){
  S.land=landFree();return true;
 }
 function landAdd(mu,use='ind'){if(!Number.isFinite(mu)||mu<=0)return;phaseEnsure().land.free[use]+=mu;S.land=landFree();}
+function landAddMixed(mu){if(!Number.isFinite(mu)||mu<=0)return;const ind=mu*.45,res=mu*.35;landAdd(ind,'ind');landAdd(res,'res');landAdd(mu-ind-res,'com');}
+const LAND_USES={ind:'工业',res:'住宅',com:'商服'},LAND_PLAN_RATE=.05;
+function landPlanCap(){return 100*S.lsc;}
+function landPlanUsed(){const P=landPlanEnsure();return P.year===S.year?P.used:0;}
+function landPlanLocked(){return landPlanEnsure().pending.reduce((sum,a)=>sum+a.mu,0);}
+function landPlanCost(mu){return mu*landPrice()*LAND_PLAN_RATE;}
+function landPlanGate(from,to,mu){
+ if(S.over||S.phase==='retired')return '当前不能调整用途';const gate=roleGate('urban');if(gate)return gate;
+ if(!['ind','res','com'].includes(from)||!['ind','res','com'].includes(to)||from===to)return '请选择两种不同用途';
+ if(!Number.isFinite(mu)||mu<=0)return '请输入有效调整面积';
+ if(mu>landFree(from))return '原用途可开发地不足，锁定及保护土地不能调整';
+ if(mu>landPlanCap()-landPlanUsed()+1e-7)return '超过本年用途调整额度';
+ if(landPlanCost(mu)>businessCash())return '可用现金不足，不能动用未使用专项债';return null;
+}
+function startLandPlan(from,to,mu){
+ const error=landPlanGate(from,to,mu);if(error)return error;
+ const L=phaseEnsure().land,P=landPlanEnsure(),fee=landPlanCost(mu),used=landPlanUsed();
+ L.free[from]-=mu;P.year=S.year;P.used=used+mu;P.pending.push({from,to,mu,left:3,fee,year:S.year,month:S.month});S.land=landFree();
+ S.cash-=fee;book('policy',-fee,'控规用途调整');logIt('控规调整：'+mu.toFixed(1)+'亩'+LAND_USES[from]+'用地转为'+LAND_USES[to]+'用地，费用'+fmt(fee)+'；锁定3个月。','sys');return null;
+}
+function landPlansStep(){const P=landPlanEnsure();for(const a of P.pending){a.left--;if(a.left<=0){landAdd(a.mu,a.to);logIt('控规调整生效：'+a.mu.toFixed(1)+'亩土地转入'+LAND_USES[a.to]+'用地。','good');}}P.pending=P.pending.filter(a=>a.left>0);}
+
 function rentIncome(){return phaseEnsure().leases.reduce((a,l)=>a+(l.left>0?l.annual/12:0),0);}
 function leaseLand(mu,years=10){
  mu=Number(mu);years=Number(years);
@@ -2828,7 +2864,7 @@ function cashTotals(entries){
 }
 function closeFinanceMonth(M){
  const P=phaseEnsure(),F=P.finance,T=cashTotals(F.entries);const row={year:S.year,month:S.month,opening:F.opening,closing:S.cash,entries:F.entries.slice(),...T};
- row.error=S.cash-F.opening-T.delta;if(Math.abs(row.error)<1e-8)row.error=0;M.cashbook=row;F.history.push(row);F.history=F.history.slice(-36);F.entries=[];F.opening=S.cash;leasesStep();if(P.grace>0)P.grace--;
+ row.error=S.cash-F.opening-T.delta;if(Math.abs(row.error)<1e-8)row.error=0;M.cashbook=row;F.history.push(row);F.history=F.history.slice(-36);F.entries=[];F.opening=S.cash;leasesStep();landPlansStep();if(P.grace>0)P.grace--;
  P.environment={opening:S.env,natural:0,ecology:0,action:0,event:0,pollution:0,overflow:0,clipping:0};
 }
 function environmentSum(E){return ['natural','ecology','action','event','pollution','overflow','clipping'].reduce((a,k)=>a+(E[k]||0),0);}
@@ -2857,20 +2893,20 @@ tick=function(){phaseEnsure();const r=_phaseTick();const row=S.monthly.cashbook;
  if(Math.abs(row.error)>.001)logIt('账目核对差额'+row.error.toFixed(2)+'万，请检查收支流水。','bad');return r;};
 distStep=trackCash(distStep,'policy','区县年度建设拨款');
 const _phaseClose=closeLevel;
-closeLevel=function(){_phaseClose();const h=S.hist[S.hist.length-1];if(h&&S.phase1)h.phase1=JSON.parse(JSON.stringify(S.phase1));};
+closeLevel=function(){_phaseClose();const h=S.hist[S.hist.length-1];if(h&&S.phase1)h.phase1=JSON.parse(JSON.stringify(S.phase1));if(h&&S.landUsePlan&&(S.landUsePlan.pending.length||S.landUsePlan.used))h.landUsePlan=JSON.parse(JSON.stringify(S.landUsePlan));};
 const _phaseLoad=load;
 load=function(){const original=LS.get('yifang_save');const ok=_phaseLoad();if(ok&&original&&!JSON.parse(original).phase1&&!LS.get('yifang_save_before_v111'))LS.set('yifang_save_before_v111',original);return ok;};
 function cashForecast(){
  // Pure conservative projection: no event draws, mutation, future land sales or unapproved grants.
- let cash=S.cash,unspent=S.sbUnspent||0;const debt=[...S.cq,...S.sb].map(b=>({...b}));
+ let cash=S.cash,unspent=S.sbUnspent||0,reservePool=Math.max(0,S.reserve||0);const debt=[...S.cq.map(b=>({...b,cityDebt:true})),...S.sb.map(b=>({...b,cityDebt:false}))];
  const builds=S.build.map(b=>({...b})),leases=phaseEnsure().leases.map(l=>({...l}));const out=[];
  for(let i=1;i<=3;i++){
   const rent=leases.reduce((a,l)=>a+(l.left>0?l.annual/12:0),0),income=monthIncome()-rentIncome()+rent;
   const reserve=income*S.reserveRate/100,base=wageBill()+opsBill()+liveBill()+talentCost();
-  let interest=S.platform*.005,principal=0;for(const b of debt){if(b.amt<=0)continue;interest+=b.amt*b.rate/1200;b.left--;if(b.left<=0){principal+=b.amt;b.amt=0;}}
+  reservePool+=reserve;let interest=S.platform*.005,principal=0,reservePayment=0;for(const b of debt){if(b.amt<=0)continue;interest+=b.amt*b.rate/1200;b.left--;if(b.left<=0){const paid=b.cityDebt?Math.min(reservePool,b.amt):0;reservePayment+=paid;reservePool-=paid;principal+=b.amt;b.amt=0;}}
   let build=0;for(const b of builds){if(b.left>0){const due=(b.cost-b.paid)/b.left;build+=due;b.paid+=due;b.left--;if(b.wl)unspent=Math.max(0,unspent-due);}}
   const district=districtForecastPayment(i);
-  cash+=income-reserve-base-interest-principal-build-district;out.push({i,income,base,reserve,interest,principal,build,district,cash,available:cash-unspent,warning:cash<0?'现金缺口':cash-unspent<0?'受限资金压力':'可覆盖'});
+  cash+=income-reserve-base-interest-principal+reservePayment-build-district;out.push({i,income,base,reserve,reservePayment,reserveBalance:reservePool,interest,principal,build,district,cash,available:cash-unspent,warning:cash<0?'现金缺口':cash-unspent<0?'受限资金压力':'可覆盖'});
   for(const l of leases)l.left--;
  }return out;
 }
@@ -2879,8 +2915,8 @@ function vCashbook(){
  const forecast=cashForecast();return `<div class="sec phase-panel"><h2>财政分类台账</h2>${LS.get('yifang_save_before_v111')?'<button class="sm" id="btnLegacyExport">导出升级前存档</button>':''}<div class="hint">税收、租金和水电收入列入经常性收入；卖地、补助等单列。借款列融资，维护费列运转支出。</div>
  ${last?`<p>最近结算：第${last.year}年${last.month}月 · 经常性 ${fmt(last.recurring)} · 一次性 ${fmt(last.oneoff)} · 融资净流入 ${fmt(last.financing)}</p><div class="phase-scroll"><table><tr><th>已发生项目</th><th class="r">现金变动</th></tr>${Object.entries(last.totals).map(([k,v])=>`<tr><td>${CASH_NAMES[k]||k}</td><td class="r">${v>=0?'+':''}${fmt(v)}</td></tr>`).join('')}<tr><td>期初 → 期末</td><td class="r">${fmt(last.opening)} → ${fmt(last.closing)}</td></tr><tr><td>核对差额</td><td class="r">${last.error.toFixed(4)}万</td></tr></table></div>`:'<p class="muted">推进到下月后显示结算记录。</p>'}
  <p class="phase-note">当前未结算流水：${F.entries.length}笔，净现金变动 ${fmt(pending.delta)}。${F.entries.length?F.entries.map(e=>esc(CASH_NAMES[e.kind]||e.kind)+' '+(e.amount>=0?'+':'')+fmt(e.amount)).join('；'):''}</p>
- <h2>未来3个月现金流预警</h2><div class="hint">按当前税源、租约和供需估算，扣除到期本金、建设款、准备金及跨年区县拨款。区县拨款按当前年收入口径和资金档位估算，扣款前可调整；待确认的拨款计入首月。未计卖地、续借、待批补贴，以及后续人口和事件变化。</div>
- <div class="phase-scroll"><table class="phase-forecast phase-data"><tr><th>未来</th><th>收入</th><th>到期本金</th><th>建设</th><th>区县拨款</th><th>期末现金</th><th>可用现金*</th><th>状态</th></tr>${forecast.map(x=>`<tr><td>${x.i}个月</td><td>${fmt(x.income)}</td><td>${fmt(x.principal)}</td><td>${fmt(x.build)}</td><td>${districtMoney(x.district)}</td><td>${fmt(x.cash)}</td><td>${fmt(x.available)}</td><td class="${x.warning!=='可覆盖'?'neg':''}">${x.warning}</td></tr>`).join('')}</table></div><div class="phase-note">* 扣除预测期末尚未投用的专项债资金；偿债准备金单列，不视为普通可花资金。</div></div>`;
+ <h2>未来3个月现金流预警</h2><div class="hint">按当前税源、租约和供需估算，扣除到期本金、建设款、每月准备金划入及跨年区县拨款；城投债到期先用准备金，现金只付剩余本金。区县拨款按当前年收入口径和资金档位估算，扣款前可调整；待确认的拨款计入首月。未计卖地、续借、待批补贴，以及后续人口和事件变化。</div>
+ <div class="phase-scroll"><table class="phase-forecast phase-data"><tr><th>未来</th><th>收入</th><th>到期本金</th><th>准备金兑付</th><th>建设</th><th>区县拨款</th><th>期末现金</th><th>可用现金*</th><th>状态</th></tr>${forecast.map(x=>`<tr><td>${x.i}个月</td><td>${fmt(x.income)}</td><td>${fmt(x.principal)}</td><td>${fmt(x.reservePayment)}</td><td>${fmt(x.build)}</td><td>${districtMoney(x.district)}</td><td>${fmt(x.cash)}</td><td>${fmt(x.available)}</td><td class="${x.warning!=='可覆盖'?'neg':''}">${x.warning}</td></tr>`).join('')}</table></div><div class="phase-note">* 扣除预测期末尚未投用的专项债资金；准备金先用于到期城投债，已从现金需付本金中扣除；专项债仍由现金兑付，准备金余额不计入普通可用现金。</div></div>`;
 }
 function vEnvironment(E){
  E=E||phaseEnsure().environment;const end=E.closing===undefined?S.env:E.closing;
@@ -2888,9 +2924,19 @@ function vEnvironment(E){
  ${[['月初环境分',E.opening],['自然变化',E.natural],['常态化生态加分',E.ecology],['当月行动加分',E.action],['其他事件净变化',E.event],['生产污染扣减',E.pollution],['污水超载扣减',E.overflow],['0—100边界调整',E.clipping]].map(([n,v])=>`<tr><td>${n}</td><td class="r">${Number(v||0).toFixed(2)}</td></tr>`).join('')}</table></div>`;
 }
 function vUtilities(){const u=utilityStatus();return `<div class="sec phase-panel"><h2>水电与污水处理供需</h2><div class="hint">居民与企业共用水电容量；供应不足会降低产业税收和就业。污水超载会扣环境分，收费按实际服务量计算。${S.phase1.grace?'旧存档供需过渡保护还剩'+S.phase1.grace+'个月，期间生产系数最低90%。':''}</div><div class="phase-scroll"><table><tr><th>设施</th><th>容量</th><th>需求</th><th>已服务</th><th>负荷</th></tr>${['power','water','sewage'].map(k=>`<tr><td>${FAC[k].n}</td><td>${u[k].capacity.toFixed(1)}</td><td>${u[k].demand.toFixed(1)}</td><td>${u[k].served.toFixed(1)}</td><td class="${u[k].short>0?'neg':''}">${u[k].short>0?'超载 '+u[k].short.toFixed(1):'充足'}</td></tr>`).join('')}</table></div><p>月经营收入 ${fmt(utilityRevenue())} · 维护成本 ${fmt(utilityMaintenance())} · 经营结余 ${fmt(utilityRevenue()-utilityMaintenance())}</p></div>`;}
+function vLandPlanning(){
+ const L=phaseEnsure().land,P=landPlanEnsure(),cap=landPlanCap(),used=landPlanUsed(),gate=roleGate('urban'),options=selected=>Object.entries(LAND_USES).map(([key,n])=>`<option value="${key}"${key===selected?' selected':''}>${n}用地</option>`).join('');
+ return `<div class="land-plan-panel"><h2>控规用途调整</h2><p class="hint">仅调整可开发储备地；农田、生态保护地、已出租、已占用、已出让和锁定土地不能调整。需城建干部，费用为面积×基准地价×5%，登记时支付；锁定3个月后转入新用途。</p><p class="phase-note">本年额度 ${cap.toFixed(1)}亩 · 已登记 ${used.toFixed(1)}亩 · 余量 ${Math.max(0,cap-used).toFixed(1)}亩。</p><div class="land-plan-fields"><label for="landPlanFrom">原用途<select id="landPlanFrom">${options('ind')}</select></label><label for="landPlanTo">新用途<select id="landPlanTo">${options('res')}</select></label><label for="landPlanMu">调整面积（亩）<input id="landPlanMu" type="number" min="0.1" step="0.1" value="${Math.max(0,Math.min(10*S.lsc,L.free.ind,cap-used)).toFixed(1)}"></label></div><p class="phase-note" id="landPlanQuote"></p><p class="field-error" id="landPlanError" role="status" aria-live="polite">${esc(gate||'')}</p><button class="sm" id="btnLandPlan"${gate?' disabled':''}>登记调整 · 锁地3个月</button>${P.pending.length?`<div class="phase-scroll"><table><tr><th>用途变更</th><th>锁定面积</th><th>剩余时间</th></tr>${P.pending.map(a=>`<tr><td>${esc(LAND_USES[a.from])} → ${esc(LAND_USES[a.to])}</td><td>${a.mu.toFixed(1)}亩</td><td>${a.left}个月</td></tr>`).join('')}</table></div>`:'<p class="phase-note">暂无调整中的土地。</p>'}</div>`;
+}
+function bindLandPlanning(){
+ const button=$('#btnLandPlan');if(!button)return;const from=$('#landPlanFrom'),to=$('#landPlanTo'),mu=$('#landPlanMu');
+ const update=()=>{const area=Number(mu.value),fee=Number.isFinite(area)&&area>0?landPlanCost(area):0,error=landPlanGate(from.value,to.value,area);$('#landPlanQuote').textContent='原用途可用 '+landFree(from.value).toFixed(1)+'亩 · 费用 '+fmt(fee)+' · 不动用未使用专项债。';$('#landPlanError').textContent=error||'';button.disabled=!!error;};
+ for(const el of [from,to,mu])el.oninput=el.onchange=update;
+ button.onclick=()=>{const error=startLandPlan(from.value,to.value,Number(mu.value));if(error){$('#landPlanError').textContent=error;return;}renderAll();mtoast('用途调整已登记，土地锁定3个月。','good');};update();
+}
 function vLandBook(){
- const P=phaseEnsure(),L=P.land;return `<div class="sec phase-panel"><h2>土地储备与保护台账</h2><div class="hint">已出租土地在到期前不得另行建设或出让；农田和生态保护地不得开发。旧档未记录用途的土地按工业45%、住宅35%、商服20%划分，总面积不变。</div><table>${[['可开发工业用地',L.free.ind],['可开发住宅用地',L.free.res],['可开发商服及公共配套地',L.free.com],['已出租',L.leased],['建设已占用',L.used],['已出让',L.sold],['永久基本农田（禁止开发）',L.protectedFarm],['生态保护地（禁止开发）',L.protectedEco]].map(([n,v])=>`<tr><td>${n}</td><td class="r">${v.toFixed(1)}亩</td></tr>`).join('')}</table>
- <h2>工业用地长期出租</h2><div class="hint">年租金按工业地评估价的6.5%锁定，按月收取，到期收回土地。出租只收租金，不直接增加企业和税收。</div><div class="phase-row"><label>面积 <input id="leaseMu" type="number" min="1" step="1" value="${Math.max(1,Math.floor(Math.min(30*S.lsc,L.free.ind)))}">亩</label><select id="leaseYears" class="phase-select" aria-label="土地租期"><option value="5">5年</option><option value="10" selected>10年</option><option value="20">20年</option></select><button class="sm" id="btnLease">签订出租合同</button></div><p>已签${P.leases.length}份 · 年租金合计 ${fmt(rentIncome()*12)} · 按月入账 ${fmt(rentIncome())}</p>
+ const P=phaseEnsure(),L=P.land;return `<div class="sec phase-panel"><h2>土地储备与保护台账</h2><div class="hint">已出租土地在到期前不得另行建设或出让；农田和生态保护地不得开发。新增征地按工业45%、住宅35%、商服20%入库，旧档既有库存不重分。调整中的土地锁定，到期后才计入新用途。</div><table>${[['可开发工业用地',L.free.ind],['可开发住宅用地',L.free.res],['可开发商服及公共配套地',L.free.com],['控规调整中（锁定）',landPlanLocked()],['已出租',L.leased],['建设已占用',L.used],['已出让',L.sold],['永久基本农田（禁止开发）',L.protectedFarm],['生态保护地（禁止开发）',L.protectedEco]].map(([n,v])=>`<tr><td>${n}</td><td class="r">${v.toFixed(1)}亩</td></tr>`).join('')}</table>
+ ${vLandPlanning()}<h2>工业用地长期出租</h2><div class="hint">年租金按工业地评估价的6.5%锁定，按月收取，到期收回土地。出租只收租金，不直接增加企业和税收。</div><div class="phase-row"><label>面积 <input id="leaseMu" type="number" min="1" step="1" value="${Math.max(1,Math.floor(Math.min(30*S.lsc,L.free.ind)))}">亩</label><select id="leaseYears" class="phase-select" aria-label="土地租期"><option value="5">5年</option><option value="10" selected>10年</option><option value="20">20年</option></select><button class="sm" id="btnLease">签订出租合同</button></div><p>已签${P.leases.length}份 · 年租金合计 ${fmt(rentIncome()*12)} · 按月入账 ${fmt(rentIncome())}</p>
  ${P.leases.length?`<div class="phase-scroll"><table><tr><th>面积</th><th>年租金</th><th>剩余租期</th></tr>${P.leases.map(l=>`<tr><td>${l.mu.toFixed(1)}亩</td><td>${fmt(l.annual)}</td><td>${l.left}个月</td></tr>`).join('')}</table></div>`:''}</div>`;
 }
 function vIndustryControls(){
@@ -2920,8 +2966,8 @@ vAgenda=function(){const html=_vAgenda();const a=AG[S.ag];return html+(S.ag==='g
 vBuild=function(){return vUtilities()+vIndustryControls()+_vBuild()+vIndustryDirectory();};
 vFin=function(){return vCashbook()+_vFin()+vLandBook();};vLand=function(){return vLandBook()+_vLand();};
 vOver=function(){return _vOver()+vEnvironment()+vUtilities();};vInd=function(){return vIndustryControls()+_vInd();};
-vDebt=function(){return _vDebt()+vLandBook();};
-bindPanel=function(){_bindPanel();const backup=$('#btnLegacyExport');if(backup)backup.onclick=()=>{const raw=LS.get('yifang_save_before_v111');if(!raw)return;const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(raw);a.download='一方水土-升级前原始存档.json';a.click();};const z=$('#planZone');if(z)z.onchange=()=>{S.planZone=z.value;renderAll();};const lease=$('#btnLease');if(lease)lease.onclick=()=>{const e=leaseLand(+$('#leaseMu').value,+$('#leaseYears').value);if(e)toast(e);renderAll();};document.querySelectorAll('[data-phase-action]').forEach(b=>b.onclick=()=>{const e=schedulePhaseAction(b.dataset.phaseAction);if(e)toast(e);renderAll();});};
+vDebt=function(){return _vDebt()+vReserveControls()+vLandBook();};
+bindPanel=function(){_bindPanel();bindLandPlanning();const backup=$('#btnLegacyExport');if(backup)backup.onclick=()=>{const raw=LS.get('yifang_save_before_v111');if(!raw)return;const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(raw);a.download='一方水土-升级前原始存档.json';a.click();};const z=$('#planZone');if(z)z.onchange=()=>{S.planZone=z.value;renderAll();};const lease=$('#btnLease');if(lease)lease.onclick=()=>{const e=leaseLand(+$('#leaseMu').value,+$('#leaseYears').value);if(e)toast(e);renderAll();};document.querySelectorAll('[data-phase-action]').forEach(b=>b.onclick=()=>{const e=schedulePhaseAction(b.dataset.phaseAction);if(e)toast(e);renderAll();});};
 renderAll=function(){phaseEnsure();_renderAll();const M=S.monthly;if(M&&M.cashbook){const c=M.cashbook;$('#monthly').innerHTML=`<table><tr><td>经常性收入</td><td class="r">${fmt(c.recurring)}</td></tr><tr><td>一次性收入</td><td class="r">${fmt(c.oneoff)}</td></tr><tr><td>融资净流入</td><td class="r">${fmt(c.financing)}</td></tr><tr><td>现金变动</td><td class="r">${fmt(c.delta)}</td></tr></table><div class="hint">第${c.year}年${c.month}月；明细见财政台账。</div>`;}};
 showMonthly=function(B,done){_showMonthly(B,done);if($('#modal').classList.contains('on')){const body=$('#doc .body');if(body){const M=S.monthly;if(M.environment)body.insertAdjacentHTML('beforeend',vEnvironment(M.environment));if(M.cashbook)body.insertAdjacentHTML('beforeend',`<p class="phase-note">本月入账：经常性收入 ${fmt(M.cashbook.recurring)}，一次性收入 ${fmt(M.cashbook.oneoff)}，融资净流入 ${fmt(M.cashbook.financing)}；现金核对差额 ${M.cashbook.error.toFixed(4)}万。逐笔收支见财政台账。</p>`);}}};
 
@@ -3279,7 +3325,7 @@ MECH.business={lv:0,tab:'经营'};
 function marketLabel(){const x=phase3Ensure().market.index;return x<.8?'冷淡':x>1.15?'火热':'平稳';}
 function workBtn(kind,target,label,disabled=false){const reason=['p3_aid','p3_expand','p3_move','p3_close'].includes(kind)?firmGate(kind,target):['p3_regulate','p3_rescue'].includes(kind)?homeWorkQuote(kind,target).error:null;return `<span class="phase-work"><button class="sm" data-p3="${kind}" data-target="${target}"${disabled||reason?' disabled':''}>${label}</button>${reason?'<span class="phase-note">'+esc(reason)+'</span>':''}</span>`;}
 function vCompanies(){const P=phase3Ensure();syncFirms();return `<div class="sec phase-panel"><h2>企业经营</h2><p>产业与住宅市场：<b>${marketLabel()}</b>（${P.market.index.toFixed(2)}）</p><div class="hint">产能影响税收、就业和水电需求。帮扶、扩产和退出需招商干部，搬迁需城建干部，均占本月工作安排。扩产限一次，增加50%产能；搬迁只在本辖区办理。退出不返还土地，原有责任仍可追查。旧档企业有6个月经营过渡期。</div>${P.firms.length?P.firms.slice().reverse().map(f=>`<div class="lead"><div class="lh"><b>${esc(f.name)}</b><span class="tag">${LIFE_NAMES[f.stage]}</span></div><p>企业号 ${f.uid} · 经营健康 ${f.health.toFixed(0)} · 当前产能 ${(firmFactor(f,f.generic?60:S.ind[f.index]?.age||0)*100).toFixed(0)}% · ${POLLUTION[pollutionGrade(f.fac)]||'低污染'}${f.expansion?' · 扩产剩余'+f.expansion.left+'月':''}${f.move?' · 搬迁剩余'+f.move.left+'月':''}${f.limitedUntil>projectMonth()?' · 听证限产至项目月'+f.limitedUntil:''}</p>${f.stage!=='closed'?`<div class="phase-actions">${workBtn('p3_aid',f.uid,'帮扶 '+fmt(firmRef(f)*.08))}${workBtn('p3_expand',f.uid,'扩产 '+fmt(firmRef(f)*.3),f.stage!=='stable'||f.capacity>=1.5)}${workBtn('p3_move',f.uid,'搬迁 '+fmt(firmRef(f)*.25))}${workBtn('p3_close',f.uid,'有序退出 '+fmt(firmRef(f)*.05))}</div>`:''}</div>`).join(''):'<p class="muted">暂无在营企业，可到建设或产业页引进项目。</p>'}</div>`;}
-function vHomes(){const P=phase3Ensure(),support=homeSupport();return `<div class="sec phase-panel"><h2>住宅开发</h2><div class="hint">住宅须使用住宅用地，并具备道路、供排水和公园配套。自主开发由财政垫资，卖房后回款；交给房企开发，财政收土地款和销售税。库存积压会压低地价，房价过高会影响民生。</div><p>住宅储备 ${landFree('res').toFixed(1)}亩 · 待售库存 ${housingInventory().toFixed(1)}套（项目套数随住宅用地规模计算）</p><p>配套：道路${support.road?'✓':'不足'} · 供排水${support.pipe?'✓':'不足'} · 公园${support.park?'✓':'不足'}</p><div class="home-offers">${Object.entries(HOME_TYPES).map(([k,T])=>{const q=homeQuote(k,'self'),g=homeGate(k,'self'),gp=homeGate(k,'private');return `<section class="home-offer"><h3>${T.n}</h3><dl><dt>用地 / 套数</dt><dd>${q.land}亩 / ${q.units}套</dd><dt>建设工期</dt><dd>${q.months}个月</dd><dt>自主建设投入</dt><dd>${fmt(q.cost)}</dd><dt>当前预计总售值</dt><dd>${fmt(q.expectedSales)}</dd><dt>房企土地款</dt><dd>${fmt(q.landPrice)}</dd><dt>房企总资金</dt><dd>${fmt(q.capital)}</dd><dt>房企预计净额</dt><dd>${fmt(q.net)}</dd></dl><div class="phase-button-group"><button class="sm" data-home="${k}" data-mode="self"${g?' disabled':''}>自主开发</button><span class="phase-note">${g?esc(g):''}</span><button class="sm" data-home="${k}" data-mode="private"${gp?' disabled':''}>出让房企</button><span class="phase-note">${gp?esc(gp):''}</span></div></section>`;}).join('')}</div><p class="phase-note">审批提示：${esc(homeGate('basic','self')||'当前可自主开发刚需住宅')}；${esc(homeGate('basic','private')||'当前可向房企供地')}。房企报价须覆盖土地、建设和12%周转金，支出从房企账户支付。旧合同按原约定执行。未售房屋不记现金收入，也不自动借债。同类楼盘共用销售能力，繁荣度低于60时高端住宅销售较慢。自主开发成本不含土地机会成本和融资费。</p>${P.homes.slice().reverse().map(h=>`<div class="lead"><b>${esc(h.n)}</b><span class="tag">${({construction:'建设中',selling:'销售中',stalled:'资金链断裂停工',sold:'已售罄'})[h.stage]}</span><p>项目号 ${h.uid} · 工期剩余 ${h.left}月 · 剩余 ${h.remaining.toFixed(1)}/${homeUnits(h)}套 · 已售 ${h.sold.toFixed(1)}套</p><p>平台售房回款 ${fmt(h.received)} · 财政销售税 ${fmt(h.tax)} · ${h.mode==='self'?'垫资本金 '+fmt(h.cost):'土地款 '+fmt(h.landPrice)+(h.finance?.version===2?' · 房企现金 '+fmt(h.finance.cash)+' · 建设已付 '+fmt(h.finance.constructionPaid):' · 旧合同资金指数 '+h.developerFunds.toFixed(0)+'/100')}${h.rescueCost?' · 保交付投入'+fmt(h.rescueCost):''}</p>${h.mode==='private'&&h.stage!=='sold'?`<div class="phase-actions">${workBtn('p3_regulate',h.uid,'资金监管 '+fmt(h.cost*.025),h.stage==='stalled'||h.regulatedUntil>projectMonth())}${workBtn('p3_rescue',h.uid,'保交付 '+fmt(homeWorkQuote('p3_rescue',h.uid).cost),h.stage!=='stalled')}</div>`:''}</div>`).join('')}</div>`;}
+function vHomes(){const P=phase3Ensure(),support=homeSupport();return `<div class="sec phase-panel"><h2>住宅开发</h2><div class="hint">住宅须使用住宅用地，并具备道路、供排水和公园配套。新增征地按45%工业、35%住宅、20%商服入库；住宅地不足可到土地台账调整用途，锁定3个月后生效。自主开发由财政垫资，卖房后回款；交给房企开发，财政收土地款和销售税。库存积压会压低地价，房价过高会影响民生。</div><p>住宅储备 ${landFree('res').toFixed(1)}亩 · 待售库存 ${housingInventory().toFixed(1)}套（项目套数随住宅用地规模计算）</p><p>配套：道路${support.road?'✓':'不足'} · 供排水${support.pipe?'✓':'不足'} · 公园${support.park?'✓':'不足'}</p><div class="home-offers">${Object.entries(HOME_TYPES).map(([k,T])=>{const q=homeQuote(k,'self'),g=homeGate(k,'self'),gp=homeGate(k,'private');return `<section class="home-offer"><h3>${T.n}</h3><dl><dt>用地 / 套数</dt><dd>${q.land}亩 / ${q.units}套</dd><dt>建设工期</dt><dd>${q.months}个月</dd><dt>自主建设投入</dt><dd>${fmt(q.cost)}</dd><dt>当前预计总售值</dt><dd>${fmt(q.expectedSales)}</dd><dt>房企土地款</dt><dd>${fmt(q.landPrice)}</dd><dt>房企总资金</dt><dd>${fmt(q.capital)}</dd><dt>房企预计净额</dt><dd>${fmt(q.net)}</dd></dl><div class="phase-button-group"><button class="sm" data-home="${k}" data-mode="self"${g?' disabled':''}>自主开发</button><span class="phase-note">${g?esc(g):''}</span><button class="sm" data-home="${k}" data-mode="private"${gp?' disabled':''}>出让房企</button><span class="phase-note">${gp?esc(gp):''}</span></div></section>`;}).join('')}</div><p class="phase-note">审批提示：${esc(homeGate('basic','self')||'当前可自主开发刚需住宅')}；${esc(homeGate('basic','private')||'当前可向房企供地')}。房企报价须覆盖土地、建设和12%周转金，支出从房企账户支付。旧合同按原约定执行。未售房屋不记现金收入，也不自动借债。同类楼盘共用销售能力，繁荣度低于60时高端住宅销售较慢。自主开发成本不含土地机会成本和融资费。</p>${P.homes.slice().reverse().map(h=>`<div class="lead"><b>${esc(h.n)}</b><span class="tag">${({construction:'建设中',selling:'销售中',stalled:'资金链断裂停工',sold:'已售罄'})[h.stage]}</span><p>项目号 ${h.uid} · 工期剩余 ${h.left}月 · 剩余 ${h.remaining.toFixed(1)}/${homeUnits(h)}套 · 已售 ${h.sold.toFixed(1)}套</p><p>平台售房回款 ${fmt(h.received)} · 财政销售税 ${fmt(h.tax)} · ${h.mode==='self'?'垫资本金 '+fmt(h.cost):'土地款 '+fmt(h.landPrice)+(h.finance?.version===2?' · 房企现金 '+fmt(h.finance.cash)+' · 建设已付 '+fmt(h.finance.constructionPaid):' · 旧合同资金指数 '+h.developerFunds.toFixed(0)+'/100')}${h.rescueCost?' · 保交付投入'+fmt(h.rescueCost):''}</p>${h.mode==='private'&&h.stage!=='sold'?`<div class="phase-actions">${workBtn('p3_regulate',h.uid,'资金监管 '+fmt(h.cost*.025),h.stage==='stalled'||h.regulatedUntil>projectMonth())}${workBtn('p3_rescue',h.uid,'保交付 '+fmt(homeWorkQuote('p3_rescue',h.uid).cost),h.stage!=='stalled')}</div>`:''}</div>`).join('')}</div>`;}
 function vMines(){const P=phase3Ensure();return `<div class="sec phase-panel"><h2>退出矿区生态修复</h2><div class="hint">有退出记录的煤矿可申请修复。需环保和城建干部，工期6个月，逐月付款，缺款停工。验收环境+4，此后每月+0.15，分别受行动及生态月上限约束。修复不增加可开发土地，也不撤销事故处分。</div>${P.mines.length?P.mines.map(m=>`<div class="lead"><b>${esc(m.n)}</b><p>${({idle:'待修复',restoring:'修复中',restored:'已修复'})[m.stage]} · 总投入 ${fmt(m.cost)} · 已付 ${fmt(m.paid)} · 剩余${m.left}个月</p>${m.stage==='idle'?`<button class="sm" data-mine="${m.uid}">立项生态修复</button>`:''}</div>`).join(''):'<p class="muted">暂无可修复的退出煤矿。</p>'}</div>`;}
 function vBusiness(){return vCompanies()+vHomes()+vMines();}
 function vComposite(){const P=phase3Ensure();ensureRival3();const all=[{n:LV[S.lvl].city,me:true,p:scoreParts()}].concat((S.rivals||[]).map((r,i)=>({n:r.n,p:scoreParts(r),ai:P.rivals[i]}))).sort((a,b)=>compositeScore(b.p)-compositeScore(a.p));return `<div class="sec phase-panel"><h2>省内综合排名</h2><div class="hint">综合排名：经济45%、安全15%、廉政10%、生态15%、民生15%，各项0—100；经济项按繁荣度计。省内第一名年度考核+3分，第二名0分，第三名−3分。其余考核权重按省里风向执行。</div><div class="phase-scroll"><table class="province-table phase-data"><tr><th>城市/人格</th><th>综合</th><th>经济</th><th>安全</th><th>廉政</th><th>生态</th><th>民生</th></tr>${all.map((r,i)=>`<tr><td>${i+1}. ${esc(r.n)}<br>${r.me?'本市':r.ai?.personality==='aggressive'?'激进招商':'稳健保守'}</td><td>${compositeScore(r.p).toFixed(1)}</td>${Object.values(r.p).map(v=>`<td>${v.toFixed(1)}</td>`).join('')}</tr>`).join('')}</table></div>${P.rivals.map((a,i)=>`<p>${esc(S.rivals[i].n)}：债务压力${a.debt.toFixed(0)} · 隐患${(a.risk*100).toFixed(0)} · 已争项目${a.projects} · 获用地指标${a.land}亩；${esc(a.last)}</p>`).join('')}${S.rivals?.length?workBtn('p3_land','','争取年度工业用地指标 · 前期费'+fmt(transferPay()*.08),P.landBidYear===S.year):''}</div>`;}
@@ -3715,7 +3761,7 @@ function appointmentOrder(lvl){
   '中共中央决定：〔姓名〕同志任中共〔市4〕委委员、常委、书记；免去其中共〔市3〕委书记、常委、委员职务。'
  ];
  const notes=['镇长依法须经人民代表大会选举产生。请核清到任账目，逐项回应群众提出的实际困难。','县长依法须经人民代表大会选举产生。请依照法定程序办理交接，把应办事项接续落实。','请按规定完成交接，对未结事项逐项留存依据。','由省委干部大会宣布中央决定，请按规定做好职务交接。','由本市领导干部大会宣布中央决定，请按规定做好职务交接。'];
- return {key:'appointment:'+lvl+':'+S.year+':'+S.month,kind:'appointment',year:S.year,month:S.month,lvl,heading:lvl?'任职通知':'委任状',eyebrow:lvl?'调令':'任命文书',title:placeText(titles[lvl]),number:orderNumber(lvl,(S.orders?.length||0)+1),role:placeName(lvl)+LV[lvl].t+'（'+LV[lvl].rank+'）',player:name,issuer:a.issuer,announcement:a.announcement,body:[placeText(cores[lvl]),'职级：'+LV[lvl].rank+'。',...(lvl?[placeText(PROMO_TEXT[lvl]),'上一任政绩的四分之一计入新任期。到任账目中已列出存量债务。']:[])],summary:appointmentHistory(lvl),note:notes[lvl],tone:'red'};
+ return {key:'appointment:'+lvl+':'+S.year+':'+S.month,kind:'appointment',year:S.year,month:S.month,lvl,heading:lvl?'任职通知':'委任状',eyebrow:lvl?'调令':'任命文书',title:placeText(titles[lvl]),number:orderNumber(lvl,(S.orders?.length||0)+1),role:placeName(lvl)+LV[lvl].t+'（'+LV[lvl].rank+'）',player:name,issuer:a.issuer,announcement:a.announcement,body:[placeText(cores[lvl]),'职级：'+LV[lvl].rank+'。',...(lvl?[placeText(PROMO_TEXT[lvl]),'上一任政绩的四分之一计入新任期。到任账目中已列出存量债务。',...(S.reserve>0?['原任地偿债准备金'+fmt(S.reserve)+'留在当地，不随调任结转。']:[])]:[])],summary:appointmentHistory(lvl),note:notes[lvl],tone:'red'};
 }
 function recordOrder(order){if(!Array.isArray(S.orders))S.orders=[];const found=S.orders.find(o=>o&&o.key===order.key);if(found)return found;S.orders.push(order);return order;}
 function orderText(value,max=2400){return String(value??'').slice(0,max);}
